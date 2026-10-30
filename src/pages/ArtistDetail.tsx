@@ -18,8 +18,7 @@
  * "tentative" mark days busy on the calendar. status = "available" marks
  * open slots. Form is gated by `open_to_bookings`.
  */
-import ArtistMedia from "@/components/ArtistMedia";
-import ArtistFacts from "@/components/ArtistFacts";
+import ArtistPortfolio from "@/components/ArtistPortfolio";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -1070,8 +1069,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                 </div>
               </div>
 
-              <ArtistFacts slug={artist.slug} name={artist.name} />
-              <ArtistMedia slug={artist.slug} name={artist.name} />
+              <ArtistPortfolio artist={artist as any} />
 
               {/* Press quotes (featured first) */}
               {press.filter(p => p.quote_for_epk).length > 0 && (

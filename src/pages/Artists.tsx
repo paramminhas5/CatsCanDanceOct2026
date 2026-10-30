@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import Marquee from "@/components/Marquee";
 import SEO from "@/components/SEO";
+import { supabase } from "@/lib/supabase";
 
 interface DBArtist {
   id: string;
@@ -48,6 +49,25 @@ function cover(a: DBArtist): string | null {
 }
 
 type SortMode = "az" | "city" | "genre";
+type GroupMode = "none" | "origin" | "city" | "style" | "rate";
+type Extra = { cities: string[]; with: string[]; media: number };
+
+function originOf(a: DBArtist): string {
+  return (a.from_city || a.based_city || "").split(",")[0].trim();
+}
+const RATE_BANDS = ["Under ₹25k", "₹25k to ₹75k", "Over ₹75k", "On request"];
+function rateBand(a: DBArtist): string {
+  const n = a.fee_min_inr ?? a.fee_max_inr;
+  if (!n) return "On request";
+  return n < 25000 ? RATE_BANDS[0] : n <= 75000 ? RATE_BANDS[1] : RATE_BANDS[2];
+}
+function playsIn(a: DBArtist, x?: Extra): string[] {
+  const s = new Set<string>();
+  const b = (a.based_city ?? "").split(",")[0].trim();
+  if (b && b !== "India") s.add(b);
+  for (const c of x?.cities ?? []) if (c) s.add(c);
+  return Array.from(s);
+}
 
 // Rotating accent colours for cards with no photo
 const CARD_ACCENTS = [
@@ -68,6 +88,15 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
   const [activeGenres, setActiveGenres] = useState<Set<string>>(new Set());
   const [sort, setSort] = useState<SortMode>("az");
   const [bookingsOnly, setBookingsOnly] = useState(false);
+  const [origin, setOrigin] = useState("All");
+  const [plays, setPlays] = useState("All");
+  const [rate, setRate] = useState("Any");
+  const [group, setGroup] = useState<GroupMode>("none");
+  const [extras, setExtras] = useState<Record<string, Extra>>({});
+
+  useEffect(() => {
+    supabase.rpc("artist_directory_extras").then(({ data }) => setExtras((data as Record<string, Extra>) ?? {}));
+  }, []);
 
   useEffect(() => {
     // Skip fetch entirely when server already provided the artist list
@@ -98,6 +127,18 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
     return Array.from(s).sort();
   }, [artists]);
 
+  const allOrigins = useMemo(() => {
+    const s = new Set<string>();
+    for (const a of artists) { const o = originOf(a); if (o) s.add(o); }
+    return Array.from(s).sort();
+  }, [artists]);
+
+  const allPlays = useMemo(() => {
+    const s = new Set<string>();
+    for (const a of artists) for (const c of playsIn(a, extras[a.slug])) s.add(c);
+    return Array.from(s).sort();
+  }, [artists, extras]);
+
   const allGenres = useMemo(() => {
     const s = new Set<string>();
     for (const a of artists) for (const g of a.genres ?? []) s.add(g);
@@ -116,8 +157,12 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
       if (city !== "All" && !cityOf(a).toLowerCase().includes(city.toLowerCase())) return false;
       if (activeGenres.size > 0 && !(a.genres ?? []).some((g) => activeGenres.has(g))) return false;
       if (bookingsOnly && !(a as any).open_to_bookings) return false;
+      if (origin !== "All" && originOf(a) !== origin) return false;
+      if (plays !== "All" && !playsIn(a, extras[a.slug]).includes(plays)) return false;
+      if (rate !== "Any" && rateBand(a) !== rate) return false;
       if (!ql) return true;
       return (
+        (extras[a.slug]?.with ?? []).join(" ").toLowerCase().includes(ql) ||
         a.name.toLowerCase().includes(ql) ||
         (a.genres ?? []).join(" ").toLowerCase().includes(ql) ||
         cityOf(a).toLowerCase().includes(ql) ||
@@ -129,7 +174,22 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
     else if (sort === "genre") rows = [...rows].sort((a, b) => ((a.genres ?? [])[0] ?? "").localeCompare((b.genres ?? [])[0] ?? "") || a.name.localeCompare(b.name));
     else rows = [...rows].sort((a, b) => a.name.localeCompare(b.name));
     return rows;
-  }, [artists, q, city, activeGenres, sort, bookingsOnly]);
+  }, [artists, q, city, activeGenres, sort, bookingsOnly, origin, plays, rate, extras]);
+
+  const groups = useMemo(() => {
+    if (group === "none") return [{ title: "", rows: filtered }];
+    const key = (a: DBArtist): string =>
+      group === "origin" ? originOf(a) || "Unknown"
+      : group === "city" ? (a.based_city ?? "").split(",")[0].trim() || "Unknown"
+      : group === "style" ? (a.genres ?? [])[0] || "Unlisted"
+      : rateBand(a);
+    const m = new Map<string, DBArtist[]>();
+    for (const a of filtered) { const k = key(a); m.set(k, [...(m.get(k) ?? []), a]); }
+    const order = group === "rate" ? RATE_BANDS : Array.from(m.keys()).sort();
+    return order.filter((k) => m.has(k)).map((k) => ({ title: k, rows: m.get(k)! }));
+  }, [filtered, group]);
+
+  const anyFilter = q || city !== "All" || activeGenres.size > 0 || bookingsOnly || origin !== "All" || plays !== "All" || rate !== "Any";
 
   return (
     <main className="bg-background text-foreground">
@@ -204,6 +264,29 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
             </button>
           </div>
 
+          {/* From, plays in, rate, group */}
+          <div className="flex flex-wrap items-center gap-2 mt-2">
+            {([
+              ["FROM", origin, setOrigin, "All", allOrigins],
+              ["PLAYS IN", plays, setPlays, "All", allPlays],
+              ["RATE", rate, setRate, "Any", RATE_BANDS],
+            ] as [string, string, (v: string) => void, string, string[]][]).map(([label, val, set, all, opts]) => (
+              <select key={label} value={val} onChange={(e) => set(e.target.value)} aria-label={label}
+                className="px-2 py-1 border-2 border-ink bg-cream font-display text-xs text-ink focus:outline-none focus:bg-acid-yellow/20">
+                <option value={all}>{label}: {all.toUpperCase()}</option>
+                {opts.map((o) => <option key={o} value={o}>{label}: {o.toUpperCase()}</option>)}
+              </select>
+            ))}
+            <select value={group} onChange={(e) => setGroup(e.target.value as GroupMode)} aria-label="GROUP BY"
+              className="px-2 py-1 border-2 border-ink bg-cream font-display text-xs text-ink focus:outline-none focus:bg-acid-yellow/20">
+              <option value="none">GROUP BY: NONE</option>
+              <option value="origin">GROUP BY: WHERE FROM</option>
+              <option value="city">GROUP BY: WHERE BASED</option>
+              <option value="style">GROUP BY: WHAT THEY PLAY</option>
+              <option value="rate">GROUP BY: RATE</option>
+            </select>
+          </div>
+
           {/* Genre pills */}
           {allGenres.length > 0 && (
             <div className="flex items-center gap-2 mt-2 overflow-x-auto pb-1 scrollbar-hide">
@@ -269,9 +352,9 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                   ? "No artists found in the database."
                   : "Try adjusting your filters."}
               </p>
-              {(q || city !== "All" || activeGenres.size > 0 || bookingsOnly) && (
+              {anyFilter && (
                 <button
-                  onClick={() => { setQ(""); setCity("All"); setActiveGenres(new Set()); setBookingsOnly(false); }}
+                  onClick={() => { setQ(""); setCity("All"); setActiveGenres(new Set()); setBookingsOnly(false); setOrigin("All"); setPlays("All"); setRate("Any"); }}
                   className="bg-ink text-cream font-display px-5 py-2 border-4 border-ink hover:bg-ink/80 transition-colors"
                 >
                   CLEAR FILTERS
@@ -287,9 +370,11 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                 {bookingsOnly && " · BOOKINGS OPEN"}
               </p>
 
-              {/* Grid */}
+              {groups.map((g) => (
+              <div key={g.title || "all"} className="mb-10">
+              {g.title && <p className="font-display text-2xl text-ink mb-3">{g.title.toUpperCase()} <span className="text-ink/40 text-base">{g.rows.length}</span></p>}
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {filtered.map((a, i) => {
+                {g.rows.map((a, i) => {
                   const img = cover(a);
                   const accent = CARD_ACCENTS[i % CARD_ACCENTS.length];
                   const isLarge = i % 9 === 0;
@@ -330,6 +415,9 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                             {cityOf(a)}
                           </p>
                         )}
+                        {rateBand(a) !== "On request" && (
+                          <p className={`text-[10px] font-display mt-0.5 ${img ? "text-cream/70" : "text-ink/70"}`}>{rateBand(a).toUpperCase()}</p>
+                        )}
                         {(a.genres ?? []).length > 0 && (
                           <div className="flex flex-wrap gap-1 mt-1">
                             {(a.genres ?? []).slice(0, 2).map((g) => (
@@ -356,6 +444,8 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                   );
                 })}
               </div>
+              </div>
+              ))}
 
               {/* CTA */}
               <div className="mt-12 border-4 border-ink bg-orange chunk-shadow p-6 inline-block">
