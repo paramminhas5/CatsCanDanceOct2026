@@ -6,7 +6,7 @@ type Media = { id: string; kind: "photo" | "video" | "mix" | "press"; url: strin
 type Fact = { label: string; detail: string | null; url: string | null; date: string | null; source: string };
 
 export type PortfolioArtist = {
-  slug: string; name: string; from_city?: string | null; based_city?: string | null; genres?: string[] | null;
+  slug: string; name: string; bio?: string | null; why?: string | null; from_city?: string | null; based_city?: string | null; genres?: string[] | null;
   festivals?: string[] | null; labels?: string | null; members?: string | null; photo_url?: string | null;
   fee_min_inr?: number | null; fee_max_inr?: number | null; open_to_bookings?: boolean | null;
   mix_url?: string | null; soundcloud?: string | null; spotify?: string | null; instagram?: string | null; website?: string | null;
@@ -82,6 +82,10 @@ export default function ArtistPortfolio({ artist }: { artist: PortfolioArtist })
           </ul>
         )}
       </div>
+
+      {(artist.bio || artist.why) && (
+        <Block title="About"><p className="text-ink">{artist.bio || artist.why}</p></Block>
+      )}
 
       <div className="grid md:grid-cols-2 gap-4">
         <Block title="From and based in">

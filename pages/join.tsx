@@ -20,6 +20,10 @@ export default function Join() {
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
   const [genres, setGenres] = useState<string[]>([]);
+  const [wantArtist, setWantArtist] = useState(false);
+  const [wantHost, setWantHost] = useState(false);
+  const [wantPromoter, setWantPromoter] = useState(false);
+  const [link, setLink] = useState("");
 
   async function sendLink(e: React.FormEvent) {
     e.preventDefault();
@@ -40,6 +44,14 @@ export default function Join() {
     e.preventDefault();
     const r = await memberRpc("join_member", { p_name: name, p_city: city, p_genres: genres });
     if (!r.ok) return setMsg(r.error ?? "Something went wrong.");
+    // Any page or application already waiting for this email is handed over by the join trigger.
+    const isUrlOrHandle = link.trim();
+    if (wantArtist) {
+      const a = await memberRpc("become_artist", { p_name: name, p_city: city, p_genres: genres.join(", "), p_instagram: isUrlOrHandle || null, p_soundcloud: null, p_mix_url: null });
+      if (!a.ok && !(a.data as any)?.slug) setMsg(a.error ?? "Joined, but the artist page needs a link. Add it in your club page.");
+    }
+    if (wantHost) await memberRpc("become_host", {});
+    if (wantPromoter) await memberRpc("become_promoter", { p_name: name, p_city: city, p_instagram: isUrlOrHandle || null, p_bio: null });
     await reload();
     router.push("/club");
   }
@@ -69,6 +81,14 @@ export default function Join() {
                     className={`font-display text-xs uppercase px-3 py-2 border-2 border-ink ${genres.includes(g) ? "bg-ink text-cream" : "bg-cream text-ink"}`}>{g}</button>
                 ))}
               </div>
+              <fieldset className="grid gap-2 border-2 border-ink p-3">
+                <legend className="font-display text-xs uppercase px-1">Also, do you</legend>
+                <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={wantArtist} onChange={(e) => setWantArtist(e.target.checked)} /> Make or play music? Get an artist page.</label>
+                <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={wantHost} onChange={(e) => setWantHost(e.target.checked)} /> Host nights?</label>
+                <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={wantPromoter} onChange={(e) => setWantPromoter(e.target.checked)} /> Promote events?</label>
+                {(wantArtist || wantPromoter) && <input className={inp} placeholder="Instagram handle or link" value={link} onChange={(e) => setLink(e.target.value)} required={wantArtist} />}
+                <p className="text-xs text-ink/60">If we already have a page or application for your email, it is linked to you now. You can add any of these later from your club page.</p>
+              </fieldset>
               <button className="font-display uppercase px-5 py-3 border-4 border-ink bg-acid-yellow text-ink">Join</button>
               {msg && <p className="text-sm text-red-600">{msg}</p>}
             </form>

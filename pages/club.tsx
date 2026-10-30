@@ -41,6 +41,11 @@ export default function Club() {
   }, []);
 
   useEffect(() => { if (member) refresh(); }, [member, refresh]);
+  // On login, hand over any page or application that was waiting for this email.
+  useEffect(() => {
+    if (!member) return;
+    memberRpc<{ assigned?: number }>("adopt_my_pending", {}).then((r) => { if (r.ok && (r.data as any)?.assigned > 0) reload(); });
+  }, [member?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function act(fn: string, args: Record<string, unknown>) {
     const r = await memberRpc(fn, args);
@@ -85,6 +90,7 @@ export default function Club() {
               {!member.quiz && <TasteQuiz onDone={() => reload()} />}
               <Extras />
               <GoAgain />
+              <RoleCards onChange={() => reload()} />
               <ArtistEditor />
               <MyBookings />
               <HostForm onDone={(m) => setMsg(m)} />
@@ -452,6 +458,7 @@ function ArtistEditor() {
         setMsg(r.ok ? "Saved. Your page updates within a few minutes." : r.error ?? "Could not save.");
       }}>
         <h2 className="font-display text-2xl">Your artist page: {a.name}</h2>
+        {a.status !== "approved" && <p className="text-sm text-hot-red">Not public yet. The CCD team approves it first, then it shows on /litter. Edit it any time.</p>}
         <p className="text-sm">Leave a box empty and save to clear it. <Link href={`/litter/${a.slug}`} className="underline">See your public page</Link></p>
         <div className="flex items-center gap-3">
           {f.photo ? <img src={f.photo} alt="" className="h-20 w-20 border-4 border-ink object-cover" /> : <div className="h-20 w-20 border-4 border-ink grid place-items-center text-xs">No photo</div>}
@@ -584,6 +591,46 @@ function FactsReview({ onChange }: { onChange: () => void }) {
         </ul>
       )}
       {live.length > 0 && <p className="text-sm">{live.length} items are live on your page.</p>}
+    </div>
+  );
+}
+
+
+/** Lets a normal member add the artist, host or promoter side of their account. Nothing here needs a staff step to start. */
+function RoleCards({ onChange }: { onChange: () => void }) {
+  const [r, setR] = useState<any>(null);
+  const [open, setOpen] = useState(false);
+  const [f, setF] = useState({ name: "", city: "", genres: "", instagram: "", soundcloud: "", mix: "" });
+  const [msg, setMsg] = useState("");
+  const load = useCallback(async () => { const { data } = await supabase.rpc("my_roles"); setR(data); }, []);
+  useEffect(() => { load(); }, [load]);
+  if (!r) return null;
+  const inp = "w-full border-4 border-ink bg-cream p-2";
+  const isHost = ["host", "staff", "owner"].includes(r.role);
+  async function go(fn: string, args: Record<string, unknown>, ok: string) {
+    const x = await memberRpc(fn, args);
+    setMsg(x.ok ? ok : x.error ?? "Something went wrong.");
+    if (x.ok) { setOpen(false); await load(); onChange(); }
+  }
+  if (r.artist_slug && isHost && r.is_promoter) return null;
+  return (
+    <div className={box}>
+      <h2 className="font-display text-2xl mb-2">Do more with CCD</h2>
+      <div className="flex flex-wrap gap-2 mb-2">
+        {!r.artist_slug && <button className={btn} onClick={() => setOpen(!open)}>I am an artist</button>}
+        {!isHost && <button className={btn} onClick={() => go("become_host", {}, "You can host now. Use Host an event below. The CCD team approves each night.")}>I host nights</button>}
+        {!r.is_promoter && <button className={btn} onClick={() => go("become_promoter", { p_name: null, p_city: null, p_instagram: null, p_bio: null }, "Promoter application sent. You are marked as a promoter.")}>I promote events</button>}
+      </div>
+      {open && (
+        <form className="space-y-2" onSubmit={(e) => { e.preventDefault(); go("become_artist", { p_name: f.name, p_city: f.city, p_genres: f.genres, p_instagram: f.instagram || null, p_soundcloud: f.soundcloud || null, p_mix_url: f.mix || null }, "Your artist page is created. Fill it in below. It goes public after the CCD team approves it."); }}>
+          <input className={inp} placeholder="Artist name" value={f.name} onChange={(e) => setF({ ...f, name: e.target.value })} required />
+          <div className="grid grid-cols-2 gap-2"><input className={inp} placeholder="City" value={f.city} onChange={(e) => setF({ ...f, city: e.target.value })} /><input className={inp} placeholder="Genres, comma separated" value={f.genres} onChange={(e) => setF({ ...f, genres: e.target.value })} /></div>
+          <input className={inp} placeholder="Instagram" value={f.instagram} onChange={(e) => setF({ ...f, instagram: e.target.value })} />
+          <div className="grid grid-cols-2 gap-2"><input className={inp} placeholder="SoundCloud link" value={f.soundcloud} onChange={(e) => setF({ ...f, soundcloud: e.target.value })} /><input className={inp} placeholder="Mix link" value={f.mix} onChange={(e) => setF({ ...f, mix: e.target.value })} /></div>
+          <button className={btn}>Create my artist page</button>
+        </form>
+      )}
+      {msg && <p className="text-sm mt-2">{msg}</p>}
     </div>
   );
 }
