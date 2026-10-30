@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 
-export type Member = { id: string; email: string; display_name: string | null; city: string | null; genres: string[]; role: "member" | "staff" };
+export type Member = { id: string; email: string; display_name: string | null; city: string | null; genres: string[]; role: "member" | "host" | "staff" | "owner"; quiz: Record<string, unknown> | null };
 
 /** Signed in state plus the member row (null until they finish joining). */
 export function useMember() {
@@ -13,7 +13,7 @@ export function useMember() {
     const { data } = await supabase.auth.getSession();
     setSignedIn(!!data.session);
     if (data.session) {
-      const { data: m } = await supabase.from("members").select("id,email,display_name,city,genres,role").eq("id", data.session.user.id).maybeSingle();
+      const { data: m } = await supabase.from("members").select("id,email,display_name,city,genres,role,quiz").eq("id", data.session.user.id).maybeSingle();
       setMember((m as Member) ?? null);
     } else setMember(null);
     setLoading(false);

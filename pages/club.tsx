@@ -26,7 +26,7 @@ type FeedItem = { id: string; title: string; url: string | null; city: string | 
 type Counts = Record<string, { likes: number; going: number }>;
 
 export default function Club() {
-  const { loading, signedIn, member } = useMember();
+  const { loading, signedIn, member, reload } = useMember();
   const [feed, setFeed] = useState<FeedItem[]>([]);
   const [counts, setCounts] = useState<Counts>({});
   const [msg, setMsg] = useState("");
@@ -82,9 +82,11 @@ export default function Club() {
                   ))}
                 </ul>
               )}
+              {!member.quiz && <TasteQuiz onDone={() => reload()} />}
               <Extras />
+              <GoAgain />
               <HostForm onDone={(m) => setMsg(m)} />
-              {member.role === "staff" && <StaffPanel />}
+              {(member.role === "staff" || member.role === "owner") && <StaffPanel />}
             </>
           )}
           <div>
@@ -227,6 +229,97 @@ function StaffPanel() {
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+
+const QUIZ = [
+  { key: "good_night", q: "What makes a good night?", opts: ["Dancing until late", "Hearing a great set properly", "Meeting new people", "A good room with my friends"] },
+  { key: "when", q: "When do you like to go out?", opts: ["Day parties", "Early evening", "Late nights"] },
+  { key: "arrive", q: "How do you usually arrive?", opts: ["Alone", "With one friend", "With a group"] },
+  { key: "crew", q: "Want us to place you in a crew of 4 to 6?", opts: ["Yes", "Maybe", "No, I have my crowd"] },
+  { key: "pregame", q: "Meet your crew 30 minutes before?", opts: ["Yes", "Sometimes", "No"] },
+  { key: "pets", q: "Pet friendly nights?", opts: ["Love them", "Fine either way", "Not for me"] },
+] as const;
+
+function TasteQuiz({ onDone }: { onDone: () => void }) {
+  const [a, setA] = useState<Record<string, string>>({});
+  const [phone, setPhone] = useState("");
+  const [err, setErr] = useState("");
+  const [busy, setBusy] = useState(false);
+  const ready = QUIZ.every((q) => a[q.key]);
+  async function save(e: React.FormEvent) {
+    e.preventDefault();
+    if (!ready || busy) return;
+    setBusy(true); setErr("");
+    const r = await memberRpc("save_taste_quiz", { p_answers: a, p_phone: phone || null });
+    setBusy(false);
+    if (!r.ok) { setErr(r.error ?? "Something went wrong."); return; }
+    onDone();
+  }
+  return (
+    <form onSubmit={save} className={`${box} space-y-4`}>
+      <h2 className="font-display text-2xl">Your taste</h2>
+      <p className="text-sm">Six quick questions. We use them to place you in a crew and pick nights for you. No looks, no follower counts.</p>
+      {QUIZ.map((q) => (
+        <fieldset key={q.key}>
+          <legend className="font-display text-sm mb-1">{q.q}</legend>
+          <div className="flex flex-wrap gap-2">
+            {q.opts.map((o) => (
+              <button key={o} type="button" aria-pressed={a[q.key] === o} onClick={() => setA({ ...a, [q.key]: o })}
+                className={`border-4 border-ink px-3 py-1 text-sm font-display ${a[q.key] === o ? "bg-ink text-cream" : "bg-cream text-ink"}`}>{o}</button>
+            ))}
+          </div>
+        </fieldset>
+      ))}
+      <div>
+        <label className="font-display text-sm block mb-1" htmlFor="quiz-phone">WhatsApp number (optional)</label>
+        <input id="quiz-phone" inputMode="tel" className="w-full border-4 border-ink bg-cream p-2" placeholder="+91" value={phone} onChange={(e) => setPhone(e.target.value)} />
+        <p className="text-xs mt-1">Only used to send reminders for nights you join. Leave it blank if you prefer.</p>
+      </div>
+      {err && <p className="text-hot-red text-sm">{err}</p>}
+      <button className={`${btn} disabled:opacity-50`} disabled={!ready || busy}>{busy ? "Saving..." : "Save my taste"}</button>
+    </form>
+  );
+}
+
+type PastCrew = { event_slug: string; title: string; event_date: string };
+type Mate = { mate_id: string; mate: string; tapped: boolean };
+
+function GoAgain() {
+  const [past, setPast] = useState<PastCrew[]>([]);
+  const [mates, setMates] = useState<Record<string, Mate[]>>({});
+  const [msg, setMsg] = useState("");
+  const load = useCallback(async () => {
+    const p = await supabase.rpc("my_past_crews");
+    const list = ((p.data as PastCrew[]) ?? []);
+    setPast(list);
+    const m: Record<string, Mate[]> = {};
+    for (const e of list) { const r = await supabase.rpc("my_crew_mates", { p_slug: e.event_slug }); m[e.event_slug] = (r.data as Mate[]) ?? []; }
+    setMates(m);
+  }, []);
+  useEffect(() => { load(); }, [load]);
+  if (past.length === 0) return null;
+  return (
+    <div className={`${box} space-y-3`}>
+      <h2 className="font-display text-2xl">Who would you go again with?</h2>
+      <p className="text-sm">Tap the people from your crew you would go out with again. They are not told who you tapped. It only counts towards their standing.</p>
+      {msg && <p className="text-hot-red text-sm">{msg}</p>}
+      {past.map((e) => (
+        <div key={e.event_slug} className="border-t-2 border-ink pt-2">
+          <p className="font-display text-sm">{e.title} · {e.event_date}</p>
+          <div className="mt-1 flex flex-wrap gap-2">
+            {(mates[e.event_slug] ?? []).length === 0 && <span className="text-sm">No crew mates to show.</span>}
+            {(mates[e.event_slug] ?? []).map((m) => (
+              <button key={m.mate_id} disabled={m.tapped} className={`${btn} disabled:opacity-60`}
+                onClick={async () => { const r = await memberRpc("say_go_again", { p_slug: e.event_slug, p_to: m.mate_id }); setMsg(r.ok ? "" : r.error ?? "Something went wrong."); load(); }}>
+                {m.tapped ? `${m.mate} ✓` : `Go again with ${m.mate}`}
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
