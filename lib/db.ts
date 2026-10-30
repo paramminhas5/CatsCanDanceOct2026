@@ -34,6 +34,11 @@ export async function rpc<T>(fn: string, args: Record<string, unknown>): Promise
 export type CcdEvent = {
   slug: string;
   title: string;
+  episode_no: number | null;
+  start_time: string | null;
+  rsvp_open: boolean | null;
+  capacity: number | null;
+  recap: string | null;
   date: string | null;
   event_date: string | null;
   city: string | null;
@@ -80,6 +85,19 @@ export type Artist = {
   featured: boolean;
   photo_url: string | null;
   open_to_bookings: boolean;
+  played_ccd: boolean | null;
+  mix_url: string | null;
+  claimed_at: string | null;
+};
+
+export type TouringDate = {
+  id: string;
+  artist_slug: string;
+  artist_name: string;
+  city: string;
+  from_date: string;
+  to_date: string;
+  note: string | null;
 };
 
 const today = () => new Date().toISOString().slice(0, 10);
@@ -92,11 +110,50 @@ export const getScenePicks = (limit = 60) =>
     `scraped_events?status=eq.published&or=(event_date.gte.${today()},event_date.is.null)&order=featured.desc,event_date.asc&limit=${limit}`,
   );
 
+export const getCcdEvent = async (slug: string) =>
+  (await select<CcdEvent>(`events?slug=eq.${encodeURIComponent(slug)}&published=is.true&limit=1`, 120))[0] ?? null;
+
+export const getTouring = (artistSlug?: string) =>
+  select<TouringDate>(
+    `touring_now?order=from_date.asc${artistSlug ? `&artist_slug=eq.${encodeURIComponent(artistSlug)}` : ""}`,
+    120,
+  );
+
+export async function rsvpCount(slug: string) {
+  try {
+    return (await rpc<number>("rsvp_count", { p_event_slug: slug })) ?? 0;
+  } catch {
+    return 0;
+  }
+}
+
+export const SCHOOL_URL = process.env.NEXT_PUBLIC_SCHOOL_URL ?? "https://ableton-final-next-ccd-school.vercel.app";
+
+/** Split CCD nights into the next one(s) and the archive, newest first. */
+export function splitEvents(all: CcdEvent[]) {
+  const today = new Date().toISOString().slice(0, 10);
+  const upcoming = all.filter((e) => (e.event_date ? e.event_date >= today : e.status === "upcoming"));
+  const past = all
+    .filter((e) => !upcoming.includes(e))
+    .sort((a, b) => (b.event_date ?? "").localeCompare(a.event_date ?? ""));
+  return { upcoming, past };
+}
+
 export const getArtists = () =>
   select<Artist>("artists?status=eq.approved&order=is_resident.desc,featured.desc,name.asc");
 
 export const getArtist = async (slug: string) =>
   (await select<Artist>(`artists?slug=eq.${encodeURIComponent(slug)}&status=eq.approved&limit=1`))[0] ?? null;
+
+export function fmtLong(d: string | null) {
+  if (!d) return "TBA";
+  return new Date(`${d}T00:00:00`).toLocaleDateString("en-IN", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
 
 export function fmtDate(d: string | null, fallback?: string | null) {
   if (!d) return fallback ?? "TBA";
