@@ -5,7 +5,7 @@
  * Saves to contact_messages table.
  */
 import type { NextApiRequest, NextApiResponse } from "next";
-import { ins } from "@/lib/api-helpers";
+import { rpc } from "@/lib/api-rpc";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -17,12 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: "name, email, message required" });
   }
 
-  const { ok } = await ins("contact_messages", {
-    name,
-    email,
-    message,
-    created_at: new Date().toISOString(),
-  });
-
-  return ok ? res.json({ ok: true }) : res.status(500).json({ error: "Failed to save message" });
+  const r = await rpc("submit_contact", { p_name: name, p_email: email, p_message: message });
+  if (r.ok && r.data?.ok) return res.json({ ok: true });
+  return res.status(r.ok ? 400 : 500).json({ error: r.data?.error ?? "Failed to save message" });
 }

@@ -1,11 +1,11 @@
 "use client";
 /**
  * FollowButton — heart button shown on artist pages and cards.
- * Persists follow state to user_taste_profiles via /api/user/follow.
+ * Members: saved to member_follows via follow_artist (feeds the personal feed).
  * Falls back to localStorage when user not signed in (with upgrade prompt).
  */
 import { useState, useEffect } from "react";
-import { useSafeUser } from "@/lib/clerk-safe";
+import { useMember, memberRpc } from "@/lib/member";
 import { Heart } from "lucide-react";
 
 interface Props {
@@ -27,23 +27,15 @@ function setLocalFollowed(slugs: string[]) {
 }
 
 export default function FollowButton({ artistSlug, artistName, compact = false, onToggle }: Props) {
-  const { user, isLoaded, isSignedIn } = useSafeUser();
+  const { loading: memLoading, member } = useMember();
+  const isLoaded = !memLoading; const isSignedIn = !!member; const user = member;
   const [following, setFollowing] = useState(false);
   const [loading, setLoading] = useState(false);
 
   // Load initial state
   useEffect(() => {
     if (!isLoaded) return;
-    if (isSignedIn && user) {
-      fetch(`/api/user/profile?userId=${encodeURIComponent(user.id)}`)
-        .then(r => r.json())
-        .then(p => {
-          setFollowing((p?.liked_artist_slugs ?? []).includes(artistSlug));
-        })
-        .catch(() => {});
-    } else {
-      setFollowing(getLocalFollowed().includes(artistSlug));
-    }
+    setFollowing(getLocalFollowed().includes(artistSlug));
   }, [isLoaded, isSignedIn, user, artistSlug]);
 
   async function toggle() {
@@ -54,15 +46,10 @@ export default function FollowButton({ artistSlug, artistName, compact = false, 
 
     try {
       if (isSignedIn && user) {
-        await fetch("/api/user/follow", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            userId: user.id,
-            artistSlug,
-            action: newState ? "follow" : "unfollow",
-          }),
-        });
+        const r = await memberRpc("follow_artist", { p_slug: artistSlug, p_follow: newState });
+        if (!r.ok) throw new Error(r.error);
+        const local = getLocalFollowed();
+        setLocalFollowed(newState ? Array.from(new Set([...local, artistSlug])) : local.filter((x) => x !== artistSlug));
       } else {
         // localStorage fallback
         const local = getLocalFollowed();

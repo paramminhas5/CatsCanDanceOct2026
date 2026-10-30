@@ -59,6 +59,36 @@ async function swapStatus(formData: FormData) {
   revalidatePath("/ops");
 }
 
+async function addTier(formData: FormData) {
+  "use server";
+  await rpc("ops_upsert_tier", { p_token: T(), p_slug: String(formData.get("slug")), p_name: String(formData.get("name")), p_price: Number(formData.get("price")), p_capacity: Number(formData.get("capacity")) });
+  revalidatePath("/ops");
+}
+async function saveProduct(formData: FormData) {
+  "use server";
+  await rpc("ops_upsert_product", {
+    p_token: T(), p_slug: String(formData.get("slug")).toLowerCase().replace(/[^a-z0-9]+/g, "-"), p_name: String(formData.get("name")),
+    p_description: String(formData.get("description") ?? ""), p_price: Number(formData.get("price")), p_image: String(formData.get("image") ?? ""),
+    p_sizes: String(formData.get("sizes") ?? "").split(",").map((x) => x.trim()).filter(Boolean), p_stock: Number(formData.get("stock")), p_active: formData.get("active") === "on",
+  });
+  revalidatePath("/ops"); revalidatePath("/shop");
+}
+async function shipOrder(formData: FormData) {
+  "use server";
+  await rpc("ops_shop_ship", { p_token: T(), p_order: String(formData.get("id")), p_tracking: String(formData.get("tracking")) });
+  revalidatePath("/ops");
+}
+async function formCrews(formData: FormData) {
+  "use server";
+  await rpc("ops_form_crews", { p_token: T(), p_slug: String(formData.get("slug")), p_pre_spot: String(formData.get("pre_spot") ?? "") });
+  revalidatePath("/ops");
+}
+async function saveSetting(formData: FormData) {
+  "use server";
+  await rpc("ops_set_setting", { p_token: T(), p_key: String(formData.get("key")), p_value: String(formData.get("value")) });
+  revalidatePath("/ops");
+}
+
 const ago = (iso: string) => {
   const m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
   if (m < 60) return `${m}m ago`;
@@ -76,7 +106,10 @@ export default async function Ops() {
   }
   if (!s) return <main className="wrap ops"><h2 style={{ margin: "40px 0 12px" }}>Ops</h2><p className="bad">Could not load: {err || "no data"}</p></main>;
 
-  const [todos, hidden, members, swaps] = await Promise.all([
+  const [tickets, orders, crewsO, todos, hidden, members, swaps] = await Promise.all([
+    rpc<any[]>("ops_ticket_summary", { p_token: T() }).catch(() => []),
+    rpc<any[]>("ops_shop_orders", { p_token: T() }).catch(() => []),
+    rpc<any[]>("ops_crew_overview", { p_token: T() }).catch(() => []),
     rpc<any>("ops_todos", { p_token: T() }).catch(() => null),
     rpc<any[]>("ops_artists", { p_token: T(), p_status: "hidden" }).catch(() => []),
     rpc<any[]>("ops_members", { p_token: T() }).catch(() => []),
@@ -188,6 +221,48 @@ export default async function Ops() {
           </tbody>
         </table>
       </div>
+
+      <h3 style={{ marginBottom: 10 }}>Tickets</h3>
+      <p className="muted" style={{ marginTop: 0 }}>Add ticket types to a CCD event (use its slug, e.g. episode-5). Set price 0 for a free list. The event must be published with a future date. Payment needs RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in Vercel.</p>
+      <form action={addTier} style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
+        <input name="slug" placeholder="event slug" required style={{ padding: 6 }} /><input name="name" placeholder="ticket name" required style={{ padding: 6 }} />
+        <input name="price" type="number" min="0" placeholder="price INR" required style={{ padding: 6, width: 100 }} /><input name="capacity" type="number" min="1" placeholder="capacity" required style={{ padding: 6, width: 100 }} />
+        <button className="btn sm">Add ticket type</button>
+      </form>
+      <div className="scroll" style={{ marginBottom: 20 }}><table><thead><tr><th>Event</th><th>Orders</th><th>Tickets</th><th>Checked in</th><th>Revenue</th></tr></thead><tbody>
+        {(tickets ?? []).map((t: any) => <tr key={t.event_slug}><td>{t.event_slug}</td><td>{t.orders}</td><td>{t.tickets}</td><td>{t.checked_in}</td><td>₹{t.revenue_inr}</td></tr>)}
+      </tbody></table></div>
+
+      <h3 style={{ marginBottom: 10 }}>Crews (solo goers)</h3>
+      <form action={formCrews} style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
+        <input name="slug" placeholder="event slug" required style={{ padding: 6 }} /><input name="pre_spot" placeholder="pre-spot, e.g. Toit, 30 min before" style={{ padding: 6, minWidth: 260 }} />
+        <button className="btn sm">Form crews</button>
+        <span className="muted">{(crewsO ?? []).map((c: any) => `${c.event_slug}: ${c.pool} signed up, ${c.unplaced} not placed`).join(" · ")}</span>
+      </form>
+
+      <h3 style={{ marginBottom: 10 }}>Shop</h3>
+      <p className="muted" style={{ marginTop: 0 }}>Add or edit a product (same slug updates it). Image is a full URL. Tick Live to show it on /shop.</p>
+      <form action={saveProduct} style={{ display: "grid", gap: 8, maxWidth: 560, marginBottom: 16 }}>
+        <input name="name" placeholder="Name" required style={{ padding: 6 }} /><input name="slug" placeholder="slug, e.g. logo-tee" required style={{ padding: 6 }} />
+        <input name="price" type="number" min="0" placeholder="Price INR" required style={{ padding: 6 }} /><input name="stock" type="number" min="0" placeholder="Stock" required style={{ padding: 6 }} />
+        <input name="sizes" placeholder="Sizes, comma separated (blank for none)" style={{ padding: 6 }} /><input name="image" placeholder="Image URL" style={{ padding: 6 }} />
+        <textarea name="description" placeholder="Description" style={{ padding: 6 }} /><label><input type="checkbox" name="active" /> Live</label>
+        <button className="btn sm">Save product</button>
+      </form>
+      <div className="scroll" style={{ marginBottom: 36 }}><table><thead><tr><th>Order</th><th>Buyer</th><th>Items</th><th>Ship to</th><th></th></tr></thead><tbody>
+        {(orders ?? []).map((o: any) => (
+          <tr key={o.id}><td>₹{o.amount_inr}<div className="muted">{o.status}</div></td><td>{o.buyer_name}<div className="muted">{o.buyer_email} {o.buyer_phone}</div></td>
+            <td>{(o.items ?? []).map((i: any) => `${i.name} ${i.size ?? ""} x${i.qty}`).join(", ")}</td>
+            <td className="muted">{[o.address?.line1, o.address?.line2, o.address?.city, o.address?.state, o.address?.pin].filter(Boolean).join(", ")}</td>
+            <td>{o.status === "paid" ? <form action={shipOrder}><input type="hidden" name="id" value={o.id} /><input name="tracking" placeholder="tracking" required style={{ padding: 4, width: 110 }} /> <button className="btn sm">Shipped</button></form> : o.tracking}</td></tr>
+        ))}
+      </tbody></table></div>
+
+      <h3 style={{ marginBottom: 10 }}>WhatsApp</h3>
+      <form action={saveSetting} style={{ display: "flex", gap: 8, marginBottom: 36, flexWrap: "wrap" }}>
+        <select name="key" style={{ padding: 6 }}><option value="whatsapp_community_url">Community invite link</option><option value="whatsapp_number">Number for click to chat (digits, with country code)</option></select>
+        <input name="value" placeholder="value" required style={{ padding: 6, minWidth: 280 }} /><button className="btn sm">Save</button>
+      </form>
 
       <h3 style={{ marginBottom: 10 }}>What we&apos;re building</h3>
       <div className="scroll" style={{ marginBottom: 36 }}>

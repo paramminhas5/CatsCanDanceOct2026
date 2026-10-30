@@ -17,6 +17,7 @@ import Hero from "@/components/Hero";
 import SEO from "@/components/SEO";
 
 // Below-the-fold components — loaded after initial paint
+const TicketsStrip = dynamic(() => import("@/components/TicketsStrip"), { ssr: false });
 const MarqueeBySlot = dynamic(() => import("@/components/MarqueeBySlot"));
 const About = dynamic(() => import("@/components/About"));
 const HomepageEvents = dynamic(() => import("@/components/HomepageEvents"));
@@ -58,6 +59,7 @@ const Index = () => {
         <Nav />
         <MoonwalkCat />
         <Hero />
+        <TicketsStrip />
 
         {/* ── Identity strip ── */}
         <div className="bg-ink border-b-4 border-ink py-3 px-4">
