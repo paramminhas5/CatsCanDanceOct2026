@@ -6,7 +6,8 @@ export const revalidate = 300;
 
 export default async function Home() {
   const [ccd, scene, artists] = await Promise.all([getCcdEvents(), getScenePicks(8), getArtists()]);
-  const upcoming = ccd.filter((e) => e.status !== "past");
+  const today = new Date().toISOString().slice(0, 10);
+  const upcoming = ccd.filter((e) => (e.event_date ? e.event_date >= today : e.status === "upcoming"));
   const residents = artists.filter((a) => a.is_resident);
 
   return (

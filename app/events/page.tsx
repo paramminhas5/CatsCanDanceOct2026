@@ -11,6 +11,9 @@ export const metadata: Metadata = {
 
 export default async function EventsPage() {
   const [ccd, scene] = await Promise.all([getCcdEvents(), getScenePicks(80)]);
+  const today = new Date().toISOString().slice(0, 10);
+  const upcoming = ccd.filter((e) => (e.event_date ? e.event_date >= today : e.status === "upcoming"));
+  const past = ccd.filter((e) => !upcoming.includes(e));
   const cities = Array.from(new Set(scene.map((e) => e.city).filter(Boolean))) as string[];
 
   return (
@@ -27,10 +30,16 @@ export default async function EventsPage() {
       <section className="block">
         <div className="wrap">
           <div className="head"><h2>CCD nights</h2></div>
-          {ccd.length ? (
-            <div className="grid">{ccd.map((e) => <CcdEventCard key={e.slug} e={e} />)}</div>
+          {upcoming.length ? (
+            <div className="grid">{upcoming.map((e) => <CcdEventCard key={e.slug} e={e} />)}</div>
           ) : (
-            <p className="muted">Next Episode announced soon.</p>
+            <p className="muted">Next Episode announced soon. Follow @catscan.dance.</p>
+          )}
+          {past.length > 0 && (
+            <>
+              <h3 style={{ margin: "40px 0 16px" }}>Past nights</h3>
+              <div className="grid" style={{ opacity: 0.75 }}>{past.map((e) => <CcdEventCard key={e.slug} e={e} />)}</div>
+            </>
           )}
         </div>
       </section>
