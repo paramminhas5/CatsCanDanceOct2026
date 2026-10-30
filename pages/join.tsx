@@ -28,6 +28,14 @@ export default function Join() {
     if (error) setMsg("Could not send the link. Try again in a minute."); else setSent(true);
   }
 
+  const [pw, setPw] = useState("");
+  async function signInPw(e: React.FormEvent) {
+    e.preventDefault();
+    setMsg("");
+    const { error } = await supabase.auth.signInWithPassword({ email, password: pw });
+    if (error) setMsg("Wrong email or password."); else { await reload(); router.push("/club"); }
+  }
+
   async function finish(e: React.FormEvent) {
     e.preventDefault();
     const r = await memberRpc("join_member", { p_name: name, p_city: city, p_genres: genres });
@@ -72,6 +80,13 @@ export default function Join() {
               <button className="font-display uppercase px-5 py-3 border-4 border-ink bg-acid-yellow text-ink">Email me a sign in link</button>
               <p className="text-xs text-ink/60">No password. We only use your email to sign you in and to tell you about nights you asked for.</p>
               {msg && <p className="text-sm text-red-600">{msg}</p>}
+              <details className="text-sm">
+                <summary className="cursor-pointer font-display uppercase">CCD team sign in</summary>
+                <div className="grid gap-2 mt-3">
+                  <input className={inp} type="password" placeholder="Password (team accounts only)" value={pw} onChange={(e) => setPw(e.target.value)} />
+                  <button type="button" onClick={signInPw} className="font-display uppercase px-4 py-2 border-4 border-ink bg-cream text-ink">Sign in with password</button>
+                </div>
+              </details>
             </form>
           )}
         </section>
