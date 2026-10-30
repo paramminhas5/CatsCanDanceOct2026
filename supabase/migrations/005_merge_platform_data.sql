@@ -107,7 +107,7 @@ create policy "public read published posts" on public.posts for select using (pu
 -- ── Import ─────────────────────────────────────────────────────────────────
 do $$
 declare
-  base text := 'https://raw.githubusercontent.com/paramminhas5/CatsCanDanceOct2026/f339f3402d5cac1caa4db0082496b5a85aad869d/data/import/';
+  base text := 'https://raw.githubusercontent.com/paramminhas5/CatsCanDanceOct2026/ae6f74b24d4f7ab0aa7674b0e47c97d352b28ca8/data/import/';
   j jsonb;
 begin
   -- artists: insert new, fill blanks on existing
