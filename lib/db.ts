@@ -88,7 +88,28 @@ export type Artist = {
   played_ccd: boolean | null;
   mix_url: string | null;
   claimed_at: string | null;
+  rank: number | null;
+  tier: string | null;
 };
+
+export type Promoter = {
+  slug: string; name: string; city: string | null; cities: string[]; genres: string[];
+  blurb: string | null; instagram: string | null; website: string | null;
+};
+
+export type Ngo = {
+  slug: string; rank: number | null; name: string; city: string | null; location: string | null;
+  focus: string[]; categories: string[]; donation: string | null; impact: string | null; website: string | null;
+};
+
+export type Post = {
+  slug: string; title: string; category: string | null; excerpt: string | null; published_on: string | null;
+  author: string | null; tldr: string | null; body: string[];
+};
+
+export type Scene = { kind: string; slug: string; name: string; tagline: string | null; data: Record<string, unknown> };
+
+export type CcdGig = { artist_slug: string; event_slug: string; event_name: string; venue: string | null; city: string | null; event_date: string | null; episode_no: number | null };
 
 export type TouringDate = {
   id: string;
@@ -163,3 +184,15 @@ export function fmtDate(d: string | null, fallback?: string | null) {
     month: "short",
   });
 }
+
+export const getPromoters = () => select<Promoter>("promoters?order=name.asc", 600);
+export const getNgos = () => select<Ngo>("ngos?order=rank.asc.nullslast,name.asc", 600);
+export const getPosts = () =>
+  select<Post>("posts?select=slug,title,category,excerpt,published_on,author,tldr,body&order=published_on.desc.nullslast", 600);
+export const getPost = async (slug: string) =>
+  (await select<Post>(`posts?slug=eq.${encodeURIComponent(slug)}&limit=1`, 600))[0] ?? null;
+export const getScenes = () => select<Scene>("scenes?order=kind.asc,name.asc", 600);
+export const getScene = async (kind: string, slug: string) =>
+  (await select<Scene>(`scenes?kind=eq.${encodeURIComponent(kind)}&slug=eq.${encodeURIComponent(slug)}&limit=1`, 600))[0] ?? null;
+export const getCcdGigs = (artistSlug: string) =>
+  select<CcdGig>(`ccd_gigs?artist_slug=eq.${encodeURIComponent(artistSlug)}&order=event_date.desc`, 300);

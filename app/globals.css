@@ -112,3 +112,35 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
   .nav .logo span { display: none; }
   .row { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* forms */
+.form { display: grid; gap: 14px; max-width: 560px; position: relative; }
+.form label { display: grid; gap: 4px; font-weight: 700; font-size: 14px; }
+.form label span { text-transform: uppercase; letter-spacing: 0.04em; }
+.form input, .form textarea { font: inherit; font-weight: 400; padding: 10px 12px; border: var(--line); background: var(--paper); border-radius: 0; width: 100%; }
+.form input:focus, .form textarea:focus { outline: 3px solid var(--blue); outline-offset: 2px; }
+.form-err { color: var(--red); font-weight: 700; margin: 0; }
+.form-done { background: var(--acid); border: var(--line); padding: 14px 16px; font-weight: 700; max-width: 560px; margin: 0; }
+.btn:disabled { opacity: 0.6; cursor: wait; }
+
+/* suite */
+.suite { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.suite a { background: var(--paper); border: var(--line); padding: 16px; text-decoration: none; box-shadow: 5px 5px 0 var(--ink); display: grid; gap: 6px; }
+.suite a:hover { box-shadow: 7px 7px 0 var(--red); transform: translate(-2px, -2px); }
+.suite .verb { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); }
+.suite .nm { font-family: var(--display); font-size: 24px; text-transform: uppercase; line-height: 1; }
+.suite .soon { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; }
+.poster { border: var(--line); box-shadow: 6px 6px 0 var(--ink); width: 100%; max-width: 380px; }
+.ep-head { display: grid; grid-template-columns: 1fr 380px; gap: 32px; align-items: start; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.filters a { border: 2px solid var(--ink); padding: 4px 10px; font-weight: 700; font-size: 13px; text-decoration: none; text-transform: uppercase; }
+.filters a.on { background: var(--ink); color: var(--paper); }
+.prose { max-width: 66ch; font-size: 18px; }
+.prose p { margin: 0 0 1.1em; }
+.tour-row { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 16px; padding: 14px 0; border-bottom: 2px solid var(--ink); align-items: baseline; }
+@media (max-width: 760px) {
+  .ep-head { grid-template-columns: 1fr; }
+  .tour-row { grid-template-columns: 1fr; gap: 2px; }
+  .nav .wrap { height: auto; padding-top: 8px; padding-bottom: 8px; flex-wrap: wrap; }
+  .nav ul { flex-wrap: wrap; gap: 4px 12px; }
+}

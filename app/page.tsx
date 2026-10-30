@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { getCcdEvents, getScenePicks, getArtists } from "@/lib/db";
+import { getCcdEvents, getScenePicks, getArtists, splitEvents } from "@/lib/db";
+import { PRODUCTS } from "@/lib/products";
 import { CcdEventCard, SceneRows, ArtistCard, eventsSchema } from "./components";
 
 export const revalidate = 300;
 
 export default async function Home() {
   const [ccd, scene, artists] = await Promise.all([getCcdEvents(), getScenePicks(8), getArtists()]);
-  const today = new Date().toISOString().slice(0, 10);
-  const upcoming = ccd.filter((e) => (e.event_date ? e.event_date >= today : e.status === "upcoming"));
+  const { upcoming, past } = splitEvents(ccd);
   const residents = artists.filter((a) => a.is_resident);
+  const feature = upcoming.length ? upcoming : past.slice(0, 2);
 
   return (
     <main>
@@ -18,12 +19,10 @@ export default async function Home() {
           <div>
             <span className="tag">Bengaluru · House · Disco · Breaks · UKG · D&amp;B</span>
             <h1 style={{ marginTop: 18 }}>Every cat has a rhythm.</h1>
-            <p className="lede">
-              Small rooms, curated lineups, no commercial EDM. Bring your pet.
-            </p>
+            <p className="lede">Small rooms, curated lineups, no commercial EDM. Bring your pet.</p>
             <div className="btns">
-              <Link href="/events" className="btn">See what&apos;s on</Link>
-              <a href="mailto:hello@catscandance.com?subject=Booking" className="btn alt">Play for CCD</a>
+              <Link href="/episodes" className="btn">Go to an Episode</Link>
+              <Link href="/prowl" className="btn alt">Find what&apos;s on</Link>
             </div>
           </div>
           <img className="cat" src="/img/cat-dj-hero.png" alt="CCD cat on the decks" />
@@ -31,22 +30,17 @@ export default async function Home() {
       </section>
 
       <div className="marquee" aria-hidden>
-        <span>
-          {"RSVP ONLY ✦ SMALL ROOMS ✦ BIG SOUND ✦ PETS WELCOME ✦ NO TOP 40 ✦ ".repeat(6)}
-        </span>
+        <span>{"RSVP ONLY ✦ SMALL ROOMS ✦ BIG SOUND ✦ PETS WELCOME ✦ NO TOP 40 ✦ ".repeat(6)}</span>
       </div>
 
       <section className="block">
         <div className="wrap">
           <div className="head">
-            <h2>CCD nights</h2>
-            <Link href="/events" className="btn sm">All events</Link>
+            <h2>{upcoming.length ? "Next Episode" : "Latest Episodes"}</h2>
+            <Link href="/episodes" className="btn sm">All Episodes</Link>
           </div>
-          {upcoming.length ? (
-            <div className="grid">{upcoming.slice(0, 6).map((e) => <CcdEventCard key={e.slug} e={e} />)}</div>
-          ) : (
-            <p className="muted">Next Episode announced soon. Follow @catscan.dance.</p>
-          )}
+          {upcoming.length === 0 && <p className="muted">Next Episode announced soon. Follow @catscan.dance.</p>}
+          <div className="grid">{feature.slice(0, 3).map((e) => <CcdEventCard key={e.slug} e={e} />)}</div>
         </div>
       </section>
 
@@ -54,10 +48,34 @@ export default async function Home() {
         <div className="wrap">
           <div className="head">
             <div>
-              <h2>Scene picks</h2>
+              <h2>One cat, eight things</h2>
+              <p className="muted" style={{ margin: "10px 0 0" }}>Each one does a single job. They all link to each other.</p>
+            </div>
+          </div>
+          <div className="suite">
+            {PRODUCTS.map((p) => {
+              const inner = (
+                <>
+                  <span className="verb">{p.verb}</span>
+                  <span className="nm">{p.name}</span>
+                  <span>{p.line}</span>
+                  {!p.live && <span className="soon">Coming soon</span>}
+                </>
+              );
+              return p.external ? <a key={p.name} href={p.href}>{inner}</a> : <Link key={p.name} href={p.href}>{inner}</Link>;
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="block">
+        <div className="wrap">
+          <div className="head">
+            <div>
+              <h2>On Prowl</h2>
               <p className="muted" style={{ margin: "10px 0 0" }}>Other nights across India we&apos;d go to.</p>
             </div>
-            <Link href="/events#scene" className="btn sm alt">More picks</Link>
+            <Link href="/prowl#scene" className="btn sm alt">More picks</Link>
           </div>
           <SceneRows events={scene} />
         </div>
@@ -68,7 +86,7 @@ export default async function Home() {
           <div className="wrap">
             <div className="head">
               <h2>Residents</h2>
-              <Link href="/artists" className="btn sm">All artists</Link>
+              <Link href="/litter" className="btn sm">Meet Litter</Link>
             </div>
             <div className="grid">{residents.map((a) => <ArtistCard key={a.slug} a={a} />)}</div>
           </div>
