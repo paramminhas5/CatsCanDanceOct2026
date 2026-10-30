@@ -85,7 +85,9 @@ export default function Club() {
               {!member.quiz && <TasteQuiz onDone={() => reload()} />}
               <Extras />
               <GoAgain />
+              <ArtistEditor />
               <HostForm onDone={(m) => setMsg(m)} />
+              {["host", "staff", "owner"].includes(member.role) && <GuestList />}
               {(member.role === "staff" || member.role === "owner") && <StaffPanel />}
             </>
           )}
@@ -109,21 +111,25 @@ function Extras() {
   const [standing, setStanding] = useState<any>(null);
   const [events, setEvents] = useState<{ slug: string; title: string; event_date: string | null }[]>([]);
   const [crews, setCrews] = useState<Record<string, any[]>>({});
+  const [mateIds, setMateIds] = useState<Record<string, any[]>>({});
   const [status, setStatus] = useState<Record<string, any>>({});
   const [nstate, setNstate] = useState<Record<string, { liked: boolean; going: boolean }>>({});
   const [ncount, setNcount] = useState<Record<string, { likes: number; going: number }>>({});
   const [wa, setWa] = useState<{ url: string; num: string }>({ url: "", num: "" });
   const [m, setM] = useState("");
+  const [needPhone, setNeedPhone] = useState(false);
+  const [phone, setPhone] = useState("");
   const load = useCallback(async () => {
     const st = await supabase.rpc("my_standing"); setStanding(st.data);
     const ev = await supabase.from("events").select("slug,title,event_date").eq("published", true).gte("event_date", new Date().toISOString().slice(0, 10)).order("event_date");
     const list = (ev.data as any[]) ?? []; setEvents(list);
-    const c: Record<string, any[]> = {}; const stm: Record<string, any> = {};
+    const c: Record<string, any[]> = {}; const ids: Record<string, any[]> = {}; const stm: Record<string, any> = {};
     for (const e of list) {
       const r = await supabase.rpc("my_crew", { p_slug: e.slug }); c[e.slug] = (r.data as any[]) ?? [];
+      if (c[e.slug].length > 0) { const mm = await supabase.rpc("my_crew_mates", { p_slug: e.slug }); ids[e.slug] = (mm.data as any[]) ?? []; }
       const s2 = await supabase.rpc("my_crew_status", { p_slug: e.slug }); stm[e.slug] = s2.data ?? null;
     }
-    setCrews(c); setStatus(stm);
+    setCrews(c); setMateIds(ids); setStatus(stm);
     const ns = await supabase.rpc("my_night_state"); const nsm: any = {};
     ((ns.data as any[]) ?? []).forEach((x) => { nsm[x.event_slug] = { liked: x.liked, going: x.going }; }); setNstate(nsm);
     const nc = await supabase.rpc("night_counts"); const ncm: any = {};
@@ -143,6 +149,13 @@ function Extras() {
       )}
       {standing && !standing.founding_number && <button className={btn} onClick={async () => { const r = await memberRpc("claim_founding_pass"); setM(r.ok ? "" : r.error ?? ""); load(); }}>Claim a founding pass</button>}
       {m && <p className="text-hot-red text-sm">{m}</p>}
+      {needPhone && (
+        <form className="flex flex-wrap gap-2" onSubmit={async (ev) => { ev.preventDefault(); const r = await memberRpc("set_my_phone", { p_phone: phone }); setM(r.ok ? "Saved. Tap Join a crew again." : r.error ?? "Could not save."); if (r.ok) setNeedPhone(false); }}>
+          <input className="border-4 border-ink bg-cream p-2" inputMode="tel" placeholder="+91 phone number" value={phone} onChange={(ev) => setPhone(ev.target.value)} required />
+          <button className={btn}>Save number</button>
+          <span className="text-xs w-full">Crew mates are strangers, so we ask for a real number. It is only used for crew reminders and safety follow-up.</span>
+        </form>
+      )}
       <div>
         <h3 className="font-display">Going solo? Join a crew</h3>
         <p className="text-sm">Sign up alone and we group you with 4 or 5 people from your city who like the same music. You meet 30 minutes before.</p>
@@ -153,7 +166,7 @@ function Extras() {
                 <a className={btn} href={`/tickets/${e.slug}`}>Tickets</a>
                 <button className={btn} onClick={async () => { await memberRpc("set_night_going", { p_slug: e.slug, p_going: !nstate[e.slug]?.going, p_show_name: false }); load(); }}>{nstate[e.slug]?.going ? "Going ✓" : "I'm going"} ({ncount[e.slug]?.going ?? 0})</button>
                 <button className={btn} onClick={async () => { await memberRpc("toggle_night_like", { p_slug: e.slug }); load(); }}>{nstate[e.slug]?.liked ? "Liked ♥" : "Like"} ({ncount[e.slug]?.likes ?? 0})</button>
-                <button className={btn} onClick={async () => { const r = await memberRpc("join_crew_pool", { p_slug: e.slug }); setM(r.ok ? "You are on the list. We form crews before the night." : r.error ?? "Could not join."); load(); }}>Join a crew</button>
+                <button className={btn} onClick={async () => { const r = await memberRpc("join_crew_pool", { p_slug: e.slug }); setNeedPhone(!r.ok && (r as any).need === "phone"); setM(r.ok ? "You are on the list. We form crews before the night." : r.error ?? "Could not join."); load(); }}>Join a crew</button>
               </span></div>
             {status[e.slug]?.state === "waiting" && <p className="mt-1">You are in the crew list. {status[e.slug].need > 0 ? `We form crews once 3 people from your city are in. ${status[e.slug].waiting} so far.` : "Crews are formed by the team before the night."}</p>}
             {status[e.slug]?.state === "other_city" && (
@@ -163,7 +176,19 @@ function Extras() {
                   if (em) { await supabase.rpc("signup", { p_email: em, p_source: `city:${status[e.slug].your_city}` }); setM(`Noted. We will tell you when a night is on in ${status[e.slug].your_city}.`); }
                 }}>Tell me when a night is on in {status[e.slug].your_city}</button></p>
             )}
-            {(crews[e.slug] ?? []).length > 0 && <p className="mt-1">Your crew: {crews[e.slug].map((c) => c.mate).join(", ")}. {crews[e.slug][0].pre_spot}</p>}
+            {(crews[e.slug] ?? []).length > 0 && (
+              <div className="mt-1">
+                <p>Your crew: {crews[e.slug].map((c) => c.mate).join(", ")}. {crews[e.slug][0].pre_spot}</p>
+                <p className="mt-1">Not comfortable with someone?{" "}
+                  {(mateIds[e.slug] ?? []).map((c) => (
+                    <button key={c.mate_id} className="underline mr-2" onClick={async () => {
+                      const why = window.prompt(`Report ${c.mate}. What happened? The CCD team reads this.`); if (why === null) return;
+                      const r = await memberRpc("report_crew_mate", { p_slug: e.slug, p_member: c.mate_id, p_reason: why });
+                      setM(r.ok ? "Reported. The CCD team will look at it." : r.error ?? "Could not send.");
+                    }}>Report {c.mate}</button>
+                  ))}</p>
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -344,5 +369,66 @@ function GoAgain() {
         </div>
       ))}
     </div>
+  );
+}
+
+
+function GuestList() {
+  const [events, setEvents] = useState<{ slug: string; title: string }[]>([]);
+  const [slug, setSlug] = useState("");
+  const [rows, setRows] = useState<any[] | null>(null);
+  const [err, setErr] = useState("");
+  useEffect(() => {
+    supabase.from("events").select("slug,title").eq("published", true).gte("event_date", new Date().toISOString().slice(0, 10)).order("event_date")
+      .then(({ data }) => { const l = (data as any[]) ?? []; setEvents(l); if (l[0]) setSlug(l[0].slug); });
+  }, []);
+  useEffect(() => {
+    if (!slug) return;
+    memberRpc<any>("guest_list", { p_slug: slug }).then((r) => { setErr(r.ok ? "" : r.error ?? ""); setRows(r.ok ? (r.data as any).guests : null); });
+  }, [slug]);
+  return (
+    <div className={`${box} space-y-2`}>
+      <h2 className="font-display text-2xl">Guest list</h2>
+      <p className="text-sm">Who is coming, with their record: nights attended before and how many people want to go again with them.</p>
+      <select className="border-4 border-ink bg-cream p-2" value={slug} onChange={(e) => setSlug(e.target.value)}>
+        {events.map((e) => <option key={e.slug} value={e.slug}>{e.title}</option>)}
+      </select>
+      {err && <p className="text-hot-red text-sm">{err}</p>}
+      {rows && rows.length === 0 && <p className="text-sm">No guests yet.</p>}
+      {rows && rows.length > 0 && (
+        <table className="w-full text-sm"><thead><tr className="text-left"><th>Name</th><th>Via</th><th>Tickets</th><th>In</th><th>Nights before</th><th>Go again</th></tr></thead>
+          <tbody>{rows.map((g, i) => <tr key={i} className="border-t-2 border-ink"><td>{g.name}</td><td>{g.via}</td><td>{g.tickets}</td><td>{g.checked_in}</td><td>{g.nights_before}</td><td>{g.go_again_received}</td></tr>)}</tbody></table>
+      )}
+    </div>
+  );
+}
+
+function ArtistEditor() {
+  const [a, setA] = useState<any>(null);
+  const [f, setF] = useState<any>({});
+  const [msg, setMsg] = useState("");
+  useEffect(() => {
+    supabase.rpc("my_artist").then(({ data }) => {
+      if (data) { setA(data); setF({ bio: data.bio ?? "", city: data.based_city ?? "", genres: (data.genres ?? []).join(", "), instagram: data.instagram ?? "", soundcloud: data.soundcloud ?? "", website: data.website ?? "", mix: data.mix_url ?? "", photo: data.photo_url ?? "" }); }
+    });
+  }, []);
+  if (!a) return null;
+  const inp = "w-full border-4 border-ink bg-cream p-2";
+  const set = (k: string) => (e: React.ChangeEvent<any>) => setF({ ...f, [k]: e.target.value });
+  return (
+    <form className={`${box} space-y-2`} onSubmit={async (e) => {
+      e.preventDefault();
+      const r = await memberRpc("update_my_artist", { p_bio: f.bio, p_city: f.city, p_genres: f.genres, p_instagram: f.instagram, p_soundcloud: f.soundcloud, p_website: f.website, p_mix_url: f.mix, p_photo_url: f.photo });
+      setMsg(r.ok ? "Saved. Your page updates within a few minutes." : r.error ?? "Could not save.");
+    }}>
+      <h2 className="font-display text-2xl">Your artist page: {a.name}</h2>
+      <textarea className={inp} rows={4} placeholder="Bio" value={f.bio} onChange={set("bio")} />
+      <div className="grid grid-cols-2 gap-2"><input className={inp} placeholder="City" value={f.city} onChange={set("city")} /><input className={inp} placeholder="Genres, comma separated" value={f.genres} onChange={set("genres")} /></div>
+      <div className="grid grid-cols-2 gap-2"><input className={inp} placeholder="Instagram" value={f.instagram} onChange={set("instagram")} /><input className={inp} placeholder="SoundCloud" value={f.soundcloud} onChange={set("soundcloud")} /></div>
+      <div className="grid grid-cols-2 gap-2"><input className={inp} placeholder="Website" value={f.website} onChange={set("website")} /><input className={inp} placeholder="Mix link" value={f.mix} onChange={set("mix")} /></div>
+      <input className={inp} placeholder="Photo URL" value={f.photo} onChange={set("photo")} />
+      {msg && <p className="text-sm">{msg}</p>}
+      <button className={btn}>Save</button>
+    </form>
   );
 }

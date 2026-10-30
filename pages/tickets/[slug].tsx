@@ -17,6 +17,7 @@ export default function Tickets() {
   const [tiers, setTiers] = useState<Tier[]>([]);
   const [qty, setQty] = useState<Record<string, number>>({});
   const [f, setF] = useState({ name: "", email: "", phone: "" });
+  const [promo, setPromo] = useState("");
   const [msg, setMsg] = useState("");
   const [busy, setBusy] = useState(false);
 
@@ -34,9 +35,10 @@ export default function Tickets() {
     setMsg(""); setBusy(true);
     try {
       const items = tiers.filter((t) => qty[t.id] > 0).map((t) => ({ tier: t.id, qty: qty[t.id] }));
-      const { data, error } = await supabase.rpc("create_ticket_order", { p_slug: slug, p_name: f.name, p_email: f.email, p_phone: f.phone, p_items: items, p_source: "platform" });
+      const { data, error } = await supabase.rpc("create_ticket_order", { p_slug: slug, p_name: f.name, p_email: f.email, p_phone: f.phone, p_items: items, p_source: "platform", p_promo: promo.trim() || null });
       if (error || !data?.ok) throw new Error(data?.error ?? "Could not place the order.");
       if (!data.free) await payOrder("ticket", data.order_id, f, `${ev?.title ?? slug} tickets`);
+      else fetch("/api/email/ticket", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ order_id: data.order_id }) }).catch(() => {});
       router.push(`/tickets/order?o=${data.order_id}&e=${encodeURIComponent(f.email)}`);
     } catch (err: any) { setMsg(err.message ?? "Something went wrong."); setBusy(false); }
   }
@@ -63,6 +65,7 @@ export default function Tickets() {
               <input className={inp} placeholder="Your name" required value={f.name} onChange={(e) => setF({ ...f, name: e.target.value })} />
               <input className={inp} type="email" placeholder="Email (your tickets go here)" required value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} />
               <input className={inp} placeholder="Phone (optional)" value={f.phone} onChange={(e) => setF({ ...f, phone: e.target.value })} />
+              <input className={inp} placeholder="Promo code (optional)" value={promo} onChange={(e) => setPromo(e.target.value)} />
               <button disabled={busy || count === 0} className="font-display uppercase px-5 py-3 border-4 border-ink bg-acid-yellow text-ink disabled:opacity-50">
                 {busy ? "Working..." : total === 0 ? `Get ${count || ""} free ticket${count > 1 ? "s" : ""}` : `Pay ₹${total}`}
               </button>

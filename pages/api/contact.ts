@@ -6,6 +6,7 @@
  */
 import type { NextApiRequest, NextApiResponse } from "next";
 import { rpc } from "@/lib/api-rpc";
+import { notifyTeam } from "@/lib/mailer";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -18,6 +19,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const r = await rpc("submit_contact", { p_name: name, p_email: email, p_message: message });
-  if (r.ok && r.data?.ok) return res.json({ ok: true });
+  if (r.ok && r.data?.ok) {
+    await notifyTeam("New contact message", [`From ${name} (${email})`, String(message).slice(0, 500)]).catch(() => {});
+    return res.json({ ok: true });
+  }
   return res.status(r.ok ? 400 : 500).json({ error: r.data?.error ?? "Failed to save message" });
 }

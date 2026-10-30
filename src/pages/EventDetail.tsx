@@ -28,6 +28,7 @@ import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Marquee from "@/components/Marquee";
 import RsvpDialog from "@/components/RsvpDialog";
+import NightActions from "@/components/NightActions";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 import EventCountdown from "@/components/EventCountdown";
@@ -277,6 +278,8 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
                   <Field label="CITY" value={event.city} accent={isUpcoming} />
                 </div>
 
+                {isUpcoming && <div className="mb-4"><NightActions slug={slug} /></div>}
+
                 <div className="flex flex-wrap items-center gap-3">
                   {isUpcoming && (
                     <button
@@ -286,6 +289,11 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
                     >
                       {ctaLabel}
                     </button>
+                  )}
+                  {isUpcoming && (
+                    <a href={`/tickets/${slug}`} className="bg-cream text-ink font-display text-lg md:text-xl px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
+                      GET TICKETS →
+                    </a>
                   )}
                   <button
                     type="button"

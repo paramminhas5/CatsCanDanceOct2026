@@ -133,6 +133,25 @@ async function main() {
     const j = await rpc("join_crew_pool", { p_slug: NIGHT }, who["13"]);
     ok("dummy13 (RSVP only, Delhi) can join the pool", j.data?.ok === true, JSON.stringify(j.data));
   }
+  // Episode 5 is on sale with a free ticket type
+  const t5 = await rpc("public_tiers", { p_slug: "episode-5" });
+  ok("Episode 5 has a free ticket type on sale", Array.isArray(t5.data) && t5.data.some((x) => x.price_inr === 0 && x.remaining > 0), JSON.stringify(t5.data));
+  if (who["02"]) {
+    const g = await rpc("guest_list", { p_slug: NIGHT }, who["02"]);
+    ok("dummy02 (host) can open the guest list", g.data?.ok === true, JSON.stringify(g.data)?.slice(0, 120));
+  }
+  if (who["03"]) {
+    const g = await rpc("guest_list", { p_slug: NIGHT }, who["03"]);
+    ok("dummy03 (member) is refused the guest list", g.data?.ok === false);
+    const ph = await rpc("set_my_phone", { p_phone: "123" }, who["03"]);
+    ok("a too-short phone number is refused", ph.data?.ok === false);
+    const ma = await rpc("my_artist", {}, who["03"]);
+    ok("a member with no claimed profile has no artist page", ma.data === null);
+    const rp = await rpc("report_crew_mate", { p_slug: NIGHT, p_member: "00000000-0000-0000-0000-000000000000", p_reason: "x" }, who["03"]);
+    ok("reporting someone outside your crew is refused", rp.data?.ok === false);
+    const pr = await rpc("create_ticket_order", { p_slug: "episode-5", p_name: "E2E", p_email: "e2e-check@example.com", p_phone: "", p_items: [], p_source: "platform", p_promo: "NOPE" });
+    ok("ticket order with an empty cart is refused", pr.data?.ok === false);
+  }
   if (who["01"]) {
     const v = await rpc("vouchable_events", {}, who["01"]);
     ok("dummy01 (staff) can list events to vouch", v.status === 200);

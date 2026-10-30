@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { revalidatePath } from "next/cache";
 import { rpc, fmtDate } from "@/lib/ccd-db";
+import { emailCrews, emailCityWaitlist } from "@/lib/mailer";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Ops", robots: { index: false } };
@@ -90,6 +91,52 @@ async function inboxStatus(formData: FormData) {
   });
   revalidatePath("/ops"); revalidatePath("/tour");
 }
+async function savePromo(formData: FormData) {
+  "use server";
+  const pct = Number(formData.get("percent") || 0), flat = Number(formData.get("flat") || 0), max = Number(formData.get("max") || 0);
+  await rpc("ops_upsert_promo", {
+    p_token: T(), p_code: String(formData.get("code")), p_slug: String(formData.get("slug") ?? ""),
+    p_percent: pct > 0 ? pct : null, p_flat: flat > 0 ? flat : null, p_max: max > 0 ? max : null,
+    p_expires: String(formData.get("expires") ?? "") || null, p_active: formData.get("active") === "on",
+  });
+  revalidatePath("/ops");
+}
+async function refundOrder(formData: FormData) {
+  "use server";
+  const id = String(formData.get("id"));
+  const r = await rpc<any>("ops_refund_order", { p_token: T(), p_order: id, p_note: String(formData.get("note") ?? "") });
+  // If the order was paid online and Razorpay keys exist, refund the money too. Otherwise refund by hand in the Razorpay dashboard.
+  const keyId = process.env.RAZORPAY_KEY_ID, secret = process.env.RAZORPAY_KEY_SECRET;
+  if (r?.ok && r.razorpay_payment_id && r.amount_inr > 0 && keyId && secret) {
+    await fetch(`https://api.razorpay.com/v1/payments/${r.razorpay_payment_id}/refund`, {
+      method: "POST",
+      headers: { Authorization: "Basic " + Buffer.from(`${keyId}:${secret}`).toString("base64"), "Content-Type": "application/json" },
+      body: JSON.stringify({ amount: r.amount_inr * 100 }),
+    }).catch(() => {});
+  }
+  revalidatePath("/ops");
+}
+async function resolveReport(formData: FormData) {
+  "use server";
+  await rpc("ops_resolve_report", { p_token: T(), p_id: String(formData.get("id")), p_action: String(formData.get("action")) });
+  revalidatePath("/ops");
+}
+async function sendCrewEmails(formData: FormData) {
+  "use server";
+  await emailCrews(String(formData.get("slug")));
+  revalidatePath("/ops");
+}
+async function notifyCity(formData: FormData) {
+  "use server";
+  const slug = String(formData.get("slug")), city = String(formData.get("city"));
+  const list = await rpc<any[]>("ops_city_waitlist", { p_token: T() });
+  const row = (list ?? []).find((x) => String(x.city).toLowerCase() === city.toLowerCase());
+  if (row) {
+    const e = (await (await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/events?slug=eq.${encodeURIComponent(slug)}&select=title,date,venue`, { headers: { apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "" } })).json())?.[0];
+    if (e) await emailCityWaitlist(city, row.emails, e.title, e.date, e.venue);
+  }
+  revalidatePath("/ops");
+}
 async function saveSetting(formData: FormData) {
   "use server";
   await rpc("ops_set_setting", { p_token: T(), p_key: String(formData.get("key")), p_value: String(formData.get("value")) });
@@ -113,7 +160,7 @@ export default async function Ops() {
   }
   if (!s) return <main className="wrap ops"><h2 style={{ margin: "40px 0 12px" }}>Ops</h2><p className="bad">Could not load: {err || "no data"}</p></main>;
 
-  const [tickets, orders, crewsO, todos, hidden, members, swaps, inbox] = await Promise.all([
+  const [tickets, orders, crewsO, todos, hidden, members, swaps, inbox, recent, promos, reports, cityWait] = await Promise.all([
     rpc<any[]>("ops_ticket_summary", { p_token: T() }).catch(() => []),
     rpc<any[]>("ops_shop_orders", { p_token: T() }).catch(() => []),
     rpc<any[]>("ops_crew_overview", { p_token: T() }).catch(() => []),
@@ -122,6 +169,10 @@ export default async function Ops() {
     rpc<any[]>("ops_members", { p_token: T() }).catch(() => []),
     rpc<any[]>("ops_swaps", { p_token: T() }).catch(() => []),
     rpc<any>("ops_inbox", { p_token: T() }).catch(() => null),
+    rpc<any[]>("ops_recent_orders", { p_token: T() }).catch(() => []),
+    rpc<any[]>("ops_promos", { p_token: T() }).catch(() => []),
+    rpc<any[]>("ops_crew_reports", { p_token: T() }).catch(() => []),
+    rpc<any[]>("ops_city_waitlist", { p_token: T() }).catch(() => []),
   ]);
   const inboxCount = inbox
     ? (inbox.contact?.length ?? 0) + (inbox.promoters?.length ?? 0) + (inbox.artists?.length ?? 0) + (inbox.dates?.length ?? 0) + (inbox.bookings?.length ?? 0)
@@ -330,12 +381,55 @@ export default async function Ops() {
         {(tickets ?? []).map((t: any) => <tr key={t.event_slug}><td>{t.event_slug}</td><td>{t.orders}</td><td>{t.tickets}</td><td>{t.checked_in}</td><td>₹{t.revenue_inr}</td></tr>)}
       </tbody></table></div>
 
+      <h3 style={{ marginBottom: 10 }}>Orders, refunds and promo codes</h3>
+      <p className="muted" style={{ marginTop: 0 }}>Refund cancels the order and voids its tickets, so they stop working at the door. If it was paid online and Razorpay keys are set, the money is refunded too; otherwise refund it in the Razorpay dashboard.</p>
+      <div className="scroll" style={{ marginBottom: 16 }}><table><thead><tr><th>Order</th><th>Buyer</th><th>Status</th><th></th></tr></thead><tbody>
+        {(recent ?? []).map((o: any) => (
+          <tr key={o.id}><td>{o.event_slug}<div className="muted">₹{o.amount_inr}{o.promo_code ? ` (${o.promo_code} -₹${o.discount_inr})` : ""}</div></td><td>{o.buyer_name}<div className="muted">{o.buyer_email}</div></td>
+            <td>{o.status}{o.emailed_at ? " · emailed" : ""}</td>
+            <td>{["paid", "free"].includes(o.status) && <form action={refundOrder}><input type="hidden" name="id" value={o.id} /><input name="note" placeholder="note" style={{ padding: 4, width: 110 }} /> <button className="btn sm alt">Refund</button></form>}</td></tr>
+        ))}
+      </tbody></table></div>
+      <form action={savePromo} style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
+        <input name="code" placeholder="CODE" required style={{ padding: 6, width: 110 }} /><input name="slug" placeholder="event slug (blank = any)" style={{ padding: 6 }} />
+        <input name="percent" type="number" min="0" max="100" placeholder="% off" style={{ padding: 6, width: 80 }} /><input name="flat" type="number" min="0" placeholder="or INR off" style={{ padding: 6, width: 90 }} />
+        <input name="max" type="number" min="0" placeholder="max uses" style={{ padding: 6, width: 90 }} /><input name="expires" type="date" style={{ padding: 6 }} />
+        <label><input type="checkbox" name="active" defaultChecked /> Live</label><button className="btn sm">Save code</button>
+      </form>
+      <div className="scroll" style={{ marginBottom: 36 }}><table><thead><tr><th>Code</th><th>Event</th><th>Off</th><th>Used</th><th>Live</th></tr></thead><tbody>
+        {(promos ?? []).map((c: any) => <tr key={c.code}><td><b>{c.code}</b></td><td>{c.event_slug ?? "any"}</td><td>{c.percent ? `${c.percent}%` : ""} {c.flat_inr ? `₹${c.flat_inr}` : ""}</td><td>{c.uses}{c.max_uses ? ` / ${c.max_uses}` : ""}</td><td>{c.active ? "yes" : "no"}</td></tr>)}
+      </tbody></table></div>
+
       <h3 style={{ marginBottom: 10 }}>Crews (solo goers)</h3>
       <form action={formCrews} style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
         <input name="slug" placeholder="event slug" required style={{ padding: 6 }} /><input name="pre_spot" placeholder="pre-spot, e.g. Toit, 30 min before" style={{ padding: 6, minWidth: 260 }} />
         <button className="btn sm">Form crews</button>
         <span className="muted">{(crewsO ?? []).map((c: any) => `${c.event_slug}: ${c.pool} signed up, ${c.unplaced} not placed`).join(" · ")}</span>
       </form>
+      <form action={sendCrewEmails} style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
+        <input name="slug" placeholder="event slug" required style={{ padding: 6 }} /><button className="btn sm alt">Email crews</button>
+        <span className="muted">Sends each member their crew and crew mates. Needs RESEND_API_KEY in Vercel. Only crews not emailed yet.</span>
+      </form>
+      <h4 style={{ margin: "12px 0 6px" }}>Reports about crew mates ({(reports ?? []).length} open)</h4>
+      <div className="scroll" style={{ marginBottom: 16 }}><table><thead><tr><th>Night</th><th>About</th><th>Reason</th><th></th></tr></thead><tbody>
+        {(reports ?? []).map((r: any) => (
+          <tr key={r.id}><td>{r.event_slug}<div className="muted">by {r.reporter_name}</div></td><td><b>{r.reported_name}</b><div className="muted">{r.reported_email} · reported {r.times_reported}x</div></td><td>{r.reason}</td>
+            <td style={{ whiteSpace: "nowrap" }}>
+              <form action={resolveReport} style={{ display: "inline" }}><input type="hidden" name="id" value={r.id} /><input type="hidden" name="action" value="ban" /><button className="btn sm">Ban from crews</button></form>{" "}
+              <form action={resolveReport} style={{ display: "inline" }}><input type="hidden" name="id" value={r.id} /><input type="hidden" name="action" value="dismiss" /><button className="btn sm alt">Dismiss</button></form>
+            </td></tr>
+        ))}
+      </tbody></table></div>
+      <h4 style={{ margin: "12px 0 6px" }}>City waitlists</h4>
+      <p className="muted" style={{ marginTop: 0 }}>People who asked to hear when a night is on in their city. Add the night as an event, then send.</p>
+      {(cityWait ?? []).map((c: any) => (
+        <form key={c.city} action={notifyCity} style={{ display: "flex", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
+          <b>{c.city}</b> <span className="muted">{c.waiting} waiting</span>
+          <input type="hidden" name="city" value={c.city} /><input name="slug" placeholder="event slug to announce" required style={{ padding: 6 }} /><button className="btn sm">Email them</button>
+        </form>
+      ))}
+      {(cityWait ?? []).length === 0 && <p className="muted">Nobody waiting.</p>}
+      <div style={{ marginBottom: 36 }} />
 
       <h3 style={{ marginBottom: 10 }}>Shop</h3>
       <p className="muted" style={{ marginTop: 0 }}>Add or edit a product (same slug updates it). Image is a full URL. Tick Live to show it on /shop.</p>

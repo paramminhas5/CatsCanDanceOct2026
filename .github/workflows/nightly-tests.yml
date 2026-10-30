@@ -1,0 +1,25 @@
+name: nightly-tests
+# Runs the database suites (they roll back, safe on live) and the web checks every night, and on demand.
+# Needs repository secrets: SUPABASE_ACCESS_TOKEN (for the database suites) and optionally DUMMY_PASSWORD.
+# BASE_URL defaults to the live site; set the repository variable BASE_URL to test a preview instead.
+on:
+  schedule:
+    - cron: "30 21 * * *"   # 03:00 IST
+  workflow_dispatch: {}
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Database suites
+        if: ${{ secrets.SUPABASE_ACCESS_TOKEN != '' }}
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: node scripts/tests/run-db-suite.mjs
+      - name: Web and login checks
+        env:
+          BASE_URL: ${{ vars.BASE_URL || 'https://catscandance.com' }}
+          DUMMY_PASSWORD: ${{ secrets.DUMMY_PASSWORD }}
+        run: node scripts/tests/e2e.mjs
