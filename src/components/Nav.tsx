@@ -27,6 +27,8 @@ const moreLinks: { to: string; label: string; external?: boolean }[] = [
   { to: "/catwalk",    label: "Listen · Catwalk" },
   { to: "/scratch",    label: "Wear · Scratch" },
   { to: "/nine-lives", label: "Adopt · Nine Lives" },
+  { to: "/club",       label: "Club" },
+  { to: "/whats-on",    label: "What's on" },
   { to: "/journal",    label: "Journal" },
   { to: "/guides",     label: "Guides" },
   { to: "https://instagram.com/catscan.dance", label: "Instagram", external: true },
