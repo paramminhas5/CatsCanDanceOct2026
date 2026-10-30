@@ -113,7 +113,7 @@ function wrap(body: string): string {
     <div class="body">${body}</div>
     <div class="footer">
       catscandance.com · India's underground music platform<br/>
-      <a href="${BASE_URL}/artist/dashboard" style="color:#f5e642">Artist Portal</a> &nbsp;·&nbsp;
+      <a href="${BASE_URL}/for-artists" style="color:#f5e642">For Artists</a> &nbsp;·&nbsp;
       <a href="${BASE_URL}/promoter/dashboard" style="color:#f5e642">Promoter Dashboard</a>
     </div>
   </div>
@@ -164,8 +164,8 @@ const templates: Record<BookingEmailEvent, (d: BookingEmailData) => { to: "artis
       ${eventBlock(d)}
       ${d.notes ? `<div class="snippet">"${d.notes}"</div>` : ""}
       <hr class="divider"/>
-      <p style="font-size:13px;color:#444">Open your Artist Portal to review the request, send a quote, or decline.</p>
-      <a href="${BASE_URL}/artist/dashboard" class="cta">Open Artist Portal →</a>
+      <p style="font-size:13px;color:#444">Reply to this email to send a quote or decline.</p>
+      <a href="${BASE_URL}/for-artists" class="cta">Open For Artists →</a>
     `),
   }),
 
@@ -212,7 +212,7 @@ const templates: Record<BookingEmailEvent, (d: BookingEmailData) => { to: "artis
       ${d.quotedInr ? `<div class="row"><div class="label">Agreed fee</div><div class="value" style="font-weight:700;font-size:18px">${fmtInr(d.quotedInr)}</div></div>` : ""}
       <hr class="divider"/>
       <p style="font-size:13px;color:#444">Use the message thread to coordinate logistics, tech rider, and load-in times.</p>
-      <a href="${BASE_URL}/artist/dashboard" class="cta">Open Message Thread →</a>
+      <a href="${BASE_URL}/for-artists" class="cta">Open Message Thread →</a>
     `),
   }),
 
@@ -242,7 +242,7 @@ const templates: Record<BookingEmailEvent, (d: BookingEmailData) => { to: "artis
       ${eventBlock(d)}
       <hr class="divider"/>
       <p style="font-size:13px;color:#444">Your calendar has been freed. Open your portal to manage availability.</p>
-      <a href="${BASE_URL}/artist/dashboard" class="cta">Open Artist Portal →</a>
+      <a href="${BASE_URL}/for-artists" class="cta">Open For Artists →</a>
     `),
   }),
 
@@ -255,7 +255,7 @@ const templates: Record<BookingEmailEvent, (d: BookingEmailData) => { to: "artis
       <p style="color:#666;font-size:13px;margin:0 0 16px">sent you a message about the <strong>${d.artistName} × ${d.promoterName}</strong> booking.</p>
       ${d.messageSnippet ? `<div class="snippet">"${d.messageSnippet.slice(0, 200)}${d.messageSnippet.length > 200 ? "…" : ""}"</div>` : ""}
       <hr class="divider"/>
-      <a href="${BASE_URL}/artist/dashboard" class="cta">View Thread →</a>
+      <a href="${BASE_URL}/for-artists" class="cta">View Thread →</a>
     `),
   }),
 
@@ -271,7 +271,7 @@ const templates: Record<BookingEmailEvent, (d: BookingEmailData) => { to: "artis
       ${d.notes ? `<div class="snippet">"${d.notes}"</div>` : ""}
       <hr class="divider"/>
       <p style="font-size:13px;color:#444">Review the brief and respond — you can quote, hold, or decline directly from your portal.</p>
-      <a href="${BASE_URL}/artist/dashboard" class="cta">Review Brief →</a>
+      <a href="${BASE_URL}/for-artists" class="cta">Review Brief →</a>
     `),
   }),
 };
