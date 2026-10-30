@@ -491,6 +491,8 @@ function ArtistEditor() {
         </form>
       </div>
 
+      <FactsReview onChange={load} />
+
       <div className={`${box} space-y-2`}>
         <h2 className="font-display text-2xl">Booking requests for you</h2>
         {reqs.length === 0 ? <p className="text-sm">None yet. When someone asks to book you, it shows here.</p> : (
@@ -541,6 +543,47 @@ function MyBookings() {
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+const SECTION_NAMES: Record<string, string> = { upcoming: "Upcoming dates", tours: "Where you have played", plays: "What you play", listens: "Fans also listen to", expect: "What to expect", fans: "Your fans", played_with: "Played with" };
+
+function FactsReview({ onChange }: { onChange: () => void }) {
+  const [facts, setFacts] = useState<any[]>([]);
+  const [msg, setMsg] = useState("");
+  const [edit, setEdit] = useState<Record<string, string>>({});
+  const load = useCallback(async () => { const r = await supabase.rpc("my_artist_facts"); setFacts((r.data as any[]) ?? []); }, []);
+  useEffect(() => { load(); }, [load]);
+  const waiting = facts.filter((f) => f.status === "proposed");
+  const live = facts.filter((f) => f.status === "approved");
+  if (facts.length === 0) return null;
+  async function act(id: string, status: "approved" | "rejected", label?: string) {
+    const r = await memberRpc("review_my_fact", { p_id: id, p_status: status, p_label: label ?? null, p_detail: null });
+    setMsg(r.ok ? (status === "approved" ? "Approved. It is on your page." : "Removed.") : r.error ?? "Could not save.");
+    load(); onChange();
+  }
+  return (
+    <div className={`${box} space-y-3`}>
+      <h2 className="font-display text-2xl">We filled in your page. Check it.</h2>
+      <p className="text-sm">We collected these from public sources and our own records. Only what you approve shows on your public page. Fix any wording, remove anything wrong.</p>
+      {waiting.length > 0 && (
+        <button className={btn} onClick={async () => { const r = await memberRpc("approve_my_facts", { p_confidence: "medium" }); setMsg(r.ok ? `Approved ${(r.data as any)?.approved ?? ""} items.` : r.error ?? "Could not save."); load(); onChange(); }}>Approve all {waiting.length}</button>
+      )}
+      {msg && <p className="text-sm">{msg}</p>}
+      {waiting.length > 0 && (
+        <ul className="space-y-2 text-sm">
+          {waiting.map((f) => (
+            <li key={f.id} className="border-4 border-ink p-2">
+              <div className="text-xs uppercase">{SECTION_NAMES[f.section] ?? f.section} · {f.source}</div>
+              <input className="w-full border-2 border-ink bg-cream p-1 mt-1" value={edit[f.id] ?? f.label} onChange={(e) => setEdit({ ...edit, [f.id]: e.target.value })} />
+              {f.detail && <div className="text-xs mt-1">{f.detail}</div>}
+              <div className="mt-1 flex gap-2"><button className={btn} onClick={() => act(f.id, "approved", edit[f.id] && edit[f.id] !== f.label ? edit[f.id] : undefined)}>Approve</button><button className="border-4 border-ink px-3 py-1 font-display text-sm" onClick={() => act(f.id, "rejected")}>Not right</button></div>
+            </li>
+          ))}
+        </ul>
+      )}
+      {live.length > 0 && <p className="text-sm">{live.length} items are live on your page.</p>}
     </div>
   );
 }

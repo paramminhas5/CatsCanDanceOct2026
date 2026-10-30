@@ -39,6 +39,21 @@ async function bulkArtists(formData: FormData) {
   await rpc("ops_bulk_artists", { p_token: T(), p_from: String(formData.get("from")), p_to: String(formData.get("to")) });
   revalidatePath("/ops"); revalidatePath("/prowl");
 }
+async function factReview(formData: FormData) {
+  "use server";
+  await rpc("ops_review_fact", { p_token: T(), p_id: String(formData.get("id")), p_status: String(formData.get("status")) });
+  revalidatePath("/ops");
+}
+async function factsBulk(formData: FormData) {
+  "use server";
+  await rpc("ops_approve_facts_bulk", { p_token: T(), p_confidence: String(formData.get("confidence") || "high"), p_section: String(formData.get("section") || "") || null });
+  revalidatePath("/ops"); revalidatePath("/prowl"); revalidatePath("/litter");
+}
+async function buildFacts() {
+  "use server";
+  await rpc("ops_build_internal_facts", { p_token: T() });
+  revalidatePath("/ops");
+}
 async function confirmCandidate(formData: FormData) {
   "use server";
   await rpc("ops_confirm_candidate", { p_token: T(), p_id: String(formData.get("id")) });
@@ -160,6 +175,10 @@ export default async function Ops() {
   }
   if (!s) return <main className="wrap ops"><h2 style={{ margin: "40px 0 12px" }}>Ops</h2><p className="bad">Could not load: {err || "no data"}</p></main>;
 
+  const [factSum, facts] = await Promise.all([
+    rpc<any>("ops_artist_facts_summary", { p_token: T() }).catch(() => null),
+    rpc<any[]>("ops_artist_facts", { p_token: T(), p_status: "proposed", p_limit: 120 }).catch(() => []),
+  ]);
   const [tickets, orders, crewsO, todos, hidden, members, swaps, inbox, recent, promos, reports, cityWait] = await Promise.all([
     rpc<any[]>("ops_ticket_summary", { p_token: T() }).catch(() => []),
     rpc<any[]>("ops_shop_orders", { p_token: T() }).catch(() => []),
@@ -306,6 +325,36 @@ export default async function Ops() {
             </tbody>
           </table>
         )}
+      </div>
+
+      <h3 style={{ marginBottom: 10 }}>Artist profile facts ({factSum?.proposed ?? 0} waiting)</h3>
+      <p className="muted" style={{ marginTop: 0 }}>
+        We pre-fill each artist page (upcoming dates, who they played with, what they play, who fans also listen to, fans). Nothing shows publicly until the artist or you approve it.
+        {factSum && <> {factSum.artists_with_facts} of {factSum.artists} artists have facts, {factSum.artists_with_approved} have approved ones. Approved {factSum.approved}, rejected {factSum.rejected}.</>}
+      </p>
+      <div style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
+        <form action={factsBulk}><input type="hidden" name="confidence" value="high" /><button className="btn sm">Approve all high confidence</button></form>
+        <form action={factsBulk}><input type="hidden" name="confidence" value="medium" /><button className="btn sm alt">Approve high and medium</button></form>
+        <form action={buildFacts}><button className="btn sm alt">Rebuild from our own data</button></form>
+      </div>
+      <div className="scroll" style={{ marginBottom: 36, maxHeight: 420, overflow: "auto" }}>
+        <table>
+          <thead><tr><th>Artist</th><th>Section</th><th>Fact</th><th>Source</th><th></th></tr></thead>
+          <tbody>
+            {(facts ?? []).map((f: any) => (
+              <tr key={f.id}>
+                <td><b>{f.artist}</b></td>
+                <td>{f.section}</td>
+                <td>{f.url ? <a href={f.url} target="_blank" rel="noreferrer">{f.label}</a> : f.label}<div className="muted">{[f.date && fmtDate(f.date), f.detail].filter(Boolean).join(" · ")}</div></td>
+                <td className="muted">{f.source} · {f.confidence}</td>
+                <td style={{ whiteSpace: "nowrap" }}>
+                  <form action={factReview} style={{ display: "inline" }}><input type="hidden" name="id" value={f.id} /><input type="hidden" name="status" value="approved" /><button className="btn sm">Approve</button></form>{" "}
+                  <form action={factReview} style={{ display: "inline" }}><input type="hidden" name="id" value={f.id} /><input type="hidden" name="status" value="rejected" /><button className="btn sm alt">Reject</button></form>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       <h3 style={{ marginBottom: 10 }}>Artists waiting ({hidden?.length ?? 0})</h3>
