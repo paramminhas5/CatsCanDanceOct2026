@@ -66,7 +66,7 @@ export default function CheckoutDialog({
     // RSVP-only flow (rsvp_invite mode, paid event) — save RSVP via Express API
     if (mode === "rsvp_invite" && !isFree) {
       try {
-        await fetch("/api/event-rsvp", {
+        const rsvpRes = await fetch("/api/event-rsvp", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -76,6 +76,12 @@ export default function CheckoutDialog({
             plus_ones: Math.max(0, totalQty - 1),
           }),
         });
+        if (!rsvpRes.ok) {
+          const err = await rsvpRes.json().catch(() => ({}));
+          toast.error(err?.error || "RSVP failed, please try again");
+          setStep("info");
+          return;
+        }
         setBurst(true); setTimeout(() => setBurst(false), 1500);
         setStep("rsvp_success");
       } catch {

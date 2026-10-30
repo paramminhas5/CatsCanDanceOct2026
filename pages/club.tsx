@@ -109,15 +109,25 @@ function Extras() {
   const [standing, setStanding] = useState<any>(null);
   const [events, setEvents] = useState<{ slug: string; title: string; event_date: string | null }[]>([]);
   const [crews, setCrews] = useState<Record<string, any[]>>({});
+  const [status, setStatus] = useState<Record<string, any>>({});
+  const [nstate, setNstate] = useState<Record<string, { liked: boolean; going: boolean }>>({});
+  const [ncount, setNcount] = useState<Record<string, { likes: number; going: number }>>({});
   const [wa, setWa] = useState<{ url: string; num: string }>({ url: "", num: "" });
   const [m, setM] = useState("");
   const load = useCallback(async () => {
     const st = await supabase.rpc("my_standing"); setStanding(st.data);
     const ev = await supabase.from("events").select("slug,title,event_date").eq("published", true).gte("event_date", new Date().toISOString().slice(0, 10)).order("event_date");
     const list = (ev.data as any[]) ?? []; setEvents(list);
-    const c: Record<string, any[]> = {};
-    for (const e of list) { const r = await supabase.rpc("my_crew", { p_slug: e.slug }); c[e.slug] = (r.data as any[]) ?? []; }
-    setCrews(c);
+    const c: Record<string, any[]> = {}; const stm: Record<string, any> = {};
+    for (const e of list) {
+      const r = await supabase.rpc("my_crew", { p_slug: e.slug }); c[e.slug] = (r.data as any[]) ?? [];
+      const s2 = await supabase.rpc("my_crew_status", { p_slug: e.slug }); stm[e.slug] = s2.data ?? null;
+    }
+    setCrews(c); setStatus(stm);
+    const ns = await supabase.rpc("my_night_state"); const nsm: any = {};
+    ((ns.data as any[]) ?? []).forEach((x) => { nsm[x.event_slug] = { liked: x.liked, going: x.going }; }); setNstate(nsm);
+    const nc = await supabase.rpc("night_counts"); const ncm: any = {};
+    ((nc.data as any[]) ?? []).forEach((x) => { ncm[x.event_slug] = { likes: Number(x.likes), going: Number(x.going) }; }); setNcount(ncm);
     const s = await supabase.from("site_settings").select("key,value").in("key", ["whatsapp_community_url", "whatsapp_number"]);
     const v: any = {}; (s.data ?? []).forEach((r: any) => { v[r.key] = typeof r.value === "string" ? r.value : ""; });
     setWa({ url: v.whatsapp_community_url ?? "", num: v.whatsapp_number ?? "" });
@@ -139,7 +149,20 @@ function Extras() {
         {events.length === 0 ? <p className="text-sm">No upcoming nights yet.</p> : events.map((e) => (
           <div key={e.slug} className="border-t-2 border-ink py-2 text-sm">
             <div className="flex items-center justify-between gap-2"><span>{e.title} · {e.event_date}</span>
-              <span className="flex gap-2"><a className={btn} href={`/tickets/${e.slug}`}>Tickets</a><button className={btn} onClick={async () => { await memberRpc("join_crew_pool", { p_slug: e.slug }); setM("You are on the list. We form crews before the night."); }}>Join a crew</button></span></div>
+              <span className="flex flex-wrap gap-2">
+                <a className={btn} href={`/tickets/${e.slug}`}>Tickets</a>
+                <button className={btn} onClick={async () => { await memberRpc("set_night_going", { p_slug: e.slug, p_going: !nstate[e.slug]?.going, p_show_name: false }); load(); }}>{nstate[e.slug]?.going ? "Going ✓" : "I'm going"} ({ncount[e.slug]?.going ?? 0})</button>
+                <button className={btn} onClick={async () => { await memberRpc("toggle_night_like", { p_slug: e.slug }); load(); }}>{nstate[e.slug]?.liked ? "Liked ♥" : "Like"} ({ncount[e.slug]?.likes ?? 0})</button>
+                <button className={btn} onClick={async () => { const r = await memberRpc("join_crew_pool", { p_slug: e.slug }); setM(r.ok ? "You are on the list. We form crews before the night." : r.error ?? "Could not join."); load(); }}>Join a crew</button>
+              </span></div>
+            {status[e.slug]?.state === "waiting" && <p className="mt-1">You are in the crew list. {status[e.slug].need > 0 ? `We form crews once 3 people from your city are in. ${status[e.slug].waiting} so far.` : "Crews are formed by the team before the night."}</p>}
+            {status[e.slug]?.state === "other_city" && (
+              <p className="mt-1">This night is in {status[e.slug].event_city}, your city is {status[e.slug].your_city}. We will not put you in a crew for it.{" "}
+                <button className="underline" onClick={async () => {
+                  const u = await supabase.auth.getUser(); const em = u.data.user?.email;
+                  if (em) { await supabase.rpc("signup", { p_email: em, p_source: `city:${status[e.slug].your_city}` }); setM(`Noted. We will tell you when a night is on in ${status[e.slug].your_city}.`); }
+                }}>Tell me when a night is on in {status[e.slug].your_city}</button></p>
+            )}
             {(crews[e.slug] ?? []).length > 0 && <p className="mt-1">Your crew: {crews[e.slug].map((c) => c.mate).join(", ")}. {crews[e.slug][0].pre_spot}</p>}
           </div>
         ))}
