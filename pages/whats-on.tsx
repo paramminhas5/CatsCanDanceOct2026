@@ -87,7 +87,8 @@ export default function WhatsOn({ events, updated }: Props) {
             </ul>
           </section>
         ))}
-        {events.length === 0 && <section className="container pb-16"><p className="font-display uppercase">Nothing listed yet. <Link href="/submit-event" className="underline">Submit an event</Link>.</p></section>}
+        {events.length === 0 && <section className="container pb-16"><p className="font-display uppercase">Nothing listed yet. <Link href="/submit-event/event" className="underline">Submit an event</Link>.</p></section>}
+        {events.length > 0 && <section className="container pb-16"><p className="font-display uppercase">Know a night we missed? <Link href="/submit-event/event" className="underline">Send it to us</Link>.</p></section>}
         <Footer />
       </main>
     </>
