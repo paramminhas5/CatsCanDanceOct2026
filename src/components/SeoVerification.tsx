@@ -15,10 +15,10 @@ const SeoVerification = () => {
     (async () => {
       const { data } = await supabase
         .from("site_settings")
-        .select("seo_verifications")
-        .eq("id", "main")
+        .select("value")
+        .eq("key", "seo_verifications")
         .maybeSingle();
-      const sv = (data as any)?.seo_verifications;
+      const sv = (data as any)?.value;
       if (sv && typeof sv === "object") setV(sv as Verifications);
     })();
   }, []);

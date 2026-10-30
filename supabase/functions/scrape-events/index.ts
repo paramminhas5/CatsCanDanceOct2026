@@ -18,6 +18,8 @@ type Raw = {
   description: string | null;
 };
 
+const errs: string[] = [];
+const note = (src: string, e: unknown) => { if (errs.length < 40) errs.push(`${src}: ${String(e).slice(0, 120)}`); };
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 async function sb(path: string, init: RequestInit = {}) {
@@ -120,7 +122,7 @@ async function district(): Promise<Raw[]> {
         event_date: html.match(/"startDate"\s*:\s*"(\d{4}-\d{2}-\d{2})/)?.[1] ?? null,
         event_time: null, image_url: meta(html, "og:image"), description: desc,
       });
-    } catch { /* skip page */ }
+    } catch (e) { note("district-page", e); }
     await sleep(300);
   }
   return out;
@@ -136,7 +138,7 @@ async function insider(): Promise<Raw[]> {
         const r = fromLd(it, "insider", url, c);
         if (r) { if (r.url.startsWith("/")) r.url = `https://insider.in${r.url}`; out.push(r); }
       }
-    } catch { /* skip city */ }
+    } catch (e) { note("insider-" + slug, e); }
     await sleep(500);
   }
   return out;
@@ -151,7 +153,7 @@ async function highape(): Promise<Raw[]> {
         const r = fromLd(it, "highape", url, url.includes("bangalore") ? "Bengaluru" : null);
         if (r) out.push(r);
       }
-    } catch { /* skip */ }
+    } catch (e) { note("highape", e); }
   }
   return out;
 }
@@ -165,7 +167,32 @@ async function skillbox(): Promise<Raw[]> {
       const r = fromLd(it, "skillbox", url, null);
       if (r) out.push(r);
     }
-  } catch { /* skip */ }
+  } catch (e) { note("skillbox", e); }
+  return out;
+}
+
+// Generic JSON-LD pages: Eventbrite India techno/house listings and Gigs Calendar.
+async function listings(): Promise<Raw[]> {
+  const out: Raw[] = [];
+  const pages: [string, string, string | null][] = [
+    ["https://www.eventbrite.com/d/india--bengaluru/techno/", "eventbrite", "Bengaluru"],
+    ["https://www.eventbrite.com/d/india--mumbai/techno/", "eventbrite", "Mumbai"],
+    ["https://www.eventbrite.com/d/india--new-delhi/techno/", "eventbrite", "Delhi NCR"],
+    ["https://www.eventbrite.com/d/india--goa/electronic-music/", "eventbrite", "Goa"],
+    ["https://gigscalendar.com/", "gigscalendar", null],
+  ];
+  for (const [url, source, c] of pages) {
+    try {
+      const html = await get(url);
+      let n = 0;
+      for (const it of jsonLdEvents(html)) {
+        const r = fromLd(it, source, url, c);
+        if (r) { out.push(r); n++; }
+      }
+      if (n === 0) note(source, `no JSON-LD events at ${url}`);
+    } catch (e) { note(source, e); }
+    await sleep(500);
+  }
   return out;
 }
 
@@ -184,7 +211,7 @@ Deno.serve(async (req) => {
   })).json();
   const runId = run?.[0]?.id;
 
-  const sources = { district, insider, highape, skillbox };
+  const sources = { district, insider, highape, skillbox, listings };
   const perSource: Record<string, number | string> = {};
   const all: Raw[] = [];
   const results = await Promise.allSettled(Object.values(sources).map((f) => f()));
@@ -214,7 +241,7 @@ Deno.serve(async (req) => {
     else error = `${res.status} ${(await res.text()).slice(0, 200)}`;
   }
 
-  const stats = { found: all.length, candidates: rows.length, inserted, sources: perSource };
+  const stats = { found: all.length, candidates: rows.length, inserted, sources: perSource, errors: errs };
   if (runId) {
     await sb(`cron_runs?id=eq.${runId}`, {
       method: "PATCH",

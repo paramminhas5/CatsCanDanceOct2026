@@ -49,7 +49,7 @@ const Tour = () => {
       />
       <main className="bg-background text-foreground min-h-screen">
         <Nav />
-        <PageHero eyebrow="TOUR" title="WHO'S COMING THROUGH." bg="bg-orange" textColor="text-cream" eyebrowColor="text-ink">
+        <PageHero eyebrow="TOUR · SEE WHO IS COMING" title="WHO'S COMING THROUGH." bg="bg-orange" textColor="text-cream" eyebrowColor="text-ink">
           <p className="text-cream font-medium text-lg max-w-xl">
             Artists post the cities and dates they are free. Promoters see who is passing through and book them.
           </p>

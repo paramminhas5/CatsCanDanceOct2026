@@ -56,16 +56,12 @@ const nextConfig = {
   async rewrites() {
     return [
       { source: "/episodes", destination: "/events" },
-      { source: "/episodes/:slug", destination: "/events/:slug" },
       { source: "/litter", destination: "/artists" },
-      { source: "/litter/:slug", destination: "/artists/:slug" },
-      { source: "/litter/:slug/epk", destination: "/artists/:slug/epk" },
       { source: "/prowl", destination: "/discover" },
       { source: "/scratch", destination: "/shop" },
       { source: "/catwalk", destination: "/playlists" },
       { source: "/nine-lives", destination: "/care" },
       { source: "/journal", destination: "/blog" },
-      { source: "/journal/:slug", destination: "/blog/:slug" },
     ];
   },
   async redirects() {
@@ -81,8 +77,8 @@ const nextConfig = {
       { source: "/care", destination: "/nine-lives", permanent: true },
       { source: "/blog", destination: "/journal", permanent: true },
       { source: "/blog/:slug", destination: "/journal/:slug", permanent: true },
-      { source: "/ccdxsocial", destination: "/episodes", permanent: true },
-      { source: "/ccdxsocial/:path*", destination: "/episodes", permanent: true },
+      { source: "/ccdxsocial", destination: "/playbook", permanent: true },
+      { source: "/ccdxsocial/:path*", destination: "/playbook", permanent: true },
       { source: "/school", destination: SCHOOL_URL, permanent: false },
       { source: "/school/:path*", destination: `${SCHOOL_URL}/:path*`, permanent: false },
     ];

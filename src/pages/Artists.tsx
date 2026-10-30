@@ -141,7 +141,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
       <Nav />
 
       <PageHero
-        eyebrow="ARTISTS"
+        eyebrow="BOOK · LITTER"
         title={<>THE<br/>ROSTER.</>}
         bg="bg-electric-blue"
         textColor="text-cream"

@@ -14,11 +14,11 @@ export const useDynamicPosts = () => {
       try {
         const { data, error } = await supabase
           .from("site_settings")
-          .select("blog_posts")
-          .eq("id", "main")
+          .select("value")
+          .eq("key", "blog_posts")
           .maybeSingle();
         if (error) return;
-        const raw = (data as any)?.blog_posts;
+        const raw = (data as any)?.value;
         if (!Array.isArray(raw)) return;
         setDynamicPosts(raw as Post[]);
       } catch {

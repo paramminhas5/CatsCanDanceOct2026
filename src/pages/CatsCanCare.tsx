@@ -110,7 +110,7 @@ const CatsCanCare = () => {
         jsonLd={itemListLd}
       />
       <Nav />
-      <PageHero eyebrow="Cats Can Care" title="Care, Donate, Adopt">
+      <PageHero eyebrow="ADOPT · NINE LIVES" title="Care, Donate, Adopt">
         <p className="text-cream/90 max-w-2xl">
           A directory of India's top 100 animal welfare organisations — searchable by city, focus,
           and what they need most.

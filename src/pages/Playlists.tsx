@@ -85,7 +85,7 @@ const Playlists = () => {
       />
       <Nav />
       <PageHero
-        eyebrow="PLAYLISTS · ALL ROTATION"
+        eyebrow="LISTEN · CATWALK"
         title={<>NOW<br/>SPINNING.</>}
         bg="bg-magenta"
         textColor="text-cream"

@@ -28,7 +28,7 @@ export default function Guides({ scenes }: { scenes: Scene[] }) {
       <SEO title="Guides: city, genre and scene guides | Cats Can Dance" description="City, genre and scene guides for underground dance music, from Bengaluru to Detroit." path="/guides" />
       <main className="bg-background text-foreground min-h-screen">
         <Nav />
-        <PageHero eyebrow="GUIDES" title="KNOW THE SCENE." bg="bg-electric-blue" textColor="text-cream" eyebrowColor="text-acid-yellow">
+        <PageHero eyebrow="READ · GUIDES" title="KNOW THE SCENE." bg="bg-electric-blue" textColor="text-cream" eyebrowColor="text-acid-yellow">
           <p className="text-cream font-medium text-lg max-w-xl">Plain guides to cities, genres and scenes. Read first, then go out.</p>
         </PageHero>
         <section className="container py-6 md:py-8">

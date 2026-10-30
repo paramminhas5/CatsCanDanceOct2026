@@ -167,7 +167,7 @@ const Events = () => {
 
         {/* ── 1. HERO ── */}
         <PageHero
-          eyebrow="EPISODES"
+          eyebrow="GO · EPISODES"
           title="THE EPISODES."
           bg="bg-magenta"
           textColor="text-cream"

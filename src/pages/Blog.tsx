@@ -55,7 +55,7 @@ const Blog = () => {
       <main className="bg-background text-foreground min-h-screen">
         <Nav />
         <PageHero
-          eyebrow="JOURNAL"
+          eyebrow="READ · JOURNAL"
           title="THE BLOG."
           bg="bg-acid-yellow"
           textColor="text-ink"

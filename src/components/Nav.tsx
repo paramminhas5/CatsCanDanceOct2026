@@ -9,23 +9,24 @@ import ccdLogo from "@/assets/ccd-logo.png";
 import { imgUrl } from "@/lib/img";
 
 const primaryLinks = [
-  { to: "/episodes", label: "Episodes" },
-  { to: "/prowl",    label: "Prowl"    },
-  { to: "/litter",   label: "Litter"   },
-  { to: "/tour",     label: "Tour"     },
-  { to: "/school",   label: "School"   },
+  { to: "/episodes", label: "Go",    hint: "Episodes" },
+  { to: "/prowl",    label: "Find",  hint: "Prowl" },
+  { to: "/litter",   label: "Book",  hint: "Litter" },
+  { to: "/tour",     label: "Tour",  hint: "Tour" },
+  { to: "/school",   label: "Learn", hint: "CCD.SCHOOL" },
 ];
 
 const partnersLinks = [
   { to: "/for-venues",    label: "For Venues"    },
   { to: "/for-artists",   label: "For Artists"   },
   { to: "/for-investors", label: "For Investors" },
+  { to: "/playbook",      label: "Partner Playbook" },
 ];
 
 const moreLinks: { to: string; label: string; external?: boolean }[] = [
-  { to: "/catwalk",    label: "Catwalk" },
-  { to: "/scratch",    label: "Scratch" },
-  { to: "/nine-lives", label: "Nine Lives" },
+  { to: "/catwalk",    label: "Listen · Catwalk" },
+  { to: "/scratch",    label: "Wear · Scratch" },
+  { to: "/nine-lives", label: "Adopt · Nine Lives" },
   { to: "/journal",    label: "Journal" },
   { to: "/guides",     label: "Guides" },
   { to: "https://instagram.com/catscan.dance", label: "Instagram", external: true },
@@ -192,6 +193,7 @@ const Nav = ({ forceDark = false }: { forceDark?: boolean }) => {
             <li key={l.to}>
               <RouterNavLink
                 to={l.to}
+                title={l.hint}
                 className={({ isActive }) =>
                   `font-display text-base hover:${activeColor} transition-colors ${
                     isActive ? activeColor : baseColor
@@ -243,7 +245,7 @@ const Nav = ({ forceDark = false }: { forceDark?: boolean }) => {
                   `block font-display text-xl text-ink py-2 border-b border-ink/10 ${isActive ? "text-magenta" : ""}`
                 }
               >
-                {l.label}
+                {l.label} <span className="font-medium text-base text-ink/50">{l.hint}</span>
               </RouterNavLink>
             ))}
 

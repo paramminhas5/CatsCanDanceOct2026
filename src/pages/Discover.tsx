@@ -460,7 +460,7 @@ export default function DiscoverPage() {
             <div>
               <p className="font-display text-acid-yellow text-xs uppercase tracking-widest mb-3">
                 <Compass className="inline w-4 h-4 mr-2" />
-                Curated Events · India
+                Find · Prowl
               </p>
               <h1 className="font-display text-cream text-5xl md:text-7xl leading-[0.88] uppercase">
                 WHAT'S<br />

@@ -58,10 +58,10 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
       try {
         const { data } = await supabase
           .from("site_settings")
-          .select("theme")
-          .eq("id", "main")
+          .select("value")
+          .eq("key", "theme")
           .maybeSingle();
-        const t = (data?.theme ?? null) as ThemeConfig | null;
+        const t = ((data as any)?.value ?? null) as ThemeConfig | null;
         if (t && t.preset && THEME_PRESETS[t.preset]) {
           cmsConfigRef.current = t;
           // Only auto-apply if the user has not picked their own preset
@@ -84,9 +84,9 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
           .channel("site_settings_theme")
           .on(
             "postgres_changes",
-            { event: "*", schema: "public", table: "site_settings", filter: "id=eq.main" },
+            { event: "*", schema: "public", table: "site_settings", filter: "key=eq.theme" },
             (payload) => {
-              const t = (payload.new as any)?.theme as ThemeConfig | null;
+              const t = (payload.new as any)?.value as ThemeConfig | null;
               if (t && t.preset && THEME_PRESETS[t.preset]) {
                 cmsConfigRef.current = t;
                 if (!localStorage.getItem(LOCAL_KEY)) setConfig(t);

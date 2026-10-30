@@ -92,7 +92,7 @@ const Shop = () => {
       />
       <main className="bg-cream text-ink">
         <Nav />
-        <PageHero eyebrow="SHOP" title="DROPS & COLLECTIBLES." bg="bg-magenta" eyebrowColor="text-acid-yellow">
+        <PageHero eyebrow="WEAR · SCRATCH" title="DROPS & COLLECTIBLES." bg="bg-magenta" eyebrowColor="text-acid-yellow">
           <p className="font-display text-cream text-2xl mt-4">
             Streetwear & pet streetwear. Made for the floor in Bangalore.
           </p>
