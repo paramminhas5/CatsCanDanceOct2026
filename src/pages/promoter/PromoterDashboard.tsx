@@ -120,7 +120,7 @@ export default function PromoterDashboard() {
             className="bg-magenta text-cream font-display text-base px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
             + ENABLE TICKETING FOR AN EVENT
           </Link>
-          <Link to="/events"
+          <Link to="/episodes"
             className="bg-cream text-ink font-display text-base px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
             VIEW EVENTS PAGE →
           </Link>

@@ -483,7 +483,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
       <div className="container py-24">
         <div className="border-4 border-ink bg-magenta chunk-shadow p-8 inline-block max-w-md">
           <p className="font-display text-2xl text-cream mb-3">{fetchError || "ARTIST NOT FOUND"}</p>
-          <Link href="/artists" className="inline-flex items-center gap-2 bg-cream text-ink font-display px-5 py-2 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
+          <Link href="/litter" className="inline-flex items-center gap-2 bg-cream text-ink font-display px-5 py-2 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
             <ArrowLeft className="w-4 h-4" /> BACK TO ARTISTS
           </Link>
         </div>
@@ -497,7 +497,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
       <SEO
         title={`${artist.name} — Cats Can Dance Artist`}
         description={artist.bio?.slice(0, 155) || `${artist.name} on Cats Can Dance — ${artist.genres?.join(", ")}`}
-        path={`/artists/${slug}`}
+        path={`/litter/${slug}`}
       />
       <Nav />
 
@@ -957,7 +957,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                             <span>{m.year || m.date.split("-")[0]}</span>
                             {m.city && <span>· {m.city.toUpperCase()}</span>}
                             {m.related_artist_slug && (
-                              <Link href={`/artists/${m.related_artist_slug}`} className="text-magenta hover:underline">
+                              <Link href={`/litter/${m.related_artist_slug}`} className="text-magenta hover:underline">
                                 · {(m.related_artist_name || m.related_artist_slug).toUpperCase()}
                               </Link>
                             )}
@@ -1036,7 +1036,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                   <h2 className="font-display text-3xl text-ink">EPK</h2>
                 </div>
                 <div className="flex gap-2">
-                  <a href={`/artists/${artist.slug}/epk`} target="_blank" rel="noreferrer"
+                  <a href={`/litter/${artist.slug}/epk`} target="_blank" rel="noreferrer"
                     className="flex items-center gap-1.5 font-display text-xs uppercase px-4 py-2 border-4 border-ink bg-acid-yellow text-ink chunk-shadow hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-transform">
                     <ExternalLink className="w-3 h-3" /> Share EPK
                   </a>

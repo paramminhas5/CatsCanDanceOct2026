@@ -57,7 +57,7 @@ export default function PromoterApply() {
             <p className="text-ink/80 font-medium text-lg mb-6">
               We'll review your application within 48 hours. Once approved you'll get access to the promoter portal — create events, set ticket prices, and manage RSVPs.
             </p>
-            <Link to="/events" className="inline-block bg-ink text-cream font-display text-lg px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
+            <Link to="/episodes" className="inline-block bg-ink text-cream font-display text-lg px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
               BACK TO EVENTS →
             </Link>
           </div>

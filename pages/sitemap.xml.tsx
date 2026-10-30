@@ -17,19 +17,19 @@ function buildSitemap(artistSlugs: string[]): string {
 
   const staticUrls = [
     url("/", "1.0", "weekly", today),
-    url("/discover", "0.95", "weekly", today),
+    url("/prowl", "0.95", "weekly", today),
     url("/about", "0.8", "monthly"),
-    url("/events", "1.0", "daily", today),
-    url("/artists", "0.95", "weekly", today),
+    url("/episodes", "1.0", "daily", today),
+    url("/litter", "0.95", "weekly", today),
     url("/promoters", "0.85", "weekly", today),
-    url("/shop", "0.85", "weekly", today),
-    url("/blog", "0.9", "weekly", today),
+    url("/scratch", "0.85", "weekly", today),
+    url("/journal", "0.9", "weekly", today),
     url("/videos", "0.7", "monthly"),
-    url("/playlists", "0.7", "monthly"),
+    url("/catwalk", "0.7", "monthly"),
     url("/press", "0.6", "monthly"),
     url("/media", "0.6", "monthly"),
     url("/pets", "0.7", "monthly"),
-    url("/care", "0.7", "monthly"),
+    url("/nine-lives", "0.7", "monthly"),
     url("/bengaluru-underground-dance-music", "0.9", "monthly"),
     url("/bengaluru-techno-events", "0.85", "monthly"),
     url("/bengaluru-house-parties", "0.85", "monthly"),
@@ -52,7 +52,7 @@ function buildSitemap(artistSlugs: string[]): string {
   );
 
   const artistUrls = artistSlugs.map(slug =>
-    url(`/artists/${slug}`, "0.8", "monthly", today)
+    url(`/litter/${slug}`, "0.8", "monthly", today)
   );
 
   const allUrls = [

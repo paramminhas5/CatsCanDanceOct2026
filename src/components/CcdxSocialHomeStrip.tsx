@@ -141,7 +141,7 @@ const CcdxSocialHomeStrip = () => {
                 SUN 28 JUN · INDIRANAGAR SOCIAL
               </p>
               <Link
-                to="/events/ccdxsocial-01"
+                to="/episodes/ccdxsocial-01"
                 className="mt-3 w-full block text-center bg-ink text-acid-yellow font-display text-sm px-4 py-2.5 border-2 border-ink hover:bg-magenta hover:text-cream transition-colors"
               >
                 RSVP — IT'S FREE →
@@ -159,7 +159,7 @@ const CcdxSocialHomeStrip = () => {
             {SHOWS.map((s, i) => (
               <Link
                 key={s.slug}
-                to={`/events/${s.slug}`}
+                to={`/episodes/${s.slug}`}
                 className={`
                   group relative block border-4
                   ${s.isNext

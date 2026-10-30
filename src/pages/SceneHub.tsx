@@ -161,7 +161,7 @@ const SceneHub = () => {
               See what's actually on this week and RSVP.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link to="/events" className="bg-acid-yellow text-ink font-display px-5 py-2 border-4 border-ink hover:bg-cream">
+              <Link to="/episodes" className="bg-acid-yellow text-ink font-display px-5 py-2 border-4 border-ink hover:bg-cream">
                 UPCOMING EPISODES →
               </Link>
               <Link to="/bengaluru-underground-dance-music" className="bg-cream text-ink font-display px-5 py-2 border-4 border-ink hover:bg-acid-yellow">

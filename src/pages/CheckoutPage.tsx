@@ -124,7 +124,7 @@ export default function CheckoutPage() {
           <div className="border-4 border-ink bg-cream p-8 text-center">
             <p className="font-display text-4xl text-magenta mb-3">LINK EXPIRED</p>
             <p className="text-ink/70 mb-6">{err}</p>
-            <a href="/events" className="inline-block bg-ink text-cream font-display px-6 py-3 border-4 border-ink chunk-shadow">SEE ALL EVENTS →</a>
+            <a href="/episodes" className="inline-block bg-ink text-cream font-display px-6 py-3 border-4 border-ink chunk-shadow">SEE ALL EVENTS →</a>
           </div>
         )}
 

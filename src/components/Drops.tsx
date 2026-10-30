@@ -121,7 +121,7 @@ const Drops = () => {
 
         <div className="flex flex-wrap items-center gap-4">
           <Link
-            to="/shop"
+            to="/scratch"
             className="inline-flex items-center gap-3 bg-ink text-cream font-display text-2xl px-8 py-4 border-4 border-ink chunk-shadow hover:bg-magenta transition-colors"
           >
             SHOP THE DROP <ArrowRight className="w-6 h-6" />

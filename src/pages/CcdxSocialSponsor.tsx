@@ -324,7 +324,7 @@ const CcdxSocialSponsor = () => (
         <p className="font-display text-ink text-lg">Want to see the full series overview?</p>
         <div className="flex gap-3">
           <a href="/ccdxsocial" className="bg-ink text-cream font-display text-sm px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-transform">VIEW PROPOSAL →</a>
-          <Link to="/events" className="bg-cream text-ink font-display text-sm px-5 py-3 border-4 border-ink hover:bg-acid-yellow transition-colors">SEE ALL EVENTS →</Link>
+          <Link to="/episodes" className="bg-cream text-ink font-display text-sm px-5 py-3 border-4 border-ink hover:bg-acid-yellow transition-colors">SEE ALL EVENTS →</Link>
         </div>
       </div>
     </section>

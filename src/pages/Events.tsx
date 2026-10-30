@@ -157,9 +157,9 @@ const Events = () => {
   return (
     <>
       <SEO
-        title="Events — Cats Can Dance | Underground Dance Music in Bangalore"
-        description="CCD × SOCIAL series, our next upcoming event at Indiranagar Social, and the best curated dance music events happening across Bangalore."
-        path="/events"
+        title="Episodes — Cats Can Dance | Underground Dance Music in Bengaluru"
+        description="Every Cats Can Dance Episode: dates, venues, lineups and RSVP. Small rooms, pets welcome, Bengaluru."
+        path="/episodes"
         jsonLd={jsonLd}
       />
       <main className="bg-background text-foreground min-h-screen">
@@ -167,8 +167,8 @@ const Events = () => {
 
         {/* ── 1. HERO ── */}
         <PageHero
-          eyebrow="EVENTS"
-          title="THE EVENTS."
+          eyebrow="EPISODES"
+          title="THE EPISODES."
           bg="bg-magenta"
           textColor="text-cream"
           eyebrowColor="text-acid-yellow"
@@ -178,96 +178,18 @@ const Events = () => {
             UNDERGROUND. CURATED. OURS.
           </p>
           <p className="text-cream/80 font-medium text-lg max-w-xl">
-            The best electronic music nights in India — house, disco, garage, jungle, D&amp;B.
-            Every event handpicked. Free RSVP. Pets welcome at the CCD × Social series.
+            Our own nights. House, disco, garage, jungle and D&amp;B in small rooms. Free RSVP. Pets welcome at the daytime ones.
           </p>
         </PageHero>
 
         {/* ── 2. MARQUEE ── */}
         <Marquee
           bg="bg-acid-yellow"
-          items={[
-            "BANGALORE · 29 JUN",
-            "BOMBAY · JULY",
-            "HYDERABAD · AUGUST",
-            "DELHI · OCTOBER",
-            "UNDERGROUND · CURATED",
-            "FREE RSVP",
-          ]}
+          items={["EPISODE 4 · BAR WILD","EPISODE 3 · INDIRANAGAR SOCIAL","EPISODE 2 · INDIRANAGAR SOCIAL","EPISODE 1 · BAR WILD","SMALL ROOMS","FREE RSVP"]}
         />
 
         <section className="container py-6 md:py-8">
-          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Events" }]} />
-        </section>
-
-
-        {/* ── 3. SERIES SHOWCASE — CCD × SOCIAL ── */}
-        <section className="bg-electric-blue border-y-4 border-ink py-12 md:py-16">
-          <div className="container">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-              <div>
-                <p className="font-display text-acid-yellow text-base md:text-lg mb-2">/ THE SERIES</p>
-                <h2 className="font-display text-cream text-4xl md:text-6xl leading-none">
-                  CCD × SOCIAL
-                </h2>
-                <p className="text-cream/80 font-medium text-base md:text-lg mt-3 max-w-xl">
-                  Four Sundays across four cities. Easy outdoor afternoons, real underground floors
-                  after dark. Pets welcome at every stop.
-                </p>
-              </div>
-              <Link
-                to="/ccdxsocial"
-                className="shrink-0 bg-acid-yellow text-ink font-display text-sm px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform whitespace-nowrap"
-              >
-                ABOUT THE SERIES →
-              </Link>
-            </div>
-
-            {/* Series show cards — 4 up */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {seriesEvents.map((e, i) => {
-                const isPast   = e.status === "past";
-                const palettes = [
-                  "bg-acid-yellow text-ink",
-                  "bg-magenta text-cream",
-                  "bg-cream text-ink",
-                  "bg-ink text-cream",
-                ];
-                const pal = palettes[i % palettes.length];
-                return (
-                  <motion.div
-                    key={e.slug}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ delay: i * 0.07, type: "spring", stiffness: 180, damping: 20 }}
-                  >
-                    <Link
-                      to={`/events/${e.slug}`}
-                      className={`relative block border-4 border-ink chunk-shadow p-5 md:p-6 h-full hover:-translate-y-1 hover:translate-x-1 transition-transform ${pal}`}
-                    >
-                      <p className={`font-display text-[10px] tracking-widest mb-2 ${isPast ? "text-ink/50" : "text-magenta"}`}>
-                        {isPast ? "/ PAST" : "/ UPCOMING"}
-                      </p>
-                      <h3 className="font-display text-2xl md:text-3xl leading-none mb-2 break-words">
-                        {displayTitle(e.title)}
-                      </h3>
-                      <p className="font-medium text-sm opacity-90 leading-tight mb-3">{e.date}</p>
-                      <p className="font-medium text-sm opacity-70 leading-tight">{e.venue}</p>
-                      {e.series_tagline && (
-                        <p className="mt-4 text-[10px] font-display tracking-widest opacity-50">
-                          {e.series_tagline}
-                        </p>
-                      )}
-                      {e.pet_friendly && (
-                        <span className="mt-3 inline-block text-sm" aria-label="pet-friendly">🐾</span>
-                      )}
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
+          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Episodes" }]} />
         </section>
 
 
@@ -377,7 +299,7 @@ const Events = () => {
 
                     <div className="flex flex-wrap gap-3">
                       <Link
-                        to={`/events/${nextEvent.slug}`}
+                        to={`/episodes/${nextEvent.slug}`}
                         className="bg-acid-yellow text-ink font-display text-lg md:text-xl px-7 py-4 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform"
                       >
                         {content.cta_label ?? "VIEW EVENT & RSVP →"}
@@ -407,7 +329,6 @@ const Events = () => {
                   { key: "all", label: "ALL" },
                   { key: "upcoming", label: "UPCOMING" },
                   { key: "past", label: "PAST" },
-                  { key: "series", label: "CCD × SOCIAL" },
                 ] as const).map(({ key, label }) => (
                   <button
                     key={key}
@@ -421,7 +342,7 @@ const Events = () => {
                     {label}
                     {key !== "all" && (
                       <span className="ml-1.5 opacity-50">
-                        ({key === "upcoming" ? upcoming.length : key === "past" ? past.length : seriesEvents.length})
+                        ({key === "upcoming" ? upcoming.length : past.length})
                       </span>
                     )}
                   </button>
@@ -448,7 +369,7 @@ const Events = () => {
                       transition={{ delay: Math.min(i * 0.05, 0.3), type: "spring", stiffness: 200, damping: 22 }}
                     >
                       <Link
-                        to={`/events/${e.slug}`}
+                        to={`/episodes/${e.slug}`}
                         className="group block bg-background border-4 border-ink chunk-shadow overflow-hidden hover:-translate-y-1 hover:translate-x-1 transition-transform h-full"
                       >
                         <div className="relative bg-ink border-b-4 border-ink aspect-video overflow-hidden">

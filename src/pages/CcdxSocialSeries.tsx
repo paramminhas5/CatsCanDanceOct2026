@@ -252,7 +252,7 @@ export default function CcdxSocialSeries() {
                   </div>
                 )}
                 <div className="flex flex-wrap gap-2">
-                  <Link href="/events/ccdxsocial-01?rsvp=1" className="inline-block bg-acid-yellow text-ink font-display text-base px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
+                  <Link href="/episodes/ccdxsocial-01?rsvp=1" className="inline-block bg-acid-yellow text-ink font-display text-base px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
                     RSVP →
                   </Link>
                   <a href="#tour" className="inline-block bg-magenta text-cream font-display text-base px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
@@ -386,7 +386,7 @@ export default function CcdxSocialSeries() {
                               <p className="font-display text-xs md:text-sm">{stop.date}</p>
                               <p className="text-[11px] opacity-80">{stop.venue}</p>
                             </div>
-                            <Link href={stop.badge === "next" ? "/events/ccdxsocial-01?rsvp=1" : `/events/${stop.slug}`} className="inline-block bg-cream text-ink font-display text-xs px-3 py-2 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
+                            <Link href={stop.badge === "next" ? "/episodes/ccdxsocial-01?rsvp=1" : `/episodes/${stop.slug}`} className="inline-block bg-cream text-ink font-display text-xs px-3 py-2 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
                               RSVP →
                             </Link>
                           </div>
@@ -414,7 +414,7 @@ export default function CcdxSocialSeries() {
             </Reveal>
             <Reveal delay={0.15}>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/events/ccdxsocial-01?rsvp=1" className="inline-block bg-ink text-cream font-display text-base md:text-lg px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">RSVP →</Link>
+                <Link href="/episodes/ccdxsocial-01?rsvp=1" className="inline-block bg-ink text-cream font-display text-base md:text-lg px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">RSVP →</Link>
                 <a href="https://wa.me/?text=Come%20to%20CCD%20%C3%97%20Social%20with%20me%20%E2%80%94%20https%3A%2F%2Fcatscandance.com%2Fccdxsocial" target="_blank" rel="noopener" className="inline-block bg-cream text-ink font-display text-base md:text-lg px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">BRING THE PACK →</a>
               </div>
             </Reveal>

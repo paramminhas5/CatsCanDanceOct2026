@@ -236,7 +236,7 @@ const BengaluruSceneGuide = () => (
           </p>
         </div>
         <Link
-          to="/events"
+          to="/episodes"
           className="inline-block bg-acid-yellow text-ink font-display text-lg px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform"
         >
           SEE UPCOMING EVENTS →
@@ -283,7 +283,7 @@ const BengaluruSceneGuide = () => (
           the clothing a wearable piece of the scene.
         </p>
         <Link
-          to="/shop"
+          to="/scratch"
           className="inline-block bg-ink text-cream font-display text-lg px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform"
         >
           SHOP THE DROP →
@@ -309,7 +309,7 @@ const BengaluruSceneGuide = () => (
       {/* ── CTA ── */}
       <div className="flex gap-4 flex-wrap">
         <Link
-          to="/events"
+          to="/episodes"
           className="bg-magenta text-cream font-display text-lg px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform"
         >
           SEE ALL EVENTS →

@@ -105,7 +105,7 @@ const CatsCanCare = () => {
       <SEO
         title="Cats Can Care — Animal NGOs & Adoption in India | Cats Can Dance"
         description="A searchable directory of India's top 100 animal welfare NGOs. Find rescues, shelters, sanctuaries, and adoption centres — donate or adopt responsibly."
-        path="/care"
+        path="/nine-lives"
         keywords="animal NGO India, donate animal welfare India, adopt pet India, animal shelter India"
         jsonLd={itemListLd}
       />

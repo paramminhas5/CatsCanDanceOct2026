@@ -9,23 +9,25 @@ import ccdLogo from "@/assets/ccd-logo.png";
 import { imgUrl } from "@/lib/img";
 
 const primaryLinks = [
-  { to: "/events",      label: "Events"   },
-  { to: "/ccdxsocial",  label: "Series"   },
-  { to: "/videos",      label: "Videos"   },
-  { to: "/playlists",   label: "Playlists"},
-  { to: "/shop",        label: "Shop"     },
-  { to: "/school",      label: "School"   },
+  { to: "/episodes", label: "Episodes" },
+  { to: "/prowl",    label: "Prowl"    },
+  { to: "/litter",   label: "Litter"   },
+  { to: "/tour",     label: "Tour"     },
+  { to: "/school",   label: "School"   },
 ];
 
 const partnersLinks = [
-  { to: "/for-venues",         label: "For Venues"    },
-  { to: "/for-artists",        label: "For Artists"   },
-  { to: "/for-investors",      label: "For Investors" },
-  { to: "/ccdxsocial/sponsor", label: "Partner"       },
+  { to: "/for-venues",    label: "For Venues"    },
+  { to: "/for-artists",   label: "For Artists"   },
+  { to: "/for-investors", label: "For Investors" },
 ];
 
 const moreLinks: { to: string; label: string; external?: boolean }[] = [
-  { to: "/ccdxsocial/sponsor", label: "Partner with Us" },
+  { to: "/catwalk",    label: "Catwalk" },
+  { to: "/scratch",    label: "Scratch" },
+  { to: "/nine-lives", label: "Nine Lives" },
+  { to: "/journal",    label: "Journal" },
+  { to: "/guides",     label: "Guides" },
   { to: "https://instagram.com/catscan.dance", label: "Instagram", external: true },
   { to: "https://www.youtube.com/@thesecatscandance", label: "YouTube", external: true },
 ];
@@ -140,7 +142,7 @@ const Nav = ({ forceDark = false }: { forceDark?: boolean }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const lightBgRoutes = ["/playlists", "/videos"];
+  const lightBgRoutes = ["/catwalk", "/videos"];
   const forceScrolledStyle = lightBgRoutes.some((r) => location.pathname === r || location.pathname.startsWith(r + "/"));
 
   useEffect(() => {

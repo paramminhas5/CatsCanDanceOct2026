@@ -49,7 +49,7 @@ const Blog = () => {
       <SEO
         title="Field Notes from Bangalore's Underground | Cats Can Dance"
         description="Long reads on Bangalore's party scene, apparel drops, cool culture & streetwear, and the artists behind the nights."
-        path="/blog"
+        path="/journal"
         jsonLd={[blogLd, itemListLd]}
       />
       <main className="bg-background text-foreground min-h-screen">
@@ -72,7 +72,7 @@ const Blog = () => {
             {posts.map((p) => (
               <Link
                 key={p.slug}
-                to={`/blog/${p.slug}`}
+                to={`/journal/${p.slug}`}
                 className="bg-cream border-4 border-ink chunk-shadow flex flex-col hover:-translate-y-1 hover:translate-x-1 transition-transform overflow-hidden"
               >
                 <div className="aspect-video border-b-4 border-ink overflow-hidden">

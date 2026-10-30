@@ -54,7 +54,7 @@ export default function SceneCityPage({ slug }: Props) {
         <Nav />
         <div className="container pt-32 pb-20 text-center">
           <h1 className="font-display text-4xl text-ink">City not found.</h1>
-          <Link href="/discover" className="mt-6 inline-block font-display text-magenta">← Back to Discover</Link>
+          <Link href="/prowl" className="mt-6 inline-block font-display text-magenta">← Back to Discover</Link>
         </div>
         <Footer />
       </main>
@@ -95,7 +95,7 @@ export default function SceneCityPage({ slug }: Props) {
       {/* ── Hero ── */}
       <section className={`${scene.accentColor} border-b-4 border-ink pt-28 pb-16 md:pt-36 md:pb-24`}>
         <div className="container">
-          <Link href="/discover" className={`inline-flex items-center gap-1 font-display text-xs uppercase mb-6 ${scene.textColor} opacity-70 hover:opacity-100 transition-opacity`}>
+          <Link href="/prowl" className={`inline-flex items-center gap-1 font-display text-xs uppercase mb-6 ${scene.textColor} opacity-70 hover:opacity-100 transition-opacity`}>
             <ArrowLeft className="w-3 h-3" /> All Cities
           </Link>
           <div className="flex items-start justify-between flex-wrap gap-4">
@@ -142,7 +142,7 @@ export default function SceneCityPage({ slug }: Props) {
             <p className="font-display text-xs uppercase tracking-widest text-ink/50 mb-1">Artists</p>
             <h2 className="font-display text-3xl md:text-4xl uppercase text-ink">From {scene.name}</h2>
           </div>
-          <Link href={`/artists?city=${scene.name}`} className="font-display text-xs uppercase text-magenta hover:underline">
+          <Link href={`/litter?city=${scene.name}`} className="font-display text-xs uppercase text-magenta hover:underline">
             All artists →
           </Link>
         </div>
@@ -156,7 +156,7 @@ export default function SceneCityPage({ slug }: Props) {
               const ACCENTS = ["bg-electric-blue","bg-magenta","bg-acid-yellow","bg-orange","bg-lime"];
               const accent = ACCENTS[i % ACCENTS.length];
               return (
-                <Link key={a.id} href={`/artists/${a.slug}`}
+                <Link key={a.id} href={`/litter/${a.slug}`}
                   className="group relative aspect-square border-4 border-ink overflow-hidden chunk-shadow hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-transform">
                   {a.photo_url ? (
                     <>
@@ -192,7 +192,7 @@ export default function SceneCityPage({ slug }: Props) {
               <p className="font-display text-xs uppercase tracking-widest text-acid-yellow/70 mb-1">Events</p>
               <h2 className="font-display text-3xl md:text-4xl uppercase text-cream">Upcoming in {scene.name}</h2>
             </div>
-            <Link href="/events" className="font-display text-xs uppercase text-acid-yellow hover:underline">
+            <Link href="/episodes" className="font-display text-xs uppercase text-acid-yellow hover:underline">
               All events →
             </Link>
           </div>

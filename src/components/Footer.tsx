@@ -6,21 +6,23 @@ import { useState } from "react";
 
 const groups = [
   {
-    title: "EXPLORE",
+    title: "THE SUITE",
     links: [
-      { to: "/", label: "Home" },
-      { to: "/events", label: "Events" },
-      { to: "/videos", label: "Videos" },
-      { to: "/playlists", label: "Playlists" },
-      { to: "/shop", label: "Shop" },
-      { to: "/school", label: "CCD.SCHOOL" },
+      { to: "/episodes", label: "Episodes · Go" },
+      { to: "/prowl", label: "Prowl · Find" },
+      { to: "/litter", label: "Litter · Book" },
+      { to: "/tour", label: "Tour" },
+      { to: "/school", label: "CCD.SCHOOL · Learn" },
     ],
   },
   {
-    title: "CCD × SOCIAL",
+    title: "MORE",
     links: [
-      { to: "/ccdxsocial", label: "The Series" },
-      { to: "/ccdxsocial/sponsor", label: "Partner" },
+      { to: "/nine-lives", label: "Nine Lives · Adopt" },
+      { to: "/scratch", label: "Scratch · Wear" },
+      { to: "/catwalk", label: "Catwalk · Listen" },
+      { to: "/journal", label: "Journal" },
+      { to: "/guides", label: "Guides" },
     ],
   },
   {

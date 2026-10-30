@@ -95,7 +95,7 @@ function TalentCard({ talent, onBook }: { talent: TalentProfile; onBook: (t: Tal
   return (
     <article className="group border-4 border-ink bg-cream chunk-shadow hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-transform">
       {/* Photo */}
-      <Link href={`/artists/${talent.slug}`} className="block">
+      <Link href={`/litter/${talent.slug}`} className="block">
         <div className="relative aspect-square overflow-hidden border-b-4 border-ink">
           {talent.photo_url ? (
             <img src={talent.photo_url} alt={talent.name}
@@ -136,7 +136,7 @@ function TalentCard({ talent, onBook }: { talent: TalentProfile; onBook: (t: Tal
           {meta.emoji} {meta.label}
         </span>
 
-        <Link href={`/artists/${talent.slug}`}>
+        <Link href={`/litter/${talent.slug}`}>
           <h3 className="font-display text-xl text-ink uppercase leading-tight hover:text-magenta transition-colors mb-1">{talent.name}</h3>
         </Link>
 
@@ -491,7 +491,7 @@ export default function TalentDirectoryPage() {
             <Link href="/for-artists" className="bg-acid-yellow text-ink font-display px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
               Get Listed →
             </Link>
-            <Link href="/artists" className="bg-cream text-ink font-display px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
+            <Link href="/litter" className="bg-cream text-ink font-display px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
               Artist Directory
             </Link>
           </div>

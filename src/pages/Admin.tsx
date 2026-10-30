@@ -265,8 +265,8 @@ function AddEventForm({ onSuccess }: { onSuccess: () => void }) {
       // Revalidate the new event page + listing so poster shows immediately
       const slug = form.slug.trim();
       await Promise.allSettled([
-        fetch("/api/revalidate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: `/events/${slug}` }) }),
-        fetch("/api/revalidate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: "/events" }) }),
+        fetch("/api/revalidate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: `/episodes/${slug}` }) }),
+        fetch("/api/revalidate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: "/episodes" }) }),
       ]);
       setForm(EMPTY_EVENT_FORM);
       setExpanded(false);
@@ -803,8 +803,8 @@ function EditEventDialog({
       toast.success(`"${form.title}" updated!`);
       // Revalidate the event page + listing so poster shows immediately
       await Promise.allSettled([
-        fetch("/api/revalidate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: `/events/${event.slug}` }) }),
-        fetch("/api/revalidate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: "/events" }) }),
+        fetch("/api/revalidate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: `/episodes/${event.slug}` }) }),
+        fetch("/api/revalidate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: "/episodes" }) }),
       ]);
       onSaved();
       onClose();

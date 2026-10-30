@@ -72,7 +72,7 @@ const AUTHORS: Record<string, Author> = {
 const AuthorProfile = () => {
   const { slug = "" } = useParams();
   const author = AUTHORS[slug];
-  if (!author) return <Navigate to="/blog" replace />;
+  if (!author) return <Navigate to="/journal" replace />;
 
   const personLd = {
     "@context": "https://schema.org",
@@ -132,7 +132,7 @@ const AuthorProfile = () => {
             </aside>
 
             <div className="flex flex-wrap gap-3">
-              <Link to="/blog" className="bg-ink text-cream font-display px-5 py-2 hover:bg-magenta transition-colors">
+              <Link to="/journal" className="bg-ink text-cream font-display px-5 py-2 hover:bg-magenta transition-colors">
                 READ THE JOURNAL →
               </Link>
               <Link to="/about" className="bg-cream text-ink font-display px-5 py-2 border-4 border-ink hover:bg-acid-yellow">

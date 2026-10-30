@@ -155,7 +155,7 @@ export default function PromoterEventSubmit() {
             <p className="text-ink/80 mb-6">{result.message}</p>
             <div className="flex justify-center gap-3 flex-wrap">
               <a
-                href="/discover"
+                href="/prowl"
                 className="inline-block font-display text-sm uppercase bg-ink text-cream px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform"
               >
                 View on Discover →

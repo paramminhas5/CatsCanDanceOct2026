@@ -269,7 +269,7 @@ function UniversalSearch() {
             type: "artist" as const,
             label: a.name,
             sublabel: [a.based_city, (a.genres ?? [])[0]].filter(Boolean).join(" · "),
-            href: `/artists/${a.slug}`,
+            href: `/litter/${a.slug}`,
           }));
         setArtistResults(filtered);
       } catch { /* skip */ }
@@ -435,7 +435,7 @@ export default function DiscoverPage() {
       <SEO
         title="Discover Events — Cats Can Dance | Best Electronic Music Events in India"
         description="Find curated electronic music events across India — Bengaluru, Mumbai, Delhi, Goa and beyond. House, Techno, Jungle, Garage. Updated daily from Skillbox, District, Insider and more."
-        path="/discover"
+        path="/prowl"
         keywords="india electronic music events, best techno house events India, discover underground events bangalore mumbai delhi goa, cats can dance curated events"
         jsonLd={jsonLd}
       />
@@ -585,7 +585,7 @@ export default function DiscoverPage() {
             </p>
           </div>
           <Link
-            href="/events"
+            href="/episodes"
             className="shrink-0 bg-ink text-cream font-display text-sm px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform whitespace-nowrap"
           >
             See CCD Events →

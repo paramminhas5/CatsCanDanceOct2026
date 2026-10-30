@@ -52,7 +52,7 @@ export default function GenreWheel() {
             <p className="text-cream/60 text-sm mt-1">Detroit Techno · Chicago House · London Jungle · Berlin Techno · Goa Trance</p>
           </div>
           <Link
-            href="/discover#global-scenes"
+            href="/prowl#global-scenes"
             className="shrink-0 font-display text-xs uppercase px-4 py-2 border-4 border-cream bg-cream text-ink chunk-shadow hover:bg-acid-yellow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
           >
             Trace the roots →

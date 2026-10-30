@@ -225,7 +225,7 @@ function ShortlistTab({
               {/* Actions */}
               <div className="flex gap-1.5 shrink-0">
                 {a?.slug && (
-                  <Link href={`/artists/${a.slug}`} target="_blank"
+                  <Link href={`/litter/${a.slug}`} target="_blank"
                     className="w-8 h-8 border-2 border-ink flex items-center justify-center hover:bg-acid-yellow transition-colors"
                     title="View profile">
                     <ExternalLink className="w-3.5 h-3.5" />

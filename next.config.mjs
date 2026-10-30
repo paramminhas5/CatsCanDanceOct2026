@@ -52,9 +52,37 @@ const nextConfig = {
   webpack(config) {
     return config;
   },
+  // Suite names serve the existing page files (no duplicate code).
+  async rewrites() {
+    return [
+      { source: "/episodes", destination: "/events" },
+      { source: "/episodes/:slug", destination: "/events/:slug" },
+      { source: "/litter", destination: "/artists" },
+      { source: "/litter/:slug", destination: "/artists/:slug" },
+      { source: "/litter/:slug/epk", destination: "/artists/:slug/epk" },
+      { source: "/prowl", destination: "/discover" },
+      { source: "/scratch", destination: "/shop" },
+      { source: "/catwalk", destination: "/playlists" },
+      { source: "/nine-lives", destination: "/care" },
+      { source: "/journal", destination: "/blog" },
+      { source: "/journal/:slug", destination: "/blog/:slug" },
+    ];
+  },
   async redirects() {
     return [
+      { source: "/events", destination: "/episodes", permanent: true },
       { source: "/events/:slug", destination: "/episodes/:slug", permanent: true },
+      { source: "/artists", destination: "/litter", permanent: true },
+      { source: "/artists/:slug", destination: "/litter/:slug", permanent: true },
+      { source: "/artists/:slug/epk", destination: "/litter/:slug/epk", permanent: true },
+      { source: "/discover", destination: "/prowl", permanent: true },
+      { source: "/shop", destination: "/scratch", permanent: true },
+      { source: "/playlists", destination: "/catwalk", permanent: true },
+      { source: "/care", destination: "/nine-lives", permanent: true },
+      { source: "/blog", destination: "/journal", permanent: true },
+      { source: "/blog/:slug", destination: "/journal/:slug", permanent: true },
+      { source: "/ccdxsocial", destination: "/episodes", permanent: true },
+      { source: "/ccdxsocial/:path*", destination: "/episodes", permanent: true },
       { source: "/school", destination: SCHOOL_URL, permanent: false },
       { source: "/school/:path*", destination: `${SCHOOL_URL}/:path*`, permanent: false },
     ];

@@ -118,7 +118,7 @@ const Playlist = () => {
       />
       <div className="container relative z-10">
         <p className="font-display text-acid-yellow text-lg md:text-xl mb-3">/ THE PLAYLIST</p>
-        <a href="/playlists" className="inline-block hover:opacity-90 transition-opacity">
+        <a href="/catwalk" className="inline-block hover:opacity-90 transition-opacity">
           <h2 className="font-display text-cream text-4xl md:text-6xl mb-8 drop-shadow-[6px_6px_0_hsl(var(--ink))] leading-[0.9]">
             NOW<br/>SPINNING
           </h2>
@@ -187,7 +187,7 @@ const Playlist = () => {
             </a>
           )}
           <a
-            href="/playlists"
+            href="/catwalk"
             className="inline-block font-display text-cream text-lg underline decoration-4 decoration-cream underline-offset-4 hover:text-acid-yellow transition"
           >
             See all playlists →

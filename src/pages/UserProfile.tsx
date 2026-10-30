@@ -143,7 +143,7 @@ function UpcomingShowCard({ show }: { show: UpcomingShow }) {
         </p>
       </div>
       <div className="flex-1 min-w-0">
-        <Link href={`/artists/${show.artist_slug}`} className="font-display text-base uppercase text-ink hover:text-magenta transition-colors truncate block">
+        <Link href={`/litter/${show.artist_slug}`} className="font-display text-base uppercase text-ink hover:text-magenta transition-colors truncate block">
           {show.artist_name}
         </Link>
         <p className="text-sm text-ink/60 truncate">
@@ -192,7 +192,7 @@ function FollowedArtistCard({ slug, onUnfollow }: { slug: string; onUnfollow: (s
 
   return (
     <div className="group relative border-4 border-ink overflow-hidden chunk-shadow">
-      <Link href={`/artists/${artist.slug}`}>
+      <Link href={`/litter/${artist.slug}`}>
         <div className="relative aspect-square">
           {artist.photo_url ? (
             <>
@@ -451,7 +451,7 @@ export default function UserProfilePage() {
                   Artists you follow get shown in your personalised event recommendations.
                 </p>
               </div>
-              <Link href="/artists" className="font-display text-xs uppercase text-magenta hover:underline">
+              <Link href="/litter" className="font-display text-xs uppercase text-magenta hover:underline">
                 Find Artists →
               </Link>
             </div>
@@ -463,7 +463,7 @@ export default function UserProfilePage() {
                 <p className="text-sm text-ink/60 mb-4">
                   Follow artists from their profile pages to get personalised event recommendations.
                 </p>
-                <Link href="/artists"
+                <Link href="/litter"
                   className="inline-block font-display text-sm uppercase px-5 py-2 border-4 border-ink bg-ink text-cream chunk-shadow hover:bg-magenta transition-colors">
                   Browse Artists →
                 </Link>
@@ -488,7 +488,7 @@ export default function UserProfilePage() {
                     </Link>
                   ))}
                 </div>
-                <Link href="/events"
+                <Link href="/episodes"
                   className="inline-block font-display text-sm uppercase px-5 py-2 border-4 border-ink bg-acid-yellow text-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
                   See All Events →
                 </Link>
@@ -514,7 +514,7 @@ export default function UserProfilePage() {
                   From artists you follow — in your cities.
                 </p>
               </div>
-              <Link href="/events" className="font-display text-xs uppercase text-magenta hover:underline">
+              <Link href="/episodes" className="font-display text-xs uppercase text-magenta hover:underline">
                 All Events →
               </Link>
             </div>
@@ -527,7 +527,7 @@ export default function UserProfilePage() {
                   Follow more artists and set your cities to see their upcoming dates here.
                 </p>
                 <div className="flex gap-3 justify-center flex-wrap">
-                  <Link href="/artists" className="font-display text-sm uppercase px-4 py-2 border-4 border-ink bg-ink text-cream hover:bg-magenta transition-colors">
+                  <Link href="/litter" className="font-display text-sm uppercase px-4 py-2 border-4 border-ink bg-ink text-cream hover:bg-magenta transition-colors">
                     Browse Artists →
                   </Link>
                   <button onClick={() => setActiveTab("preferences")} className="font-display text-sm uppercase px-4 py-2 border-4 border-ink text-ink hover:bg-acid-yellow transition-colors">
@@ -584,13 +584,13 @@ export default function UserProfilePage() {
             <p className="text-cream/60 text-sm mt-1">Find artists, scenes, and events across India.</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/discover" className="bg-acid-yellow text-ink font-display text-sm uppercase px-5 py-2 border-4 border-cream chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
+            <Link href="/prowl" className="bg-acid-yellow text-ink font-display text-sm uppercase px-5 py-2 border-4 border-cream chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
               Discover
             </Link>
-            <Link href="/artists" className="bg-cream text-ink font-display text-sm uppercase px-5 py-2 border-4 border-cream chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
+            <Link href="/litter" className="bg-cream text-ink font-display text-sm uppercase px-5 py-2 border-4 border-cream chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
               Artists
             </Link>
-            <Link href="/events" className="bg-magenta text-cream font-display text-sm uppercase px-5 py-2 border-4 border-cream chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
+            <Link href="/episodes" className="bg-magenta text-cream font-display text-sm uppercase px-5 py-2 border-4 border-cream chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
               Events
             </Link>
           </div>

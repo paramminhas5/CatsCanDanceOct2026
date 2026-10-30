@@ -32,7 +32,7 @@ const Media = () => (
         {posts.slice(0, 3).map((p) => (
           <Link
             key={p.slug}
-            to={`/blog/${p.slug}`}
+            to={`/journal/${p.slug}`}
             className="bg-cream border-4 border-ink chunk-shadow flex flex-col hover:-translate-y-1 hover:translate-x-1 transition-transform"
           >
             <div className="aspect-video border-b-4 border-ink overflow-hidden">

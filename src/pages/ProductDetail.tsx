@@ -175,7 +175,7 @@ const ProductDetail = () => {
           <div className="absolute top-8 right-4 md:right-8 z-10">
             <CartDrawer />
           </div>
-          <Link href="/shop" className="inline-flex items-center gap-2 mb-8 font-bold hover:text-magenta">
+          <Link href="/scratch" className="inline-flex items-center gap-2 mb-8 font-bold hover:text-magenta">
             <ArrowLeft className="w-4 h-4" /> BACK TO SHOP
           </Link>
 
@@ -314,7 +314,7 @@ const ProductDetail = () => {
           <div className="container">
             <p className="font-display text-magenta text-base md:text-lg mb-4">/ MORE FROM CATS CAN DANCE</p>
             <div className="grid gap-4 sm:grid-cols-3">
-              <Link href="/shop" className="block bg-cream border-4 border-ink chunk-shadow p-5 hover:-translate-y-1 hover:translate-x-1 transition-transform">
+              <Link href="/scratch" className="block bg-cream border-4 border-ink chunk-shadow p-5 hover:-translate-y-1 hover:translate-x-1 transition-transform">
                 <p className="font-display text-ink text-2xl mb-1">SEE ALL CCD STREETWEAR →</p>
                 <p className="text-ink/70 text-sm font-medium">Limited drops, no restocks. Bangalore-made.</p>
               </Link>
@@ -322,7 +322,7 @@ const ProductDetail = () => {
                 <p className="font-display text-ink text-2xl mb-1">PET DROPS & TREATS →</p>
                 <p className="text-ink/70 text-sm font-medium">Cat bandanas, bucket hats, CCD treats.</p>
               </Link>
-              <Link href="/events" className="block bg-cream border-4 border-ink chunk-shadow p-5 hover:-translate-y-1 hover:translate-x-1 transition-transform">
+              <Link href="/episodes" className="block bg-cream border-4 border-ink chunk-shadow p-5 hover:-translate-y-1 hover:translate-x-1 transition-transform">
                 <p className="font-display text-ink text-2xl mb-1">UPCOMING EPISODES →</p>
                 <p className="text-ink/70 text-sm font-medium">RSVP an underground night in Bangalore.</p>
               </Link>

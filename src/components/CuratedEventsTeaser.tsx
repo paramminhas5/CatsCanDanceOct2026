@@ -159,7 +159,7 @@ export default function CuratedEventsTeaser() {
             </p>
           </div>
           <Link
-            href="/discover"
+            href="/prowl"
             className="shrink-0 flex items-center gap-2 font-display text-sm uppercase bg-ink text-cream px-5 py-3 border-4 border-ink chunk-shadow hover:bg-magenta hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
           >
             <Compass className="w-4 h-4" />
@@ -187,7 +187,7 @@ export default function CuratedEventsTeaser() {
         {!loading && total > 4 && (
           <div className="mt-8 flex justify-center">
             <Link
-              href="/discover"
+              href="/prowl"
               className="flex items-center gap-3 font-display text-sm uppercase bg-acid-yellow text-ink px-8 py-4 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform"
             >
               <Compass className="w-4 h-4" />

@@ -15,7 +15,7 @@ export default function GlobalScenePage({ slug }: Props) {
       <main className="bg-cream min-h-screen"><Nav />
         <div className="container pt-32 text-center">
           <h1 className="font-display text-4xl text-ink">Scene not found.</h1>
-          <Link href="/discover" className="mt-4 inline-block font-display text-magenta">← Discover</Link>
+          <Link href="/prowl" className="mt-4 inline-block font-display text-magenta">← Discover</Link>
         </div>
         <Footer />
       </main>
@@ -59,7 +59,7 @@ export default function GlobalScenePage({ slug }: Props) {
       {/* ── Hero ── */}
       <section className={`${scene.accentColor} border-b-4 border-ink pt-28 pb-16 md:pt-36 md:pb-24`}>
         <div className="container">
-          <Link href="/discover" className={`inline-flex items-center gap-1 font-display text-xs uppercase mb-6 ${scene.textColor} opacity-70 hover:opacity-100 transition-opacity`}>
+          <Link href="/prowl" className={`inline-flex items-center gap-1 font-display text-xs uppercase mb-6 ${scene.textColor} opacity-70 hover:opacity-100 transition-opacity`}>
             <ArrowLeft className="w-3 h-3" /> All Scenes
           </Link>
           <div className="flex items-center gap-3 mb-4 flex-wrap">

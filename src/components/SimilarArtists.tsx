@@ -94,7 +94,7 @@ function ArtistMiniCard({ artist, index, connectionType, sharedEvents, sharedVen
 
   return (
     <Link
-      href={`/artists/${artist.slug}`}
+      href={`/litter/${artist.slug}`}
       className="group relative border-4 border-ink overflow-hidden chunk-shadow hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-transform aspect-square"
     >
       {artist.photo_url ? (
@@ -248,7 +248,7 @@ export default function SimilarArtists({ slug, genres, connections }: Props) {
             </div>
             <p className="text-ink/50 text-xs font-display uppercase mt-1">{subheading}</p>
           </div>
-          <Link href="/artists" className="font-display text-xs uppercase text-magenta hover:underline">
+          <Link href="/litter" className="font-display text-xs uppercase text-magenta hover:underline">
             All Artists →
           </Link>
         </div>

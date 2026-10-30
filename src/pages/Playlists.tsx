@@ -81,7 +81,7 @@ const Playlists = () => {
       <SEO
         title="Playlists — Cats Can Dance | What we play, on rotation"
         description="Every Cats Can Dance playlist across Spotify, YouTube and SoundCloud — dance music, late-night sets and warehouse cuts."
-        path="/playlists"
+        path="/catwalk"
       />
       <Nav />
       <PageHero

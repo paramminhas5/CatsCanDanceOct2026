@@ -85,7 +85,7 @@ const EventLineupCard = ({ artist, index }: Props) => {
   }
 
   return (
-    <Link to={`/artists/${artist.slug}`} className="block focus:outline-none focus:ring-4 focus:ring-magenta">
+    <Link to={`/litter/${artist.slug}`} className="block focus:outline-none focus:ring-4 focus:ring-magenta">
       {inner}
     </Link>
   );

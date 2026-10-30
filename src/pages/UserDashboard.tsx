@@ -289,7 +289,7 @@ function YourEventsPanel({ user }: { user: any }) {
       <div className="flex items-center justify-between">
         <h2 className="font-display text-2xl text-ink uppercase">Your Events</h2>
         <Link
-          href="/discover"
+          href="/prowl"
           className="flex items-center gap-1.5 font-display text-xs uppercase text-magenta hover:underline"
         >
           <Compass className="w-3.5 h-3.5" />
@@ -317,7 +317,7 @@ function YourEventsPanel({ user }: { user: any }) {
         events={artists}
         emptyMsg="Follow artists on their profile pages to see upcoming gigs here"
         cta={
-          <Link href="/artists" className="font-display text-[10px] uppercase text-cream/60 hover:text-acid-yellow transition-colors">
+          <Link href="/litter" className="font-display text-[10px] uppercase text-cream/60 hover:text-acid-yellow transition-colors">
             Browse Artists →
           </Link>
         }
@@ -330,7 +330,7 @@ function YourEventsPanel({ user }: { user: any }) {
         events={saved}
         emptyMsg="Save events from the Discover page to see them here"
         cta={
-          <Link href="/discover" className="font-display text-[10px] uppercase text-cream/60 hover:text-acid-yellow transition-colors">
+          <Link href="/prowl" className="font-display text-[10px] uppercase text-cream/60 hover:text-acid-yellow transition-colors">
             Find Events →
           </Link>
         }
@@ -343,7 +343,7 @@ function YourEventsPanel({ user }: { user: any }) {
           <p className="text-cream/50 text-xs mt-0.5">Daily-updated events from across India.</p>
         </div>
         <Link
-          href="/discover"
+          href="/prowl"
           className="shrink-0 flex items-center gap-2 font-display text-sm uppercase bg-acid-yellow text-ink px-5 py-3 border-4 border-acid-yellow chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform"
         >
           <Compass className="w-4 h-4" />
@@ -539,7 +539,7 @@ function ArtistPortal({ user, roleInfo }: { user: any; roleInfo: any }) {
         <div>
           <p className="font-display text-xs uppercase text-ink/50 mb-1">Artist Portal</p>
           <h2 className="font-display text-3xl text-ink uppercase">{artist?.name || roleInfo.entityName}</h2>
-          {roleInfo.entitySlug && <p className="font-display text-xs text-ink/50 mt-1"><a href={`/artists/${roleInfo.entitySlug}`} className="underline">/artists/{roleInfo.entitySlug} ↗</a></p>}
+          {roleInfo.entitySlug && <p className="font-display text-xs text-ink/50 mt-1"><a href={`/litter/${roleInfo.entitySlug}`} className="underline">/artists/{roleInfo.entitySlug} ↗</a></p>}
         </div>
         {fp && (
           <div className="text-right shrink-0">
@@ -594,7 +594,7 @@ function ArtistPortal({ user, roleInfo }: { user: any; roleInfo: any }) {
         <p className="font-display text-sm uppercase text-ink mb-3">Press Kit / EPK</p>
         <p className="text-sm text-ink/60 mb-4">Your full EPK lives on your artist page — it's always print-ready and shareable.</p>
         <div className="flex gap-3 flex-wrap">
-          {roleInfo.entitySlug && <a href={`/artists/${roleInfo.entitySlug}#epk`} className="font-display text-xs uppercase bg-ink text-cream px-5 py-3 border-4 border-ink hover:bg-magenta transition-colors">View EPK ↗</a>}
+          {roleInfo.entitySlug && <a href={`/litter/${roleInfo.entitySlug}#epk`} className="font-display text-xs uppercase bg-ink text-cream px-5 py-3 border-4 border-ink hover:bg-magenta transition-colors">View EPK ↗</a>}
           <button onClick={() => window.print()} className="font-display text-xs uppercase bg-acid-yellow text-ink px-5 py-3 border-4 border-ink hover:bg-cream transition-colors">🖨 Print / Download PDF</button>
         </div>
       </div>
@@ -687,7 +687,7 @@ function PromoterPortal({ user }: { user: any }) {
           <a href="/submit-event/event" className="inline-block font-display text-xs uppercase bg-magenta text-cream px-5 py-3 border-4 border-ink hover:bg-ink transition-colors">
             + Submit New Event
           </a>
-          <a href="/discover" className="inline-block font-display text-xs uppercase bg-cream text-ink px-5 py-3 border-4 border-ink hover:bg-acid-yellow transition-colors">
+          <a href="/prowl" className="inline-block font-display text-xs uppercase bg-cream text-ink px-5 py-3 border-4 border-ink hover:bg-acid-yellow transition-colors">
             View Discover Feed →
           </a>
         </div>

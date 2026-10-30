@@ -89,7 +89,7 @@ const SubmitEvent = () => {
       </PageHero>
 
       <div className="container max-w-2xl py-12 md:py-20">
-        <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Events", to: "/events" }, { label: "Submit Event" }]} />
+        <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Events", to: "/episodes" }, { label: "Submit Event" }]} />
 
         {step === "submitted" ? (
           <div className="mt-10 bg-lime border-4 border-ink chunk-shadow p-8 text-center">
@@ -98,7 +98,7 @@ const SubmitEvent = () => {
               We'll review your application and get back to you within 48 hours. Once approved,
               you'll be able to submit events directly to the discover feed.
             </p>
-            <a href="/events"
+            <a href="/episodes"
               className="inline-block bg-ink text-cream font-display text-lg px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
               BACK TO EVENTS →
             </a>

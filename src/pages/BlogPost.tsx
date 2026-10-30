@@ -42,28 +42,28 @@ const FAQ_DEFAULT = FAQ_BY_CATEGORY.CULTURE;
 
 const TAKE_IT_FURTHER: Record<string, { to: string; label: string; desc: string }[]> = {
   GUIDES: [
-    { to: "/events", label: "RSVP an upcoming Episode", desc: "Live dates and lineups in Bangalore." },
+    { to: "/episodes", label: "RSVP an upcoming Episode", desc: "Live dates and lineups in Bangalore." },
     { to: "/bengaluru-underground-dance-music", label: "The Bengaluru underground guide", desc: "Our deep map of the scene." },
-    { to: "/blog", label: "More guides", desc: "Read the full journal." },
+    { to: "/journal", label: "More guides", desc: "Read the full journal." },
   ],
   DROPS: [
-    { to: "/shop", label: "Shop the current drop", desc: "Limited streetwear, no restocks." },
+    { to: "/scratch", label: "Shop the current drop", desc: "Limited streetwear, no restocks." },
     { to: "/pets", label: "Pet streetwear", desc: "Bandanas, bucket hats, CCD treats." },
     { to: "/about", label: "Why we drop the way we do", desc: "The brand behind the print." },
   ],
   ARTISTS: [
-    { to: "/playlists", label: "Curator playlists", desc: "Mixes from the lineup." },
+    { to: "/catwalk", label: "Curator playlists", desc: "Mixes from the lineup." },
     { to: "/videos", label: "Watch sets & recaps", desc: "Footage from the floor." },
-    { to: "/events", label: "Upcoming Episodes", desc: "Catch them live." },
+    { to: "/episodes", label: "Upcoming Episodes", desc: "Catch them live." },
   ],
   CULTURE: [
     { to: "/about", label: "About Cats Can Dance", desc: "Who we are." },
-    { to: "/events", label: "Upcoming nights", desc: "RSVP." },
-    { to: "/shop", label: "The drop", desc: "Limited streetwear from Bangalore." },
+    { to: "/episodes", label: "Upcoming nights", desc: "RSVP." },
+    { to: "/scratch", label: "The drop", desc: "Limited streetwear from Bangalore." },
   ],
   JOURNAL: [
-    { to: "/blog", label: "All posts", desc: "Browse the journal." },
-    { to: "/events", label: "Episodes", desc: "Live dates." },
+    { to: "/journal", label: "All posts", desc: "Browse the journal." },
+    { to: "/episodes", label: "Episodes", desc: "Live dates." },
     { to: "/about", label: "About the Pack", desc: "Who's behind it." },
   ],
 };
@@ -129,7 +129,7 @@ const BlogPost = () => {
       <SEO
         title={`${post.title} — Cats Can Dance`}
         description={post.excerpt}
-        path={`/blog/${post.slug}`}
+        path={`/journal/${post.slug}`}
         type="article"
         keywords={keywords}
         jsonLd={[articleLd, faqLd]}
@@ -141,7 +141,7 @@ const BlogPost = () => {
             <Breadcrumbs
               items={[
                 { label: "Home", to: "/" },
-                { label: "Blog", to: "/blog" },
+                { label: "Blog", to: "/journal" },
                 { label: post.title },
               ]}
             />
@@ -268,7 +268,7 @@ const BlogPost = () => {
                   {related.map((r) => (
                     <li key={r.slug}>
                       <Link
-                        to={`/blog/${r.slug}`}
+                        to={`/journal/${r.slug}`}
                         className="block bg-cream border-4 border-ink chunk-shadow p-4 hover:-translate-y-1 hover:translate-x-1 transition-transform h-full"
                       >
                         <span className="inline-block bg-ink text-cream text-[10px] font-bold px-2 py-0.5 mb-2">

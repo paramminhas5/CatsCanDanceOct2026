@@ -323,7 +323,7 @@ function ArtistsTab() {
           artists.map(a => (
             <div key={a.id} className="grid grid-cols-5 items-center px-5 py-2.5 border-t border-ink/10 hover:bg-acid-yellow/5 transition-colors">
               <div className="col-span-2">
-                <a href={`/artists/${a.slug}`} className="font-display text-xs text-ink uppercase hover:text-magenta">{a.name}</a>
+                <a href={`/litter/${a.slug}`} className="font-display text-xs text-ink uppercase hover:text-magenta">{a.name}</a>
                 <p className={`text-[9px] mt-0.5 ${a.bio && a.bio.length > 50 ? "text-ink/40" : "text-magenta/60"}`}>
                   {a.bio && a.bio.length > 50 ? `Bio: ${a.bio.length}c` : "⚠ needs bio"}
                 </p>

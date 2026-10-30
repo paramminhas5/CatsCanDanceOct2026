@@ -116,7 +116,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
         <Nav />
         <section className="container pt-32 pb-16">
           <h1 className="font-display text-5xl text-ink mb-4">Event not found</h1>
-          <Link to="/events" className="font-display text-magenta underline">← All events</Link>
+          <Link to="/episodes" className="font-display text-magenta underline">← All events</Link>
         </section>
         <Footer />
       </main>
@@ -221,7 +221,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
       <SEO
         title={`${event.title} — Cats Can Dance${event.series_label ? ` · ${event.series_label}` : ""}`}
         description={event.blurb}
-        path={`/events/${slug}`}
+        path={`/episodes/${slug}`}
         type="event"
         jsonLd={[eventLd, breadcrumbLd]}
       />
@@ -240,7 +240,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
               light={isUpcoming}
               items={[
                 { label: "Home", to: "/" },
-                { label: "Events", to: "/events" },
+                { label: "Events", to: "/episodes" },
                 { label: event.title },
               ]}
             />

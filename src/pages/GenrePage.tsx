@@ -27,7 +27,7 @@ export default function GenrePage({ slug }: Props) {
       <main className="bg-cream min-h-screen"><Nav />
         <div className="container pt-32 text-center">
           <h1 className="font-display text-4xl text-ink">Genre not found.</h1>
-          <Link href="/discover" className="mt-4 inline-block font-display text-magenta">← Discover</Link>
+          <Link href="/prowl" className="mt-4 inline-block font-display text-magenta">← Discover</Link>
         </div>
         <Footer />
       </main>
@@ -67,7 +67,7 @@ export default function GenrePage({ slug }: Props) {
       {/* ── Hero ── */}
       <section className={`${genre.accentColor} border-b-4 border-ink pt-28 pb-16 md:pt-36 md:pb-24`}>
         <div className="container">
-          <Link href="/discover" className={`inline-flex items-center gap-1 font-display text-xs uppercase mb-6 ${genre.textColor} opacity-70 hover:opacity-100 transition-opacity`}>
+          <Link href="/prowl" className={`inline-flex items-center gap-1 font-display text-xs uppercase mb-6 ${genre.textColor} opacity-70 hover:opacity-100 transition-opacity`}>
             <ArrowLeft className="w-3 h-3" /> All Genres
           </Link>
           <div className="flex flex-wrap items-start justify-between gap-4">
@@ -168,7 +168,7 @@ export default function GenrePage({ slug }: Props) {
       <section className="container py-14 border-b-4 border-ink">
         <div className="flex items-end justify-between mb-8">
           <h2 className="font-display text-3xl uppercase">Indian {genre.name} Artists</h2>
-          <Link href={`/artists?genre=${genre.name}`} className="font-display text-xs uppercase text-magenta hover:underline">All →</Link>
+          <Link href={`/litter?genre=${genre.name}`} className="font-display text-xs uppercase text-magenta hover:underline">All →</Link>
         </div>
         {loading ? (
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -180,7 +180,7 @@ export default function GenrePage({ slug }: Props) {
               const ACCENTS = ["bg-electric-blue","bg-magenta","bg-acid-yellow","bg-orange","bg-lime"];
               const acc = ACCENTS[i % ACCENTS.length];
               return (
-                <Link key={a.id} href={`/artists/${a.slug}`}
+                <Link key={a.id} href={`/litter/${a.slug}`}
                   className="group relative aspect-square border-4 border-ink overflow-hidden chunk-shadow hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-transform">
                   {a.photo_url ? (
                     <><img src={a.photo_url} alt={a.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />

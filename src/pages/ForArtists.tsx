@@ -101,7 +101,7 @@ const ForArtists = () => (
             GO TO ARTIST PORTAL →
           </Link>
           <Link
-            href="/artists"
+            href="/litter"
             className="inline-block bg-transparent text-cream font-display text-sm px-8 py-3 border-4 border-cream/40 hover:border-cream hover:bg-cream/10 transition-colors text-center"
           >
             BROWSE THE ROSTER

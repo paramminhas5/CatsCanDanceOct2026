@@ -111,7 +111,7 @@ function TicketList({ tickets, holderEmail }: { tickets: any[]; holderEmail?: st
           No tickets for this email address.{" "}
           {holderEmail && <span>Double-check the email you used at checkout.</span>}
         </p>
-        <Link to="/events" className="inline-block bg-ink text-cream font-display px-5 py-3 border-4 border-ink hover:bg-magenta transition-colors">
+        <Link to="/episodes" className="inline-block bg-ink text-cream font-display px-5 py-3 border-4 border-ink hover:bg-magenta transition-colors">
           BROWSE EVENTS →
         </Link>
       </div>

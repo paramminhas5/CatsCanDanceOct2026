@@ -187,7 +187,7 @@ const Hero = () => {
         {next && daysAway !== null && (
           <div className="absolute top-[72px] md:top-[80px] inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
             <Link
-              href={`/events/${next.slug}`}
+              href={`/episodes/${next.slug}`}
               className="pointer-events-auto inline-flex items-center gap-3 bg-acid-yellow text-ink border-4 border-ink px-4 py-2 font-display text-xs md:text-sm uppercase tracking-widest chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform"
             >
               <span className="inline-block w-2 h-2 bg-magenta rounded-full animate-pulse shrink-0" aria-hidden />

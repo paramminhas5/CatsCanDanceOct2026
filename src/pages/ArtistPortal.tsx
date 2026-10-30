@@ -876,19 +876,19 @@ const ArtistPortal = () => {
       setLoading(true);
       if (claimId) {
         setClaiming(true);
-        try { await api.post(`/artists/${claimId}/claim`, { userId: user.id }); toast.success("Profile claimed!"); }
+        try { await api.post(`/litter/${claimId}/claim`, { userId: user.id }); toast.success("Profile claimed!"); }
         catch (e: any) { toast.error("Could not claim profile: " + e.message); }
         setClaiming(false);
       }
       try {
-        const data = await api.get<any>("/artists/by-user");
+        const data = await api.get<any>("/litter/by-user");
         setArtist(data ? { ...data, genres: Array.isArray(data.genres) ? data.genres : [], festivals: Array.isArray(data.festivals) ? data.festivals : [], available_cities: Array.isArray(data.available_cities) ? data.available_cities : [], open_to_bookings: data.open_to_bookings !== false } as Artist : null);
       } catch { setArtist(null); }
       setLoading(false);
     })();
   }, [isLoaded, user, claimId]);
 
-  const handleSignOut = async () => { await signOut(); router.push("/artists"); };
+  const handleSignOut = async () => { await signOut(); router.push("/litter"); };
 
   if (!isLoaded || (!user && loading)) return (
     <div className="min-h-screen bg-cream"><Nav />
@@ -923,7 +923,7 @@ const ArtistPortal = () => {
       <div className="container py-24 max-w-2xl">
         <h1 className="font-display text-4xl uppercase text-ink mb-4">No Profile Linked</h1>
         <p className="text-ink/70 mb-6">Signed in as <strong>{userEmail}</strong> but no artist profile is linked yet.</p>
-        <p className="text-ink/70 mb-4">Go to the <Link href="/artists" className="underline text-magenta">artists directory</Link>, find your profile, and click <strong>"Are you [name]?"</strong> to link it.</p>
+        <p className="text-ink/70 mb-4">Go to the <Link href="/litter" className="underline text-magenta">artists directory</Link>, find your profile, and click <strong>"Are you [name]?"</strong> to link it.</p>
         <button onClick={handleSignOut} className="font-display text-sm uppercase underline text-ink/60">Sign out</button>
       </div>
       <Footer />
@@ -946,10 +946,10 @@ const ArtistPortal = () => {
             </div>
           </div>
           <div className="flex flex-wrap gap-2">
-            <Link href={`/artists/${artist.slug}`} target="_blank" className="font-display text-xs uppercase px-4 py-2 border-4 border-ink bg-acid-yellow text-ink chunk-shadow hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-transform flex items-center gap-1.5">
+            <Link href={`/litter/${artist.slug}`} target="_blank" className="font-display text-xs uppercase px-4 py-2 border-4 border-ink bg-acid-yellow text-ink chunk-shadow hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-transform flex items-center gap-1.5">
               <ExternalLink className="w-3 h-3" /> View public profile
             </Link>
-            <Link href={`/artists/${artist.slug}/epk`} target="_blank" className="font-display text-xs uppercase px-4 py-2 border-4 border-ink bg-electric-blue text-cream chunk-shadow hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-transform flex items-center gap-1.5">
+            <Link href={`/litter/${artist.slug}/epk`} target="_blank" className="font-display text-xs uppercase px-4 py-2 border-4 border-ink bg-electric-blue text-cream chunk-shadow hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-transform flex items-center gap-1.5">
               <BookOpen className="w-3 h-3" /> Share EPK
             </Link>
             <button onClick={handleSignOut} className="font-display text-xs uppercase px-4 py-2 border-4 border-ink text-ink/60 hover:bg-ink hover:text-cream transition-colors">Sign out</button>

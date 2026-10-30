@@ -209,7 +209,7 @@ function FallbackBlock() {
         ))}
       </div>
       <Link
-        to="/discover"
+        to="/prowl"
         className="inline-flex items-center gap-2 bg-ink text-cream font-display text-sm uppercase px-6 py-3 border-4 border-ink chunk-shadow hover:bg-magenta hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
       >
         <Compass className="w-4 h-4" />
@@ -280,7 +280,7 @@ export default function SafeCuratedEvents() {
           </div>
           {fetchState !== "error" && (
             <Link
-              to="/discover"
+              to="/prowl"
               className="shrink-0 flex items-center gap-2 font-display text-sm uppercase bg-ink text-cream px-5 py-3 border-4 border-ink chunk-shadow hover:bg-magenta hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
             >
               <Compass className="w-4 h-4" />
@@ -304,7 +304,7 @@ export default function SafeCuratedEvents() {
             {total > 6 && (
               <div className="mt-8 flex justify-center">
                 <Link
-                  to="/discover"
+                  to="/prowl"
                   className="flex items-center gap-3 font-display text-sm uppercase bg-acid-yellow text-ink px-8 py-4 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform"
                 >
                   <Compass className="w-4 h-4" />

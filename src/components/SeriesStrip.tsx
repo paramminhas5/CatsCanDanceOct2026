@@ -80,7 +80,7 @@ const SeriesCard = ({ event }: { event: EventRow }) => {
   const isPast = event.status === "past";
   return (
     <Link
-      to={`/events/${event.slug}`}
+      to={`/episodes/${event.slug}`}
       className={`relative block border-4 border-ink chunk-shadow p-5 hover:-translate-y-1 hover:translate-x-1 transition-transform ${
         isFinale ? "bg-magenta text-cream" : isPast ? "bg-cream text-ink" : "bg-acid-yellow text-ink"
       }`}

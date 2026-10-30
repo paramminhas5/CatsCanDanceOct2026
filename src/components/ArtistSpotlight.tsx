@@ -75,7 +75,7 @@ function ArtistSlide({ artist }: { artist: Artist }) {
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              href={`/artists/${artist.slug}`}
+              href={`/litter/${artist.slug}`}
               className="font-display text-sm uppercase px-5 py-3 border-4 border-ink bg-ink text-cream chunk-shadow hover:bg-magenta hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
             >
               Full Profile →
@@ -221,7 +221,7 @@ export default function ArtistSpotlight() {
           <div className="border-4 border-cream/20 p-10 text-center">
             <p className="font-display text-cream/50 text-sm uppercase tracking-widest mb-4">No featured artists yet</p>
             <Link
-              href="/artists"
+              href="/litter"
               className="font-display text-xs uppercase px-5 py-2.5 border-2 border-cream text-cream hover:bg-cream hover:text-magenta transition-colors"
             >
               Browse all artists →
@@ -246,7 +246,7 @@ export default function ArtistSpotlight() {
             </h2>
           </div>
           <Link
-            href="/artists"
+            href="/litter"
             className="hidden sm:inline-block font-display text-xs uppercase text-cream/70 hover:text-cream border-2 border-cream/40 hover:border-cream px-3 py-1.5 transition-colors"
           >
             All Artists →

@@ -58,7 +58,7 @@ export default function SceneSnapshot() {
             </h2>
           </div>
           <Link
-            href="/discover"
+            href="/prowl"
             className="hidden sm:inline-flex items-center gap-2 font-display text-sm uppercase border-4 border-ink px-4 py-2 bg-ink text-cream chunk-shadow hover:bg-magenta hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
           >
             Full Map <ArrowRight className="w-4 h-4" />
@@ -123,7 +123,7 @@ export default function SceneSnapshot() {
         {/* Mobile CTA */}
         <div className="mt-6 sm:hidden">
           <Link
-            href="/discover"
+            href="/prowl"
             className="block text-center font-display text-sm uppercase border-4 border-ink px-4 py-3 bg-ink text-cream chunk-shadow"
           >
             Explore All Scenes →

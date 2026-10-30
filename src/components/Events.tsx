@@ -57,7 +57,7 @@ const Events = () => {
             </h2>
           </div>
           <Link
-            to="/events"
+            to="/episodes"
             className="font-display text-ink text-base underline decoration-4 decoration-magenta underline-offset-4 hover:text-magenta transition"
           >
             All events →
@@ -78,7 +78,7 @@ const Events = () => {
               <div className={`flex flex-col ${featuredPoster ? "md:flex-row" : ""} gap-6 md:gap-10`}>
                 {featuredPoster && (
                   <div className="md:w-[40%] shrink-0">
-                    <Link to={`/events/${nextUp.slug}`} className="block group">
+                    <Link to={`/episodes/${nextUp.slug}`} className="block group">
                       <div className="relative aspect-[3/4] bg-ink border-4 border-ink overflow-hidden chunk-shadow group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none transition-transform">
                         <Image
                           src={featuredPoster}
@@ -109,7 +109,7 @@ const Events = () => {
                       </span>
                     )}
                   </div>
-                  <Link to={`/events/${nextUp.slug}`}>
+                  <Link to={`/episodes/${nextUp.slug}`}>
                     <h3 className="font-display text-4xl md:text-6xl mb-4 leading-[0.9] hover:text-acid-yellow transition-colors">
                       {nextUp.title.toUpperCase()}
                     </h3>
@@ -152,7 +152,7 @@ const Events = () => {
 
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Link
-                      to={`/events/${nextUp.slug}`}
+                      to={`/episodes/${nextUp.slug}`}
                       className="bg-acid-yellow text-ink font-display text-xl px-8 py-4 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform text-center"
                     >
                       VIEW EVENT & RSVP →
@@ -197,7 +197,7 @@ function EventCard({ event, isPast = false }: { event: EventRow; isPast?: boolea
   const src = resolvePoster(event.poster_url);
   return (
     <Link
-      to={`/events/${event.slug}`}
+      to={`/episodes/${event.slug}`}
       className="bg-cream border-4 border-ink chunk-shadow overflow-hidden hover:-translate-y-1 hover:translate-x-1 transition-transform block group"
     >
       <div className="relative aspect-video bg-ink border-b-4 border-ink overflow-hidden">

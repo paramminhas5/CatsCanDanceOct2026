@@ -96,7 +96,7 @@ export default function ClaimTransfer() {
                 <p className="font-display text-2xl text-magenta uppercase">Link Invalid</p>
                 <p className="text-ink/60 text-sm">{error}</p>
                 <p className="text-ink/40 text-xs">This link may have expired (24h limit) or already been claimed.</p>
-                <Link to="/events" className="inline-block bg-ink text-cream font-display px-5 py-3 border-4 border-ink hover:bg-magenta transition-colors">
+                <Link to="/episodes" className="inline-block bg-ink text-cream font-display px-5 py-3 border-4 border-ink hover:bg-magenta transition-colors">
                   BROWSE EVENTS
                 </Link>
               </div>

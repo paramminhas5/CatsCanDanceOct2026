@@ -87,7 +87,7 @@ const Shop = () => {
       <SEO
         title="Apparel, Limited Drops & CCD Goods | Cats Can Dance"
         description="Tees, totes, accessories. Limited apparel drops and CCD goods from Bangalore's dance crew."
-        path="/shop"
+        path="/scratch"
         jsonLd={[collectionLd, ...(filtered.length ? [itemListLd] : [])]}
       />
       <main className="bg-cream text-ink">

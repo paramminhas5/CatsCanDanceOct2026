@@ -109,7 +109,7 @@ function ArtistBookCard({ artist, onBook }: { artist: Artist; onBook: (a: Artist
   return (
     <article className="group border-4 border-ink bg-cream chunk-shadow hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-transform">
       {/* Photo / placeholder */}
-      <Link href={`/artists/${artist.slug}`} className="block">
+      <Link href={`/litter/${artist.slug}`} className="block">
         <div className="relative aspect-square overflow-hidden border-b-4 border-ink">
           {artist.photo_url ? (
             <img src={artist.photo_url} alt={artist.name}
@@ -147,7 +147,7 @@ function ArtistBookCard({ artist, onBook }: { artist: Artist; onBook: (a: Artist
       </Link>
 
       <div className="p-4">
-        <Link href={`/artists/${artist.slug}`}>
+        <Link href={`/litter/${artist.slug}`}>
           <h3 className="font-display text-xl text-ink uppercase leading-tight hover:text-magenta transition-colors mb-1">
             {artist.name}
           </h3>
@@ -497,7 +497,7 @@ export default function BookArtistPage() {
             <Link href="/for-artists" className="bg-acid-yellow text-ink font-display px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
               Get Listed →
             </Link>
-            <Link href="/artists" className="bg-cream text-ink font-display px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
+            <Link href="/litter" className="bg-cream text-ink font-display px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
               Browse All Artists
             </Link>
           </div>

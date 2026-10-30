@@ -477,7 +477,7 @@ export default function ArtistConnectionGraph({ slug, connections }: Props) {
               </p>
             )}
           </div>
-          <Link href={`/artists/${selectedNode}`}
+          <Link href={`/litter/${selectedNode}`}
             className="shrink-0 font-display text-xs uppercase px-4 py-2 border-4 border-ink bg-ink text-cream hover:bg-magenta transition-colors">
             View Profile →
           </Link>
