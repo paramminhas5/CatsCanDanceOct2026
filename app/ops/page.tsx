@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { revalidatePath } from "next/cache";
-import { rpc, fmtDate } from "@/lib/db";
+import { rpc, fmtDate } from "@/lib/ccd-db";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Ops", robots: { index: false } };

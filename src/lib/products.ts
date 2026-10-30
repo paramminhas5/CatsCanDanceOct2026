@@ -1,4 +1,4 @@
-import { SCHOOL_URL } from "./db";
+import { SCHOOL_URL } from "./ccd-db";
 
 export type Product = { name: string; verb: string; href: string; line: string; external?: boolean; live: boolean };
 

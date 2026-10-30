@@ -18,7 +18,8 @@
 // ── Config ────────────────────────────────────────────────────────────────────
 
 const SB  = process.env.NEXT_PUBLIC_SUPABASE_URL  ?? "";
-const SK  = process.env.SUPABASE_SERVICE_KEY       ?? "";
+// Public site: reads use the anon key under RLS. The service key is never configured in this app.
+const SK  = process.env.SUPABASE_SERVICE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 
 if (!SB && process.env.NODE_ENV !== "test") {
   console.warn("[supabase] NEXT_PUBLIC_SUPABASE_URL is not set");

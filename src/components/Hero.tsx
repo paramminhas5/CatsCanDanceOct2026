@@ -12,7 +12,7 @@ import catHpDance from "@/assets/cat-headphones-dance.png";
 import { useDisco } from "@/contexts/DiscoContext";
 import DiscoBall from "@/components/DiscoBall";
 import Lasers from "@/components/Lasers";
-import { parseEventDate } from "@/lib/parse-date";
+import { supabase } from "@/lib/supabase";
 import { imgUrl } from "@/lib/img";
 
 // next/image with priority handles critical image preloading automatically.
@@ -30,23 +30,33 @@ function useIsMobile() {
   return mobile;
 }
 
-/** Returns the next upcoming event — dynamic from static content, matches real slugs */
+/** Next upcoming Episode, read from the database. Hides the chip when none is scheduled. */
 function useNextEvent() {
-  const [next] = useState<{ title: string; date: string; venue: string; slug: string } | null>({
-    title: "BANGALORE — CCD × SOCIAL",
-    date: "Sun, Jun 28, 2026",
-    venue: "Social, Indiranagar",
-    slug: "ccdxsocial-01",
-  });
+  const [next, setNext] = useState<{ title: string; date: string; venue: string; slug: string } | null>(null);
   const [daysAway, setDaysAway] = useState<number | null>(null);
 
   useEffect(() => {
-    const d = parseEventDate("Sun, Jun 28, 2026");
-    if (d) {
-      d.setHours(16, 0, 0, 0); // 4 PM IST
-      const diff = Math.ceil((d.getTime() - Date.now()) / 86400000);
-      if (diff >= 0 && diff <= 60) setDaysAway(diff);
-    }
+    let off = false;
+    const today = new Date().toISOString().slice(0, 10);
+    supabase
+      .from("events")
+      .select("slug,title,date,venue,event_date,start_time")
+      .eq("published", true)
+      .gte("event_date", today)
+      .order("event_date", { ascending: true })
+      .limit(1)
+      .then(({ data }) => {
+        const e = data?.[0];
+        if (off || !e) return;
+        setNext({ title: e.title, date: e.date, venue: e.venue, slug: e.slug });
+        const d = e.event_date ? new Date(`${e.event_date}T00:00:00`) : null;
+        if (d) {
+          d.setHours(16, 0, 0, 0);
+          const diff = Math.ceil((d.getTime() - Date.now()) / 86400000);
+          if (diff >= 0 && diff <= 60) setDaysAway(diff);
+        }
+      });
+    return () => { off = true; };
   }, []);
 
   return { next, daysAway };
