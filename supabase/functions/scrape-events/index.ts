@@ -85,94 +85,71 @@ function* jsonLdEvents(html: string): Generator<Record<string, any>> {
   }
 }
 
+// Dates in UTC (trailing Z or +00:00) are shifted to IST so the day is right for India.
+function istParts(start: string | null): { date: string | null; time: string | null } {
+  if (!start) return { date: null, time: null };
+  if (/(Z|\+00:?00)$/.test(start)) {
+    const d = new Date(new Date(start).getTime() + 5.5 * 3600 * 1000);
+    if (isNaN(d.getTime())) return { date: null, time: null };
+    const iso = d.toISOString();
+    return { date: iso.slice(0, 10), time: start.length > 10 ? iso.slice(11, 16) : null };
+  }
+  return { date: /^\d{4}-\d{2}-\d{2}/.test(start) ? start.slice(0, 10) : null, time: start.length >= 16 ? start.slice(11, 16) : null };
+}
+
+const kindOf = (blob: string): "club" | "concert" | "festival" =>
+  /\b(festival|fest)\b/i.test(blob) ? "festival" : /world tour|concert|arena|stadium|grounds|india 20\d\d|\btour\b/i.test(blob) ? "concert" : "club";
+
+const MUSIC = /techno|house|\bdj\b|rave|club|night|party|bass|electronic|disco|music|festival|\bfest\b|dnb|drum|jungle|trance|afro|garage|concert|tour|beats|sound|session|\blive\b|boiler|sunburn|dgtl|ambient|set\b/i;
+const NOT_MUSIC = /comedy|stand-?up|workshop|healthcare|conference|summit|expo|yoga|painting|trek|quiz|seminar|networking|webinar|kids|pottery|startup|marathon|cricket|screening|package|holiday|food fest|brunch|buffet|trip\b/i;
+// allevents /music pages are music-only already, so they skip the keyword requirement and only get the exclusion list.
+const relevant = (r: Raw) => { const t = `${r.title} ${r.venue ?? ""}`; return (r.source === "allevents" || MUSIC.test(t)) && !NOT_MUSIC.test(t); };
+
 function fromLd(it: Record<string, any>, source: string, fallbackUrl: string, fallbackCity: string | null): Raw | null {
   const title = it.name ? decode(String(it.name)) : null;
   if (!title) return null;
-  const start = typeof it.startDate === "string" ? it.startDate : null;
+  const { date, time } = istParts(typeof it.startDate === "string" ? it.startDate : null);
   const loc = Array.isArray(it.location) ? it.location[0] : it.location;
   const addr = loc?.address;
   const addrText = typeof addr === "string" ? addr : [addr?.streetAddress, addr?.addressLocality, addr?.addressRegion].filter(Boolean).join(", ");
-  const image = typeof it.image === "string" ? it.image : Array.isArray(it.image) ? it.image[0] : it.image?.url ?? null;
+  const offers = Array.isArray(it.offers) ? it.offers[0] : it.offers;
+  const perf = (Array.isArray(it.performer) ? it.performer : it.performer ? [it.performer] : []).map((x: any) => decode(String(x?.name ?? ""))).filter(Boolean).slice(0, 30);
+  const url = String(it.url ?? it["@id"] ?? fallbackUrl);
+  const venue = loc?.name ? decode(String(loc.name)).slice(0, 120) : null;
+  // Facts only: no images, no copied descriptions.
   return {
-    title,
-    url: String(it.url ?? it["@id"] ?? fallbackUrl),
-    source,
+    title, url, source, source_url: url,
     city: city(addrText) ?? city(loc?.name) ?? city(title) ?? fallbackCity,
-    venue: loc?.name ? decode(String(loc.name)).slice(0, 120) : null,
-    event_date: start && /^\d{4}-\d{2}-\d{2}/.test(start) ? start.slice(0, 10) : null,
-    event_time: start && start.length >= 16 ? start.slice(11, 16) : null,
-    image_url: image ?? null,
-    description: it.description ? decode(String(it.description)).slice(0, 600) : null,
+    venue, event_date: date, event_time: time, image_url: null, description: null,
+    ticket_url: offers?.url ? String(offers.url) : null, lineup: perf.length ? perf : null,
+    kind: kindOf(`${title} ${venue ?? ""}`),
   };
 }
 
 // ---- sources -------------------------------------------------------------
 
-async function district(): Promise<Raw[]> {
-  const xml = await get("https://www.district.in/sitemap.xml").catch(() => get("https://district.in/sitemap.xml"));
-  const urls = [...xml.matchAll(/<loc>(https:\/\/(?:www\.)?district\.in\/events\/[^<]+)<\/loc>/g)].map((m) => m[1]);
-  const pick = urls.filter((u) => /music|party|dj|techno|house|club|rave|night|disco|bass/i.test(u)).slice(0, 40);
-  const out: Raw[] = [];
-  for (const u of pick) {
-    try {
-      const html = await get(u, 8000);
-      const ld = [...jsonLdEvents(html)][0];
-      const r = ld ? fromLd(ld, "district", u, null) : null;
-      if (r) { r.url = u; out.push(r); continue; }
-      const title = meta(html, "og:title");
-      if (!title) continue;
-      const desc = meta(html, "og:description");
-      out.push({
-        title, url: u, source: "district", city: city(`${title} ${desc}`), venue: null,
-        event_date: html.match(/"startDate"\s*:\s*"(\d{4}-\d{2}-\d{2})/)?.[1] ?? null,
-        event_time: null, image_url: meta(html, "og:image"), description: desc,
-      });
-    } catch (e) { note("district-page", e); }
-    await sleep(300);
-  }
-  return out;
-}
+// Listing pages that ship Event JSON-LD in the HTML (no browser needed). Failures are logged per page in stats.errors.
+// Not covered: Insider and Skillbox (single-page apps with no data in the HTML) and BookMyShow (blocks us).
+const PAGES: [string, string, string | null][] = [
+  ["https://www.district.in/events/", "district", null],
+  ...["bangalore", "mumbai", "delhi", "goa", "pune", "hyderabad"].map((c): [string, string, string | null] => [`https://www.highape.com/${c}`, "highape", city(c)]),
+  ...["bangalore", "mumbai", "delhi", "goa", "hyderabad", "chennai", "kolkata"].map((c): [string, string, string | null] => [`https://allevents.in/${c}/music`, "allevents", city(c)]),
+];
 
-async function insider(): Promise<Raw[]> {
+async function listings(): Promise<Raw[]> {
   const out: Raw[] = [];
-  for (const [slug, c] of [["bangalore", "Bengaluru"], ["mumbai", "Mumbai"], ["delhi", "Delhi NCR"], ["goa", "Goa"], ["pune", "Pune"], ["hyderabad", "Hyderabad"]]) {
+  for (const [url, source, c] of PAGES) {
     try {
-      const url = `https://insider.in/go/${slug}/music`;
-      const html = await get(url);
+      const html = await get(url, 15000);
+      let n = 0;
       for (const it of jsonLdEvents(html)) {
-        const r = fromLd(it, "insider", url, c);
-        if (r) { if (r.url.startsWith("/")) r.url = `https://insider.in${r.url}`; out.push(r); }
+        const r = fromLd(it, source, url, c);
+        if (r && relevant(r)) { out.push(r); n++; }
       }
-    } catch (e) { note("insider-" + slug, e); }
-    await sleep(500);
+      if (n === 0) note(source, `0 relevant events at ${url}`);
+    } catch (e) { note(source, e); }
+    await sleep(400);
   }
-  return out;
-}
-
-async function highape(): Promise<Raw[]> {
-  const out: Raw[] = [];
-  for (const url of ["https://highape.com/bangalore/music-events", "https://highape.com/music-events"]) {
-    try {
-      const html = await get(url);
-      for (const it of jsonLdEvents(html)) {
-        const r = fromLd(it, "highape", url, url.includes("bangalore") ? "Bengaluru" : null);
-        if (r) out.push(r);
-      }
-    } catch (e) { note("highape", e); }
-  }
-  return out;
-}
-
-async function skillbox(): Promise<Raw[]> {
-  const out: Raw[] = [];
-  try {
-    const url = "https://www.skillboxes.com/events";
-    const html = await get(url).catch(() => get("https://skillbox.in/events"));
-    for (const it of jsonLdEvents(html)) {
-      const r = fromLd(it, "skillbox", url, null);
-      if (r) out.push(r);
-    }
-  } catch (e) { note("skillbox", e); }
   return out;
 }
 
@@ -241,7 +218,7 @@ Deno.serve(async (req) => {
   })).json();
   const runId = run?.[0]?.id;
 
-  const sources = { district, insider, highape, skillbox, gigscalendar };
+  const sources = { listings, gigscalendar };
   const perSource: Record<string, number | string> = {};
   const all: Raw[] = [];
   const results = await Promise.allSettled(Object.values(sources).map((f) => f()));
@@ -253,9 +230,15 @@ Deno.serve(async (req) => {
 
   const today = new Date().toISOString().slice(0, 10);
   const seen = new Set<string>();
+  const key = (e: { title: string; event_date: string | null }) => `${e.title.toLowerCase().replace(/[^a-z0-9]/g, "")}|${e.event_date ?? ""}`;
+  const have = new Set<string>();
+  const er = await sb(`scraped_events?select=title,event_date&event_date=gte.${today}&limit=5000`);
+  if (er.ok) for (const r of await er.json()) have.add(key(r));
   const rows = all.filter((e) => {
     if (!e.url || !e.title || seen.has(e.url)) return false;
     seen.add(e.url);
+    if (e.event_date && have.has(key(e))) return false;
+    have.add(key(e));
     return !e.event_date || e.event_date >= today;
   });
 

@@ -21,6 +21,8 @@ function buildSitemap(artistSlugs: string[]): string {
     url("/about", "0.8", "monthly"),
     url("/episodes", "1.0", "daily", today),
     url("/tour", "0.8", "daily", today),
+    url("/whats-on", "0.95", "daily", today),
+    url("/llms.txt", "0.5", "daily", today),
     url("/guides", "0.8", "weekly", today),
     url("/playbook", "0.6", "monthly"),
     url("/litter", "0.95", "weekly", today),
