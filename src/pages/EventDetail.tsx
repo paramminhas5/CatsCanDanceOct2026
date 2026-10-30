@@ -34,7 +34,6 @@ import EventCountdown from "@/components/EventCountdown";
 import EventVenueCard from "@/components/EventVenueCard";
 import EventLineupCard from "@/components/EventLineupCard";
 import EventPosterPlaceholder from "@/components/EventPosterPlaceholder";
-import SeriesStrip from "@/components/SeriesStrip";
 import StickyRsvpBar from "@/components/StickyRsvpBar";
 
 import { imgUrl } from "@/lib/img";
@@ -453,11 +452,6 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
               <div>
                 <p className="font-display text-acid-yellow text-base mb-3">/ BROUGHT TO YOU BY</p>
                 <h2 className="font-display text-cream text-3xl md:text-5xl leading-[0.9] mb-3">PARTNERS, NOT SPONSORS.</h2>
-                {event.series === "ccdxsocial" && (
-                  <Link to="/ccdxsocial/sponsor" className="inline-block bg-acid-yellow text-ink font-display text-base px-5 py-2 border-4 border-cream chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform mt-4">
-                    SPONSORSHIP ↗
-                  </Link>
-                )}
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {content.partners.map((p) => (
@@ -469,11 +463,6 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
               </div>
             </div>
           </section>
-        )}
-
-        {/* 10. SERIES STRIP */}
-        {event.series && series.length > 1 && (
-          <SeriesStrip events={series} currentSlug={event.slug} seriesLabel={event.series_label || event.series.toUpperCase()} />
         )}
 
         <Footer />

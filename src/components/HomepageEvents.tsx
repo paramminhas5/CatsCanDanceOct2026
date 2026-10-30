@@ -290,12 +290,6 @@ const HomepageEvents = () => {
                       {featured.series_label || featured.series}
                     </p>
                   </div>
-                  <Link
-                    to="/ccdxsocial"
-                    className="font-display text-acid-yellow text-xs border-2 border-acid-yellow/30 px-3 py-1.5 hover:border-acid-yellow hover:bg-acid-yellow/10 transition-colors"
-                  >
-                    ABOUT THE SERIES →
-                  </Link>
                 </div>
 
                 {/* Series progress dots */}

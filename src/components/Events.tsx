@@ -16,10 +16,10 @@ import { resolvePoster } from "@/lib/poster";
 
 // Static fallback — shown while DB loads or when Supabase is empty/unreachable
 const STATIC_FALLBACK: EventRow[] = [
+  getStaticEventRow("episode-1")!,
   getStaticEventRow("ccdxsocial-01")!,
-  getStaticEventRow("ccdxsocial-02")!,
-  getStaticEventRow("ccdxsocial-03")!,
-  getStaticEventRow("ccdxsocial-mega")!,
+  getStaticEventRow("episode-3")!,
+  getStaticEventRow("episode-4")!,
 ].filter(Boolean);
 
 const Events = () => {

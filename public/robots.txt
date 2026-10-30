@@ -2,7 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /embed/
-Disallow: /ccdxsocial/proposal
 
 # AI / LLM crawlers — explicitly allowed
 User-agent: GPTBot

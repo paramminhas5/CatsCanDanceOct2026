@@ -11,7 +11,7 @@
 import type { NextApiRequest } from "next";
 
 export const SB       = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
-export const SK       = process.env.SUPABASE_SERVICE_KEY ?? "";
+export const SK       = process.env.SUPABASE_SERVICE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 export const ADMIN_PW = process.env.ADMIN_PASSWORD ?? "";
 
 export const H = () => ({
