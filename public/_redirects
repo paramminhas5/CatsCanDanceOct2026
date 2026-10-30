@@ -1,0 +1,2 @@
+# Next.js routing is handled by @netlify/plugin-nextjs — no SPA fallback needed.
+# Add any custom redirects here (e.g. /old-path  /new-path  301).

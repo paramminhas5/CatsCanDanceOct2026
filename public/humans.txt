@@ -1,0 +1,13 @@
+/* TEAM */
+Brand: Cats Can Dance
+Site: https://catscandance.com
+Contact: hello [at] catscandance.com
+Location: Worldwide
+
+/* SITE */
+Last update: 2026/06/28
+Standards: HTML5, CSS3, JSON-LD
+Language: TypeScript
+Framework: Next.js
+Backend: Supabase + Next.js
+Deployment: Netlify
