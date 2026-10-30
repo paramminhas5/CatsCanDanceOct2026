@@ -23,6 +23,7 @@ export default async function handler(req: any, res: any) {
     p_date: b.event_date || null,
     p_budget: b.budget ? String(b.budget) : null,
     p_message: b.notes ?? b.purpose ?? null,
+    p_event_slug: b.event_slug ?? null,
   });
   if (r.ok) await notifyTeam("New booking request", [`${b.requester_name} (${b.requester_email}) asked for ${b.artist_slug}`, String(b.notes ?? b.purpose ?? "").slice(0, 500)]).catch(() => {});
   return r.ok

@@ -86,6 +86,7 @@ export default function Club() {
               <Extras />
               <GoAgain />
               <ArtistEditor />
+              <MyBookings />
               <HostForm onDone={(m) => setMsg(m)} />
               {["host", "staff", "owner"].includes(member.role) && <GuestList />}
               {(member.role === "staff" || member.role === "owner") && <StaffPanel />}
@@ -406,29 +407,140 @@ function GuestList() {
 function ArtistEditor() {
   const [a, setA] = useState<any>(null);
   const [f, setF] = useState<any>({});
+  const [media, setMedia] = useState<any[]>([]);
+  const [reqs, setReqs] = useState<any[]>([]);
   const [msg, setMsg] = useState("");
-  useEffect(() => {
-    supabase.rpc("my_artist").then(({ data }) => {
-      if (data) { setA(data); setF({ bio: data.bio ?? "", city: data.based_city ?? "", genres: (data.genres ?? []).join(", "), instagram: data.instagram ?? "", soundcloud: data.soundcloud ?? "", website: data.website ?? "", mix: data.mix_url ?? "", photo: data.photo_url ?? "" }); }
-    });
+  const [mm, setMm] = useState({ kind: "mix", url: "", caption: "" });
+  const [busy, setBusy] = useState(false);
+  const load = useCallback(async () => {
+    const { data } = await supabase.rpc("my_artist");
+    if (!data) return;
+    setA(data);
+    setF({ bio: data.bio ?? "", city: data.based_city ?? "", genres: (data.genres ?? []).join(", "), instagram: data.instagram ?? "", soundcloud: data.soundcloud ?? "", website: data.website ?? "", mix: data.mix_url ?? "", photo: data.photo_url ?? "" });
+    const m = await supabase.rpc("my_media"); setMedia((m.data as any[]) ?? []);
+    const r = await supabase.rpc("my_booking_requests"); setReqs((r.data as any[]) ?? []);
   }, []);
+  useEffect(() => { load(); }, [load]);
   if (!a) return null;
   const inp = "w-full border-4 border-ink bg-cream p-2";
   const set = (k: string) => (e: React.ChangeEvent<any>) => setF({ ...f, [k]: e.target.value });
+
+  async function upload(file: File, asProfile: boolean) {
+    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) { setMsg("Use a JPG, PNG or WebP image."); return; }
+    if (file.size > 8 * 1024 * 1024) { setMsg("Image is over 8 MB."); return; }
+    setBusy(true); setMsg("");
+    const ext = file.type === "image/png" ? "png" : file.type === "image/webp" ? "webp" : "jpg";
+    const path = `${a.slug}/${Date.now()}.${ext}`;
+    const up = await supabase.storage.from("artist-media").upload(path, file, { contentType: file.type, upsert: false });
+    if (up.error) { setBusy(false); setMsg("Upload failed: " + up.error.message); return; }
+    const url = supabase.storage.from("artist-media").getPublicUrl(path).data.publicUrl;
+    if (asProfile) {
+      const r = await memberRpc("update_my_artist", { p_bio: null, p_city: null, p_genres: null, p_instagram: null, p_soundcloud: null, p_website: null, p_mix_url: null, p_photo_url: url });
+      setMsg(r.ok ? "Profile photo updated." : r.error ?? "Could not save.");
+    } else {
+      const r = await memberRpc("add_my_media", { p_kind: "photo", p_url: url, p_caption: null });
+      setMsg(r.ok ? "Photo added." : r.error ?? "Could not save.");
+    }
+    setBusy(false); load();
+  }
+
   return (
-    <form className={`${box} space-y-2`} onSubmit={async (e) => {
-      e.preventDefault();
-      const r = await memberRpc("update_my_artist", { p_bio: f.bio, p_city: f.city, p_genres: f.genres, p_instagram: f.instagram, p_soundcloud: f.soundcloud, p_website: f.website, p_mix_url: f.mix, p_photo_url: f.photo });
-      setMsg(r.ok ? "Saved. Your page updates within a few minutes." : r.error ?? "Could not save.");
-    }}>
-      <h2 className="font-display text-2xl">Your artist page: {a.name}</h2>
-      <textarea className={inp} rows={4} placeholder="Bio" value={f.bio} onChange={set("bio")} />
-      <div className="grid grid-cols-2 gap-2"><input className={inp} placeholder="City" value={f.city} onChange={set("city")} /><input className={inp} placeholder="Genres, comma separated" value={f.genres} onChange={set("genres")} /></div>
-      <div className="grid grid-cols-2 gap-2"><input className={inp} placeholder="Instagram" value={f.instagram} onChange={set("instagram")} /><input className={inp} placeholder="SoundCloud" value={f.soundcloud} onChange={set("soundcloud")} /></div>
-      <div className="grid grid-cols-2 gap-2"><input className={inp} placeholder="Website" value={f.website} onChange={set("website")} /><input className={inp} placeholder="Mix link" value={f.mix} onChange={set("mix")} /></div>
-      <input className={inp} placeholder="Photo URL" value={f.photo} onChange={set("photo")} />
-      {msg && <p className="text-sm">{msg}</p>}
-      <button className={btn}>Save</button>
-    </form>
+    <div className="space-y-4">
+      <form className={`${box} space-y-2`} onSubmit={async (e) => {
+        e.preventDefault();
+        const r = await memberRpc("update_my_artist", { p_bio: f.bio, p_city: f.city, p_genres: f.genres, p_instagram: f.instagram, p_soundcloud: f.soundcloud, p_website: f.website, p_mix_url: f.mix, p_photo_url: f.photo });
+        setMsg(r.ok ? "Saved. Your page updates within a few minutes." : r.error ?? "Could not save.");
+      }}>
+        <h2 className="font-display text-2xl">Your artist page: {a.name}</h2>
+        <p className="text-sm">Leave a box empty and save to clear it. <Link href={`/litter/${a.slug}`} className="underline">See your public page</Link></p>
+        <div className="flex items-center gap-3">
+          {f.photo ? <img src={f.photo} alt="" className="h-20 w-20 border-4 border-ink object-cover" /> : <div className="h-20 w-20 border-4 border-ink grid place-items-center text-xs">No photo</div>}
+          <label className={`${btn} cursor-pointer`}>{busy ? "Uploading..." : "Upload profile photo"}<input type="file" accept="image/jpeg,image/png,image/webp" className="hidden" disabled={busy} onChange={(e) => { const x = e.target.files?.[0]; if (x) upload(x, true); e.target.value = ""; }} /></label>
+        </div>
+        <textarea className={inp} rows={4} placeholder="Bio" value={f.bio} onChange={set("bio")} />
+        <div className="grid grid-cols-2 gap-2"><input className={inp} placeholder="City" value={f.city} onChange={set("city")} /><input className={inp} placeholder="Genres, comma separated" value={f.genres} onChange={set("genres")} /></div>
+        <div className="grid grid-cols-2 gap-2"><input className={inp} placeholder="Instagram" value={f.instagram} onChange={set("instagram")} /><input className={inp} placeholder="SoundCloud" value={f.soundcloud} onChange={set("soundcloud")} /></div>
+        <div className="grid grid-cols-2 gap-2"><input className={inp} placeholder="Website" value={f.website} onChange={set("website")} /><input className={inp} placeholder="Main mix link" value={f.mix} onChange={set("mix")} /></div>
+        {msg && <p className="text-sm">{msg}</p>}
+        <button className={btn}>Save</button>
+      </form>
+
+      <div className={`${box} space-y-2`}>
+        <h2 className="font-display text-2xl">Photos, mixes and videos</h2>
+        <p className="text-sm">Only upload photos you own or have the photographer's OK to use. Up to 30 items.</p>
+        {media.length > 0 && (
+          <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+            {media.map((m) => (
+              <li key={m.id} className="border-4 border-ink p-1 text-xs">
+                {m.kind === "photo" ? <img src={m.url} alt={m.caption ?? ""} className="h-24 w-full object-cover" /> : <a href={m.url} target="_blank" rel="noreferrer" className="block h-24 break-all underline">{m.kind}: {m.caption || m.url}</a>}
+                <button className="mt-1 underline" onClick={async () => { await memberRpc("remove_my_media", { p_id: m.id }); load(); }}>Remove</button>
+              </li>
+            ))}
+          </ul>
+        )}
+        <label className={`${btn} inline-block cursor-pointer`}>{busy ? "Uploading..." : "Add a photo"}<input type="file" accept="image/jpeg,image/png,image/webp" className="hidden" disabled={busy} onChange={(e) => { const x = e.target.files?.[0]; if (x) upload(x, false); e.target.value = ""; }} /></label>
+        <form className="grid gap-2 sm:grid-cols-4" onSubmit={async (e) => {
+          e.preventDefault();
+          const r = await memberRpc("add_my_media", { p_kind: mm.kind, p_url: mm.url, p_caption: mm.caption });
+          setMsg(r.ok ? "Added." : r.error ?? "Could not add."); if (r.ok) { setMm({ ...mm, url: "", caption: "" }); load(); }
+        }}>
+          <select className={inp} value={mm.kind} onChange={(e) => setMm({ ...mm, kind: e.target.value })}><option value="mix">Mix</option><option value="video">Video</option><option value="press">Press</option></select>
+          <input className={`${inp} sm:col-span-2`} placeholder="https:// link" value={mm.url} onChange={(e) => setMm({ ...mm, url: e.target.value })} />
+          <input className={inp} placeholder="Caption" value={mm.caption} onChange={(e) => setMm({ ...mm, caption: e.target.value })} />
+          <button className={btn}>Add link</button>
+        </form>
+      </div>
+
+      <div className={`${box} space-y-2`}>
+        <h2 className="font-display text-2xl">Booking requests for you</h2>
+        {reqs.length === 0 ? <p className="text-sm">None yet. When someone asks to book you, it shows here.</p> : (
+          <ul className="space-y-2">
+            {reqs.map((r) => <BookingRow key={r.id} r={r} onDone={load} />)}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function BookingRow({ r, onDone }: { r: any; onDone: () => void }) {
+  const [note, setNote] = useState("");
+  const [err, setErr] = useState("");
+  async function answer(resp: "interested" | "declined") {
+    const x = await memberRpc("respond_booking", { p_id: r.id, p_response: resp, p_note: note });
+    if (!x.ok) { setErr(x.error ?? "Could not send."); return; }
+    fetch("/api/email/booking-answer", { method: "POST" }).catch(() => {});
+    onDone();
+  }
+  return (
+    <li className="border-4 border-ink p-2 text-sm">
+      <b>{r.name}</b>{r.org ? `, ${r.org}` : ""}{r.city ? `, ${r.city}` : ""}{r.event_date ? ` on ${r.event_date}` : ""}{r.budget ? `, budget ${r.budget}` : ""}
+      {r.message && <p className="mt-1">{r.message}</p>}
+      {r.response ? <p className="mt-1 font-bold">You said: {r.response}{r.note ? ` (${r.note})` : ""}</p> : (
+        <div className="mt-2 space-y-1">
+          <input className="w-full border-4 border-ink bg-cream p-1" placeholder="Note to them (optional): fee, dates, what you need" value={note} onChange={(e) => setNote(e.target.value)} />
+          <div className="flex gap-2"><button className={btn} onClick={() => answer("interested")}>I am interested</button><button className="border-4 border-ink px-3 py-1 font-display text-sm" onClick={() => answer("declined")}>Pass</button></div>
+          {err && <p className="text-xs">{err}</p>}
+        </div>
+      )}
+    </li>
+  );
+}
+
+function MyBookings() {
+  const [rows, setRows] = useState<any[]>([]);
+  useEffect(() => { supabase.rpc("my_bookings").then(({ data }) => setRows((data as any[]) ?? [])); }, []);
+  if (rows.length === 0) return null;
+  return (
+    <div className={`${box} space-y-2`}>
+      <h2 className="font-display text-2xl">Your booking requests</h2>
+      <ul className="space-y-1 text-sm">
+        {rows.map((r) => (
+          <li key={r.id} className="border-t-2 border-ink pt-1">
+            <b>{r.artist ?? r.slug}</b>{r.event_date ? `, ${r.event_date}` : ""}: {r.response === "interested" ? "interested" : r.response === "declined" ? "passed" : "waiting for a reply"}{r.note ? ` (${r.note})` : ""}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
