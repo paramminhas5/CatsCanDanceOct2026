@@ -7,7 +7,7 @@ Lean Next.js 14 site. The public site is Pages Router (ported from the live cats
 - Paid or AI features (Catbot, poster generation, Clerk, Razorpay, Shopify, Instagram feed) are OFF by default and gated by the `feature_flags` table. Param turns them on. No AI in crons.
 - Never put the service key in the app. Public reads use the anon key + RLS. Ops reads/writes go through the token-guarded RPCs (`ops_snapshot`, `ops_set_event_status`, `ops_export`).
 - Schema changes: add a new numbered file in `supabase/migrations/` and apply it with the Supabase MCP `apply_migration`. Additive changes only unless Param approves.
-- The `events` table is CCD's own nights. `scraped_events` is the scene list: nothing shows publicly until `status = 'published'`. Param decides what gets published.
+- The `events` table is CCD's own nights. `scraped_events` is the scene list: nothing shows publicly until `status = 'published'`. Param decides what gets published; CCD staff (members.role = 'staff', set only via `ops_set_member_role`) can vouch pending events and approve member-hosted events. Regular members can like, say they are going, follow artists and host (staff approve). Weekly digest posts stay drafts unless flag `blog_autopublish` is on. Resend/SMTP stays off until Param enables it.
 - Scoring is rule-based in Postgres (`scoring_keywords`, `trusted_venues`, trigger `score_scraped_event`). Do not add AI calls to crons.
 - Brand: cream/ink, red #dc2626, acid #b6ef36, electric blue #2563eb. Bowlby One display, Space Grotesk body. Brutalist borders and hard shadows. Copy is plain and direct, no em dashes, no hype.
 - `npm run build` must pass before any PR.
