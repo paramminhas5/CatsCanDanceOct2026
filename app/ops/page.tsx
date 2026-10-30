@@ -175,6 +175,7 @@ export default async function Ops() {
   }
   if (!s) return <main className="wrap ops"><h2 style={{ margin: "40px 0 12px" }}>Ops</h2><p className="bad">Could not load: {err || "no data"}</p></main>;
 
+  const claims = await rpc<any[]>("ops_claim_checks", { p_token: T() }).catch(() => []);
   const [factSum, facts] = await Promise.all([
     rpc<any>("ops_artist_facts_summary", { p_token: T() }).catch(() => null),
     rpc<any[]>("ops_artist_facts", { p_token: T(), p_status: "proposed", p_limit: 120 }).catch(() => []),
@@ -356,6 +357,28 @@ export default async function Ops() {
           </tbody>
         </table>
       </div>
+
+      <h3 style={{ marginBottom: 10 }}>Artist claims to check ({claims?.length ?? 0})</h3>
+      <p className="muted" style={{ marginTop: 0 }}>A claim on a live page gives the claimant edit rights only after you approve. Ask them to put the code in their Instagram bio or send it from the artist account, then approve. Green ticks are weak signals, not proof.</p>
+      {(claims?.length ?? 0) > 0 && (
+        <table style={{ marginBottom: 24 }}>
+          <thead><tr><th>Page</th><th>Claimant</th><th>Code</th><th>Signals</th><th></th></tr></thead>
+          <tbody>
+            {claims!.map((c: any) => (
+              <tr key={c.id}>
+                <td>{c.slug ?? "(new page)"}<br /><span className="muted">{c.name}</span></td>
+                <td>{c.email}<br /><span className="muted">IG {c.claimant_instagram ?? "none"} vs page {c.page_instagram ?? "none"}</span></td>
+                <td><code>{c.code}</code></td>
+                <td>{c.instagram_matches ? "IG match. " : ""}{c.email_matches_booking ? "Booking email match. " : ""}{c.email_domain_matches_site ? "Email domain matches website. " : ""}{!c.instagram_matches && !c.email_matches_booking && !c.email_domain_matches_site ? "No automatic match" : ""}</td>
+                <td style={{ whiteSpace: "nowrap" }}>
+                  <form action={inboxStatus} style={{ display: "inline" }}><input type="hidden" name="kind" value="artist" /><input type="hidden" name="id" value={c.id} /><input type="hidden" name="status" value="approved" /><button className="btn sm">Approve</button></form>{" "}
+                  <form action={inboxStatus} style={{ display: "inline" }}><input type="hidden" name="kind" value="artist" /><input type="hidden" name="id" value={c.id} /><input type="hidden" name="status" value="rejected" /><button className="btn sm alt">Reject</button></form>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
 
       <h3 style={{ marginBottom: 10 }}>Artists waiting ({hidden?.length ?? 0})</h3>
       <p className="muted" style={{ marginTop: 0 }}>Hidden artists are not on the site. Approve puts them on /prowl. New names come from event lineups.</p>

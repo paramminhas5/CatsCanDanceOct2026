@@ -602,7 +602,8 @@ function RoleCards({ onChange }: { onChange: () => void }) {
   const [open, setOpen] = useState(false);
   const [f, setF] = useState({ name: "", city: "", genres: "", instagram: "", soundcloud: "", mix: "" });
   const [msg, setMsg] = useState("");
-  const load = useCallback(async () => { const { data } = await supabase.rpc("my_roles"); setR(data); }, []);
+  const [claims, setClaims] = useState<any[]>([]);
+  const load = useCallback(async () => { const { data } = await supabase.rpc("my_roles"); setR(data); const c = await supabase.rpc("my_claims"); setClaims(((c.data as any[]) ?? []).filter((x) => x.status === "pending" && x.kind === "claim")); }, []);
   useEffect(() => { load(); }, [load]);
   if (!r) return null;
   const inp = "w-full border-4 border-ink bg-cream p-2";
@@ -612,7 +613,7 @@ function RoleCards({ onChange }: { onChange: () => void }) {
     setMsg(x.ok ? ok : x.error ?? "Something went wrong.");
     if (x.ok) { setOpen(false); await load(); onChange(); }
   }
-  if (r.artist_slug && isHost && r.is_promoter) return null;
+  if (r.artist_slug && isHost && r.is_promoter && claims.length === 0) return null;
   return (
     <div className={box}>
       <h2 className="font-display text-2xl mb-2">Do more with CCD</h2>
@@ -630,6 +631,9 @@ function RoleCards({ onChange }: { onChange: () => void }) {
           <button className={btn}>Create my artist page</button>
         </form>
       )}
+      {claims.map((c) => (
+        <p key={c.slug} className="text-sm mt-2 border-2 border-ink p-2">Claim on <b>{c.name}</b> is waiting for review. To prove it is you, put <code className="font-display">{c.code}</code> in your Instagram bio or story, or send it to @catscandance from the artist account. The page unlocks after the CCD team approves.</p>
+      ))}
       {msg && <p className="text-sm mt-2">{msg}</p>}
     </div>
   );
