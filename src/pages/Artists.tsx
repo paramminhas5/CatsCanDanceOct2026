@@ -7,6 +7,7 @@ import PageHero from "@/components/PageHero";
 import Marquee from "@/components/Marquee";
 import SEO from "@/components/SEO";
 import { supabase } from "@/lib/supabase";
+import { listableSorted, richness } from "@/lib/artist-richness";
 
 interface DBArtist {
   id: string;
@@ -48,7 +49,7 @@ function cover(a: DBArtist): string | null {
   return null;
 }
 
-type SortMode = "az" | "city" | "genre";
+type SortMode = "best" | "az" | "city" | "genre";
 type GroupMode = "none" | "origin" | "city" | "style" | "rate";
 type Extra = { cities: string[]; with: string[]; media: number };
 
@@ -80,13 +81,13 @@ const CARD_ACCENTS = [
 
 export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArtist[] }) {
   // Use server-fetched artists immediately — no loading state, no spinner
-  const [artists, setArtists] = useState<DBArtist[]>(initialArtists ?? []);
+  const [artists, setArtists] = useState<DBArtist[]>(listableSorted((initialArtists ?? []) as any[]) as DBArtist[]);
   const [loading, setLoading] = useState(!initialArtists);
   const [error, setError] = useState<string | null>(null);
   const [q, setQ] = useState("");
   const [city, setCity] = useState("All");
   const [activeGenres, setActiveGenres] = useState<Set<string>>(new Set());
-  const [sort, setSort] = useState<SortMode>("az");
+  const [sort, setSort] = useState<SortMode>("best");
   const [bookingsOnly, setBookingsOnly] = useState(false);
   const [origin, setOrigin] = useState("All");
   const [plays, setPlays] = useState("All");
@@ -109,7 +110,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
         const res = await fetch("/api/artists");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        setArtists((data ?? []) as DBArtist[]);
+        setArtists(listableSorted((data ?? []) as any[]) as DBArtist[]);
       } catch (e: any) {
         setError(e.message || "Unexpected error");
       } finally {
@@ -172,7 +173,8 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
     });
     if (sort === "city") rows = [...rows].sort((a, b) => cityOf(a).localeCompare(cityOf(b)) || a.name.localeCompare(b.name));
     else if (sort === "genre") rows = [...rows].sort((a, b) => ((a.genres ?? [])[0] ?? "").localeCompare((b.genres ?? [])[0] ?? "") || a.name.localeCompare(b.name));
-    else rows = [...rows].sort((a, b) => a.name.localeCompare(b.name));
+    else if (sort === "az") rows = [...rows].sort((a, b) => a.name.localeCompare(b.name));
+    else rows = [...rows].sort((a, b) => richness(b as any) - richness(a as any) || a.name.localeCompare(b.name));
     return rows;
   }, [artists, q, city, activeGenres, sort, bookingsOnly, origin, plays, rate, extras]);
 
@@ -248,6 +250,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
               onChange={(e) => setSort(e.target.value as SortMode)}
               className="px-3 py-2 border-4 border-ink bg-cream font-display text-sm text-ink focus:outline-none focus:bg-acid-yellow/20 transition-colors"
             >
+              <option value="best">BEST PROFILES</option>
               <option value="az">A → Z</option>
               <option value="city">CITY</option>
               <option value="genre">GENRE</option>
@@ -349,7 +352,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
               <p className="font-display text-2xl text-ink mb-2">NO ARTISTS MATCH</p>
               <p className="text-ink/70 text-sm mb-4">
                 {artists.length === 0
-                  ? "No artists found in the database."
+                  ? "The roster is being updated. Check back soon."
                   : "Try adjusting your filters."}
               </p>
               {anyFilter && (
@@ -377,7 +380,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                 {g.rows.map((a, i) => {
                   const img = cover(a);
                   const accent = CARD_ACCENTS[i % CARD_ACCENTS.length];
-                  const isLarge = i % 9 === 0;
+                  const isLarge = !!img && i % 9 === 0;
 
                   return (
                     <Link
@@ -402,6 +405,9 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                           <div className="w-full h-full flex items-center justify-center opacity-10">
                             <Music className="w-16 h-16" />
                           </div>
+                          {a.bio && (
+                            <p className="absolute top-3 left-3 right-3 text-xs leading-snug line-clamp-4 opacity-80">{a.bio}</p>
+                          )}
                         </div>
                       )}
 

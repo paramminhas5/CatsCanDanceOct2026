@@ -41,6 +41,7 @@ import FollowButton from "@/components/FollowButton";
 import BookingForm from "@/components/booking/BookingForm";
 import { useArtistFollowerCount } from "@/hooks/useSocialProof";
 import dynamic from "next/dynamic";
+import { fallbackSummary } from "@/lib/artist-richness";
 
 const MiniAudioPlayer = dynamic(() => import("@/components/MiniAudioPlayer"), { ssr: false });
 const ArtistGallery   = dynamic(() => import("@/components/ArtistGallery"),   { ssr: false });
@@ -642,15 +643,15 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
       <div ref={tabsRef} className="sticky top-0 z-30 bg-cream border-b-4 border-ink">
         <div className="container">
           <div className="flex gap-0 overflow-x-auto scrollbar-hide">
-            {TABS.map((tab) => {
-              const hasData =
-                tab.id === "home" ? true :
-                tab.id === "gigography" ? appearances.length > 0 :
-                tab.id === "connections" ? connections.length > 0 :
-                tab.id === "journey" ? milestones.length > 0 :
-                tab.id === "stats" ? stats.total_gigs > 0 :
-                tab.id === "book" ? isBookable :
-                true;
+            {TABS.filter((tab) =>
+              tab.id === "gigography" ? appearances.length > 0 :
+              tab.id === "connections" ? connections.length > 0 :
+              tab.id === "journey" ? milestones.length > 0 :
+              tab.id === "stats" ? stats.total_gigs > 0 :
+              tab.id === "book" ? isBookable :
+              true
+            ).map((tab) => {
+              const hasData = true;
               return (
                 <button
                   key={tab.id}
@@ -701,9 +702,16 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                       )}
                     </div>
                   ) : (
-                    <div className="border-4 border-ink bg-acid-yellow p-6">
-                      <p className="font-display text-xl text-ink">{artist.name.toUpperCase()} hasn't written a bio yet.</p>
-                      <p className="text-ink/70 text-sm mt-1">Check back soon, or hit them up at <a href="/book" className="underline">/book</a> for a direct introduction.</p>
+                    <div className="border-4 border-ink bg-cream chunk-shadow p-6">
+                      <p className="text-ink/85 leading-relaxed text-lg">{fallbackSummary(artist as any)}</p>
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {isBookable && (
+                          <button onClick={() => goToTab("book")} className="font-display text-xs uppercase px-3 py-2 bg-magenta text-cream border-4 border-ink hover:bg-ink transition-colors">
+                            Book {artist.name}
+                          </button>
+                        )}
+                        <a href="/book" className="font-display text-xs uppercase px-3 py-2 border-4 border-ink hover:bg-acid-yellow transition-colors">Get an introduction</a>
+                      </div>
                     </div>
                   )}
                 </div>

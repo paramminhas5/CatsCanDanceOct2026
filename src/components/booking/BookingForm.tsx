@@ -15,7 +15,7 @@
  *   • Budget field is numeric INR, not a dropdown string.
  *   • Source tag passed through ("artist_profile" vs "marketplace").
  */
-import { useEffect, useMemo, useState } from "react";
+import { Component, useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   Send, Loader2, Check, X, ChevronDown, Clock,
   IndianRupee, CalendarDays, MapPin, Info,
@@ -26,7 +26,7 @@ interface ArtistPackage {
   id: string;
   name: string;
   description: string | null;
-  suitable_for: string[];
+  suitable_for?: string[];
   price_inr: number;
   price_is_minimum: boolean;
   travel_included: boolean;
@@ -105,7 +105,7 @@ function MiniCalendar({
 
   function dayClass(iso: string): string {
     if (iso < todayISO) return "opacity-25 cursor-not-allowed text-ink/40";
-    const status = calData?.days[iso];
+    const status = calData?.days?.[iso];
     const inRange = selectedStart && selectedEnd && iso >= selectedStart && iso <= selectedEnd;
     const isStart = iso === selectedStart;
     const isEnd = iso === selectedEnd;
@@ -142,7 +142,7 @@ function MiniCalendar({
               {cells.map((day, i) => {
                 if (!day) return <div key={`e-${i}`} />;
                 const iso = `${year}-${String(month+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
-                const status = calData?.days[iso];
+                const status = calData?.days?.[iso];
                 return (
                   <button
                     key={iso}
@@ -199,7 +199,7 @@ function PackageCard({
           </p>
           <div className="flex flex-wrap gap-2 mt-1.5">
             <span className={`font-display text-xs px-2 py-0.5 border ${selected ? "border-cream/40 bg-acid-yellow text-ink" : "border-ink bg-acid-yellow text-ink"}`}>
-              {pkg.price_is_minimum ? "from " : ""}₹{pkg.price_inr.toLocaleString("en-IN")}
+              {pkg.price_is_minimum ? "from " : ""}₹{Number(pkg.price_inr ?? 0).toLocaleString("en-IN")}
             </span>
             {pkg.set_duration_min && (
               <span className={`font-display text-xs flex items-center gap-1 ${selected ? "text-cream/70" : "text-ink/50"}`}>
@@ -231,7 +231,7 @@ const EVENT_TYPES = [
   "Corporate event", "Private party", "Wedding", "Conference", "Other",
 ];
 
-export default function BookingForm({
+function BookingFormInner({
   artistSlug,
   artistName,
   source = "artist_profile",
@@ -249,8 +249,8 @@ export default function BookingForm({
       fetch(`/api/artist-packages?artist_slug=${encodeURIComponent(artistSlug)}`).then(r => r.json()).catch(() => []),
       fetch(`/api/artist-calendar?slug=${encodeURIComponent(artistSlug)}`).then(r => r.json()).catch(() => null),
     ]).then(([pkgs, cal]) => {
-      setPackages(Array.isArray(pkgs) ? (pkgs as ArtistPackage[]) : []);
-      setCalData(cal && typeof cal === "object" ? (cal as CalendarData) : null);
+      setPackages(Array.isArray(pkgs) ? (pkgs as ArtistPackage[]).filter(p => p && p.id) : []);
+      setCalData(cal && typeof cal === "object" && cal.days && typeof cal.days === "object" ? (cal as CalendarData) : null);
     }).finally(() => setLoadingData(false));
   }, [artistSlug]);
 
@@ -292,7 +292,7 @@ export default function BookingForm({
 
   // ── Day status helper ────────────────────────────────────────────────────
   function getDayStatus(iso: string): DayStatus | null {
-    return calData?.days[iso] ?? null;
+    return calData?.days?.[iso] ?? null;
   }
 
   const eventDateStatus = form.event_date ? getDayStatus(form.event_date) : null;
@@ -542,7 +542,7 @@ export default function BookingForm({
               Budget (INR)
               {selectedPackage && (
                 <span className="ml-2 text-ink/40 normal-case font-sans">
-                  · {selectedPackage.name} starts {selectedPackage.price_is_minimum ? "from " : "at "}₹{selectedPackage.price_inr.toLocaleString("en-IN")}
+                  · {selectedPackage.name} starts {selectedPackage.price_is_minimum ? "from " : "at "}₹{Number(selectedPackage.price_inr ?? 0).toLocaleString("en-IN")}
                 </span>
               )}
             </span>
@@ -617,7 +617,7 @@ export default function BookingForm({
           <button type="submit" disabled={sending || !canSubmit}
             className="flex items-center justify-center gap-2 flex-1 py-3.5 border-4 border-ink bg-ink text-cream font-display text-sm uppercase chunk-shadow hover:bg-magenta hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all disabled:opacity-50">
             {sending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-            {sending ? "Sending…" : `Book ${artistName.split(" ")[0]}`}
+            {sending ? "Sending…" : `Book ${(artistName || "artist").split(" ")[0]}`}
           </button>
           {onCancel && (
             <button type="button" onClick={onCancel}
@@ -632,5 +632,30 @@ export default function BookingForm({
         </p>
       </div>
     </form>
+  );
+}
+
+// Safe fallback so a bad data shape can never white-screen the page this form sits on.
+class BookingFormBoundary extends Component<{ onCancel?: () => void; children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() {
+    if (!this.state.failed) return this.props.children;
+    return (
+      <div className="border-4 border-ink bg-cream p-6">
+        <p className="text-sm text-ink">The booking form could not load. Please refresh and try again.</p>
+        {this.props.onCancel && (
+          <button type="button" onClick={this.props.onCancel} className="mt-4 font-display text-sm uppercase px-5 py-2.5 border-4 border-ink bg-ink text-cream">Close</button>
+        )}
+      </div>
+    );
+  }
+}
+
+export default function BookingForm(props: BookingFormProps) {
+  return (
+    <BookingFormBoundary onCancel={props.onCancel}>
+      <BookingFormInner {...props} />
+    </BookingFormBoundary>
   );
 }

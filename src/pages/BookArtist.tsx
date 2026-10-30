@@ -4,7 +4,7 @@
  * Browse artists available for booking, filter by city/genre/fee,
  * and send a booking inquiry directly.
  */
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, Component, type ReactNode } from "react";
 import Link from "next/link";
 import { Search, MapPin, Music, X, ChevronDown, CalendarDays, Zap, Clock, Bookmark, BookmarkCheck } from "lucide-react";
 import Nav from "@/components/Nav";
@@ -25,6 +25,21 @@ interface Artist {
   city_match?: boolean;
 }
 
+// Keeps a failure inside the booking form from taking down the whole page.
+class BookingBoundary extends Component<{ onClose: () => void; children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() {
+    if (!this.state.failed) return this.props.children;
+    return (
+      <div className="p-6">
+        <p className="text-sm text-ink mb-4">The booking form could not load. Please close this and try again, or email us from the contact page.</p>
+        <button onClick={this.props.onClose} className="font-display text-sm uppercase px-5 py-2.5 border-4 border-ink bg-ink text-cream">Close</button>
+      </div>
+    );
+  }
+}
+
 // ─── Booking inquiry dialog ───────────────────────────────────────────────────
 function BookingDialog({ artist, onClose }: { artist: Artist; onClose: () => void }) {
   return (
@@ -41,6 +56,7 @@ function BookingDialog({ artist, onClose }: { artist: Artist; onClose: () => voi
           </button>
         </div>
         <div className="p-0">
+          <BookingBoundary onClose={onClose}>
           <BookingForm
             artistSlug={artist.slug}
             artistName={artist.name}
@@ -48,6 +64,7 @@ function BookingDialog({ artist, onClose }: { artist: Artist; onClose: () => voi
             onSuccess={onClose}
             onCancel={onClose}
           />
+          </BookingBoundary>
         </div>
       </div>
     </div>
@@ -243,7 +260,16 @@ export default function BookArtistPage() {
       .then(r => r.json())
       .then(data => {
         if (Array.isArray(data)) {
-          setArtists(data.filter((a: Artist) => a.open_to_bookings !== false));
+          setArtists(
+            data
+              .filter((a: any) => a && a.slug && a.open_to_bookings !== false)
+              .map((a: any): Artist => ({
+                ...a,
+                name: a.name ?? a.slug,
+                genres: Array.isArray(a.genres) ? a.genres : [],
+                available_cities: Array.isArray(a.available_cities) ? a.available_cities : [],
+              })),
+          );
         }
       })
       .catch(() => {})

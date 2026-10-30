@@ -24,6 +24,7 @@ import { useSafeAuth } from "@/lib/clerk-safe";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import { listableSorted } from "@/lib/artist-richness";
 import BookingForm from "@/components/booking/BookingForm";
 import {
   TALENT_KIND_META, TALENT_KIND_ORDER, type TalentKind,
@@ -229,7 +230,7 @@ export default function TalentDirectoryPage() {
     }
 
     fetch(url).then(r => r.json())
-      .then(d => setAllTalent(Array.isArray(d) ? d.filter((t: TalentProfile) => t.open_to_bookings !== false) : []))
+      .then(d => setAllTalent(Array.isArray(d) ? listableSorted(d.filter((t: TalentProfile) => t.open_to_bookings !== false)) : []))
       .catch(() => {})
       .finally(() => setLoading(false));
   }, [city, genre, budgetIdx, searchDate, dateActive]);

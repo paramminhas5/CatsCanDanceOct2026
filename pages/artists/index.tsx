@@ -14,6 +14,7 @@ import type { GetServerSideProps } from "next";
 import ArtistsPage from "@/pages/Artists";
 import { listArtists } from "@/lib/db/artists";
 import type { Artist } from "@/lib/db/types";
+import { listableSorted } from "@/lib/artist-richness";
 
 interface Props {
   initialArtists: Artist[];
@@ -30,7 +31,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ res }) => 
     "public, s-maxage=300, stale-while-revalidate=600",
   );
 
-  const artists = await listArtists();
+  // Only list artists with a bio, photo or link, richest first
+  const artists = listableSorted(await listArtists());
 
   return { props: { initialArtists: artists } };
 };

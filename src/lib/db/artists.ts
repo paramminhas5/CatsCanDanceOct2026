@@ -24,6 +24,16 @@ import type {
 // Re-export SbResult so callers don't need to import from supabase.ts directly
 export type { SbResult } from "./supabase";
 
+/** The artists table has no available_cities column; give the UI safe defaults. */
+function normalizeArtist<T extends Record<string, any>>(a: T): T {
+  return {
+    ...a,
+    genres: a.genres ?? [],
+    festivals: a.festivals ?? [],
+    available_cities: a.available_cities ?? [],
+  };
+}
+
 // ── Read ──────────────────────────────────────────────────────────────────────
 
 /** List all approved artists, optionally filtered by featured flag. */
@@ -33,14 +43,15 @@ export async function listArtists(opts: {
 } = {}): Promise<Artist[]> {
   const f: Record<string, string> = { ...eqf("status", "approved"), ...ord("name") };
   if (opts.featured) f["featured"] = "eq.true";
-  let rows = await sbGet<Artist>("artists", pq(f));
+  let rows = (await sbGet<Artist>("artists", pq(f))).map(normalizeArtist);
   if (opts.limit && opts.limit > 0) rows = rows.slice(0, opts.limit);
   return rows;
 }
 
 /** Get a single approved artist by slug. Returns null if not found. */
 export async function getArtist(slug: string): Promise<Artist | null> {
-  return sbGetOne<Artist>("artists", pq({ ...eqf("slug", slug), ...eqf("status", "approved") }));
+  const row = await sbGetOne<Artist>("artists", pq({ ...eqf("slug", slug), ...eqf("status", "approved") }));
+  return row ? normalizeArtist(row) : null;
 }
 
 /** Get an artist by slug regardless of status (for admin/portal use). */
