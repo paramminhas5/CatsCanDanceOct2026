@@ -128,7 +128,7 @@ export default function ArtistPortfolio({ artist }: { artist: PortfolioArtist })
         )}
 
         <Block title="Rate and booking">
-          {rate ? <p className="font-display text-lg text-ink">{rate}</p> : <p className="text-ink">Rate on request.</p>}
+          {rate ? <><p className="font-display text-lg text-ink">{rate}</p><p className="text-xs text-ink/50">Estimate from CCD research. Confirm with the artist.</p></> : <p className="text-ink">Rate on request.</p>}
           <p className="text-sm text-ink/60 mt-1">{artist.open_to_bookings === false ? "Not taking bookings right now." : "Open to bookings."}</p>
         </Block>
       </div>
