@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import CuratedEvents from "@/components/CuratedEvents";
+import SceneBoard from "@/components/SceneBoard";
+import PassItOn from "@/components/PassItOn";
 import { CITY_SCENES, GLOBAL_SCENES, GENRE_PAGES } from "@/content/scenes";
 import {
   MapPin, Globe, Music2, Compass, ArrowRight, Play,
@@ -492,9 +493,8 @@ export default function DiscoverPage() {
       </section>
 
       {/* ── Curated Events Grid (main content) ── */}
-      <section id="events">
-        <CuratedEvents />
-      </section>
+      <SceneBoard />
+      <PassItOn />
 
       {/* ── Indian Cities ── */}
       <section id="indian-scenes" className="container py-16 md:py-24">

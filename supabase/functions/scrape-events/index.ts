@@ -16,6 +16,11 @@ type Raw = {
   event_time: string | null;
   image_url: string | null;
   description: string | null;
+  ticket_url?: string | null;
+  lineup?: string[] | null;
+  kind?: "club" | "concert" | "festival";
+  source_url?: string | null;
+  genres?: string[] | null;
 };
 
 const errs: string[] = [];
@@ -171,27 +176,52 @@ async function skillbox(): Promise<Raw[]> {
   return out;
 }
 
-// Generic JSON-LD pages: Eventbrite India techno/house listings and Gigs Calendar.
-async function listings(): Promise<Raw[]> {
+// Gigs Calendar (gigscalendar.com): India electronic and underground aggregator, server-rendered.
+// Homepage lists /events/<slug> cards; each detail page has date, venue, city, lineup, genres and an outbound ticket link.
+// We store facts only (no images, no copied descriptions) and link back to the source and the ticket seller.
+const MONTHS = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+const strip = (s: string) => decode(s.replace(/<!--.*?-->/g, "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " "));
+
+function parseGigsDetail(html: string, url: string): Raw | null {
+  const title = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1];
+  if (!title) return null;
+  const when = strip(html.match(/<header[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>/)?.[1] ?? "");
+  const dm = when.match(/(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})(?:\s*·\s*(\d{2}:\d{2}))?/);
+  const mi = dm ? MONTHS.indexOf(dm[2].toLowerCase()) : -1;
+  const date = dm && mi >= 0 ? `${dm[3]}-${String(mi + 1).padStart(2, "0")}-${dm[1].padStart(2, "0")}` : null;
+  const venueP = html.match(/<\/h1>\s*<p[^>]*>([\s\S]*?)<\/p>/)?.[1] ?? "";
+  const venue = strip(venueP.split(/<span/)[0]) || null;
+  const cityTxt = strip(venueP.match(/<span[^>]*>([\s\S]*?)<\/span>/)?.[1] ?? "").replace(/^·\s*/, "");
+  const lineupHtml = html.match(/Lineup<\/h2>\s*<ul[^>]*>([\s\S]*?)<\/ul>/)?.[1] ?? "";
+  const lineup = [...lineupHtml.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/g)].map((m) => strip(m[1])).filter(Boolean).slice(0, 40);
+  const pills = html.match(/<\/ul><\/section><section class="mb-10 flex flex-wrap gap-2">([\s\S]*?)<\/section>/)?.[1] ?? html.match(/<section class="mb-10 flex flex-wrap gap-2">([\s\S]*?)<\/section>/)?.[1] ?? "";
+  const genres = [...pills.matchAll(/<span[^>]*>([\s\S]*?)<\/span>/g)].map((m) => strip(m[1])).filter(Boolean).slice(0, 8);
+  const ticket = [...html.matchAll(/<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>\s*Tickets/g)][0]?.[1] ?? null;
+  // Conservative: only title and venue decide. Param can change kind in /ops when approving.
+  const blob = `${strip(title)} ${venue ?? ""}`;
+  const kind = /\b(festival|fest)\b/i.test(blob) ? "festival" : /world tour|\btour\b.*\b20\d\d\b|concert|arena|stadium|grounds/i.test(blob) ? "concert" : "club";
+  return {
+    title: strip(title), url, source: "gigscalendar", source_url: url,
+    city: city(`${cityTxt} ${venue ?? ""}`) ?? (cityTxt || null), venue, event_date: date, event_time: dm?.[4] ?? null,
+    image_url: null, description: null, ticket_url: ticket, lineup, genres, kind,
+  };
+}
+
+async function gigscalendar(): Promise<Raw[]> {
+  const home = await get("https://gigscalendar.com/", 20000);
+  const slugs = [...new Set([...home.matchAll(/href="\/events\/([a-z0-9-]+)"/g)].map((m) => m[1]))];
+  if (!slugs.length) { note("gigscalendar", "no event links on homepage"); return []; }
+  const known = new Set<string>();
+  const kr = await sb("scraped_events?select=url&source=eq.gigscalendar&limit=2000");
+  if (kr.ok) for (const r of await kr.json()) known.add(r.url);
+  const fresh = slugs.map((x) => `https://gigscalendar.com/events/${x}`).filter((u) => !known.has(u)).slice(0, 100);
   const out: Raw[] = [];
-  const pages: [string, string, string | null][] = [
-    ["https://www.eventbrite.com/d/india--bengaluru/techno/", "eventbrite", "Bengaluru"],
-    ["https://www.eventbrite.com/d/india--mumbai/techno/", "eventbrite", "Mumbai"],
-    ["https://www.eventbrite.com/d/india--new-delhi/techno/", "eventbrite", "Delhi NCR"],
-    ["https://www.eventbrite.com/d/india--goa/electronic-music/", "eventbrite", "Goa"],
-    ["https://gigscalendar.com/", "gigscalendar", null],
-  ];
-  for (const [url, source, c] of pages) {
+  for (const u of fresh) {
     try {
-      const html = await get(url);
-      let n = 0;
-      for (const it of jsonLdEvents(html)) {
-        const r = fromLd(it, source, url, c);
-        if (r) { out.push(r); n++; }
-      }
-      if (n === 0) note(source, `no JSON-LD events at ${url}`);
-    } catch (e) { note(source, e); }
-    await sleep(500);
+      const r = parseGigsDetail(await get(u, 8000), u);
+      if (r) out.push(r); else note("gigscalendar", `unparsed ${u}`);
+    } catch (e) { note("gigscalendar-page", e); }
+    await sleep(250);
   }
   return out;
 }
@@ -211,7 +241,7 @@ Deno.serve(async (req) => {
   })).json();
   const runId = run?.[0]?.id;
 
-  const sources = { district, insider, highape, skillbox, listings };
+  const sources = { district, insider, highape, skillbox, gigscalendar };
   const perSource: Record<string, number | string> = {};
   const all: Raw[] = [];
   const results = await Promise.allSettled(Object.values(sources).map((f) => f()));
