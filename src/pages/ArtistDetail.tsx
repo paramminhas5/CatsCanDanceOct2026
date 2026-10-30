@@ -549,7 +549,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                   </span>
                 )}
                 {!artist.claimed_by && (
-                  <Link href={`/artist/dashboard?claim=${artist.id}`}
+                  <Link href={`/for-artists?claim=${encodeURIComponent(artist.slug)}#claim`}
                     className="inline-block bg-cream/10 text-cream font-display text-xs px-3 py-1 border-2 border-cream/40 hover:border-cream hover:bg-cream/20 transition-colors">
                     Are you {artist.name.split(" ")[0]}? Claim →
                   </Link>
@@ -1041,7 +1041,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                     <ExternalLink className="w-3 h-3" /> Share EPK
                   </a>
                   {!artist.claimed_by && (
-                    <Link href={`/artist/dashboard?claim=${artist.id}`}
+                    <Link href={`/for-artists?claim=${encodeURIComponent(artist.slug)}#claim`}
                       className="flex items-center gap-1.5 font-display text-xs uppercase px-4 py-2 border-4 border-ink bg-ink text-cream hover:bg-magenta transition-colors">
                       Are you {artist.name.split(" ")[0]}? Claim →
                     </Link>
@@ -1194,7 +1194,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                     <p className="font-display text-xl uppercase">Is this your profile?</p>
                     <p className="text-cream/60 text-sm mt-1">Claim it to edit your bio, add releases, manage bookings and share your EPK.</p>
                   </div>
-                  <Link href={`/artist/dashboard?claim=${artist.id}`}
+                  <Link href={`/for-artists?claim=${encodeURIComponent(artist.slug)}#claim`}
                     className="shrink-0 font-display text-sm uppercase bg-magenta text-cream px-5 py-3 border-4 border-cream chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform whitespace-nowrap">
                     CLAIM PROFILE →
                   </Link>

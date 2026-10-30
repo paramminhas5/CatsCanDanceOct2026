@@ -83,6 +83,13 @@ async function formCrews(formData: FormData) {
   await rpc("ops_form_crews", { p_token: T(), p_slug: String(formData.get("slug")), p_pre_spot: String(formData.get("pre_spot") ?? "") });
   revalidatePath("/ops");
 }
+async function inboxStatus(formData: FormData) {
+  "use server";
+  await rpc("ops_set_inbox_status", {
+    p_token: T(), p_kind: String(formData.get("kind")), p_id: String(formData.get("id")), p_status: String(formData.get("status")),
+  });
+  revalidatePath("/ops"); revalidatePath("/tour");
+}
 async function saveSetting(formData: FormData) {
   "use server";
   await rpc("ops_set_setting", { p_token: T(), p_key: String(formData.get("key")), p_value: String(formData.get("value")) });
@@ -106,7 +113,7 @@ export default async function Ops() {
   }
   if (!s) return <main className="wrap ops"><h2 style={{ margin: "40px 0 12px" }}>Ops</h2><p className="bad">Could not load: {err || "no data"}</p></main>;
 
-  const [tickets, orders, crewsO, todos, hidden, members, swaps] = await Promise.all([
+  const [tickets, orders, crewsO, todos, hidden, members, swaps, inbox] = await Promise.all([
     rpc<any[]>("ops_ticket_summary", { p_token: T() }).catch(() => []),
     rpc<any[]>("ops_shop_orders", { p_token: T() }).catch(() => []),
     rpc<any[]>("ops_crew_overview", { p_token: T() }).catch(() => []),
@@ -114,7 +121,17 @@ export default async function Ops() {
     rpc<any[]>("ops_artists", { p_token: T(), p_status: "hidden" }).catch(() => []),
     rpc<any[]>("ops_members", { p_token: T() }).catch(() => []),
     rpc<any[]>("ops_swaps", { p_token: T() }).catch(() => []),
+    rpc<any>("ops_inbox", { p_token: T() }).catch(() => null),
   ]);
+  const inboxCount = inbox
+    ? (inbox.contact?.length ?? 0) + (inbox.promoters?.length ?? 0) + (inbox.artists?.length ?? 0) + (inbox.dates?.length ?? 0) + (inbox.bookings?.length ?? 0)
+    : 0;
+  const InboxBtns = ({ kind, id, ok, no }: { kind: string; id: string; ok: [string, string]; no?: [string, string] }) => (
+    <td style={{ whiteSpace: "nowrap" }}>
+      <form action={inboxStatus} style={{ display: "inline" }}><input type="hidden" name="kind" value={kind} /><input type="hidden" name="id" value={id} /><input type="hidden" name="status" value={ok[0]} /><button className="btn sm">{ok[1]}</button></form>{" "}
+      {no && <form action={inboxStatus} style={{ display: "inline" }}><input type="hidden" name="kind" value={kind} /><input type="hidden" name="id" value={id} /><input type="hidden" name="status" value={no[0]} /><button className="btn sm alt">{no[1]}</button></form>}
+    </td>
+  );
   const ROLES = ["member", "host", "staff", "owner"];
   const lastScrape = s.runs.find((r) => r.job === "scrape-events");
   const stats: [string, number | string][] = [
@@ -157,7 +174,87 @@ export default async function Ops() {
           <li>{todos?.ticket_swaps_pending ?? 0} ticket listings waiting (below)</li>
           <li>{todos?.blog_drafts?.length ?? 0} blog drafts{(todos?.blog_drafts ?? []).map((d: any) => ` · ${d.title}`).join("")}</li>
           <li>{todos?.artists_missing_bio ?? 0} approved artists have no bio</li>
+          <li>{inboxCount} messages and form submissions in the inbox (below)</li>
         </ul>
+      </div>
+
+      <h3 style={{ marginBottom: 10 }}>Inbox ({inboxCount})</h3>
+      <p className="muted" style={{ marginTop: 0 }}>Everything sent through the public forms. Approving tour dates puts them on /tour. Contact messages and bookings are replied to by email.</p>
+      <div className="scroll" style={{ marginBottom: 36, maxHeight: 520, overflow: "auto" }}>
+        {inboxCount === 0 && <p className="muted">Nothing waiting.</p>}
+        {(inbox?.contact?.length ?? 0) > 0 && (
+          <table>
+            <thead><tr><th>Message</th><th>From</th><th></th></tr></thead>
+            <tbody>
+              {inbox.contact.map((m: any) => (
+                <tr key={m.id}>
+                  <td style={{ whiteSpace: "pre-wrap", maxWidth: 520 }}>{m.message}</td>
+                  <td><b>{m.name}</b><div className="muted"><a href={`mailto:${m.email}`}>{m.email}</a> · {ago(m.created_at)}</div></td>
+                  <InboxBtns kind="contact" id={m.id} ok={["handled", "Done"]} />
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        {(inbox?.promoters?.length ?? 0) > 0 && (
+          <table>
+            <thead><tr><th>Promoter application</th><th>About</th><th></th></tr></thead>
+            <tbody>
+              {inbox.promoters.map((p: any) => (
+                <tr key={p.id}>
+                  <td><b>{p.name}</b><div className="muted"><a href={`mailto:${p.email}`}>{p.email}</a> · {p.city} · {ago(p.created_at)}</div>
+                    <div className="muted">{[p.instagram, p.website, p.sample_event].filter(Boolean).join(" · ")}</div></td>
+                  <td style={{ whiteSpace: "pre-wrap", maxWidth: 420 }}>{p.bio}<div className="muted">{(p.genres ?? []).join(", ")}</div></td>
+                  <InboxBtns kind="promoter" id={p.id} ok={["approved", "Approve"]} no={["rejected", "Reject"]} />
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        {(inbox?.artists?.length ?? 0) > 0 && (
+          <table>
+            <thead><tr><th>Artist submission</th><th>Links</th><th></th></tr></thead>
+            <tbody>
+              {inbox.artists.map((a: any) => (
+                <tr key={a.id}>
+                  <td><b>{a.name}</b> <span className="muted">({a.kind === "claim" ? `claim: ${a.artist_slug}` : "new"})</span>
+                    <div className="muted"><a href={`mailto:${a.email}`}>{a.email}</a> · {[a.based_city, (a.genres ?? []).join(", ")].filter(Boolean).join(" · ")} · {ago(a.created_at)}</div>
+                    {a.bio && <div className="muted" style={{ maxWidth: 420 }}>{a.bio}</div>}</td>
+                  <td className="muted" style={{ fontSize: 13 }}>{[a.instagram, a.soundcloud, a.mix_url].filter(Boolean).map((u: string, i: number) => <div key={i}><a href={u.startsWith("http") ? u : `https://instagram.com/${u.replace(/^@/, "")}`} target="_blank" rel="noreferrer">{u}</a></div>)}</td>
+                  <InboxBtns kind="artist" id={a.id} ok={["approved", "Mark done"]} no={["rejected", "Reject"]} />
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        {(inbox?.dates?.length ?? 0) > 0 && (
+          <table>
+            <thead><tr><th>Tour dates</th><th>Note</th><th></th></tr></thead>
+            <tbody>
+              {inbox.dates.map((d: any) => (
+                <tr key={d.id}>
+                  <td><b>{d.artist_name}</b> · {d.city}<div className="muted">{fmtDate(d.from_date)} to {fmtDate(d.to_date)} · <a href={`mailto:${d.email}`}>{d.email}</a> · {ago(d.created_at)}</div></td>
+                  <td className="muted">{d.note}</td>
+                  <InboxBtns kind="dates" id={d.id} ok={["approved", "Publish"]} no={["rejected", "Reject"]} />
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        {(inbox?.bookings?.length ?? 0) > 0 && (
+          <table>
+            <thead><tr><th>Booking request</th><th>Details</th><th></th></tr></thead>
+            <tbody>
+              {inbox.bookings.map((b: any) => (
+                <tr key={b.id}>
+                  <td><b>{b.name}</b> for {b.artist_slug}<div className="muted"><a href={`mailto:${b.email}`}>{b.email}</a> · {[b.org, b.city].filter(Boolean).join(" · ")} · {ago(b.created_at)}</div></td>
+                  <td style={{ whiteSpace: "pre-wrap", maxWidth: 420 }}>{[b.event_date && fmtDate(b.event_date), b.budget_inr].filter(Boolean).join(" · ")}<div className="muted">{b.message}</div></td>
+                  <InboxBtns kind="booking" id={b.id} ok={["sent", "Passed on"]} no={["closed", "Close"]} />
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
 
       <h3 style={{ marginBottom: 10 }}>Artists waiting ({hidden?.length ?? 0})</h3>

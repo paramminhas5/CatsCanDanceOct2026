@@ -5,7 +5,7 @@ import SEO from "@/components/SEO";
 import PageHero from "@/components/PageHero";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import PartnerContactDialog from "@/components/PartnerContactDialog";
-import { supabase } from "@/lib/supabase-shim";
+import { supabase } from "@/lib/supabase";
 import { toast } from "sonner";
 
 const CITIES = ["Bangalore", "Mumbai", "Delhi", "Pune", "Other"];
@@ -46,21 +46,25 @@ const SubmitEvent = () => {
     }
     setBusy(true);
     try {
-      const { error } = await (supabase as any).from("promoter_applications").insert({
-        name: form.name.trim(),
-        email: form.email.trim().toLowerCase(),
-        instagram: form.instagram.trim() || null,
-        website: form.website.trim() || null,
-        city: form.city,
-        genres: form.genres,
-        bio: form.bio.trim(),
-        sample_event: form.sample_event.trim() || null,
-        status: "pending",
+      const { error } = await supabase.rpc("submit_promoter_application", {
+        p_name: form.name.trim(),
+        p_email: form.email.trim().toLowerCase(),
+        p_instagram: form.instagram.trim() || null,
+        p_website: form.website.trim() || null,
+        p_city: form.city,
+        p_genres: form.genres.join(","),
+        p_bio: form.bio.trim(),
+        p_sample_event: form.sample_event.trim() || null,
       });
       if (error) throw error;
       setStep("submitted");
     } catch (err: any) {
-      toast.error(err?.message?.includes("duplicate") ? "You've already applied with this email." : "Submit failed — try again.");
+      const msg = String(err?.message ?? "");
+      toast.error(
+        msg.includes("already applied") ? "You've already applied with this email."
+        : msg.includes("Too many") ? "Too many tries. Give it an hour and try again."
+        : "Submit failed. Try again."
+      );
     } finally {
       setBusy(false);
     }

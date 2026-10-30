@@ -5,6 +5,7 @@ import PageHero from "@/components/PageHero";
 import Marquee from "@/components/Marquee";
 import SEO from "@/components/SEO";
 import PartnerContactDialog from "@/components/PartnerContactDialog";
+import ArtistSubmitForm from "@/components/ArtistSubmitForm";
 
 const bullets = [
   "Curated crowd that cares about music",
@@ -64,12 +65,12 @@ const ForArtists = () => (
                 </button>
               }
             />
-            <Link
-              href="/artist/dashboard"
+            <a
+              href="#claim"
               className="inline-block bg-acid-yellow text-ink font-display text-xl px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform"
             >
-              ARTIST PORTAL →
-            </Link>
+              GET ON THE ROSTER →
+            </a>
           </div>
         </div>
         <ul className="space-y-3">
@@ -82,31 +83,24 @@ const ForArtists = () => (
         </ul>
       </div>
     </section>
-    <section className="bg-ink border-b-4 border-ink py-16 md:py-20">
-      <div className="container flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <section id="claim" className="bg-ink border-b-4 border-ink py-16 md:py-20">
+      <div className="container grid md:grid-cols-2 gap-10 items-start">
         <div>
           <p className="font-display text-acid-yellow text-xs uppercase tracking-[0.3em] mb-2">/ ALREADY AN ARTIST?</p>
           <h2 className="font-display text-3xl md:text-4xl text-cream uppercase leading-tight">
-            CLAIM YOUR PROFILE.<br/>MANAGE YOUR BOOKINGS.
+            ADD YOURSELF.<br/>OR CLAIM YOUR PAGE.
           </h2>
           <p className="text-cream/60 mt-3 max-w-md">
-            Log in to the Artist Portal to edit your bio, manage tour dates, add releases, upload press clippings, and respond to booking inquiries — all in one place.
+            Send your links and a mix. We check every profile by hand, then it goes live on the roster. If you are already listed, claim your page and we will hand it over. Tour dates go up at <Link href="/tour#post" className="underline">/tour</Link>.
           </p>
-        </div>
-        <div className="flex flex-col gap-3 shrink-0">
-          <Link
-            href="/artist/dashboard"
-            className="inline-block bg-magenta text-cream font-display text-lg px-8 py-4 border-4 border-cream chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform whitespace-nowrap"
-          >
-            GO TO ARTIST PORTAL →
-          </Link>
           <Link
             href="/litter"
-            className="inline-block bg-transparent text-cream font-display text-sm px-8 py-3 border-4 border-cream/40 hover:border-cream hover:bg-cream/10 transition-colors text-center"
+            className="inline-block mt-6 bg-transparent text-cream font-display text-sm px-8 py-3 border-4 border-cream/40 hover:border-cream hover:bg-cream/10 transition-colors text-center"
           >
             BROWSE THE ROSTER
           </Link>
         </div>
+        <ArtistSubmitForm />
       </div>
     </section>
     <Footer />

@@ -138,18 +138,18 @@ const PartnerContactDialog = ({ kind, trigger, defaultReason, defaultMessage, op
         "",
         parsed.data.message,
       ].filter(Boolean).join("\n");
-      const { error } = await supabase.from("contact_messages").insert({
-        body: {
-          name: parsed.data.name,
-          email: parsed.data.email,
-          message: composed,
-          kind,
-          reason: parsed.data.reason,
-          phone: parsed.data.phone || undefined,
-          website,
-        },
+      // Honeypot: bots fill the hidden field. Pretend it worked, send nothing.
+      if (website) {
+        toast.success("Sent! We'll be in touch soon.");
+        setSent(true);
+        return;
+      }
+      const { data, error } = await supabase.rpc("submit_contact", {
+        p_name: parsed.data.name,
+        p_email: parsed.data.email,
+        p_message: composed,
       });
-      if (error) throw new Error("send failed");
+      if (error || (data && (data as { ok?: boolean }).ok === false)) throw new Error("send failed");
       toast.success("Sent! We'll be in touch soon.");
       setSent(true);
       setForm({ name: "", email: "", phone: "", reason: cfg.reasons[0], message: "" });
