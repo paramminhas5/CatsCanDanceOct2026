@@ -380,6 +380,8 @@ export default async function Ops() {
         </table>
       )}
 
+      <p style={{ margin: "0 0 16px" }}><a href="/ops/curation"><b>Artist curation</b></a> <span className="muted">: filter by fit, commercial and photo, edit scores, bulk publish or hide.</span></p>
+
       <h3 style={{ marginBottom: 10 }}>Artists waiting ({hidden?.length ?? 0})</h3>
       <p className="muted" style={{ marginTop: 0 }}>Hidden artists are not on the site. Approve puts them on /prowl. New names come from event lineups.</p>
       <div style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
