@@ -37,10 +37,49 @@ M = {
  "28_Sickflip": ("sickflip", 3, [], [], False),
  "29_Dotdat": ("dotdat", None, [], [1], True),
  "30_Aayna": ("aayna", 2, [], [], False),
+ "41_Jatayu": ("jatayu", 1, [], [], False),
+ "42_Long_Distances": ("long-distances", 2, [], [], False),
+ "43_The_F16s": ("the-f16s", 1, [], [], False),
+ "44_Anish_Kumar": ("anish-kumar", 1, [], [], False),
+ "45_Madame_Gandhi": ("madame-gandhi", 2, [], [], False),
+ "46_AAGUU": ("aaguu", 1, [], [], False),
+ "48_Stain": ("stain", 1, [], [], False),
+ "49_Anushka": ("anushka", None, [], [1, 2], True),
+ "50_Sodhi": ("sodhi", None, [], [1, 2], True),
+ "51_Hybrid_Protokol": ("hybrid-protokol", 3, [], [2], False),
+ "53_Yung_Raj": ("yung-raj", 1, [], [], False),
+ "54_MC_Soopy": ("mc-soopy", 2, [], [], False),
+ "55_Shireen": ("shireen", 1, [], [], False),
+ "56_Shama_Anwar": ("shama-anwar", 2, [], [1], False),
+ "57_Thegreybox": ("thegreybox", 2, [], [], False),
+ "58_Lush_Lata": ("lush-lata", 2, [], [1], False),
+ "59_Okedo": ("okedo", 1, [], [], False),
+ "60_Pulpy_Shilpy": ("pulpy-shilpy", 1, [], [], False),
+ "61_Chhabb": ("chhabb", 1, [], [], False),
+ "62_Abhi_Meer": ("abhi-meer", 1, [], [], False),
+ "63_Nazira": ("nazira", 2, [], [], False),
+ "64_Asquith": ("asquith", 2, [], [], False),
+ "65_Photonz": ("photonz", 1, [], [3], False),
+ "66_JBabe": ("jbabe", 1, [], [], False),
+ "67_Jael": ("jael", 2, [], [], False),
+ "68_Pariah": ("pariah", 1, [], [], False),
+ "69_Spryk": ("spryk", 3, [], [], False),
+ "70_Masalo": ("masalo", 2, [], [], False),
+ "71_Kamma": ("kamma", 1, [], [], False),
+ "72_Violet_PT": ("violet", 1, [], [], False),
+ "73_ESA": ("esa", 1, [], [], False),
+ "74_Electroson": ("electroson", 2, [1], [], False),
+ "75_Nate08": ("nate08", 2, [], [], False),
+ "76_Sijya": ("sijya", 2, [], [], False),
+ "77_Disco_Arabesquo": ("disco-arabesquo", 1, [], [], False),
+ "78_Kiss_Nuka": ("kiss-nuka", 1, [], [], False),
+ "80_Gazzi": ("gazzi", None, [], [1, 2], True),
+ "81_Mixtress": ("mixtress", 3, [], [2], False),
 }
 items, held, low = [], [], []
-for d in sorted(os.listdir(raw)):
-    for f in sorted(os.listdir(os.path.join(raw, d))):
+for dp, _dn, fns in sorted(os.walk(raw)):
+    d = os.path.relpath(dp, raw)
+    for f in sorted(x for x in fns if x.lower().endswith(".png")):
         m = re.match(r"(.+)_(\d\d)\.png$", f)
         pre, n = m.group(1), int(m.group(2))
         slug, hero, posters, hold, gonly = M[pre]
