@@ -32,6 +32,8 @@ interface DBArtist {
   videos?: any[];
   gallery?: any[];
   kind?: string;          // "musician" | "photographer" | etc.
+  lane?: "core" | "parallel";
+  lane_reason?: string;
 }
 
 function cityOf(a: DBArtist): string {
@@ -179,7 +181,13 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
   }, [artists, q, city, activeGenres, sort, bookingsOnly, origin, plays, rate, extras]);
 
   const groups = useMemo(() => {
-    if (group === "none") return [{ title: "", rows: filtered }];
+    if (group === "none") {
+      const core = filtered.filter((a) => a.lane !== "parallel");
+      const parallel = filtered.filter((a) => a.lane === "parallel");
+      return parallel.length
+        ? [{ title: "", rows: core }, { title: "Parallels", rows: parallel }]
+        : [{ title: "", rows: filtered }];
+    }
     const key = (a: DBArtist): string =>
       group === "origin" ? originOf(a) || "Unknown"
       : group === "city" ? (a.based_city ?? "").split(",")[0].trim() || "Unknown"
@@ -376,6 +384,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
               {groups.map((g) => (
               <div key={g.title || "all"} className="mb-10">
               {g.title && <p className="font-display text-2xl text-ink mb-3">{g.title.toUpperCase()} <span className="text-ink/40 text-base">{g.rows.length}</span></p>}
+              {g.title === "Parallels" && group === "none" && <p className="text-ink/70 text-sm mb-3 max-w-xl">Outside the dance lane, but part of the same South Asian scene: hip-hop, rock, indie and composers.</p>}
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {g.rows.map((a, i) => {
                   const img = cover(a);
