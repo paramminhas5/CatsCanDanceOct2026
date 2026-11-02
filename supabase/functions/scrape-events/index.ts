@@ -46,7 +46,7 @@ async function get(url: string, ms = 10000) {
 }
 
 const decode = (s: string) =>
-  s.replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">").trim();
+  s.replace(/&amp;/g, "&").replace(/&#39;|&#x27;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">").trim();
 
 function meta(html: string, prop: string) {
   const a = html.match(new RegExp(`<meta[^>]+(?:property|name)=["']${prop}["'][^>]+content=["']([^"']+)["']`, "i"));
@@ -242,13 +242,22 @@ Deno.serve(async (req) => {
     return !e.event_date || e.event_date >= today;
   });
 
+  // PostgREST bulk inserts need every object to have the same keys (PGRST102).
+  // Listing rows have no genres and gigscalendar rows do, so fill every optional key.
+  const norm = (r: Raw) => ({
+    title: r.title, url: r.url, source: r.source, city: r.city, venue: r.venue,
+    event_date: r.event_date, event_time: r.event_time, image_url: r.image_url, description: r.description,
+    ticket_url: r.ticket_url ?? null, lineup: r.lineup ?? null, kind: r.kind ?? "club",
+    source_url: r.source_url ?? null, genres: r.genres ?? null,
+  });
+
   let inserted = 0;
   let error: string | null = null;
   for (let i = 0; i < rows.length; i += 100) {
     const res = await sb("scraped_events?on_conflict=url", {
       method: "POST",
       headers: { Prefer: "resolution=ignore-duplicates,return=representation" },
-      body: JSON.stringify(rows.slice(i, i + 100)),
+      body: JSON.stringify(rows.slice(i, i + 100).map(norm)),
     });
     if (res.ok) inserted += (await res.json()).length;
     else error = `${res.status} ${(await res.text()).slice(0, 200)}`;
