@@ -18,6 +18,7 @@ import { Link } from "@/lib/compat-router";
 import { parseEventDate } from "@/lib/parse-date";
 import { supabase } from "@/lib/supabase";
 import { getEventContent, EVENT_ROWS } from "@/content/events";
+import { isListed, nightStatus } from "@/lib/nights";
 import { resolvePoster } from "@/lib/poster";
 import type { EventRow } from "@/types/events";
 
@@ -104,11 +105,15 @@ const Events = () => {
     return () => { cancelled = true; };
   }, []);
 
-  const safeAll  = Array.isArray(all) ? all : STATIC_ROWS;
-  const upcoming = useMemo(() => safeAll.filter((e) => e.status === "upcoming"), [safeAll]);
-  const past     = useMemo(() => safeAll.filter((e) => e.status === "past"),     [safeAll]);
+  // Only listed nights, with status worked out from the real date (a stale status column never shows an old night as upcoming).
+  const safeAll = useMemo(() => (Array.isArray(all) ? all : STATIC_ROWS)
+    .filter((e) => isListed(e))
+    .map((e) => ({ ...e, status: nightStatus(e) as EventRow["status"] })), [all]);
+  const byDate = (a: EventRow, b: EventRow) => (a.event_date ?? "").localeCompare(b.event_date ?? "") || (a.sort_order ?? 0) - (b.sort_order ?? 0);
+  const upcoming = useMemo(() => safeAll.filter((e) => e.status === "upcoming").sort(byDate), [safeAll]);
+  const past     = useMemo(() => safeAll.filter((e) => e.status === "past").sort((a, b) => byDate(b, a)), [safeAll]);
 
-  // Next upcoming = first in sort order
+  // Next up = the soonest upcoming night
   const nextEvent = upcoming[0] ?? null;
 
   // Series group for the showcase strip
@@ -124,7 +129,7 @@ const Events = () => {
       case "upcoming": return upcoming;
       case "past": return past;
       case "series": return seriesEvents;
-      default: return safeAll;
+      default: return [...upcoming, ...past];
     }
   }, [filter, safeAll, upcoming, past, seriesEvents]);
 
@@ -178,14 +183,14 @@ const Events = () => {
             UNDERGROUND. CURATED. OURS.
           </p>
           <p className="text-cream/80 font-medium text-lg max-w-xl">
-            Our own nights. House, disco, garage, jungle and D&amp;B in small rooms. Free RSVP. Pets welcome at the daytime ones.
+            Our own nights. House, disco, garage, jungle and D&amp;B in small rooms. Book on the site, show the QR at the door. Pets welcome at the daytime ones.
           </p>
         </PageHero>
 
         {/* ── 2. MARQUEE ── */}
         <Marquee
           bg="bg-acid-yellow"
-          items={["EPISODE 4 · BAR WILD","EPISODE 3 · INDIRANAGAR SOCIAL","EPISODE 2 · INDIRANAGAR SOCIAL","EPISODE 1 · BAR WILD","SMALL ROOMS","FREE RSVP"]}
+          items={["EPISODE 5 · THE HUMMING TREE · 25 NOV","EPISODE 4 · BAR WILD","EPISODE 3 · INDIRANAGAR SOCIAL","EPISODE 2 · INDIRANAGAR SOCIAL","EPISODE 1 · BAR WILD","SMALL ROOMS","FREE RSVP"]}
         />
 
         <section className="container py-6 md:py-8">
@@ -218,7 +223,7 @@ const Events = () => {
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="font-display text-acid-yellow text-xs tracking-widest mb-1">/ FREE RSVP</p>
+                    <p className="font-display text-acid-yellow text-xs tracking-widest mb-1">/ ON SALE</p>
                     <p className="font-display text-lg">{nextEvent.date}</p>
                   </div>
                 </div>
@@ -302,7 +307,7 @@ const Events = () => {
                         to={`/episodes/${nextEvent.slug}`}
                         className="bg-acid-yellow text-ink font-display text-lg md:text-xl px-7 py-4 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform"
                       >
-                        {content.cta_label ?? "VIEW EVENT & RSVP →"}
+                        {content.cta_label ?? "Get tickets"}
                       </Link>
                     </div>
                   </div>
@@ -420,7 +425,7 @@ const Events = () => {
                           )}
                           {!isPast && (
                             <p className="mt-3 font-display text-xs text-magenta uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                              VIEW & RSVP →
+                              GET TICKETS
                             </p>
                           )}
                         </div>

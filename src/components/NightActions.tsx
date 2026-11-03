@@ -36,10 +36,10 @@ export default function NightActions({ slug }: { slug: string }) {
   return (
     <div className="flex flex-wrap items-center gap-3">
       <button type="button" className={btn} onClick={() => act("set_night_going", { p_slug: slug, p_going: !going, p_show_name: false })}>
-        {going ? "Going ✓" : "I'm going"} ({counts.going})
+        {going ? "Going ✓" : "I'm going"}{counts.going > 0 ? ` (${counts.going})` : ""}
       </button>
       <button type="button" className={btn} onClick={() => act("toggle_night_like", { p_slug: slug })}>
-        {liked ? "Liked ♥" : "Like"} ({counts.likes})
+        {liked ? "Liked ♥" : "Like"}{counts.likes > 0 ? ` (${counts.likes})` : ""}
       </button>
       {note && <span className="text-sm">{note} {!signedIn && <Link href="/join" className="underline">Join</Link>}</span>}
     </div>

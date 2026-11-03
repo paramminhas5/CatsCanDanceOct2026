@@ -59,7 +59,8 @@
   html, body {
     @apply bg-background text-foreground;
     font-family: 'Space Grotesk', system-ui, sans-serif;
-    overflow-x: hidden;
+    /* clip, not hidden: hidden turns the page into a scroll box and breaks position: sticky */
+    overflow-x: clip;
   }
 
   @media (min-width: 768px) {
@@ -91,6 +92,46 @@
 
   .border-ink {
     border-color: hsl(var(--ink));
+  }
+
+  /* Ticket perforation: a dashed tear line with a half-circle notch bitten out of each edge. */
+  .perf {
+    position: relative;
+    height: 0;
+    border-top: 3px dashed hsl(var(--ink) / 0.35);
+    margin: 0 18px;
+  }
+  .perf::before,
+  .perf::after {
+    content: "";
+    position: absolute;
+    top: -16px;
+    width: 30px;
+    height: 30px;
+    border-radius: 9999px;
+    background: var(--perf-bg, hsl(var(--background)));
+    border: 4px solid hsl(var(--ink));
+  }
+  .perf::before { left: -35px; clip-path: inset(0 0 0 50%); }
+  .perf::after { right: -35px; clip-path: inset(0 50% 0 0); }
+
+  .tabular { font-variant-numeric: tabular-nums; }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  @keyframes stamp-in {
+    0% { transform: scale(1.6) rotate(-14deg); opacity: 0; }
+    60% { transform: scale(0.94) rotate(-8deg); opacity: 1; }
+    100% { transform: scale(1) rotate(-8deg); opacity: 1; }
+  }
+  .stamp-in { animation: stamp-in 0.45s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes print-in {
+    from { transform: translateY(-14px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .print-in { animation: print-in 0.5s cubic-bezier(.2,.8,.2,1) both; }
+  @media (prefers-reduced-motion: reduce) {
+    .stamp-in, .print-in { animation: none; }
   }
 
   .bg-grain {
