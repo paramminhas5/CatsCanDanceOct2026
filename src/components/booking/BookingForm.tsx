@@ -147,7 +147,7 @@ function MiniCalendar({
                   <button
                     key={iso}
                     type="button"
-                    title={status ? `${iso} — ${status}` : iso}
+                    title={status ? `${iso}: ${status}` : iso}
                     onClick={() => iso >= todayISO && handleClick(iso)}
                     onMouseEnter={() => setHovered(iso)}
                     onMouseLeave={() => setHovered(null)}
@@ -410,7 +410,7 @@ function BookingFormInner({
         <div className="p-5 space-y-3">
           {packages.length === 0 ? (
             <p className="text-sm text-ink/50 font-sans">
-              This artist hasn't set up packages yet — just describe what you need below.
+              This artist hasn't set up packages yet. Just describe what you need below.
             </p>
           ) : (
             <>
@@ -495,7 +495,7 @@ function BookingFormInner({
               <div className="flex items-center justify-between mb-3">
                 <p className="font-display text-xs uppercase text-ink/60">
                   {eventDateStatus === "busy"
-                    ? "⚠ Artist appears busy — you can still request"
+                    ? "⚠ Artist appears busy. You can still request"
                     : eventDateStatus === "available"
                     ? "✓ Artist has marked this as an open slot"
                     : "Select your preferred event date(s)"}
@@ -602,7 +602,7 @@ function BookingFormInner({
           <div className="flex gap-2 items-start border-2 border-magenta bg-magenta/10 p-3">
             <Info className="w-4 h-4 text-magenta shrink-0 mt-0.5" />
             <p className="text-xs text-ink/70 font-sans">
-              The artist appears busy on this date. You can still send a request — they may have flexibility.
+              The artist appears busy on this date. You can still send a request. They may have flexibility.
             </p>
           </div>
         )}

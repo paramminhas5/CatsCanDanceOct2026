@@ -43,8 +43,20 @@ export async function loadCrowd(keys: string[]): Promise<Record<string, Crowd>> 
 export async function loadMyPlans(): Promise<MyPlan[]> {
   const v2 = await supabase.rpc("my_plans");
   if (!v2.error && Array.isArray(v2.data)) return v2.data as MyPlan[];
-  const ns = await supabase.rpc("my_night_state");
-  return ((ns.data as any[]) ?? []).filter((x) => x.going).map((x) => ({ night_key: x.event_slug, state: "going", show_name: false, has_ticket: false, kind: "ccd" }));
+  // Before 042: our nights from my_night_state, What's on nights from my_event_state, titles looked up.
+  const [ns, es] = await Promise.all([supabase.rpc("my_night_state"), supabase.rpc("my_event_state")]);
+  const ours = ((ns.data as any[]) ?? []).filter((x) => x.going);
+  const scene = ((es.data as any[]) ?? []).filter((x) => x.going);
+  const [ev, se] = await Promise.all([
+    ours.length ? supabase.from("events").select("slug,title,city,venue,event_date").in("slug", ours.map((x) => x.event_slug)) : Promise.resolve({ data: [] as any[] }),
+    scene.length ? supabase.from("scraped_events").select("id,title,city,venue,event_date").in("id", scene.map((x) => x.event_id)) : Promise.resolve({ data: [] as any[] }),
+  ]);
+  const evBy = new Map(((ev.data as any[]) ?? []).map((e) => [e.slug, e]));
+  const seBy = new Map(((se.data as any[]) ?? []).map((e) => [e.id, e]));
+  return [
+    ...ours.map((x) => { const e = evBy.get(x.event_slug); return { night_key: x.event_slug, state: "going" as const, show_name: !!x.show_name, has_ticket: false, kind: "ccd" as const, title: e?.title, city: e?.city, venue: e?.venue, event_date: e?.event_date }; }),
+    ...scene.map((x) => { const e = seBy.get(x.event_id); return { night_key: sceneKey(x.event_id), state: "going" as const, show_name: !!x.show_name, has_ticket: false, kind: "scene" as const, title: e?.title, city: e?.city, venue: e?.venue, event_date: e?.event_date }; }),
+  ];
 }
 
 export async function setPlan(key: string, state: PlanState, showName = false, hasTicket = false): Promise<{ ok: boolean; error?: string; need?: string }> {

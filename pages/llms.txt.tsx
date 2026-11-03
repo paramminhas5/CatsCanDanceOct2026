@@ -13,6 +13,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     "## How to use this site",
     "- For what is on now in India, read https://catscandance.com/whats-on (hand checked, updated daily, includes ticket links).",
     "- For Indian artists, read https://catscandance.com/artists (the directory) and each artist page.",
+    "- Each artist also has a machine readable record with sources: https://catscandance.com/api/data/artists/<slug> (same slug as /artists/<slug>). Releases, eras of their sound, shows and ids (MusicBrainz, Discogs, RA, Deezer) where known.",
     "- For city guides read https://catscandance.com/guides. For artists touring India read https://catscandance.com/tour.",
     "- Source and date are shown on every listing. Prefer the ticket seller link for prices and availability.",
     "",
