@@ -60,6 +60,7 @@ export type ArtistV2 = {
   bio: string | null;           // the artist's bio as stored (written by the artist or CCD)
   bookable: boolean;            // open_to_bookings
   members: string | null;
+  ids: { scheme: string; value: string; url: string | null }[];  // MusicBrainz, Discogs, RA, Bandcamp and other ids
   city: string | null;
   genres: string[];
   playedCcd: boolean;
@@ -145,7 +146,7 @@ type DbArtist = {
   photo_url: string | null; spotify: string | null; soundcloud: string | null; website: string | null;
   instagram: string | null; claimed_at: string | null; genres: string[] | null; links: Record<string, string> | null;
   bio: string | null; mix_url: string | null; open_to_bookings: boolean | null;
-  festivals: string[] | null; labels: string | null; members: string | null; played_ccd: boolean | null;
+  festivals: string[] | null; labels: string | null; members: string | null; played_ccd: boolean | null; mbid: string | null;
 };
 type DbRelease = {
   id: string; title: string; release_type: string | null; release_date: string | null; year: number | null; label: string | null;
@@ -160,7 +161,7 @@ const enc = encodeURIComponent;
 export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
   const s = enc(slug);
   const artistRows = await select<DbArtist>(
-    `artists?slug=eq.${s}&status=eq.approved&select=slug,name,kind,based_city,from_city,photo_url,spotify,soundcloud,website,instagram,claimed_at,genres,links,bio,mix_url,open_to_bookings,festivals,labels,members,played_ccd&limit=1`, 120);
+    `artists?slug=eq.${s}&status=eq.approved&select=slug,name,kind,based_city,from_city,photo_url,spotify,soundcloud,website,instagram,claimed_at,genres,links,bio,mix_url,open_to_bookings,festivals,labels,members,played_ccd,mbid&limit=1`, 120);
   const a = artistRows[0];
   if (!a) return null;
 
@@ -336,7 +337,9 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
     spotify: a.spotify, soundcloud: a.soundcloud, links, claimed: !!a.claimed_at,
     bio: a.bio && a.bio.trim().length > 20 ? a.bio.trim() : null,
     bookable: a.open_to_bookings !== false,
-    members: a.members?.trim() || null,
+    // Members only for groups (two or more names); a solo artist's own name is not shown as a member.
+    members: a.members && /,|&| and /i.test(a.members) ? a.members.trim() : null,
+    ids: idList(ext, a.mbid),
     city,
     genres: (a.genres ?? []).filter((g) => g && !/^electronic$/i.test(g)).slice(0, 6),
     playedCcd: !!a.played_ccd || ccdNights.some((n) => !n.upcoming),
@@ -360,6 +363,19 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
     tiles, alsoLike: alsoLike.slice(0, 10),
     upcoming: Array.isArray(upcomingRaw) ? upcomingRaw : [],
   };
+}
+
+const ID_URL: Record<string, (v: string) => string> = {
+  musicbrainz: (v) => `https://musicbrainz.org/artist/${v}`,
+  mbid: (v) => `https://musicbrainz.org/artist/${v}`,
+  deezer: (v) => `https://www.deezer.com/artist/${v}`,
+  wikidata: (v) => `https://www.wikidata.org/wiki/${v}`,
+  discogs: (v) => (/^https?:/.test(v) ? v : `https://www.discogs.com/artist/${v}`),
+};
+function idList(ext: { scheme: string; value: string; url: string | null }[], mbid: string | null) {
+  const out = ext.map((x) => ({ scheme: x.scheme === "mbid" ? "musicbrainz" : x.scheme, value: x.value, url: x.url ?? ID_URL[x.scheme]?.(x.value) ?? (/^https?:/.test(x.value) ? x.value : null) }));
+  if (mbid && !out.some((x) => x.scheme === "musicbrainz")) out.push({ scheme: "musicbrainz", value: mbid, url: ID_URL.musicbrainz(mbid) });
+  return out;
 }
 
 function sameUrl(x: string, y: string) {

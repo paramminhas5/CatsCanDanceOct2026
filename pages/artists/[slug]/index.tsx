@@ -197,7 +197,11 @@ function ArtistV2Page({ a }: { a: ArtistV2 }) {
         genre: a.genres.length ? a.genres : undefined,
         foundingLocation: a.city ? { "@type": "Place", name: a.city } : undefined,
         member: a.members ? a.members.split(/[,;&]| and /).map((m) => m.trim()).filter(Boolean).map((m) => ({ "@type": "Person", name: m })) : undefined,
-        sameAs: a.links.map((l) => l.url),
+        identifier: [
+          { "@type": "PropertyValue", propertyID: "ccd", value: `ccd:artist:${a.slug}` },
+          ...a.ids.filter((x) => x.scheme === "musicbrainz" || x.scheme === "wikidata" || x.scheme === "discogs").map((x) => ({ "@type": "PropertyValue", propertyID: x.scheme, value: x.value })),
+        ],
+        sameAs: [...new Set([...a.links.map((l) => l.url), ...a.ids.map((x) => x.url).filter((u): u is string => !!u)])],
         album: a.releases.filter((r) => !r.undated).slice(0, 30).map((r) => ({
           "@type": "MusicAlbum", name: r.t, datePublished: String(Math.floor(r.y)), byArtist: { "@id": id },
           albumReleaseType: r.type === "single" ? "https://schema.org/SingleRelease" : r.type === "ep" ? "https://schema.org/EPRelease" : r.type === "album" ? "https://schema.org/AlbumRelease" : undefined,

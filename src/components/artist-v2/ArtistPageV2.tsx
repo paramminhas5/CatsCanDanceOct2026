@@ -69,6 +69,14 @@ export default function ArtistPageV2({ a }: { a: ArtistV2 }) {
   const [alertNote, setAlertNote] = useState(false);
   const [audioErr, setAudioErr] = useState<string | null>(null);
   const [bioOpen, setBioOpen] = useState(false);
+  const [bookOpen, setBookOpen] = useState(false);
+  const [storyAll, setStoryAll] = useState(false);
+  useEffect(() => {
+    const open = () => { if (window.location.hash === "#av-book") setBookOpen(true); };
+    open();
+    window.addEventListener("hashchange", open);
+    return () => window.removeEventListener("hashchange", open);
+  }, []);
 
   const audio = useRef<HTMLAudioElement | null>(null);
   const loadedTrack = useRef<string | null>(null);
@@ -323,7 +331,7 @@ html,body{overflow-x:visible!important}
 .av{font-family:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:15px;line-height:1.45;transition:background-color .7s ease,color .7s ease}
 .av a{color:inherit;text-decoration:none}
 .av button:disabled{opacity:.35;cursor:default}
-.av .clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.av .clamp{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .av .disp{font-family:'Bowlby One',Impact,sans-serif;font-weight:400}
 .av .ease{transition:background-color .7s ease,color .7s ease,border-color .7s ease,opacity .4s ease}
 .av .press{transition:transform .18s ease}.av .press:active{transform:scale(.97)}
@@ -450,15 +458,13 @@ html,body{overflow-x:visible!important}
   const pastCcd = a.ccdNights.filter((n) => !n.upcoming);
   const facts: [string, string][] = [
     ...(a.city ? [["Based in", a.city] as [string, string]] : []),
-    ...(a.genres.length ? [["Sound", a.genres.slice(0, 4).join(", ")] as [string, string]] : []),
     ...(latestRel ? [["Latest release", `${latestRel.t} (${latestRel.date}${latestRel.label ? `, ${latestRel.label}` : ""})`] as [string, string]] : []),
     ...(a.releases.length > 1 && firstYear < 9999 ? [["Releases on record", `${a.releases.length}, since ${firstYear}`] as [string, string]] : []),
     ...(labelTile ? [["Labels", labelTile.rows.slice(0, 4).map((r) => r.a).join(", ")] as [string, string]] : []),
     ...(nextShow ? [["Next show", `${nextShow.title}${nextShow.city ? `, ${nextShow.city}` : ""}, ${fmtDay(nextShow.event_date)}`] as [string, string]]
       : nextCcd ? [["Next show", `${nextCcd.title} with Cats Can Dance${nextCcd.date ? `, ${fmtDay(nextCcd.date)}` : ""}`] as [string, string]] : []),
     ...(pastCcd.length ? [["Played Cats Can Dance", pastCcd.map((n) => n.title).join(", ")] as [string, string]] : []),
-    ...(a.bookable ? [["Bookings", "Open, through Cats Can Dance"] as [string, string]] : []),
-  ];
+  ].slice(0, 5);
   const About = ({ big }: { big?: boolean }) => a.bio || a.members || facts.length ? (
     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       <span style={{ fontSize: big ? 22 : 20, fontWeight: 700 }}>About</span>
@@ -479,16 +485,23 @@ html,body{overflow-x:visible!important}
   ) : null;
 
   const Book = () => a.bookable ? (
-    <div id="av-book" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-      <span style={{ fontSize: 22, fontWeight: 700 }}>Book {displayName(a.name)}</span>
-      <span style={{ fontSize: 13, color: p.mute }}>
-        Send a request. CCD replies with dates and a quote.{" "}
-        <a href={`/artists/${a.slug}/epk`} style={{ fontWeight: 700, color: p.link }}>Press kit</a>{" · "}
-        <a href="/book" style={{ fontWeight: 700, color: p.link }}>All artists to book</a>
-      </span>
-      <div style={{ background: "#f4efe4", color: "#111111", border: "2px solid #111111", boxShadow: "4px 4px 0 #111111", padding: 18, borderRadius: 4 }}>
-        <BookingForm artistSlug={a.slug} artistName={a.name} source="artist_profile" />
+    <div id="av-book" className="ease" style={{ borderRadius: 14, background: p.surface, padding: "16px 18px", display: "flex", flexDirection: "column", gap: 12 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
+        <span style={{ flex: "1 1 220px", display: "flex", flexDirection: "column", gap: 2 }}>
+          <span style={{ fontSize: 18, fontWeight: 700 }}>Book {displayName(a.name)}</span>
+          <span style={{ fontSize: 13, color: p.mute }}>
+            CCD replies with dates and a quote. <a href={`/artists/${a.slug}/epk`} style={{ fontWeight: 700, textDecoration: "underline", textUnderlineOffset: 3 }}>Press kit</a>
+          </span>
+        </span>
+        <button className="press" onClick={() => setBookOpen((v) => !v)} aria-expanded={bookOpen} style={{ height: 40, padding: "0 18px", borderRadius: 999, border: 0, background: p.ink, color: p.bg, fontWeight: 700, cursor: "pointer" }}>
+          {bookOpen ? "Close" : "Send a request"}
+        </button>
       </div>
+      {bookOpen && (
+        <div style={{ background: "#f4efe4", color: "#111111", border: "2px solid #111111", boxShadow: "4px 4px 0 #111111", padding: 16, borderRadius: 4 }}>
+          <BookingForm artistSlug={a.slug} artistName={a.name} source="artist_profile" />
+        </div>
+      )}
     </div>
   ) : null;
 
@@ -526,7 +539,8 @@ html,body{overflow-x:visible!important}
     </div>
   ) : null;
 
-  const Photos = ({ size }: { size: number }) => a.photos.length > 1 || (a.photos.length === 1 && a.photos[0].url !== a.photo) ? (
+  const hasPhotos = a.photos.length > 1 || (a.photos.length === 1 && a.photos[0].url !== a.photo);
+  const Photos = ({ size }: { size: number }) => hasPhotos ? (
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
       <span style={{ fontSize: 20, fontWeight: 700 }}>Photos</span>
       <div className="row" style={{ display: "flex", gap: 10, overflowX: "auto", paddingBottom: 4 }}>
@@ -649,11 +663,10 @@ html,body{overflow-x:visible!important}
           </div>
         </div>
 
-        <div style={{ padding: "24px 20px 0" }}>{Sound({})}</div>
-        <div style={{ margin: "18px 20px 0" }}>{Focus({})}</div>
+        {(era.sound || era.tags.length > 0) && <div style={{ padding: "24px 20px 0" }}>{Sound({})}</div>}
+        {focus && <div style={{ margin: "18px 20px 0" }}>{Focus({})}</div>}
         {a.upcoming.length > 0 && <div style={{ margin: "30px 20px 0" }}>{UpcomingList({id: "av-upcoming"})}</div>}
         {(a.ccdNights.length > 0 || a.touring.length > 0) && <div style={{ margin: "30px 20px 0" }}>{WithCcd()}</div>}
-        <div style={{ margin: "30px 20px 0" }}>{About({})}</div>
 
         {a.releases.length > 0 && (
           <div style={{ marginTop: 30, display: "flex", flexDirection: "column" }}>
@@ -672,7 +685,8 @@ html,body{overflow-x:visible!important}
           </div>
         )}
 
-        <div style={{ margin: "30px 20px 0" }}>{Popular()}</div>
+        {a.popular.length > 0 && <div style={{ margin: "30px 20px 0" }}>{Popular()}</div>}
+        {(a.bio || a.members || facts.length > 0) && <div style={{ margin: "30px 20px 0" }}>{About({})}</div>}
 
         {watchCount > 0 && (
           <div style={{ margin: "30px 20px 0", display: "flex", flexDirection: "column", gap: 12 }}>
@@ -720,7 +734,7 @@ html,body{overflow-x:visible!important}
           </div>
         )}
 
-        <div style={{ margin: "30px 20px 0" }}>{Photos({size: 150})}</div>
+        {hasPhotos && <div style={{ margin: "30px 20px 0" }}>{Photos({size: 150})}</div>}
 
         {story.length > 0 && (
           <div style={{ margin: "34px 20px 0", display: "flex", flexDirection: "column" }}>
@@ -728,7 +742,7 @@ html,body{overflow-x:visible!important}
               <span style={{ fontSize: 20, fontWeight: 700 }}>Story</span>
               <span style={{ fontSize: 12, color: p.mute }}>tap to jump there</span>
             </div>
-            {story.map((e, i) => {
+            {(storyAll ? story : story.slice(0, 8)).map((e, i) => {
               const y = Math.floor(e.y), prev = i > 0 ? Math.floor(story[i - 1].y) : null, on = pick?.id === e.id;
               return (
                 <button key={e.id} id={`st-${e.id}`} onClick={() => select(e)} className="ease" style={{ border: 0, cursor: "pointer", textAlign: "left", display: "grid", gridTemplateColumns: "40px 14px 1fr", gap: 10, alignItems: "start", padding: 10, margin: "0 -10px", borderRadius: 10, background: on ? p.surface : "transparent" }}>
@@ -741,6 +755,11 @@ html,body{overflow-x:visible!important}
                 </button>
               );
             })}
+            {story.length > 8 && (
+              <button onClick={() => setStoryAll((v) => !v)} style={{ alignSelf: "flex-start", marginTop: 6, background: "none", border: 0, padding: 0, cursor: "pointer", fontSize: 13, fontWeight: 700, color: p.link }}>
+                {storyAll ? "Show less" : `Show all ${story.length}`}
+              </button>
+            )}
           </div>
         )}
 
@@ -914,7 +933,7 @@ html,body{overflow-x:visible!important}
             </div>
           )}
 
-          <div style={{ padding: "40px 56px 0" }}>{Photos({size: 200})}</div>
+          {hasPhotos && <div style={{ padding: "40px 56px 0" }}>{Photos({size: 200})}</div>}
 
           {a.bookable && <div style={{ padding: "40px 56px 0", maxWidth: 760 }}>{Book()}</div>}
 
