@@ -48,7 +48,7 @@ export default function Tickets() {
             <div className="max-w-xl bg-cream border-4 border-ink chunk-shadow p-6 md:p-8">
               <h1 className="font-display text-4xl leading-none mb-3">We can&apos;t find that night.</h1>
               <p className="text-ink/80 mb-5">The link may be old, or the night is not on sale yet.</p>
-              <a href="/episodes" className="inline-block font-display text-lg px-5 py-3 border-4 border-ink bg-acid-yellow">See all Episodes</a>
+              <a href="/nights" className="inline-block font-display text-lg px-5 py-3 border-4 border-ink bg-acid-yellow">See all Episodes</a>
             </div>
           ) : (
             <div className="grid gap-10 lg:grid-cols-[1fr_400px] lg:gap-14 items-start">
@@ -73,7 +73,7 @@ export default function Tickets() {
                   </dl>
                 )}
                 {ev && (
-                  <a href={`/episodes/${slug}`} className="inline-block mt-6 font-bold underline underline-offset-4 decoration-2 hover:text-acid-yellow">
+                  <a href={`/nights/${slug}`} className="inline-block mt-6 font-bold underline underline-offset-4 decoration-2 hover:text-acid-yellow">
                     Lineup, venue and questions
                   </a>
                 )}

@@ -153,7 +153,7 @@ export default function TicketBox({ slug, title, when, venue, past, rsvpOpen, on
         <p className="font-display text-2xl leading-none mb-2">This night has happened.</p>
         <p className="text-ink/75">The next Episode is on the Episodes page.</p>
       </div>,
-      <a href="/episodes" className="block text-center font-display text-lg px-5 py-3 border-4 border-ink bg-acid-yellow hover:bg-ink hover:text-acid-yellow transition-colors">See what&apos;s next</a>,
+      <a href="/nights" className="block text-center font-display text-lg px-5 py-3 border-4 border-ink bg-acid-yellow hover:bg-ink hover:text-acid-yellow transition-colors">See what&apos;s next</a>,
     );
   }
 

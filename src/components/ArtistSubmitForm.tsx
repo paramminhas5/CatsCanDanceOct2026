@@ -4,7 +4,7 @@ import { supabase } from "@/lib/supabase";
 
 const field = "w-full bg-cream text-ink border-4 border-ink px-3 py-2 font-medium focus:outline-none focus:ring-4 focus:ring-electric-blue";
 
-/** Add yourself to the Litter, or claim an existing profile. Staff review in /ops. */
+/** Add yourself to Artists, or claim an existing profile. Staff review in /ops. */
 export default function ArtistSubmitForm() {
   const router = useRouter();
   const [kind, setKind] = useState<"new" | "claim">("new");

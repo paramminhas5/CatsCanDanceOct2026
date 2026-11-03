@@ -34,7 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const eventDate  = ev?.date  ?? "";
     const eventVenue = ev?.venue ?? "";
     const eventCity  = ev?.city  ?? "";
-    const eventUrl   = `${SITE_URL}/episodes/${encodeURIComponent(event_slug)}`;
+    const eventUrl   = `${SITE_URL}/nights/${encodeURIComponent(event_slug)}`;
     const plusStr    = Number(plus_ones) > 0 ? ` (+${plus_ones} guest${Number(plus_ones) > 1 ? "s" : ""})` : "";
 
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8"></head>

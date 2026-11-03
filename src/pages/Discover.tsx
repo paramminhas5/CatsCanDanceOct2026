@@ -19,6 +19,8 @@ import PassItOn from "@/components/PassItOn";
 import { CITY_SCENES, GLOBAL_SCENES, GENRE_PAGES } from "@/content/scenes";
 import { dayStamp, inWhen, kindLabel, SOURCE_LABEL, type FindEvent, type Kind, type When } from "@/lib/find";
 import { displayTime, googleCalendarUrl, todayIST } from "@/lib/nights";
+import Going from "@/components/going/Going";
+import { type Crowd, crowdLine, loadCrowd, sceneKey, useMe } from "@/lib/plans";
 
 export type FindProps = {
   events: FindEvent[];
@@ -71,7 +73,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
     if (kind !== "all") query.type = kind;
     if (genre) query.genre = genre;
     if (q.trim()) query.q = q.trim();
-    const t = setTimeout(() => router.replace({ pathname: "/prowl", query }, undefined, { shallow: true, scroll: false }), 250);
+    const t = setTimeout(() => router.replace({ pathname: "/whats-on", query }, undefined, { shallow: true, scroll: false }), 250);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [city, when, kind, genre, q]);
@@ -98,6 +100,15 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
       (!needle || [e.title, e.venue, e.city, ...(e.lineup ?? []), ...(e.genres ?? []), ...e.artists.map((a) => a.name)].join(" ").toLowerCase().includes(needle)),
     ).sort((a, b) => (a.event_date ?? "9999").localeCompare(b.event_date ?? "9999") || Number(b.featured) - Number(a.featured));
   }, [upcoming, city, when, kind, genre, q, savedOnly, saved, today]);
+
+  // Who's going: one call for every night on the page.
+  const [crowd, setCrowd] = useState<Record<string, Crowd>>({});
+  const me = useMe();
+  const keysSig = upcoming.map((e) => e.id).join(",");
+  const refreshCrowd = () => { loadCrowd(upcoming.map((e) => sceneKey(e.id))).then(setCrowd).catch(() => {}); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { refreshCrowd(); }, [keysSig]);
+  const goingCount = Object.values(me.plans).filter((p) => p.state === "going").length;
 
   const days = useMemo(() => {
     const m = new Map<string, FindEvent[]>();
@@ -134,9 +145,9 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
   return (
     <main className="bg-background text-ink min-h-screen">
       <SEO
-        title="Find a night: underground and electronic events in India · Cats Can Dance"
+        title="What's on: underground and electronic nights in India · Cats Can Dance"
         description={`${summary} House, techno, garage, jungle and more in Bengaluru, Mumbai, Delhi, Goa and beyond.`}
-        path="/prowl"
+        path="/whats-on"
         jsonLd={jsonLd}
       />
       <Nav />
@@ -144,6 +155,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
       {/* HERO */}
       <section className="bg-electric-blue text-cream pt-28 md:pt-36 pb-8 md:pb-10">
         <div className="container">
+          <p className="font-bold text-acid-yellow mb-3">What&apos;s on · the gig guide</p>
           <h1 className="font-display text-6xl sm:text-7xl md:text-9xl leading-[0.82]" style={{ filter: "drop-shadow(6px 6px 0 hsl(var(--ink)))" }}>
             FIND A NIGHT.
           </h1>
@@ -162,6 +174,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
             <button type="button" aria-pressed={savedOnly} aria-label={`Show saved nights${saved.length ? ` (${saved.length})` : ""}`} onClick={() => setSavedOnly(!savedOnly)} className={chip(savedOnly)}>
               Saved{saved.length ? ` ${saved.length}` : ""}
             </button>
+            {goingCount > 0 && <Link href="/me" className={chip(false)}>Your nights {goingCount}</Link>}
             <label className="ml-auto shrink-0 hidden md:flex items-center border-2 border-cream/40 focus-within:border-acid-yellow">
               <span className="sr-only">Search nights</span>
               <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search artist, venue, sound"
@@ -204,7 +217,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
       <div className="container py-10 md:py-14">
         {/* FROM US */}
         {showOurs && ours && (
-          <Link href={`/episodes/${ours.slug}`} className="group block mb-12 border-4 border-ink bg-magenta text-cream chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
+          <Link href={`/nights/${ours.slug}`} className="group block mb-12 border-4 border-ink bg-magenta text-cream chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
             <div className="grid md:grid-cols-[180px_1fr_auto] gap-4 md:gap-8 items-center p-5 md:p-7">
               <DayBlock iso={ours.event_date} today={today} tone="ours" />
               <div className="min-w-0">
@@ -245,7 +258,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
                 </div>
                 <ul className="grid gap-4">
                   {list.map((e) => (
-                    <NightCard key={e.id} e={e} saved={saved.includes(e.id)} onSave={() => toggleSave(e.id)} />
+                    <NightCard key={e.id} e={e} saved={saved.includes(e.id)} onSave={() => toggleSave(e.id)} crowd={crowd[sceneKey(e.id)]} onPlan={refreshCrowd} />
                   ))}
                 </ul>
               </li>
@@ -299,7 +312,9 @@ function DayBlock({ iso, today, tone }: { iso: string | null; today: string; ton
   );
 }
 
-function NightCard({ e, saved, onSave }: { e: FindEvent; saved: boolean; onSave: () => void }) {
+function NightCard({ e, saved, onSave, crowd, onPlan }: { e: FindEvent; saved: boolean; onSave: () => void; crowd?: Crowd; onPlan: () => void }) {
+  const me = useMe();
+  const line = crowdLine(crowd, me.plans[sceneKey(e.id)]?.state ?? null);
   const href = e.ticket_url || e.url;
   const cal = googleCalendarUrl({ slug: e.id, title: e.title, event_date: e.event_date, venue: e.venue, city: e.city }, { time: e.event_time, url: href });
   const lineup = (e.lineup ?? []).filter((n) => !e.artists.some((a) => a.name.toLowerCase() === n.toLowerCase()));
@@ -317,7 +332,7 @@ function NightCard({ e, saved, onSave }: { e: FindEvent; saved: boolean; onSave:
               {e.artists.map((a, i) => (
                 <span key={a.slug}>
                   {i > 0 && ", "}
-                  <Link href={`/litter/${a.slug}`} className="font-bold underline underline-offset-4 decoration-2 decoration-electric-blue hover:text-electric-blue">{a.name}</Link>
+                  <Link href={`/artists/${a.slug}`} className="font-bold underline underline-offset-4 decoration-2 decoration-electric-blue hover:text-electric-blue">{a.name}</Link>
                 </span>
               ))}
               {e.artists.length > 0 && lineup.length > 0 && ", "}
@@ -329,14 +344,16 @@ function NightCard({ e, saved, onSave }: { e: FindEvent; saved: boolean; onSave:
               {e.genres.slice(0, 4).map((g) => <li key={g} className="text-xs font-bold px-2 py-0.5 border-2 border-ink">{g}</li>)}
             </ul>
           )}
+          {line && <p className="mt-3 text-sm font-bold text-electric-blue">{line}</p>}
         </div>
         <div className="flex md:flex-col md:items-end gap-2 flex-wrap">
           <a href={href} target="_blank" rel="noopener noreferrer"
             className="font-display px-4 py-2.5 border-4 border-ink bg-acid-yellow hover:bg-ink hover:text-acid-yellow transition-colors">
             {e.ticket_url ? "Tickets" : "Details"} <span aria-hidden>↗</span>
           </a>
+          <Going nightKey={sceneKey(e.id)} title={e.title} crowd={crowd} onChange={onPlan} />
           <button type="button" onClick={onSave} aria-pressed={saved} aria-label={saved ? `Saved: ${e.title}. Remove` : `Save ${e.title}`}
-            className={`font-display px-4 py-2.5 border-4 border-ink transition-colors ${saved ? "bg-ink text-cream" : "bg-cream hover:bg-acid-yellow"}`}>
+            className={`font-display text-sm px-3 py-2 border-2 border-ink transition-colors ${saved ? "bg-ink text-cream" : "bg-cream hover:bg-acid-yellow"}`}>
             {saved ? "Saved" : "Save"}
           </button>
           {cal && <a href={cal} target="_blank" rel="noopener noreferrer" className="text-sm font-bold underline underline-offset-4 self-center md:self-end">Add to calendar</a>}

@@ -90,7 +90,7 @@ export default function Playbook() {
             ))}
           </div>
           <div className="flex flex-wrap gap-3 mt-10">
-            <Link href="/episodes" className="font-display border-4 border-ink px-5 py-3 bg-acid-yellow chunk-shadow hover:-translate-y-0.5 transition-transform">SEE THE EPISODES →</Link>
+            <Link href="/nights" className="font-display border-4 border-ink px-5 py-3 bg-acid-yellow chunk-shadow hover:-translate-y-0.5 transition-transform">SEE THE EPISODES →</Link>
             <Link href="/for-venues" className="font-display border-4 border-ink px-5 py-3 bg-cream chunk-shadow hover:-translate-y-0.5 transition-transform">FOR VENUES →</Link>
           </div>
         </section>

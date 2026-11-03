@@ -87,12 +87,12 @@ const Shop = () => {
       <SEO
         title="Apparel, Limited Drops & CCD Goods | Cats Can Dance"
         description="Tees, totes, accessories. Limited apparel drops and CCD goods from Bangalore's dance crew."
-        path="/scratch"
+        path="/shop"
         jsonLd={[collectionLd, ...(filtered.length ? [itemListLd] : [])]}
       />
       <main className="bg-cream text-ink">
         <Nav />
-        <PageHero eyebrow="WEAR · SCRATCH" title="DROPS & COLLECTIBLES." bg="bg-magenta" eyebrowColor="text-acid-yellow">
+        <PageHero eyebrow="SHOP · MERCH" title="DROPS & COLLECTIBLES." bg="bg-magenta" eyebrowColor="text-acid-yellow">
           <p className="font-display text-cream text-2xl mt-4">
             Streetwear & pet streetwear. Made for the floor in Bangalore.
           </p>

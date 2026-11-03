@@ -155,7 +155,7 @@ const Events = () => {
       address: { "@type": "PostalAddress", addressLocality: e.city || "Bangalore", addressCountry: "IN" },
     },
     organizer: { "@type": "Organization", name: "Cats Can Dance", url: "https://catscandance.com" },
-    url: `https://catscandance.com/events/${e.slug}`,
+    url: `https://catscandance.com/nights/${e.slug}`,
   }));
 
 
@@ -164,7 +164,7 @@ const Events = () => {
       <SEO
         title="Episodes — Cats Can Dance | Underground Dance Music in Bengaluru"
         description="Every Cats Can Dance Episode: dates, venues, lineups and RSVP. Small rooms, pets welcome, Bengaluru."
-        path="/episodes"
+        path="/nights"
         jsonLd={jsonLd}
       />
       <main className="bg-background text-foreground min-h-screen">
@@ -172,7 +172,7 @@ const Events = () => {
 
         {/* ── 1. HERO ── */}
         <PageHero
-          eyebrow="GO · EPISODES"
+          eyebrow="OUR NIGHTS · EPISODES"
           title="THE EPISODES."
           bg="bg-magenta"
           textColor="text-cream"
@@ -304,7 +304,7 @@ const Events = () => {
 
                     <div className="flex flex-wrap gap-3">
                       <Link
-                        to={`/episodes/${nextEvent.slug}`}
+                        to={`/nights/${nextEvent.slug}`}
                         className="bg-acid-yellow text-ink font-display text-lg md:text-xl px-7 py-4 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform"
                       >
                         {content.cta_label ?? "Get tickets"}
@@ -374,7 +374,7 @@ const Events = () => {
                       transition={{ delay: Math.min(i * 0.05, 0.3), type: "spring", stiffness: 200, damping: 22 }}
                     >
                       <Link
-                        to={`/episodes/${e.slug}`}
+                        to={`/nights/${e.slug}`}
                         className="group block bg-background border-4 border-ink chunk-shadow overflow-hidden hover:-translate-y-1 hover:translate-x-1 transition-transform h-full"
                       >
                         <div className="relative bg-ink border-b-4 border-ink aspect-video overflow-hidden">

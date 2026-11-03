@@ -30,7 +30,7 @@ async function apiFetch<T = any>(path: string, init?: RequestInit): Promise<T> {
 // ─── Public ───────────────────────────────────────────────────────────────────
 
 export const getEventTicketingConfig = (slug: string) =>
-  apiFetch(`/episodes/${slug}/config`);
+  apiFetch(`/nights/${slug}/config`);
 
 export const getPaymentLinkDetails = (token: string) =>
   apiFetch(`/payment-link/${token}`);
