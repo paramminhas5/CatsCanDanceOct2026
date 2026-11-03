@@ -11,8 +11,8 @@ import { useRouter } from "next/router";
 import RequestDrawer from "@/components/booking/RequestDrawer";
 import { isIsoDay, type MiniArtist } from "@/lib/desk";
 
-export default function BookButton({ artist, label, className, fromQuery = false }: {
-  artist: MiniArtist; label?: string; className?: string; fromQuery?: boolean;
+export default function BookButton({ artist, label, className, style, fromQuery = false }: {
+  artist: MiniArtist; label?: string; className?: string; style?: React.CSSProperties; fromQuery?: boolean;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -40,6 +40,7 @@ export default function BookButton({ artist, label, className, fromQuery = false
       <button
         type="button"
         onClick={() => setOpen(true)}
+        style={style}
         className={className ?? "inline-flex items-center gap-2 font-display text-lg px-6 py-3 border-4 border-ink bg-acid-yellow text-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform"}
       >
         {label ?? `Request to book ${artist.name}`}
