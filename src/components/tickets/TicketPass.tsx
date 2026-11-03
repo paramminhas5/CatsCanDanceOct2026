@@ -81,7 +81,7 @@ export default function TicketPass({ t, when, venue, index, total, fresh }: Prop
         </div>
       </div>
       {fresh && index === 0 && (
-        <span aria-hidden className="stamp-in pointer-events-none absolute right-4 top-24 md:top-20 font-display text-3xl px-3 py-1 border-4 border-acid-yellow text-acid-yellow">YOU&apos;RE IN</span>
+        <span aria-hidden className="stamp-in pointer-events-none absolute right-3 bottom-28 font-display text-2xl px-3 py-1 border-4 border-magenta text-magenta bg-cream/80">YOU&apos;RE IN</span>
       )}
 
       <Dialog open={big} onOpenChange={setBig}>

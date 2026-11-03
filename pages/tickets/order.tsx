@@ -96,7 +96,7 @@ export default function Order() {
                 </h1>
                 <p className="text-lg md:text-xl font-medium max-w-[50ch] mb-8">
                   {tickets!.length > 1 ? `${tickets!.length} tickets` : "Your ticket"} for {first?.event_title ?? "the night"}, {when}.
-                  {" "}{fresh ? `We've also emailed ${tickets!.length > 1 ? "them" : "it"} to ${e}.` : `Booked with ${e}.`} Show the QR code at the door, one per person.
+                  {" "}Booked with {e}. Show the QR code at the door, one per person.
                 </p>
 
                 <ol className="grid gap-4 mb-8 max-w-lg">
