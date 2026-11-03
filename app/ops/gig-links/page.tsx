@@ -48,7 +48,7 @@ const css = `
 `;
 
 export default async function GigLinks({ searchParams }: { searchParams: Search }) {
-  const status = searchParams?.status ?? "proposed";
+  const status = searchParams?.status ?? "confirmed";
   const all = searchParams?.all === "1";
   let rows: Row[] = [];
   let err = "";
@@ -65,8 +65,8 @@ export default async function GigLinks({ searchParams }: { searchParams: Search 
       <p className="muted" style={{ margin: 0 }}><Link href="/ops">Back to ops</Link></p>
       <h2>Gig links</h2>
       <p className="muted" style={{ margin: 0 }}>
-        The gig radar links an event to an artist when a lineup name matches the artist name or a stored alias exactly. No AI.
-        An artist page shows a date only when the link is confirmed here and the event is published.
+        The gig radar links an event to an artist when a lineup name matches the artist name or a sourced alias exactly, and the event has a source link. No AI.
+        Links are added automatically. If a roster artist plays an upcoming event, the event is published. Press Not them to remove a wrong link; it stays removed.
       </p>
       {err && <p style={{ color: "#dc2626" }}>Could not load: {err}</p>}
 
@@ -74,7 +74,7 @@ export default async function GigLinks({ searchParams }: { searchParams: Search 
         <form method="get" style={{ display: "flex", gap: 8, alignItems: "end" }}>
           <label className="muted" style={{ display: "grid", gap: 2 }}>Status
             <select name="status" defaultValue={status}>
-              <option value="proposed">to check</option><option value="confirmed">confirmed</option><option value="rejected">rejected</option><option value="any">any</option>
+              <option value="confirmed">live</option><option value="proposed">to check</option><option value="rejected">removed</option><option value="any">any</option>
             </select>
           </label>
           <label className="muted" style={{ display: "flex", gap: 4, alignItems: "center", paddingBottom: 6 }}>
