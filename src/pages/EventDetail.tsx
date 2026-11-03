@@ -1,72 +1,39 @@
 /**
- * EventDetail — the showcase page for a single event.
+ * EventDetail: the page for one CCD night, built around booking.
  *
- * Sections:
- *   1. Hero          — title, status, date/venue, RSVP CTA, poster
- *   2. Countdown     — live "doors open in" strip (upcoming only)
- *   3. Marquee       — vibe slogans
- *   4. The Night     — vibe pillars + narrative + schedule
- *   5. Lineup        — artist cards
- *   6. Pet zone      — (ccdxsocial / pet_friendly only)
- *   7. Media gallery — past episode photos
- *   8. Venue         — address + map
- *   9. Partners      — sponsor block
- *  10. Series        — sibling shows
- *  11. Sticky CTA    — mobile RSVP bar
+ *   Hero    poster, title, when and where, buzz, calendar and share
+ *   Body    left: about, lineup, run of show, recap, venue, questions
+ *           right: TicketBox, sticky on desktop; first thing under the hero on phones
+ *   Bar     phones only: price and "Get tickets", shown once the ticket box is off screen
  *
- * Props: receives `event` directly from getStaticProps (no client re-fetch needed).
+ * Status comes from the real date (nightStatus), never from a stale column.
  */
-
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "@/lib/compat-router";
-import { toast } from "sonner";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 import Nav from "@/components/Nav";
-import { useRouter } from "next/router";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Marquee from "@/components/Marquee";
 import RsvpDialog from "@/components/RsvpDialog";
 import NightActions from "@/components/NightActions";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-
-import EventCountdown from "@/components/EventCountdown";
-import EventVenueCard from "@/components/EventVenueCard";
 import EventLineupCard from "@/components/EventLineupCard";
 import EventPosterPlaceholder from "@/components/EventPosterPlaceholder";
-import StickyRsvpBar from "@/components/StickyRsvpBar";
+import TicketBox from "@/components/tickets/TicketBox";
+import { AddToCalendar, DirectionsLink, ShareButton } from "@/components/tickets/NightTools";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-import { imgUrl } from "@/lib/img";
-import { parseEventDate } from "@/lib/parse-date";
-import Image from "next/image";
-import {
-  getEventContent,
-  getStaticEventsBySeries,
-} from "@/content/events";
+import { getEventContent, getStaticEventsBySeries } from "@/content/events";
 import { resolvePoster } from "@/lib/poster";
-import episode1Poster from "@/assets/episode-1-poster.png";
-
+import { buzzCount, loadBuzz, type Tier } from "@/lib/booking";
+import { directionsUrl, displayDate, displayTime, inr, nightStatus, startDate } from "@/lib/nights";
 import type { EventRow, MediaItem } from "@/types/events";
 
-const Field = ({
-  label,
-  value,
-  accent,
-}: {
-  label: string;
-  value: string;
-  accent: boolean;
-}) => (
-  <div className="min-w-0">
-    <p className={`font-display text-xs md:text-sm tracking-widest mb-1 ${accent ? "text-acid-yellow" : "text-magenta"}`}>
-      / {label}
-    </p>
-    <p className="font-display text-lg md:text-2xl break-words leading-tight">{value}</p>
-  </div>
-);
-
-// ──────────────────── component ────────────────────
+const SITE = "https://catscandance.com";
 
 interface EventDetailProps {
   event: EventRow;
@@ -74,415 +41,343 @@ interface EventDetailProps {
 }
 
 const EventDetail = ({ event, slug }: EventDetailProps) => {
-  const [open, setOpen] = useState(false);
+  const router = useRouter();
+  const [rsvpOpen, setRsvpOpen] = useState(false);
   const [lightbox, setLightbox] = useState<MediaItem | null>(null);
   const [posterError, setPosterError] = useState(false);
-  const router = useRouter();
+  const [buzz, setBuzz] = useState(0);
+  const [tiers, setTiers] = useState<Tier[] | null>(null);
+  const [boxVisible, setBoxVisible] = useState(true);
+  const boxRef = useRef<HTMLDivElement>(null);
 
-  // Auto-open RSVP dialog when arriving via ?rsvp=1 (e.g. from CcdxSocial page)
-  useEffect(() => {
-    if (router.query.rsvp) setOpen(true);
-  }, [router.query.rsvp]);
-
-  // Rich content from static catalogue (schedule, narrative, vibe pillars, etc.)
   const content = useMemo(() => getEventContent(event), [event]);
+  const status = nightStatus(event);
+  const upcoming = status === "upcoming";
+  const time = displayTime(content.doors_time ?? event.start_time);
+  const when = [displayDate(event), time].filter(Boolean).join(" · ");
+  const pageUrl = `${SITE}/episodes/${slug}`;
+  const directions = directionsUrl(event.venue, event.city, content.venue_map_url);
+  const poster = resolvePoster(event.poster_url);
+  const series = useMemo(() => (event.series ? getStaticEventsBySeries(event.series) : []), [event.series]);
 
-  // Build lineup
-  const lineup = useMemo(() => {
-    if (!event) return [];
-    return (event.lineup ?? []).map((name) => {
-      const detail = content?.artist_details?.[name];
-      if (detail) return detail;
-      const isTba = name.trim().toUpperCase() === "TBA";
-      return {
-        name,
-        role: isTba ? "Special Guest" : "DJ",
-        tba: isTba,
-        blurb: isTba ? "Announcement coming soon." : undefined,
-      };
-    });
-  }, [event, content]);
+  useEffect(() => { if (router.query.rsvp) setRsvpOpen(true); }, [router.query.rsvp]);
+  useEffect(() => { if (upcoming) loadBuzz(slug).then((b) => setBuzz(buzzCount(b))).catch(() => {}); }, [slug, upcoming]);
 
-  // Series siblings (from static content for now — Supabase can override via ISR)
-  const series = useMemo(() => {
-    if (!event.series) return [];
-    return getStaticEventsBySeries(event.series);
-  }, [event.series]);
+  // Phones: show the bottom bar only when the ticket box is off screen.
+  useEffect(() => {
+    if (!upcoming || !boxRef.current || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(([e]) => setBoxVisible(e.isIntersecting), { rootMargin: "0px 0px -20% 0px" });
+    io.observe(boxRef.current);
+    return () => io.disconnect();
+  }, [upcoming]);
 
-  // ─── guards ───
-  if (!event) {
-    return (
-      <main className="bg-background text-foreground min-h-screen">
-        <Nav />
-        <section className="container pt-32 pb-16">
-          <h1 className="font-display text-5xl text-ink mb-4">Event not found</h1>
-          <Link to="/episodes" className="font-display text-magenta underline">← All events</Link>
-        </section>
-        <Footer />
-      </main>
-    );
-  }
+  const lineup = useMemo(() => (event.lineup ?? []).map((name) => {
+    const detail = content?.artist_details?.[name];
+    if (detail) return detail;
+    const tba = name.trim().toUpperCase() === "TBA";
+    return { name, role: tba ? "Special guest" : "DJ", tba, blurb: tba ? "Announced soon." : undefined };
+  }), [event, content]);
 
-  const isUpcoming = event.status === "upcoming";
-  const isPet = !!event.pet_friendly;
-  const headingShadow = isUpcoming
-    ? "drop-shadow-[6px_6px_0_hsl(var(--ink))]"
-    : "drop-shadow-[6px_6px_0_hsl(var(--magenta))]";
   const media = (event.media ?? []).filter((m) => m && m.url);
-  const seriesEyebrow = (() => {
-    if (!event.series_label) return null;
-    const idx = series.findIndex((e) => e.slug === event.slug);
-    if (idx < 0 || series.length === 0) return event.series_label;
-    return `${event.series_label} · SHOW ${String(idx + 1).padStart(2, "0")}`;
-  })();
-  const ctaLabel = content.cta_label ?? "RSVP NOW →";
-  const stickyMeta = `${event.date} · ${content.price_text ?? "Free RSVP"}`;
-  const resolvedPoster = resolvePoster(event.poster_url);
 
-  // ─── JSON-LD ───
-  // Build an ISO 8601 startDate from the human-readable event.date + doors_time
-  // e.g. "Sun, Jun 28, 2026" + "4 PM" → "2026-06-28T16:00:00+05:30"
-  const isoStartDate = (() => {
-    const d = parseEventDate(event.date);
-    if (!d) return event.date;
-    const timeMatch = (content.doors_time ?? "").match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i);
-    if (timeMatch) {
-      let h = parseInt(timeMatch[1]);
-      const m = parseInt(timeMatch[2] ?? "0");
-      if (timeMatch[3].toUpperCase() === "PM" && h < 12) h += 12;
-      if (timeMatch[3].toUpperCase() === "AM" && h === 12) h = 0;
-      d.setHours(h, m, 0, 0);
+  const priceText = (() => {
+    if (tiers && tiers.length) {
+      const min = Math.min(...tiers.map((t) => t.price_inr));
+      const left = tiers.reduce((a, t) => a + t.remaining, 0);
+      const price = tiers.every((t) => t.price_inr === 0) ? "Free" : min === 0 ? "Free and paid" : `From ${inr(min)}`;
+      return left > 0 ? `${price} · ${left} left` : "Sold out";
     }
-    const pad = (n: number) => String(n).padStart(2, "0");
-    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:00+05:30`;
+    return content.price_text ?? (event.rsvp_open ? "Free, RSVP" : null);
   })();
 
+  // Questions people actually ask, built only from what we know for this night.
+  const faq: { q: string; a: React.ReactNode; text: string }[] = [
+    { q: "How do I get in?", text: "Show the QR code on your ticket page or in your email at the door. One code per person.",
+      a: <>Show the QR code on your ticket page or in your email at the door. One code per person.</> },
+    { q: "I can't find my tickets.", text: "Go to catscandance.com/tickets and enter the email you booked with. We'll send them again.",
+      a: <>Go to <Link to="/tickets" className="underline font-bold">catscandance.com/tickets</Link> and enter the email you booked with. We&apos;ll send them again.</> },
+    { q: "Can I pass my ticket on?", text: "Yes, at face value, through Pass it on.",
+      a: <>Yes, at face value, through <Link to="/discover#pass-it-on" className="underline font-bold">Pass it on</Link>.</> },
+    ...(time ? [{ q: "What time should I come?", text: `Doors open at ${time}. The room fills up, so earlier is better.`, a: <>Doors open at {time}. The room fills up, so earlier is better.</> }] : []),
+    ...(event.pet_friendly ? [{ q: "Can I bring my dog or cat?", text: "Yes. Pets are welcome in the pet zone during the day.", a: <>Yes. Pets are welcome in the pet zone during the day.</> }] : []),
+    ...(content.dress_code ? [{ q: "Is there a dress code?", text: content.dress_code, a: <>{content.dress_code}</> }] : []),
+    ...(content.house_rules ? [{ q: "House rules", text: content.house_rules, a: <>{content.house_rules}</> }] : []),
+  ];
+
+  // ── structured data ──
+  const start = startDate(event, content.doors_time ?? event.start_time);
   const eventLd = {
     "@context": "https://schema.org",
     "@type": "MusicEvent",
-    name: `Cats Can Dance — ${event.title}`,
-    description: event.blurb,
-    startDate: isoStartDate,
-    doorTime: isoStartDate,
-    eventStatus: "https://schema.org/EventScheduled",
+    name: `Cats Can Dance: ${event.title}`,
+    description: event.blurb || content.narrative,
+    startDate: start ? start.toISOString() : event.date,
+    eventStatus: status === "cancelled" ? "https://schema.org/EventCancelled" : "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    image: "https://catscandance.com/og-image.jpg",
-    isAccessibleForFree: true,
-    typicalAgeRange: "18+",
+    image: poster ? (poster.startsWith("http") ? poster : `${SITE}${poster}`) : `${SITE}/og-image.jpg`,
     location: {
       "@type": "Place",
       name: event.venue,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: event.city || "Bangalore",
-        addressRegion: "Karnataka",
-        addressCountry: "IN",
-      },
-      ...(content.venue_geo ? {
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: content.venue_geo.lat,
-          longitude: content.venue_geo.lng,
-        },
-      } : {}),
+      address: { "@type": "PostalAddress", ...(content.venue_address ? { streetAddress: content.venue_address } : {}), addressLocality: event.city || "Bengaluru", addressRegion: "Karnataka", addressCountry: "IN" },
     },
-    performer: (event.lineup ?? [])
-      .filter((p) => p.toUpperCase() !== "TBA")
-      .map((p) => ({ "@type": "PerformingGroup", name: p })),
-    organizer: {
-      "@type": "Organization",
-      name: "Cats Can Dance",
-      url: "https://catscandance.com",
-      logo: "https://catscandance.com/ccd-logo.png",
-    },
-    offers: {
-      "@type": "Offer",
-      url: `https://catscandance.com/events/${slug}`,
-      price: "0",
-      priceCurrency: "INR",
-      availability: "https://schema.org/InStock",
-    },
+    performer: (event.lineup ?? []).filter((p) => p.toUpperCase() !== "TBA").map((p) => ({ "@type": "PerformingGroup", name: p })),
+    organizer: { "@type": "Organization", name: "Cats Can Dance", url: SITE },
+    ...(tiers && tiers.length ? {
+      offers: tiers.map((t) => ({
+        "@type": "Offer", name: t.name, url: pageUrl, price: String(t.price_inr), priceCurrency: "INR",
+        availability: t.sold_out ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
+      })),
+    } : {}),
   };
+  const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.text } })) };
 
-  const breadcrumbLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://catscandance.com" },
-      { "@type": "ListItem", position: 2, name: "Events", item: "https://catscandance.com/events" },
-      { "@type": "ListItem", position: 3, name: event.title, item: `https://catscandance.com/events/${slug}` },
-    ],
+  const heroTone = upcoming ? "bg-magenta text-cream" : "bg-cream text-ink";
+  const scrollToBox = () => {
+    boxRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(() => (boxRef.current?.querySelector("button:not([disabled]), input") as HTMLElement | null)?.focus({ preventScroll: true }), 500);
   };
-
-  // ──────────────────── render ────────────────────
 
   return (
     <>
       <SEO
-        title={`${event.title} — Cats Can Dance${event.series_label ? ` · ${event.series_label}` : ""}`}
-        description={event.blurb}
+        title={`${event.title}, ${displayDate(event, false)} at ${event.venue} · Cats Can Dance`}
+        description={event.blurb || content.narrative || `Cats Can Dance ${event.title} at ${event.venue}, ${event.city}.`}
         path={`/episodes/${slug}`}
         type="event"
-        jsonLd={[eventLd, breadcrumbLd]}
+        image={poster ?? undefined}
+        jsonLd={[eventLd, faqLd]}
       />
 
-      <main className="bg-background text-foreground min-h-screen pb-20 md:pb-0">
-        <Nav />
+      <main className="bg-background text-foreground min-h-screen pb-24 lg:pb-0">
+        <Nav forceDark={!upcoming} />
 
-        {/* 1. HERO */}
-        <section
-          className={`pt-28 md:pt-36 pb-12 md:pb-16 border-b-4 border-ink ${
-            isUpcoming ? "bg-magenta text-cream" : "bg-cream text-ink"
-          }`}
-        >
+        {/* HERO */}
+        <section className={`pt-28 md:pt-32 pb-10 md:pb-14 border-b-4 border-ink ${heroTone}`}>
           <div className="container">
-            <Breadcrumbs
-              light={isUpcoming}
-              items={[
-                { label: "Home", to: "/" },
-                { label: "Events", to: "/episodes" },
-                { label: event.title },
-              ]}
-            />
+            <Breadcrumbs light={upcoming} items={[{ label: "Home", to: "/" }, { label: "Episodes", to: "/episodes" }, { label: event.title }]} />
 
-            <div className="mt-6 grid lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12 items-end">
-              <div>
-                {seriesEyebrow && (
-                  <p className={`font-display text-sm md:text-base tracking-[0.3em] mb-3 ${
-                    isUpcoming ? "text-acid-yellow" : "text-magenta"
-                  }`}>
-                    / {seriesEyebrow}
-                  </p>
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-14 items-end">
+              {/* Poster */}
+              <div className="order-2 lg:order-1 w-full max-w-sm lg:max-w-none">
+                {poster && !posterError ? (
+                  <div className="relative aspect-[3/4] border-4 border-ink chunk-shadow-lg overflow-hidden bg-ink">
+                    <Image src={poster} alt={`${event.title} poster`} fill priority sizes="(max-width: 1024px) 90vw, 320px" className="object-cover" onError={() => setPosterError(true)} />
+                  </div>
+                ) : (
+                  <EventPosterPlaceholder title={event.title} date={displayDate(event)} city={event.city || "Bengaluru"} eyebrow={event.series_label ?? undefined} lineup={(event.lineup ?? []).join(" · ")} />
                 )}
+              </div>
 
+              {/* Facts */}
+              <div className="order-1 lg:order-2 min-w-0">
                 <div className="flex flex-wrap items-center gap-2 mb-4">
-                  <span className={`inline-block text-xs font-bold px-3 py-1 border-2 border-ink uppercase tracking-widest ${
-                    isUpcoming ? "bg-acid-yellow text-ink" : "bg-ink text-cream"
-                  }`}>
-                    {isUpcoming ? "UPCOMING · RSVP OPEN" : "PAST EPISODE"}
+                  <span className={`inline-block text-xs font-bold px-3 py-1 border-2 border-ink ${upcoming ? "bg-acid-yellow text-ink" : "bg-ink text-cream"}`}>
+                    {status === "cancelled" ? "Cancelled" : upcoming ? (priceText?.includes("Sold out") ? "Sold out" : "On sale") : "Past Episode"}
                   </span>
-                  {isPet && (
-                    <span className="inline-block text-xs font-bold px-3 py-1 border-2 border-ink uppercase tracking-widest bg-electric-blue text-cream">
-                      🐾 PET-FRIENDLY
-                    </span>
-                  )}
+                  {event.pet_friendly && <span className="inline-block text-xs font-bold px-3 py-1 border-2 border-ink bg-electric-blue text-cream">Pet-friendly</span>}
                 </div>
 
-                <h1 className={`font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.85] mb-6 break-words ${headingShadow}`}>
+                <h1 className="font-display text-[3.4rem] sm:text-7xl md:text-8xl xl:text-9xl leading-[0.82] mb-6 break-words"
+                  style={{ filter: `drop-shadow(6px 6px 0 hsl(var(--${upcoming ? "ink" : "magenta"})))` }}>
                   {event.title.toUpperCase()}
                 </h1>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 max-w-xl mb-6">
-                  <Field label="DATE" value={event.date} accent={isUpcoming} />
-                  <Field label="VENUE" value={event.venue} accent={isUpcoming} />
-                  <Field label="CITY" value={event.city} accent={isUpcoming} />
-                </div>
-
-                {isUpcoming && <div className="mb-4"><NightActions slug={slug} /></div>}
+                <dl className="grid gap-1 text-lg md:text-2xl font-bold leading-snug mb-6">
+                  <div><dt className="sr-only">When</dt><dd>{when}</dd></div>
+                  <div><dt className="sr-only">Where</dt><dd>{event.venue}{event.city ? `, ${event.city}` : ""}</dd></div>
+                  {upcoming && buzz >= 10 && <div><dt className="sr-only">Going</dt><dd className={upcoming ? "text-acid-yellow" : "text-magenta"}>{buzz} people are going</dd></div>}
+                </dl>
 
                 <div className="flex flex-wrap items-center gap-3">
-                  {isUpcoming && (
-                    <button
-                      type="button"
-                      onClick={() => setOpen(true)}
-                      className="bg-acid-yellow text-ink font-display text-lg md:text-xl px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform"
-                    >
-                      {ctaLabel}
+                  {upcoming && (
+                    <button type="button" onClick={scrollToBox}
+                      className="font-display text-lg px-6 py-3 border-4 border-ink bg-acid-yellow text-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
+                      {tiers && tiers.length > 0 && tiers.every((t) => t.sold_out) ? "Join waiting list" : tiers && tiers.length === 0 && event.rsvp_open ? "RSVP" : priceText && !priceText.startsWith("Sold") ? `Get tickets · ${priceText.split(" · ")[0]}` : "Get tickets"}
                     </button>
                   )}
-                  {isUpcoming && (
-                    <a href={`/tickets/${slug}`} className="bg-cream text-ink font-display text-lg md:text-xl px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
-                      GET TICKETS →
-                    </a>
-                  )}
-                  <button
-                    type="button"
-                    onClick={async () => {
-                      const url = `${window.location.origin}/events/${slug}`;
-                      if (typeof navigator.share === "function") {
-                        try { await navigator.share({ title: event.title, url }); return; } catch {}
-                      }
-                      try { await navigator.clipboard.writeText(url); toast.success("Link copied"); } catch {}
-                    }}
-                    className={`inline-flex items-center gap-2 font-display px-4 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform ${
-                      isUpcoming ? "bg-cream text-ink" : "bg-ink text-cream"
-                    }`}
-                  >
-                    ↗ SHARE
-                  </button>
+                  {upcoming && <AddToCalendar night={event} time={content.doors_time ?? event.start_time} url={pageUrl} />}
+                  <ShareButton title={`Cats Can Dance: ${event.title}`} text={`${event.title}, ${when} at ${event.venue}`} url={pageUrl} tone={upcoming ? "light" : "dark"} />
                 </div>
-              </div>
-
-              {/* Poster */}
-              <div className="lg:max-w-md w-full justify-self-end">
-                {resolvedPoster && !posterError ? (
-                  <div className="relative aspect-[3/4] border-4 border-ink chunk-shadow-lg overflow-hidden">
-                    <Image
-                      src={resolvedPoster}
-                      alt={`${event.title} poster`}
-                      fill
-                      priority
-                      sizes="(max-width: 1024px) 100vw, 400px"
-                      className="object-cover"
-                      onError={() => setPosterError(true)}
-                    />
-                  </div>
-                ) : (
-                  <EventPosterPlaceholder
-                    title={event.title}
-                    date={event.date}
-                    city={event.city || "Bangalore"}
-                    eyebrow={seriesEyebrow ?? undefined}
-                    lineup={(event.lineup ?? []).join(" · ")}
-                  />
-                )}
               </div>
             </div>
           </div>
         </section>
 
-        {/* 2. COUNTDOWN */}
-        {isUpcoming && <EventCountdown date={event.date} doorsTime={content.doors_time} />}
+        <Marquee bg="bg-acid-yellow" items={content.marquee_items ?? ["SMALL ROOM", "REAL SOUND", "BRING YOUR PACK", "NO DRESS CODE, JUST MOVE"]} />
 
-        {/* 3. MARQUEE */}
-        <Marquee
-          bg="bg-acid-yellow"
-          items={content.marquee_items ?? ["DOORS OPEN LATE", "BRING YOUR PACK", "NO DRESS CODE — MOVE", "RSVP IS A LOVE LANGUAGE"]}
-        />
+        {/* BODY */}
+        <div className="container py-10 md:py-16 grid gap-10 lg:grid-cols-[1fr_380px] lg:gap-14 items-start">
+          {/* Ticket box: first on phones, right column on desktop */}
+          <aside ref={boxRef} className="lg:order-2 lg:sticky lg:top-28 scroll-mt-28" aria-label="Tickets">
+            <TicketBox
+              id="tickets"
+              slug={slug}
+              title={event.title}
+              when={when}
+              venue={event.venue}
+              past={!upcoming}
+              rsvpOpen={!!event.rsvp_open}
+              onRsvp={() => setRsvpOpen(true)}
+              onTiers={setTiers}
+            />
+            {upcoming && (
+              <div className="mt-6"><NightActions slug={slug} /></div>
+            )}
+          </aside>
 
-        {/* 4. THE NIGHT */}
-        <section className="container py-12 md:py-20">
-          <p className="font-display text-magenta text-base md:text-lg mb-3">/ THE NIGHT</p>
-          <h2 className="font-display text-ink text-4xl md:text-6xl leading-[0.9] mb-8 max-w-4xl">
-            WHAT TO LOOK FORWARD TO.
-          </h2>
-
-          {content.vibe_pillars && content.vibe_pillars.length > 0 && (
-            <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-10">
-              {content.vibe_pillars.slice(0, 3).map((p, i) => {
-                const palettes = ["bg-magenta text-cream", "bg-electric-blue text-cream", "bg-acid-yellow text-ink"];
-                return (
-                  <div key={p.label} className={`border-4 border-ink chunk-shadow p-5 md:p-6 ${palettes[i % palettes.length]}`}>
-                    <p className="text-3xl md:text-4xl mb-3" aria-hidden>{p.icon}</p>
-                    <h3 className="font-display text-2xl md:text-3xl leading-none mb-2">{p.label}</h3>
-                    <p className="font-medium leading-snug">{p.desc}</p>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          <div className="grid md:grid-cols-[1.3fr_1fr] gap-6 md:gap-10">
-            <p className="text-ink/85 font-medium text-lg md:text-xl leading-relaxed">
-              {content.narrative ?? event.blurb}
-            </p>
-            {content.schedule && content.schedule.length > 0 && (
-              <div className="bg-ink text-cream border-4 border-ink chunk-shadow p-5 md:p-6">
-                <p className="font-display text-acid-yellow text-xs md:text-sm tracking-widest mb-4">/ RUN OF SHOW</p>
-                <ul className="space-y-2">
-                  {content.schedule.map((item) => (
-                    <li key={item.time + item.what} className={`flex items-baseline gap-3 border-l-4 pl-3 ${item.highlight ? "border-acid-yellow text-acid-yellow" : "border-cream/20 text-cream/90"}`}>
-                      <span className={`font-display text-sm md:text-base tabular-nums shrink-0 ${item.highlight ? "" : "text-acid-yellow/80"}`}>{item.time}</span>
-                      <span className="font-medium leading-snug">{item.what}</span>
+          <div className="lg:order-1 min-w-0 grid gap-14">
+            {/* About */}
+            <section>
+              <h2 className="font-display text-ink text-3xl md:text-5xl leading-[0.9] mb-5">The night</h2>
+              <p className="text-ink/85 font-medium text-lg md:text-xl leading-relaxed max-w-[65ch]">
+                {content.narrative ?? event.blurb}
+              </p>
+              {content.vibe_pillars && content.vibe_pillars.length > 0 && (
+                <ul className="mt-8 grid sm:grid-cols-3 gap-4">
+                  {content.vibe_pillars.slice(0, 3).map((p, i) => (
+                    <li key={p.label} className={`border-4 border-ink p-5 ${["bg-magenta text-cream", "bg-electric-blue text-cream", "bg-acid-yellow text-ink"][i % 3]}`}>
+                      <p className="text-3xl mb-2" aria-hidden>{p.icon}</p>
+                      <h3 className="font-display text-xl leading-none mb-2">{p.label}</h3>
+                      <p className="font-medium leading-snug">{p.desc}</p>
                     </li>
                   ))}
                 </ul>
+              )}
+            </section>
+
+            {/* Recap for past nights */}
+            {!upcoming && event.recap && (
+              <section>
+                <h2 className="font-display text-ink text-3xl md:text-5xl leading-[0.9] mb-5">How it went</h2>
+                <p className="text-ink/85 font-medium text-lg leading-relaxed max-w-[65ch] whitespace-pre-line">{event.recap}</p>
+              </section>
+            )}
+
+            {/* Lineup */}
+            <section>
+              <h2 className="font-display text-ink text-3xl md:text-5xl leading-[0.9] mb-6">Lineup</h2>
+              {lineup.length > 0 ? (
+                <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+                  {lineup.map((a, i) => <EventLineupCard key={`${a.name}-${i}`} artist={a} index={i} />)}
+                </div>
+              ) : (
+                <div className="border-4 border-dashed border-ink/40 p-6">
+                  <p className="font-display text-xl mb-1">Announced soon.</p>
+                  <p className="text-ink/75">Sartdawg and Merman are the residents. Guests drop on Instagram first.</p>
+                  <a href="https://instagram.com/catscandance" target="_blank" rel="noopener noreferrer" className="inline-block mt-3 font-bold underline underline-offset-4">Follow @catscandance</a>
+                </div>
+              )}
+            </section>
+
+            {/* Run of show */}
+            {content.schedule && content.schedule.length > 0 && (
+              <section>
+                <h2 className="font-display text-ink text-3xl md:text-5xl leading-[0.9] mb-6">Run of show</h2>
+                <ol className="bg-ink text-cream border-4 border-ink p-5 md:p-6 space-y-2">
+                  {content.schedule.map((item) => (
+                    <li key={item.time + item.what} className={`flex items-baseline gap-4 border-l-4 pl-3 ${item.highlight ? "border-acid-yellow text-acid-yellow" : "border-cream/20"}`}>
+                      <span className="font-display tabular shrink-0 w-20">{item.time}</span>
+                      <span className="font-medium">{item.what}</span>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
+
+            {/* Gallery */}
+            {media.length > 0 && (
+              <section>
+                <h2 className="font-display text-ink text-3xl md:text-5xl leading-[0.9] mb-6">Look and feel</h2>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {media.map((item, i) => (
+                    <button key={`${item.url}-${i}`} type="button" onClick={() => setLightbox(item)} className="block border-4 border-ink bg-ink">
+                      <img src={item.url} alt={item.caption || `${event.title} photo ${i + 1}`} loading="lazy" className="w-full aspect-video object-cover hover:opacity-90 transition-opacity" />
+                    </button>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Venue */}
+            <section>
+              <h2 className="font-display text-ink text-3xl md:text-5xl leading-[0.9] mb-6">Venue</h2>
+              <div className="border-4 border-ink bg-cream p-5 md:p-6 grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
+                <div>
+                  <p className="font-display text-2xl leading-tight">{event.venue}</p>
+                  <p className="text-ink/75 mt-1">{content.venue_address ?? event.city}</p>
+                  {(content.capacity || event.capacity) && <p className="text-sm mt-2 font-bold">Capacity {content.capacity ?? event.capacity}</p>}
+                </div>
+                <DirectionsLink href={directions} />
               </div>
+              {content.venue_embed_url && (
+                <iframe src={content.venue_embed_url} title={`Map of ${event.venue}`} loading="lazy" className="w-full h-72 border-4 border-t-0 border-ink" />
+              )}
+            </section>
+
+            {/* Questions */}
+            <section>
+              <h2 className="font-display text-ink text-3xl md:text-5xl leading-[0.9] mb-4">Questions</h2>
+              <Accordion type="single" collapsible className="border-t-4 border-ink">
+                {faq.map((x, i) => (
+                  <AccordionItem key={x.q} value={`q${i}`} className="border-b-4 border-ink">
+                    <AccordionTrigger className="font-display text-lg md:text-xl text-left hover:no-underline py-4">{x.q}</AccordionTrigger>
+                    <AccordionContent className="text-base md:text-lg text-ink/85 pb-5">{x.a}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+              <p className="mt-4 text-ink/75">Something else? <a href="mailto:hello@catscandance.com" className="underline font-bold">hello@catscandance.com</a></p>
+            </section>
+
+            {/* Partners */}
+            {content.partners && content.partners.length > 0 && (
+              <section>
+                <h2 className="font-display text-ink text-3xl md:text-5xl leading-[0.9] mb-6">With</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {content.partners.map((p) => (
+                    <div key={p.name} className="bg-cream border-4 border-ink p-4 text-center">
+                      <p className="font-display text-xl leading-none">{p.name}</p>
+                      {p.role && <p className="text-xs font-bold text-magenta mt-1">{p.role}</p>}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {series.length > 1 && (
+              <section>
+                <h2 className="font-display text-ink text-3xl md:text-5xl leading-[0.9] mb-6">More from the series</h2>
+                <ul className="grid sm:grid-cols-2 gap-3">
+                  {series.filter((s) => s.slug !== slug).map((s) => (
+                    <li key={s.slug}><Link to={`/episodes/${s.slug}`} className="block border-4 border-ink p-4 hover:bg-acid-yellow font-display">{s.title}</Link></li>
+                  ))}
+                </ul>
+              </section>
             )}
           </div>
-        </section>
-
-        {/* 5. LINEUP */}
-        {lineup.length > 0 && (
-          <section className="bg-cream border-y-4 border-ink py-12 md:py-20">
-            <div className="container">
-              <p className="font-display text-magenta text-base md:text-lg mb-3">/ LINEUP</p>
-              <h2 className="font-display text-ink text-4xl md:text-6xl leading-[0.9] mb-8">WHO'S ON.</h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                {lineup.map((a, i) => <EventLineupCard key={`${a.name}-${i}`} artist={a} index={i} />)}
-              </div>
-              {isUpcoming && (
-                <button type="button" onClick={() => setOpen(true)} className="mt-10 bg-magenta text-cream font-display text-lg px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
-                  {ctaLabel}
-                </button>
-              )}
-            </div>
-          </section>
-        )}
-
-        {/* 6. PETS WELCOME */}
-        {isPet && (
-          <section className="bg-electric-blue text-cream border-b-4 border-ink py-12 md:py-16">
-            <div className="container">
-              <p className="font-display text-acid-yellow text-base mb-3">/ PETS WELCOME</p>
-              <h2 className="font-display text-cream text-4xl md:text-5xl leading-[0.9] mb-4">BRING THE WHOLE PACK.</h2>
-              <p className="font-medium text-cream/90 text-lg leading-relaxed max-w-2xl">
-                Dogs and cats welcome all afternoon. Easy outdoor floor, good people, the right energy.
-              </p>
-            </div>
-          </section>
-        )}
-
-        {/* 7. MEDIA GALLERY */}
-        {media.length > 0 && (
-          <section className="bg-background py-12 md:py-16">
-            <div className="container">
-              <p className="font-display text-magenta text-base mb-3">/ LOOK & FEEL</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {media.map((item, i) => (
-                  <figure key={`${item.url}-${i}`} className="bg-ink border-4 border-ink chunk-shadow">
-                    <button type="button" onClick={() => setLightbox(item)} className="block w-full">
-                      <img src={item.url} alt={item.caption || ""} loading="lazy" className="w-full aspect-video object-cover hover:opacity-90 transition-opacity" />
-                    </button>
-                    {item.caption && <figcaption className="bg-cream text-ink px-3 py-2 text-sm font-medium border-t-4 border-ink">{item.caption}</figcaption>}
-                  </figure>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* 8. VENUE */}
-        <EventVenueCard
-          venue={event.venue}
-          city={event.city || "Bangalore"}
-          address={content.venue_address}
-          embedUrl={content.venue_embed_url}
-          capacity={content.capacity}
-          dressCode={content.dress_code}
-          houseRules={content.house_rules}
-        />
-
-        {/* 9. PARTNERS */}
-        {content.partners && content.partners.length > 0 && (
-          <section className="bg-ink text-cream border-y-4 border-ink py-12 md:py-16">
-            <div className="container grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <p className="font-display text-acid-yellow text-base mb-3">/ BROUGHT TO YOU BY</p>
-                <h2 className="font-display text-cream text-3xl md:text-5xl leading-[0.9] mb-3">PARTNERS, NOT SPONSORS.</h2>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {content.partners.map((p) => (
-                  <div key={p.name} className="bg-cream text-ink border-4 border-ink p-4 flex flex-col items-center justify-center text-center min-h-[120px]">
-                    <p className="font-display text-2xl text-ink leading-none">{p.name.toUpperCase()}</p>
-                    {p.role && <p className="font-display text-[10px] tracking-widest text-magenta mt-1">/ {p.role}</p>}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
+        </div>
 
         <Footer />
       </main>
 
-      {/* STICKY MOBILE CTA */}
-      {isUpcoming && <StickyRsvpBar label={ctaLabel} onClick={() => setOpen(true)} meta={stickyMeta} />}
+      {/* Phone bar: price and a way back to the ticket box */}
+      {upcoming && (
+        <div className={`lg:hidden fixed inset-x-0 bottom-0 z-40 border-t-4 border-ink bg-ink text-cream transition-transform duration-200 ${boxVisible ? "translate-y-full" : "translate-y-0"}`}
+          style={{ paddingBottom: "max(0px, env(safe-area-inset-bottom))" }} aria-hidden={boxVisible}>
+          <div className="px-4 py-3 flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <p className="font-display text-base leading-tight truncate">{event.title}</p>
+              <p className="text-sm text-cream/80 truncate">{priceText ?? displayDate(event)}</p>
+            </div>
+            <button type="button" tabIndex={boxVisible ? -1 : 0} onClick={scrollToBox}
+              className="bg-acid-yellow text-ink font-display text-base px-5 py-3 border-4 border-cream whitespace-nowrap">
+              {tiers && tiers.length > 0 && tiers.every((t) => t.sold_out) ? "Join waiting list" : tiers && tiers.length === 0 && event.rsvp_open ? "RSVP" : "Get tickets"}
+            </button>
+          </div>
+        </div>
+      )}
 
-      {/* RSVP DIALOG */}
-      <RsvpDialog open={open} onOpenChange={setOpen} eventSlug={slug} eventTitle={`Cats Can Dance ${event.title}`} eventDate={event.date} eventVenue={event.venue} />
+      <RsvpDialog open={rsvpOpen} onOpenChange={setRsvpOpen} eventSlug={slug} eventTitle={`Cats Can Dance ${event.title}`} eventDate={event.date} eventVenue={event.venue} />
 
-      {/* LIGHTBOX */}
       <Dialog open={!!lightbox} onOpenChange={(o) => !o && setLightbox(null)}>
         <DialogContent className="max-w-5xl bg-ink border-4 border-ink p-2">
           {lightbox && (

@@ -15,7 +15,7 @@ const NotFound = () => {
     <>
       <SEO title="404 — Cats Can Dance" description="This page wandered off. Head back home." path="/404" noindex />
       <main className="bg-background text-foreground min-h-screen">
-        <Nav />
+        <Nav forceDark />
         <section className="container pt-40 pb-32 text-center">
           <p className="font-display text-magenta text-2xl md:text-3xl mb-4">/ 404</p>
           <h1 className="font-display text-ink text-7xl md:text-9xl leading-[0.85] mb-6">

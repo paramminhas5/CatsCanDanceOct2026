@@ -24,21 +24,45 @@ const shell = (body: string) =>
   `<div style="font-family:Arial,sans-serif;max-width:520px;margin:0 auto;padding:20px;color:#111;background:#faf5e8;border:3px solid #111">${body}<p style="font-size:12px;color:#555;margin-top:24px">Cats Can Dance, Bengaluru. <a href="${SITE()}">catscandance.com</a></p></div>`;
 
 /** Email the tickets for a paid or free order, once. Safe to call twice. */
+function ticketHtml(x: any, orderId: string, again = false) {
+  const codes = (x.codes as string[]).map((c) => `<li style="font-family:monospace;font-size:18px;margin:4px 0">${esc(c)}</li>`).join("");
+  return shell(
+    `<h2 style="margin:0 0 8px">${again ? "Here are your tickets." : "You are in."}</h2><p>Hi ${esc(x.name)}, your ${x.amount_inr > 0 ? "tickets are paid" : "free tickets are confirmed"} for <b>${esc(x.event_title)}</b>.</p>` +
+      `<p>${esc(x.event_date)}<br>${esc(x.venue)}, ${esc(x.city)}</p><p>Show one of these codes at the door, one per person:</p><ul>${codes}</ul>` +
+      `<p><a href="${SITE()}/tickets/order?o=${esc(orderId)}&e=${encodeURIComponent(x.email)}" style="display:inline-block;background:#b6ef36;color:#020617;border:3px solid #020617;padding:12px 18px;font-weight:bold;text-decoration:none">Open your tickets and QR codes</a></p>` +
+      `<p style="font-size:13px">Can't make it? Pass your ticket on at face value: <a href="${SITE()}/discover#pass-it-on">Pass it on</a>.</p>`
+  );
+}
+
 export async function emailTicketOrder(orderId: string) {
   const token = process.env.OPS_TOKEN;
   if (!token || !process.env.RESEND_API_KEY) return { ok: false, skipped: true };
   const d = await rpc("ops_order_email_data", { p_token: token, p_order: orderId });
   if (!d.ok || !d.data?.ok) return { ok: false };
   const x = d.data;
-  const codes = (x.codes as string[]).map((c) => `<li style="font-family:monospace;font-size:18px;margin:4px 0">${esc(c)}</li>`).join("");
-  const html = shell(
-    `<h2 style="margin:0 0 8px">You are in.</h2><p>Hi ${esc(x.name)}, your ${x.amount_inr > 0 ? "tickets are paid" : "free tickets are confirmed"} for <b>${esc(x.event_title)}</b>.</p>` +
-      `<p>${esc(x.event_date)}<br>${esc(x.venue)}, ${esc(x.city)}</p><p>Show one of these codes at the door:</p><ul>${codes}</ul>` +
-      `<p><a href="${SITE()}/tickets/order?o=${esc(orderId)}&e=${encodeURIComponent(x.email)}">Open your tickets and QR codes</a></p>`
-  );
-  const m = await sendMail(x.email, `Your tickets: ${x.event_title}`, html);
+  const m = await sendMail(x.email, `Your tickets: ${x.event_title}`, ticketHtml(x, orderId));
   if (m.ok) await rpc("ops_mark_order_emailed", { p_token: token, p_order: orderId });
   return m;
+}
+
+/**
+ * "Email me my tickets": sends every order for this email on nights that have not happened yet.
+ * Throttled in the database (one lookup per email every 10 minutes). Needs migration 037.
+ */
+export async function resendTickets(email: string) {
+  const token = process.env.OPS_TOKEN;
+  if (!token || !process.env.RESEND_API_KEY) return { ok: false as const, reason: "email-off" as const };
+  const list = await rpc("ops_orders_for_email", { p_token: token, p_email: email });
+  if (!list.ok) return { ok: false as const, reason: "not-ready" as const };
+  if (!list.data?.ok) return { ok: true as const, sent: 0, throttled: !!list.data?.throttled };
+  let sent = 0;
+  for (const id of (list.data.orders as string[]) ?? []) {
+    const d = await rpc("ops_order_resend_data", { p_token: token, p_order: id });
+    if (!d.ok || !d.data?.ok) continue;
+    const m = await sendMail(d.data.email, `Your tickets: ${d.data.event_title}`, ticketHtml(d.data, id, true));
+    if (m.ok) sent++;
+  }
+  return { ok: true as const, sent };
 }
 
 /** Tell each member which crew they are in. Returns how many were sent. */

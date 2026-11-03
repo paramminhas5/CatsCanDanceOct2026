@@ -16,6 +16,7 @@ export default {
         ink: "hsl(var(--ink))",
         cream: "hsl(var(--cream))",
         "hot-pink": "hsl(var(--hot-pink))",
+        "hot-red": "hsl(var(--magenta))",
         bubblegum: "hsl(var(--bubblegum))",
         "acid-yellow": "hsl(var(--acid-yellow))",
         "electric-blue": "hsl(var(--electric-blue))",

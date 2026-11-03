@@ -1,81 +1,97 @@
+/**
+ * /tickets/[slug]: a focused booking page for links shared on Instagram and in emails.
+ * The night on the left, the same TicketBox as the event page on the right.
+ */
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import PageHero from "@/components/PageHero";
 import SEO from "@/components/SEO";
+import TicketBox from "@/components/tickets/TicketBox";
+import RsvpDialog from "@/components/RsvpDialog";
 import { supabase } from "@/lib/supabase";
-import { payOrder } from "@/lib/razorpay-client";
-
-type Tier = { id: string; name: string; price_inr: number; max_per_order: number; remaining: number };
-const inp = "w-full border-4 border-ink bg-cream p-3 text-ink";
+import { resolvePoster } from "@/lib/poster";
+import { getEventContent, getStaticEventRow } from "@/content/events";
+import { displayDate, displayTime, nightStatus } from "@/lib/nights";
+import type { EventRow } from "@/types/events";
 
 export default function Tickets() {
   const router = useRouter();
   const slug = String(router.query.slug ?? "");
-  const [ev, setEv] = useState<{ title: string; event_date: string | null; venue: string | null } | null>(null);
-  const [tiers, setTiers] = useState<Tier[]>([]);
-  const [qty, setQty] = useState<Record<string, number>>({});
-  const [f, setF] = useState({ name: "", email: "", phone: "" });
-  const [promo, setPromo] = useState("");
-  const [msg, setMsg] = useState("");
-  const [busy, setBusy] = useState(false);
+  const [ev, setEv] = useState<EventRow | null | undefined>(undefined);
+  const [rsvp, setRsvp] = useState(false);
 
   useEffect(() => {
     if (!slug) return;
-    supabase.rpc("public_tiers", { p_slug: slug }).then(({ data }) => setTiers((data as Tier[]) ?? []));
-    supabase.from("events").select("title,event_date,venue").eq("slug", slug).maybeSingle().then(({ data }) => setEv(data as any));
+    supabase.from("events").select("*").eq("slug", slug).maybeSingle().then(({ data }) => {
+      const row = (data as EventRow | null) ?? getStaticEventRow(slug);
+      setEv(row && row.published !== false ? row : null);
+    });
   }, [slug]);
 
-  const total = tiers.reduce((s, t) => s + (qty[t.id] ?? 0) * t.price_inr, 0);
-  const count = Object.values(qty).reduce((a, b) => a + b, 0);
-
-  async function go(e: React.FormEvent) {
-    e.preventDefault();
-    setMsg(""); setBusy(true);
-    try {
-      const items = tiers.filter((t) => qty[t.id] > 0).map((t) => ({ tier: t.id, qty: qty[t.id] }));
-      const { data, error } = await supabase.rpc("create_ticket_order", { p_slug: slug, p_name: f.name, p_email: f.email, p_phone: f.phone, p_items: items, p_source: "platform", p_promo: promo.trim() || null });
-      if (error || !data?.ok) throw new Error(data?.error ?? "Could not place the order.");
-      if (!data.free) await payOrder("ticket", data.order_id, f, `${ev?.title ?? slug} tickets`);
-      else fetch("/api/email/ticket", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ order_id: data.order_id }) }).catch(() => {});
-      router.push(`/tickets/order?o=${data.order_id}&e=${encodeURIComponent(f.email)}`);
-    } catch (err: any) { setMsg(err.message ?? "Something went wrong."); setBusy(false); }
-  }
+  const content = ev ? getEventContent(ev) : null;
+  const time = ev ? displayTime(content?.doors_time ?? ev.start_time) : null;
+  const when = ev ? [displayDate(ev), time].filter(Boolean).join(" · ") : "";
+  const poster = ev ? resolvePoster(ev.poster_url) : null;
+  const past = ev ? nightStatus(ev) !== "upcoming" : false;
 
   return (
     <>
-      <SEO title={`Tickets${ev ? ` · ${ev.title}` : ""}`} description="Book tickets for a Cats Can Dance night." path={`/tickets/${slug}`} />
-      <main className="bg-background text-foreground min-h-screen">
+      <SEO title={ev ? `Tickets: ${ev.title}, ${displayDate(ev, false)} · Cats Can Dance` : "Tickets · Cats Can Dance"}
+        description={ev ? `Book tickets for Cats Can Dance ${ev.title} at ${ev.venue}, ${ev.city}.` : "Book tickets for a Cats Can Dance night."}
+        path={`/tickets/${slug}`} />
+      <main className="bg-electric-blue min-h-screen">
         <Nav />
-        <PageHero eyebrow="TICKETS" title={(ev?.title ?? "TICKETS").toUpperCase()} bg="bg-hot-red" textColor="text-cream" eyebrowColor="text-acid-yellow">
-          <p>{[ev?.event_date, ev?.venue].filter(Boolean).join(" · ")}</p>
-        </PageHero>
-        <section className="container py-12 max-w-xl">
-          {tiers.length === 0 ? <p className="border-4 border-ink p-6">Tickets are not on sale yet. Follow us on Instagram for the drop.</p> : (
-            <form onSubmit={go} className="grid gap-4 border-4 border-ink p-6 bg-cream chunk-shadow">
-              {tiers.map((t) => (
-                <div key={t.id} className="flex items-center justify-between gap-3 border-b-2 border-ink pb-3">
-                  <div><p className="font-display text-lg">{t.name}</p><p className="text-sm">{t.price_inr === 0 ? "Free" : `₹${t.price_inr}`} · {t.remaining > 0 ? `${t.remaining} left` : "Sold out"}</p></div>
-                  <select disabled={t.remaining < 1} className="border-4 border-ink bg-cream p-2" value={qty[t.id] ?? 0} onChange={(e) => setQty({ ...qty, [t.id]: Number(e.target.value) })}>
-                    {Array.from({ length: Math.min(t.max_per_order, t.remaining) + 1 }, (_, i) => <option key={i} value={i}>{i}</option>)}
-                  </select>
+        <section className="container pt-28 md:pt-36 pb-16 md:pb-24">
+          {ev === null ? (
+            <div className="max-w-xl bg-cream border-4 border-ink chunk-shadow p-6 md:p-8">
+              <h1 className="font-display text-4xl leading-none mb-3">We can&apos;t find that night.</h1>
+              <p className="text-ink/80 mb-5">The link may be old, or the night is not on sale yet.</p>
+              <a href="/episodes" className="inline-block font-display text-lg px-5 py-3 border-4 border-ink bg-acid-yellow">See all Episodes</a>
+            </div>
+          ) : (
+            <div className="grid gap-10 lg:grid-cols-[1fr_400px] lg:gap-14 items-start">
+              <div className="text-cream min-w-0">
+                <div className="flex gap-5 items-end">
+                  {poster && (
+                    <div className="relative w-28 sm:w-36 aspect-[3/4] shrink-0 border-4 border-ink chunk-shadow overflow-hidden bg-ink hidden sm:block">
+                      <Image src={poster} alt="" fill sizes="144px" className="object-cover" />
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <p className="font-bold text-acid-yellow mb-2">Cats Can Dance</p>
+                    <h1 className="font-display text-5xl sm:text-7xl leading-[0.85] break-words" style={{ filter: "drop-shadow(5px 5px 0 hsl(var(--ink)))" }}>
+                      {ev ? ev.title.toUpperCase() : " "}
+                    </h1>
+                  </div>
                 </div>
-              ))}
-              <input className={inp} placeholder="Your name" required value={f.name} onChange={(e) => setF({ ...f, name: e.target.value })} />
-              <input className={inp} type="email" placeholder="Email (your tickets go here)" required value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} />
-              <input className={inp} placeholder="Phone (optional)" value={f.phone} onChange={(e) => setF({ ...f, phone: e.target.value })} />
-              <input className={inp} placeholder="Promo code (optional)" value={promo} onChange={(e) => setPromo(e.target.value)} />
-              <button disabled={busy || count === 0} className="font-display uppercase px-5 py-3 border-4 border-ink bg-acid-yellow text-ink disabled:opacity-50">
-                {busy ? "Working..." : total === 0 ? `Get ${count || ""} free ticket${count > 1 ? "s" : ""}` : `Pay ₹${total}`}
-              </button>
-              {msg && <p className="text-sm text-red-600">{msg}</p>}
-              <p className="text-xs text-ink/60">Your tickets show on the next page with a QR code for the door. Keep the link.</p>
-            </form>
+                {ev && (
+                  <dl className="mt-8 grid gap-1 text-lg md:text-2xl font-bold">
+                    <div><dt className="sr-only">When</dt><dd>{when}</dd></div>
+                    <div><dt className="sr-only">Where</dt><dd>{ev.venue}{ev.city ? `, ${ev.city}` : ""}</dd></div>
+                  </dl>
+                )}
+                {ev && (
+                  <a href={`/episodes/${slug}`} className="inline-block mt-6 font-bold underline underline-offset-4 decoration-2 hover:text-acid-yellow">
+                    Lineup, venue and questions
+                  </a>
+                )}
+              </div>
+              <div>
+                {ev ? (
+                  <TicketBox slug={slug} title={ev.title} when={when} venue={ev.venue} past={past}
+                    rsvpOpen={!!ev.rsvp_open} onRsvp={() => setRsvp(true)} perfBg="hsl(var(--electric-blue))" />
+                ) : (
+                  <div className="h-80 border-4 border-ink bg-cream/70 chunk-shadow" aria-busy="true" aria-label="Loading tickets" />
+                )}
+              </div>
+            </div>
           )}
         </section>
         <Footer />
       </main>
+      {ev && <RsvpDialog open={rsvp} onOpenChange={setRsvp} eventSlug={slug} eventTitle={`Cats Can Dance ${ev.title}`} eventDate={ev.date} eventVenue={ev.venue} />}
     </>
   );
 }
