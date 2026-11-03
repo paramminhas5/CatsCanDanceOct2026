@@ -44,7 +44,7 @@ const Embed = () => {
             {events.map((e) => (
               <li key={e.id} style={{ borderTop: "2px solid #0F0F0F", padding: "10px 0" }}>
                 <a
-                  href={`https://catscandance.com/events/${e.slug}`}
+                  href={`https://catscandance.com/nights/${e.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: "#0F0F0F", textDecoration: "none" }}

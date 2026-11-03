@@ -21,7 +21,7 @@ const safeBack = (v: FormDataEntryValue | null) => {
   return s.startsWith("/ops/curation") ? s : "/ops/curation";
 };
 const done = (back: string) => {
-  revalidatePath("/ops/curation"); revalidatePath("/ops"); revalidatePath("/artists"); revalidatePath("/prowl");
+  revalidatePath("/ops/curation"); revalidatePath("/ops"); revalidatePath("/artists"); revalidatePath("/whats-on");
   redirect(back);
 };
 

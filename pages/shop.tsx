@@ -57,10 +57,10 @@ export default function Shop() {
 
   return (
     <>
-      <SEO title="Shop" description="Cats Can Dance merch and drops. Ships across India." path="/scratch" />
+      <SEO title="Shop" description="Cats Can Dance merch and drops. Ships across India." path="/shop" />
       <main className="bg-background text-foreground min-h-screen">
         <Nav />
-        <PageHero eyebrow="WEAR · SCRATCH" title="THE SHOP." bg="bg-acid-yellow" textColor="text-ink" eyebrowColor="text-hot-red"><p>Small drops. Ships across India.</p></PageHero>
+        <PageHero eyebrow="SHOP · MERCH" title="THE SHOP." bg="bg-acid-yellow" textColor="text-ink" eyebrowColor="text-hot-red"><p>Small drops. Ships across India.</p></PageHero>
         <section className="container py-12 grid gap-10 lg:grid-cols-[2fr_1fr]">
           <div>
             {done && <p className="border-4 border-ink bg-acid-yellow p-4 mb-6 font-display">Order placed. Check your email. We will ship in 3 to 5 days.</p>}

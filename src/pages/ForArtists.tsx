@@ -94,7 +94,7 @@ const ForArtists = () => (
             Send your links and a mix. We check every profile by hand, then it goes live on the roster. If you are already listed, claim your page and we will hand it over. Tour dates go up at <Link href="/tour#post" className="underline">/tour</Link>.
           </p>
           <Link
-            href="/litter"
+            href="/artists"
             className="inline-block mt-6 bg-transparent text-cream font-display text-sm px-8 py-3 border-4 border-cream/40 hover:border-cream hover:bg-cream/10 transition-colors text-center"
           >
             BROWSE THE ROSTER

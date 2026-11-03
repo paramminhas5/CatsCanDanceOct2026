@@ -42,28 +42,28 @@ const FAQ_DEFAULT = FAQ_BY_CATEGORY.CULTURE;
 
 const TAKE_IT_FURTHER: Record<string, { to: string; label: string; desc: string }[]> = {
   GUIDES: [
-    { to: "/episodes", label: "RSVP an upcoming Episode", desc: "Live dates and lineups in Bangalore." },
+    { to: "/nights", label: "RSVP an upcoming Episode", desc: "Live dates and lineups in Bangalore." },
     { to: "/bengaluru-underground-dance-music", label: "The Bengaluru underground guide", desc: "Our deep map of the scene." },
     { to: "/journal", label: "More guides", desc: "Read the full journal." },
   ],
   DROPS: [
-    { to: "/scratch", label: "Shop the current drop", desc: "Limited streetwear, no restocks." },
+    { to: "/shop", label: "Shop the current drop", desc: "Limited streetwear, no restocks." },
     { to: "/pets", label: "Pet streetwear", desc: "Bandanas, bucket hats, CCD treats." },
     { to: "/about", label: "Why we drop the way we do", desc: "The brand behind the print." },
   ],
   ARTISTS: [
-    { to: "/catwalk", label: "Curator playlists", desc: "Mixes from the lineup." },
+    { to: "/listen", label: "Curator playlists", desc: "Mixes from the lineup." },
     { to: "/videos", label: "Watch sets & recaps", desc: "Footage from the floor." },
-    { to: "/episodes", label: "Upcoming Episodes", desc: "Catch them live." },
+    { to: "/nights", label: "Upcoming Episodes", desc: "Catch them live." },
   ],
   CULTURE: [
     { to: "/about", label: "About Cats Can Dance", desc: "Who we are." },
-    { to: "/episodes", label: "Upcoming nights", desc: "RSVP." },
-    { to: "/scratch", label: "The drop", desc: "Limited streetwear from Bangalore." },
+    { to: "/nights", label: "Upcoming nights", desc: "RSVP." },
+    { to: "/shop", label: "The drop", desc: "Limited streetwear from Bangalore." },
   ],
   JOURNAL: [
     { to: "/journal", label: "All posts", desc: "Browse the journal." },
-    { to: "/episodes", label: "Episodes", desc: "Live dates." },
+    { to: "/nights", label: "Episodes", desc: "Live dates." },
     { to: "/about", label: "About the Pack", desc: "Who's behind it." },
   ],
 };
@@ -108,7 +108,7 @@ const BlogPost = () => {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${SITE}/blog/${post.slug}`,
+      "@id": `${SITE}/journal/${post.slug}`,
     },
     isPartOf: { "@type": "Blog", name: "Cats Can Dance — Journal", url: `${SITE}/blog` },
     about: ["dance music", "events in Bangalore", "underground parties India"],

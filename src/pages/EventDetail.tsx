@@ -19,7 +19,8 @@ import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Marquee from "@/components/Marquee";
 import RsvpDialog from "@/components/RsvpDialog";
-import NightActions from "@/components/NightActions";
+import Going from "@/components/going/Going";
+import { type Crowd, loadCrowd } from "@/lib/plans";
 import EventLineupCard from "@/components/EventLineupCard";
 import EventPosterPlaceholder from "@/components/EventPosterPlaceholder";
 import TicketBox from "@/components/tickets/TicketBox";
@@ -55,12 +56,14 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
   const upcoming = status === "upcoming";
   const time = displayTime(content.doors_time ?? event.start_time);
   const when = [displayDate(event), time].filter(Boolean).join(" · ");
-  const pageUrl = `${SITE}/episodes/${slug}`;
+  const pageUrl = `${SITE}/nights/${slug}`;
   const directions = directionsUrl(event.venue, event.city, content.venue_map_url);
   const poster = resolvePoster(event.poster_url);
   const series = useMemo(() => (event.series ? getStaticEventsBySeries(event.series) : []), [event.series]);
 
   useEffect(() => { if (router.query.rsvp) setRsvpOpen(true); }, [router.query.rsvp]);
+  const [crowd, setCrowd] = useState<Crowd | undefined>();
+  useEffect(() => { if (upcoming) loadCrowd([slug]).then((c) => setCrowd(c[slug])).catch(() => {}); }, [slug, upcoming]);
   useEffect(() => { if (upcoming) loadBuzz(slug).then((b) => setBuzz(buzzCount(b))).catch(() => {}); }, [slug, upcoming]);
 
   // Phones: show the bottom bar only when the ticket box is off screen.
@@ -97,7 +100,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
     { q: "I can't find my tickets.", text: "Go to catscandance.com/tickets and enter the email you booked with. We'll send them again.",
       a: <>Go to <Link to="/tickets" className="underline font-bold">catscandance.com/tickets</Link> and enter the email you booked with. We&apos;ll send them again.</> },
     { q: "Can I pass my ticket on?", text: "Yes, at face value, through Pass it on.",
-      a: <>Yes, at face value, through <Link to="/discover#pass-it-on" className="underline font-bold">Pass it on</Link>.</> },
+      a: <>Yes, at face value, through <Link to="/whats-on#pass-it-on" className="underline font-bold">Pass it on</Link>.</> },
     ...(time ? [{ q: "What time should I come?", text: `Doors open at ${time}. The room fills up, so earlier is better.`, a: <>Doors open at {time}. The room fills up, so earlier is better.</> }] : []),
     ...(event.pet_friendly ? [{ q: "Can I bring my dog or cat?", text: "Yes. Pets are welcome in the pet zone during the day.", a: <>Yes. Pets are welcome in the pet zone during the day.</> }] : []),
     ...(content.dress_code ? [{ q: "Is there a dress code?", text: content.dress_code, a: <>{content.dress_code}</> }] : []),
@@ -142,7 +145,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
       <SEO
         title={`${event.title}, ${displayDate(event, false)} at ${event.venue} · Cats Can Dance`}
         description={event.blurb || content.narrative || `Cats Can Dance ${event.title} at ${event.venue}, ${event.city}.`}
-        path={`/episodes/${slug}`}
+        path={`/nights/${slug}`}
         type="event"
         image={poster ?? undefined}
         jsonLd={[eventLd, faqLd]}
@@ -154,7 +157,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
         {/* HERO */}
         <section className={`pt-28 md:pt-32 pb-10 md:pb-14 border-b-4 border-ink ${heroTone}`}>
           <div className="container">
-            <Breadcrumbs light={upcoming} items={[{ label: "Home", to: "/" }, { label: "Episodes", to: "/episodes" }, { label: event.title }]} />
+            <Breadcrumbs light={upcoming} items={[{ label: "Home", to: "/" }, { label: "Episodes", to: "/nights" }, { label: event.title }]} />
 
             <div className="grid gap-8 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-14 items-end">
               {/* Poster */}
@@ -221,7 +224,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
               onTiers={setTiers}
             />
             {upcoming && (
-              <div className="mt-6"><NightActions slug={slug} /></div>
+              <div className="mt-6"><Going variant="panel" nightKey={slug} title={event.title} crowd={crowd} onChange={() => loadCrowd([slug]).then((c) => setCrowd(c[slug]))} /></div>
             )}
           </aside>
 
@@ -348,7 +351,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
                 <h2 className="font-display text-ink text-3xl md:text-5xl leading-[0.9] mb-6">More from the series</h2>
                 <ul className="grid sm:grid-cols-2 gap-3">
                   {series.filter((s) => s.slug !== slug).map((s) => (
-                    <li key={s.slug}><Link to={`/episodes/${s.slug}`} className="block border-4 border-ink p-4 hover:bg-acid-yellow font-display">{s.title}</Link></li>
+                    <li key={s.slug}><Link to={`/nights/${s.slug}`} className="block border-4 border-ink p-4 hover:bg-acid-yellow font-display">{s.title}</Link></li>
                   ))}
                 </ul>
               </section>

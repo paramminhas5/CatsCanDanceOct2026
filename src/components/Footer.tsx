@@ -8,19 +8,20 @@ const groups = [
   {
     title: "THE SUITE",
     links: [
-      { to: "/episodes", label: "Go · Episodes" },
-      { to: "/prowl", label: "Find · Prowl" },
-      { to: "/litter", label: "Book · Litter" },
-      { to: "/tour", label: "Tour" },
+      { to: "/nights", label: "Our nights" },
+      { to: "/whats-on", label: "What's on" },
+      { to: "/artists", label: "Artists" },
+      { to: "/tour", label: "On tour" },
       { to: "/school", label: "Learn · CCD.SCHOOL" },
+      { to: "/me", label: "Your nights" },
     ],
   },
   {
     title: "MORE",
     links: [
-      { to: "/nine-lives", label: "Adopt · Nine Lives" },
-      { to: "/scratch", label: "Wear · Scratch" },
-      { to: "/catwalk", label: "Listen · Catwalk" },
+      { to: "/adopt", label: "Adopt · Nine Lives" },
+      { to: "/shop", label: "Shop" },
+      { to: "/listen", label: "Listen" },
       { to: "/journal", label: "Journal" },
       { to: "/guides", label: "Guides" },
     ],

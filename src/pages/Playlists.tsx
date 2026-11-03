@@ -81,11 +81,11 @@ const Playlists = () => {
       <SEO
         title="Playlists — Cats Can Dance | What we play, on rotation"
         description="Every Cats Can Dance playlist across Spotify, YouTube and SoundCloud — dance music, late-night sets and warehouse cuts."
-        path="/catwalk"
+        path="/listen"
       />
       <Nav />
       <PageHero
-        eyebrow="LISTEN · CATWALK"
+        eyebrow="LISTEN · MIXES"
         title={<>NOW<br/>SPINNING.</>}
         bg="bg-magenta"
         textColor="text-cream"
