@@ -1,50 +1,141 @@
+/**
+ * /tickets/order?o=<order>&e=<email>[&new=1]: your tickets for one order.
+ * Tickets as stubs with QR codes, then what to do next: calendar, directions, share, crew.
+ * Without a valid link it falls back to the "email me my tickets" form instead of loading forever.
+ */
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import QRCode from "qrcode";
+import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import PageHero from "@/components/PageHero";
 import SEO from "@/components/SEO";
+import TicketPass from "@/components/tickets/TicketPass";
+import FindTickets from "@/components/tickets/FindTickets";
+import { AddToCalendar, DirectionsLink, ShareButton } from "@/components/tickets/NightTools";
+import { orderTickets, type PassTicket } from "@/lib/booking";
 import { supabase } from "@/lib/supabase";
+import { getEventContent, getStaticEventRow } from "@/content/events";
+import { directionsUrl, displayDate, displayTime } from "@/lib/nights";
+import type { EventRow } from "@/types/events";
 
-type T = { code: string; tier: string | null; holder_name: string; event_slug: string; event_title: string | null; event_date: string | null; venue: string | null; checked_in: boolean };
+const SITE = "https://catscandance.com";
 
 export default function Order() {
-  const { query } = useRouter();
-  const [tickets, setTickets] = useState<T[] | null>(null);
-  const [qr, setQr] = useState<Record<string, string>>({});
+  const router = useRouter();
+  const o = typeof router.query.o === "string" ? router.query.o : "";
+  const e = typeof router.query.e === "string" ? router.query.e : "";
+  const fresh = router.query.new === "1";
+  const [tickets, setTickets] = useState<PassTicket[] | null>(null);
+  const [ev, setEv] = useState<EventRow | null>(null);
 
   useEffect(() => {
-    if (!query.o || !query.e) return;
-    supabase.rpc("my_tickets", { p_order: query.o, p_email: query.e }).then(async ({ data }) => {
-      const list = (data as T[]) ?? [];
+    if (!router.isReady) return;
+    if (!o || !e) { setTickets([]); return; }
+    let live = true;
+    let attempt = 0;
+    const load = async () => {
+      const list = await orderTickets(o, e);
+      if (!live) return;
+      // A paid order can take a few seconds to confirm: retry quietly for about 20 seconds.
+      if (list.length === 0 && attempt < 6) { attempt++; setTimeout(load, 3500); return; }
       setTickets(list);
-      const m: Record<string, string> = {};
-      for (const t of list) m[t.code] = await QRCode.toDataURL(t.code, { margin: 1, width: 220 });
-      setQr(m);
-    });
-  }, [query.o, query.e]);
+      const slug = list[0]?.event_slug;
+      if (slug) {
+        const { data } = await supabase.from("events").select("*").eq("slug", slug).maybeSingle();
+        if (live) setEv((data as EventRow | null) ?? getStaticEventRow(slug));
+      }
+    };
+    load();
+    return () => { live = false; };
+  }, [router.isReady, o, e]);
+
+  const content = ev ? getEventContent(ev) : null;
+  const time = ev ? displayTime(content?.doors_time ?? ev.start_time) : null;
+  const first = tickets?.[0];
+  const when = ev ? [displayDate(ev), time].filter(Boolean).join(" · ") : first?.event_date ? displayDate({ slug: first.event_slug, title: "", event_date: first.event_date }) : "";
+  const venue = ev ? [ev.venue, ev.city].filter(Boolean).join(", ") : first?.venue ?? null;
+  const pageUrl = typeof window !== "undefined" ? window.location.href : `${SITE}/tickets/order`;
+  const waiting = tickets === null;
+  const none = tickets !== null && tickets.length === 0;
 
   return (
     <>
-      <SEO title="Your tickets" description="Your Cats Can Dance tickets." path="/tickets/order" noindex />
-      <main className="bg-background text-foreground min-h-screen">
+      <SEO title="Your tickets · Cats Can Dance" description="Your Cats Can Dance tickets." path="/tickets/order" noindex />
+      <main className="bg-electric-blue min-h-screen">
         <Nav />
-        <PageHero eyebrow="TICKETS" title="YOU'RE IN." bg="bg-electric-blue" textColor="text-cream" eyebrowColor="text-acid-yellow"><p>Show the QR code at the door.</p></PageHero>
-        <section className="container py-12 grid gap-6 md:grid-cols-2 max-w-3xl">
-          {tickets === null ? <p>Loading...</p> : tickets.length === 0 ? <p className="border-4 border-ink p-6">No tickets found for this link. If you just paid, wait a minute and refresh.</p> :
-            tickets.map((t) => (
-              <div key={t.code} className="border-4 border-ink bg-cream p-5 chunk-shadow text-center">
-                <p className="font-display text-xl">{t.event_title ?? t.event_slug}</p>
-                <p className="text-sm">{[t.event_date, t.venue, t.tier].filter(Boolean).join(" · ")}</p>
-                {qr[t.code] && <img src={qr[t.code]} alt={`QR code for ticket ${t.code}`} className="mx-auto my-3" width={220} height={220} />}
-                <p className="font-mono tracking-widest">{t.code}</p>
-                <p className="text-sm mt-1">{t.holder_name}{t.checked_in ? " · checked in" : ""}</p>
+        <section className="container pt-28 md:pt-36 pb-16 md:pb-24">
+          {waiting ? (
+            <div className="max-w-md" aria-busy="true">
+              <h1 className="font-display text-cream text-5xl md:text-7xl leading-[0.85] mb-6" style={{ filter: "drop-shadow(5px 5px 0 hsl(var(--ink)))" }}>
+                {o ? "PRINTING YOUR TICKETS" : "YOUR TICKETS"}
+              </h1>
+              <div className="h-[520px] border-4 border-ink bg-cream/70 chunk-shadow" />
+            </div>
+          ) : none ? (
+            <div className="max-w-xl">
+              <h1 className="font-display text-cream text-5xl md:text-7xl leading-[0.85] mb-6" style={{ filter: "drop-shadow(5px 5px 0 hsl(var(--ink)))" }}>
+                {o ? "WE CAN'T FIND THESE TICKETS" : "FIND YOUR TICKETS"}
+              </h1>
+              <p className="text-cream text-lg font-medium mb-6 max-w-[55ch]">
+                {o ? "The link may be incomplete, or a payment is still being confirmed. Enter the email you booked with and we'll send your tickets again."
+                  : "Enter the email you booked with and we'll send your tickets again."}
+              </p>
+              <FindTickets />
+            </div>
+          ) : (
+            <div className="grid gap-10 lg:grid-cols-[400px_1fr] lg:gap-14 items-start">
+              <div className="grid gap-8">
+                {tickets!.map((t, i) => (
+                  <TicketPass key={t.code} t={t} when={when} venue={venue} index={i} total={tickets!.length} fresh={fresh} />
+                ))}
               </div>
-            ))}
+
+              <div className="text-cream lg:sticky lg:top-28">
+                <h1 className="font-display text-5xl md:text-7xl leading-[0.85] mb-5" style={{ filter: "drop-shadow(5px 5px 0 hsl(var(--ink)))" }}>
+                  {fresh ? "YOU'RE IN." : "YOUR TICKETS"}
+                </h1>
+                <p className="text-lg md:text-xl font-medium max-w-[50ch] mb-8">
+                  {tickets!.length > 1 ? `${tickets!.length} tickets` : "Your ticket"} for {first?.event_title ?? "the night"}, {when}.
+                  {" "}{fresh ? `We've also emailed ${tickets!.length > 1 ? "them" : "it"} to ${e}.` : `Booked with ${e}.`} Show the QR code at the door, one per person.
+                </p>
+
+                <ol className="grid gap-4 mb-8 max-w-lg">
+                  <Step n={1} title="Put it in your calendar">
+                    {ev && <AddToCalendar night={ev} time={content?.doors_time ?? ev.start_time} url={pageUrl} tone="dark" />}
+                  </Step>
+                  <Step n={2} title="Bring your friends">
+                    {first && <ShareButton tone="dark" label="Share the night" title={`Cats Can Dance: ${first.event_title ?? ""}`}
+                      text={`I'm going to Cats Can Dance ${first.event_title ?? ""}, ${when}. Get a ticket:`} url={`${SITE}/episodes/${first.event_slug}`} />}
+                  </Step>
+                  <Step n={3} title="Find the venue">
+                    <DirectionsLink tone="dark" href={directionsUrl(ev?.venue ?? first?.venue, ev?.city, content?.venue_map_url)} />
+                  </Step>
+                  <Step n={4} title="Going solo? Join a crew">
+                    <Link href="/club" className="inline-flex font-display text-sm md:text-base px-4 py-2.5 border-4 border-ink bg-acid-yellow text-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
+                      Meet your crew
+                    </Link>
+                  </Step>
+                </ol>
+
+                <p className="text-sm text-cream/85 max-w-[55ch]">
+                  Can&apos;t make it? Pass your ticket on at face value through <Link href="/discover#pass-it-on" className="underline font-bold">Pass it on</Link>.
+                  Keep this page&apos;s link, or find your tickets any time at <Link href="/tickets" className="underline font-bold">catscandance.com/tickets</Link>.
+                </p>
+              </div>
+            </div>
+          )}
         </section>
         <Footer />
       </main>
     </>
+  );
+}
+
+function Step({ n, title, children }: { n: number; title: string; children: React.ReactNode }) {
+  return (
+    <li className="grid grid-cols-[2.5rem_1fr] gap-3 items-start">
+      <span className="font-display text-2xl text-acid-yellow tabular leading-none pt-1">{n}</span>
+      <div><p className="font-bold text-lg mb-2">{title}</p>{children}</div>
+    </li>
   );
 }

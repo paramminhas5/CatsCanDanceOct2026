@@ -3,13 +3,16 @@
  *
  * Strategy:
  *  - getStaticPaths: pre-render known slugs from the static content catalogue.
- *  - getStaticProps: fetch event from Supabase (service key), fallback to static catalogue.
- *  - revalidate: 60s ISR — fresh content within 1 minute of any change.
+ *  - getStaticProps: fetch the event from Supabase. Uses the service key when set,
+ *    otherwise the public anon key (events are publicly readable), then the static catalogue.
+ *    Unpublished nights 404 unless they are in the static catalogue.
+ *  - revalidate: 5s ISR.
  *
  * The EventDetail component receives the event as a prop and renders immediately.
  */
 import type { GetStaticPaths, GetStaticProps } from "next";
 import { getStaticEventRow, EVENT_ROWS } from "@/content/events";
+import { createClient } from "@supabase/supabase-js";
 import { getSupabaseAdmin } from "@/lib/supabase-server";
 import type { EventRow } from "@/types/events";
 import EventDetailPage from "@/pages/EventDetail";
@@ -34,16 +37,18 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
   let event: EventRow | null = null;
 
-  // 1. Try Supabase (server-side, service key)
-  const supabase = getSupabaseAdmin();
+  // 1. Supabase: service key if the server has it, otherwise the anon key (events are public).
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
+  const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? "";
+  const supabase = getSupabaseAdmin() ?? (url && anon ? createClient(url, anon, { auth: { persistSession: false } }) : null);
   if (supabase) {
     try {
       const { data } = await supabase
         .from("events")
         .select("*")
         .eq("slug", slug)
-        .single();
-      if (data) event = data as EventRow;
+        .maybeSingle();
+      if (data && (data as any).published !== false) event = data as EventRow;
     } catch {
       // Supabase unavailable — fall through to static
     }

@@ -145,7 +145,7 @@ const Nav = ({ forceDark = false }: { forceDark?: boolean }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const lightBgRoutes = ["/catwalk", "/videos"];
+  const lightBgRoutes = ["/catwalk", "/videos", "/shop"];
   const forceScrolledStyle = lightBgRoutes.some((r) => location.pathname === r || location.pathname.startsWith(r + "/"));
 
   useEffect(() => {

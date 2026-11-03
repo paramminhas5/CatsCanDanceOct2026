@@ -23,13 +23,13 @@ import type {
 // ──────────────────── Defaults by event_type ────────────────────
 
 const DEFAULT_VIBE_PILLARS_STANDARD: VibePillar[] = [
-  { icon: "🎧", label: "MUSIC",     desc: "Underground house, disco, garage, jungle, and D&B — curated, never random." },
+  { icon: "🎧", label: "MUSIC",     desc: "Underground house, disco, garage, jungle and D&B. Picked, never random." },
   { icon: "🪩", label: "FLOOR",     desc: "Intimate room, real sound, no dress code beyond move." },
-  { icon: "🐾", label: "COMMUNITY", desc: "RSVP-only. Capacity controlled. The pack moves together." },
+  { icon: "🐾", label: "COMMUNITY", desc: "Small capacity on purpose. Come solo or with your pack." },
 ];
 
 const DEFAULT_VIBE_PILLARS_CCDXSOCIAL: VibePillar[] = [
-  { icon: "🎧", label: "MUSIC",   desc: "Underground selectors from each city — open decks, residents, and guests carrying the floor." },
+  { icon: "🎧", label: "MUSIC",   desc: "Underground selectors from each city: open decks, residents and guests carrying the floor." },
   { icon: "🪩", label: "FLOOR",   desc: "Outdoor afternoon into the evening. Easy format, no dress code, real sound." },
   { icon: "🐾", label: "PETS",    desc: "Dogs and cats welcome. Pet-friendly all afternoon." },
 ];
@@ -124,7 +124,7 @@ function defaultsFor(row: Pick<EventRow, "event_type" | "series">): EventContent
       type === "ccdxsocial"
         ? DEFAULT_VIBE_PILLARS_CCDXSOCIAL
         : DEFAULT_VIBE_PILLARS_STANDARD,
-    price_text: "FREE — RSVP only",
+    price_text: "Free, RSVP",
   };
 }
 

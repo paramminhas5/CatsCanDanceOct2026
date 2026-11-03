@@ -61,7 +61,7 @@ export default function Join() {
       <SEO title="Join the Cats Can Dance club" description="Join for a feed of nights in your city, the artists you follow, and who else is going." path="/join" />
       <main className="bg-background text-foreground min-h-screen">
         <Nav />
-        <PageHero eyebrow="CLUB · JOIN" title="JOIN THE CLUB." bg="bg-hot-red" textColor="text-cream" eyebrowColor="text-acid-yellow">
+        <PageHero eyebrow="CLUB · JOIN" title="JOIN THE CLUB." bg="bg-magenta" textColor="text-cream" eyebrowColor="text-acid-yellow">
           <p className="text-cream font-medium text-lg max-w-xl">A feed of nights in your city and the artists you follow. See who is going. Host your own night.</p>
         </PageHero>
         <section className="container py-12 max-w-xl">

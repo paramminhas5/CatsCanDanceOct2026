@@ -57,6 +57,17 @@ export type EventRow = {
   series_tagline?: string | null;
   /** Whether this is the finale / capstone of a series */
   is_finale?: boolean | null;
+
+  // Database columns used by the booking flow (all optional: static rows may not have them)
+  event_date?: string | null;
+  start_time?: string | null;
+  rsvp_open?: boolean | null;
+  capacity?: number | null;
+  recap?: string | null;
+  published?: boolean | null;
+  listed?: boolean | null;
+  ticket_url?: string | null;
+  episode_no?: number | null;
 };
 
 // ──────────────────── Rich content ────────────────────
