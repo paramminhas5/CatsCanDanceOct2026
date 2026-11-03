@@ -1,0 +1,597 @@
+[
+  {
+    "slug": "submerge",
+    "name": "Submerge",
+    "kind": "agency",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": 2003,
+    "founders": "Nikhil Chinapa, Pearl Miglani, Hermit Sethi",
+    "genres": [
+      "house",
+      "techno",
+      "dance music"
+    ],
+    "website": "https://submerge.in",
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Mumbai dance music collective founded in 2003 that works as a booking agency, artist management company and event organiser, and runs the label Submerge Music.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/directory/5032-submerge-in",
+      "https://www.thewildcity.com/news/10682-submerge-launches-new-label-submerge-music-and-announces-debut-release",
+      "https://yaabot.com/30232/rise-rise-submerge/"
+    ],
+    "confidence": "high",
+    "notes": "Wild City lists founder as Pearl Miglani, the label article says Pearl Sethi. Yaabot (2017) says Chinapa organised the first Sunburn in 2007 and left in 2013, then built Vh1 Supersonic with Viacom 18. Label debut release was Manny and Ajmal, 11:11 (Nov 2018). No instagram or booking email found on opened pages.",
+    "existing": false
+  },
+  {
+    "slug": "percept",
+    "name": "Percept",
+    "kind": "production",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai",
+      "Goa"
+    ],
+    "country": "India",
+    "founded": 2002,
+    "founders": "Shailendra Singh",
+    "genres": [
+      "EDM",
+      "electronic",
+      "dance music"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Mumbai company that organises Sunburn Festival; the registry lists Percept Limited as incorporated on 8 May 2002.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sunburn_Festival",
+      "https://www.tofler.in/percept-limited/company/U92120MH2002PLC135806",
+      "https://yaabot.com/30232/rise-rise-submerge/"
+    ],
+    "confidence": "medium",
+    "notes": "Founded year is the incorporation date from a company registry aggregator (Tofler), not a Percept page. Wikipedia says Percept Ltd was started by Shailendra Singh and organises Sunburn, which first ran 28 and 29 December 2007 at Candolim Beach, Goa. Directors per Tofler: Harindra Pal Singh (MD), Ajay Chandwani, Rubin Malkani Tolaram, Karan Harindra Singh. Sunburn already exists as a festival row; this entry is the organiser company. Official site and instagram not verified.",
+    "existing": false
+  },
+  {
+    "slug": "represent",
+    "name": "Represent",
+    "kind": "management",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": 2019,
+    "founders": "Aayushman Sinha",
+    "genres": [
+      "pop",
+      "hip-hop",
+      "independent",
+      "electronic"
+    ],
+    "website": "https://representmgmt.in",
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "India-headquartered artist management company founded by Aayushman Sinha in 2019, with a booking division called RE:PLAY.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://musicbusinessworldwide.com/were-going-to-change-the-economics-of-the-indian-publishing-business",
+      "https://representmgmt.in/company/",
+      "https://loudest.in/business/artist-management-agency-represent-announces-expansion-launches-replay-15851.html",
+      "https://musicbusinessworldwide.com/universal-music-strikes-strategic-partnership-with-india-based-talent-agency-represent"
+    ],
+    "confidence": "high",
+    "notes": "Founding year 2019 from MBW interview (Dec 2024). Mumbai HQ per a second MBW article on the Universal Music India partnership; the company site gives legal entity Represent Entertainment Pvt Ltd. Roster per MBW includes Anuv Jain, MC Stan, Lost Stories, Zaeden, Kayan. Mostly pop, hip-hop and indie; only a few electronic acts (Lost Stories, Zaeden, Kayan), so electronic relevance is partial. Booking email obfuscated on site, not captured.",
+    "existing": false
+  },
+  {
+    "slug": "replay-represent",
+    "name": "RE:PLAY",
+    "kind": "agency",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": "Aayushman Sinha, Nitin Kandhari",
+    "genres": [
+      "pop",
+      "independent",
+      "electronic"
+    ],
+    "website": "https://representmgmt.in/network-and-investment/replay",
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Booking and touring agency launched by Represent, described by Loudest as India's first exclusive agenting business.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://loudest.in/business/artist-management-agency-represent-announces-expansion-launches-replay-15851.html",
+      "https://representmgmt.in/network-and-investment/replay"
+    ],
+    "confidence": "medium",
+    "notes": "Aayushman Sinha is founder of Represent and co-founder of RE:Play; Nitin Kandhari is co-founder and business head. Launch year not stated in the opened article. Exclusive booking roster listed there: Akanksha Bhandari, Anuv Jain, Hanita Bhambri, Lost Stories, Nina Shah, Raman Negi, Zaeden. City is inherited from Represent's Mumbai HQ.",
+    "existing": false
+  },
+  {
+    "slug": "third-culture",
+    "name": "Third Culture",
+    "kind": "management",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": 2017,
+    "founders": "Tej Brar",
+    "genres": [
+      "electronica",
+      "bass",
+      "hip-hop"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Mumbai artist management and events company led by Tej Brar, launched as a boutique management agency in 2017 and home of the label Export Quality Records.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://rollingstoneindia.com/ex-oml-biggie-tej-brar-launches-high-end-boutique-artist-management-agency",
+      "https://www.thewildcity.com/directory/11363-third-culture",
+      "https://mixmag.asia/read/third-culture-entertainment-launches-export-quality-only-debut-release-pelle-new-releases"
+    ],
+    "confidence": "high",
+    "notes": "Rolling Stone India (25 Sep 2017) reports the launch and that Tej Brar was OML head of artist management 2013 to Feb 2017; early roster Nucleya (management and bookings, OML kept brand and content) and BLOT. Wild City lists Nucleya, BLOT!, Yung Raja, Kayan, Owlist, pelle, Clifr & Tintin and the first Neon East Fest. Mixmag Asia says the label Export Quality Records launched August 2021. Official site and instagram not found on opened pages.",
+    "existing": false
+  },
+  {
+    "slug": "mixtape",
+    "name": "Mixtape",
+    "kind": "management",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "rock",
+      "metal",
+      "hip-hop",
+      "electronic"
+    ],
+    "website": "http://www.mixtapelive.in/",
+    "instagram": "https://www.instagram.com/mixtapelive/",
+    "booking_email": null,
+    "short_description": "Mumbai artist and event management agency covering management, bookings, touring, festival production and lighting and AV.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/directory/329-mixtape",
+      "https://mixtapelive.in/about-2",
+      "https://www.thewildcity.com/news/8920-call-for-application-mumbai-based-agency-mixtape-is-hiring",
+      "https://loudest.in/amp/business/4-artist-management-companies-to-choose-from-indie-artists-7120.html"
+    ],
+    "confidence": "medium",
+    "notes": "Founder and year not found. About page says clients for almost a decade. Roster on its own page: Pentagram, Naezy, Skyharbor, Grain, Fourmi Rouz, Voctronica, OX7GEN, Paraphoniks, Scribe, Dubioza Kolektiv, Bhayanak Maut, Sahil Vasudeva. Wild City notes a DJ Champion India tour and a Nowadays Records compilation of Indian electronic artists. Mostly not electronic roster.",
+    "existing": false
+  },
+  {
+    "slug": "mgmh",
+    "name": "MGMH (Music Gets Me High)",
+    "kind": "agency",
+    "city": "New Delhi",
+    "cities": [
+      "New Delhi"
+    ],
+    "country": "India",
+    "founded": 2007,
+    "founders": null,
+    "genres": [
+      "independent",
+      "electronic",
+      "world"
+    ],
+    "website": "https://mgmh.net",
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "New Delhi artist management and booking agency founded in 2007, listing Nucleya and Jalebee Cartel among past clients.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://loudest.in/amp/business/4-artist-management-companies-to-choose-from-indie-artists-7120.html",
+      "https://mgmh.net/artists"
+    ],
+    "confidence": "medium",
+    "notes": "City and 2007 year come from the Loudest article. The company's artists page says its exclusive management roster is closed and lists past booking artists including Nucleya, Madboy/Mink, Pentagram, Raftaar, Amit Trivedi. No founder named in sources opened. No booking email on the page.",
+    "existing": false
+  },
+  {
+    "slug": "nrtya",
+    "name": "nrtya",
+    "kind": "management",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": 2017,
+    "founders": "Parth, Sharan, Raghu",
+    "genres": [
+      "alternative",
+      "independent",
+      "hip-hop",
+      "electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Mumbai artist management and releases outfit that put out new music weekly and promoted artists outside the three big metros.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/features/3604-nrtya-the-void-between-creator-and-listener-must-be-filled",
+      "https://loudest.in/amp/business/4-artist-management-companies-to-choose-from-indie-artists-7120.html"
+    ],
+    "confidence": "low",
+    "notes": "Founded year inferred: a Sept 2017 Wild City feature calls it less than 6 months old. Founders given by first name only. Roster per sources: Aditi Ramesh, Ape Echoes, The Mellow Turtle, Tre Ess, Easy Wanderlings, Iggy. Current status unknown; mostly alt and indie, weak electronic fit.",
+    "existing": false
+  },
+  {
+    "slug": "wavlngth",
+    "name": "WAVLNGTH",
+    "kind": "agency",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai",
+      "New Delhi",
+      "Bengaluru",
+      "Hyderabad"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "electronic",
+      "house",
+      "techno"
+    ],
+    "website": "http://www.wavlngth.com/",
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Mumbai events based artist management and consultancy company that books international electronic acts for Indian cities.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/directory/622-wavlngth"
+    ],
+    "confidence": "medium",
+    "notes": "Wild City lists tours across Mumbai, New Delhi, Bangalore and Hyderabad and a three month collaboration with NTS Radio touring NTS residents in India. Founders and year not stated. Website link comes from the directory listing and was not opened.",
+    "existing": false
+  },
+  {
+    "slug": "bleep",
+    "name": "Bleep",
+    "kind": "management",
+    "city": "New Delhi",
+    "cities": [
+      "New Delhi"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "electronic",
+      "underground"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "New Delhi party label, touring agency and artist management company focused on futuristic electronic music.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/directory/5364-bleep"
+    ],
+    "confidence": "low",
+    "notes": "Wild City directory listing only. Founders and year not stated. The listing links Facebook, Instagram and Twitter under the handle bleepcrew; no website. Current activity not checked.",
+    "existing": false
+  },
+  {
+    "slug": "kranti-art-theory",
+    "name": "Kranti Art Theory",
+    "kind": "agency",
+    "city": null,
+    "cities": [
+      "Goa",
+      "Mumbai",
+      "Bengaluru",
+      "Kathmandu"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "electronic",
+      "bass"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Events company, artist management and booking agency that runs the Optikal Asylum art and music platform and touring dates across Indian cities and Kathmandu.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/directory/16309-kranti-art-theory"
+    ],
+    "confidence": "low",
+    "notes": "Wild City listing only. Home city not stated; tour cities from the listing are Goa, Mumbai, Bangalore, Kathmandu. Instagram handle soundsofkranti is mentioned on the listing but not verified as official.",
+    "existing": false
+  },
+  {
+    "slug": "slick-mumbai",
+    "name": "sLick!",
+    "kind": "production",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "house",
+      "techno",
+      "progressive"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Mumbai events company and promoter that brings international underground DJs to India, including John Digweed, Dubfire and Guy J.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/directory/5076-slick"
+    ],
+    "confidence": "low",
+    "notes": "Wild City listing only, which also tags it as artist management. Founders and year not stated; only a Facebook page is linked. Current activity not checked.",
+    "existing": false
+  },
+  {
+    "slug": "the-shelter-delhi",
+    "name": "The Shelter",
+    "kind": "production",
+    "city": "New Delhi",
+    "cities": [
+      "New Delhi"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "underground",
+      "bass",
+      "juke",
+      "house"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "New Delhi events company that books international underground acts for India tours, including Bok Bok, Mehmet Aslan and DJ Earl.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/directory/5048-the-shelter"
+    ],
+    "confidence": "low",
+    "notes": "Wild City listing only. Founders and year not stated. Mostly a promoter and club night; included because it books touring electronic acts. Possible overlap with a promoter row, check before import.",
+    "existing": false
+  },
+  {
+    "slug": "skillbox",
+    "name": "Skillbox",
+    "kind": "agency",
+    "city": null,
+    "cities": [],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Events company, artist collective, promoter and booking agency listed in the Wild City directory.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/directory/19003-skillbox"
+    ],
+    "confidence": "low",
+    "notes": "Wild City listing only. City, founders, year and genres not stated. Weak entry; keep only if Param can confirm.",
+    "existing": false
+  },
+  {
+    "slug": "eleven11-production",
+    "name": "Eleven11 Production",
+    "kind": "management",
+    "city": "Kathmandu",
+    "cities": [
+      "Kathmandu"
+    ],
+    "country": "Nepal",
+    "founded": 2009,
+    "founders": null,
+    "genres": [
+      "electronic",
+      "rock"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Nepal events company founded in 2009 that manages and books bands and electronic DJs and producers and advises venues on programming.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/directory/14624-eleven11production"
+    ],
+    "confidence": "low",
+    "notes": "Wild City listing places it in Nepal and gives 2009; the city is not stated, Kathmandu is an assumption and should be confirmed before use. Only a Facebook page linked.",
+    "existing": false
+  },
+  {
+    "slug": "gully-gang-entertainment",
+    "name": "Gully Gang Entertainment",
+    "kind": "management",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": 2019,
+    "founders": "DIVINE (Vivian Fernandes)",
+    "genres": [
+      "hip-hop"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Mumbai events company, record label and artist management firm launched by rapper DIVINE in 2019 to develop desi hip-hop talent.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/directory/11316-gully-gang-entertainment",
+      "https://www.thewildcity.com/news/11319-divine-launches-independent-new-venture-gully-gang-entertainment"
+    ],
+    "confidence": "medium",
+    "notes": "Hip-hop adjacent, not electronic. Runs Gully Gang Records and the Gully Fest events. Signed artists not listed on the opened page. The second Wild City URL was found in search results but not opened.",
+    "existing": false
+  },
+  {
+    "slug": "azadi-records",
+    "name": "Azadi Records",
+    "kind": "management",
+    "city": null,
+    "cities": [],
+    "country": "India",
+    "founded": 2017,
+    "founders": null,
+    "genres": [
+      "hip-hop"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Indian independent hip-hop label that also books and manages artists, listed with Prabh Deep, Swadesi and Siri Narayan.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://loudest.in/amp/business/4-artist-management-companies-to-choose-from-indie-artists-7120.html"
+    ],
+    "confidence": "low",
+    "notes": "Founded year and the 20 percent commission on gigs and endorsements are from one Loudest article. Primarily a label, so it may belong in the labels list rather than agencies. City and founders not stated in the source opened.",
+    "existing": false
+  },
+  {
+    "slug": "asian-arts-agency",
+    "name": "Asian Arts Agency",
+    "kind": "agency",
+    "city": null,
+    "cities": [],
+    "country": "United Kingdom",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "South Asian contemporary",
+      "bhangra",
+      "Sufi",
+      "world"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "UK agency that describes itself as one of the UK's premier Asian music development agencies, booking and touring South Asian music.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.womex.com/virtual/asian_arts_agency/"
+    ],
+    "confidence": "low",
+    "notes": "WOMEX profile only. City, founders, website and year are not visible without login. Lists Malkit Singh, Rizwan Muazzam Qawwals, Sarathy Korwar, Red Baraat, Talvin Singh, Jazzy B among artists. Largely not club electronic; Punjabtronix and Talvin Singh are the nearest.",
+    "existing": false
+  },
+  {
+    "slug": "urban-beat-project",
+    "name": "Urban Beat Project",
+    "kind": "management",
+    "city": null,
+    "cities": [],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "fusion",
+      "world",
+      "experimental"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Self described experimental record label, artist management firm and event designer that runs the Open Ear Music Festival.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.womex.com/virtual/urban_beat_project"
+    ],
+    "confidence": "low",
+    "notes": "WOMEX profile only. Country is an inference from its mention of the Indian music scene; city, founders, year not shown. Exclusive artists listed include Dub FX, Mungo's HiFi, Rizwan Muazzam, Sabir Khan. Weak entry.",
+    "existing": false
+  },
+  {
+    "slug": "dialled-in",
+    "name": "Dialled In",
+    "kind": "production",
+    "city": "London",
+    "cities": [
+      "London"
+    ],
+    "country": "United Kingdom",
+    "founded": null,
+    "founders": "Dhruva Balram, Ahadadream (Ahad Elley) and others",
+    "genres": [
+      "experimental electronic",
+      "rap",
+      "South Asian diaspora"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "London South Asian culture platform that runs events, touring and artist development and launched the label Dialled In Records with Island-EMI's The Collective.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.musicbusinessworldwide.com/dialled-in-records-launches-in-london-focused-on-south-asian-music-in-partnership-with-island-emis-the-collective",
+      "https://mixmag.net/feature/dialled-in-manchester-review-south-asian-festival"
+    ],
+    "confidence": "medium",
+    "notes": "MBW (April 2026) says it was founded five years earlier by a group of South Asian entrepreneurs, curators and music professionals, so about 2021; no exact year. Artists named: Ahadadream and Excise Dept. A Mixmag review of a Dialled In Manchester festival was in search results but not opened.",
+    "existing": false
+  },
+  {
+    "slug": "unmute",
+    "name": "UnMute",
+    "kind": "agency",
+    "city": null,
+    "cities": [],
+    "country": "India",
+    "founded": 2012,
+    "founders": "Arjun Vagale, Dev Bhatia",
+    "genres": [
+      "house",
+      "techno"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Indian artist management and booking agency launched by Arjun Vagale with Dev Bhatia.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/news/865-unmute-agency-the-new-home-for-india-s-top-house-techno-acts"
+    ],
+    "confidence": "medium",
+    "notes": "Correction or addition to the existing row. The Wild City launch article is dated 21 March 2012 and says UnMute was started by Arjun Vagale with Dev Bhatia, manager of Jalebee Cartel. Twelve exclusive artists named: Anil Chawla, Arjun Vagale, Arnold From Mumbai, Ash Roy, Ashvin Mani Sharma, B.L.O.T, Dale Anderson, Jalebee Cartel, Kohra, Praveen Achary, Tuhin 'Bruteforce', Vipul. Founding year 2012 inferred from the article date. Article names no headquarters.",
+    "existing": true
+  }
+]
