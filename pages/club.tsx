@@ -489,7 +489,7 @@ function ArtistEditor() {
         setMsg(r.ok ? "Saved. Your page updates within a few minutes." : r.error ?? "Could not save.");
       }}>
         <h2 className="font-display text-2xl">Your artist page: {a.name}</h2>
-        {a.status !== "approved" && <p className="text-sm text-hot-red">Not public yet. The CCD team approves it first, then it shows on /litter. Edit it any time.</p>}
+        {a.status !== "approved" && <p className="text-sm text-hot-red">Not public yet. The CCD team approves it first, then it shows on /artists. Edit it any time.</p>}
         <p className="text-sm">Leave a box empty and save to clear it. <Link href={`/artists/${a.slug}`} className="underline">See your public page</Link></p>
         <div className="flex items-center gap-3">
           {f.photo ? <img src={f.photo} alt="" className="h-20 w-20 border-4 border-ink object-cover" /> : <div className="h-20 w-20 border-4 border-ink grid place-items-center text-xs">No photo</div>}
@@ -533,6 +533,7 @@ function ArtistEditor() {
 
       <div className={`${box} space-y-2`}>
         <h2 className="font-display text-2xl">Booking requests for you</h2>
+        <p className="text-sm">Run your calendar, rates and replies from <Link href="/club/artist" className="underline">your booking desk</Link>. Threads and counter offers are in <Link href="/bookings" className="underline">Bookings</Link>.</p>
         {reqs.length === 0 ? <p className="text-sm">None yet. When someone asks to book you, it shows here.</p> : (
           <ul className="space-y-2">
             {reqs.map((r) => <BookingRow key={r.id} r={r} onDone={load} />)}
@@ -574,6 +575,7 @@ function MyBookings() {
   return (
     <div className={`${box} space-y-2`}>
       <h2 className="font-display text-2xl">Your booking requests</h2>
+      <p className="text-sm">Full threads: <Link href="/bookings" className="underline">Bookings</Link>. Find someone free on your date at <Link href="/book" className="underline">Book an artist</Link>.</p>
       <ul className="space-y-1 text-sm">
         {rows.map((r) => (
           <li key={r.id} className="border-t-2 border-ink pt-1">

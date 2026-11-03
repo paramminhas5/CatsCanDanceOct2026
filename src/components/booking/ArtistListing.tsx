@@ -41,13 +41,13 @@ export default function ArtistListing({ a, reasons, rate, selected, disabled, on
   const reply = replyLine(a.reply_hours);
   const [top, ...rest] = reasons;
   return (
-    <li className={`border-4 border-ink bg-cream flex flex-col transition-transform ${selected ? "chunk-shadow -translate-x-[2px] -translate-y-[2px] outline outline-4 outline-acid-yellow" : ""}`}>
+    <li className={`min-w-0 border-4 border-ink bg-cream flex flex-col transition-transform ${selected ? "chunk-shadow -translate-x-[2px] -translate-y-[2px] outline outline-4 outline-acid-yellow" : ""}`}>
       <div className="relative aspect-[4/3] border-b-4 border-ink overflow-hidden bg-ink">
         <Link href={artistPath(a.slug)} className="block w-full h-full" tabIndex={-1} aria-hidden>
           {a.photo_url ? (
             <img src={a.photo_url} alt="" loading="lazy" className="w-full h-full object-cover" />
           ) : (
-            <TypePoster name={a.name} sound={sound} city={a.city} />
+            <TypePoster name={a.name} sound={sound || actLine(a.acts)} city={a.city} />
           )}
         </Link>
         {top && (

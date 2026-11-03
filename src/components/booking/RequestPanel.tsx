@@ -11,7 +11,7 @@ import { BUDGETS, DESK_CITIES, ROOM_SIZES, SET_LENGTHS, dayLong, daysBetween, in
 import { todayIST } from "@/lib/nights";
 import { BOOKINGS_BASE, threadPath } from "@/lib/routes";
 
-const field = "w-full border-4 border-ink bg-cream px-3 py-3 text-ink text-base placeholder:text-ink/45 focus:outline-none focus:ring-4 focus:ring-electric-blue/40";
+const field = "w-full min-w-0 border-4 border-ink bg-cream px-3 py-3 text-ink text-base placeholder:text-ink/45 focus:outline-none focus:ring-4 focus:ring-electric-blue/40";
 const REMEMBER = "ccd:booker";
 
 type Props = {
@@ -78,7 +78,7 @@ export default function RequestPanel({ artists, onRemove, initial, onClose, id, 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setTouched(true);
-    if (bad.length) { topRef.current?.scrollIntoView({ block: "nearest" }); return; }
+    if (bad.length) { setTimeout(() => topRef.current?.scrollIntoView({ block: "start", behavior: "smooth" }), 30); return; }
     setBusy(true); setErr("");
     try { localStorage.setItem(REMEMBER, JSON.stringify({ name: f.name, email: f.email, org: f.org })); } catch {}
     const names = Object.fromEntries(artists.map((a) => [a.slug, a.name]));
@@ -93,7 +93,10 @@ export default function RequestPanel({ artists, onRemove, initial, onClose, id, 
     <div id={id} className="border-4 border-ink bg-cream text-ink chunk-shadow">
       <div className="bg-ink text-cream px-5 py-4 flex items-baseline justify-between gap-3">
         <p className="font-display text-xl leading-none">{title}</p>
-        <p className="font-display text-acid-yellow text-lg leading-none tabular">{artists.length} of 3</p>
+        <span className="flex items-center gap-3">
+          <span className="font-display text-acid-yellow text-lg leading-none tabular">{artists.length} of 3</span>
+          {onClose && <button type="button" onClick={onClose} className="font-display text-sm px-2.5 py-1 border-2 border-cream/60 hover:bg-cream hover:text-ink" aria-label="Close">Close</button>}
+        </span>
       </div>
       <div className="px-5 py-5">{body}</div>
       {foot && (<><div className="perf" aria-hidden /><div className="px-5 pt-5 pb-5">{foot}</div></>)}
@@ -136,7 +139,7 @@ export default function RequestPanel({ artists, onRemove, initial, onClose, id, 
 
   return shell(
     <form id={formId} onSubmit={submit} noValidate className="grid gap-4">
-      <div ref={topRef} />
+      <div ref={topRef} className="scroll-mt-4" />
       {touched && bad.length > 0 && (
         <div role="alert" className="border-4 border-magenta bg-cream px-3 py-2 text-sm font-bold text-magenta">
           Fix {bad.length === 1 ? "one thing" : `${bad.length} things`} to send: {bad.map(([, v]) => v).join(" ")}
@@ -163,7 +166,7 @@ export default function RequestPanel({ artists, onRemove, initial, onClose, id, 
         )}
       </fieldset>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3 items-start">
         <label className="grid gap-1">
           <span className="text-sm font-bold">Date</span>
           <input type="date" min={today} className={field} value={f.date} onChange={set("date")} aria-invalid={!!show("date")} />
@@ -183,7 +186,7 @@ export default function RequestPanel({ artists, onRemove, initial, onClose, id, 
         <input className={field} value={f.venue} onChange={set("venue")} placeholder="Name of the club, bar or space" />
       </label>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3 items-start">
         <label className="grid gap-1">
           <span className="text-sm font-bold">Room size</span>
           <select className={field} value={f.room ?? ""} onChange={set("room")}>

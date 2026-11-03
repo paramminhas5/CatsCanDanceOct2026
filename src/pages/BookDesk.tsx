@@ -13,6 +13,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useLenis } from "lenis/react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -32,6 +33,7 @@ const EMPTY: Brief = { date: "", city: "", budget: "", act: "", sound: "", q: ""
 
 export default function BookDesk({ artists = [], live = false }: Partial<BookDeskProps>) {
   const router = useRouter();
+  const lenis = useLenis();
   const today = todayIST();
   const [brief, setBrief] = useState<Brief>(EMPTY);
   const [draft, setDraft] = useState({ date: "", city: "" });
@@ -91,7 +93,9 @@ export default function BookDesk({ artists = [], live = false }: Partial<BookDes
     if (!draft.date && !draft.city) { setHint("Pick a date and a city to see who is free first."); return; }
     setHint("");
     setBrief({ ...brief, date: draft.date, city: draft.city.trim() });
-    document.getElementById("results")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const el = document.getElementById("results");
+    if (el && lenis) lenis.scrollTo(el, { offset: -150 });
+    else if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 150, behavior: "smooth" });
   };
   const filtered = !!(brief.budget || brief.act || brief.sound || brief.q);
   const resetFilters = () => setBrief({ ...brief, budget: "", act: "", sound: "", q: "" });
@@ -149,8 +153,8 @@ export default function BookDesk({ artists = [], live = false }: Partial<BookDes
             ))}
             <label className="ml-auto shrink-0 hidden md:flex items-center border-2 border-cream/40 focus-within:border-acid-yellow">
               <span className="sr-only">Search artists</span>
-              <input value={brief.q} onChange={(e) => setBrief({ ...brief, q: e.target.value })} placeholder="Search name or sound"
-                className="bg-transparent px-3 py-1.5 w-56 text-cream placeholder:text-cream/50 focus:outline-none" />
+              <input value={brief.q} onChange={(e) => setBrief({ ...brief, q: e.target.value })} placeholder="Search"
+                className="bg-transparent px-3 py-1.5 w-32 xl:w-48 text-cream placeholder:text-cream/50 focus:outline-none" />
               {brief.q && <button type="button" onClick={() => setBrief({ ...brief, q: "" })} className="px-2 text-cream/70 hover:text-cream" aria-label="Clear search">×</button>}
             </label>
           </div>
@@ -196,7 +200,9 @@ export default function BookDesk({ artists = [], live = false }: Partial<BookDes
         ) : (
           <div className="grid gap-14">
             {brief.date && (
-              <Section title={`Free on ${when}`} note={groups.free.length ? "They marked the day open, or are touring your city then." : "Nobody has marked this day open yet. Artists set their calendars as they join."} list={groups.free} picked={picked} toggle={toggle} />
+              groups.free.length > 0
+                ? <Section title={`Free on ${when}`} note="They marked the day open, or are touring your city then." list={groups.free} picked={picked} toggle={toggle} />
+                : <p className="border-l-4 border-electric-blue pl-3 text-ink/80 max-w-2xl -mb-6"><b>Nobody has marked {when} open yet.</b> Artists fill in their calendars as they join, so for now ask and they confirm.</p>
             )}
             <Section
               title={brief.date ? `No gig listed on ${when}` : ""}
@@ -265,11 +271,11 @@ export default function BookDesk({ artists = [], live = false }: Partial<BookDes
               ))}
             </ul>
             <p className="min-w-0 flex-1 text-sm leading-tight">
-              <b className="block truncate">{pickedArtists.map((a) => a.name).join(", ")}</b>
-              <span className="text-cream/70">{picked.length} of 3 picked</span>
+              <b className="hidden sm:block truncate">{pickedArtists.map((a) => a.name).join(", ")}</b>
+              <span className="sm:text-cream/70 font-bold sm:font-normal whitespace-nowrap">{picked.length} of 3 picked</span>
             </p>
             <button type="button" onClick={() => setPicked([])} className="hidden sm:block text-sm font-bold underline underline-offset-4">Clear</button>
-            <button type="button" onClick={() => setOpen(true)} className="font-display px-4 sm:px-6 py-3 border-4 border-acid-yellow bg-acid-yellow text-ink hover:bg-cream shrink-0">Request to book</button>
+            <button type="button" onClick={() => setOpen(true)} className="font-display px-4 sm:px-6 py-3 border-4 border-acid-yellow bg-acid-yellow text-ink hover:bg-cream shrink-0"><span className="sm:hidden">Send brief</span><span className="hidden sm:inline">Request to book</span></button>
           </div>
         </div>
       )}
@@ -293,7 +299,7 @@ function Section({ title, note, list, picked, toggle }: { title: string; note: s
       {title && <h3 className="font-display text-2xl md:text-3xl leading-none">{title} <span className="text-ink/50 tabular">{list.length}</span></h3>}
       {note && <p className="mt-2 mb-6 text-ink/70">{note}</p>}
       {list.length > 0 && (
-        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {list.map((r) => (
             <ArtistListing key={r.a.slug} a={r.a} reasons={r.reasons} rate={r.rate} selected={picked.includes(r.a.slug)} disabled={picked.length >= 3} onToggle={() => toggle(r.a.slug)} />
           ))}
