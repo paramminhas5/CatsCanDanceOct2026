@@ -126,7 +126,7 @@ export default function ArtistPageV2({ a }: { a: ArtistV2 }) {
         ? { t: "Listen", sub: a.spotify ? "Spotify" : "SoundCloud", cover: null, fill: "#333" }
         : mixPlay
           ? { t: mixPlay.title, sub: sourceName(mixPlay.url) ?? "Mix", cover: null, fill: "#333" }
-          : { t: "Nothing to play yet", sub: "", cover: null, fill: "#333" };
+          : { t: "Their story so far", sub: "Drag through the years", cover: null, fill: "#333" };
 
   const heroCover = relNow ? coverUrl(relNow.albumId, "xl") : null;
   const heroBig = heroCover ?? a.photo;
@@ -785,7 +785,7 @@ html,body{overflow-x:visible!important}
               <span style={{ fontSize: 14, fontWeight: 700, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{dock.t}</span>
               <span style={{ fontSize: 12, color: "rgba(244,239,228,0.6)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{audioErr ?? dock.sub}</span>
             </span>
-            <button className="press" onClick={togglePlay} aria-label={playAria} style={{ flex: "0 0 40px", height: 40, borderRadius: "50%", border: 0, background: "#b6ef36", color: "#111111", fontSize: 14, cursor: "pointer" }}>{PlayIcon}</button>
+            {!(nothingPlayable && !playEmbed) && <button className="press" onClick={togglePlay} aria-label={playAria} style={{ flex: "0 0 40px", height: 40, borderRadius: "50%", border: 0, background: "#b6ef36", color: "#111111", fontSize: 14, cursor: "pointer" }}>{PlayIcon}</button>}
           </div>
           <div style={{ height: 2, background: "rgba(244,239,228,0.14)", borderRadius: 2, overflow: "hidden" }}><div style={{ height: 2, width: `${prog * 100}%`, background: "#b6ef36" }} /></div>
 
