@@ -381,6 +381,7 @@ export default async function Ops() {
       )}
 
       <p style={{ margin: "0 0 16px" }}><a href="/ops/curation"><b>Artist curation</b></a> <span className="muted">: filter by fit, commercial and photo, edit scores, bulk publish or hide.</span></p>
+      <p style={{ margin: "0 0 16px" }}><a href="/ops/gig-links"><b>Gig links</b></a> <span className="muted">: confirm which scene events each artist is playing. Artist pages show confirmed links on published events only.</span></p>
 
       <h3 style={{ marginBottom: 10 }}>Artists waiting ({hidden?.length ?? 0})</h3>
       <p className="muted" style={{ marginTop: 0 }}>Hidden artists are not on the site. Approve puts them on /prowl. New names come from event lineups.</p>

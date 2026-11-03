@@ -22,6 +22,8 @@ import type { GetServerSideProps } from "next";
 import Head from "next/head";
 import ArtistDetailPage from "@/pages/ArtistDetail";
 import { getArtistFullProfile } from "@/lib/db/artists";
+import ArtistPageV2 from "@/components/artist-v2/ArtistPageV2";
+import { artistPageV2On, getArtistV2, isPilot, coverUrl, displayName, type ArtistV2 } from "@/lib/artist-v2";
 import type {
   Artist,
   EventAppearance,
@@ -52,13 +54,16 @@ export interface FullProfile {
 }
 
 interface Props {
-  profile: FullProfile;
+  profile?: FullProfile;
+  v2?:      ArtistV2;
   slug:    string;
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
-export default function ArtistSlugPage({ profile, slug }: Props) {
+export default function ArtistSlugPage({ profile, v2, slug }: Props) {
+  if (v2) return <ArtistV2Page a={v2} />;
+  if (!profile) return null;
   const { artist } = profile;
 
   const SITE  = "https://catscandance.com";
@@ -131,6 +136,15 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 }) => {
   const slug = (params?.slug as string) ?? "";
 
+  // Artist page v2 (board I) for the pilot artists, behind the artist_page_v2 flag.
+  if (isPilot(slug) && (await artistPageV2On())) {
+    const v2 = await getArtistV2(slug);
+    if (v2) {
+      res.setHeader("Cache-Control", "public, s-maxage=120, stale-while-revalidate=300");
+      return { props: { v2, slug } };
+    }
+  }
+
   // Cache at Vercel Edge for 2 min, serve stale for 5 min while revalidating
   res.setHeader(
     "Cache-Control",
@@ -145,3 +159,37 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 
   return { props: { profile, slug } };
 };
+
+// ── v2 page shell ───────────────────────────────────────────────────────────
+function ArtistV2Page({ a }: { a: ArtistV2 }) {
+  const SITE = "https://catscandance.com";
+  const url = `${SITE}/litter/${a.slug}`;
+  const latest = a.releases.find((r) => r.albumId);
+  const ogImg = a.photo ?? coverUrl(latest?.albumId ?? null, "xl") ?? `${SITE}/og-image.jpg`;
+  const name = displayName(a.name);
+  const desc = `${name}${a.line ? `, ${a.line.toLowerCase()}` : ""}. Releases, shows and moments with sources, and 30 second previews, on Cats Can Dance.`;
+  const jsonLd = {
+    "@context": "https://schema.org", "@type": "MusicGroup", name: a.name, url, image: ogImg, description: desc,
+    sameAs: a.links.map((l) => l.url),
+    album: a.releases.filter((r) => !r.undated).slice(0, 20).map((r) => ({ "@type": "MusicAlbum", name: r.t, datePublished: r.date })),
+  };
+  return (
+    <>
+      <Head>
+        <title>{`${name}: releases, shows and story | Cats Can Dance`}</title>
+        <meta name="description" content={desc} />
+        <link rel="canonical" href={url} />
+        <meta property="og:title" content={`${name} on Cats Can Dance`} />
+        <meta property="og:description" content={desc} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="profile" />
+        <meta property="og:image" content={ogImg} />
+        <meta property="og:site_name" content="Cats Can Dance" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={ogImg} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      </Head>
+      <ArtistPageV2 a={a} />
+    </>
+  );
+}
