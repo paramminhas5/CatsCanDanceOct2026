@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common3.css"></head>
+<body style="background:#2563eb"><div id="shake"><div id="cam"><style>
+@keyframes walk{from{translate:-460px 0}to{translate:1180px 0}}
+@keyframes drop{0%{translate:0 -900px}70%{translate:0 30px}85%{translate:0 -10px}100%{translate:0 0}}
+@keyframes swing{0%,100%{rotate:-6deg}50%{rotate:6deg}}
+@keyframes pulse{0%{scale:1.05}35%{scale:1}100%{scale:1}}
+@keyframes stamp{0%{transform:scale(2.6) rotate(-20deg);opacity:0;filter:blur(8px)}60%{transform:scale(.92) rotate(-7deg);opacity:1;filter:blur(0)}100%{transform:scale(1) rotate(-8deg);opacity:1}}
+</style>
+<div class="abs" style="inset:0;background:var(--blue)"></div>
+<!-- 0-4: frame 0 hook -->
+<div class="abs" style="inset:0;animation:hide 1ms forwards;animation-delay:calc(var(--b)*4)">
+ <div class="abs bowl" style="left:70px;top:240px;font-size:170px;color:var(--cream);text-shadow:12px 12px 0 var(--ink)">Clear<br>your<br><span style="display:inline-block;background:var(--acid);color:var(--ink);padding:10px 20px 0;border:7px solid var(--ink);text-shadow:none;rotate:-2deg">Wednes&shy;day</span></div>
+ <div class="abs mono" style="left:76px;top:1020px;font-size:34px;color:var(--cream)">25 November / Bengaluru</div>
+</div>
+<div class="sweep" style="background:#b6ef36;animation-delay:calc(var(--b)*3.5)"><span style="color:#020617">Cats Can Dance</span><b style="color:#dc2626">★</b><span style="color:#020617">Episode 5</span><b style="color:#dc2626">★</b><span style="color:#020617">25.11</span><b style="color:#dc2626">★</b><span style="color:#020617">Cats Can Dance</span><b style="color:#dc2626">★</b><span style="color:#020617">Episode 5</span><b style="color:#dc2626">★</b><span style="color:#020617">25.11</span><b style="color:#dc2626">★</b></div>
+<!-- 4-16: the night -->
+<div class="abs" style="inset:0;background:var(--ink);opacity:0;animation:show 1ms forwards;animation-delay:calc(var(--b)*4)">
+ <div class="abs bowl" style="left:70px;top:240px;font-size:130px;color:var(--cream);text-shadow:9px 9px 0 var(--red);animation:slamB calc(var(--b)*.5) ease-out both;animation-delay:calc(var(--b)*4)">Episode</div>
+ <div class="abs bowl" style="left:60px;top:380px;font-size:560px;color:var(--cream);text-shadow:20px 20px 0 var(--red);animation:slamB calc(var(--b)*.6) cubic-bezier(.2,.8,.3,1) both,pulse var(--b) ease-out infinite;animation-delay:calc(var(--b)*5),calc(var(--b)*5)">05</div>
+ <div class="abs" style="left:880px;top:180px;translate:0 -900px;animation:drop calc(var(--b)*1.2) cubic-bezier(.3,.9,.4,1) forwards;animation-delay:calc(var(--b)*6)">
+   <div style="width:6px;height:120px;background:var(--cream);margin-left:57px"></div>
+   <img src="../../assets/disco-ball.png" style="width:120px;transform-origin:50% -120px;animation:swing calc(var(--b)*2) ease-in-out infinite" class="cut"></div>
+ <div class="abs" style="left:70px;top:930px;animation:upB calc(var(--b)*.6) cubic-bezier(.2,.8,.3,1) both;animation-delay:calc(var(--b)*8)">
+   <div class="bowl" style="display:inline-block;font-size:118px;background:var(--acid);color:var(--ink);border:7px solid var(--ink);box-shadow:14px 14px 0 var(--red);padding:18px 26px 6px;rotate:-2deg">Wed 25.11</div></div>
+ <div class="abs mono" style="left:76px;top:1130px;font-size:40px;color:var(--cream);animation:upB calc(var(--b)*.5) ease-out both;animation-delay:calc(var(--b)*9)">The Humming Tree<br>Indiranagar</div>
+ <div class="abs bowl" style="left:560px;top:1120px;font-size:58px;background:var(--red);color:var(--cream);border:7px solid var(--ink);box-shadow:12px 12px 0 var(--cream);padding:18px 22px 6px;animation:stamp calc(var(--b)*.5) ease-out both;animation-delay:calc(var(--b)*12)">Lineup<br>next week</div>
+ <img src="../../assets/cats/cat-right.svg" class="cut" style="position:absolute;left:600px;top:1290px;width:0;animation:none">
+</div>
+<div class="abs" style="left:0;top:1080px;z-index:8;animation:walk calc(var(--b)*16) linear both">
+  <img src="../../assets/cats/cat-left.svg" class="cut" style="width:330px;animation:bob var(--b) ease-in-out infinite"></div></div></div><div class="vig"></div><div class="grain"></div></body></html>
