@@ -40,11 +40,14 @@ export type Moment = {
 export type LinkOut = { label: string; url: string };
 /** Release links point at the real thing (Bandcamp, Spotify, SoundCloud, YouTube, label or press). Deezer only when nothing else exists. */
 export type Release = Moment & { type: string; label: string | null; undated: boolean; onTimeline: boolean; links: LinkOut[] };
-export type Era = { from: number; to: number | null; sound: string | null; tags: string[]; src: string | null; srcName: string | null; palette: PaletteKey };
+export type Era = { id: string; label: string; from: number; to: number | null; sound: string | null; tags: string[]; src: string | null; srcName: string | null; palette: PaletteKey; accent: string; bg: string };
 export type Row = { a: string; b: string; u: string | null };
 export type Tile = { id: string; label: string; head: string; rows: Row[] };
-export type PopularTrack = { id: string; t: string; album: string; albumId: string | null };
+export type PopularTrack = { id: string; t: string; album: string; albumId: string | null; y: number | null };
 export type AlsoLike = { n: string; why: string; u: string | null; internal: boolean; img: string | null };
+/** A person or band they made music with. slug/img when they are on CCD. */
+export type Worked = { name: string; note: string; url: string | null; slug: string | null; img: string | null };
+export type Festival = { name: string; years: string | null; url: string | null };
 export type Connection = { slug: string; name: string; img: string | null; why: string };
 export type PressItem = { title: string; publication: string; url: string; date: string | null; y: number | null; excerpt: string | null };
 export type Stat = { n: number; label: string };
@@ -93,6 +96,9 @@ export type ArtistV2 = {
   eraReal: boolean;             // eras come from artist_eras (false: one fallback era)
   alsoLike: AlsoLike[];
   upcoming: Upcoming[];
+  worked: Worked[];             // collaborators, CCD ones linked
+  playedWith: Connection[];     // CCD artists on the same verified bill
+  festivals: Festival[];
 };
 
 export type PaletteKey = "night" | "blush" | "ink" | "cream";
@@ -106,6 +112,17 @@ export const PALETTES: Record<PaletteKey, Palette> = {
   cream: { bg: "#f4efe4", ink: "#111111", mute: "rgba(17,17,17,0.58)", rule: "rgba(17,17,17,0.1)", chip: "rgba(17,17,17,0.07)", surface: "#fffaf0", link: "#2563eb", show: "#dc2626", dark: false, wave: "#2563eb", fill: "#2563eb", hard: "#111111" },
 };
 const ORDER: PaletteKey[] = ["night", "blush", "ink"];
+/** Era colours on the dark page, oldest first: blue, pink, acid, then amber. */
+export const ERA_COLOURS: [string, string][] = [["#6b95ff", "#0e1a3f"], ["#ff6b7f", "#2c0f16"], ["#b6ef36", "#18200a"], ["#f5a524", "#2a1a05"]];
+const cap = (x: string) => x.charAt(0).toUpperCase() + x.slice(1);
+/** "Piano and glitch beats" from the era's first two tags when no name is stored. */
+function eraName(label: string | null, tags: string[], from: number, to: number | null) {
+  if (label && label.trim()) return label.trim();
+  const t = tags.map((x) => x.trim()).filter(Boolean);
+  if (t.length >= 2) return `${cap(t[0].toLowerCase())} and ${t[1].toLowerCase()}`;
+  if (t.length === 1) return cap(t[0].toLowerCase());
+  return to == null ? `${from} on` : `${from} to ${to}`;
+}
 
 const FILLS: [string, string][] = [
   ["#2563eb", "#ffffff"], ["#dc2626", "#ffffff"], ["#b6ef36", "#111111"], ["#f4efe4", "#111111"],
@@ -188,7 +205,7 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
     select<{ title: string; url: string; kind: string | null; note: string | null }>(`artist_videos?artist_slug=eq.${s}&select=title,url,kind,note`, 300),
     select<{ mix_title: string; url: string; tracks: { artist?: string; title?: string }[] | null }>(`artist_tracklists?artist_slug=eq.${s}&select=mix_title,url,tracks`, 300),
     select<{ title: string; publication: string | null; url: string; date_published: string | null; excerpt: string | null }>(`artist_press?artist_slug=eq.${s}&select=title,publication,url,date_published,excerpt&order=date_published.desc.nullslast`, 300),
-    select<{ from_year: number; to_year: number | null; sound: string | null; tags: string[]; source_url: string | null; source_name: string | null; palette: PaletteKey }>(`artist_eras?artist_slug=eq.${s}&select=from_year,to_year,sound,tags,source_url,source_name,palette&order=from_year.asc`, 120),
+    select<{ from_year: number; to_year: number | null; sound: string | null; tags: string[]; source_url: string | null; source_name: string | null; palette: PaletteKey; label: string | null }>(`artist_eras?artist_slug=eq.${s}&select=from_year,to_year,sound,tags,source_url,source_name,palette,label&order=from_year.asc`, 120),
     select<{ tag: string; source_url: string | null }>(`artist_sound_tags?artist_slug=eq.${s}&select=tag,source_url`, 300),
     select<{ scheme: string; value: string; url: string | null }>(`artist_external_ids?artist_slug=eq.${s}&select=scheme,value,url`, 300),
     select<DbGig>(`artist_gigs?artist_slug=eq.${s}&verified=is.true&select=id,event_name,venue,city,event_date,source`, 300),
@@ -275,11 +292,15 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
   const y1 = Math.max(nowY, timeline.length ? timeline[timeline.length - 1].y + 0.1 : nowY);
 
   // ── Eras ───────────────────────────────────────────────────────────────────
-  let eraList: Era[] = eras.map((e) => ({ from: e.from_year, to: e.to_year, sound: e.sound, tags: e.tags ?? [], src: e.source_url, srcName: e.source_name, palette: e.palette }));
+  let eraList: Era[] = eras.map((e, i) => {
+    const [accent, bg] = ERA_COLOURS[i % ERA_COLOURS.length];
+    return { id: `e${i + 1}`, label: eraName(e.label ?? null, e.tags ?? [], e.from_year, e.to_year), from: e.from_year, to: e.to_year, sound: e.sound, tags: e.tags ?? [], src: e.source_url, srcName: e.source_name, palette: e.palette, accent, bg };
+  });
   if (eraList.length === 0) {
     const t0 = tags[0];
     const pal = ORDER[hash(slug) % ORDER.length];
     eraList = [{
+      id: "e1", label: "Every era", accent: "#b6ef36", bg: "#18200a",
       from: y0, to: null, sound: t0?.tag ?? null,
       tags: (a.genres ?? []).filter((g) => g && !/^electronic$/i.test(g)).slice(0, 5),
       src: t0?.source_url ?? null, srcName: sourceName(t0?.source_url ?? null), palette: pal,
@@ -290,9 +311,16 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
   const [top, related, ccdArtists] = await Promise.all([
     deezerId ? deezer<{ data: { id: number; title: string; album?: { id: number; title: string } }[] }>(`artist/${deezerId}/top?limit=5`) : null,
     deezerId ? deezer<{ data: { id: number; name: string; picture_medium?: string }[] }>(`artist/${deezerId}/related?limit=12`) : null,
-    select<{ slug: string; name: string; photo_url: string | null }>("artists?status=eq.approved&select=slug,name,photo_url", 600),
+    select<{ slug: string; name: string; photo_url: string | null; genres: string[] | null; based_city: string | null }>("artists?status=eq.approved&select=slug,name,photo_url,genres,based_city", 600),
   ]);
-  const popular: PopularTrack[] = (top?.data ?? []).map((t) => ({ id: String(t.id), t: t.title, album: t.album?.title ?? "", albumId: t.album ? String(t.album.id) : null }));
+  const relYear = (albumId: string | null, album: string) => {
+    const r = releases.find((x) => !x.undated && ((albumId && x.albumId === albumId) || x.t.toLowerCase() === album.toLowerCase()));
+    return r ? r.y : null;
+  };
+  const popular: PopularTrack[] = (top?.data ?? []).map((t) => {
+    const albumId = t.album ? String(t.album.id) : null;
+    return { id: String(t.id), t: t.title, album: t.album?.title ?? "", albumId, y: relYear(albumId, t.album?.title ?? "") };
+  });
 
   const norm = (x: string) => x.toLowerCase().replace(/[^a-z0-9]/g, "");
   const byName = new Map(ccdArtists.map((c) => [norm(c.name), c]));
@@ -316,30 +344,68 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
   }
   for (const x of affs.filter((x) => x.kind === "collaborator")) addConn(byName.get(norm(x.name)), "Worked together");
 
-  // Fans also like: CCD artists on the same label or collective first, then Deezer related artists.
-  // Outside artists carry no link (Deezer is only the preview source).
+  // Fans also like: CCD artists with a photo on file, in this order: same label or collective,
+  // same verified bill, Deezer says they share listeners, then same city and a shared genre.
+  // Every entry says why it is there. Artists outside CCD are not shown (no photos we can use).
   const alsoLike: AlsoLike[] = [];
-  const seen = new Set<string>(cSeen);
+  const seen = new Set<string>([slug]);
+  const addLike = (c: { slug: string; name: string; photo_url: string | null } | undefined, why: string) => {
+    if (!c || seen.has(c.slug) || !c.photo_url) return;
+    seen.add(c.slug);
+    alsoLike.push({ n: c.name, why, u: `/artists/${c.slug}`, internal: true, img: c.photo_url });
+  };
   const recordLabels = (a.labels ?? "").split(/[,;]/).map((x) => x.trim()).filter(Boolean);
   const groupNames = [...new Set([...affs.filter((x) => x.kind === "label" || x.kind === "collective").map((x) => x.name), ...recordLabels])];
   let shared: { artist_slug: string; name: string }[] = [];
   if (groupNames.length) {
     const inList = groupNames.map((n) => `"${n.replace(/"/g, "")}"`).join(",");
     shared = await select<{ artist_slug: string; name: string }>(`artist_affiliations?name=in.(${enc(inList)})&artist_slug=neq.${s}&select=artist_slug,name`, 300);
-    for (const sh of shared) {
-      if (seen.has(sh.artist_slug)) continue;
-      const c = bySlug.get(sh.artist_slug);
-      if (!c) continue;
-      seen.add(c.slug);
-      alsoLike.push({ n: c.name, why: sh.name, u: `/artists/${c.slug}`, internal: true, img: c.photo_url });
-    }
+    for (const sh of shared) addLike(bySlug.get(sh.artist_slug), `Also on ${sh.name}`);
   }
-  for (const r of related?.data ?? []) {
-    const c = byName.get(norm(r.name));
-    if (c && seen.has(c.slug)) continue;
-    if (c) { seen.add(c.slug); alsoLike.push({ n: c.name, why: "on CCD", u: `/artists/${c.slug}`, internal: true, img: c.photo_url }); continue; }
-    alsoLike.push({ n: r.name, why: "shared listeners", u: null, internal: false, img: r.picture_medium ?? null });
+  for (const c of connections.filter((x) => x.why.startsWith("Same bill"))) addLike(bySlug.get(c.slug), c.why);
+  for (const r of related?.data ?? []) addLike(byName.get(norm(r.name)), "Shared listeners");
+  const myCity = (titleCaseCity(a.based_city) ?? "").toLowerCase();
+  const myGenres = new Set((a.genres ?? []).map((g) => g.toLowerCase()));
+  const keyGenres = new Set([...myGenres].filter((g) => g !== "electronic"));
+  const scored = ccdArtists
+    .filter((c) => !seen.has(c.slug) && c.photo_url)
+    .map((c) => {
+      const gs = (c.genres ?? []).map((g) => g.toLowerCase());
+      const shareKey = gs.filter((g) => keyGenres.has(g)).length;
+      const shareAny = gs.filter((g) => myGenres.has(g)).length;
+      const sameCity = !!myCity && (titleCaseCity(c.based_city) ?? "").toLowerCase() === myCity;
+      const score = (sameCity && shareAny ? 3 : 0) + shareKey * 2 + (shareAny ? 1 : 0);
+      const theirs = (c.genres ?? []).slice(0, 2).map((g) => g.toLowerCase()).join(" and ");
+      return { c, score, why: sameCity ? `${titleCaseCity(c.based_city)}, ${theirs}` : theirs ? cap(theirs) : "" };
+    })
+    .filter((x) => x.score >= 3 && x.why)
+    .sort((x, y) => y.score - x.score || x.c.name.localeCompare(y.c.name));
+  for (const x of scored) { if (alsoLike.length >= 10) break; addLike(x.c, x.why); }
+
+  // Worked with: credited collaborators and people named in milestones, linked when they are on CCD.
+  const worked: Worked[] = [];
+  const wSeen = new Set<string>();
+  const addWorked = (name: string, note: string, url: string | null) => {
+    const k = norm(name);
+    if (!k || wSeen.has(k) || k === norm(a.name)) return;
+    wSeen.add(k);
+    const c = byName.get(k);
+    worked.push({ name, note, url: url && /^https?:/.test(url) ? url : null, slug: c?.slug ?? null, img: c?.photo_url ?? null });
+  };
+  for (const x of affs.filter((x) => x.kind === "collaborator")) {
+    const credit = releases.filter((r) => r.t.toLowerCase().includes(x.name.toLowerCase())).map((r) => r.t).slice(0, 2).join(", ");
+    addWorked(x.name, credit || "Worked together", x.source_url);
   }
+  for (const m of miles) if (m.related_artist_name) addWorked(m.related_artist_name, m.title, m.source_url);
+
+  // Festivals: the artist record's list, with the years we have a show there.
+  const festivals: Festival[] = [...new Set((a.festivals ?? []).map((f) => f.trim()).filter(Boolean))].map((f) => {
+    const k = toksLite(f);
+    const hits = [...miles.map((m) => ({ t: m.title, y: m.year ?? (m.date ? Number(m.date.slice(0, 4)) : null), u: m.source_url })), ...gigs.map((g) => ({ t: g.event_name, y: g.event_date ? Number(g.event_date.slice(0, 4)) : null, u: g.source }))]
+      .filter((h) => h.y && k.length && k.every((w) => h.t.toLowerCase().includes(w)));
+    const ys = [...new Set(hits.map((h) => h.y as number))].sort();
+    return { name: f, years: ys.length ? ys.join(", ") : null, url: hits.find((h) => h.u && /^https?:/.test(h.u))?.u ?? null };
+  });
 
   // ── Labels and collectives ─────────────────────────────────────────────
   const gkey = (x: string) => x.toLowerCase().replace(/\b(records?|recordings|music)\b/g, "").replace(/[^a-z0-9]/g, "");
@@ -477,6 +543,8 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
     connections: connections.slice(0, 16), groups, stats, eraReal: eras.length > 0,
     tiles, alsoLike: alsoLike.slice(0, 10),
     upcoming: Array.isArray(upcomingRaw) ? upcomingRaw : [],
+    worked, festivals,
+    playedWith: connections.filter((c) => c.why.startsWith("Same bill")),
   };
 }
 
@@ -539,6 +607,10 @@ function releaseLinks(r: DbRelease, a: DbArtist, bandcampHome: string | null): L
   return out;
 }
 
+/** Distinctive words of a festival name, for matching it against show titles. */
+function toksLite(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9 ]+/g, " ").split(/\s+/).filter((w) => w.length >= 3 && !["the", "festival", "fest", "and"].includes(w));
+}
 function hash(s: string) { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; }
 function dedupe(rows: Row[]) {
   const seen = new Set<string>();
