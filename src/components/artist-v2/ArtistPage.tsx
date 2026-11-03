@@ -605,6 +605,7 @@ html,body{overflow-x:visible!important}
                     <button onClick={startHere} className="btn" style={btn("transparent", accent, accent, 44)}>Start here · {tour.length} eras</button>
                   )}
                   <button aria-pressed={following} onClick={() => void setFollow(!following)} className="btn" style={btn(following ? CREAM : "transparent", following ? INK : CREAM, following ? CREAM : "rgba(244,239,228,.5)", 44)}>{following ? "Following ✓" : "Follow"}</button>
+                  <button aria-pressed={following} onClick={remind} className="btn ph" style={btn("transparent", accent, accent, 44)}>{following ? "We'll tell you ✓" : "Remind me"}</button>
                   {a.bookable && (
                     <BookButton artist={{ slug: a.slug, name, photo_url: a.photo, city: a.city, sound: a.genres.slice(0, 2).join(", ") || undefined }}
                       label={`Book ${name}`} className="btn"
