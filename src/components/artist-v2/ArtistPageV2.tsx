@@ -9,10 +9,13 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { PointerEvent as RPointerEvent, KeyboardEvent as RKeyboardEvent } from "react";
 import { useMember, memberRpc } from "@/lib/member";
 import Footer from "@/components/Footer";
+import dynamic from "next/dynamic";
 import {
   type ArtistV2, type Moment, type Era, type Palette, type Release,
-  PALETTES, coverUrl, sourceName, displayName,
+  PALETTES, coverUrl, sourceName, displayName, embedFor,
 } from "@/lib/artist-v2";
+
+const BookingForm = dynamic(() => import("@/components/booking/BookingForm"), { ssr: false });
 
 const KL: Record<Moment["kind"], string> = { rel: "RELEASE", mile: "MOMENT", show: "PAST SHOW" };
 const ENERGY: Record<string, number> = { night: 46, blush: 56, ink: 30, cream: 40 };
@@ -65,6 +68,7 @@ export default function ArtistPageV2({ a }: { a: ArtistV2 }) {
   const [following, setFollowing] = useState(false);
   const [alertNote, setAlertNote] = useState(false);
   const [audioErr, setAudioErr] = useState<string | null>(null);
+  const [bioOpen, setBioOpen] = useState(false);
 
   const audio = useRef<HTMLAudioElement | null>(null);
   const loadedTrack = useRef<string | null>(null);
@@ -99,6 +103,7 @@ export default function ArtistPageV2({ a }: { a: ArtistV2 }) {
     playableAll[0];
   const popNow = pop != null ? a.popular[pop] : null;
   const nothingPlayable = !playable && a.popular.length === 0;
+  const mixPlay = a.mixes.find((m) => embedFor(m.url)) ?? null;
 
   const dockTrackId = popNow ? popNow.id : playable?.trackId ?? null;
   const dock = popNow
@@ -109,7 +114,11 @@ export default function ArtistPageV2({ a }: { a: ArtistV2 }) {
           sub: `${playable.t} · ${playable.date}${relNow && relNow.id !== playable.id && !relNow.trackId ? ` · ${relNow.t} is not on streaming` : ""}`,
           cover: coverUrl(playable.albumId, "medium"), fill: playable.fill || "#333",
         }
-      : { t: a.spotify || a.soundcloud ? "Listen" : "Nothing to play yet", sub: a.spotify ? "Spotify" : a.soundcloud ? "SoundCloud" : "", cover: null, fill: "#333" };
+      : a.spotify || a.soundcloud
+        ? { t: "Listen", sub: a.spotify ? "Spotify" : "SoundCloud", cover: null, fill: "#333" }
+        : mixPlay
+          ? { t: mixPlay.title, sub: sourceName(mixPlay.url) ?? "Mix", cover: null, fill: "#333" }
+          : { t: "Nothing to play yet", sub: "", cover: null, fill: "#333" };
 
   const heroCover = relNow ? coverUrl(relNow.albumId, "xl") : null;
   const heroBig = heroCover ?? a.photo;
@@ -139,7 +148,7 @@ export default function ArtistPageV2({ a }: { a: ArtistV2 }) {
   const togglePlay = () => {
     if (playing) return stop();
     if (dockTrackId) return void playTrack(dockTrackId, false);
-    if (a.spotify || a.soundcloud) setEmbed((v) => !v);
+    if (playEmbed) setEmbed((v) => !v);
   };
   // Scrubbing to another release while playing switches the record.
   useEffect(() => {
@@ -313,6 +322,8 @@ html,body{overflow-x:visible!important}
 @supports (overflow:clip){html,body{overflow-x:clip!important}}
 .av{font-family:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:15px;line-height:1.45;transition:background-color .7s ease,color .7s ease}
 .av a{color:inherit;text-decoration:none}
+.av button:disabled{opacity:.35;cursor:default}
+.av .clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
 .av .disp{font-family:'Bowlby One',Impact,sans-serif;font-weight:400}
 .av .ease{transition:background-color .7s ease,color .7s ease,border-color .7s ease,opacity .4s ease}
 .av .press{transition:transform .18s ease}.av .press:active{transform:scale(.97)}
@@ -417,7 +428,7 @@ html,body{overflow-x:visible!important}
     </div>
   ) : null;
 
-  const Sound = ({ big }: { big?: boolean }) => (
+  const Sound = ({ big }: { big?: boolean }) => !era.sound && era.tags.length === 0 ? null : (
     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
       <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", color: p.mute }}>THE SOUND IN {year}</span>
       {era.sound && <p style={{ margin: 0, fontSize: big ? 26 : 20, fontWeight: 700, lineHeight: 1.2 }}>{era.sound.charAt(0).toUpperCase() + era.sound.slice(1)}</p>}
@@ -429,6 +440,105 @@ html,body{overflow-x:visible!important}
       {era.src && <span style={{ fontSize: 12, color: p.mute }}>From <a href={era.src} target="_blank" rel="noreferrer" style={{ textDecoration: "underline", textUnderlineOffset: 3 }}>{era.srcName ?? sourceName(era.src)}</a></span>}
     </div>
   );
+
+  const fmtDay = (d: string) => new Date(`${d}T00:00:00`).toLocaleDateString("en-IN", { day: "numeric", month: "short" });
+  const latestRel = a.releases.find((r) => !r.undated);
+  const firstYear = a.releases.filter((r) => !r.undated).reduce((m, r) => Math.min(m, Math.floor(r.y)), 9999);
+  const labelTile = a.tiles.find((t) => t.id === "labels");
+  const nextShow = a.upcoming[0] ?? null;
+  const nextCcd = a.ccdNights.find((n) => n.upcoming) ?? null;
+  const pastCcd = a.ccdNights.filter((n) => !n.upcoming);
+  const facts: [string, string][] = [
+    ...(a.city ? [["Based in", a.city] as [string, string]] : []),
+    ...(a.genres.length ? [["Sound", a.genres.slice(0, 4).join(", ")] as [string, string]] : []),
+    ...(latestRel ? [["Latest release", `${latestRel.t} (${latestRel.date}${latestRel.label ? `, ${latestRel.label}` : ""})`] as [string, string]] : []),
+    ...(a.releases.length > 1 && firstYear < 9999 ? [["Releases on record", `${a.releases.length}, since ${firstYear}`] as [string, string]] : []),
+    ...(labelTile ? [["Labels", labelTile.rows.slice(0, 4).map((r) => r.a).join(", ")] as [string, string]] : []),
+    ...(nextShow ? [["Next show", `${nextShow.title}${nextShow.city ? `, ${nextShow.city}` : ""}, ${fmtDay(nextShow.event_date)}`] as [string, string]]
+      : nextCcd ? [["Next show", `${nextCcd.title} with Cats Can Dance${nextCcd.date ? `, ${fmtDay(nextCcd.date)}` : ""}`] as [string, string]] : []),
+    ...(pastCcd.length ? [["Played Cats Can Dance", pastCcd.map((n) => n.title).join(", ")] as [string, string]] : []),
+    ...(a.bookable ? [["Bookings", "Open, through Cats Can Dance"] as [string, string]] : []),
+  ];
+  const About = ({ big }: { big?: boolean }) => a.bio || a.members || facts.length ? (
+    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <span style={{ fontSize: big ? 22 : 20, fontWeight: 700 }}>About</span>
+      {a.bio && <p className={bioOpen ? "" : "clamp"} style={{ margin: 0, fontSize: big ? 16 : 15, lineHeight: 1.55, whiteSpace: "pre-line" }}>{a.bio}</p>}
+      {a.members && <span style={{ fontSize: 13, color: p.mute }}>Members: {a.members}</span>}
+      {facts.length > 0 && (
+        <dl style={{ margin: "8px 0 0", display: "grid", gridTemplateColumns: "max-content minmax(0, 1fr)", gap: "6px 16px", fontSize: 14 }}>
+          {facts.map(([k, v]) => [
+            <dt key={`k${k}`} style={{ color: p.mute, fontWeight: 700 }}>{k}</dt>,
+            <dd key={`v${k}`} style={{ margin: 0 }}>{v}</dd>,
+          ])}
+        </dl>
+      )}
+      {(a.bio?.length ?? 0) > 280 && (
+        <button onClick={() => setBioOpen((v) => !v)} style={{ alignSelf: "flex-start", background: "none", border: 0, padding: 0, cursor: "pointer", fontSize: 13, fontWeight: 700, color: p.link }}>{bioOpen ? "Less" : "Read more"}</button>
+      )}
+    </div>
+  ) : null;
+
+  const Book = () => a.bookable ? (
+    <div id="av-book" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      <span style={{ fontSize: 22, fontWeight: 700 }}>Book {displayName(a.name)}</span>
+      <span style={{ fontSize: 13, color: p.mute }}>
+        Send a request. CCD replies with dates and a quote.{" "}
+        <a href={`/artists/${a.slug}/epk`} style={{ fontWeight: 700, color: p.link }}>Press kit</a>{" · "}
+        <a href="/book" style={{ fontWeight: 700, color: p.link }}>All artists to book</a>
+      </span>
+      <div style={{ background: "#f4efe4", color: "#111111", border: "2px solid #111111", boxShadow: "4px 4px 0 #111111", padding: 18, borderRadius: 4 }}>
+        <BookingForm artistSlug={a.slug} artistName={a.name} source="artist_profile" />
+      </div>
+    </div>
+  ) : null;
+
+  const WithCcd = () => a.ccdNights.length || a.touring.length ? (
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      {a.touring.length > 0 && (
+        <>
+          <span style={{ fontSize: 20, fontWeight: 700, paddingBottom: 6 }}>On tour</span>
+          {a.touring.map((t, i) => (
+            <div key={`t${i}`} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 0", borderTop: `1px solid ${p.rule}` }}>
+              <span style={{ flex: "1 1 auto", minWidth: 0, display: "flex", flexDirection: "column" }}>
+                <span style={{ fontWeight: 700 }}>{t.city}</span>
+                <span style={{ fontSize: 13, color: p.mute }}>{fmtDay(t.from)}{t.to !== t.from ? ` to ${fmtDay(t.to)}` : ""}{t.note ? ` · ${t.note}` : ""}</span>
+              </span>
+              {a.bookable && <a href="#av-book" style={{ fontSize: 12, fontWeight: 700, padding: "6px 12px", borderRadius: 999, border: `1.5px solid ${p.ink}` }}>Book these dates</a>}
+            </div>
+          ))}
+          <a href="/tour" style={{ fontSize: 12, fontWeight: 700, color: p.mute, padding: "6px 0 18px" }}>Everyone touring India in the next 60 days</a>
+        </>
+      )}
+      {a.ccdNights.length > 0 && (
+        <>
+          <span style={{ fontSize: 20, fontWeight: 700, paddingBottom: 6 }}>With Cats Can Dance</span>
+          {a.ccdNights.map((n) => (
+            <a key={n.slug} className="press" href={n.url} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 0", borderTop: `1px solid ${p.rule}` }}>
+              <span style={{ flex: "1 1 auto", minWidth: 0, display: "flex", flexDirection: "column" }}>
+                <span style={{ fontWeight: 700 }}>{n.title}</span>
+                <span style={{ fontSize: 13, color: p.mute }}>{n.date ? fmtDay(n.date) + " " + n.date.slice(0, 4) : "Date to come"}</span>
+              </span>
+              <span style={{ fontSize: 12, fontWeight: 700, padding: "6px 12px", borderRadius: 999, background: n.upcoming ? "#b6ef36" : "transparent", color: n.upcoming ? "#111111" : p.ink, border: n.upcoming ? 0 : `1.5px solid ${p.ink}` }}>{n.upcoming ? "Tickets" : "The night"}</span>
+            </a>
+          ))}
+        </>
+      )}
+    </div>
+  ) : null;
+
+  const Photos = ({ size }: { size: number }) => a.photos.length > 1 || (a.photos.length === 1 && a.photos[0].url !== a.photo) ? (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      <span style={{ fontSize: 20, fontWeight: 700 }}>Photos</span>
+      <div className="row" style={{ display: "flex", gap: 10, overflowX: "auto", paddingBottom: 4 }}>
+        {a.photos.map((ph) => (
+          <a key={ph.url} href={ph.src ?? ph.url} target="_blank" rel="noreferrer" style={{ flex: `0 0 ${size}px`, display: "flex", flexDirection: "column", gap: 4 }}>
+            <span style={{ width: size, height: size, borderRadius: 6, overflow: "hidden", background: p.chip, display: "block" }}><Img src={ph.url} size={size} alt={ph.caption ?? a.name} /></span>
+            {(ph.caption || ph.credit) && <span style={{ fontSize: 11, color: p.mute }}>{[ph.caption, ph.credit ? `Photo: ${ph.credit}` : null].filter(Boolean).join(" · ")}</span>}
+          </a>
+        ))}
+      </div>
+    </div>
+  ) : null;
 
   const UpcomingList = ({ id }: { id?: string }) => a.upcoming.length ? (
     <div id={id} style={{ display: "flex", flexDirection: "column" }}>
@@ -495,6 +605,7 @@ html,body{overflow-x:visible!important}
   const embedSrc = a.spotify && /open\.spotify\.com\/artist\/([A-Za-z0-9]+)/.test(a.spotify)
     ? `https://open.spotify.com/embed/artist/${/artist\/([A-Za-z0-9]+)/.exec(a.spotify)![1]}?utm_source=generator&theme=0`
     : a.soundcloud ? `https://w.soundcloud.com/player/?url=${encodeURIComponent(a.soundcloud)}&color=%23b6ef36&visual=false` : null;
+  const playEmbed: { src: string; h: number } | null = embedSrc ? { src: embedSrc, h: 152 } : embedFor(mixPlay?.url);
 
   return (
     <div className="av" style={{ background: p.bg, color: p.ink, minHeight: "100vh" }}>
@@ -527,10 +638,10 @@ html,body{overflow-x:visible!important}
               )}
           </div>
           <div style={{ position: "absolute", left: 20, right: 20, bottom: 20, display: "flex", flexDirection: "column", gap: 8 }}>
-            {a.line && <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", opacity: 0.8 }}>{a.line}</span>}
+            {(a.line || a.playedCcd) && <span style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", fontSize: 12, fontWeight: 700, letterSpacing: "0.1em" }}>{a.line && <span style={{ opacity: 0.8 }}>{a.line}</span>}{a.playedCcd && <span style={{ background: "#b6ef36", color: "#111111", padding: "2px 8px", borderRadius: 999, letterSpacing: "0.06em" }}>PLAYED CCD</span>}</span>}
             <h1 className="disp" style={{ margin: 0, fontSize: a.name.length > 12 ? 42 : 56, lineHeight: 0.9 }}>{a.name.toUpperCase()}</h1>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 6 }}>
-              <button className="press" onClick={togglePlay} aria-label={playAria} disabled={nothingPlayable && !embedSrc} style={{ width: 48, height: 48, borderRadius: "50%", border: 0, background: "#b6ef36", color: "#111111", fontSize: 15, cursor: "pointer" }}>{PlayIcon}</button>
+              <button className="press" onClick={togglePlay} aria-label={playAria} disabled={nothingPlayable && !playEmbed} style={{ width: 48, height: 48, borderRadius: "50%", border: 0, background: "#b6ef36", color: "#111111", fontSize: 15, cursor: "pointer" }}>{PlayIcon}</button>
               {FollowBtn({})}
               <span style={{ marginLeft: "auto" }}>{DatesBtn({})}</span>
             </div>
@@ -541,6 +652,8 @@ html,body{overflow-x:visible!important}
         <div style={{ padding: "24px 20px 0" }}>{Sound({})}</div>
         <div style={{ margin: "18px 20px 0" }}>{Focus({})}</div>
         {a.upcoming.length > 0 && <div style={{ margin: "30px 20px 0" }}>{UpcomingList({id: "av-upcoming"})}</div>}
+        {(a.ccdNights.length > 0 || a.touring.length > 0) && <div style={{ margin: "30px 20px 0" }}>{WithCcd()}</div>}
+        <div style={{ margin: "30px 20px 0" }}>{About({})}</div>
 
         {a.releases.length > 0 && (
           <div style={{ marginTop: 30, display: "flex", flexDirection: "column" }}>
@@ -580,12 +693,13 @@ html,body{overflow-x:visible!important}
                 <button onClick={() => setOpenMix(openMix === mi ? null : mi)} aria-expanded={openMix === mi} style={{ background: "none", border: 0, padding: 0, display: "flex", alignItems: "center", gap: 14, cursor: "pointer", textAlign: "left" }}>
                   <span style={{ flex: "1 1 auto", display: "flex", flexDirection: "column" }}>
                     <span style={{ fontWeight: 700 }}>{m.title}</span>
-                    <span style={{ fontSize: 13, color: p.mute }}>{[m.date, m.tracks.length ? `${m.tracks.length} tracks` : null].filter(Boolean).join(" · ")}</span>
+                    <span style={{ fontSize: 13, color: p.mute }}>{[sourceName(m.url), m.date, m.tracks.length ? `${m.tracks.length} tracks` : null].filter(Boolean).join(" · ")}</span>
                   </span>
                   <span style={{ fontSize: 18, color: p.mute }}>{openMix === mi ? "−" : "+"}</span>
                 </button>
                 {openMix === mi && (
                   <div style={{ marginTop: 10, display: "flex", flexDirection: "column" }}>
+                    {(() => { const e = embedFor(m.url); return e ? <iframe title={m.title} src={e.src} width="100%" height={e.h} style={{ border: 0, borderRadius: 8, marginBottom: 8 }} allow="autoplay; encrypted-media; picture-in-picture" loading="lazy" /> : null; })()}
                     {m.tracks.map((t, i) => (
                       <a key={i} href={`https://www.deezer.com/search/${encodeURIComponent(`${t.artist} ${t.title}`)}`} target="_blank" rel="noreferrer" style={{ display: "flex", gap: 12, padding: "7px 0", borderTop: `1px solid ${p.rule}`, fontSize: 14 }}>
                         <span style={{ flex: "0 0 18px", color: p.mute }}>{i + 1}</span>
@@ -605,6 +719,8 @@ html,body{overflow-x:visible!important}
             {a.tiles.map((t) => TileBox({t: t, wide: "span 2", cols: 1}))}
           </div>
         )}
+
+        <div style={{ margin: "30px 20px 0" }}>{Photos({size: 150})}</div>
 
         {story.length > 0 && (
           <div style={{ margin: "34px 20px 0", display: "flex", flexDirection: "column" }}>
@@ -628,6 +744,8 @@ html,body{overflow-x:visible!important}
           </div>
         )}
 
+        {a.bookable && <div style={{ margin: "34px 20px 0" }}>{Book()}</div>}
+
         {a.alsoLike.length > 0 && (
           <div style={{ marginTop: 34, display: "flex", flexDirection: "column", gap: 14 }}>
             <span style={{ padding: "0 20px", fontSize: 20, fontWeight: 700 }}>Fans also like</span>
@@ -637,10 +755,10 @@ html,body{overflow-x:visible!important}
 
         <PageFoot p={p} a={a} />
 
-        {/* Dock: the player and the career scrubber */}
-        <div style={{ position: "sticky", bottom: 12, margin: "24px 10px 12px", zIndex: 20, borderRadius: 18, background: "#141414", color: "#f4efe4", boxShadow: "0 12px 34px rgba(0,0,0,0.3)", padding: "12px 14px 10px", display: "flex", flexDirection: "column", gap: 8 }}>
-          {embed && embedSrc && (
-            <iframe title={`${a.name} player`} src={embedSrc} width="100%" height="152" style={{ border: 0, borderRadius: 12 }} allow="autoplay; clipboard-write; encrypted-media" loading="lazy" />
+        {/* Dock: the player and the career scrubber. Hidden when there is nothing to play or scrub. */}
+        {(!nothingPlayable || playEmbed || EV.length > 0) && <div style={{ position: "sticky", bottom: 12, margin: "24px 10px 12px", zIndex: 20, borderRadius: 18, background: "#141414", color: "#f4efe4", boxShadow: "0 12px 34px rgba(0,0,0,0.3)", padding: "12px 14px 10px", display: "flex", flexDirection: "column", gap: 8 }}>
+          {embed && playEmbed && (
+            <iframe title={`${a.name} player`} src={playEmbed.src} width="100%" height={playEmbed.h} style={{ border: 0, borderRadius: 12 }} allow="autoplay; clipboard-write; encrypted-media" loading="lazy" />
           )}
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <span style={{ flex: "0 0 42px", height: 42, borderRadius: 4, overflow: "hidden", background: dock.fill, display: "block" }}><Img src={dock.cover} size={42} /></span>
@@ -687,7 +805,7 @@ html,body{overflow-x:visible!important}
               </div>
             </>
           )}
-        </div>
+        </div>}
       </div>
 
       {/* ═════════════════════════ DESKTOP ═════════════════════════ */}
@@ -704,10 +822,10 @@ html,body{overflow-x:visible!important}
                 <span style={{ fontWeight: 700, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{dock.t}</span>
                 <span style={{ fontSize: 12, opacity: 0.6, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{audioErr ?? dock.sub}</span>
               </span>
-              <button className="press" onClick={togglePlay} aria-label={playAria} style={{ flex: "0 0 40px", height: 40, borderRadius: "50%", border: 0, background: "#b6ef36", color: "#111111", cursor: "pointer" }}>{PlayIcon}</button>
+              <button className="press" onClick={togglePlay} aria-label={playAria} disabled={nothingPlayable && !playEmbed} style={{ flex: "0 0 40px", height: 40, borderRadius: "50%", border: 0, background: "#b6ef36", color: "#111111", cursor: "pointer" }}>{PlayIcon}</button>
             </div>
             <div style={{ height: 2, background: "rgba(244,239,228,0.14)", borderRadius: 2, overflow: "hidden" }}><div style={{ height: 2, width: `${prog * 100}%`, background: "#b6ef36" }} /></div>
-            {embed && embedSrc && <iframe title={`${a.name} player`} src={embedSrc} width="100%" height="152" style={{ border: 0, borderRadius: 12 }} allow="autoplay; clipboard-write; encrypted-media" loading="lazy" />}
+            {embed && playEmbed && <iframe title={`${a.name} player`} src={playEmbed.src} width="100%" height={playEmbed.h} style={{ border: 0, borderRadius: 12 }} allow="autoplay; clipboard-write; encrypted-media" loading="lazy" />}
           </div>
           {EV.length > 0 && (
             <>
@@ -752,10 +870,10 @@ html,body{overflow-x:visible!important}
                 )}
               </div>
               <div style={{ flex: "1 1 auto", minWidth: 0, display: "flex", flexDirection: "column", gap: 12 }}>
-                {a.line && <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", opacity: 0.8 }}>{a.line}</span>}
+                {(a.line || a.playedCcd) && <span style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em" }}>{a.line && <span style={{ opacity: 0.8 }}>{a.line}</span>}{a.playedCcd && <span style={{ background: "#b6ef36", color: "#111111", padding: "2px 9px", borderRadius: 999, letterSpacing: "0.06em" }}>PLAYED CCD</span>}</span>}
                 <h1 className="disp" style={{ margin: 0, fontSize: a.name.length > 12 ? 72 : 96, lineHeight: 0.88 }}>{a.name.toUpperCase()}</h1>
                 <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-                  <button className="press" onClick={togglePlay} aria-label={playAria} style={{ height: 44, padding: "0 22px", borderRadius: 999, border: 0, background: "#b6ef36", color: "#111111", fontWeight: 700, cursor: "pointer" }}>{playing ? "❚❚ Pause" : "▶ Play"}</button>
+                  <button className="press" onClick={togglePlay} aria-label={playAria} disabled={nothingPlayable && !playEmbed} style={{ height: 44, padding: "0 22px", borderRadius: 999, border: 0, background: "#b6ef36", color: "#111111", fontWeight: 700, cursor: "pointer" }}>{playing ? "❚❚ Pause" : "▶ Play"}</button>
                   {FollowBtn({h: 44})}
                   {DatesBtn({h: 44})}
                 </div>
@@ -765,10 +883,14 @@ html,body{overflow-x:visible!important}
           </div>
 
           <div style={{ padding: "36px 56px 0", display: "grid", gridTemplateColumns: "minmax(0, 1.1fr) minmax(0, 1fr)", gap: 40 }}>
-            {Sound({big: true})}
+            <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+              {Sound({big: true})}
+              {About({big: true})}
+            </div>
             <div style={{ alignSelf: "start", display: "flex", flexDirection: "column", gap: 24 }}>
               {Focus({big: true})}
               {UpcomingList({id: "av-upcoming-d"})}
+              {WithCcd()}
             </div>
           </div>
 
@@ -791,6 +913,10 @@ html,body{overflow-x:visible!important}
               {deskTiles.map((t) => TileBox({t: t, wide: "span 4", cols: 2}))}
             </div>
           )}
+
+          <div style={{ padding: "40px 56px 0" }}>{Photos({size: 200})}</div>
+
+          {a.bookable && <div style={{ padding: "40px 56px 0", maxWidth: 760 }}>{Book()}</div>}
 
           {a.alsoLike.length > 0 && (
             <div style={{ padding: "40px 56px 0", display: "flex", flexDirection: "column", gap: 14 }}>
@@ -835,9 +961,12 @@ html,body{overflow-x:visible!important}
 function PageFoot({ p, a }: { p: Palette; a: ArtistV2 }) {
   return (
     <div style={{ margin: "34px 20px 0", paddingTop: 16, borderTop: `1px solid ${p.rule}`, display: "flex", flexDirection: "column", gap: 10, fontSize: 13, color: p.mute }}>
-      {a.links.length > 0 && (
+      {true && (
         <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 18px", fontWeight: 700 }}>
           {a.links.map((l) => <a key={l.url} href={l.url} target="_blank" rel="noreferrer">{l.label}</a>)}
+          {a.bookable && <a href="#av-book">Book</a>}
+          <a href={`/artists/${a.slug}/epk`}>Press kit</a>
+          <a href="/tour#post">Post tour dates</a>
         </div>
       )}
       <span>

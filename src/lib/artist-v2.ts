@@ -3,7 +3,7 @@
 // (top tracks, related artists, covers and 30s previews). Nothing here is generated.
 import { select, rpc } from "@/lib/ccd-db";
 
-/** The 14 pilot artists from the artist depth pilot (Nov 2026). */
+/** The 14 pilot artists from the artist depth pilot (Nov 2026). Since 3 Nov every approved artist gets the page; kept for scripts. */
 export const PILOT_SLUGS = [
   "sandunes", "kohra", "monophonik", "prabh-deep", "sickflip", "spryk", "shantam",
   "kiss-nuka", "nate08", "okedo", "sijya", "komorebi", "chrms", "karan-kanchan",
@@ -43,6 +43,9 @@ export type AlsoLike = { n: string; why: string; u: string; internal: boolean; i
 export type Upcoming = { id: string; title: string; city: string | null; venue: string | null; event_date: string; ticket_url: string | null };
 export type Mix = { title: string; url: string; date: string | null; tracks: { artist: string; title: string }[] };
 export type Video = { title: string; url: string; kind: string | null; note: string | null };
+export type Photo = { url: string; caption: string | null; credit: string | null; src: string | null };
+export type CcdNight = { slug: string; title: string; date: string | null; upcoming: boolean; url: string };
+export type TourDate = { city: string; from: string; to: string; note: string | null };
 
 export type ArtistV2 = {
   slug: string;
@@ -54,6 +57,15 @@ export type ArtistV2 = {
   soundcloud: string | null;
   links: { label: string; url: string }[];
   claimed: boolean;
+  bio: string | null;           // the artist's bio as stored (written by the artist or CCD)
+  bookable: boolean;            // open_to_bookings
+  members: string | null;
+  city: string | null;
+  genres: string[];
+  playedCcd: boolean;
+  photos: Photo[];              // artist_media photos
+  ccdNights: CcdNight[];        // Cats Can Dance nights with this artist on the lineup
+  touring: TourDate[];          // dates posted on /tour (touring_now)
   y0: number;
   y1: number;
   eras: Era[];
@@ -132,6 +144,8 @@ type DbArtist = {
   slug: string; name: string; kind: string | null; based_city: string | null; from_city: string | null;
   photo_url: string | null; spotify: string | null; soundcloud: string | null; website: string | null;
   instagram: string | null; claimed_at: string | null; genres: string[] | null; links: Record<string, string> | null;
+  bio: string | null; mix_url: string | null; open_to_bookings: boolean | null;
+  festivals: string[] | null; labels: string | null; members: string | null; played_ccd: boolean | null;
 };
 type DbRelease = {
   id: string; title: string; release_type: string | null; release_date: string | null; year: number | null; label: string | null;
@@ -146,7 +160,7 @@ const enc = encodeURIComponent;
 export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
   const s = enc(slug);
   const artistRows = await select<DbArtist>(
-    `artists?slug=eq.${s}&status=eq.approved&select=slug,name,kind,based_city,from_city,photo_url,spotify,soundcloud,website,instagram,claimed_at,genres,links&limit=1`, 120);
+    `artists?slug=eq.${s}&status=eq.approved&select=slug,name,kind,based_city,from_city,photo_url,spotify,soundcloud,website,instagram,claimed_at,genres,links,bio,mix_url,open_to_bookings,festivals,labels,members,played_ccd&limit=1`, 120);
   const a = artistRows[0];
   if (!a) return null;
 
@@ -163,6 +177,11 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
     select<{ scheme: string; value: string; url: string | null }>(`artist_external_ids?artist_slug=eq.${s}&select=scheme,value,url`, 300),
     select<DbGig>(`artist_gigs?artist_slug=eq.${s}&verified=is.true&select=id,event_name,venue,city,event_date,source`, 300),
     rpc<Upcoming[]>("artist_upcoming", { p_slug: slug }).catch(() => [] as Upcoming[]),
+  ]);
+  const [media, tour, nights] = await Promise.all([
+    select<{ url: string; caption: string | null; author: string | null; source_url: string | null }>(`artist_media?artist_slug=eq.${s}&kind=eq.photo&select=url,caption,author,source_url&order=sort.asc.nullslast`, 300).catch(() => []),
+    select<{ city: string; from_date: string; to_date: string; note: string | null }>(`touring_now?artist_slug=eq.${s}&select=city,from_date,to_date,note&order=from_date.asc`, 120).catch(() => []),
+    select<{ slug: string; title: string; event_date: string | null; lineup: string[] | null; status: string | null; episode_no: number | null }>(`events?published=is.true&select=slug,title,event_date,lineup,status,episode_no&order=event_date.desc.nullslast`, 300).catch(() => []),
   ]);
 
   const deezerId = ext.find((x) => x.scheme === "deezer")?.value ?? null;
@@ -280,7 +299,23 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
   const labelRows = dedupe([
     ...affs.filter((x) => x.kind === "label").map((x) => ({ a: x.name, b: labelYears(x.name, releases), u: x.source_url })),
   ]);
+  // Labels also listed on the artist record (comma separated), when not already sourced above.
+  for (const l of (a.labels ?? "").split(/[,;]/).map((x) => x.trim()).filter(Boolean)) {
+    if (!labelRows.some((r) => r.a.toLowerCase() === l.toLowerCase())) labelRows.push({ a: l, b: labelYears(l, releases), u: null });
+  }
   if (labelRows.length) tiles.push({ id: "labels", label: "LABELS", head: headOf(labelRows.map((r) => r.a), 3), rows: labelRows });
+  const fests = [...new Set((a.festivals ?? []).map((f) => f.trim()).filter(Boolean))];
+  if (fests.length) tiles.push({ id: "fests", label: "FESTIVALS", head: headOf(fests, 2), rows: fests.map((f) => ({ a: f, b: "festival", u: null })) });
+
+  // Cats Can Dance nights with this artist on the lineup (exact name match, test nights left out).
+  const me = norm(a.name);
+  const today = new Date().toISOString().slice(0, 10);
+  const ccdNights: CcdNight[] = nights
+    .filter((n) => !/^test-/.test(n.slug) && (n.lineup ?? []).some((x) => norm(x) === me))
+    .map((n) => {
+      const upcoming = !!n.event_date && n.event_date >= today && n.status !== "cancelled";
+      return { slug: n.slug, title: n.title, date: n.event_date, upcoming, url: upcoming ? `/tickets/${n.slug}` : `/episodes/${n.slug}` };
+    });
 
   const links: { label: string; url: string }[] = [];
   if (a.spotify) links.push({ label: "Spotify", url: a.spotify });
@@ -297,20 +332,50 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
   const line = [city, role && !/^artist$/i.test(role) ? role : null].filter(Boolean).join(" · ").toUpperCase();
 
   return {
-    slug: a.slug, name: a.name, line, photo: a.photo_url, deezerId,
+    slug: a.slug, name: a.name, line, photo: a.photo_url ?? media.find((m) => /^https?:/.test(m.url))?.url ?? null, deezerId,
     spotify: a.spotify, soundcloud: a.soundcloud, links, claimed: !!a.claimed_at,
+    bio: a.bio && a.bio.trim().length > 20 ? a.bio.trim() : null,
+    bookable: a.open_to_bookings !== false,
+    members: a.members?.trim() || null,
+    city,
+    genres: (a.genres ?? []).filter((g) => g && !/^electronic$/i.test(g)).slice(0, 6),
+    playedCcd: !!a.played_ccd || ccdNights.some((n) => !n.upcoming),
+    photos: media.filter((m) => /^https?:/.test(m.url)).map((m) => ({ url: m.url, caption: m.caption, credit: m.author, src: m.source_url })),
+    ccdNights,
+    touring: tour.map((t) => ({ city: t.city, from: t.from_date, to: t.to_date, note: t.note })),
     y0, y1, eras: eraList, moments: timeline, releases, popular,
     videos: vids.map((v) => ({ title: v.title, url: v.url, kind: v.kind, note: v.note })),
-    mixes: mixes.map((m) => {
-      const date = /\(published ([^)]+)\)/i.exec(m.mix_title)?.[1] ?? null;
-      return {
-        title: m.mix_title.replace(/\s*\(published [^)]+\)/i, ""), url: m.url, date,
-        tracks: (m.tracks ?? []).map((t) => ({ artist: t.artist ?? "", title: t.title ?? "" })).filter((t) => t.title),
-      };
-    }),
+    mixes: [
+      ...mixes.map((m) => {
+        const date = /\(published ([^)]+)\)/i.exec(m.mix_title)?.[1] ?? null;
+        return {
+          title: m.mix_title.replace(/\s*\(published [^)]+\)/i, ""), url: m.url, date,
+          tracks: (m.tracks ?? []).map((t) => ({ artist: t.artist ?? "", title: t.title ?? "" })).filter((t) => t.title),
+        };
+      }),
+      // The featured mix link on the artist record, when it is not already a tracklisted mix.
+      ...(a.mix_url && /^https?:/.test(a.mix_url) && !mixes.some((m) => sameUrl(m.url, a.mix_url!))
+        ? [{ title: "Featured mix", url: a.mix_url, date: null, tracks: [] }] : []),
+    ],
     tiles, alsoLike: alsoLike.slice(0, 10),
     upcoming: Array.isArray(upcomingRaw) ? upcomingRaw : [],
   };
+}
+
+function sameUrl(x: string, y: string) {
+  const n = (u: string) => u.toLowerCase().replace(/^https?:\/\/(www\.|m\.)?/, "").replace(/[/?#]+$/, "");
+  return n(x) === n(y);
+}
+
+/** Player URL for links that can play on the page (YouTube, SoundCloud, Mixcloud). Null for the rest. */
+export function embedFor(url: string | null | undefined): { src: string; h: number } | null {
+  if (!url) return null;
+  const yt = /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|live\/|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/.exec(url);
+  if (yt) return { src: `https://www.youtube-nocookie.com/embed/${yt[1]}`, h: 200 };
+  if (/soundcloud\.com\//.test(url)) return { src: `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&color=%23b6ef36&visual=false`, h: 152 };
+  const mc = /mixcloud\.com(\/[^?#]+)/.exec(url);
+  if (mc) return { src: `https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=0&feed=${encodeURIComponent(mc[1])}`, h: 120 };
+  return null;
 }
 
 function hash(s: string) { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; }
