@@ -21,6 +21,7 @@ Scope: Indian and South Asian artists, diaspora included. Artists with no South 
    Fill-only chunks in `sql/` (inserts with `on conflict do nothing`, updates only where empty). Load them with the
    Supabase MCP `execute_sql`. Bandcamp ids from `rows.json` (`bc`) load with the pattern in `../../bandcamp/load_ids.sql` (needs migration 040).
 6. **Check** `gaps.py` again: the counts should move. Spot-check two or three quotes against their pages.
+7. **Claims** (`gaps.md` field `claims`): bios with press-kit claims (most booked, shared stages with, championed by, firsts, support lists). Run a claim check with `../claims/BRIEF.md`: every claim gets a source or comes out. Param's rule (3 Nov): no unverified claims from artists, including bios sent in through the forms.
 
 ## Rules that do not change
 - Identity first. Shared names are common (Komorebi, Kibo, Jatayu, Violet). If a page cannot be tied to the artist through

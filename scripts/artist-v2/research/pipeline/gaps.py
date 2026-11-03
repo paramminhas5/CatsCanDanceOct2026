@@ -32,6 +32,9 @@ tags = by(sb('artist_sound_tags?select=artist_slug,tag'))
 mixes = by(sb('artist_tracklists?select=artist_slug,url'))
 ids = by(sb('artist_external_ids?select=artist_slug,scheme,value'))
 PLAY = ('soundcloud.com', 'youtube.com', 'youtu.be', 'mixcloud.com')
+# Press-kit claims that need a source before they stay in a bio (Param, 3 Nov: no unverified claims from artists).
+import re
+CLAIMS = re.compile(r'most booked|played alongside|opened for|shared (the )?stages? with|one of (the|india)|biggest|leading|renowned|acclaimed|legendary|iconic|pioneer|trailblaz|visionary|historic|prestigious|brightest|first (indian|south asian|woman|female)|award|sold.out|top \d+|heavy rotation|championed by|named one of|support from|supported by', re.I)
 
 rows, report = [], []
 for x in sorted(arts, key=lambda r: r['slug']):
@@ -42,7 +45,8 @@ for x in sorted(arts, key=lambda r: r['slug']):
     gaps = [k for k, ok in [('bio', x['bio'] and len(x['bio'].strip()) > 40), ('photo', x['photo_url']), ('plays', plays),
                             ('eras', s in eras), ('releases', d), ('press', s in press), ('tags', s in tags),
                             ('ids', any(k in idm for k in ('musicbrainz', 'discogs', 'ra', 'wikidata'))),
-                            ('city', x['based_city'] and x['based_city'].strip().lower() != 'india')] if not ok]
+                            ('city', x['based_city'] and x['based_city'].strip().lower() != 'india'),
+                            ('claims', not CLAIMS.search(x['bio'] or ''))] if not ok]
     report.append((s, gaps))
     if not gaps and not a.all: continue
     ys = [r['year'] for r in d if r.get('year')]
@@ -66,7 +70,7 @@ for i in range(0, len(rows), a.size):
 json.dump(report, open(f'{out}/gaps.json', 'w'))
 full = sum(1 for _, g in report if not g)
 lines = [f'# Artist gaps ({a.status}, {len(report)} artists, {full} with nothing missing)', '']
-for k in ['bio', 'photo', 'plays', 'eras', 'releases', 'press', 'tags', 'ids', 'city']:
+for k in ['bio', 'photo', 'plays', 'eras', 'releases', 'press', 'tags', 'ids', 'city', 'claims']:
     miss = [s for s, g in report if k in g]
     lines.append(f'- {k}: {len(report) - len(miss)} have it, {len(miss)} missing' + (f": {', '.join(miss)}" if miss and len(miss) <= 40 else ''))
 open(f'{out}/gaps.md', 'w').write('\n'.join(lines) + '\n')
