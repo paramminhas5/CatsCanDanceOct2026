@@ -1,0 +1,272 @@
+[
+ {
+  "slug": "anish-sood",
+  "name": "ANISH SOOD",
+  "kind": "musician",
+  "based_city": "Goa",
+  "from_city": "India",
+  "genres": [
+   "Progressive",
+   "Deep House"
+  ],
+  "spotify": "https://open.spotify.com/artist/7qjp4poDA0EDaiCEKuH1ZQ",
+  "soundcloud": null,
+  "instagram": "anyasamusic",
+  "website": "https://anyasa.com",
+  "mix_url": null,
+  "labels": "Anjunadeep (UK)",
+  "members": "ANYASA",
+  "bio_excerpt": "Anish Sood records as Anyasa and was born in Goa in 1989. He debuted on Anjunadeep in July 2021 with the single Rasiya, reported as the first Indian artist signed to the label. He also runs the label Class Action.",
+  "releases_on_record": 10,
+  "release_years": [
+   2011,
+   2020
+  ],
+  "sample_releases": [
+   "Say My Name (2020, Class Action)",
+   "Running Back to You (2020, Class Action)",
+   "Mountain of a Man (2018, Class Action)",
+   "Castles (2018, Class Action)",
+   "Starry Night (2017, Class Action)",
+   "Going Under (2017, Class Action)",
+   "Don't Stop (2017, Class Action)",
+   "Superfly (2015)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/18613-anish-sood-debuts-as-anyasa-on-anjunadeep-with-new-single-rasiya",
+   "https://rollingstoneindia.com/anish-sood-transitions-into-anyasa-releases-new-single-rasiya/",
+   "https://mixmag.net/feature/anyasa-anjunadeep-anjunabeats-goa-india-traditional-interview"
+  ],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "beatport": "https://www.beatport.com/artist/anish-sood/207812",
+   "deezer": "4943579",
+   "discogs": "2871210",
+   "musicbrainz": "78361be1-bcb4-4758-8281-5b8e17286231",
+   "wikidata": "Q4765311"
+  },
+  "has_eras": false
+ },
+ {
+  "slug": "aayna",
+  "name": "AAYNA",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/user-519313833",
+  "instagram": "aayna",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Aayna is a DJ and producer whose sets are shaped by the Roland TB-303 and 1980s and 1990s acid house. She has played Magnetic Fields, DGTL, Echoes of Earth and Grasslands Festival in Nepal, and played for the UK community Keep Hush.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "the rawness of acid",
+   "disco, electro, breaks, UKG, IDM and further leftfield sounds",
+   "heavily influenced by Roland TB 303 and acid house greats of the 80s and 90s"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "musicbrainz": "8bd1a13f-0e21-40ae-9796-6be2c2f13503",
+   "ra": "aayna",
+   "youtube": "https://www.youtube.com/@aaynamusic"
+  },
+  "has_eras": false
+ },
+ {
+  "slug": "rohan-rakhit",
+  "name": "ROHAN RAKHIT",
+  "kind": "musician",
+  "based_city": "London, United Kingdom",
+  "from_city": null,
+  "genres": [
+   "Global Club",
+   "Jazz",
+   "Broken Beat"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": "https://earth-agency.com/artist/rohan-rakhit/",
+  "mix_url": "https://www.youtube.com/watch?v=69ZvqSf98ls",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Rohan Rakhit is a London DJ, actor and broadcaster. He is a resident at Worldwide FM, where he hosts the weekly show First Light, and co-organises the South Asian underground collective Daytimers.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://mixmag.net/read/horniman-museum-daytimers-day-festival-south-asian-artistry-news",
+   "https://crackmagazine.net/article/profiles/daytimers-the-new-kids-on-the-block/2",
+   "https://www.clashmusic.com/features/personality-clash-rohan-rakhit-rea/"
+  ],
+  "sound_tags_already_stored": [
+   "diverse and genre-less, introducing Broken Beat",
+   "the soulful and percussive sound that encapsulates his home city London"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.worldwidefm.net/episode/first-light-rohan-rakhit-and-donut-releases-of-2025-special",
+   "https://www.worldwidefm.net/episode/first-light-rohan-rakhit-w-sarathy-korwar-live-session-interview"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false
+ },
+ {
+  "slug": "lush-lata",
+  "name": "LUSH LATA",
+  "kind": "musician",
+  "based_city": "New Delhi, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "lushlata",
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/20112-wild-city-222-lush-lata",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Magnetic Fields regular.",
+  "releases_on_record": 1,
+  "release_years": [
+   2024,
+   2024
+  ],
+  "sample_releases": [
+   "Lush Lata Selects (2024, boxout.fm Recordings)"
+  ],
+  "press_urls_already_stored": [
+   "https://rollingstoneindia.com/dj-producer-lush-lata-first-indian-woman-at-ctm-festival-2023-germany",
+   "https://mixmag.asia/read/lush-lata-curates-boxoutfm-recordings-selects-compilation-new-releases",
+   "https://mixmag.asia/read/ctm-festival-berlin-welcomes-lush-lata-to-its-line-up-local"
+  ],
+  "sound_tags_already_stored": [
+   "dirty baselines and mood-swings",
+   "contemporary hip-hop, alluring bass lines, trap, afrobeat, tribal house"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.rinse.fm/episodes/lush-lata-11-10-2023-1700",
+   "https://www.nts.live/shows/diesel-tracks/episodes/diesel-tracks-lush-lata-4th-july-2023"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false
+ },
+ {
+  "slug": "discokid",
+  "name": "DISCOKID",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "Disco",
+   "Funk",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/iamdiscokid",
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://soundcloud.com/iamdiscokid/mixmag-presents-the-lab-goa-featuring-discokid",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Discokid is the DJ name of Fatema Hakim, a disco and funk DJ from India. She is resident DJ at the Paradise Disco pop-up and started Disco Diwali in 2021. She played Mixmag's The Lab Goa in January 2022.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://mixmag.net/read/discokid-in-the-lab-goa-dj-lab",
+   "https://grayarea.co/magazine/mixmag-lab-goa-discokid-mix-of-the-week"
+  ],
+  "sound_tags_already_stored": [
+   "a collection of worldwide musical gems to perform a funky live set"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false
+ },
+ {
+  "slug": "kibo",
+  "name": "KIBO",
+  "kind": "musician",
+  "based_city": "Mumbai, India",
+  "from_city": null,
+  "genres": [
+   "House",
+   "Deep House"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Kibo is a Mumbai DJ whose sets are rooted in house with jazzy undertones and deep grooves. She has played DGTL Mumbai and Magnetic Fields, and performed at PORT Mumbai on 27 February 2026.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "high-energy, genre-fluid sets rooted in house",
+   "jazzy undertones, deep grooves, and experimental textures"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false
+ },
+ {
+  "slug": "mc-soopy",
+  "name": "MC SOOPY",
+  "kind": "musician",
+  "based_city": "New Delhi, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "MC"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "MC Soopy is Siddhant Roop Rai, an MC and DJ from New Delhi. As an MC he does improvised, grime-infused rapping and hypes the room. As a DJ he plays anything from hip-hop and soul to Italo and techno.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "break neck energy"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false
+ }
+]

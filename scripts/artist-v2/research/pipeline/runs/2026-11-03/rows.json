@@ -1,0 +1,521 @@
+{
+"eras": [],
+"tags": [
+{
+"s": "bombie",
+"tag": "groovy, boppy, hypnotic, and vibrant",
+"u": "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-248-bombie-23-08-2023/"
+},
+{
+"s": "dreamstates",
+"tag": "lo-fi breakbeats, electro, garage or acid",
+"u": "https://www.mixcloud.com/dreamstates/"
+},
+{
+"s": "girls-night-out",
+"tag": "industrial soundscapes crossing krautrock, post-punk, EBM, wave and new beat",
+"u": "https://www.mixcloud.com/boxoutfm/the-waiting-room-001-girls-night-out-22-03-2018/"
+},
+{
+"s": "kandy-kuri",
+"tag": "atmospheric club selections, spanning across techno, breaks, bass",
+"u": "https://www.mixcloud.com/FOUNDATION_FM/foundationfm-friday-takeover-filth-inc-w-kandy-kuri/"
+},
+{
+"s": "shama-anwar",
+"tag": "Unapologetically unique take on hip-hop and electronic music",
+"u": "https://www.mixcloud.com/boxoutfm/world-of-echo-001-shama-anwar-22-06-2019/"
+},
+{
+"s": "shama-anwar",
+"tag": "Trap vibes",
+"u": "https://www.mixcloud.com/drmartens/shama-anwar-dj-set-dr-martens-on-air-camden/"
+},
+{
+"s": "shama-anwar",
+"tag": "Lush jazz numbers",
+"u": "https://www.mixcloud.com/boxoutfm/chai-and-chill-048-shama-anwar-03-02-2019/"
+}
+],
+"aliases": [
+{
+"s": "okedo",
+"a": "Okedolo",
+"k": "side_project",
+"u": "https://www.thewildcity.com/news/19853-okedo-dolorblind-introduce-their-duo-okedolo-with-ep-season-1"
+}
+],
+"press": [
+{
+"s": "aaguu",
+"t": "Wild City #214: AAGUU",
+"p": "Wild City",
+"u": "https://www.thewildcity.com/mixes/19850-wild-city-214-aaguu",
+"d": "2022-08-25"
+},
+{
+"s": "bombie",
+"t": "Wild City #263: Bombie",
+"p": "Wild City",
+"u": "https://www.thewildcity.com/mixes/21742-wild-city-263-bombie",
+"d": "2026-07-03"
+},
+{
+"s": "dreamstates",
+"t": "Dreamstates B2B Zokhuma in The Lab Goa",
+"p": "Mixmag",
+"u": "https://mixmag.net/read/dreamstates-b2b-zokhuma-in-the-lab-goa-dj-lab",
+"d": "2022-05-17"
+},
+{
+"s": "dreamstates",
+"t": "Dreamstates, OX7GEN, Rafiki, Tarqeeb & Zokhuma Join Forces For Quarterly Residency At antiSOCIAL Mumbai",
+"p": "Wild City",
+"u": "https://www.thewildcity.com/news/16102-dreamstates-ox7gen-rafiki-tarqeeb-zokhuma-join-forces-for-quarterly-residency-at-antisocial-mumbai",
+"d": "2020-01-22"
+},
+{
+"s": "girls-night-out",
+"t": "Wild City #205: GIRLS NIGHT OUT",
+"p": "Wild City",
+"u": "https://www.thewildcity.com/mixes/18583-wild-city-205-girls-night-out",
+"d": null
+},
+{
+"s": "girls-night-out",
+"t": "Magnetic Fields Festival Releases Mixes By Nosedrip, DJ ADHD, Mixtress, GIRLS NIGHT OUT & More",
+"p": "Wild City",
+"u": "https://www.thewildcity.com/news/20626-magnetic-fields-festival-releases-mixes-by-nosedrip-dj-adhd-mixtress-girls-night-out-more",
+"d": "2024-04-03"
+},
+{
+"s": "mixtress",
+"t": "Listen to Mixtress' mix for DJ Mag's Radio 1 Dance residency",
+"p": "DJ Mag",
+"u": "https://djmag.com/news/listen-mixtress-mix-dj-mags-radio-1-dance-residency",
+"d": "2022-02-01"
+},
+{
+"s": "mixtress",
+"t": "In Conversation With Mixtress",
+"p": "UKF",
+"u": "https://ukf.com/read/in-conversation-with-mixtress",
+"d": "2023-10-20"
+},
+{
+"s": "mixtress",
+"t": "Mixtress' Top 5",
+"p": "KALTBLUT Magazine",
+"u": "https://www.kaltblut-magazine.com/mixtress-top-5/",
+"d": "2023-09-07"
+},
+{
+"s": "okedo",
+"t": "Audio Asia: Okedo & Pluto Monkey serve hazy deep house textures on 'Prayer for a Simple Time'",
+"p": "Mixmag Asia",
+"u": "https://mixmag.asia/read/okedo-pluto-monkey-prayer-for-a-simple-time-audio-asia",
+"d": "2023-03-31"
+},
+{
+"s": "okedo",
+"t": "'New Fusion Movements': Listen To Okedo & Pluto Monkey's New Layered & Textural EP",
+"p": "Homegrown",
+"u": "https://homegrown.co.in/homegrown-creators/new-fusion-movements-listen-to-okedo-pluto-monkeys-new-layered-textural-ep",
+"d": "2023-04-07"
+},
+{
+"s": "okedo",
+"t": "Okedolo forge distinct interpretations of contemporary dance music in 'Season 1'",
+"p": "Mixmag Asia",
+"u": "https://mixmag.asia/read/okedolo-okedo-dolorblind-india-season-1-export-quality-records-new-releases",
+"d": "2022-08-22"
+},
+{
+"s": "okedo",
+"t": "Okedo & Dolorblind Introduce Their Duo Okedolo With EP 'Season 1'",
+"p": "Wild City",
+"u": "https://www.thewildcity.com/news/19853-okedo-dolorblind-introduce-their-duo-okedolo-with-ep-season-1",
+"d": "2022-08-26"
+},
+{
+"s": "okedo",
+"t": "Listen: 'Wacheewan' By Okedo",
+"p": "Wild City",
+"u": "https://www.thewildcity.com/news/12572-listen-wacheewan-by-okedo",
+"d": "2019-04-18"
+},
+{
+"s": "stain",
+"t": "Stain x Zed Bias - Delhi Birds (review)",
+"p": "Resident Advisor",
+"u": "https://de.ra.co/reviews/35015",
+"d": "2022-08-12"
+},
+{
+"s": "stain",
+"t": "UKBMix 103 // Stain",
+"p": "UK Bass Music",
+"u": "https://ukbassmusic.com/ukbmix-103-stain",
+"d": "2022-08-16"
+}
+],
+"mixes": [
+{
+"s": "aaguu",
+"t": "AAGUU, The Quarry, Wonderfruit 2025 (Wonderfruit) (published 2025)",
+"u": "https://soundcloud.com/wonderfruitfestival/aaguu-the-quarry-wonderfruit"
+},
+{
+"s": "aaguu",
+"t": "Spicetape - Asmi Shetty & AAGUU - 19 May 2025 (Refuge Worldwide) (published 2025)",
+"u": "https://soundcloud.com/refugeworldwide/spicetape_asmi-shetty_aaguu-5"
+},
+{
+"s": "aaguu",
+"t": "Mixmag Asia Radio 145 - AAGUU [India] (published 2023)",
+"u": "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-145-aaguu-india/"
+},
+{
+"s": "aaguu",
+"t": "SSU001: AAGUU (Sunny Side Up!) (published 2020)",
+"u": "https://soundcloud.com/user-484415935/ssu001-aaguu"
+},
+{
+"s": "aaguu",
+"t": "KLUBRADIO w/ Todh Teri & AAGUU on 100.6 FluxFM (published 2019)",
+"u": "https://www.mixcloud.com/todhteri/klubradio-w-todh-teri-aaguu-on-1006-fluxfm/"
+},
+{
+"s": "bombie",
+"t": "Bombie @ Magnetic Fields Festival (Recorded December 2024) (published 2024)",
+"u": "https://soundcloud.com/bombiezip/magfields"
+},
+{
+"s": "bombie",
+"t": "Bombie for Jay Carder Rinse FM (published 2025)",
+"u": "https://soundcloud.com/bombiezip/bombie-for-jay-carder"
+},
+{
+"s": "bombie",
+"t": "Boxout Wednesdays 248 - Bombie [23-08-2023] (boxout.fm) (published 2023)",
+"u": "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-248-bombie-23-08-2023/"
+},
+{
+"s": "bombie",
+"t": "BOMBIE in Gulmarg Kashmir | Jungle, Footwork, Dubstep, Bass (published 2025)",
+"u": "https://soundcloud.com/bombiezip/bombie-gulmarg-audio-wav"
+},
+{
+"s": "bombie",
+"t": "Bombie | Future Funk Showcase | 13.12.2025 (published 2025)",
+"u": "https://soundcloud.com/bombiezip/bombie-rec"
+},
+{
+"s": "bullzeye",
+"t": "Furthur Episode 006 _ Bullzeye (published 2020)",
+"u": "https://www.mixcloud.com/furthurmusic/furthur006_bullzeye/"
+},
+{
+"s": "bullzeye",
+"t": "#GetBoshed 003 - BULLZEYE (Boshed, Goa) (published 2020)",
+"u": "https://www.mixcloud.com/BoshedInGoa/getboshed-003-bullzeye/"
+},
+{
+"s": "bullzeye",
+"t": "MTR Radio #161 Bullzeye (Minitech Recordings Radio) (published 2020)",
+"u": "https://www.mixcloud.com/Minitech_Recordings_Radio/mtr-radio-161-bullzeye/"
+},
+{
+"s": "bullzeye",
+"t": "Bullzeye@DerWeibeHase 29/07/2023 (set at The White Rabbit Berlin) (published 2023)",
+"u": "https://soundcloud.com/bullzeyepower/bullzeyederweibehase-29072023mp3"
+},
+{
+"s": "bullzeye",
+"t": "RUCAST #001 by Bullzeye (Raipur Underground Community) (published 2021)",
+"u": "https://www.mixcloud.com/RaipurUndergroundCommunity/rucast-001-by-bullzeye/"
+},
+{
+"s": "dreamstates",
+"t": "Dreamstates Live @ Boxout Weekender [07-04-2018] (published 2018)",
+"u": "https://www.mixcloud.com/dreamstates/dreamstates-live-boxout-weekender-07-04-2018/"
+},
+{
+"s": "dreamstates",
+"t": "Boxout Wednesdays 118.2 - dreamstates [03-07-2019] (boxout.fm) (published 2019)",
+"u": "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-1182-dreamstates-03-07-2019/"
+},
+{
+"s": "dreamstates",
+"t": "Cosmic Claps 048 - dreamstates [26-03-2021] (published 2021)",
+"u": "https://www.mixcloud.com/dreamstates/cosmic-claps-048-dreamstates-26-03-2021/"
+},
+{
+"s": "dreamstates",
+"t": "CLUB.FM | REC_001 ft. dreamstates b2b Kandy Kuri (Q-Radio) (published 2025)",
+"u": "https://soundcloud.com/q_radio/club-fm-dreamstates-b2b-kandy"
+},
+{
+"s": "dreamstates",
+"t": "Midnight Shuffle (published 2017)",
+"u": "https://soundcloud.com/indreamstates/midnight-shuffle"
+},
+{
+"s": "girls-night-out",
+"t": "Wild City #205: GIRLS NIGHT OUT (published 2021)",
+"u": "https://soundcloud.com/thewildcity/wild-city-205-girls-night-out"
+},
+{
+"s": "girls-night-out",
+"t": "GIRLS NIGHT OUT @ Boxout Weekender 2019, Live at Auro Kitchen & Bar (published 2019)",
+"u": "https://www.mixcloud.com/vijayant-singh/boxout-weekenders-2019-girls-night-out-auro-kitchen-bar06-04-2019/"
+},
+{
+"s": "girls-night-out",
+"t": "The Waiting Room 001 - GIRLS NIGHT OUT [22-03-2018] (boxout.fm) (published 2018)",
+"u": "https://www.mixcloud.com/boxoutfm/the-waiting-room-001-girls-night-out-22-03-2018/"
+},
+{
+"s": "girls-night-out",
+"t": "The Waiting Room 020 - GIRLS NIGHT OUT [17-10-2019] (boxout.fm) (published 2019)",
+"u": "https://www.mixcloud.com/boxoutfm/the-waiting-room-020-girls-night-out-17-10-2019/"
+},
+{
+"s": "girls-night-out",
+"t": "Boxout Wednesdays 206 - GIRLS NIGHT OUT [05-10-2022] (boxout.fm) (published 2022)",
+"u": "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-206-girls-night-out-05-10-2022/"
+},
+{
+"s": "kandy-kuri",
+"t": "Wild City #229: Kandy Kuri (published 2023)",
+"u": "https://soundcloud.com/thewildcity/wild-city-229-kandy-kuri"
+},
+{
+"s": "kandy-kuri",
+"t": "Krunk with Kohra & Kandy Kuri - 06 February 2024 (Rinse FM) (published 2024)",
+"u": "https://soundcloud.com/rinsefm/krunk-with-kohra-kandy-kuri-06-february-2024"
+},
+{
+"s": "kandy-kuri",
+"t": "Friday takeover + filth inc. w/ Kandy Kuri - 01.03.24 (foundation.fm) (published 2024)",
+"u": "https://www.mixcloud.com/FOUNDATION_FM/foundationfm-friday-takeover-filth-inc-w-kandy-kuri/"
+},
+{
+"s": "kandy-kuri",
+"t": "CloudCore Nectar 15 x Kandy Kuri (published 2024)",
+"u": "https://soundcloud.com/kandykuri/cloudcore-nectar-15-x-kandy-kuri"
+},
+{
+"s": "kandy-kuri",
+"t": "Radio Student - Vibe Check w Kandy Kuri / 25th Nov 2023 (published 2023)",
+"u": "https://soundcloud.com/kandykuri/vibecheck_radiostudent"
+},
+{
+"s": "mixtress",
+"t": "Mixtress | Boiler Room: London",
+"u": "https://soundcloud.com/platform/mixtress-boiler-room-london"
+},
+{
+"s": "mixtress",
+"t": "Mixtress DJ Set | Keep Hush Live: Westival 2022 (published 2022)",
+"u": "https://www.youtube.com/watch?v=i9IndSJH6lk"
+},
+{
+"s": "mixtress",
+"t": "Mixtress DJ Set | Keep Hush Live London: Mixtress Presents",
+"u": "https://www.youtube.com/watch?v=ck-qs6WmtTA"
+},
+{
+"s": "mixtress",
+"t": "Mixtress - March 2022 (Balamii residency) (published 2022)",
+"u": "https://www.mixcloud.com/balamii/mixtress-march-2022/"
+},
+{
+"s": "mixtress",
+"t": "Hardcore, Amen w/ Mixtress - March 2021 (Balamii) (published 2021)",
+"u": "https://www.mixcloud.com/balamii/hardcore-amen-w-mixtress-march-2021/"
+},
+{
+"s": "okedo",
+"t": "KRUNK Guest Mix 106: Okedo (published 2019)",
+"u": "https://www.mixcloud.com/krunklive/krunk-guest-mix-106-okedo/"
+},
+{
+"s": "okedo",
+"t": "Chai and Chill 085 - Okedo (boxout.fm) (published 2020)",
+"u": "https://www.mixcloud.com/boxoutfm/chai-and-chill-085-okedo-19-07-2020/"
+},
+{
+"s": "okedo",
+"t": "Skip-A-Beat 041 - Guest mix by Okedo (boxout.fm) (published 2020)",
+"u": "https://www.mixcloud.com/skipabeatlive/skip-a-beat-041-guest-mix-by-okedo-30-10-2020/"
+},
+{
+"s": "okedo",
+"t": "Boxout Wednesdays 185 - Okedo (published 2022)",
+"u": "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-185-okedo-11-05-2022/"
+},
+{
+"s": "okedo",
+"t": "Mixes by Okedo (SoundCloud playlist)",
+"u": "https://soundcloud.com/okedomusic/sets/mixes"
+},
+{
+"s": "shama-anwar",
+"t": "Shama Anwar @ Magnetic Fields Festival 2019 (published 2019)",
+"u": "https://www.mixcloud.com/magneticfieldsfestival/shama-anwar-budxyard-mf19/"
+},
+{
+"s": "shama-anwar",
+"t": "World Of Echo 001 - Shama Anwar (boxout.fm) (published 2019)",
+"u": "https://www.mixcloud.com/boxoutfm/world-of-echo-001-shama-anwar-22-06-2019/"
+},
+{
+"s": "shama-anwar",
+"t": "Shama Anwar (DJ Set) | Dr. Martens On Air: Camden (published 2017)",
+"u": "https://www.mixcloud.com/drmartens/shama-anwar-dj-set-dr-martens-on-air-camden/"
+},
+{
+"s": "shama-anwar",
+"t": "Chai and Chill 048 - Shama Anwar (boxout.fm) (published 2019)",
+"u": "https://www.mixcloud.com/boxoutfm/chai-and-chill-048-shama-anwar-03-02-2019/"
+},
+{
+"s": "shama-anwar",
+"t": "Selector Radio South Asian Heritage Month Special, with Shama Anwar guest mix (published 2021)",
+"u": "https://www.mixcloud.com/SelectorRadio/south-asian-heritage-month-special-round-table-the-link-up-shama-anwar-guest-mix-13-aug-21/"
+},
+{
+"s": "sheral",
+"t": "Sheral - True Music Fund Pop-up Radio (boxout.fm) (published 2025)",
+"u": "https://www.mixcloud.com/boxoutfm/sheral-true-music-fund-pop-up-radio-23102025/"
+},
+{
+"s": "sheral",
+"t": "Ambient Drift IX - Sheral (#014), Sound Redefined (published 2025)",
+"u": "https://www.mixcloud.com/SoundRedefined/ambient-drift-ix-sheral-014/"
+},
+{
+"s": "sheral",
+"t": "Boxout Wednesdays 229 - Sheral (published 2023)",
+"u": "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-229-sheral-12-04-2023/"
+},
+{
+"s": "sheral",
+"t": "Sheral B2B Bombie (published 2023)",
+"u": "https://www.mixcloud.com/sheralbabbarr/sheral-b2b-bombie/"
+},
+{
+"s": "shireen",
+"t": "Boxout Wednesdays 149.1 - Shireen (published 2020)",
+"u": "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-1491-shireen-26-02-2020/"
+},
+{
+"s": "shireen",
+"t": "Boxout Wednesdays 117.1 - Shireen (published 2019)",
+"u": "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-1171-shireen-26-06-2019/"
+},
+{
+"s": "shireen",
+"t": "Wild City Presents Various Artists - Shireen (boxout.fm) (published 2019)",
+"u": "https://www.mixcloud.com/boxoutfm/wild-city-presents-various-artists-shireen-21-09-2019/"
+},
+{
+"s": "shireen",
+"t": "Delhi - Derry: Electronic Connections - Shireen (boxout.fm) (published 2021)",
+"u": "https://www.mixcloud.com/boxoutfm/delhi-derry-electronic-connections-shireen-06-03-2021/"
+},
+{
+"s": "shireen",
+"t": "Boxout Wednesdays 095 Rooftop Sessions - Shireen (published 2019)",
+"u": "https://www.mixcloud.com/BoxoutWednesdays/boxout-wednesdays-095-rooftop-sessions-shireen-23-01-2019/"
+},
+{
+"s": "stain",
+"t": "UKBMix 103 // Stain (published 2022)",
+"u": "https://soundcloud.com/ukbassmusic/ukbmix-103-stain"
+},
+{
+"s": "stain",
+"t": "Wild City #262: Pia Collada B2B Stain (Future Funk: The One Year Dance) (published 2026)",
+"u": "https://www.mixcloud.com/WildCity/wild-city-262-pia-collada-b2b-stain-future-funk-the-one-year-dance/"
+},
+{
+"s": "stain",
+"t": "Sub-Z Sessions 066 - Stain (published 2019)",
+"u": "https://www.mixcloud.com/subzdelhi/sub-z-sessions-068-stain/"
+},
+{
+"s": "stain",
+"t": "Sub-Z Sessions 071 - Stain (published 2019)",
+"u": "https://www.mixcloud.com/subzdelhi/sub-z-sessions-073-stain-10-08-2019/"
+},
+{
+"s": "stain",
+"t": "Sub-Z Sessions 005 - Stain (boxout.fm) (published 2018)",
+"u": "https://www.mixcloud.com/boxoutfm/sub-z-sessions-stain-17-03-2018/"
+}
+],
+"spotify": [
+{
+"s": "mixtress",
+"u": "https://open.spotify.com/artist/1Eviv9wjS232W0w0Sqy7Il"
+},
+{
+"s": "okedo",
+"u": "https://open.spotify.com/artist/632612LK6yqJ8mwdqYILAE"
+}
+],
+"bio": [],
+"releases": [
+{
+"s": "aaguu",
+"ti": "Sampadan 19 (AAGUU remix), on Todh Teri - Deep In India Vol. 6",
+"ty": "remix",
+"y": 2019,
+"d": "2019-11-29",
+"l": "Todh Teri",
+"u": "https://soundcloud.com/todhteri/b1-todh-teri-sampadan-20"
+},
+{
+"s": "okedo",
+"ti": "Soft Serve (Side A)",
+"ty": "album",
+"y": 2025,
+"d": "2025-06-04",
+"l": null,
+"u": "https://okedo.bandcamp.com/album/soft-serve-side-a"
+},
+{
+"s": "okedo",
+"ti": "Soft Serve (Side B)",
+"ty": "album",
+"y": 2025,
+"d": "2025-06-11",
+"l": null,
+"u": "https://okedo.bandcamp.com/album/soft-serve-side-b-2"
+}
+],
+"ids": [
+{
+"s": "okedo",
+"k": "bandcamp",
+"v": "https://okedo.bandcamp.com/",
+"u": "https://okedo.bandcamp.com/"
+}
+],
+"bc": [
+{
+"s": "okedo",
+"t": "Soft Serve (Side A)",
+"ty": "album",
+"id": 848922954
+},
+{
+"s": "okedo",
+"t": "Soft Serve (Side B)",
+"ty": "album",
+"id": 2108221668
+}
+]
+}

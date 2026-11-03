@@ -37,9 +37,11 @@ export type Moment = {
   venue: string | null; // shows: where it happened
   city: string | null;
 };
+/** A Bandcamp item that plays in Bandcamp's own player (for releases that are not on Deezer). */
+export type Bandcamp = { type: "album" | "track"; id: number; url: string | null };
 export type LinkOut = { label: string; url: string };
 /** Release links point at the real thing (Bandcamp, Spotify, SoundCloud, YouTube, label or press). Deezer only when nothing else exists. */
-export type Release = Moment & { type: string; label: string | null; undated: boolean; onTimeline: boolean; links: LinkOut[] };
+export type Release = Moment & { type: string; label: string | null; undated: boolean; onTimeline: boolean; links: LinkOut[]; bandcamp: Bandcamp | null };
 export type Era = { id: string; label: string; from: number; to: number | null; sound: string | null; tags: string[]; src: string | null; srcName: string | null; palette: PaletteKey; accent: string; bg: string };
 export type Row = { a: string; b: string; u: string | null };
 export type Tile = { id: string; label: string; head: string; rows: Row[] };
@@ -211,7 +213,7 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
     select<DbGig>(`artist_gigs?artist_slug=eq.${s}&verified=is.true&select=id,event_name,venue,city,event_date,source`, 300),
     rpc<Upcoming[]>("artist_upcoming", { p_slug: slug }).catch(() => [] as Upcoming[]),
   ]);
-  const [media, tour, nights, social, coGigs] = await Promise.all([
+  const [media, tour, nights, social, coGigs, bcRows] = await Promise.all([
     select<{ url: string; caption: string | null; author: string | null; source_url: string | null }>(`artist_media?artist_slug=eq.${s}&kind=eq.photo&select=url,caption,author,source_url&order=sort.asc.nullslast`, 300).catch(() => []),
     select<{ city: string; from_date: string; to_date: string; note: string | null }>(`touring_now?artist_slug=eq.${s}&select=city,from_date,to_date,note&order=from_date.asc`, 120).catch(() => []),
     select<{ slug: string; title: string; event_date: string | null; lineup: string[] | null; status: string | null; episode_no: number | null }>(`events?published=is.true&select=slug,title,event_date,lineup,status,episode_no&order=event_date.desc.nullslast`, 300).catch(() => []),
@@ -224,7 +226,10 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
         ? select<{ artist_slug: string; event_name: string; venue: string | null; event_date: string }>(`artist_gigs?event_date=in.(${days.join(",")})&artist_slug=neq.${s}&verified=is.true&select=artist_slug,event_name,venue,event_date`, 300).catch(() => [])
         : Promise.resolve([] as { artist_slug: string; event_name: string; venue: string | null; event_date: string }[]);
     })(),
+    // Bandcamp embed ids (migration 040). Asked for separately so the page still works before 040 is applied.
+    select<{ id: string; bandcamp_item_id: number | null; bandcamp_item_type: string | null }>(`artist_discography?artist_slug=eq.${s}&bandcamp_item_id=not.is.null&select=id,bandcamp_item_id,bandcamp_item_type`, 120).catch(() => []),
   ]);
+  const bcById = new Map(bcRows.filter((b) => b.bandcamp_item_id && (b.bandcamp_item_type === "album" || b.bandcamp_item_type === "track")).map((b) => [b.id, b]));
 
   const deezerId = ext.find((x) => x.scheme === "deezer")?.value ?? null;
   const bandcampHome = ext.find((x) => x.scheme === "bandcamp")?.url ?? null;
@@ -235,11 +240,15 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
     const [fill, ink] = FILLS[i % FILLS.length];
     const type = TYPE_LABEL[(r.release_type ?? "").toLowerCase()] ?? "Release";
     const streaming = !!r.deezer_track_id;
-    const sub = [type, r.label].filter(Boolean).join(" · ") + (streaming ? "" : " · not on streaming");
+    // A compilation's album player starts on its first track, not this artist's, so only track ids count there.
+    const bcRow = bcById.get(r.id);
+    const bc = bcRow && !((r.release_type ?? "").toLowerCase() === "compilation" && bcRow.bandcamp_item_type === "album") ? bcRow : undefined;
+    const bandcamp: Bandcamp | null = bc ? { type: bc.bandcamp_item_type as "album" | "track", id: Number(bc.bandcamp_item_id), url: r.bandcamp_url ?? (/bandcamp\.com/.test(r.source_url ?? "") ? r.source_url : null) } : null;
+    const sub = [type, r.label].filter(Boolean).join(" · ") + (streaming ? "" : bandcamp ? " · on Bandcamp" : " · not on streaming");
     return {
       id: `r-${r.id}`, y: f?.y ?? 0, kind: "rel", t: r.title, sub, date: f?.label ?? "Undated", day: null,
       src: r.source_url, albumId: r.deezer_album_id, trackId: r.deezer_track_id, track: r.deezer_track_title,
-      fill, ink, venue: null, city: null, type: (r.release_type ?? "").toLowerCase(), label: r.label, undated: !f, onTimeline: false,
+      fill, ink, venue: null, city: null, type: (r.release_type ?? "").toLowerCase(), label: r.label, undated: !f, onTimeline: false, bandcamp,
       links: releaseLinks(r, a, bandcampHome),
     };
   });
@@ -564,6 +573,12 @@ function idList(ext: { scheme: string; value: string; url: string | null }[], mb
 function sameUrl(x: string, y: string) {
   const n = (u: string) => u.toLowerCase().replace(/^https?:\/\/(www\.|m\.)?/, "").replace(/[/?#]+$/, "");
   return n(x) === n(y);
+}
+
+/** Bandcamp's own small player for one album or track. */
+export function bandcampEmbed(b: Bandcamp | null | undefined): { src: string; h: number } | null {
+  if (!b || !b.id) return null;
+  return { src: `https://bandcamp.com/EmbeddedPlayer/${b.type}=${b.id}/size=large/bgcol=141414/linkcol=b6ef36/tracklist=false/artwork=small/transparent=true/`, h: 120 };
 }
 
 /** Player URL for links that can play on the page (YouTube, SoundCloud, Mixcloud). Null for the rest. */

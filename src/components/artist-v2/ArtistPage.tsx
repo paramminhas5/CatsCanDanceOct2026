@@ -13,8 +13,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import {
   type ArtistV2, type Moment, type Era, type Release, type Video, type Mix, type PressItem, type LinkOut,
-  coverUrl, sourceName, displayName, embedFor,
-} from "@/lib/artist-v2";
+  coverUrl, sourceName, displayName, embedFor, bandcampEmbed } from "@/lib/artist-v2";
 
 const BookButton = dynamic(() => import("@/components/booking/BookButton"), { ssr: false });
 
@@ -386,6 +385,9 @@ export default function ArtistPage({ a }: { a: ArtistV2 }) {
           </ol>
         )}
         {list === "loading" && <span style={{ color: MUTE, fontSize: 13 }}>Loading the tracklist…</span>}
+        {!fRel.trackId && bandcampEmbed(fRel.bandcamp) && (
+          <iframe title={`${fRel.t} on Bandcamp`} src={bandcampEmbed(fRel.bandcamp)!.src} loading="lazy" style={{ border: 0, width: "100%", maxWidth: 560, height: bandcampEmbed(fRel.bandcamp)!.h, marginTop: 6 }} />
+        )}
         <Also rel={rel} accent={accent} onMedia={setMedia} />
       </FocusBox>
     );

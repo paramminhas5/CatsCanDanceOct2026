@@ -1,0 +1,32 @@
+{
+ "bio": [
+  {
+   "s": "sodhi",
+   "b": "Sodhi is a bass music DJ from New Delhi who spent his formative years in London; his sets mix grime, bass, hip-hop, afrobeats and dancehall with soundsystem music. He has hosted a monthly show on boxout.fm and in 2022 toured the UK, playing Corsica Studios in London and Celtronic Festival in Derry, then Magnetic Fields.",
+   "src": [
+    {
+     "fact": "Bass music DJ from New Delhi, formative years in London, grime/bass/hip-hop/afrobeats/dancehall with soundsystem music, monthly boxout.fm show",
+     "source_url": "https://www.mixcloud.com/8ballradio/dance-w-friends-special-guest-sodhi/"
+    },
+    {
+     "fact": "2022 UK tour including Corsica Studios London and Celtronic Festival Derry, then Magnetic Fields",
+     "source_url": "https://www.youtube.com/watch?v=rQI8oMHGIRU"
+    }
+   ]
+  },
+  {
+   "s": "thegreybox",
+   "b": "thegreybox is the DJ and producer alias of a Delhi-based graphic designer best known for his work with the online radio station boxout.fm, where he hosted the monthly show HOODVIBES. His DJ sets move from hip-hop and trap into house and club music, and he released 'Beats' in 2019.",
+   "src": [
+    {
+     "fact": "Delhi-based, DJ and producer, graphic designer, known for boxout.fm; Beats released 18 September 2019",
+     "source_url": "https://www.thewildcity.com/events/14736-wild-city-presents-listening-sessions-thegreybox"
+    },
+    {
+     "fact": "Hosts monthly HOODVIBES show on boxout.fm; sets move from hip-hop and trap into house, dance and club",
+     "source_url": "https://www.mixcloud.com/utkarsh-bhandari/"
+    }
+   ]
+  }
+ ]
+}
