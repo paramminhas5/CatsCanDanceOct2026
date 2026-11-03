@@ -1,0 +1,475 @@
+[
+ {
+  "slug": "kohra",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": "Stored handle 'kohra' not verified. Stored website looks wrong.",
+  "notes": "No press kit or agency roster page found. Stored website artistivity.com is a generic artist booking platform that does not mention Kohra, so it is probably the wrong website for him. Qilla Records is the label; no Kohra press page found there."
+ },
+ {
+  "slug": "komorebi",
+  "press_kit_urls": [],
+  "agency_urls": [
+   {
+    "url": "https://chickenranchrecords.com/komorebi",
+    "note": "Chicken Ranch Records artist page. Socials and review links only, no press kit or photo downloads."
+   },
+   {
+    "url": "https://chickenranchrecords.com/press",
+    "note": "Label press page. Lists reviews, no Komorebi photo kit."
+   }
+  ],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Identity matches (New Delhi producer, album The Fall). No kit found."
+ },
+ {
+  "slug": "long-distances",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Nothing official found. Only press articles and a district.in artist page. Note there may be other acts called Long Distances; the Mumbai indie rock band appears in coverage, which does not match the stored 'electronic' framing, so identity was not confirmed."
+ },
+ {
+  "slug": "lost-stories",
+  "press_kit_urls": [],
+  "agency_urls": [
+   {
+    "url": "https://loststories.in/contact/",
+    "note": "Official site booking and contact page."
+   }
+  ],
+  "bio_link_urls": [
+   {
+    "url": "https://loststories.in/gallery/",
+    "note": "Official site gallery page. It shows Academy meetup photos, not press photos, and gives no usage terms."
+   }
+  ],
+  "instagram_check": null,
+  "notes": "No press kit or EPK found on the official site. Ask via the contact page for photos."
+ },
+ {
+  "slug": "lush-lata",
+  "press_kit_urls": [],
+  "agency_urls": [
+   {
+    "url": "https://refugeworldwide.com/artists/lush-lata",
+    "note": "Refuge Worldwide artist page, confirms New Delhi DJ. No press kit listed."
+   },
+   {
+    "url": "https://refugeworldwide.com/bookings",
+    "note": "Refuge Worldwide general bookings page, not specific to her."
+   }
+  ],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Magnetic Fields artist page also has no press kit. No kit found."
+ },
+ {
+  "slug": "madame-gandhi",
+  "press_kit_urls": [
+   {
+    "url": "https://www.madamegandhi.com/press",
+    "note": "Official press page. Lists coverage and a press contact (Nancy Lu at Fancy PR, by email). No kit or photo download page confirmed."
+   }
+  ],
+  "agency_urls": [],
+  "bio_link_urls": [
+   {
+    "url": "https://www.madamegandhi.com",
+    "note": "Official site with press and booking contact emails."
+   }
+  ],
+  "instagram_check": null,
+  "notes": "Ask the PR contact on the press page for approved photos."
+ },
+ {
+  "slug": "mc-soopy",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Nothing found. Searches returned only the Wild City listing and unrelated news."
+ },
+ {
+  "slug": "midnight-traffic",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Nothing official found. Qilla Records label coverage only (Mixmag). No Hyderabad press page located."
+ },
+ {
+  "slug": "mixtress",
+  "press_kit_urls": [],
+  "agency_urls": [
+   {
+    "url": "https://events.musicofourdesire.com/artist/mixtress",
+    "note": "Mood events artist page, confirms London DJ and producer (Rukmini Mukherjee). No kit or booking agency listed."
+   }
+  ],
+  "bio_link_urls": [],
+  "instagram_check": "No Instagram stored.",
+  "notes": "No EPK or agency page found. Stored record has no Instagram."
+ },
+ {
+  "slug": "mogasu",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Nothing found. Search returned only unrelated results."
+ },
+ {
+  "slug": "monophonik",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "No press kit found. Coverage by Mixmag, Wild City and Homegrown only. Possible Indian agency link (Unmute) not confirmed."
+ },
+ {
+  "slug": "murthovic",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Nothing found. A Bandcamp page exists but no press material."
+ },
+ {
+  "slug": "nate08",
+  "press_kit_urls": [
+   {
+    "url": "https://krunklive.com/?p=16893",
+    "note": "Krunk Live artist page (Mumbai events and bookings agency). Links a Google Drive press kit, bio and tech rider, booking contact listed on the page."
+   }
+  ],
+  "agency_urls": [
+   {
+    "url": "https://needwantmusic.com/artists/nate08/",
+    "note": "NeedWant Music artist page, confirms Mumbai producer. No kit or photo download."
+   },
+   {
+    "url": "https://needwantmusic.com/contact/",
+    "note": "NeedWant general contact page."
+   }
+  ],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Best result in this batch. Open the Krunk page to get the Drive kit link yourself. Note Shantam's Krunk page links to a Nate08 YouTube channel, which looks like their mistake."
+ },
+ {
+  "slug": "nikki-nair",
+  "press_kit_urls": [],
+  "agency_urls": [
+   {
+    "url": "https://www.rostr.cc/profile/nikkinair/artist/overview",
+    "note": "ROSTR profile named as Nikki Nair's artist page. Not opened. Management is Future Classic; booking via Good Direction Agency, UNDR ctrl and Suo Motu per a ROSTR news item."
+   }
+  ],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Identity fits (Atlanta, Dirtybird, n goes to Infinity). Agency roster pages were not located, so none are listed as confirmed press pages. Krunk Kulture Bandcamp lists him but is not a press page."
+ },
+ {
+  "slug": "okedo",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Nothing found. Only a Wild City listing."
+ },
+ {
+  "slug": "prabh-deep",
+  "press_kit_urls": [
+   {
+    "url": "https://across-artists.pages.dev/artists/prabh-deep/one-sheet/",
+    "note": "Across Artists one-sheet page for Prabh Deep. A PDF one-sheet is also linked from his profile."
+   }
+  ],
+  "agency_urls": [
+   {
+    "url": "https://across-artists.pages.dev/artists/prabh-deep/",
+    "note": "Across Artists roster profile, includes one-sheet and booking link."
+   },
+   {
+    "url": "https://across-artists.pages.dev/book/",
+    "note": "Across Artists booking page."
+   }
+  ],
+  "bio_link_urls": [
+   {
+    "url": "https://prabhdeepmusic.com",
+    "note": "Own site, showing a maintenance notice only when checked."
+   }
+  ],
+  "instagram_check": null,
+  "notes": "Across Artists host is a pages.dev address, so check it is the real agency site before relying on it."
+ },
+ {
+  "slug": "prismer",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "No official press page found. Searches returned RA event pages and Bandcamp for Reel Long Overdub only."
+ },
+ {
+  "slug": "pulpy-shilpy",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Nothing official found. Only Wild City and SoundBetter listings."
+ },
+ {
+  "slug": "reble",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "No press kit found. Anara Publishing signing news only (publisher, not a photo source)."
+ },
+ {
+  "slug": "rohan-rakhit",
+  "press_kit_urls": [],
+  "agency_urls": [
+   {
+    "url": "https://earth-agency.com/artist/rohan-rakhit/",
+    "note": "Earth Agency roster page (agent Joey Manzi). No photo downloads on the page, request via agent."
+   }
+  ],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "No press kit found."
+ },
+ {
+  "slug": "sandunes",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [
+   {
+    "url": "https://www.sandunesmusic.com",
+    "note": "Own site, 'Coming soon' page with a contact email only."
+   }
+  ],
+  "instagram_check": null,
+  "notes": "No press kit page found. Press materials would need to be requested by email."
+ },
+ {
+  "slug": "shama-anwar",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Nothing found beyond Wild City listing."
+ },
+ {
+  "slug": "shantam",
+  "press_kit_urls": [
+   {
+    "url": "https://krunklive.com/artist/shantam/",
+    "note": "Krunk Live artist page with press kit, bio and tech rider Drive links and a booking contact."
+   }
+  ],
+  "agency_urls": [
+   {
+    "url": "https://krunklive.com/artist/shantam/",
+    "note": "Krunk Live (Mumbai events and bookings agency) roster page."
+   }
+  ],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Page says born in New Delhi, stored city is Noida. Page's YouTube link points to Nate08, which looks like an error."
+ },
+ {
+  "slug": "sheral",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Nothing found."
+ },
+ {
+  "slug": "shireen",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Nothing found. A Magnetic Fields Nomads link returned 'Artist not found'."
+ },
+ {
+  "slug": "sickflip",
+  "press_kit_urls": [],
+  "agency_urls": [
+   {
+    "url": "https://across-artists.pages.dev/roster/",
+    "note": "Across Artists roster lists only Kampai, Prabh Deep and Karun. Sickflip is not on it."
+   }
+  ],
+  "bio_link_urls": [],
+  "instagram_check": "Handle 'sickflip' unverified. Stored agency website not supported by roster page.",
+  "notes": "Stored website acrossartists.com could not be confirmed as Sickflip's agency. Not on the roster page found. No kit found."
+ },
+ {
+  "slug": "sid-vashi",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Nothing found beyond festival and Wild City listings."
+ },
+ {
+  "slug": "sijya",
+  "press_kit_urls": [],
+  "agency_urls": [
+   {
+    "url": "https://www.sijya.com/bio",
+    "note": "Agencies inferred from email domains only, not confirmed."
+   }
+  ],
+  "bio_link_urls": [
+   {
+    "url": "https://www.sijya.com/bio",
+    "note": "Own site bio page with booking contacts (Swamp Booking for EU/UK, Interbeing for Asia, by email)."
+   },
+   {
+    "url": "https://www.sijya.com/content",
+    "note": "Own site content page, not opened, contents unknown."
+   }
+  ],
+  "instagram_check": null,
+  "notes": "No press kit or photo page stated."
+ },
+ {
+  "slug": "sodhi",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [
+   {
+    "url": "https://www.goasunsplash.com/artist/sodhi",
+    "note": "Goa Sunsplash festival artist page for Arjun Sodhi (New Delhi, 2019). Not a press kit."
+   }
+  ],
+  "instagram_check": "Handle 'arjunsodhi11' not verified.",
+  "notes": "Stored Instagram 'arjunsodhi11' is a personal-style handle. Not verified."
+ },
+ {
+  "slug": "spiralynk",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Nothing found."
+ },
+ {
+  "slug": "spryk",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "No press page found. Coverage by Homegrown, Red Bull and Electronic Groove only."
+ },
+ {
+  "slug": "stain",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Not searched in depth. Stage name too generic to confirm identity."
+ },
+ {
+  "slug": "stalvart-john",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "No press kit found. Magnetic Fields 2023 artist page and Mixmag Asia coverage only."
+ },
+ {
+  "slug": "suchi",
+  "press_kit_urls": [],
+  "agency_urls": [
+   {
+    "url": "https://www.onehouse.com/artists/suchi",
+    "note": "One House artist page. Describes Oslo-born, London-bred DJ (Spectral Sound EP). No kit or booking info on page."
+   }
+  ],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Bio says she now lives in Manchester. No agency roster found."
+ },
+ {
+  "slug": "sunju-hargun",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "No press kit found. Only Time Out Bangkok and RA coverage."
+ },
+ {
+  "slug": "the-f16s",
+  "press_kit_urls": [],
+  "agency_urls": [
+   {
+    "url": "https://www.hire4event.com/artist/thef16s",
+    "note": "Third party hire page, confirms Chennai band. Booking marketplace, no press kit."
+   }
+  ],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "No official kit found."
+ },
+ {
+  "slug": "thegreybox",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "Not found. Name too generic to confirm."
+ },
+ {
+  "slug": "weird-sounding-dude",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "No kit found. Amsterdam Dance Event and Balance Music AU tour pages exist but are not press kits."
+ },
+ {
+  "slug": "yung-raj",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "No press page found. Do not confuse with Singaporean rapper Yung Raja."
+ },
+ {
+  "slug": "ak-sports",
+  "press_kit_urls": [],
+  "agency_urls": [
+   {
+    "url": "https://grayarea.co/artists/ak-sports",
+    "note": "Gray Area artist page (Madi Carr, Australia, based London and LA). No kit, photos or booking listed."
+   }
+  ],
+  "bio_link_urls": [
+   {
+    "url": "https://www.instagram.com/aksportsdj/",
+    "note": "Instagram profile."
+   }
+  ],
+  "instagram_check": "Handle 'aksportsdj' matches Gray Area's listed Instagram.",
+  "notes": "No EPK found."
+ },
+ {
+  "slug": "natasha-diggs",
+  "press_kit_urls": [],
+  "agency_urls": [],
+  "bio_link_urls": [],
+  "instagram_check": null,
+  "notes": "No press kit found. Only RA, Mixmag and event pages."
+ }
+]
