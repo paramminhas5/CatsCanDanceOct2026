@@ -27,10 +27,10 @@ export type FindProps = {
 };
 
 const WHEN: { key: When; label: string }[] = [
+  { key: "all", label: "Everything" },
   { key: "tonight", label: "Tonight" },
   { key: "weekend", label: "This weekend" },
   { key: "week", label: "Next 7 days" },
-  { key: "all", label: "Everything" },
 ];
 const SAVED_KEY = "ccd:saved-nights";
 
@@ -159,7 +159,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
               <button key={w.key} type="button" aria-pressed={when === w.key} onClick={() => setWhen(w.key)} className={chip(when === w.key)}>{w.label}</button>
             ))}
             <span className="w-px h-6 bg-cream/25 shrink-0 mx-1" aria-hidden />
-            <button type="button" aria-pressed={savedOnly} onClick={() => setSavedOnly(!savedOnly)} className={chip(savedOnly)}>
+            <button type="button" aria-pressed={savedOnly} aria-label={`Show saved nights${saved.length ? ` (${saved.length})` : ""}`} onClick={() => setSavedOnly(!savedOnly)} className={chip(savedOnly)}>
               Saved{saved.length ? ` ${saved.length}` : ""}
             </button>
             <label className="ml-auto shrink-0 hidden md:flex items-center border-2 border-cream/40 focus-within:border-acid-yellow">
@@ -335,7 +335,7 @@ function NightCard({ e, saved, onSave }: { e: FindEvent; saved: boolean; onSave:
             className="font-display px-4 py-2.5 border-4 border-ink bg-acid-yellow hover:bg-ink hover:text-acid-yellow transition-colors">
             {e.ticket_url ? "Tickets" : "Details"} <span aria-hidden>↗</span>
           </a>
-          <button type="button" onClick={onSave} aria-pressed={saved}
+          <button type="button" onClick={onSave} aria-pressed={saved} aria-label={saved ? `Saved: ${e.title}. Remove` : `Save ${e.title}`}
             className={`font-display px-4 py-2.5 border-4 border-ink transition-colors ${saved ? "bg-ink text-cream" : "bg-cream hover:bg-acid-yellow"}`}>
             {saved ? "Saved" : "Save"}
           </button>

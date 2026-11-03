@@ -59,7 +59,8 @@
   html, body {
     @apply bg-background text-foreground;
     font-family: 'Space Grotesk', system-ui, sans-serif;
-    overflow-x: hidden;
+    /* clip, not hidden: hidden turns the page into a scroll box and breaks position: sticky */
+    overflow-x: clip;
   }
 
   @media (min-width: 768px) {
