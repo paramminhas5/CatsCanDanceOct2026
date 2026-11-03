@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   return res.status(200).json({
     id: `ccd:artist:${a.slug}`,
     name: a.name,
-    url: `${SITE}/litter/${a.slug}`,
+    url: `${SITE}/artists/${a.slug}`,
     based_in: a.city,
     genres: a.genres,
     members: a.members,

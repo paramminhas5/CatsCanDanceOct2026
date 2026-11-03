@@ -167,7 +167,7 @@ const HomepageEvents = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
                 >
-                  <Link to={`/episodes/${featured.slug}`} className="block group">
+                  <Link to={`/nights/${featured.slug}`} className="block group">
                     <img
                       src={poster}
                       alt={`${featured.title} poster`}
@@ -267,7 +267,7 @@ const HomepageEvents = () => {
                 {/* CTA */}
                 <div className="flex flex-wrap gap-3 pt-2">
                   <Link
-                    to={`/episodes/${featured.slug}`}
+                    to={`/nights/${featured.slug}`}
                     className="bg-acid-yellow text-ink font-display text-lg px-7 py-3.5 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform"
                   >
                     VIEW EVENT & RSVP →
@@ -301,7 +301,7 @@ const HomepageEvents = () => {
                     return (
                       <Link
                         key={e.slug}
-                        to={`/episodes/${e.slug}`}
+                        to={`/nights/${e.slug}`}
                         className={`relative flex items-center gap-2 px-3 py-2 border-2 transition-all ${
                           isCurrent
                             ? "border-acid-yellow bg-acid-yellow/10 text-cream"
@@ -346,7 +346,7 @@ const HomepageEvents = () => {
                   transition={{ delay: i * 0.06, duration: 0.4 }}
                 >
                   <Link
-                    to={`/episodes/${e.slug}`}
+                    to={`/nights/${e.slug}`}
                     className="block border-4 border-cream/15 hover:border-acid-yellow/50 hover:-translate-y-1 transition-all group overflow-hidden"
                   >
                     {/* Poster thumbnail */}
@@ -393,7 +393,7 @@ const HomepageEvents = () => {
                 / PAST EPISODES
               </p>
               <Link
-                to="/episodes"
+                to="/nights"
                 className="font-display text-cream/40 text-xs hover:text-cream transition-colors"
               >
                 See all →
@@ -403,7 +403,7 @@ const HomepageEvents = () => {
               {past.slice(0, 6).map((e) => (
                 <Link
                   key={e.slug}
-                  to={`/episodes/${e.slug}`}
+                  to={`/nights/${e.slug}`}
                   className="shrink-0 w-48 border-2 border-cream/10 p-3 hover:border-cream/30 transition-colors group"
                 >
                   <h4 className="font-display text-cream/60 text-sm leading-tight group-hover:text-cream transition-colors">
@@ -420,7 +420,7 @@ const HomepageEvents = () => {
         {/* ── Bottom link ── */}
         <div className="mt-10 pt-6 border-t-2 border-cream/10 flex flex-wrap items-center justify-between gap-4">
           <Link
-            to="/episodes"
+            to="/nights"
             className="font-display text-cream text-sm border-2 border-cream/30 px-5 py-2.5 hover:border-cream hover:bg-cream/10 transition-colors"
           >
             ALL EPISODES →

@@ -18,7 +18,7 @@ const Blog = () => {
     itemListElement: posts.map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      url: `https://catscandance.com/blog/${p.slug}`,
+      url: `https://catscandance.com/journal/${p.slug}`,
       name: p.title,
     })),
   };
@@ -38,7 +38,7 @@ const Blog = () => {
     blogPost: posts.slice(0, 20).map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,
-      url: `https://catscandance.com/blog/${p.slug}`,
+      url: `https://catscandance.com/journal/${p.slug}`,
       datePublished: p.date,
       author: { "@type": "Person", name: p.author },
     })),

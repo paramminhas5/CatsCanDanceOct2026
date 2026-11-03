@@ -84,7 +84,7 @@ export default function ArtistPageV2({ a }: { a: ArtistV2 }) {
   const holdT = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { member } = useMember();
 
-  // Open at a shared moment: /litter/slug?at=<moment id>
+  // Open at a shared moment: /artists/slug?at=<moment id>
   useEffect(() => {
     try {
       const at = new URLSearchParams(window.location.search).get("at");
@@ -291,7 +291,7 @@ export default function ArtistPageV2({ a }: { a: ArtistV2 }) {
   };
 
   // ── Share ─────────────────────────────────────────────────────────────────
-  const shareUrl = `${SITE}/litter/${a.slug}${pick ? `?at=${encodeURIComponent(pick.id)}` : ""}`;
+  const shareUrl = `${SITE}/artists/${a.slug}${pick ? `?at=${encodeURIComponent(pick.id)}` : ""}`;
   const shareStory = async () => {
     const text = `${a.name}, ${year}: ${shown?.t ?? ""}`;
     try {
@@ -650,7 +650,7 @@ html,body{overflow-x:visible!important}
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,11,11,0.25) 0%, rgba(11,11,11,0.15) 40%, rgba(11,11,11,0.85) 100%)" }} />
           <div style={{ position: "absolute", left: 20, right: 20, top: 16, display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 12, fontWeight: 700 }}>
             <a href="/" className="disp" style={{ fontSize: 13 }}>CATS CAN DANCE</a>
-            <a href="/litter" style={{ opacity: 0.75 }}>Artists</a>
+            <a href="/artists" style={{ opacity: 0.75 }}>Artists</a>
           </div>
           <div style={{ position: "absolute", left: "50%", top: 64, width: 176, height: 176, marginLeft: -118 }}>
             <div className={`spin ${playing ? "" : "paused"}`} style={{ position: "absolute", left: 66, top: 6, width: 164, height: 164, borderRadius: "50%", background: "repeating-radial-gradient(circle at 50% 50%, #0d0d0d 0 1px, #232323 1px 3px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -846,7 +846,7 @@ html,body{overflow-x:visible!important}
         <aside style={{ flex: "0 0 300px", boxSizing: "border-box", background: "#141414", color: "#f4efe4", padding: "22px 22px 28px", display: "flex", flexDirection: "column", gap: 18, position: "sticky", top: 0, height: "100vh", overflowY: "auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <a href="/" className="disp" style={{ fontSize: 14 }}>CATS CAN DANCE</a>
-            <a href="/litter" style={{ fontSize: 12, opacity: 0.6 }}>Artists</a>
+            <a href="/artists" style={{ fontSize: 12, opacity: 0.6 }}>Artists</a>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: 12, borderRadius: 14, background: "#1f1f1f" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -974,7 +974,7 @@ html,body{overflow-x:visible!important}
                 <span className="disp" style={{ fontSize: 40, lineHeight: 0.9, color: "#b6ef36" }}>{year}</span>
                 <span className="disp" style={{ fontSize: a.name.length > 10 ? 18 : 22, lineHeight: 0.95 }}>{a.name.toUpperCase()}</span>
                 <span style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.25 }}>{shown?.t}</span>
-                <span style={{ fontSize: 10, opacity: 0.7 }}>catscandance.com/litter/{a.slug}</span>
+                <span style={{ fontSize: 10, opacity: 0.7 }}>catscandance.com/artists/{a.slug}</span>
               </div>
             </div>
             <div style={{ display: "flex", gap: 10, width: "100%" }}>
@@ -1037,7 +1037,7 @@ async function storyImage({ name, year, title, palette }: { name: string; year: 
     wrap(g, title, 72, H - 370, W - 144, 66, 3);
     g.globalAlpha = 0.7;
     g.font = "40px 'Space Grotesk', system-ui, sans-serif";
-    g.fillText("catscandance.com/litter", 72, H - 110);
+    g.fillText("catscandance.com/artists", 72, H - 110);
     g.globalAlpha = 1;
     return await new Promise((res) => cv.toBlob((b) => res(b), "image/png"));
   } catch {

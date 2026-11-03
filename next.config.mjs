@@ -53,28 +53,32 @@ const nextConfig = {
     return config;
   },
   // Suite names serve the existing page files (no duplicate code).
+  // Plain names (3 Nov 2026): /nights, /whats-on, /artists, /tour, /shop, /listen, /adopt.
+  // Nicknames (Gig guide, Strays, Crew, Episodes, Nine Lives) live in page copy, not URLs.
   async rewrites() {
     return [
-      { source: "/episodes", destination: "/events" },
-      { source: "/litter", destination: "/artists" },
-      { source: "/prowl", destination: "/discover" },
-      { source: "/scratch", destination: "/shop" },
-      { source: "/catwalk", destination: "/playlists" },
-      { source: "/nine-lives", destination: "/care" },
+      { source: "/nights", destination: "/events" },
+      { source: "/listen", destination: "/playlists" },
+      { source: "/adopt", destination: "/care" },
       { source: "/journal", destination: "/blog" },
     ];
   },
   async redirects() {
     return [
-      { source: "/events", destination: "/episodes", permanent: true },
-      { source: "/events/:slug", destination: "/episodes/:slug", permanent: true },
-      { source: "/artists", destination: "/litter", permanent: true },
-      { source: "/artists/:slug", destination: "/litter/:slug", permanent: true },
-      { source: "/artists/:slug/epk", destination: "/litter/:slug/epk", permanent: true },
-      { source: "/discover", destination: "/prowl", permanent: true },
-      { source: "/shop", destination: "/scratch", permanent: true },
-      { source: "/playlists", destination: "/catwalk", permanent: true },
-      { source: "/care", destination: "/nine-lives", permanent: true },
+      { source: "/events", destination: "/nights", permanent: true },
+      { source: "/events/:slug", destination: "/nights/:slug", permanent: true },
+      { source: "/episodes", destination: "/nights", permanent: true },
+      { source: "/episodes/:slug", destination: "/nights/:slug", permanent: true },
+      { source: "/prowl", destination: "/whats-on", permanent: true },
+      { source: "/discover", destination: "/whats-on", permanent: true },
+      { source: "/litter", destination: "/artists", permanent: true },
+      { source: "/litter/:slug", destination: "/artists/:slug", permanent: true },
+      { source: "/litter/:slug/epk", destination: "/artists/:slug/epk", permanent: true },
+      { source: "/scratch", destination: "/shop", permanent: true },
+      { source: "/catwalk", destination: "/listen", permanent: true },
+      { source: "/playlists", destination: "/listen", permanent: true },
+      { source: "/nine-lives", destination: "/adopt", permanent: true },
+      { source: "/care", destination: "/adopt", permanent: true },
       { source: "/blog", destination: "/journal", permanent: true },
       { source: "/blog/:slug", destination: "/journal/:slug", permanent: true },
       { source: "/ccdxsocial", destination: "/playbook", permanent: true },

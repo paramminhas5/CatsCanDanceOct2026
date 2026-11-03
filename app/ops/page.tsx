@@ -32,12 +32,12 @@ const T = () => process.env.OPS_TOKEN;
 async function artistStatus(formData: FormData) {
   "use server";
   await rpc("ops_set_artist_status", { p_token: T(), p_id: String(formData.get("id")), p_status: String(formData.get("status")) });
-  revalidatePath("/ops"); revalidatePath("/prowl");
+  revalidatePath("/ops"); revalidatePath("/whats-on");
 }
 async function bulkArtists(formData: FormData) {
   "use server";
   await rpc("ops_bulk_artists", { p_token: T(), p_from: String(formData.get("from")), p_to: String(formData.get("to")) });
-  revalidatePath("/ops"); revalidatePath("/prowl");
+  revalidatePath("/ops"); revalidatePath("/whats-on");
 }
 async function factReview(formData: FormData) {
   "use server";
@@ -47,7 +47,7 @@ async function factReview(formData: FormData) {
 async function factsBulk(formData: FormData) {
   "use server";
   await rpc("ops_approve_facts_bulk", { p_token: T(), p_confidence: String(formData.get("confidence") || "high"), p_section: String(formData.get("section") || "") || null });
-  revalidatePath("/ops"); revalidatePath("/prowl"); revalidatePath("/litter");
+  revalidatePath("/ops"); revalidatePath("/whats-on"); revalidatePath("/artists");
 }
 async function buildFacts() {
   "use server";
@@ -382,6 +382,7 @@ export default async function Ops() {
 
       <p style={{ margin: "0 0 16px" }}><a href="/ops/curation"><b>Artist curation</b></a> <span className="muted">: filter by fit, commercial and photo, edit scores, bulk publish or hide.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/ops/flags"><b>Switches</b></a> <span className="muted">: turn the new artist page and the paid or AI features on and off.</span></p>
+      <p style={{ margin: "0 0 16px" }}><a href="/ops/tour"><b>Tour posts</b></a> <span className="muted">: review tour dates artists post on /tour (Touring India, Away from home) before they go up.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/ops/gig-links"><b>Gig links</b></a> <span className="muted">: confirm which scene events each artist is playing. Artist pages show confirmed links on published events only.</span></p>
 
       <h3 style={{ marginBottom: 10 }}>Artists waiting ({hidden?.length ?? 0})</h3>
@@ -476,7 +477,7 @@ export default async function Ops() {
         {(promos ?? []).map((c: any) => <tr key={c.code}><td><b>{c.code}</b></td><td>{c.event_slug ?? "any"}</td><td>{c.percent ? `${c.percent}%` : ""} {c.flat_inr ? `₹${c.flat_inr}` : ""}</td><td>{c.uses}{c.max_uses ? ` / ${c.max_uses}` : ""}</td><td>{c.active ? "yes" : "no"}</td></tr>)}
       </tbody></table></div>
 
-      <h3 style={{ marginBottom: 10 }}>Crews (solo goers)</h3>
+      <h3 style={{ marginBottom: 10 }}>Crews (solo goers) <a href="/ops/crews" style={{ fontSize: 14, marginLeft: 8 }}>Crews for any night, entry lists, venue partners, set times →</a></h3>
       <form action={formCrews} style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
         <input name="slug" placeholder="event slug" required style={{ padding: 6 }} /><input name="pre_spot" placeholder="pre-spot, e.g. Toit, 30 min before" style={{ padding: 6, minWidth: 260 }} />
         <button className="btn sm">Form crews</button>

@@ -14,6 +14,7 @@ import FindTickets from "@/components/tickets/FindTickets";
 import { AddToCalendar, DirectionsLink, ShareButton } from "@/components/tickets/NightTools";
 import { orderTickets, type PassTicket } from "@/lib/booking";
 import { supabase } from "@/lib/supabase";
+import { sendSignInLink, useMe } from "@/lib/plans";
 import { getEventContent, getStaticEventRow } from "@/content/events";
 import { directionsUrl, displayDate, displayTime } from "@/lib/nights";
 import type { EventRow } from "@/types/events";
@@ -105,20 +106,18 @@ export default function Order() {
                   </Step>
                   <Step n={2} title="Bring your friends">
                     {first && <ShareButton tone="dark" label="Share the night" title={`Cats Can Dance: ${first.event_title ?? ""}`}
-                      text={`I'm going to Cats Can Dance ${first.event_title ?? ""}, ${when}. Get a ticket:`} url={`${SITE}/episodes/${first.event_slug}`} />}
+                      text={`I'm going to Cats Can Dance ${first.event_title ?? ""}, ${when}. Get a ticket:`} url={`${SITE}/nights/${first.event_slug}`} />}
                   </Step>
                   <Step n={3} title="Find the venue">
                     <DirectionsLink tone="dark" href={directionsUrl(ev?.venue ?? first?.venue, ev?.city, content?.venue_map_url)} />
                   </Step>
-                  <Step n={4} title="Going solo? Join a crew">
-                    <Link href="/club" className="inline-flex font-display text-sm md:text-base px-4 py-2.5 border-4 border-ink bg-acid-yellow text-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
-                      Meet your crew
-                    </Link>
+                  <Step n={4} title="See who's going, find a crew">
+                    {first && <CrewStep slug={first.event_slug} email={e} fresh={fresh} />}
                   </Step>
                 </ol>
 
                 <p className="text-sm text-cream/85 max-w-[55ch]">
-                  Can&apos;t make it? Pass your ticket on at face value through <Link href="/discover#pass-it-on" className="underline font-bold">Pass it on</Link>.
+                  Can&apos;t make it? Pass your ticket on at face value through <Link href="/whats-on#pass-it-on" className="underline font-bold">Pass it on</Link>.
                   Keep this page&apos;s link, or find your tickets any time at <Link href="/tickets" className="underline font-bold">catscandance.com/tickets</Link>.
                 </p>
               </div>
@@ -137,5 +136,33 @@ function Step({ n, title, children }: { n: number; title: string; children: Reac
       <span className="font-display text-2xl text-acid-yellow tabular leading-none pt-1">{n}</span>
       <div><p className="font-bold text-lg mb-2">{title}</p>{children}</div>
     </li>
+  );
+}
+
+/** Ticket buyers get an account automatically: a sign-in link goes to the booking email once, after checkout. */
+function CrewStep({ slug, email, fresh }: { slug: string; email: string; fresh: boolean }) {
+  const me = useMe();
+  const [sent, setSent] = useState<"no" | "sent" | "failed">("no");
+  useEffect(() => {
+    if (!me.ready || me.signedIn || !fresh || !email) return;
+    const flag = `ccd:link-sent:${slug}:${email.toLowerCase()}`;
+    try { if (localStorage.getItem(flag)) { setSent("sent"); return; } } catch {}
+    sendSignInLink(email, `/me?n=${encodeURIComponent(slug)}`).then((r) => {
+      setSent(r.ok ? "sent" : "failed");
+      if (r.ok) { try { localStorage.setItem(flag, "1"); } catch {} }
+    });
+  }, [me.ready, me.signedIn, fresh, email, slug]);
+  const cta = "inline-flex font-display text-sm md:text-base px-4 py-2.5 border-4 border-ink bg-acid-yellow text-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform";
+  if (me.signedIn) return <Link href={`/me?n=${encodeURIComponent(slug)}`} className={cta}>Open Your nights</Link>;
+  return (
+    <div className="grid gap-2">
+      {sent === "sent"
+        ? <p className="text-cream/90">We emailed a sign in link to {email}. Open it to see who else is going and join a crew of 3 to 6 people from your city.</p>
+        : <p className="text-cream/90">Sign in with {email || "your booking email"} to see who else is going and join a crew.</p>}
+      <button type="button" className={cta + " justify-self-start"} onClick={async () => { const r = await sendSignInLink(email, `/me?n=${encodeURIComponent(slug)}`); setSent(r.ok ? "sent" : "failed"); }}>
+        {sent === "sent" ? "Send the link again" : "Email me a sign in link"}
+      </button>
+      {sent === "failed" && <p className="text-sm text-acid-yellow font-bold">Could not send the link. Try again in a minute.</p>}
+    </div>
   );
 }

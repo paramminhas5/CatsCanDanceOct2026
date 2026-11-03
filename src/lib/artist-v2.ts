@@ -287,13 +287,13 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
       const c = ccdArtists.find((x) => x.slug === sh.artist_slug);
       if (!c) continue;
       seen.add(c.slug);
-      alsoLike.push({ n: c.name, why: sh.name, u: `/litter/${c.slug}`, internal: true, img: c.photo_url });
+      alsoLike.push({ n: c.name, why: sh.name, u: `/artists/${c.slug}`, internal: true, img: c.photo_url });
     }
   }
   for (const r of related?.data ?? []) {
     const c = byName.get(norm(r.name));
     if (c && seen.has(c.slug)) continue;
-    if (c) { seen.add(c.slug); alsoLike.push({ n: c.name, why: "on CCD", u: `/litter/${c.slug}`, internal: true, img: c.photo_url }); continue; }
+    if (c) { seen.add(c.slug); alsoLike.push({ n: c.name, why: "on CCD", u: `/artists/${c.slug}`, internal: true, img: c.photo_url }); continue; }
     alsoLike.push({ n: r.name, why: "shared listeners", u: `https://www.deezer.com/artist/${r.id}`, internal: false, img: r.picture_medium ?? null });
   }
 
@@ -324,7 +324,7 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
     .filter((n) => !/^test-/.test(n.slug) && (n.lineup ?? []).some((x) => norm(x) === me))
     .map((n) => {
       const upcoming = !!n.event_date && n.event_date >= today && n.status !== "cancelled";
-      return { slug: n.slug, title: n.title, date: n.event_date, upcoming, url: upcoming ? `/tickets/${n.slug}` : `/episodes/${n.slug}` };
+      return { slug: n.slug, title: n.title, date: n.event_date, upcoming, url: upcoming ? `/tickets/${n.slug}` : `/nights/${n.slug}` };
     });
 
   const links: { label: string; url: string }[] = [];

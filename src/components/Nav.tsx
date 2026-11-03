@@ -8,12 +8,13 @@ import DiscoHint from "@/components/DiscoHint";
 import ccdLogo from "@/assets/ccd-logo.png";
 import { imgUrl } from "@/lib/img";
 
+// Plain names lead; nicknames (hints) show in the mobile menu and on the pages themselves.
 const primaryLinks = [
-  { to: "/episodes", label: "Go",    hint: "Episodes" },
-  { to: "/prowl",    label: "Find",  hint: "Prowl" },
-  { to: "/litter",   label: "Book",  hint: "Litter" },
-  { to: "/tour",     label: "Tour",  hint: "Tour" },
-  { to: "/school",   label: "Learn", hint: "CCD.SCHOOL" },
+  { to: "/nights",   label: "Our nights", hint: "Episodes" },
+  { to: "/whats-on", label: "What's on",  hint: "Gig guide" },
+  { to: "/artists",  label: "Artists",    hint: "Book an artist" },
+  { to: "/tour",     label: "On tour",    hint: "Strays" },
+  { to: "/school",   label: "Learn",      hint: "CCD.SCHOOL" },
 ];
 
 const partnersLinks = [
@@ -24,11 +25,12 @@ const partnersLinks = [
 ];
 
 const moreLinks: { to: string; label: string; external?: boolean }[] = [
-  { to: "/catwalk",    label: "Listen · Catwalk" },
-  { to: "/scratch",    label: "Wear · Scratch" },
-  { to: "/nine-lives", label: "Adopt · Nine Lives" },
+  { to: "/me",         label: "Your nights" },
+  { to: "/tickets",    label: "Your tickets" },
+  { to: "/listen",     label: "Listen" },
+  { to: "/shop",       label: "Shop" },
+  { to: "/adopt",      label: "Adopt · Nine Lives" },
   { to: "/club",       label: "Club" },
-  { to: "/whats-on",    label: "What's on" },
   { to: "/journal",    label: "Journal" },
   { to: "/guides",     label: "Guides" },
   { to: "https://instagram.com/catscan.dance", label: "Instagram", external: true },
@@ -145,7 +147,7 @@ const Nav = ({ forceDark = false }: { forceDark?: boolean }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const lightBgRoutes = ["/catwalk", "/videos", "/shop"];
+  const lightBgRoutes = ["/listen", "/videos", "/shop"];
   const forceScrolledStyle = lightBgRoutes.some((r) => location.pathname === r || location.pathname.startsWith(r + "/"));
 
   useEffect(() => {
