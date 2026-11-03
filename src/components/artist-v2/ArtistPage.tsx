@@ -13,8 +13,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import {
   type ArtistV2, type Moment, type Era, type Release, type Video, type Mix, type PressItem, type LinkOut,
-  coverUrl, sourceName, displayName, embedFor,
-} from "@/lib/artist-v2";
+  coverUrl, sourceName, displayName, embedFor, bandcampEmbed } from "@/lib/artist-v2";
 
 const BookButton = dynamic(() => import("@/components/booking/BookButton"), { ssr: false });
 
@@ -386,6 +385,9 @@ export default function ArtistPage({ a }: { a: ArtistV2 }) {
           </ol>
         )}
         {list === "loading" && <span style={{ color: MUTE, fontSize: 13 }}>Loading the tracklist…</span>}
+        {!fRel.trackId && bandcampEmbed(fRel.bandcamp) && (
+          <iframe title={`${fRel.t} on Bandcamp`} src={bandcampEmbed(fRel.bandcamp)!.src} loading="lazy" style={{ border: 0, width: "100%", maxWidth: 560, height: bandcampEmbed(fRel.bandcamp)!.h, marginTop: 6 }} />
+        )}
         <Also rel={rel} accent={accent} onMedia={setMedia} />
       </FocusBox>
     );
@@ -440,6 +442,9 @@ html,body{overflow-x:visible!important}
 .ap .eq{display:inline-flex;gap:2px;align-items:flex-end;height:12px}.ap .eq span{width:3px;height:12px;background:currentColor;transform-origin:bottom;animation:apeq .8s ease-in-out infinite}
 .ap .eq span:nth-child(2){animation-delay:.2s}.ap .eq span:nth-child(3){animation-delay:.4s}
 @keyframes apeq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.ap .railtog{transition:transform .15s ease,box-shadow .15s ease}.ap .railtog:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 #f4efe4!important}.ap .railtog:active{transform:translate(2px,2px);box-shadow:0 0 0 #f4efe4!important}
+.ap .railtog:hover .chev{animation:ccdnudge .5s ease infinite alternate}@keyframes ccdnudge{from{transform:translateX(0)}to{transform:translateX(-4px)}}.ap .railtog[aria-expanded=false]:hover .chev{animation-name:ccdnudger}@keyframes ccdnudger{from{transform:translateX(0)}to{transform:translateX(4px)}}
+.ap .rt{transition:transform .15s ease,box-shadow .15s ease,opacity .2s ease}.ap .rt:hover{transform:translate(-2px,-2px)!important;box-shadow:4px 4px 0 #f4efe4!important;opacity:1!important}
 .ap .rail{display:none}.ap .erasm{display:flex}.ap .dk{display:none}.ap .ph{display:inline-flex;align-items:center;justify-content:center}
 .ap .hero{height:340px}.ap .heroimg{left:0;width:100%}.ap .heroname{font-size:clamp(44px,13vw,64px)}
 .ap .pad{padding-left:16px;padding-right:16px}
@@ -489,20 +494,24 @@ html,body{overflow-x:visible!important}
         <div style={{ display: "flex", alignItems: "stretch" }}>
           {/* ── Era rail (desktop) ── */}
           {hasEras && (
-            <aside className="rail fade" aria-label={`${name}'s eras`}
+            <aside className="rail fade" data-lenis-prevent aria-label={`${name}'s eras`}
               style={{ flex: `0 0 ${rail ? 290 : 76}px`, alignSelf: "flex-start", position: "sticky", top: navH, maxHeight: `calc(100vh - ${navH}px)`, overflowY: "auto", boxSizing: "border-box", padding: `16px ${rail ? 16 : 12}px 90px`, flexDirection: "column", gap: 12, borderRight: `1px solid ${era ? era.accent : RULE}`, background: era ? `linear-gradient(180deg, ${era.bg} 0%, ${BG} 70%)` : BG }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
                 {rail && <span style={{ display: "flex", flexDirection: "column", lineHeight: 1.2 }}><span className="disp" style={{ fontSize: 15 }}>ERAS</span><span className="lab" style={{ color: accent }}>{era ? `Now: ${era.label}` : "Now: every era"}</span></span>}
-                <button onClick={toggleRail} aria-expanded={rail} aria-label={rail ? "Close the eras" : "Open the eras"} style={{ width: 36, height: 36, flex: "0 0 36px", border: "1px solid rgba(244,239,228,.35)", background: "transparent", cursor: "pointer", fontWeight: 700 }}>{rail ? "‹" : "›"}</button>
+                <button onClick={toggleRail} aria-expanded={rail} aria-label={rail ? "Close the eras" : "Open the eras"} title={rail ? "Tuck the eras away" : "Open the eras"} className="railtog"
+                  style={{ width: rail ? 84 : 44, height: 44, flex: "0 0 auto", border: `2px solid ${CREAM}`, background: RED, color: "#fff", cursor: "pointer", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, boxShadow: `3px 3px 0 ${CREAM}` }}>
+                  <span className="chev" aria-hidden="true" style={{ fontSize: 20, lineHeight: 1 }}>{rail ? "«" : "»"}</span>
+                  {rail && <span style={{ fontSize: 12, letterSpacing: ".06em" }}>HIDE</span>}
+                </button>
               </div>
               {!rail ? (
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                  <button aria-pressed={!era} onClick={() => pickEra("all")} aria-label="All eras" className="fade"
+                  <button aria-pressed={!era} onClick={() => pickEra("all")} aria-label="All eras" className="fade rt"
                     style={{ width: 44, height: 44, padding: 0, border: `2px solid ${CREAM}`, cursor: "pointer", fontSize: 11, fontWeight: 700, letterSpacing: ".06em", background: !era ? CREAM : "transparent", color: !era ? INK : CREAM, boxShadow: !era ? `4px 4px 0 ${RED}` : "none" }}>ALL</button>
                   {eras.map((e) => {
                     const on = era?.id === e.id, dim = !!era && !on;
                     return (
-                      <button key={e.id} aria-pressed={on} onClick={() => pickEra(e.id)} aria-label={`${e.label}, ${yearsLong(e)}`} className="fade"
+                      <button key={e.id} aria-pressed={on} onClick={() => pickEra(e.id)} aria-label={`${e.label}, ${yearsLong(e)}`} className="fade rt"
                         style={{ width: 44, minHeight: 120, padding: "12px 0", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", border: `2px solid ${on ? CREAM : e.accent}`, background: e.accent, color: INK, opacity: dim ? 0.4 : 1, boxShadow: on ? `4px 4px 0 ${CREAM}` : "none", transform: on ? "translate(-2px,-2px)" : "none" }}>
                         <span style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", display: "flex", alignItems: "center", gap: 10, whiteSpace: "nowrap" }}>
                           <span className="disp" style={{ fontSize: e.label.length > 16 ? 12 : 14 }}>{e.label.toUpperCase()}</span>
@@ -635,7 +644,7 @@ html,body{overflow-x:visible!important}
             <div className="pad" style={{ paddingBottom: 120, display: "flex", flexWrap: "wrap", gap: 44, alignItems: "flex-start" }}>
               <div style={{ flex: "999 1 560px", minWidth: 0, display: "flex", flexDirection: "column", gap: 48 }}>
                 {/* Scope bar, sticks under the nav */}
-                <div ref={topRef} className="fade" style={{ position: "sticky", top: navH, zIndex: 5, marginTop: 26, scrollMarginTop: navH + 8, display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", padding: "12px 16px", borderLeft: `3px solid ${accent}`, background: `linear-gradient(90deg, ${tint} 0%, rgba(12,12,12,.97) 85%)`, backdropFilter: "blur(6px)" }}>
+                <div ref={topRef} className="fade" style={{ marginTop: 26, scrollMarginTop: navH + 8, display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", padding: "12px 16px", borderLeft: `3px solid ${accent}`, background: `linear-gradient(90deg, ${tint} 0%, rgba(12,12,12,.97) 85%)`, backdropFilter: "blur(6px)" }}>
                   <span style={{ display: "flex", flexDirection: "column", lineHeight: 1.35, flex: "1 1 240px", minWidth: 0 }}>
                     <span className="lab" style={{ color: accent }}>{scope.k}</span>
                     <span style={{ fontSize: 17, fontWeight: 700 }}>{scope.t}</span>
