@@ -1,0 +1,772 @@
+[
+ {
+  "slug": "prabh-deep",
+  "identity": "Delhi rapper from Tilak Nagar, debut album Class-Sikh on Azadi Records (2017), Tabia (2021), KING Returns (2024) all match our record. MusicBrainz entry links the same Spotify id we store (7suHsCqUEifucqVyWaljgC).",
+  "eras": [
+   {
+    "from_year": 2017,
+    "to_year": 2020,
+    "sound": "Confident, swaggering, aggressive rap in Punjabi",
+    "tags": ["Punjabi rap", "hip-hop", "Sez On The Beat"],
+    "source_url": "https://www.thewildcity.com/features/4804-i-m-coming-to-snatch-the-throne-prabh-deep-on-class-sikh",
+    "source_name": "Wild City",
+    "quote": "oozes confidence, swagger and aggression"
+   },
+   {
+    "from_year": 2021,
+    "to_year": 2023,
+    "sound": "Jazz, jungle, breakbeat, trap and lo-fi hip-hop grooves",
+    "tags": ["jazz", "jungle", "breakbeat", "trap", "lo-fi hip-hop"],
+    "source_url": "https://liftedasia.com/article/indian-rapper-prabh-deep-drops-album-tabia-azadi-records",
+    "source_name": "LiFTED Asia",
+    "quote": "Sonically, Tabia pushes the envelope with Jazz, Jungle, Breakbeat, Trap and Lo-Fi Hip Hop grooves"
+   },
+   {
+    "from_year": 2024,
+    "to_year": null,
+    "sound": "Rap with a stronger sung, melodic side",
+    "tags": ["hip-hop", "singing", "self-produced"],
+    "source_url": "https://theindianmusicdiaries.com/prabh-deeps-fated-homecoming-back-in-element-on-latest-ep-king-returns/",
+    "source_name": "The Indian Music Diaries",
+    "quote": "He's really embraced his vocal and singing side on this EP"
+   }
+  ],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {"title": "\"I'm coming to snatch the throne\": Prabh Deep on 'Class-Sikh'", "publication": "Wild City", "url": "https://www.thewildcity.com/features/4804-i-m-coming-to-snatch-the-throne-prabh-deep-on-class-sikh", "date_published": "2017-10-20"},
+   {"title": "Indian rapper-creative Prabh Deep drops intensely personal sophomore album Tabia on Azadi Records", "publication": "LiFTED Asia", "url": "https://liftedasia.com/article/indian-rapper-prabh-deep-drops-album-tabia-azadi-records", "date_published": "2021-03-16"},
+   {"title": "Prabh Deep's Fated Homecoming, Back In Element On Latest EP 'KING Returns'", "publication": "The Indian Music Diaries", "url": "https://theindianmusicdiaries.com/prabh-deeps-fated-homecoming-back-in-element-on-latest-ep-king-returns/", "date_published": "2024-01-12"}
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "bandcamp": "https://prabhdeep.bandcamp.com/",
+   "discogs": "https://www.discogs.com/artist/7255603",
+   "musicbrainz": "76c7ee4d-8ddb-4f49-aeb3-a5c8c8a4ee92",
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "Class-Sikh was produced by Sez On The Beat (Wild City 2017); Tabia worked with producer Richard Craker (LiFTED). Wikipedia lists Bhram (2022), PRAA with Raftaar (2023) and the DSP mixtape (2024) if you want more milestones. Releases skipped because 57 are on record. ids come from the MusicBrainz entry, which carries our Spotify id. Wikidata lookup was rate-limited."
+ },
+ {
+  "slug": "maribou-state",
+  "identity": "English electronica duo on Counter Records / Ninja Tune with albums Portraits (2015), Kingdoms in Colour (2018), Hallucinating Love (2025). MusicBrainz entry links our Spotify id, SoundCloud and mariboustate.com.",
+  "eras": [
+   {
+    "from_year": 2015,
+    "to_year": 2017,
+    "sound": "Between 90s chillout and post-dubstep, fractured vocals",
+    "tags": ["post-dubstep", "chillout", "fractured vocals", "Holly Walker"],
+    "source_url": "https://archive.godisinthetvzine.co.uk/2015/06/04/maribou-state-portraits-counter-records",
+    "source_name": "God Is In The TV",
+    "quote": "Maribou State inhabit that netherworld between 90s chillout and post-dubstep."
+   },
+   {
+    "from_year": 2018,
+    "to_year": 2024,
+    "sound": "Electronic pop mixing samples with live instrumentation",
+    "tags": ["electronic pop", "live instrumentation", "samples", "Holly Walker"],
+    "source_url": "https://www.thelineofbestfit.com/reviews/albums/kingdoms-in-colour-maribou-album-review",
+    "source_name": "The Line of Best Fit",
+    "quote": "stitch together pop sensibilities with a plethora of unique sounds"
+   },
+   {
+    "from_year": 2025,
+    "to_year": null,
+    "sound": "Light synths, funky drums, high harmonised vocals",
+    "tags": ["synths", "disco chords", "strings", "brass"],
+    "source_url": "https://faroutmagazine.co.uk/maribou-state-hallucinating-love-album-review/",
+    "source_name": "Far Out",
+    "quote": "light synths, funky drums and high-pitched harmonised vocals"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "between 90s chillout and post-dubstep", "source_url": "https://archive.godisinthetvzine.co.uk/2015/06/04/maribou-state-portraits-counter-records"},
+   {"tag": "samples and live instrumentation", "source_url": "https://www.thelineofbestfit.com/reviews/albums/kingdoms-in-colour-maribou-album-review"},
+   {"tag": "light synths, funky drums and high-pitched harmonised vocals", "source_url": "https://faroutmagazine.co.uk/maribou-state-hallucinating-love-album-review/"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "Maribou State - Portraits (Counter Records)", "publication": "God Is In The TV", "url": "https://archive.godisinthetvzine.co.uk/2015/06/04/maribou-state-portraits-counter-records", "date_published": "2015-06-04"},
+   {"title": "Kingdoms In Colour sets Maribou State apart from their peers", "publication": "The Line of Best Fit", "url": "https://www.thelineofbestfit.com/reviews/albums/kingdoms-in-colour-maribou-album-review", "date_published": "2018-09-06"},
+   {"title": "Maribou State - 'Hallucinating Love' album review: borderline cruel in its escapism", "publication": "Far Out", "url": "https://faroutmagazine.co.uk/maribou-state-hallucinating-love-album-review/", "date_published": null}
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "bandcamp": "https://mariboustate.bandcamp.com/",
+   "discogs": "https://www.discogs.com/artist/2519329",
+   "musicbrainz": "72034a05-bcd8-40c2-8255-3ee4ac0e7ef0",
+   "beatport": "https://www.beatport.com/artist/maribou-state/202182",
+   "ra": null,
+   "wikidata": "Q20711766"
+  },
+  "notes": "Holly Walker is the recurring vocalist on Portraits, Kingdoms in Colour and Hallucinating Love ('Otherside'). The Line of Best Fit notes the move from a home studio in Hertfordshire to London for the second album. Far Out page gives no year; album came out 31 January 2025. ids from the MusicBrainz entry, which carries our Spotify id."
+ },
+ {
+  "slug": "onra",
+  "identity": "Paris beatmaker Arnaud Bernard, Chinoiseries series from 2007, All City and Fool's Gold releases, Nosthaigia (2024, All City). MusicBrainz entry (\"French producer/beatmaker Arnaud Bernard\") links our Spotify id and SoundCloud.",
+  "eras": [
+   {
+    "from_year": 2007,
+    "to_year": 2009,
+    "sound": "Hip-hop sketches built from Chinese and Southeast Asian vinyl",
+    "tags": ["hip-hop", "sampling", "Chinese pop vinyl", "beat tape"],
+    "source_url": "https://ra.co/reviews/10177",
+    "source_name": "Resident Advisor",
+    "quote": "hip-hop sketches fashioned from Chinese and Southeast Asian pop vinyl"
+   },
+   {
+    "from_year": 2010,
+    "to_year": 2023,
+    "sound": "Boogie-heavy, post-Dilla MPC beats with 80s electro",
+    "tags": ["boogie", "80s electro", "MPC", "R&B", "funk"],
+    "source_url": "https://daily.redbullmusicacademy.com/2015/05/onra-a-guided-tour",
+    "source_name": "Red Bull Music Academy Daily",
+    "quote": "a slice of boogie drenched post-Dilla MPC magic"
+   },
+   {
+    "from_year": 2024,
+    "to_year": null,
+    "sound": "Vintage-style beats infused with Thai samples",
+    "tags": ["Thai samples", "sampling", "vintage production"],
+    "source_url": "https://mixmag.asia/read/onra-nosthaigia-vintage-thailand-mpc-all-city-records-new-releases",
+    "source_name": "Mixmag Asia",
+    "quote": "a vibrant collection of songs that traverse various genres and are infused with Thai samples and sounds"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "boogie drenched post-Dilla MPC magic", "source_url": "https://daily.redbullmusicacademy.com/2015/05/onra-a-guided-tour"},
+   {"tag": "'90s hip-hop and '80s electro", "source_url": "https://ra.co/reviews/7517"},
+   {"tag": "hip-hop sketches from Chinese and Southeast Asian pop vinyl", "source_url": "https://ra.co/reviews/10177"}
+  ],
+  "aliases": [
+   {"name": "Byron & Onra", "note": "duo with keyboard player Byron the Aquarius", "source_url": "https://en.wikipedia.org/wiki/Onra"},
+   {"name": "Yatha Bhuta Jazz Combo", "note": "one-off jazz project with Buddy Sativa", "source_url": "https://www.timeout.com/kuala-lumpur/music/onra-interview"}
+  ],
+  "press": [
+   {"title": "Onra - Long Distance", "publication": "Resident Advisor", "url": "https://ra.co/reviews/7517", "date_published": "2010-05-27"},
+   {"title": "Onra - Chinoiseries Pt. 2", "publication": "Resident Advisor", "url": "https://ra.co/reviews/10177", "date_published": "2011-12-16"},
+   {"title": "Onra: A guided tour", "publication": "Red Bull Music Academy Daily", "url": "https://daily.redbullmusicacademy.com/2015/05/onra-a-guided-tour", "date_published": "2015-05-20"},
+   {"title": "Onra interview", "publication": "Time Out Kuala Lumpur", "url": "https://www.timeout.com/kuala-lumpur/music/onra-interview", "date_published": "2017-02-17"},
+   {"title": "Discover vintage Thailand one track at a time on Onra's 'Nosthaigia'", "publication": "Mixmag Asia", "url": "https://mixmag.asia/read/onra-nosthaigia-vintage-thailand-mpc-all-city-records-new-releases", "date_published": "2024-05-24"}
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "bandcamp": "https://onra.bandcamp.com/",
+   "discogs": null,
+   "musicbrainz": "e6a76b1d-2cbb-4587-9c09-6b7333638a0a",
+   "beatport": "https://www.beatport.com/artist/onra/38507",
+   "ra": null,
+   "wikidata": "Q2160832"
+  },
+  "notes": "Era 2 (2010 to 2023) spans Long Distance, Fundamentals and the later Chinoiseries parts; Chinoiseries Pt. 2 (2011) and Pt. 3 (2017) continue the sample-based Asian vinyl line, so Param may prefer to merge eras 1 and 2. Wikipedia also lists Tribute (2006, Bo Bun Records, made with Quetzal) before Chinoiseries. MusicBrainz links two Discogs artist pages (938734 and 1470003); not sure which is the main one, so left discogs null."
+ },
+ {
+  "slug": "anish-kumar",
+  "identity": "UK-based DJ/producer of Indian heritage making house with Bollywood samples; AK Cuts EPs and Village Underground / Panorama Bar facts match Wild City 2026. MusicBrainz entry links our Spotify id.",
+  "eras": [
+   {
+    "from_year": 2022,
+    "to_year": 2024,
+    "sound": "Rough, melodic club edits built on Bollywood samples",
+    "tags": ["Bollywood samples", "edits", "house"],
+    "source_url": "https://www.juno.co.uk/junodaily/2022/12/07/anish-kumar-interview-it-cant-sound-like-it-was-obviously-made-in-a-computer",
+    "source_name": "Juno Daily",
+    "quote": "riff off of Bollywood samples"
+   },
+   {
+    "from_year": 2025,
+    "to_year": null,
+    "sound": "Joyous, sample-led grooves close to French house",
+    "tags": ["French house", "samples", "groove"],
+    "source_url": "https://www.thewildcity.com/news/21746-anish-kumar-concludes-4-ep-anthology-ak-cuts",
+    "source_name": "Wild City",
+    "quote": "joyous groove-builders reminiscent of French house"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "a hook, something melodic and rough sounding", "source_url": "https://www.juno.co.uk/junodaily/2022/12/07/anish-kumar-interview-it-cant-sound-like-it-was-obviously-made-in-a-computer"},
+   {"tag": "joyous groove-builders reminiscent of French house", "source_url": "https://www.thewildcity.com/news/21746-anish-kumar-concludes-4-ep-anthology-ak-cuts"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "Anish Kumar interview: \"It can't sound like it was obviously made in a computer\"", "publication": "Juno Daily", "url": "https://www.juno.co.uk/junodaily/2022/12/07/anish-kumar-interview-it-cant-sound-like-it-was-obviously-made-in-a-computer", "date_published": "2022-12-07"},
+   {"title": "Anish Kumar Concludes 4-EP Anthology 'AK Cuts'", "publication": "Wild City", "url": "https://www.thewildcity.com/news/21746-anish-kumar-concludes-4-ep-anthology-ak-cuts", "date_published": "2026-07-07"}
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "bandcamp": "https://anishkumarmusic.bandcamp.com/",
+   "discogs": "https://www.discogs.com/artist/11684087",
+   "musicbrainz": "191d61e8-d809-457b-8025-196e75cb9ff4",
+   "beatport": null,
+   "ra": "https://ra.co/dj/anishkumar",
+   "wikidata": null
+  },
+  "notes": "Juno 2022: born 1999 to parents who moved from India to the North East of England, grew up in Washington, trained as a vet in Cambridge; Bollywood Super Hits! EP was due 20 January 2023; Four Tet played 'Sadhana' and booked him for Finsbury Park. Wild City 2026 adds a four-date Phonox residency in October. Instagram on MusicBrainz is anishkumarmusic, ours is anishkumaruk; worth checking."
+ },
+ {
+  "slug": "nikki-nair",
+  "identity": "Atlanta producer, raised in Knoxville in an Indian family; labels Scuffed, Pretty Weird, Dirtybird, Studio Barnhus, Hyperdub and own n goes to infinity all match. MusicBrainz entry links our Spotify id and SoundCloud.",
+  "eras": [
+   {
+    "from_year": 2019,
+    "to_year": null,
+    "sound": "High-octane breakbeat and electro with heavy bass",
+    "tags": ["breakbeat", "electro", "bass", "techno"],
+    "source_url": "https://www.beatportal.com/features/introducing-nikki-nair/",
+    "source_name": "Beatportal",
+    "quote": "high-octane breakbeat and electro cuts have made him a standout"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "freakbeat rhythms, jarring left turns and shattering basslines", "source_url": "https://www.beatportal.com/features/introducing-nikki-nair/"},
+   {"tag": "topsy-turvy bass wormholes", "source_url": "https://mixmag.asia/feature/nikki-nair-impact-mix-south-asian-interview"},
+   {"tag": "offbeat bass with distorted, percussive garage and glitch", "source_url": "https://mixmag.net/feature/the-mix-013-nikki-nair-dj-interview-hudmo-atlanta"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "Sound like nothing before: Nikki Nair's unpredictable music drags you through a genre wormhole", "publication": "Mixmag Asia", "url": "https://mixmag.asia/feature/nikki-nair-impact-mix-south-asian-interview", "date_published": "2021-10-02"},
+   {"title": "Introducing: Nikki Nair", "publication": "Beatportal", "url": "https://www.beatportal.com/features/introducing-nikki-nair/", "date_published": "2022-04-26"},
+   {"title": "Nikki Nair: \"A good pop edit done tastefully can be really exciting\"", "publication": "Crack Magazine", "url": "https://crackmagazine.net/article/profiles/signing-off-the-artists-who-defined-2023-nikki-nair/", "date_published": "2023-12-07"},
+   {"title": "Nikki Nair Announces New EP Majestic Animals: Hear \"Groundhogs\"", "publication": "Stereogum", "url": "https://stereogum.com/2513942/nikki-nair-announces-new-ep-majestic-animals-hear-groundhogs/music", "date_published": "2026-10-08"}
+  ],
+  "mix_links": [
+   {"title": "The Mix 013: Nikki Nair", "url": "https://mixmag.net/feature/the-mix-013-nikki-nair-dj-interview-hudmo-atlanta", "year": 2024}
+  ],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "bandcamp": "https://nikkinair.bandcamp.com/",
+   "discogs": "https://www.discogs.com/artist/6341383",
+   "musicbrainz": "485c0d0f-d23d-4615-bfcc-e15a2d7a9bad",
+   "beatport": "https://www.beatport.com/artist/nikki-nair/706303",
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "Kept one era: sources describe the same breaks/electro/bass core from the 2019 Scuffed release Exit Strategy to now. Beatportal (2022) has early discography: 'D B G' on Scuffed Presents (2018), Exit Strategy (2019, Scuffed), Singular Values (Tram Planet) and Morphism (Gobstopper) in 2019, Power Tool on Dirtybird; releases on record start in 2023 so Param may want these added. Crack 2023 covers Set the Roof with Hudson Mohawke. Instagram on MusicBrainz is nikki__nair, ours is nikkinair."
+ },
+ {
+  "slug": "alex-kassian",
+  "identity": "Kyoto-born, Berlin-based producer, one half of Opal Sunn with Hiroaki OBA, Utopia and Love On The Rocks releases (Magnetic Fields 2023 page). MusicBrainz entry links our Spotify id, SoundCloud and Instagram alex__kassian.",
+  "eras": [
+   {
+    "from_year": 2018,
+    "to_year": null,
+    "sound": "Ambient, world music and spiritual house, with Japanese touches",
+    "tags": ["ambient", "world music", "spiritual house"],
+    "source_url": "https://oye-records.com/releases/alex-kassian-hidden-tropics",
+    "source_name": "Oye Records",
+    "quote": "joins the dots between ambient, world music to spiritual house"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "lush and organic, cinematic and uplifting", "source_url": "https://2023.magneticfields.in/artists/alex-kassian"},
+   {"tag": "informed by spontaneity and improvisation", "source_url": "https://2023.magneticfields.in/artists/alex-kassian"}
+  ],
+  "aliases": [
+   {"name": "Opal Sunn", "note": "duo with Hiroaki OBA; runs the Planet Sundae imprint since 2017", "source_url": "https://2023.magneticfields.in/artists/alex-kassian"}
+  ],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "bandcamp": "https://alexkassian.bandcamp.com/",
+   "discogs": "https://www.discogs.com/artist/3822652",
+   "musicbrainz": "5b778294-f826-43ce-a35f-dd6395de640e",
+   "beatport": null,
+   "ra": "https://ra.co/dj/alkassian",
+   "wikidata": null
+  },
+  "notes": "Era source is a record shop listing for Hidden Tropics (Utopia, UTA008, 2018), which is not on our release list (ours starts 2019). The listing also notes Japanese touches ('Bells of Ukyo', and 'Olson Waters' recalling 1980s Sakamoto). No interviews or reviews found in the time available."
+ },
+ {
+  "slug": "abhi-meer",
+  "identity": "Mumbai modular synthesist and boxout.fm host; RA review calls him 'Mumbai-based modular synthesist', Wild City covers the same EPs already stored (Castalian Spring, Penfield Mood Organelle). Matches.",
+  "eras": [
+   {
+    "from_year": 2019,
+    "to_year": null,
+    "sound": "Immersive, cinematic ambient drone on modular synths",
+    "tags": ["ambient", "drone", "modular synth", "acid"],
+    "source_url": "https://www.thewildcity.com/news/16902-listen-penfield-mood-organelle-by-abhi-meer",
+    "source_name": "Wild City",
+    "quote": "immersive, cinematic, ambient drone sets"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "melodic drone with gentle acid undertones", "source_url": "https://ra.co/reviews/33739"},
+   {"tag": "bursts of staccato bleeps, claps, acid and electro", "source_url": "https://ra.co/reviews/33739"},
+   {"tag": "infuses a subtle dub flavour", "source_url": "https://www.thewildcity.com/news/17816-listen-releases-by-frame-frame-hoirong-pav4n-more"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "Abhi Meer - Emotionally Unavailable", "publication": "Resident Advisor", "url": "https://ra.co/reviews/33739", "date_published": "2021-03-22"},
+   {"title": "Abhi Meer - Screen Dream (modular synthesizer recordings)", "publication": "Mixmag Asia", "url": "https://mixmag.asia/read/abhi-meer-screen-dream-modular-synthesizer-recordings-new-releases", "date_published": null},
+   {"title": "Listen: Releases By Frame/Frame, Hoirong, PAV4N & More", "publication": "Wild City", "url": "https://www.thewildcity.com/news/17816-listen-releases-by-frame-frame-hoirong-pav4n-more", "date_published": "2020-08-13"}
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {"title": "Castalian Spring", "year": 2019, "release_type": "ep", "label": null, "url": "https://www.thewildcity.com/news/14390-listen-castalian-spring-by-abhi-meer", "date": null},
+   {"title": "Penfield Mood Organelle", "year": 2020, "release_type": "ep", "label": null, "url": "https://www.thewildcity.com/news/16902-listen-penfield-mood-organelle-by-abhi-meer", "date": null},
+   {"title": "Omerta", "year": 2020, "release_type": "ep", "label": null, "url": "https://www.thewildcity.com/news/17816-listen-releases-by-frame-frame-hoirong-pav4n-more", "date": null},
+   {"title": "Emotionally Unavailable", "year": 2021, "release_type": "single", "label": null, "url": "https://ra.co/reviews/33739", "date": null},
+   {"title": "Screen Dream", "year": 2022, "release_type": "album", "label": null, "url": "https://mixmag.asia/read/abhi-meer-screen-dream-modular-synthesizer-recordings-new-releases", "date": null}
+  ],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "Wild City (2019) calls Castalian Spring his debut EP, while RA (2021) says his debut single came out on boxout.fm Recordings the year before (2020), title not given. Emotionally Unavailable is self-released (RA). Screen Dream: ten tracks from 24 hours of one-take modular recordings, released independently on 12 December; year 2022 inferred from the Mixmag Asia article date, so check. Dates for Wild City releases are article dates (Castalian Spring 2019-08-20, Penfield 2020-03-16, Omerta 2020-08-13), not confirmed release dates."
+ },
+ {
+  "slug": "bombie",
+  "identity": "Matched on the Magnetic Fields artist page (our bio says her Magnetic Fields debut was December 2024) and the genre spread (electro, breaks, UK garage, house, techno). But that page calls her \"New Delhi's Bombie\" while we store Bengaluru.",
+  "eras": [
+   {
+    "from_year": 2024,
+    "to_year": null,
+    "sound": "Electro, breakbeat, UK garage and acid with rattling percussion",
+    "tags": ["electro", "breakbeat", "UK garage", "acid", "techno"],
+    "source_url": "https://www.magneticfields.in/artists/bombie",
+    "source_name": "Magnetic Fields",
+    "quote": "navigates fluidly through electro, breakbeat, future bass, UK garage, acid grooves, house, and techno."
+   }
+  ],
+  "sound_tags": [
+   {"tag": "rattling percussion and hypnotic undertones", "source_url": "https://www.magneticfields.in/artists/bombie"},
+   {"tag": "a digger first and a DJ second", "source_url": "https://www.magneticfields.in/artists/bombie"}
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "City conflict: Magnetic Fields says New Delhi, we store Bengaluru; she may have moved, please confirm with her. Page also says she started out singing and playing instruments. No releases found; SoundCloud blocks fetching. MusicBrainz 'Bombie' hits are a Belgian garage rock band, not her. Could not find the Wild City #263 page text."
+ },
+ {
+  "slug": "dj-fart-in-the-club",
+  "identity": "Seoul-born, Berlin-based DJ with a monthly NTS show since 2022, co-runs Imaginary Friend, Daisychain mix named RA best mix of 2021 (Horst page). Matches our bio.",
+  "eras": [
+   {
+    "from_year": 2021,
+    "to_year": null,
+    "sound": "Bass-heavy sets of house, techno and vintage breaks",
+    "tags": ["house", "techno", "breaks", "bass"],
+    "source_url": "https://horstartsandmusic.com/performers/dj-fart-in-the-club",
+    "source_name": "Horst Arts & Music",
+    "quote": "Often bass heavy, but not limiting herself to a singular sound,"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "colourful house & techno, vintage breaks, decontextualised bargain-bin club tracks", "source_url": "https://www.nts.live/shows/dj-fart-in-the-club"},
+   {"tag": "old and new, straight and broken, fast and slow", "source_url": "https://horstartsandmusic.com/performers/dj-fart-in-the-club"}
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {"title": "DJ Fart in the Club - Live from Nowadays NYC (NTS)", "url": "https://www.nts.live/shows/dj-fart-in-the-club/episodes/dj-fart-in-the-club-23rd-may-2025", "year": 2025},
+   {"title": "DJ Fart in the Club (NTS, 26 April 2024)", "url": "https://www.nts.live/shows/dj-fart-in-the-club/episodes/dj-fart-in-the-club-26th-april-2024", "year": 2024},
+   {"title": "DJ Fart in the Club (NTS, 4 February 2022)", "url": "https://www.nts.live/shows/dj-fart-in-the-club/episodes/dj-fart-in-the-club-4th-february-2022", "year": 2022}
+  ],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "from_year 2021 rests on dated facts on the Horst page (Sustain-Release NYC 2021, RA best mix of 2021). She is a DJ; no releases found. Horst page also says the Sustain-Release set drew attention worldwide. No interviews found; the RA Daisychain page was not located in the time available."
+ },
+ {
+  "slug": "dotdat",
+  "identity": "Pune-born, Goa-based techno producer (RA and Magnetic Fields bios); debut EP Subtrap (Wild City, already stored) and HYD EP with Truncate match. MusicBrainz 'Dotdat' entry has only HYD on Truncate.",
+  "eras": [
+   {
+    "from_year": 2020,
+    "to_year": null,
+    "sound": "Groovy, hypnotic techno with sci-fi sound design",
+    "tags": ["techno", "sci-fi sound design", "hypnotic", "modular"],
+    "source_url": "https://2023.magneticfields.in/artists/dotdat",
+    "source_name": "Magnetic Fields",
+    "quote": "groovy style of techno infused with a heavy dose of sci-fi sound design"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "a near-constant two-note motif of retro sci-fi tone", "source_url": "https://www.thewildcity.com/news/18870-dotdat-releases-in-circles-as-part-of-ben-sims-synchronicity-compilation"},
+   {"tag": "groove infused hypnotic techno", "source_url": "https://www.beatport.com/artist/dotdat/707980"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "dotdat Releases 'In Circles' As Part Of Ben Sims' 'Synchronicity' Compilation", "publication": "Wild City", "url": "https://www.thewildcity.com/news/18870-dotdat-releases-in-circles-as-part-of-ben-sims-synchronicity-compilation", "date_published": "2021-11-01"}
+  ],
+  "mix_links": [
+   {"title": "Wild City #155: dotdat", "url": "https://www.thewildcity.com/mixes/9801-wild-city-155-dotdat", "year": null}
+  ],
+  "spotify": "https://open.spotify.com/artist/4C7ju3Ygakq7wpUYDkONOF",
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {"title": "Subtrap", "year": 2020, "release_type": "ep", "label": "KSR", "url": "https://www.thewildcity.com/news/17748-dotdat-drops-his-high-octane-debut-ep-subtrap", "date": null},
+   {"title": "HYD (with Truncate)", "year": 2021, "release_type": "ep", "label": "Truncate", "url": "https://truncate.bandcamp.com/album/hyd", "date": "2021-03-05"},
+   {"title": "In Circles (on Synchronicity Vol. 2)", "year": 2021, "release_type": "compilation", "label": null, "url": "https://www.thewildcity.com/news/18870-dotdat-releases-in-circles-as-part-of-ben-sims-synchronicity-compilation", "date": null}
+  ],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": "ced65040-4b2f-450a-a059-100f81326ec3",
+   "beatport": "https://www.beatport.com/artist/dotdat/707980",
+   "ra": "https://ra.co/dj/dotdat",
+   "wikidata": null
+  },
+  "notes": "Spotify id comes from the MusicBrainz Dotdat entry whose only release is HYD with Truncate, so it should be him, but the Spotify page itself showed no bio; check before saving. Subtrap was on K S R, run by Berlin-based Kaiser (Wild City 2020-07-20). HYD label 'Truncate' is from MusicBrainz (cat TRUNCATE21); MusicBrainz dates it 2021-03-24, Bandcamp 2021-03-05. Wild City also lists him on the Observant compilation 'Bury The Hatchet' for Ukraine relief (year not confirmed, not added). Beatport bio mentions releases on Knowledge Imprint and an early 2021 Observant release, titles not given. Runs a night called ASCENSION."
+ },
+ {
+  "slug": "girls-night-out",
+  "identity": "Solo project of Delhi DJ and lawyer Vijayant Singh (Wild City #205, boxout.fm Weekender 2019, Magnetic Fields 2023). Matches our bio.",
+  "eras": [
+   {
+    "from_year": 2019,
+    "to_year": 2022,
+    "sound": "Wave, industrial, new beat, italo and left-field techno",
+    "tags": ["new beat", "italo", "industrial", "left-field techno", "EBM"],
+    "source_url": "https://boxout.fm/weekender/2019/girls-night-out",
+    "source_name": "boxout.fm Weekender 2019",
+    "quote": "plays a diverse set of sounds with a keen interest in wave, industrial, new beat, italo and left-field techno and house"
+   },
+   {
+    "from_year": 2023,
+    "to_year": null,
+    "sound": "80s and 90s house, disco, acid, balearic and soca",
+    "tags": ["house", "disco", "acid", "balearic", "soca"],
+    "source_url": "https://2023.magneticfields.in/artists/girls-night-out",
+    "source_name": "Magnetic Fields",
+    "quote": "deriving heavily from 80s and 90s house, disco, acid, balearic, soca, and more"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "strong 90's energy", "source_url": "https://www.thewildcity.com/mixes/18583-wild-city-205-girls-night-out"},
+   {"tag": "off-kilter tunes inspired by the 70s and 80s", "source_url": "https://boxout.fm/weekender/2019/girls-night-out"}
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "boxout.fm 2019 page says he is a resident at the Flying Club parties and hosts a monthly boxout.fm show, The Waiting Room (krautrock, post-punk, EBM influences). A MusicBrainz 'Girls Night Out' entry exists with no releases or details, so not linked. No releases found; he appears to be a DJ only."
+ },
+ {
+  "slug": "hunee",
+  "identity": "Hun Choi, born in Bochum to South Korean parents, Rush Hour album Hunch Music (DJ Mag, RA). MusicBrainz entry (disambiguation 'Hun Choi') links our SoundCloud and the hunchmusic Instagram.",
+  "eras": [
+   {
+    "from_year": 2009,
+    "to_year": null,
+    "sound": "Jazz and soul-infused deep house on a rough template",
+    "tags": ["deep house", "jazz", "soul", "disco", "boogie"],
+    "source_url": "https://direct.djmag.com/content/hunee-fearless-selector-defying-convention",
+    "source_name": "DJ Mag",
+    "quote": "a trademark jazz and soul-infused deep house"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "disco, African rarities, vintage Italo, boogie or up-to-the-minute electro", "source_url": "https://direct.djmag.com/content/hunee-fearless-selector-defying-convention"},
+   {"tag": "soul and jazz motifs on a rough house music template", "source_url": "https://direct.djmag.com/content/hunee-fearless-selector-defying-convention"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "Hunee - Hunch Music", "publication": "Resident Advisor", "url": "https://ra.co/reviews/17431", "date_published": "2015-08-13"},
+   {"title": "Preview Hunee's debut album", "publication": "Juno Daily", "url": "https://www.juno.co.uk/junodaily/2015/05/12/preview-hunees-debut-album/", "date_published": "2015-05-12"},
+   {"title": "Hunee curating new Rush Hour compilation, 'Hunchin' All Night': Listen", "publication": "DJ Mag", "url": "https://djmag.com/news/hunee-curating-new-rush-hour-compilation-‘hunchin-all-night’-listen", "date_published": "2018-01-10"}
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {"title": "Tour de Force", "year": 2009, "release_type": "ep", "label": "W.T. Records", "url": "https://musicbrainz.org/release/7e642f12-9055-43a5-bb2a-fae81457e35f", "date": null},
+   {"title": "Brother / Babel", "year": 2009, "release_type": "ep", "label": "Internasjonal", "url": "https://musicbrainz.org/release/a7303b6f-fd4b-4716-af20-9ee48cfd0701", "date": "2009-11-09"},
+   {"title": "Panorama Bar 03", "year": 2011, "release_type": "compilation", "label": "Ostgut Ton", "url": "https://musicbrainz.org/release/323b046a-47d8-4c5f-b034-e545db815339", "date": "2011-05-02"},
+   {"title": "Hunch Music", "year": 2015, "release_type": "album", "label": "Rush Hour", "url": "https://musicbrainz.org/release/c7573f94-8761-401c-adf8-31e8baf30964", "date": "2015-07-06"},
+   {"title": "Hunchin' All Night", "year": 2018, "release_type": "compilation", "label": "Rush Hour", "url": "https://musicbrainz.org/release/eb01f19e-cc29-43d2-b983-05869c3b185d", "date": "2018-04-09"}
+  ],
+  "ids": {
+   "bandcamp": null,
+   "discogs": "https://www.discogs.com/artist/1597895",
+   "musicbrainz": "feb974b4-031d-4f20-b072-91f506d6c6dd",
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "Releases are from MusicBrainz; DJ Mag confirms Tour De Force (W.T. Records, 2009) as his debut production plus follow-ups on Internasjonal, Retreat and Feel Music. Hunchin' All Night is a compilation he curated (DJ Mag says March 2018, MusicBrainz 2018-04-09). Panorama Bar 03 is an Ostgut Ton compilation EP filed under his name on MusicBrainz; check what he contributed. RA mentions an earlier record 'Bobos Alone In Paradise' (not found on a primary page, not added). His 2017 BBC Radio 1 Essential Mix was nominated for Essential Mix of the Year (DJ Mag). DJ Mag (2018) says he had recently moved back to Berlin from Amsterdam; we store Amsterdam. hunchmusic.de is now a domain for sale."
+ },
+ {
+  "slug": "kaleekarma",
+  "identity": "Harshita Kalee, Mumbai DJ (Wild City artist page, Current Mood), Magnetic Fields lineups 2019 and 2022, collaboration 'Now and Then' with Agent and Daulat already stored. Matches.",
+  "eras": [
+   {
+    "from_year": 2018,
+    "to_year": null,
+    "sound": "House, trip hop, minimal, techno and downtempo",
+    "tags": ["house", "trip hop", "minimal", "techno", "downtempo"],
+    "source_url": "https://mixmag.net/read/kaleekarma-is-the-bombay-based-artist-with-an-eclectic-output-you-need-to-hear-artist-profiles",
+    "source_name": "Mixmag",
+    "quote": "bridges various styles of house, trip hop, minimal, electronica, techno, downtempo and everything in between"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "fusing her passion for rhythm and melody", "source_url": "https://mixmag.net/read/kaleekarma-is-the-bombay-based-artist-with-an-eclectic-output-you-need-to-hear-artist-profiles"},
+   {"tag": "deep house, electronica and ethno techno", "source_url": "https://www.thewildcity.com/artists/3549-Kaleekarma"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "Kaleekarma is the Bombay-based artist with an eclectic output you need to hear", "publication": "Mixmag", "url": "https://mixmag.net/read/kaleekarma-is-the-bombay-based-artist-with-an-eclectic-output-you-need-to-hear-artist-profiles", "date_published": "2018-08-30"},
+   {"title": "On The Rise: Kaleekarma", "publication": "currentMood", "url": "https://currentmoodmag.com/2019/01/on-the-rise-kaleekarma", "date_published": "2019-01-08"},
+   {"title": "Premiere: Daulat, Kaleekarma & Agent - Now And Then", "publication": "Stamp The Wax", "url": "https://www.stampthewax.com/2018/09/19/daulat-kaleekarma-agent-now-and-then/", "date_published": "2018-09-19"}
+  ],
+  "mix_links": [
+   {"title": "Wild City #125: Kaleekarma", "url": "https://www.thewildcity.com/mixes/3144-wild-city-125-kaleekarma", "year": null}
+  ],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {"title": "Now And Then (Daulat, Kaleekarma & Agent)", "year": 2018, "release_type": "single", "label": "Arcane Circle", "url": "https://www.stampthewax.com/2018/09/19/daulat-kaleekarma-agent-now-and-then/", "date": null}
+  ],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "Our bio is only 'Magnetic Fields regular.' Facts for a fuller one: moved to Bombay in 2010 (Mixmag 2018); grew up in Patna and is self-taught (currentMood 2019); Wild City bio says she cut her teeth DJing on Mumbai's club circuit with deep house, electronica and 'ethno' techno. 'Now And Then' was listed as forthcoming on Arcane Circle when premiered (track, release type not stated, filed as single). The Wild City tag 'ethno techno' is paraphrased from the artist page; check wording."
+ },
+ {
+  "slug": "lush-lata",
+  "identity": "New Delhi DJ, first Indian woman at CTM Festival 2023 (matches stored Rolling Stone India piece), Wild City #222, Magnetic Fields artist page. Matches.",
+  "eras": [
+   {
+    "from_year": 2023,
+    "to_year": null,
+    "sound": "Lush, ecstatic fusion of hip-hop, trap and club bass",
+    "tags": ["hip-hop", "trap", "afrobeat", "tribal house", "drum and bass"],
+    "source_url": "https://mixmag.asia/read/ctm-festival-berlin-welcomes-lush-lata-to-its-line-up-local",
+    "source_name": "Mixmag Asia",
+    "quote": "lush, ecstatic and fusion"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "contemporary hip-hop, alluring bass lines, trap, afrobeat, tribal house", "source_url": "https://www.magneticfields.in/artists/lush-lata"},
+   {"tag": "dirty baselines and mood-swings", "source_url": "https://www.rinse.fm/episodes/lush-lata-11-10-2023-1700"},
+   {"tag": "achingly cool, unbothered, and fluid", "source_url": "https://www.magneticfields.in/artists/lush-lata"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "Berlin's CTM Festival welcomes Lush Lata to its line-up", "publication": "Mixmag Asia", "url": "https://mixmag.asia/read/ctm-festival-berlin-welcomes-lush-lata-to-its-line-up-local", "date_published": "2023-01-16"},
+   {"title": "boxout.fm Recordings' 2nd V/A Compilation Sees Lush Lata Handpick Dancefloor Stompers", "publication": "Wild City", "url": "https://www.thewildcity.com/news/20603-boxout-fm-recordings-2nd-v-a-compilation-sees-lush-lata-handpick-dancefloor-stompers", "date_published": "2024-03-11"},
+   {"title": "Lush Lata's 'Selects' showcases sounds from India's ever-evolving underground", "publication": "Mixmag Asia", "url": "https://mixmag.asia/read/lush-lata-curates-boxoutfm-recordings-selects-compilation-new-releases", "date_published": "2024-03-13"}
+  ],
+  "mix_links": [
+   {"title": "Diesel TRACKS: Lush Lata (NTS)", "url": "https://www.nts.live/shows/diesel-tracks/episodes/diesel-tracks-lush-lata-4th-july-2023", "year": 2023},
+   {"title": "Lush Lata (Rinse FM France)", "url": "https://www.rinse.fm/episodes/lush-lata-11-10-2023-1700", "year": 2023}
+  ],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {"title": "Lush Lata Selects", "year": 2024, "release_type": "compilation", "label": "boxout.fm Recordings", "url": "https://www.thewildcity.com/news/20603-boxout-fm-recordings-2nd-v-a-compilation-sees-lush-lata-handpick-dancefloor-stompers", "date": null}
+  ],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "Our bio is only 'Magnetic Fields regular.' Facts for a fuller one: New Delhi DJ who has played Magnetic Fields, Lakme Fashion Week and NH7 Weekender, and abroad at Boomtown and Ministry of Sound (UK) and Old Flings (New York) (Mixmag Asia 2023); played Panorama Bar for CTM (Magnetic Fields page). Lush Lata Selects is a compilation she curated, not her own tracks (seven tracks by MadStarBase, Zealotantrik, Insowmya and others). She is also credited on thegreybox's 2019 LP Beats and on remix/mashup credits in her NTS tracklist. Sound line words 'hip-hop, trap and club bass' come from the Magnetic Fields page, not the quoted Mixmag line."
+ },
+ {
+  "slug": "natasha-diggs",
+  "identity": "Brooklyn/New York DJ known as the '45 Queen', co-founder of Soul In The Horn (Serato 2024, UPROXX 2025). Matches our bio.",
+  "eras": [
+   {
+    "from_year": 2015,
+    "to_year": null,
+    "sound": "Horn-driven records across Afrobeat, jazz, disco and house",
+    "tags": ["soul", "Afrobeat", "jazz", "disco", "vinyl 45s"],
+    "source_url": "https://uproxx.com/music/soul-in-the-horn-interview",
+    "source_name": "UPROXX",
+    "quote": "spanning Afrobeat, jazz, disco, house, and hip-hop"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "the 45 Queen", "source_url": "https://the-drop.serato.com/culture/natasha-diggs/"},
+   {"tag": "eclectic range and deep musical knowledge", "source_url": "https://the-drop.serato.com/culture/natasha-diggs/"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "Natasha Diggs & Mr. Len \"Soul Box 45s\" Interview", "publication": "Rap Is Outta Control", "url": "https://rapisouttacontrol.com/interviews/natasha-diggs-mr-len-soul-box-45s-interview/", "date_published": "2015-12-09"},
+   {"title": "Natasha Diggs: Lifting vibrations & championing women in DJing", "publication": "Serato The Drop", "url": "https://the-drop.serato.com/culture/natasha-diggs/", "date_published": "2024-03-14"},
+   {"title": "The Vibe Attracts The Tribe: 10 Years Of Soul In The Horn", "publication": "UPROXX", "url": "https://uproxx.com/music/soul-in-the-horn-interview", "date_published": "2025-10-14"}
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {"title": "Soul Box 45s (with Mr. Len)", "year": 2015, "release_type": "compilation", "label": "Brunswick Records", "url": "https://rapisouttacontrol.com/interviews/natasha-diggs-mr-len-soul-box-45s-interview/", "date": null},
+   {"title": "Breathe (Natasha Diggs Extended Remix) - Blaze", "year": 2023, "release_type": "remix", "label": "Slip 'n' Slide", "url": "https://www.traxsource.com/title/2218838/breathe", "date": null},
+   {"title": "Think About This Day (feat. Omar)", "year": 2024, "release_type": "single", "label": "Soul in the Horn / Sassafrass Girl", "url": "https://www.rushhour.nl/node/282731", "date": null},
+   {"title": "Soul In The Horn - The 10 Year Anniversary Edition", "year": 2025, "release_type": "compilation", "label": "Fat Beats", "url": "https://uproxx.com/music/soul-in-the-horn-interview", "date": "2025-10-17"},
+   {"title": "What Went Wrong Last Night (Natasha Diggs Remixes) - Millie Jackson", "year": 2026, "release_type": "remix", "label": "Acid Jazz", "url": "https://spindizzyrecords.com/products/millie-jackson-what-went-wrong-last-night-natasha-diggs-remixes", "date": "2026-10-02"}
+  ],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "Think About This Day (SASS 001, 12\") is described by Rush Hour as her first official 12\", with Omar on vocals; Rush Hour lists it in week 42 of 2024. Soul Box 45s is a 1,000-copy box of soul and disco 45s she compiled with Mr. Len for Brunswick (year from the 2015 interview date). The Soul In The Horn anniversary triple LP has a track by her, title not given; date is the scheduled release date in UPROXX. Breathe year is from the 2023 copyright line on Traxsource. Millie Jackson 12\" is part of Acid Jazz / Ace's Spring Revisited series, 500 copies. The 1990s-born 'Latasha Natasha Diggs' MusicBrainz entry is a different person (vocalist, dancer). Soul In The Horn was co-founded with DProsper; 'the 45 Queen' is a nickname, so not listed as an alias."
+ },
+ {
+  "slug": "sartdawg",
+  "identity": "Not confirmed. No public pages found for 'Sartdawg' (searches return unrelated Bengaluru DJs such as Sartek).",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "CCD founder's own project, so thin sources are expected. Our record has instagram 'startdawg' while the name is 'sartdawg'; one of them may be a typo. Nothing on MusicBrainz. Do not confuse with Bengaluru DJ Sartek."
+ },
+ {
+  "slug": "spiralynk",
+  "identity": "Not confirmed. Web search for 'Spiralynk' returns nothing relevant; SoundCloud cannot be fetched.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "Nothing found beyond what we already store (SoundCloud, Viberate, RA Magnetic Fields 2022 lineup). Not on MusicBrainz."
+ },
+ {
+  "slug": "thegreybox",
+  "identity": "Wild City 'Listening Sessions ft. thegreybox Beats' (already stored press) names him as Utkarsh Bhandari, part of Delhi's scene. Same artist as our stored press link.",
+  "eras": [
+   {
+    "from_year": 2019,
+    "to_year": null,
+    "sound": "Beats across hip-hop, soul, R&B and house",
+    "tags": ["hip-hop", "soul", "R&B", "house", "beats"],
+    "source_url": "https://www.thewildcity.com/news/14699-wild-city-presents-listening-sessions-ft-thegreybox-beats",
+    "source_name": "Wild City",
+    "quote": "dabbles in hip-hop, soul, R&B and house"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "familiar routes to unfamiliar places and unfamiliar routes to familiar places", "source_url": "https://www.thewildcity.com/news/14699-wild-city-presents-listening-sessions-ft-thegreybox-beats"}
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "thegreybox is the beat project of Utkarsh Bhandari, a producer and graphic designer in Delhi's music scene who works across hip-hop, soul, R&B and house and is involved with boxout.fm. His debut LP Beats came out in September 2019 with features from Lush Lata, Profound, MadStarBase, EchoFloat and Ovid.",
+  "bio_sources": [
+   "https://www.thewildcity.com/news/14699-wild-city-presents-listening-sessions-ft-thegreybox-beats",
+   "https://www.thewildcity.com/events/14736-wild-city-presents-listening-sessions-thegreybox"
+  ],
+  "releases": [
+   {"title": "Beats", "year": 2019, "release_type": "album", "label": null, "url": "https://www.thewildcity.com/news/14699-wild-city-presents-listening-sessions-ft-thegreybox-beats", "date": "2019-09-18"}
+  ],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "notes": "Wild City calls him 'a familiar figure within the capital's musical landscape' but does not say Delhi in words; the bio says 'Delhi's music scene' on that basis. The quote for the era is as relayed from the article; recheck exact wording. Label for Beats not named. Did not verify the YouTube mix_url we store."
+ }
+]

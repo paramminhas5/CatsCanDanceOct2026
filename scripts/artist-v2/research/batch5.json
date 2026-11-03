@@ -1,0 +1,593 @@
+[
+ {
+  "slug": "adam-port",
+  "name": "ADAM PORT",
+  "kind": "musician",
+  "based_city": "Berlin, Germany",
+  "from_city": "Berlin, Germany",
+  "genres": [
+   "Afro House",
+   "Deep House",
+   "House"
+  ],
+  "spotify": "https://open.spotify.com/artist/2loEsOijJ6XiGzWYFXMIRk",
+  "soundcloud": null,
+  "instagram": null,
+  "website": "https://www.keinemusik.com",
+  "mix_url": "https://www.youtube.com/watch?v=VCgLJbZqsJE",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Adam Port (Adam Polaszek, born 1979) is a Berlin DJ and producer. In 2009 he co-founded the Keinemusik label and collective with Rampa, &ME, Reznik and Monja Gentschow. His 2024 track Move became a streaming hit.",
+  "releases_on_record": 45,
+  "release_years": [
+   2009,
+   2026
+  ],
+  "sample_releases": [
+   "Be The One (2026, Keinemusik)",
+   "Whole Room Dancing (2026, VOD)",
+   "Positions (Extended) (2025, None)",
+   "See You Again (2025, Keinemusik)",
+   "Crazy For It (2025, Keinemusik)",
+   "Move (2024, Keinemusik)",
+   "Say What (2024, Keinemusik)",
+   "All I Got (2024, Madorasindahouse Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://curlytales.com/india/experiences/sunburn-brings-back-adam-port-for-a-three-city-india-tour-this-november/"
+  ],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": [
+   2009,
+   2024
+  ]
+ },
+ {
+  "slug": "madame-gandhi",
+  "name": "MADAME GANDHI",
+  "kind": "musician",
+  "based_city": "USA",
+  "from_city": "India/USA",
+  "genres": [
+   "Electronic",
+   "Percussion"
+  ],
+  "spotify": "https://open.spotify.com/artist/1zBHbitf3pjF7W00UIFfVf",
+  "soundcloud": "https://soundcloud.com/madamegandhi",
+  "instagram": "madamegandhi",
+  "website": "https://www.madamegandhi.com",
+  "mix_url": null,
+  "labels": null,
+  "members": "Kiran Gandhi",
+  "bio_excerpt": "Producer and drummer. Rhythm-driven sets. Echoes of Earth 2025.",
+  "releases_on_record": 28,
+  "release_years": [
+   2016,
+   2026
+  ],
+  "sample_releases": [
+   "Ektā (2026, CDA Records)",
+   "Echoes of You (2026, CDA Records)",
+   "Kyrie (2026, CDA Records)",
+   "Amazon Awakening (Radio Edit) (2026, EarthPercent)",
+   "Love Letters from Brooklyn (2026, Gender Amplified)",
+   "Amazon: Guided Meditation (2025, Opus Immersive)",
+   "Let Me Be Water (feat. NATURE) (2025, We Make Noise)",
+   "Arctic: Guided Meditation (2025, Opus Immersive)"
+  ],
+  "press_urls_already_stored": [
+   "https://rollingstoneindia.com/madame-gandhi-announces-india-tour"
+  ],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": [
+   2017
+  ]
+ },
+ {
+  "slug": "komorebi",
+  "name": "KOMOREBI",
+  "kind": "musician",
+  "based_city": "New Delhi, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "Indie"
+  ],
+  "spotify": "https://open.spotify.com/artist/33wbulGqQSccMOCox5UdIS",
+  "soundcloud": "https://soundcloud.com/komorebitunes",
+  "instagram": "komorebimind",
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/14460-wild-city-179-komorebi",
+  "labels": null,
+  "members": "Tarana Marwah",
+  "bio_excerpt": "Singer-producer bridging electronic and indie. Lollapalooza 2024.",
+  "releases_on_record": 21,
+  "release_years": [
+   2015,
+   2026
+  ],
+  "sample_releases": [
+   "Light Song (Gaurav Gupta Couture 2026) (2026, Gravity Sounds)",
+   "The Divine Androgyne (Gaurav Gupta Couture 2026) (2026, Gravity Sounds)",
+   "Anita Dongre Rewild 2026 (2026, Gravity Sounds)",
+   "No Deal (2025, Gravity Sounds)",
+   "BAYO (CokeStudio Bharat Season 2) (2024, None)",
+   "I Grew Up (2023, None)",
+   "The Fall (2023, Chicken Ranch Records)",
+   "Watch Out (2023, Chicken Ranch Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.pastemagazine.com/music/komorebi/komorebi-finds-the-human-heart-at-the-center-of-a-sci-fi-concept-album",
+   "https://www.thewildcity.com/news/16890-komorebi-releases-new-music-video-rebirth",
+   "https://www.thewildcity.com/news/18644-komorebi-combines-hindi-lyricism-with-downtempo-on-chanda"
+  ],
+  "sound_tags_already_stored": [
+   "whimsical, orchestral, celestial",
+   "hypnotic, haunting, otherworldly, lush soundscapes",
+   "whimsical and dreamy downtempo electronica",
+   "down-tempo electronic, orchestral, post-rock, layered vocals and harmonies",
+   "multi-layered ambience, eccentric electronic beats, left of centre",
+   "Hindi-language downtempo (Chanda)"
+  ],
+  "has_eras": false,
+  "milestone_years": [
+   2015,
+   2017,
+   2018,
+   2019,
+   2021,
+   2023
+  ]
+ },
+ {
+  "slug": "palms-trax",
+  "name": "PALMS TRAX",
+  "kind": "musician",
+  "based_city": "Berlin, Germany",
+  "from_city": "UK",
+  "genres": [
+   "House",
+   "Techno"
+  ],
+  "spotify": "https://open.spotify.com/artist/52XSRQqTAfZ8ZrIqkQvQyA",
+  "soundcloud": "https://soundcloud.com/palmstrax",
+  "instagram": "palmstrax",
+  "website": null,
+  "mix_url": "https://www.nts.live/shows/solid-steel/episodes/solid_steelsolid-steel-radio-show-2722015-part-1-2-palms-trax",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Palms Trax is a producer and DJ based in Berlin. His first record came out in October 2013 on the London label Lobster Theremin, and he has since released on Rush Hour, Secretsundaze and Dekmantel. He plays house with a Detroit lean.",
+  "releases_on_record": 14,
+  "release_years": [
+   2013,
+   2026
+  ],
+  "sample_releases": [
+   "Kaila's Photos (2026, Fabric Records)",
+   "Keys To A Printed Garden (2026, Fabric Records)",
+   "Soft Trance, Hard Gossip (2026, Fabric Records)",
+   "The Sound of Love International #006 - Palms Trax (2024, Love International Recordings)",
+   "Zélé (Palms Trax Remix) (2024, Blanc Manioc)",
+   "One Thousand Waves (2024, CWPT)",
+   "Automatic (2021, Phantasy Sound)",
+   "Petu (Dub Mix) (2020, CWPT)"
+  ],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ },
+ {
+  "slug": "sunju-hargun",
+  "name": "SUNJU HARGUN",
+  "kind": "musician",
+  "based_city": "Bangkok, Thailand",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": "https://open.spotify.com/artist/6XNArQquD2Y3ZPJBjDSWmJ",
+  "soundcloud": null,
+  "instagram": "sunjuhargun",
+  "website": null,
+  "mix_url": "https://ra.co/podcast/821",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Magnetic Fields regular.",
+  "releases_on_record": 11,
+  "release_years": [
+   2010,
+   2025
+  ],
+  "sample_releases": [
+   "Vie (VAM Remix) (2025, Armada Music)",
+   "EVIL FLOW. SUMMER 2017 (2017, Evil Flow.)",
+   "Kubrick (2016, Hydrozoa)",
+   "Palace EP (2015, Turbo Recordings)",
+   "No Futuro / Vie (2014, VIVa LiMITED (BEAT Music Fund))",
+   "Battery Life (2013, Tools & Stuff)",
+   "Little Helpers 76 (2013, Little Helpers)",
+   "Eastern Promises EP (2011, Microzoo)"
+  ],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ },
+ {
+  "slug": "shantam",
+  "name": "SHANTAM",
+  "kind": "musician",
+  "based_city": "Noida, India",
+  "from_city": "India",
+  "genres": [
+   "Ambient",
+   "Techno"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/shantamk",
+  "instagram": "shantam",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Echoes of Earth 2024, Magnetic Fields regular.",
+  "releases_on_record": 6,
+  "release_years": [
+   2019,
+   2026
+  ],
+  "sample_releases": [
+   "Iridescent (Shantones series, 2nd EP) (2026, None)",
+   "bleep (2023, Noosphere Network)",
+   "Patturbed (2023, Soupherb Records)",
+   "3fer-disco (2021, Ceramic)",
+   "Telekinetik (2021, Social Isolation)",
+   "Gambol (2019, Noosphere Network)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/18742-shantam-releases-14-track-album-telekinetik-via-social-isolation",
+   "https://www.thewildcity.com/news/20485-shantam-adds-emotional-warmth-to-idm-frenzy-on-ep-bleep",
+   "https://www.thewildcity.com/news/21759-shantam-releases-2nd-ep-under-shantones-series-exploring-techno"
+  ],
+  "sound_tags_already_stored": [
+   "genre-defying, breaks techno that pushes boundaries",
+   "IDM; emotionally warm; chopped, stiff breakbeats",
+   "four-to-the-floor techno with rolling drums and 909 snare rolls",
+   "abstract compositions, analog textures, funk-house, dub, leftfield/ambient/noise",
+   "wonky and groovy take on beat",
+   "low, murky analog textures, punchy drums, lingering melodies; drum machines, samplers and synths live",
+   "playful and genre-fluid"
+  ],
+  "has_eras": false,
+  "milestone_years": [
+   2007,
+   2021,
+   2026
+  ]
+ },
+ {
+  "slug": "agent-bugs",
+  "name": "AGENT BUGS",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Played CCD Episode 2 at Indiranagar Social.",
+  "releases_on_record": 0,
+  "release_years": null,
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ },
+ {
+  "slug": "bullzeye",
+  "name": "BULLZEYE",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Techno",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/bullzeyepower",
+  "instagram": "bullzeyepower",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "One of the most booked DJs in India. Played alongside Carl Cox, Dixon, Nina Kraviz. Paradiso Amsterdam, Ritter Butzke Berlin.",
+  "releases_on_record": 0,
+  "release_years": null,
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ },
+ {
+  "slug": "dj-pants",
+  "name": "DJ PANTS",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://soundcloud.com/thewildcity/wild-city-242-dj-pants",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "DJ Pants is the alias of Aditya Mehta, a multidisciplinary artist and live sound engineer. He plays Balearic beat, disco, boogie, house and street soul, moving from relaxed daytime sets to club energy. He is on the Magnetic Fields artist roster.",
+  "releases_on_record": 0,
+  "release_years": null,
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ },
+ {
+  "slug": "dreamstates",
+  "name": "DREAMSTATES",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "Psychedelic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "dreamstates",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Psychedelic electronic producer. DGTL India 2025, Echoes of Earth.",
+  "releases_on_record": 0,
+  "release_years": null,
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ },
+ {
+  "slug": "green-park",
+  "name": "GREEN PARK",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "New Delhi",
+  "genres": [
+   "Electronic",
+   "Indie"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "allparksaregreen",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Green Park is an indie pop trio from New Delhi, formed in late 2021. The band is Arpan Kumar on guitar and vocals, Siddharth Gupta on bass and Rishabh Singh on drums. Their debut album Newly Aged came out in March 2024.",
+  "releases_on_record": 0,
+  "release_years": null,
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ },
+ {
+  "slug": "hybrid-protokol",
+  "name": "HYBRID PROTOKOL",
+  "kind": "musician",
+  "based_city": "Kolkata, India",
+  "from_city": "India",
+  "genres": [
+   "Electronica",
+   "Breaks",
+   "Acid",
+   "Techno"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/hybrid-protokol",
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/3136-wild-city-117-hybrid-protokol",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Hybrid Protokol is a Kolkata duo of Soumajit Ghosh and Aneesh Basu, formed in 2015. They make progressive electronica mixed with breaks, acid and techno. They have released on Hot Elephant Music and Qilla Records, and played a Boiler Room set in April 2022.",
+  "releases_on_record": 0,
+  "release_years": null,
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://rollingstoneindia.com/listen-kolkatas-hybrid-protokol-get-intergalactic-new-ep",
+   "https://dubiks.com/2024/01/18/premiere-hybrid-protokol-andhi-hot-elephant-music",
+   "https://www.thewildcity.com/news/7814-listen-sounds-in-place-vol-1-ep-by-hybrid-protokol",
+   "https://www.thewildcity.com/news/1992-listen-hybrid-protokol-releases-debut-lp-deep-beyond-belief"
+  ],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": [
+   2024
+  ]
+ },
+ {
+  "slug": "kamma",
+  "name": "KAMMA",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": null,
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ },
+ {
+  "slug": "mc-soopy",
+  "name": "MC SOOPY",
+  "kind": "musician",
+  "based_city": "New Delhi, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "MC"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "MC Soopy is Siddhant Roop Rai, an MC and DJ from New Delhi. As an MC he does improvised, grime-infused rapping and hypes the room. As a DJ he plays anything from hip-hop and soul to Italo and techno.",
+  "releases_on_record": 0,
+  "release_years": null,
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ },
+ {
+  "slug": "nazira",
+  "name": "NAZIRA",
+  "kind": "musician",
+  "based_city": "Almaty, Kazakhstan",
+  "from_city": "India",
+  "genres": [
+   "Techno",
+   "Electro",
+   "Acid",
+   "Industrial"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/naziranazira",
+  "instagram": "nazira_in_zvuk",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Nazira is a DJ based in Almaty, Kazakhstan, playing left-field techno, electro, acid and industrial. She runs the ZVUK event series in Almaty, started in August 2016, and is a Room 4 Resistance resident in Berlin. She hosts a monthly Radio Cómeme show, Theory of Nothing, and played Magnetic Fields i",
+  "releases_on_record": 0,
+  "release_years": null,
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ },
+ {
+  "slug": "shama-anwar",
+  "name": "SHAMA ANWAR",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/11892-wild-city-167-shama-anwar",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": null,
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ },
+ {
+  "slug": "stain",
+  "name": "STAIN",
+  "kind": "musician",
+  "based_city": "Delhi, India",
+  "from_city": "India",
+  "genres": [
+   "Bass",
+   "Dub",
+   "Afrobeat"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/15203-wild-city-182-stain",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Stain is Sourodeep Guha, a DJ and producer based in Delhi. He plays bass-heavy club music rooted in sound system culture, with dub and Afrobeat influences. He co-founded the Delhi bass collective Sub-Z and has had support from Om Unit, dBridge, Zed Bias and Mala.",
+  "releases_on_record": 0,
+  "release_years": null,
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/19743-stain-zed-bias-offer-sparse-bass-with-a-touch-of-dub-on-delhi-birds",
+   "https://www.thewildcity.com/news/21391-stain-returns-to-the-smoky-space-between-dub-club-on-under-the-influence"
+  ],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ },
+ {
+  "slug": "violet",
+  "name": "VIOLET",
+  "kind": "musician",
+  "based_city": "Lisbon, Portugal",
+  "from_city": "Portugal",
+  "genres": [
+   "House",
+   "Techno",
+   "Breakbeat"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/violet",
+  "instagram": "Violetakaviolet",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=8U0m160whW8",
+  "labels": null,
+  "members": "PT",
+  "bio_excerpt": "Violet is Ines Borges Coutinho, a DJ and producer based in Lisbon. She plays tough house, rhythmic techno and breakbeat. She co-founded the party mina and Radio Quantica, released the New Visions EP on Paraiso, and announced her debut album Bed of Roses for Dark Entries.",
+  "releases_on_record": 0,
+  "release_years": null,
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "has_eras": false,
+  "milestone_years": []
+ }
+]
