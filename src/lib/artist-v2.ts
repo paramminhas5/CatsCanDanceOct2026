@@ -198,7 +198,9 @@ export async function getArtistV2(slug: string): Promise<ArtistV2 | null> {
     const [fill, ink] = FILLS[i % FILLS.length];
     const type = TYPE_LABEL[(r.release_type ?? "").toLowerCase()] ?? "Release";
     const streaming = !!r.deezer_track_id;
-    const bc = bcById.get(r.id);
+    // A compilation's album player starts on its first track, not this artist's, so only track ids count there.
+    const bcRow = bcById.get(r.id);
+    const bc = bcRow && !((r.release_type ?? "").toLowerCase() === "compilation" && bcRow.bandcamp_item_type === "album") ? bcRow : undefined;
     const bandcamp: Bandcamp | null = bc ? { type: bc.bandcamp_item_type as "album" | "track", id: Number(bc.bandcamp_item_id), url: r.bandcamp_url ?? (/bandcamp\.com/.test(r.source_url ?? "") ? r.source_url : null) } : null;
     const sub = [type, r.label].filter(Boolean).join(" · ") + (streaming ? "" : bandcamp ? " · on Bandcamp" : " · not on streaming");
     return {
