@@ -11,9 +11,9 @@ T = {
           "join public.artists a on a.slug=x.s on conflict (artist_slug,alias) do nothing returning 1) select count(*) from ins;"),
  'press': ("with ins as (insert into public.artist_press (artist_id,artist_slug,title,publication,url,date_published,type) select a.id,x.s,x.t,x.p,x.u,x.d::date,'feature' from json_to_recordset({J}) as x(s text,t text,p text,u text,d text) "
           "join public.artists a on a.slug=x.s on conflict (artist_slug,url) do nothing returning 1) select count(*) from ins;"),
- 'mixes': ("with ins as (insert into public.artist_tracklists (artist_slug,mix_title,url,tracks) select x.s,x.t,x.u,'[]'::jsonb from json_to_recordset({J}) as x(s text,t text,u text) "
-          "join public.artists a on a.slug=x.s on conflict (artist_slug,url) do nothing returning 1), "
-          "fill as (update public.artists a set mix_url=f.u from (select distinct on (x.s) x.s,x.u from json_to_recordset({J}) as x(s text,t text,u text) order by x.s) f where a.slug=f.s and a.mix_url is null returning 1) "
+ 'mixes': ("with x as (select * from json_to_recordset({J}) as x(s text,t text,u text) where exists (select 1 from public.artists a where a.slug=x.s)), "
+          "ins as (insert into public.artist_tracklists (artist_slug,mix_title,url,tracks) select x.s,x.t,x.u,'[]'::jsonb from x on conflict (artist_slug,url) do nothing returning 1), "
+          "fill as (update public.artists a set mix_url=f.u from (select distinct on (x.s) x.s,x.u from x order by x.s, (x.u ~ '(soundcloud\\.com|youtube\\.com|youtu\\.be|mixcloud\\.com)') desc) f where a.slug=f.s and a.mix_url is null returning 1) "
           "select (select count(*) from ins) ins, (select count(*) from fill) filled;"),
  'spotify': ("with up as (update public.artists a set spotify=x.u from json_to_recordset({J}) as x(s text,u text) where a.slug=x.s and (a.spotify is null or a.spotify='') returning 1) select count(*) from up;"),
  'bio': ("with up as (update public.artists a set bio=x.b from json_to_recordset({J}) as x(s text,b text) where a.slug=x.s and (a.bio is null or length(trim(a.bio))<20) returning 1) select count(*) from up;"),

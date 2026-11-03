@@ -14,7 +14,14 @@ PAL = ['night', 'blush', 'ink']
 FIELD_OUT = {('thegreybox','eras'),('thegreybox','bio_draft'),('dotdat','spotify'),('lush-lata','eras')}
 TAG_OUT = {('kaleekarma','ethno techno')}
 EXCLUDE = {'dj-ravator': 'identity match rated weak by research (MusicBrainz Ravator via a shared singer); Param to confirm'}
-rows = {k: [] for k in ['eras', 'tags', 'aliases', 'press', 'mixes', 'spotify', 'bio', 'releases', 'ids']}
+if 'pass2' in D:
+    # Pass 2 (3 Nov 2026 night): pass 1 field drops do not apply; these items rest on weak identity.
+    FIELD_OUT = {('kibo', 'mix_links')}
+    TAG_OUT = set()
+    REL_OUT = {('jbabe', 'love it less (sandunes feat. jbabe), on spare some time')}
+else:
+    REL_OUT = set()
+rows = {k: [] for k in ['eras', 'tags', 'aliases', 'press', 'mixes', 'spotify', 'bio', 'releases', 'ids', 'bc']}
 report = {'artists': 0, 'with_eras': 0, 'dropped': [], 'no_confirm': []}
 def drop(slug, what, why): report['dropped'].append(f'{slug}: {what}: {why}')
 for f in sorted(glob.glob(f'{D}/out*.json')):
@@ -64,7 +71,7 @@ for f in sorted(glob.glob(f'{D}/out*.json')):
             if u and URL.match(u) and pr.get('title') and u not in b['press_urls_already_stored']:
                 d = pr.get('date_published'); d = d if d and re.match(r'^\d{4}-\d{2}-\d{2}$', str(d)) else None
                 rows['press'].append({'s': s, 't': clean(pr['title'])[:300], 'p': clean(pr.get('publication')), 'u': u, 'd': d})
-        for m in (x.get('mix_links') or [])[:3]:
+        for m in sorted(x.get('mix_links') or [], key=lambda m: m.get('kind') == 'release')[:5]:   # pass 2 allows 5, sets first
             u = m.get('url')
             if u and URL.match(u) and m.get('title'):
                 y = m.get('year')
@@ -81,15 +88,21 @@ for f in sorted(glob.glob(f'{D}/out*.json')):
             ty = (r.get('release_type') or 'single').lower()
             if ty not in ('album', 'ep', 'single', 'remix', 'compilation'): ty = 'single'
             if not (t and u and URL.match(u) and isinstance(y, int) and 1985 <= y <= 2026): drop(s, 'release', f'{t!r} incomplete'); continue
-            if t.lower() in have: continue
+            if t.lower() in have or (s, t.lower()) in REL_OUT: continue
             d = r.get('date'); d = d if d and re.match(r'^\d{4}-\d{2}-\d{2}$', str(d)) and d.startswith(str(y)) else None
             rows['releases'].append({'s': s, 'ti': t[:200], 'ty': ty, 'y': y, 'd': d, 'l': clean(r.get('label')), 'u': u})
+            bid, bty = r.get('bandcamp_id'), r.get('bandcamp_type')
+            if 'bandcamp.com' in u and str(bid or '').isdigit() and bty in ('album', 'track'):
+                rows['bc'].append({'s': s, 't': t[:200], 'ty': bty, 'id': int(bid)})
         ids = x.get('ids') or {}
         if isinstance(ids, dict):
             for k, v in ids.items():
                 k = k.lower()
-                if k not in ('bandcamp', 'discogs', 'musicbrainz', 'beatport', 'ra', 'wikidata') or not v: continue
+                if k not in ('bandcamp', 'discogs', 'musicbrainz', 'beatport', 'ra', 'wikidata', 'deezer') or not v: continue
                 v = str(v).strip()
+                if k == 'deezer':
+                    if v.isdigit(): rows['ids'].append({'s': s, 'k': k, 'v': v, 'u': f'https://www.deezer.com/artist/{v}'})
+                    continue
                 if k == 'musicbrainz':
                     m = re.search(r'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}', v)
                     if not m: continue
