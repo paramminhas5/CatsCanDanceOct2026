@@ -34,3 +34,10 @@ Many names are shared (for example several artists are called Komorebi). Before 
 CCD is becoming the reference database for South Asian electronic music, filling gaps where MusicBrainz and Deezer have nothing. So also return:
 9. `releases`: for artists with releases_on_record under 5, up to 20 releases you can confirm on a primary page: Bandcamp, Beatport, Discogs, MusicBrainz, the label's own site, SoundCloud (official releases, not mixes) or a press announcement. Each: title, year, release_type (album, ep, single, remix, compilation), label (null if self-released or unknown), url (the page that confirms it), date (YYYY-MM-DD if shown, else null). Skip anything already in sample_releases. Do not include DJ mixes here (those go in mix_links).
 10. `ids`: other stable ids you can confirm for the artist: bandcamp (URL), discogs (artist URL), musicbrainz (artist MBID or URL), beatport (artist URL), ra (ra.co/dj/... URL), wikidata (Q-id). Only the same artist.
+
+## Addendum: pass 2 (4 Nov 2026 IST)
+Second pass for artists with no sourced eras or nothing that plays on their page. Same rules as above. Extra priorities:
+- `mix_links` first. A SoundCloud, YouTube or Mixcloud URL plays on the page, so prefer those (an outlet's channel or the artist's own account, for example Wild City, Boiler Room, Mixmag, Keep Hush, Rinse, NTS on Mixcloud). Up to 5 per artist this pass. Open the page and confirm the artist is the one playing. Skip anything in `mix_urls_already_stored` or equal to `mix_url`.
+- For releases on a Bandcamp page you opened, add `bandcamp_id` (the number in `item_id` or `album=` / `track=` in the page's embed data) and `bandcamp_type` ("album" or "track") when the page shows them.
+- Artists whose records already have eras (`has_eras` true) need only mixes, releases, ids and press.
+- If nothing public exists (common for small local DJs), return empty lists and say so in notes. Never guess.

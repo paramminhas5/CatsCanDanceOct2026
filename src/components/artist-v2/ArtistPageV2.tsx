@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 import dynamic from "next/dynamic";
 import {
   type ArtistV2, type Moment, type Era, type Palette, type Release,
-  PALETTES, coverUrl, sourceName, displayName, embedFor,
+  PALETTES, coverUrl, sourceName, displayName, embedFor, bandcampEmbed,
 } from "@/lib/artist-v2";
 
 const BookingForm = dynamic(() => import("@/components/booking/BookingForm"), { ssr: false });
@@ -110,12 +110,21 @@ export default function ArtistPageV2({ a }: { a: ArtistV2 }) {
     playableAll.filter((r) => r.y <= yf + 0.005).pop() ??
     playableAll[0];
   const popNow = pop != null ? a.popular[pop] : null;
-  const nothingPlayable = !playable && a.popular.length === 0;
+  // Bandcamp: the release under the scrubber plays from Bandcamp when it is not on Deezer.
+  // With nothing on Deezer at all, the nearest Bandcamp release plays instead.
+  const relFull = relNow ? a.releases.find((r) => r.id === relNow.id) : undefined;
+  const bcAll = a.releases.filter((r) => r.bandcamp && !r.trackId && !r.undated).sort((x, y) => x.y - y.y);
+  const bcNow: Release | undefined = popNow ? undefined
+    : relFull?.bandcamp && !relFull.trackId ? relFull
+    : !playable ? (bcAll.filter((r) => r.y <= yf + 0.005).pop() ?? bcAll[0]) : undefined;
+  const nothingPlayable = !playable && a.popular.length === 0 && !bcNow;
   const mixPlay = a.mixes.find((m) => embedFor(m.url)) ?? null;
 
-  const dockTrackId = popNow ? popNow.id : playable?.trackId ?? null;
+  const dockTrackId = popNow ? popNow.id : bcNow ? null : playable?.trackId ?? null;
   const dock = popNow
     ? { t: popNow.t, sub: `${popNow.album} · 30s preview`, cover: coverUrl(popNow.albumId, "medium"), fill: "#333" }
+    : bcNow
+      ? { t: bcNow.t, sub: `${bcNow.date} · Bandcamp`, cover: null, fill: bcNow.fill || "#333" }
     : playable
       ? {
           t: playable.track ?? playable.t,
@@ -158,6 +167,11 @@ export default function ArtistPageV2({ a }: { a: ArtistV2 }) {
     if (dockTrackId) return void playTrack(dockTrackId, false);
     if (playEmbed) setEmbed((v) => !v);
   };
+  // Scrubbing onto a Bandcamp-only release stops the Deezer preview; Bandcamp plays in its own player.
+  useEffect(() => { if (bcNow) stop(); }, [bcNow, stop]);
+  // A different Bandcamp release (or leaving one) closes the open player, so it never shows the wrong record.
+  const bcKey = bcNow?.id ?? "";
+  useEffect(() => { setEmbed(false); }, [bcKey]);
   // Scrubbing to another release while playing switches the record.
   useEffect(() => {
     if (playing && dockTrackId && loadedTrack.current !== dockTrackId) void playTrack(dockTrackId, true);
@@ -619,7 +633,7 @@ html,body{overflow-x:visible!important}
   const embedSrc = a.spotify && /open\.spotify\.com\/artist\/([A-Za-z0-9]+)/.test(a.spotify)
     ? `https://open.spotify.com/embed/artist/${/artist\/([A-Za-z0-9]+)/.exec(a.spotify)![1]}?utm_source=generator&theme=0`
     : a.soundcloud ? `https://w.soundcloud.com/player/?url=${encodeURIComponent(a.soundcloud)}&color=%23b6ef36&visual=false` : null;
-  const playEmbed: { src: string; h: number } | null = embedSrc ? { src: embedSrc, h: 152 } : embedFor(mixPlay?.url);
+  const playEmbed: { src: string; h: number } | null = bcNow ? bandcampEmbed(bcNow.bandcamp) : embedSrc ? { src: embedSrc, h: 152 } : embedFor(mixPlay?.url);
 
   return (
     <div className="av" style={{ background: p.bg, color: p.ink, minHeight: "100vh" }}>

@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     ids: a.ids,
     links: a.links,
     eras: a.eras.filter((e) => e.src).map((e) => ({ from: e.from, to: e.to, sound: e.sound, tags: e.tags, source: e.src })),
-    releases: a.releases.map((r) => ({ title: r.t, type: r.type || null, date: r.undated ? null : r.date, label: r.label, source: r.src, deezer_album_id: r.albumId })),
+    releases: a.releases.map((r) => ({ title: r.t, type: r.type || null, date: r.undated ? null : r.date, label: r.label, source: r.src, deezer_album_id: r.albumId, bandcamp: r.bandcamp ? { type: r.bandcamp.type, id: r.bandcamp.id } : null })),
     moments: a.moments.filter((m) => m.kind !== "rel").map((m) => ({ type: m.kind === "show" ? "show" : "milestone", date: m.date, title: m.t, detail: m.sub || null, source: m.src })),
     upcoming: a.upcoming.map((u) => ({ title: u.title, date: u.event_date, city: u.city, venue: u.venue, tickets: u.ticket_url })),
     ccd_nights: a.ccdNights.map((n) => ({ title: n.title, date: n.date, url: `${SITE}${n.url}` })),
