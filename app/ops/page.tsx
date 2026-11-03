@@ -381,6 +381,7 @@ export default async function Ops() {
       )}
 
       <p style={{ margin: "0 0 16px" }}><a href="/ops/curation"><b>Artist curation</b></a> <span className="muted">: filter by fit, commercial and photo, edit scores, bulk publish or hide.</span></p>
+      <p style={{ margin: "0 0 16px" }}><a href="/ops/photos"><b>Photo rights</b></a> <span className="muted">: every artist photo, whether its rights are recorded, and where to ask for better ones.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/ops/flags"><b>Switches</b></a> <span className="muted">: turn the new artist page and the paid or AI features on and off.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/ops/bookings"><b>Bookings pipeline</b></a> <span className="muted">: every booking request by stage, and the 48 hour no-reply nudge list.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/ops/tour"><b>Tour posts</b></a> <span className="muted">: review tour dates artists post on /tour (Touring India, Away from home) before they go up.</span></p>
