@@ -1,0 +1,660 @@
+{
+"U": [
+{
+"i": "3d3b2df7-8bb8-4771-b379-03af4325b2ac",
+"d": "2018-03-16",
+"y": 2018,
+"l": "Naive",
+"a": "57778682",
+"t": "466209652",
+"n": "Badness"
+},
+{
+"i": "c97ca7d0-6d3c-495f-8819-4e2fdefd17cb",
+"d": "2021-04-23",
+"y": 2021,
+"l": "Naive",
+"a": "217010062",
+"t": "1284253162",
+"n": "Espírito"
+},
+{
+"i": "72264537-c755-4367-95c3-f27e895b37a7",
+"d": "2022-02-23",
+"y": 2022,
+"l": "Rádio Quântica",
+"a": "296717022",
+"t": "1660239802",
+"n": "Música para ler (feat. Phoebe)"
+},
+{
+"i": "408623b9-5840-4276-9ee7-fae3b401577e",
+"d": "2023-02-14",
+"y": 2023,
+"l": "Naive",
+"a": "402709327",
+"t": "2132048667",
+"n": "BREAK"
+},
+{
+"i": "98cae2f0-ff00-4c46-a8b4-441c12adee9c",
+"d": "2019-11-08",
+"y": 2019,
+"l": "Voam",
+"a": "117453992",
+"t": "796249212",
+"n": "Crush the Mushrooms"
+},
+{
+"i": "8d7c6ef5-e0c2-47b5-92d8-98c508a0e6d3",
+"d": "2023-06-23",
+"y": 2023,
+"l": "Voam",
+"a": "445633995",
+"t": "2298315705",
+"n": "From Hunk to Husk"
+},
+{
+"i": "ebcb5504-57a1-4f76-9168-966dbbc22e51",
+"d": "2017-03-08",
+"y": 2017,
+"l": "InFiné",
+"a": "15421896",
+"t": "142593246",
+"n": "Klabb V2"
+},
+{
+"i": "fe5388ce-1381-41d2-a8ec-a82bce01f74a",
+"d": "2018-11-16",
+"y": 2018,
+"l": "InFiné",
+"a": "74615042",
+"t": "562839542",
+"n": "Tawa"
+},
+{
+"i": "bfa7a113-c1d6-40e8-bea8-f352b2199c46",
+"d": "2019-05-24",
+"y": 2019,
+"l": "InFiné",
+"a": "96210522",
+"t": "676934552",
+"n": "Rabbouni (Enyang Ha Remix)"
+},
+{
+"i": "890c6307-7009-43a0-b105-91d538b321d0",
+"d": "2023-09-08",
+"y": 2023,
+"l": "InFiné",
+"a": "452759715",
+"t": "2325426045",
+"n": "The Key to the Exit"
+},
+{
+"i": "d9cb221e-33d7-4d33-b9a2-79d37a9caabb",
+"d": "2017-06-30",
+"y": 2017,
+"l": "Last Gang",
+"a": "43781631",
+"t": "377745971",
+"n": "DaDaDa"
+},
+{
+"i": "42c9e213-702a-4f75-9386-fc9ee740e91f",
+"d": "2017-08-25",
+"y": 2017,
+"l": "Last Gang",
+"a": "46117902",
+"t": "393631002",
+"n": "Be Good"
+},
+{
+"i": "07b49f2b-835a-457a-9767-0f9bb3e6d643",
+"d": "2019-11-14",
+"y": 2019,
+"l": "Mute",
+"a": "118459272",
+"t": "802716632",
+"n": "Systems Up, Windows Down"
+},
+{
+"i": "846028ef-c23e-4331-9158-6ff7d6b49990",
+"d": "2021-09-23",
+"y": 2021,
+"l": "Mute",
+"a": "258083522",
+"t": "1491216802",
+"n": "The Sun Made For A Soft Landing"
+},
+{
+"i": "331e0aae-3d7e-41c1-8a71-0177d4b18d81",
+"d": "2022-02-23",
+"y": 2022,
+"l": "Mute",
+"a": "290863912",
+"t": "1635681742",
+"n": "Bodies Of Water"
+},
+{
+"i": "bdb9defc-a45b-426a-962e-0dbee868db79",
+"d": "2022-03-31",
+"y": 2022,
+"l": "Mute",
+"a": "298025262",
+"t": "1665494852",
+"n": "Purple Jelly Disc"
+},
+{
+"i": "edadbdc8-970e-4730-b1ab-8898c654efbb",
+"d": "2022-09-20",
+"y": 2022,
+"l": "Mute",
+"a": "351767187",
+"t": "1893061257",
+"n": "Wall of Sleep"
+},
+{
+"i": "8261ca20-1def-4c20-9765-d4c4a536f11b",
+"d": "2025-02-11",
+"y": 2025,
+"l": "Mute",
+"a": "686262011",
+"t": "3150965741",
+"n": "Can't Stand To Lose"
+},
+{
+"i": "07cc29ae-39d9-49a4-b60d-591b92f34447",
+"d": "2025-05-28",
+"y": 2025,
+"l": "Mute",
+"a": "753335941",
+"t": "3356643611",
+"n": "Satellite"
+},
+{
+"i": "06e7dfbd-234f-4647-aaf7-8470f4d109e7",
+"d": "2025-10-10",
+"y": 2025,
+"l": "Mute",
+"a": "786719531",
+"t": "3456033501",
+"n": "HUMANiSE"
+},
+{
+"i": "7fa43a60-c3bc-486d-915d-97dd6c9e42c4",
+"d": "2026-06-24",
+"y": 2026,
+"l": "Mute",
+"a": "986869121",
+"t": "4032619821",
+"n": "DIGITiSE"
+}
+],
+"I": [
+{
+"s": "hunee",
+"ti": "Hunch Music",
+"ty": "album",
+"d": "2015-07-06",
+"y": 2015,
+"l": "Rush Hour",
+"a": "10646376",
+"t": "102487168",
+"n": "Rare Happiness"
+},
+{
+"s": "hunee",
+"ti": "Hunchin' All Night",
+"ty": "album",
+"d": "2018-04-09",
+"y": 2018,
+"l": "Rush Hour",
+"a": "59901542",
+"t": "478233172",
+"n": "Stages"
+},
+{
+"s": "hunee",
+"ti": "Tide / Minnoch",
+"ty": "single",
+"d": "2020-10-30",
+"y": 2020,
+"l": "Rush Hour",
+"a": "175495462",
+"t": "1090330032",
+"n": "Minnoch"
+},
+{
+"s": "violet",
+"ti": "Togetherness",
+"ty": "ep",
+"d": "2017-09-22",
+"y": 2017,
+"l": "Naive",
+"a": "48549812",
+"t": "408919372",
+"n": "Togetherness"
+},
+{
+"s": "violet",
+"ti": "In the Name of the Mother",
+"ty": "ep",
+"d": "2020-09-11",
+"y": 2020,
+"l": "Naivety",
+"a": "168823172",
+"t": "1058971022",
+"n": "Jrdnsf"
+},
+{
+"s": "violet",
+"ti": "Midnight at the Premier Inn",
+"ty": "ep",
+"d": "2021-01-15",
+"y": 2021,
+"l": "Naivety",
+"a": "195108242",
+"t": "1186908602",
+"n": "midnite 3112"
+},
+{
+"s": "violet",
+"ti": "Archives 2012-2020",
+"ty": "album",
+"d": "2021-02-19",
+"y": 2021,
+"l": "Naivety",
+"a": "204689852",
+"t": "1230389382",
+"n": "Sun Rays"
+},
+{
+"s": "karenn",
+"ti": "Kind of Green",
+"ty": "ep",
+"d": "2019-05-10",
+"y": 2019,
+"l": "Voam",
+"a": "96242882",
+"t": "677068752",
+"n": "Kind of Green"
+},
+{
+"s": "karenn",
+"ti": "Music Sounds Better With Shoe",
+"ty": "single",
+"d": "2020-06-12",
+"y": 2020,
+"l": "Voam",
+"a": "151734872",
+"t": "975849032",
+"n": "On Request"
+},
+{
+"s": "karenn",
+"ti": "Feeling Horizontal",
+"ty": "single",
+"d": "2023-05-30",
+"y": 2023,
+"l": "Voam",
+"a": "446087275",
+"t": "2299894355",
+"n": "Feeling Horizontal"
+},
+{
+"s": "deena-abdelwahed",
+"ti": "Tawa (Remixes)",
+"ty": "ep",
+"d": "2019-02-22",
+"y": 2019,
+"l": "InFiné",
+"a": "85368472",
+"t": "622772952",
+"n": "Tawa"
+},
+{
+"s": "deena-abdelwahed",
+"ti": "Dhakar",
+"ty": "ep",
+"d": "2020-01-17",
+"y": 2020,
+"l": "InFiné",
+"a": "118700912",
+"t": "803812032",
+"n": "Lila Fi Tounes"
+},
+{
+"s": "deena-abdelwahed",
+"ti": "Free Radicals",
+"ty": "ep",
+"d": "2022-06-10",
+"y": 2022,
+"l": "InFiné",
+"a": "313748487",
+"t": "1731691267",
+"n": "Hyaluron"
+},
+{
+"s": "haai",
+"ti": "FEELS",
+"ty": "single",
+"d": "2017-12-08",
+"y": 2017,
+"l": "Last Gang",
+"a": "52552652",
+"t": "435122012",
+"n": "FEELS"
+},
+{
+"s": "haai",
+"ti": "Put Your Head Above The Parakeets",
+"ty": "ep",
+"d": "2020-09-18",
+"y": 2020,
+"l": "Mute",
+"a": "173474012",
+"t": "1081176092",
+"n": "Head Above The Parakeets"
+},
+{
+"s": "haai",
+"ti": "Baby, We're Ascending",
+"ty": "single",
+"d": "2022-05-04",
+"y": 2022,
+"l": "Mute",
+"a": "311860337",
+"t": "1724161787",
+"n": "Baby, We're Ascending"
+},
+{
+"s": "haai",
+"ti": "Chaos Energy",
+"ty": "single",
+"d": "2022-05-19",
+"y": 2022,
+"l": "Mute",
+"a": "308926597",
+"t": "1711012537",
+"n": "Chaos Energy"
+},
+{
+"s": "haai",
+"ti": "Human Sound",
+"ty": "single",
+"d": "2022-05-24",
+"y": 2022,
+"l": "Mute",
+"a": "313929297",
+"t": "1732419207",
+"n": "Human Sound"
+},
+{
+"s": "haai",
+"ti": "Biggest Mood Ever (Edit)",
+"ty": "single",
+"d": "2022-07-22",
+"y": 2022,
+"l": "Mute",
+"a": "333169247",
+"t": "1814370397",
+"n": "Biggest Mood Ever (Edit)"
+},
+{
+"s": "haai",
+"ti": "Shapeshift",
+"ty": "single",
+"d": "2025-04-09",
+"y": 2025,
+"l": "Mute",
+"a": "727604401",
+"t": "3279100211",
+"n": "Shapeshift"
+},
+{
+"s": "haai",
+"ti": "Hey!",
+"ty": "ep",
+"d": "2025-07-22",
+"y": 2025,
+"l": "Mute",
+"a": "771158941",
+"t": "3410503971",
+"n": "Hey!"
+},
+{
+"s": "haai",
+"ti": "Stitches",
+"ty": "ep",
+"d": "2025-09-09",
+"y": 2025,
+"l": "Mute",
+"a": "800017761",
+"t": "3493817621",
+"n": "Stitches"
+},
+{
+"s": "haai",
+"ti": "Voices (We Live to Celebrate)",
+"ty": "single",
+"d": "2025-11-13",
+"y": 2025,
+"l": "Mute",
+"a": "843878852",
+"t": "3619541172",
+"n": "Voices (We Live to Celebrate)"
+},
+{
+"s": "haai",
+"ti": "Ignition",
+"ty": "single",
+"d": "2026-07-28",
+"y": 2026,
+"l": "Mute",
+"a": "1012716671",
+"t": "4108484711",
+"n": "Ignition"
+},
+{
+"s": "haai",
+"ti": "I Wanna Feel Like Someone",
+"ty": "single",
+"d": "2026-09-02",
+"y": 2026,
+"l": "Mute",
+"a": "1029333382",
+"t": "4154547322",
+"n": "I Wanna Feel Like Someone"
+},
+{
+"s": "haai",
+"ti": "Talking Walls (feat. Cantoalegre)",
+"ty": "single",
+"d": "2026-10-08",
+"y": 2026,
+"l": "Mute",
+"a": "1118349442",
+"t": "4339910572",
+"n": "Talking Walls (feat. Cantoalegre)"
+}
+],
+"flag": [],
+"held_unknown_label": [
+{
+"s": "hunee",
+"ti": "Trades",
+"ty": "single",
+"d": "2024-01-23",
+"y": 2024,
+"l": "Hunee(Independent)",
+"a": "540883192",
+"t": "2639473472",
+"n": "Trades"
+},
+{
+"s": "hunee",
+"ti": "Missing No Meals",
+"ty": "single",
+"d": "2024-01-24",
+"y": 2024,
+"l": "Hunee (Independent)",
+"a": "539375992",
+"t": "2635039792",
+"n": "Missing No Meals"
+},
+{
+"s": "hunee",
+"ti": "SWBAH",
+"ty": "single",
+"d": "2024-02-23",
+"y": 2024,
+"l": "Hunee(Independent)",
+"a": "553384572",
+"t": "2680632042",
+"n": "SWBAH"
+},
+{
+"s": "hunee",
+"ti": "life's a Hustle",
+"ty": "ep",
+"d": "2024-10-07",
+"y": 2024,
+"l": "Hunee (Independent)",
+"a": "655624791",
+"t": "3042265541",
+"n": "SWBAH (A cappella)"
+},
+{
+"s": "hunee",
+"ti": "I Still Believe In Love",
+"ty": "single",
+"d": "2026-02-14",
+"y": 2026,
+"l": "Hunee (Independent)",
+"a": "909908062",
+"t": "3817287932",
+"n": "I Still Believe In Love"
+},
+{
+"s": "hunee",
+"ti": "STIF",
+"ty": "single",
+"d": "2026-07-23",
+"y": 2026,
+"l": "Hunee (Independent)",
+"a": "1026632642",
+"t": "4147511922",
+"n": "STIF"
+},
+{
+"s": "karenn",
+"ti": "Quantas Vezes",
+"ty": "single",
+"d": "2022-01-28",
+"y": 2022,
+"l": "WM Brazil",
+"a": "288353242",
+"t": "1624776902",
+"n": "Quantas Vezes"
+},
+{
+"s": "karenn",
+"ti": "Burning Memories",
+"ty": "single",
+"d": "2024-02-07",
+"y": 2024,
+"l": "Independent",
+"a": "542457802",
+"t": "2644840942",
+"n": "Burning Memories"
+},
+{
+"s": "haai",
+"ti": "KEEP MOVING (HAAi Remix)",
+"ty": "single",
+"d": "2021-01-27",
+"y": 2021,
+"l": "Ninja Tune",
+"a": "197234652",
+"t": "1195665572",
+"n": "KEEP MOVING (HAAi Remix)"
+},
+{
+"s": "haai",
+"ti": "The Darkness That You Fear (HAAi Remix)",
+"ty": "single",
+"d": "2021-05-28",
+"y": 2021,
+"l": "EMI",
+"a": "230126592",
+"t": "1372189342",
+"n": "The Darkness That You Fear (HAAi Remix)"
+},
+{
+"s": "haai",
+"ti": "Children of the Internet (HAAi Rework)",
+"ty": "single",
+"d": "2021-08-13",
+"y": 2021,
+"l": "70Hz Recordings Ltd",
+"a": "246915602",
+"t": "1443941572",
+"n": "Children of the Internet [HAAi Rework]"
+},
+{
+"s": "haai",
+"ti": "Lights Out",
+"ty": "single",
+"d": "2022-01-20",
+"y": 2022,
+"l": "Atlantic Records UK",
+"a": "287746622",
+"t": "1622182282",
+"n": "Lights Out"
+},
+{
+"s": "haai",
+"ti": "I Want To Be (HAAi Remix)",
+"ty": "single",
+"d": "2022-02-22",
+"y": 2022,
+"l": "Lex Records",
+"a": "795992641",
+"t": "3482661951",
+"n": "I Want to Be - Haai remix"
+},
+{
+"s": "haai",
+"ti": "Champion (HAAi Remix)",
+"ty": "single",
+"d": "2022-08-05",
+"y": 2022,
+"l": "Rough Trade",
+"a": "1040543692",
+"t": "4183189962",
+"n": "Champion (HAAi Remix)"
+},
+{
+"s": "haai",
+"ti": "DJ-Kicks: HAAi",
+"ty": "album",
+"d": "2023-11-10",
+"y": 2023,
+"l": "!K7 Records",
+"a": "481816495",
+"t": "2431253145",
+"n": "Always Ascending (Mixed)"
+},
+{
+"s": "haai",
+"ti": "Love Who You Love (HAAi Remix)",
+"ty": "single",
+"d": "2026-03-11",
+"y": 2026,
+"l": "Young",
+"a": "921986951",
+"t": "3852144531",
+"n": "Love Who You Love (HAAi Remix)"
+}
+]
+}

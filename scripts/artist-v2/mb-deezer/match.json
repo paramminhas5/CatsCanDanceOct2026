@@ -1,0 +1,186 @@
+{
+ "stain": {
+  "name": "STAIN",
+  "mbid": "20ecd713-e137-4ba8-b8f5-29cbcf868de7",
+  "mb_name": "Stain",
+  "deezer": null,
+  "evidence": "0 Deezer links on MusicBrainz; 0 Deezer album links on MB releases, 0 same-name Deezer artists ({})",
+  "mb_releases": 1,
+  "deezer_albums_on_mb": []
+ },
+ "indo-warehouse": {
+  "name": "INDO WAREHOUSE",
+  "mbid": "71268c8b-f2c9-4b9f-8ea6-761f7322b7af",
+  "mb_name": "Indo Warehouse",
+  "deezer": null,
+  "evidence": "0 Deezer links on MusicBrainz; 0 Deezer album links on MB releases, 0 same-name Deezer artists ({})",
+  "mb_releases": 1,
+  "deezer_albums_on_mb": []
+ },
+ "pariah": {
+  "name": "PARIAH",
+  "mbid": "1c6c610d-0b8a-4076-9600-52c74c6f901f",
+  "mb_name": "Pariah",
+  "deezer": null,
+  "evidence": "0 Deezer links on MusicBrainz; 0 Deezer album links on MB releases, 0 same-name Deezer artists ({})",
+  "mb_releases": 10,
+  "deezer_albums_on_mb": []
+ },
+ "hunee": {
+  "name": "HUNEE",
+  "mbid": "feb974b4-031d-4f20-b072-91f506d6c6dd",
+  "mb_name": "Hunee",
+  "deezer": "443381",
+  "evidence": "MusicBrainz feb974b4-031d-4f20-b072-91f506d6c6dd releases link 1 Deezer album(s) (59901542) by Deezer artist 443381 (Hunee)",
+  "mb_releases": 7,
+  "deezer_albums_on_mb": [
+   "59901542"
+  ],
+  "deezer_name": "Hunee"
+ },
+ "violet": {
+  "name": "VIOLET",
+  "mbid": "82a5fdf0-cc4f-4c81-b6e8-829ace0d4cb4",
+  "mb_name": "Violet",
+  "deezer": "202463397",
+  "evidence": "MusicBrainz 82a5fdf0-cc4f-4c81-b6e8-829ace0d4cb4 releases link 2 Deezer album(s) (296717022, 402709327) by Deezer artist 202463397 (Violet)",
+  "mb_releases": 14,
+  "deezer_albums_on_mb": [
+   "195108242",
+   "296717022",
+   "402709327"
+  ],
+  "deezer_name": "Violet"
+ },
+ "karenn": {
+  "name": "KARENN",
+  "mbid": "b0911e1f-fa1f-44a7-b5bd-48747f084265",
+  "mb_name": "Karenn",
+  "deezer": "2949621",
+  "evidence": "MusicBrainz b0911e1f-fa1f-44a7-b5bd-48747f084265 releases link 1 Deezer album(s) (151734872) by Deezer artist 2949621 (Karenn)",
+  "mb_releases": 10,
+  "deezer_albums_on_mb": [
+   "151734872"
+  ],
+  "deezer_name": "Karenn"
+ },
+ "dualist-inquiry": {
+  "name": "DUALIST INQUIRY",
+  "mbid": "983211ed-a54e-4cca-8a13-92932e2a8eeb",
+  "mb_name": "Dualist Inquiry",
+  "deezer": null,
+  "evidence": "0 Deezer links on MusicBrainz; 0 Deezer album links on MB releases, 0 same-name Deezer artists ({})",
+  "mb_releases": 2,
+  "deezer_albums_on_mb": []
+ },
+ "mixtress": {
+  "name": "MIXTRESS",
+  "mbid": "de45bbb5-5d67-431e-a0a2-df9c860a1033",
+  "mb_name": "Mixtress",
+  "deezer": null,
+  "evidence": "0 Deezer links on MusicBrainz; 0 Deezer album links on MB releases, 0 same-name Deezer artists ({})",
+  "mb_releases": 0,
+  "deezer_albums_on_mb": []
+ },
+ "deena-abdelwahed": {
+  "name": "DEENA ABDELWAHED",
+  "mbid": "b0e2365c-8c2f-4eba-bcae-592bc45e6d17",
+  "mb_name": "Deena Abdelwahed",
+  "deezer": "10610707",
+  "evidence": "MusicBrainz b0e2365c-8c2f-4eba-bcae-592bc45e6d17 releases link 2 Deezer album(s) (452759715, 74615042) by Deezer artist 10610707 (Deena Abdelwahed)",
+  "mb_releases": 13,
+  "deezer_albums_on_mb": [
+   "452759715",
+   "74615042"
+  ],
+  "deezer_name": "Deena Abdelwahed"
+ },
+ "nazira": {
+  "name": "NAZIRA",
+  "mbid": "d38a97eb-d91b-44fd-9aff-a431f8a30528",
+  "mb_name": "Nazira",
+  "deezer": null,
+  "evidence": "0 Deezer links on MusicBrainz; 0 Deezer album links on MB releases, 0 same-name Deezer artists ({})",
+  "mb_releases": 0,
+  "deezer_albums_on_mb": []
+ },
+ "suchi": {
+  "name": "SUCHI",
+  "mbid": "0389ced8-e21a-4a9b-8260-89af019a0abd",
+  "mb_name": "SUCHI",
+  "deezer": null,
+  "evidence": "0 Deezer links on MusicBrainz; 0 Deezer album links on MB releases, 0 same-name Deezer artists ({})",
+  "mb_releases": 4,
+  "deezer_albums_on_mb": []
+ },
+ "aayna": {
+  "name": "AAYNA",
+  "mbid": "8bd1a13f-0e21-40ae-9796-6be2c2f13503",
+  "mb_name": "Aayna",
+  "deezer": null,
+  "evidence": "0 Deezer links on MusicBrainz; 0 Deezer album links on MB releases, 0 same-name Deezer artists ({})",
+  "mb_releases": 1,
+  "deezer_albums_on_mb": []
+ },
+ "haai": {
+  "name": "HAAi",
+  "mbid": "c4dff60e-6cf9-4308-8bef-7d88bc0a6a27",
+  "mb_name": "HAAi",
+  "deezer": "11544631",
+  "evidence": "MusicBrainz c4dff60e-6cf9-4308-8bef-7d88bc0a6a27 releases link 21 Deezer album(s) (1008778111, 155735512, 158374132) by Deezer artist 11544631 (HAAi)",
+  "mb_releases": 69,
+  "deezer_albums_on_mb": [
+   "1008778111",
+   "155735512",
+   "158374132",
+   "169065712",
+   "170837362",
+   "173474012",
+   "277988332",
+   "286972082",
+   "287746622",
+   "288510522",
+   "291519532",
+   "300425147",
+   "308532867",
+   "308978007",
+   "310677537",
+   "311860337",
+   "327968807",
+   "330416847",
+   "351767187",
+   "352952587",
+   "419763097",
+   "43781631",
+   "469369805",
+   "473656475",
+   "481816495",
+   "716624851",
+   "742278191",
+   "752797371",
+   "809481421",
+   "854557762",
+   "859186932",
+   "921986951"
+  ],
+  "deezer_name": "HAAi"
+ },
+ "green-park": {
+  "name": "GREEN PARK",
+  "mbid": "c1f9692e-b527-44a5-88ad-b1efb7362129",
+  "mb_name": "Green Park",
+  "deezer": null,
+  "evidence": "0 Deezer links on MusicBrainz; 0 Deezer album links on MB releases, 0 same-name Deezer artists ({})",
+  "mb_releases": 1,
+  "deezer_albums_on_mb": []
+ },
+ "the-f16s": {
+  "name": "THE F16s",
+  "mbid": "d850fdae-6da7-4f08-840d-e4b3fe57c147",
+  "mb_name": "The F16s",
+  "deezer": null,
+  "evidence": "0 Deezer links on MusicBrainz; 0 Deezer album links on MB releases, 0 same-name Deezer artists ({})",
+  "mb_releases": 5,
+  "deezer_albums_on_mb": []
+ }
+}

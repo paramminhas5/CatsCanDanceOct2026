@@ -1,0 +1,253 @@
+[
+ {
+  "slug": "aaguu",
+  "name": "AAGUU",
+  "kind": "musician",
+  "based_city": "Goa, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic Body Music",
+   "Psychedelic",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/aaguu",
+  "instagram": "_aaguu_",
+  "website": null,
+  "mix_url": "https://soundcloud.com/thewildcity/wild-city-214-aaguu",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Aashish Gupta performs as AAGUU. He grew up in Bengaluru, moved to Berlin in 2018 and now lives in Goa. He was one half of the duo TechNomads, and his debut came in 2019 through Todh Teri's Deep in India series. He played Magnetic Fields in 2023.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "a love letter to the formative days of house and techno"
+  ],
+  "mix_urls_already_stored": [
+   "https://refugeworldwide.com/artists/aaguu",
+   "https://mixmag.asia/read/mixmag-asia-radio-aaguu-scores-an-anjuna-beach-sunrise-circa-1994-exclusive-mixes"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/aaguu"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "releases",
+   "press"
+  ]
+ },
+ {
+  "slug": "bombie",
+  "name": "BOMBIE",
+  "kind": "musician",
+  "based_city": "Bengaluru, India",
+  "from_city": null,
+  "genres": [
+   "Electro",
+   "Breaks",
+   "Jungle",
+   "UK Garage"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/bombiezip",
+  "instagram": "bombie.zip",
+  "website": null,
+  "mix_url": "https://soundcloud.com/thewildcity/wild-city-263-bombie",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Bombie is a DJ and producer based in Bengaluru. Her sets cover electro, breaks, jungle, footwork, UK garage, dub, house and techno. She made her Magnetic Fields debut in the BUDxYARD lineup in December 2024 and recorded Wild City #263 in 2026.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "rattling percussion and hypnotic undertones"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "ids"
+  ]
+ },
+ {
+  "slug": "bullzeye",
+  "name": "BULLZEYE",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Techno",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/bullzeyepower",
+  "instagram": "bullzeyepower",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "One of the most booked DJs in India. Played alongside Carl Cox, Dixon, Nina Kraviz. Paradiso Amsterdam, Ritter Butzke Berlin.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "dreamstates",
+  "name": "DREAMSTATES",
+  "kind": "musician",
+  "based_city": "Mumbai, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "Psychedelic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "dreamstates",
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/dreamstates/cosmic-claps-050-dreamstates-28-05-2021/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "dreamstates is a Mumbai-based DJ playing house, techno, breakbeat, acid and electro. He hosts the monthly Boxout.fm show Cosmic Claps and has played DGTL India 2025, Echoes of Earth and Magnetic Fields.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "a hazy approach to house and techno"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/dreamstates/cosmic-claps-050-dreamstates-28-05-2021/",
+   "https://mixmag.asia/read/mixmag-asia-radio-dreamstates-conjures-realm-genre-defiance-india-exclusive-mixes"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "ids"
+  ]
+ },
+ {
+  "slug": "girls-night-out",
+  "name": "GIRLS NIGHT OUT",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "India",
+  "genres": [
+   "House",
+   "Techno",
+   "Disco",
+   "Acid"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/18583-wild-city-205-girls-night-out",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Girls Night Out is the solo DJ project of Vijayant Singh, based in Delhi. He plays house, techno, disco and acid, and has played Magnetic Fields, Serendipity Arts Festival and Boxout Weekender. His Magnetic Fields Nomads profile also lists Boiler Room.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "off-kilter tunes inspired by the 70s and 80s",
+   "strong 90's energy"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "plays",
+   "releases",
+   "press",
+   "ids"
+  ]
+ },
+ {
+  "slug": "kandy-kuri",
+  "name": "KANDY KURI",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": "India",
+  "genres": [
+   "Breaks",
+   "Garage",
+   "House",
+   "Techno"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "kandy.kuri",
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/20455-wild-city-229-kandy-kuri",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Kandy Kuri is a Bengaluru DJ playing breaks, garage and house with some techno. She has supported Yung Singh and Lady Shaka and played Bass Camp and Magnetic Fields. She played Boiler Room Bengaluru on 7 June 2024.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/20455-wild-city-229-kandy-kuri"
+  ],
+  "sound_tags_already_stored": [
+   "textures evoked by the percussion"
+  ],
+  "mix_urls_already_stored": [
+   "https://soundcloud.com/platform/kandy-kuri-bengaluru"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "releases",
+   "ids"
+  ]
+ }
+]

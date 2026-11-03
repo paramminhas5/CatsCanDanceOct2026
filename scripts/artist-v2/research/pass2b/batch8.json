@@ -1,0 +1,257 @@
+[
+ {
+  "slug": "prismer",
+  "name": "PRISMER",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "India",
+  "genres": [
+   "Techno",
+   "Bass",
+   "Jungle",
+   "House",
+   "Dubstep",
+   "Breakbeat",
+   "Disco"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/prismeratti",
+  "instagram": "prismertraxx",
+  "website": null,
+  "mix_url": null,
+  "labels": "Boxout.FM, Reel Long Overdub, Tokyo Hell",
+  "members": null,
+  "bio_excerpt": "Rohan Kale, from New Delhi, creates explorative, bass-driven electronic music as Prismer. His sound takes in techno, jungle, house, dubstep, breakbeat and disco.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.ticketfairy.com/word/2023/01/20/tfword-in-conversation-with-prismer"
+  ],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false
+ },
+ {
+  "slug": "dj-pants",
+  "name": "DJ PANTS",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://soundcloud.com/thewildcity/wild-city-242-dj-pants",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "DJ Pants is the alias of Aditya Mehta, a multidisciplinary artist and live sound engineer. He plays Balearic beat, disco, boogie, house and street soul, moving from relaxed daytime sets to club energy. He is on the Magnetic Fields artist roster.",
+  "releases_on_record": 1,
+  "release_years": [
+   2024,
+   2024
+  ],
+  "sample_releases": [
+   "Extra Style (2024, PARADIA)"
+  ],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "bass-heavy house",
+   "lush, relaxed grooves with harder, club-focused energy"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false
+ },
+ {
+  "slug": "electroson",
+  "name": "ELECTROSON",
+  "kind": "musician",
+  "based_city": "Goa, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Electroson is a Goa-based selector who also performs as Zionwolf. He played the Ray-Ban Desert Oasis stage at Magnetic Fields in December 2022.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "cerebral selections, relentless rhythms, and exploratory tunes"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/electroson"
+  },
+  "has_eras": false
+ },
+ {
+  "slug": "spiralynk",
+  "name": "SPIRALYNK",
+  "kind": "musician",
+  "based_city": "Kolkata, India",
+  "from_city": "India",
+  "genres": [
+   "Ambient",
+   "Techno",
+   "Experimental"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/spiralynk",
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Spiralynk is the project of Ankit Malik, an interdisciplinary artist whose SoundCloud profile is set to Kolkata. The act was on the Magnetic Fields 2022 lineup, per Resident Advisor.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false
+ },
+ {
+  "slug": "mogasu",
+  "name": "MOGASU",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/mogasu",
+  "instagram": "mogasu",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "DGTL India 2025 and Echoes of Earth 2024.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false
+ },
+ {
+  "slug": "bawra",
+  "name": "BAWRA",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/baawra",
+  "instagram": "bawra",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "DGTL India 2025 domestic lineup.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false
+ },
+ {
+  "slug": "sodhi",
+  "name": "SODHI",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false
+ },
+ {
+  "slug": "thegreybox",
+  "name": "THEGREYBOX",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=s2NufPopQs4",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 1,
+  "release_years": [
+   2019,
+   2019
+  ],
+  "sample_releases": [
+   "Beats (2019)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/14699-wild-city-presents-listening-sessions-ft-thegreybox-beats"
+  ],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false
+ }
+]
