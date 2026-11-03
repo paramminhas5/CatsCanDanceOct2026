@@ -1,0 +1,8 @@
+-- Claim check, batch 1 (3 Nov 2026). Sources and dropped claims: research/claims/out1.json.
+-- Judgement call: Sartek's "opened for Martin Garrix" rests only on artist-supplied pages, so it is out. Revealed 2015 is from Business Standard.
+-- Sandunes is minimal on purpose. Verified facts that could be added: Tru Thoughts signing (July 2023), Rolling Stone India album coverage, RBMA Bedroom Producers profile.
+-- OLD kohra: long press-kit bio (Beatport Top 100, supporter list, stage-sharing list, Kabir, Digweed, Sacred Alchemy nights, vinyl plans).
+-- OLD dj-sartek: First Indian on Hardwell's Revealed Recordings. Opened for David Guetta, Martin Garrix, Tiesto.
+-- OLD sandunes: One of India's most prominent electronic producers. Apple Music Up Next 2022, Red Bull Music Academy BaseCamp Dubai.
+-- OLD anish-kumar: ...from October 2025 to July 2026. He has sold out Village Underground in London and played Panorama Bar in Berlin.
+-- Applied via execute_sql; new text is in out1.json (new_bio) with the Sartek line trimmed.
