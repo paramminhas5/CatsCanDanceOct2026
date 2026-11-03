@@ -38,7 +38,9 @@ import ArtistGigChart from "@/components/ArtistGigChart";
 import ArtistConnectionGraph from "@/components/ArtistConnectionGraph";
 import SimilarArtists from "@/components/SimilarArtists";
 import FollowButton from "@/components/FollowButton";
-import BookingForm from "@/components/booking/BookingForm";
+import BookButton from "@/components/booking/BookButton";
+import RequestPanel from "@/components/booking/RequestPanel";
+import { normCity } from "@/lib/desk";
 import { useArtistFollowerCount } from "@/hooks/useSocialProof";
 import dynamic from "next/dynamic";
 import { fallbackSummary } from "@/lib/artist-richness";
@@ -628,10 +630,12 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
               {/* Sticky-ish primary CTA — book now */}
               {isBookable && (
                 <div className="mt-5">
-                  <button onClick={() => goToTab("book")}
-                    className="inline-flex items-center gap-2 bg-magenta text-cream font-display text-base md:text-lg px-6 py-3 border-4 border-cream chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
-                    <Ticket className="w-4 h-4" /> BOOK {artist.name.split(" ")[0].toUpperCase()} →
-                  </button>
+                  <BookButton
+                    fromQuery
+                    artist={{ slug: artist.slug, name: artist.name, photo_url: artist.photo_url ?? null, city: normCity(artist.based_city ?? null) }}
+                    label="Request to book"
+                    className="inline-flex items-center gap-2 bg-magenta text-cream font-display text-base md:text-lg px-6 py-3 border-4 border-cream chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform"
+                  />
                 </div>
               )}
             </div>
@@ -1218,10 +1222,10 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
           {activeTab === "book" && (
             <div ref={bookSectionRef} className="space-y-8 max-w-4xl">
               <div>
-                <p className="font-display text-magenta text-xs uppercase tracking-[0.3em] mb-2">/ DIRECT BOOKING</p>
+                <p className="font-display text-magenta text-xs uppercase tracking-[0.3em] mb-2">/ REQUEST TO BOOK</p>
                 <h2 className="font-display text-4xl md:text-5xl text-ink uppercase">Book {artist.name}</h2>
                 <p className="text-ink/70 mt-2 max-w-xl">
-                  Direct booking inquiry. The artist replies via email — no middleman, no commission.
+                  Send a night brief. {artist.name} answers with interested, a counter offer or a no. No fee to ask.
                 </p>
               </div>
 
@@ -1229,24 +1233,18 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                 <div className="border-4 border-ink bg-magenta chunk-shadow p-6 max-w-md">
                   <p className="font-display text-2xl text-cream uppercase mb-2">Not currently booking</p>
                   <p className="text-cream/80 text-sm">
-                    {artist.name} has marked themselves as not taking bookings right now. Try the
-                    <Link href="/book" className="underline ml-1">marketplace</Link> for similar artists.
+                    {artist.name} is not taking bookings right now. Find someone free on your date on the
+                    <Link href="/book" className="underline ml-1">booking desk</Link>.
                   </p>
                 </div>
               ) : (
-                <div className="grid lg:grid-cols-[1fr_1.4fr] gap-6">
-                  {/* Side panel: availability + cities + fee */}
+                <div className="grid lg:grid-cols-[1fr_1.4fr] gap-6 items-start">
                   <aside className="space-y-4">
                     <div className="border-4 border-ink bg-cream chunk-shadow p-5">
                       <p className="font-display text-xs uppercase text-ink/60 tracking-widest mb-2">Status</p>
-                      <p className="font-display text-2xl text-ink">◉ BOOKINGS OPEN</p>
-                      {hasOpenSlot && (
-                        <p className="text-sm text-magenta font-display mt-1">
-                          OPEN SLOTS THIS SEASON
-                        </p>
-                      )}
+                      <p className="font-display text-2xl text-ink">Taking requests</p>
+                      {hasOpenSlot && <p className="text-sm text-magenta font-display mt-1">Has open dates this season</p>}
                     </div>
-
                     {artist.available_cities.length > 0 && (
                       <div className="border-4 border-ink bg-acid-yellow chunk-shadow p-5">
                         <p className="font-display text-xs uppercase text-ink/60 tracking-widest mb-2">Available cities</p>
@@ -1257,37 +1255,17 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                         </div>
                       </div>
                     )}
-
-                    {(artist.fee_min_inr || artist.fee_max_inr) && (
-                      <div className="border-4 border-ink bg-electric-blue text-cream chunk-shadow p-5">
-                        <p className="font-display text-xs uppercase text-cream/70 tracking-widest mb-1">Fee range</p>
-                        <p className="font-display text-2xl">
-                          {artist.fee_min_inr && artist.fee_max_inr
-                            ? `₹${artist.fee_min_inr.toLocaleString("en-IN")} – ₹${artist.fee_max_inr.toLocaleString("en-IN")}`
-                            : "On request"}
-                        </p>
-                      </div>
-                    )}
-
-                    {artist.booking_email && (
-                      <div className="border-4 border-ink bg-cream chunk-shadow p-5">
-                        <p className="font-display text-xs uppercase text-ink/60 tracking-widest mb-1">Or email direct</p>
-                        <a href={`mailto:${artist.booking_email}?subject=Booking enquiry — ${artist.name}`}
-                          className="font-display text-sm text-ink underline break-all">
-                          {artist.booking_email}
-                        </a>
-                      </div>
-                    )}
+                    <div className="border-4 border-ink bg-electric-blue text-cream chunk-shadow p-5">
+                      <p className="font-display text-xs uppercase text-cream/70 tracking-widest mb-1">Rate</p>
+                      <p className="font-display text-2xl">Ask</p>
+                      <p className="text-sm text-cream/80 mt-1">The artist names a fee in their reply. Want to compare? Send one brief to up to 3 artists from the <Link href="/book" className="underline">booking desk</Link>.</p>
+                    </div>
                   </aside>
-
-                  {/* Inline form */}
-                  <div className="space-y-5">
-                    <BookingForm
-                      artistSlug={artist.slug}
-                      artistName={artist.name}
-                      source="artist_profile"
-                    />
-                  </div>
+                  <RequestPanel
+                    id="artist-book"
+                    artists={[{ slug: artist.slug, name: artist.name, photo_url: artist.photo_url ?? null, city: normCity(artist.based_city ?? null) }]}
+                    initial={{ date: typeof router.query.date === "string" ? router.query.date : undefined, city: typeof router.query.city === "string" ? router.query.city : undefined }}
+                  />
                 </div>
               )}
 

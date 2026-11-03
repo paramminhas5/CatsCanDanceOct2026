@@ -22,7 +22,7 @@ import type { GetServerSideProps } from "next";
 import Head from "next/head";
 import ArtistDetailPage from "@/pages/ArtistDetail";
 import { getArtistFullProfile } from "@/lib/db/artists";
-import ArtistPageV2 from "@/components/artist-v2/ArtistPageV2";
+import ArtistPage from "@/components/artist-v2/ArtistPage";
 import { artistPageV2On, getArtistV2, coverUrl, displayName, type ArtistV2 } from "@/lib/artist-v2";
 import type {
   Artist,
@@ -164,7 +164,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 // ── v2 page shell ───────────────────────────────────────────────────────────
 function ArtistV2Page({ a }: { a: ArtistV2 }) {
   const SITE = "https://catscandance.com";
-  const url = `${SITE}/litter/${a.slug}`;
+  const url = `${SITE}/artists/${a.slug}`;
   const latest = a.releases.find((r) => r.albumId);
   const ogImg = a.photo ?? coverUrl(latest?.albumId ?? null, "xl") ?? `${SITE}/og-image.jpg`;
   const name = displayName(a.name);
@@ -232,7 +232,7 @@ function ArtistV2Page({ a }: { a: ArtistV2 }) {
         <meta name="twitter:image" content={ogImg} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </Head>
-      <ArtistPageV2 a={a} />
+      <ArtistPage a={a} />
     </>
   );
 }
