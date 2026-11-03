@@ -1,0 +1,409 @@
+{
+  "_meta": {
+    "compiled": "2026-11-03",
+    "note": "Only items confirmed in sources are in the main lists. Anything with an unconfirmed date or label is in release_leads_unconfirmed and should not be posted until checked. 'off_taste' flags mark mainstage/EDM acts listed for completeness."
+  },
+  "releases": [
+    {
+      "artist": "Low Volume (Pawas Gupta and Ambrish Yadav)",
+      "title": "Aftertime",
+      "label": "Low Volume Records",
+      "date": "2026-10-07",
+      "date_status": "confirmed",
+      "format": "7-track release (Magnetic Mag calls it an album, Wild City calls it an EP)",
+      "city": "Germany-based duo, both originally from India (city not stated)",
+      "sound": "Slow dub techno and ambient techno. Long tracks, mostly 6 to 8 minutes, built from about 15 years of late-night home-studio jams",
+      "reason": "A project two Indian producers started in 2005 finally gets released. Deep, patient dub techno for the last hour of a night",
+      "sources": [
+        "https://magneticmag.com/2026/10/low-volume-turn-quiet-jams-into-aftertime/",
+        "https://www.thewildcity.com/news/21858-pawas-ambrish-yadav-release-new-dub-techno-ep-aftertime-as-the-duo-low-volume"
+      ]
+    },
+    {
+      "artist": "Various (Woolfy vs Projections ft. Piya Malik; Turbotito and Ragz with Pallavi Sharda; Thomaas Banks; Soccio)",
+      "title": "Select: Remixes and Reworks 2",
+      "label": "Naya Beat",
+      "date": "2026-10-16",
+      "date_status": "confirmed",
+      "format": "4-track remix EP",
+      "city": "Los Angeles (label); South Asian diaspora",
+      "sound": "Disco and house reworks of South Asian and diaspora records. Includes a Woolfy vs Projections remix of 'Nainan Da Pyar De Gaya' with Piya Malik, and an extended disco mix of 'Pawa!' by Asha Puthli and Say She She",
+      "reason": "Disco remixes of South Asian records from the label that reissued Mohinder Kaur Bhamra's 1982 'Punjabi Disco'. Fits a CCD disco night",
+      "sources": [
+        "https://homegrown.co.in/homegrown-creators/the-south-asian-sounds-that-disco-history-forgot-the-label-bringing-them-back"
+      ]
+    },
+    {
+      "artist": "Sijya",
+      "title": "Leather & Brass [Retrofitted]",
+      "label": "Not confirmed for the remix EP (the original Leather & Brass EP came out on One Little Independent)",
+      "date": "2026-10-23",
+      "date_status": "confirmed (Bold Outline: 'to release ... on October 23')",
+      "format": "Remix EP, seven producers",
+      "city": "Delhi",
+      "sound": "Her 2025 EP rebuilt by seven producers, including Sneha Khanwalkar, Rachika Nayar and Jlin",
+      "reason": "Jlin and Sneha Khanwalkar remixing the same Indian record. A good way into leftfield electronic with heavy rhythm",
+      "sources": [
+        "https://boldoutline.in/composer-producer-and-visual-artist-sijya-to-release-remix-ep-leather-brass-retrofitted-on-october-23/",
+        "https://www.thewildcity.com/news/21873-sijya-releases-remix-ep-of-leather-brass-featuring-sneha-khanwalkar-rachika-nayar-jlin-more",
+        "https://djmag.com/news/sijya-announces-leather-brass-retrofitted-ep-shares-do-i-know-rachika-nayar-edit-listen",
+        "https://homegrown.co.in/homegrown-creators/sijya-talks-collaboration-creative-control-rebuilding-leather-brass-with7-new-producers"
+      ]
+    },
+    {
+      "artist": "Todh Teri, with Babloo Babylon, Sakre and Kone Kone",
+      "title": "The Return Of Disco Sheru",
+      "label": "Not stated in source (earlier 'Return Of' records in this vinyl series came out on Masala Movement)",
+      "date": "Out on vinyl by 16 Oct 2026 (Juno Daily premiere that day; exact street date not stated)",
+      "date_status": "window confirmed, exact day not confirmed",
+      "format": "Vinyl EP. Tracks: Doorbhaash, Vasanthageetham, Pushpakasham (two versions, including an Acid Dub)",
+      "city": "Berlin (Todh Teri); collaborators India-rooted",
+      "sound": "'Doorbhaash' is lo-fi, dreamy house at 120 BPM with boom bap swing and sampled Indian film vocals. 'Vasanthageetham' is French-house-style peak time. 'Pushpakasham' is an acid flip of a Malayalam film track",
+      "reason": "House and acid built from forgotten Indian film music, on vinyl. Also on Homegrown's October 2026 picks",
+      "sources": [
+        "https://www.juno.co.uk/junodaily/2026/10/16/premiere-todh-teri-kone-kones-acid-flip-of-malayalam-cinema-classic/",
+        "https://homegrown.co.in/homegrown-creators/homegrown-handpicked-a-playlist-of-our-favourite-releases-from-october-2026"
+      ]
+    },
+    {
+      "artist": "UKato and FILM (Sanil Sudan)",
+      "title": "mFunk/Astro/Switch",
+      "label": "Not stated in source",
+      "date": "Covered by Wild City on 13 Oct 2026; exact release date not stated",
+      "date_status": "window confirmed via coverage date, exact day not confirmed",
+      "format": "3-track EP (mFunk, Astro, Switch)",
+      "city": "Delhi (FILM); UKato's city not stated in the article",
+      "sound": "Dubstep, breaks and dub. 'mFunk' has grainy samples and snappy breaks, 'Astro' is low-pressure bass with pitched-down vocals, 'Switch' closes in ambient-leaning dub techno",
+      "reason": "Two Delhi club regulars making breaks and dubstep together. Right in CCD's bass lane",
+      "sources": [
+        "https://www.thewildcity.com/news/21855-ukato-film-join-hands-on-3-track-ep-mfunk-astro-switch"
+      ]
+    }
+  ],
+  "release_leads_unconfirmed": [
+    {
+      "artist": "DJazz",
+      "title": "Tantric Acid Vol. III: For Her Majesty (tenth EP; track 'Nonstop Music for Her Majesty')",
+      "why_unconfirmed": "Shown in Homegrown's October 2026 playlist, but no release date, label or artist city found",
+      "sound": "Acid house with orchestral parts, Latin grooves and psychedelic synths",
+      "sources": [
+        "https://homegrown.co.in/homegrown-creators/homegrown-handpicked-a-playlist-of-our-favourite-releases-from-october-2026",
+        "https://allthatdjazz.bandcamp.com/album/tantric-acid-vol-i"
+      ]
+    },
+    {
+      "artist": "YOGI feat. SadBoi and NENE",
+      "title": "Ride or Die (single)",
+      "why_unconfirmed": "Shown in Homegrown's October 2026 playlist; release date and label not found",
+      "sound": "Dark UK club track with distorted bass and South Asian rhythms (YOGI is London-based)",
+      "sources": [
+        "https://homegrown.co.in/homegrown-creators/homegrown-handpicked-a-playlist-of-our-favourite-releases-from-october-2026"
+      ]
+    },
+    {
+      "artist": "Various, led by Krantinaari and Charu Hariharan (Sound of Women), with Kiss Nuka, Noni-mouse, MALFNKTION and others",
+      "title": "FOLKSOUL Vol. 1",
+      "why_unconfirmed": "Wild City covered it recently (news ID 21888, the newest on the site on 3 Nov), but the Bandcamp page fetch showed no date or label",
+      "sound": "Electronic producers working with songs by Kumaoni women",
+      "sources": [
+        "https://www.thewildcity.com/news/21888-krantinaari-charu-combine-songs-of-kumaoni-women-with-kiss-nuka-noni-mouse-malfnktion-more-on-folksoul",
+        "https://folksoul.bandcamp.com/album/folksoul-vol-1"
+      ]
+    },
+    {
+      "artist": "Sheherazaad",
+      "title": "Khudgarzi (debut album, Erased Tapes, ERATP181)",
+      "why_unconfirmed": "Homegrown (2 Nov) says the album is out 'next month'; exact date not found. Experimental folk-pop, not club music",
+      "sources": [
+        "https://www.erasedtapes.com/releases/eratp181-sheherazaad-khudgarzi",
+        "https://homegrown.co.in/homegrown-creators/homegrown-handpicked-a-playlist-of-our-favourite-releases-from-october-2026"
+      ]
+    },
+    {
+      "artist": "V.I.V.E.K",
+      "title": "The Escape To Nowhere (50th release on his label System Music)",
+      "why_unconfirmed": "Wild City's article ID suggests September 2026, which is likely before the window. Date not checked",
+      "sources": [
+        "https://www.thewildcity.com/news/21827-v-i-v-e-k-offers-more-low-pressure-dubstep-with-the-escape-to-nowhere-the-50th-release-on-his-label"
+      ]
+    }
+  ],
+  "labels": [
+    {
+      "label": "Qilla Records",
+      "city": "New Delhi",
+      "founded": 2011,
+      "founder": "Madhav Shorey (Kohra)",
+      "key_artists": [
+        "Kohra",
+        "Vishal Unni",
+        "Monophonik"
+      ],
+      "other_roster": [
+        "jay pei",
+        "SHFT",
+        "Audio Units",
+        "Innerworld",
+        "ARTIFVCT"
+      ],
+      "defining_releases": [
+        {
+          "artist": "Jitter",
+          "title": "Theoree",
+          "year": "2011",
+          "note": "The label's first release, an experimental techno EP"
+        },
+        {
+          "artist": "ARTIFVCT",
+          "title": "Beneath The Surface",
+          "year": "not confirmed in source",
+          "note": "10-track album, the label's top seller in its year"
+        },
+        {
+          "artist": "Various Artists",
+          "title": "Chakravyuh",
+          "year": "not confirmed in source",
+          "note": "The 100th release and the label's first vinyl"
+        }
+      ],
+      "stands_for": "Techno and house from Delhi made 'for both the mind and body', from producers who take risks (Kohra's words to DJ Mag)",
+      "sources": [
+        "https://djmag.com/features/sound-of-qilla-records",
+        "https://www.beatportal.com/articles/1133160-behind-the-label-qilla-records",
+        "https://theindianmusicdiaries.com/qilla-records-expands-horizons-with-debut-albums-by-vishal-unni-artifvct/"
+      ],
+      "caveat": "The DJ Mag feature is undated (internal clues suggest 2024). Check years for ARTIFVCT and Chakravyuh before posting"
+    },
+    {
+      "label": "Naya Beat",
+      "city": "Los Angeles (per Homegrown, Oct 2026)",
+      "founded": 2021,
+      "founders": "Filip Nikolic (Turbotito, ex-Poolside) and Raghav Mani (Ragz)",
+      "key_artists": [
+        "Asha Puthli",
+        "Mohinder Kaur Bhamra",
+        "Sheila Chandra"
+      ],
+      "other_roster": [
+        "East-West",
+        "Remo",
+        "Babla & His Orchestra",
+        "Piya Malik",
+        "Pinky Ann Rihal"
+      ],
+      "defining_releases": [
+        {
+          "artist": "Various Artists",
+          "title": "Naya Beat Volume 1: South Asian Dance and Electronic Music 1983-1992",
+          "year": "2021 (released 25 Jun 2021)"
+        },
+        {
+          "artist": "Mohinder Kaur Bhamra",
+          "title": "Punjabi Disco (reissue)",
+          "year": "original 1982 (500 copies); reissue year not stated in source"
+        },
+        {
+          "artist": "Various Artists",
+          "title": "Select: Remixes and Reworks 2",
+          "year": "2026 (16 Oct)"
+        }
+      ],
+      "stands_for": "Reissues and remixes of rare dance and electronic music from the subcontinent and its diaspora, putting it back into dance music history",
+      "sources": [
+        "https://mixmag.asia/read/naya-beat-records-south-asian-electronic-gems-80s-90s-local",
+        "https://homegrown.co.in/homegrown-creators/the-south-asian-sounds-that-disco-history-forgot-the-label-bringing-them-back",
+        "https://goner-records.com/products/naya-beat-volume-1-south-asian-dance-and-electronic-music-1983-1992-2xlp"
+      ],
+      "caveat": "Naya Beat also has a Volume 2 (1988-1994); its year was not checked"
+    }
+  ],
+  "tours": [
+    {
+      "artist": "Adam Port (Keinemusik presents)",
+      "cities": [
+        "Delhi-NCR",
+        "Kolkata",
+        "Bengaluru"
+      ],
+      "dates": "13 Nov Delhi-NCR (NSIC Exhibition Ground); 14 Nov Kolkata (Biswa Bangla Mela Prangan); 15 Nov Bengaluru (Bhartiya Mall)",
+      "promoter_venue": "Promoter not named in source",
+      "source": "https://www.hollywoodreporterindia.com/features/insight/diljit-dosanjh-anyma-fred-again-the-best-concerts-to-catch-in-india-before-2026-ends"
+    },
+    {
+      "artist": "Fred again..",
+      "cities": [
+        "Delhi-NCR",
+        "Mumbai",
+        "Bengaluru"
+      ],
+      "dates": "5 Dec Delhi-NCR (Leisure Valley Ground); 8 and 9 Dec Mumbai (Mahalaxmi Race Course); 12 and 13 Dec Bengaluru (NICE Grounds)",
+      "promoter_venue": "Promoter not named in sources",
+      "source": "https://djmag.com/news/fred-again-expands-india-tour-two-new-dates ; https://www.hollywoodreporterindia.com/features/insight/diljit-dosanjh-anyma-fred-again-the-best-concerts-to-catch-in-india-before-2026-ends"
+    },
+    {
+      "artist": "Mochakk, Boris Brejcha, I Hate Models, Hugel, Yousef, LI/LU (Circus Bengaluru)",
+      "cities": [
+        "Bengaluru"
+      ],
+      "dates": "18-19 Dec, Terraform Arena",
+      "promoter_venue": "Sound Simplify with Cavore Outdoors and Xora World",
+      "source": "https://www.thewildcity.com/news/21879-circus-announces-2026-edition-in-bengaluru-hyderabad-featuring-mochakk-boris-brejcha-i-hate-models-more"
+    },
+    {
+      "artist": "HUGEL",
+      "cities": [
+        "Hyderabad",
+        "Bengaluru",
+        "Mumbai",
+        "Kolkata",
+        "Delhi",
+        "Goa"
+      ],
+      "dates": "18-27 Dec, six cities (per-city dates not checked; Kolkata is around Christmas per The Telegraph's t2)",
+      "promoter_venue": "Sound Simplify",
+      "source": "https://www.thewildcity.com/news/21883-hugel-announces-6-city-india-tour-this-december ; https://www.medianews4u.com/sound-simplify-taps-orry-for-hugels-india-tour-campaign-film-ahead-of-six-city-tour/"
+    },
+    {
+      "artist": "Francis Mercier",
+      "cities": [
+        "Bengaluru",
+        "Mumbai",
+        "Delhi NCR",
+        "Hyderabad",
+        "Goa"
+      ],
+      "dates": "23 Dec Bengaluru; 24 Dec Mumbai (Soley); 25 Dec Delhi NCR (Soley); 26 Dec Hyderabad; 27 Dec Goa",
+      "promoter_venue": "Sunburn (per Hollywood Reporter India)",
+      "source": "https://www.hollywoodreporterindia.com/features/insight/diljit-dosanjh-anyma-fred-again-the-best-concerts-to-catch-in-india-before-2026-ends"
+    },
+    {
+      "artist": "DGTL India (Nina Kraviz, Kibo, Biianco, Colyn, Nox Vahn, Blu Attic, Qrion and others)",
+      "cities": [
+        "Bengaluru",
+        "Goa"
+      ],
+      "dates": "Bengaluru 13-14 Nov (The LaLiT Ashok); Goa 14-15 Nov (W Goa), moved from Mumbai",
+      "promoter_venue": "DGTL; tickets on Skillbox",
+      "source": "https://www.timeout.com/india/news/dgtl-india-2026-moves-its-mumbai-festival-venue-to-goa-101526",
+      "caveat": "The named lineup is for Goa. The Bengaluru lineup was not confirmed"
+    },
+    {
+      "artist": "Anyma presents AEDEN",
+      "cities": [
+        "Mumbai"
+      ],
+      "dates": "21 Nov, Mahalaxmi Racecourse",
+      "promoter_venue": "Not stated",
+      "source": "https://www.hollywoodreporterindia.com/features/insight/diljit-dosanjh-anyma-fred-again-the-best-concerts-to-catch-in-india-before-2026-ends",
+      "off_taste": true
+    },
+    {
+      "artist": "Alesso",
+      "cities": [
+        "Bengaluru",
+        "Gurugram"
+      ],
+      "dates": "27 Nov Bengaluru (Bhartiya Mall); 28 Nov Gurugram (HUDA Gymkhana Club)",
+      "promoter_venue": "Not stated",
+      "source": "https://www.hollywoodreporterindia.com/features/insight/diljit-dosanjh-anyma-fred-again-the-best-concerts-to-catch-in-india-before-2026-ends",
+      "off_taste": true
+    }
+  ],
+  "bengaluru_nights": [
+    {
+      "event": "DGTL Bengaluru 2026",
+      "venue": "The LaLiT Ashok, Seshadripuram",
+      "date": "13-14 Nov 2026, from 2pm",
+      "lineup": "Bengaluru lineup not confirmed in source. The Goa edition lists Kibo, Biianco, Colyn, Nina Kraviz, Nox Vahn, Blu Attic, Nicky Elisabeth, Phil Berg, Sublime Sound, Supergloss, Qrion, Sitara, Sheral",
+      "source": "https://www.timeout.com/india/news/dgtl-india-2026-moves-its-mumbai-festival-venue-to-goa-101526"
+    },
+    {
+      "event": "Keinemusik presents Adam Port",
+      "venue": "Bhartiya Mall",
+      "date": "15 Nov 2026",
+      "lineup": "Adam Port",
+      "source": "https://www.hollywoodreporterindia.com/features/insight/diljit-dosanjh-anyma-fred-again-the-best-concerts-to-catch-in-india-before-2026-ends"
+    },
+    {
+      "event": "Echoes of Earth, 10th edition",
+      "venue": "New site in the Nandi Hills foothills",
+      "date": "5-6 Dec 2026",
+      "lineup": "Thievery Corporation, Yussef Dayes, Lubiana and more (per Wild City headline)",
+      "source": "https://www.thewildcity.com/news/21849-echoes-of-earth-moves-to-nandi-foothills-with-thievery-corporation-yussef-dayes-lubiana-more-for-10th-edition ; https://www.hollywoodreporterindia.com/features/insight/diljit-dosanjh-anyma-fred-again-the-best-concerts-to-catch-in-india-before-2026-ends"
+    },
+    {
+      "event": "Fred again.. India tour",
+      "venue": "NICE Grounds",
+      "date": "12 and 13 Dec 2026",
+      "lineup": "Fred again..",
+      "source": "https://djmag.com/news/fred-again-expands-india-tour-two-new-dates"
+    },
+    {
+      "event": "Circus 2026 Bengaluru (2-day outdoor festival)",
+      "venue": "Terraform Arena",
+      "date": "18-19 Dec 2026",
+      "lineup": "Hugel, Boris Brejcha, Mochakk, I Hate Models, Yousef, LI/LU. Homegrown: GNDHI, Answer, Dynamite Disco Club (city split not stated)",
+      "promoter": "Sound Simplify with Cavore Outdoors and Xora World; tickets on ThumpN",
+      "source": "https://www.thewildcity.com/news/21879-circus-announces-2026-edition-in-bengaluru-hyderabad-featuring-mochakk-boris-brejcha-i-hate-models-more"
+    },
+    {
+      "event": "Francis Mercier India tour, Bengaluru date",
+      "venue": "Not stated",
+      "date": "23 Dec 2026",
+      "lineup": "Francis Mercier",
+      "promoter": "Sunburn",
+      "source": "https://www.hollywoodreporterindia.com/features/insight/diljit-dosanjh-anyma-fred-again-the-best-concerts-to-catch-in-india-before-2026-ends"
+    },
+    {
+      "event": "Sunburn Arena Bengaluru",
+      "venue": "NICE Grounds",
+      "date": "18 Dec (DJ Snake), 20 Dec (The Chainsmokers)",
+      "lineup": "DJ Snake; The Chainsmokers",
+      "source": "https://www.hollywoodreporterindia.com/features/insight/diljit-dosanjh-anyma-fred-again-the-best-concerts-to-catch-in-india-before-2026-ends",
+      "off_taste": true
+    },
+    {
+      "event": "Alesso",
+      "venue": "Bhartiya Mall",
+      "date": "27 Nov 2026",
+      "lineup": "Alesso",
+      "source": "https://www.hollywoodreporterindia.com/features/insight/diljit-dosanjh-anyma-fred-again-the-best-concerts-to-catch-in-india-before-2026-ends",
+      "off_taste": true
+    }
+  ],
+  "news": [
+    {
+      "headline": "Circus announces 2026 Bengaluru and Hyderabad editions with Mochakk, Boris Brejcha, I Hate Models",
+      "summary": "Sound Simplify's Circus expands beyond Mumbai with a 2-day outdoor festival at Terraform Arena, Bengaluru on 18-19 Dec. Hyderabad gets a run across city venues over three weekends, 12-27 Dec.",
+      "date": "2026-10-28",
+      "source": "https://www.thewildcity.com/news/21879-circus-announces-2026-edition-in-bengaluru-hyderabad-featuring-mochakk-boris-brejcha-i-hate-models-more"
+    },
+    {
+      "headline": "Sound Simplify taps Orry for HUGEL's India tour campaign film ahead of six-city tour",
+      "summary": "Promoter Sound Simplify made a campaign film with Orry for HUGEL's December run. HUGEL plays six Indian cities, including Bengaluru, from 18 to 27 Dec.",
+      "date": "2026-10-30",
+      "source": "https://www.medianews4u.com/sound-simplify-taps-orry-for-hugels-india-tour-campaign-film-ahead-of-six-city-tour/ ; https://www.thewildcity.com/news/21883-hugel-announces-6-city-india-tour-this-december",
+      "caveat": "Summary is built from the headlines. The medianews4u article was not opened"
+    },
+    {
+      "headline": "Bollywood Music Project's Shilpa Rao mishap: what festivals owe their artists",
+      "summary": "Rolling Stone India's opinion piece on Shilpa Rao's set being cut short at Bollywood Music Project in Mumbai. Organisers cited scheduling delays and venue curfew limits.",
+      "date": "2026-10-26",
+      "source": "https://rollingstoneindia.com/shilpa-rao-bollywood-music-project-backlash-opinion-commentary/",
+      "note": "Not electronic, but relevant to curfews and how festivals treat artists"
+    },
+    {
+      "headline": "Sijya releases 'Leather & Brass [Retrofitted]' with Jlin, Rachika Nayar, Sneha Khanwalkar",
+      "summary": "The Delhi producer has had her 2025 EP remade by seven producers. It came out on 23 Oct.",
+      "date": "2026-10-23",
+      "source": "https://www.thewildcity.com/news/21873-sijya-releases-remix-ep-of-leather-brass-featuring-sneha-khanwalkar-rachika-nayar-jlin-more ; https://boldoutline.in/composer-producer-and-visual-artist-sijya-to-release-remix-ep-leather-brass-retrofitted-on-october-23/"
+    },
+    {
+      "headline": "DGTL India moves its Mumbai edition to Goa",
+      "summary": "On 14 Oct, DGTL moved its Mumbai edition at Ballard Pier to W Goa (14-15 Nov), citing licensing uncertainty for live shows in Maharashtra. Bengaluru (13-14 Nov, The LaLiT Ashok) is unaffected.",
+      "date": "2026-10-15",
+      "source": "https://www.timeout.com/india/news/dgtl-india-2026-moves-its-mumbai-festival-venue-to-goa-101526",
+      "note": "19 days old, just outside the 2-week window. Included because the Maharashtra licensing story matters"
+    }
+  ]
+}

@@ -1,0 +1,405 @@
+{
+  "meta": {
+    "compiled": "2026-11-03",
+    "window_releases": "2026-10-20 to 2026-11-21",
+    "window_news": "2026-10-24 to 2026-11-03",
+    "notes": [
+      "Every field comes from the cited source unless marked 'not stated'. Where a city or country comes from general, well-established knowledge rather than the cited page, origin_note says so.",
+      "Region gap: I could not confirm an African or Middle Eastern release inside the window. Near misses: China Charmeleon 'We Never Learn' feat. Kudbeu (South Africa, The Animal) came out 16 Oct, and Saint Abdullah & Eomac 'When The Sandbox Has No Edge' (Planet Mu) came out 15-16 Oct.",
+      "East Asia is covered by Takuya Nakamura (Tokyo-born, New York-based). Latin America is covered by DJ One Go (Jalisco, Mexico), with Corridos Ketamina as a US act rooted in Mexican music."
+    ]
+  },
+  "releases": [
+    {
+      "artist": "OR (John Talabot)",
+      "title": "Music for Empty Stadiums",
+      "label": "AD 93",
+      "release_date": "2026-10-30",
+      "format": "Album (2LP vinyl + digital)",
+      "origin": "Barcelona, Spain",
+      "origin_note": "Talabot is Barcelona-based (general knowledge; the sources call him Catalan/Spanish).",
+      "sound": "A quiet, introspective electronic album that is not built for peak time. EDMSauce calls it 'introspective'.",
+      "why_hear": "The first album from Talabot under his new OR alias, and his first for AD 93.",
+      "sources": [
+        "https://ra.co/news/86015",
+        "https://www.thelineofbestfit.com/album-release-schedule",
+        "https://www.edmsauce.com/2026/09/24/john-talabots-or-project-emerges-with-introspective-music-for-empty-stadiums-lp/",
+        "https://johntalabot.bandcamp.com/album/music-for-empty-stadiums"
+      ]
+    },
+    {
+      "artist": "Eerie Enterprise",
+      "title": "Places Remember Events",
+      "label": "Dekmantel",
+      "release_date": "2026-10-30",
+      "format": "Album (debut)",
+      "origin": "Netherlands / Italy (duo split between the two countries; Bandcamp lists Amsterdam)",
+      "sound": "Experimental electronic music with 'lush textures, playful instrumentation and naturalistic contours' (Bandcamp Daily).",
+      "why_hear": "A debut album on Dekmantel that Bandcamp Daily picked as an Essential Release and called 'mind-bending yet deeply comforting'.",
+      "sources": [
+        "https://daily.bandcamp.com/essential-releases/essential-releases-october-30-2026",
+        "https://www.thelineofbestfit.com/album-release-schedule"
+      ]
+    },
+    {
+      "artist": "Boys Noize",
+      "title": "7LLVSION",
+      "label": "ONES and ZEROS (his own label)",
+      "release_date": "2026-11-06",
+      "format": "Album",
+      "origin": "Berlin, Germany",
+      "origin_note": "Berlin base is general knowledge; RA does not state it.",
+      "sound": "The guest list is club-focused: Brutalismus 3000, Maya Aklahateri of Kiss Facility, ABRA and Tiachu, plus the lead single '1+1+1' with ZEP. RA does not describe the style.",
+      "why_hear": "His first solo album in five years, with an unusual mix of guests from techno, punk-rave and R&B.",
+      "sources": [
+        "https://ra.co/news/86092",
+        "https://www.broadwayworld.com/bwwmusic/article/Boys-Noize-to-Release-7LLVSION-Album-November-6-20260924",
+        "https://www.thelineofbestfit.com/news/boys-noize-returns-with-first-new-album-in-five-years-7llvsion"
+      ]
+    },
+    {
+      "artist": "Shygirl",
+      "title": "Swallow!",
+      "label": "Because Music",
+      "release_date": "2026-11-06",
+      "format": "Album (second album)",
+      "origin": "London, UK",
+      "origin_note": "London is general knowledge.",
+      "sound": "Club-pop. Dork describes it as 'a new album about falling in love'. The singles so far are 'Lucky (Hymn)' and 'Mantra'.",
+      "why_hear": "The second album from one of the main voices connecting UK club music and pop.",
+      "sources": [
+        "https://www.because.tv/shygirl-announces-new-album-swallow/",
+        "https://www.thelineofbestfit.com/album-release-schedule",
+        "https://readdork.com/news/shygirl-announces-swallow-album-lucky-hymn",
+        "https://www.glitterbeam.co.uk/news/shygirl-swallow-new-album"
+      ]
+    },
+    {
+      "artist": "dBridge",
+      "title": "Curiosity Clicks",
+      "label": "FABRICLIVE",
+      "release_date": "2026-11-19",
+      "format": "EP (4 tracks)",
+      "origin": "London, UK",
+      "origin_note": "London is general knowledge; RA does not state it.",
+      "sound": "Four 'explosive, bass-heavy cuts' (RA).",
+      "why_hear": "New bass and drum & bass music from a long-running UK producer, released on fabric's own label.",
+      "sources": [
+        "https://ra.co/news/86270"
+      ]
+    },
+    {
+      "artist": "Takuya Nakamura",
+      "title": "Shape The Future",
+      "label": "fabric (FABRICLIVE)",
+      "release_date": "2026-11-12",
+      "format": "Double album (2xLP gatefold + digital)",
+      "origin": "Tokyo-born, New York-based (Japan / US)",
+      "sound": "Trumpet, live electronics and DJing 'steeped in the sounds of jazz and jungle' (Bandcamp).",
+      "why_hear": "One half is studio tracks and the other is a live set recorded at fabric. Guests are Tim Reaper, Shigeto, Currency Audio and Greentea Peng, and it ends with a vocal cover of 'Don't Give Up'.",
+      "sources": [
+        "https://spacetak.bandcamp.com/album/shape-the-future",
+        "https://ra.co/news/86030",
+        "https://www.fabriclondon.com/posts/sss"
+      ]
+    },
+    {
+      "artist": "DJ One Go",
+      "title": "Estación De Trance",
+      "label": "WVWV",
+      "release_date": "2026-10-21",
+      "format": "EP (5 tracks)",
+      "origin": "Jalisco, Mexico",
+      "sound": "Five 'high-energy house groovers' (RA).",
+      "why_hear": "RA picked this new Latin American house EP from a Jalisco producer as one of its releases of the week.",
+      "sources": [
+        "https://ra.co/news/86270"
+      ]
+    },
+    {
+      "artist": "Corridos Ketamina",
+      "title": "Cktriz",
+      "label": "Deep Love Recordings",
+      "release_date": "2026-11-06",
+      "format": "Single/EP (RA lists it under singles and EPs; exact format not stated)",
+      "origin": "Pomona, California / Phoenix, Arizona, US",
+      "sound": "Electronic music that takes in the spirit of Mexican corridos. RA says they 'fuse the vigilante spirit of the traditional Mexican folk music'.",
+      "why_hear": "It sits where Mexican-American folk tradition meets club music, which the global scene is watching right now.",
+      "sources": [
+        "https://ra.co/news/86220"
+      ]
+    },
+    {
+      "artist": "Wallace",
+      "title": "Secrets",
+      "label": "Limousine Dream",
+      "release_date": "2026-11-13",
+      "format": "Album",
+      "origin": "Not stated in source",
+      "sound": "'House music from the outer fringes' (RA).",
+      "why_hear": "An RA album pick for anyone who likes their house a little off-centre.",
+      "sources": [
+        "https://ra.co/news/86220"
+      ]
+    },
+    {
+      "artist": "Lauren Flax & S4M23",
+      "title": "Nightmare On Jack! Street",
+      "label": "Self-released",
+      "release_date": "2026-10-20",
+      "format": "Single",
+      "origin": "New York, US",
+      "sound": "Acid house. RA calls it an 'essential spooky season dance floor killer'.",
+      "why_hear": "RA calls the pair 'New York's most beloved acid queens', and the track is a Halloween-season acid tool.",
+      "sources": [
+        "https://ra.co/news/86270"
+      ]
+    }
+  ],
+  "releases_extra_lower_confidence": [
+    {
+      "artist": "DJ BORING",
+      "title": "Radio Silence",
+      "label": "NOT CONFIRMED",
+      "release_date": "2026-11-20",
+      "format": "Debut album",
+      "note": "The date comes from the Line of Best Fit schedule and the announcement from Clash, Dork and Electronic Groove. I could not confirm the label.",
+      "sources": [
+        "https://www.thelineofbestfit.com/album-release-schedule",
+        "https://www.clashmusic.com/news/dj-boring-announces-debut-album-radio-silence",
+        "https://dancewax.net/2026/09/25/dj-boring-announces-debut-album-radio-silence/"
+      ]
+    },
+    {
+      "artist": "Ben Hauke",
+      "title": "Future Bruk",
+      "label": "NOT CONFIRMED",
+      "release_date": "2026-10-29",
+      "format": "Album",
+      "origin": "London, UK",
+      "note": "Clash headline: 'Recalibrates Broken Beat DNA'. I could not confirm the label.",
+      "sources": [
+        "https://www.thelineofbestfit.com/album-release-schedule",
+        "https://www.clashmusic.com/news/ben-hauke-recalibrates-broken-beat-dna-on-new-album-future-bruk",
+        "https://boomkat.com/artists/ben-hauke/releases/1taedwyf/future-bruk"
+      ]
+    },
+    {
+      "artist": "bastiengoat",
+      "title": "BG001",
+      "label": "Self-released",
+      "release_date": "2026-10-21",
+      "format": "EP (4 tracks)",
+      "origin": "Oakland, US",
+      "sound": "Club tracks with 'savvy sound design and thundering chops' (RA).",
+      "sources": [
+        "https://ra.co/news/86270"
+      ]
+    },
+    {
+      "artist": "Joseph McGann",
+      "title": "Old Wounds",
+      "label": "Young Echo",
+      "release_date": "2026-11-20",
+      "format": "Album",
+      "origin": "Bristol, UK",
+      "note": "RA does not describe the sound.",
+      "sources": [
+        "https://ra.co/news/86220"
+      ]
+    },
+    {
+      "artist": "Salma Rosa & Jonnnah",
+      "title": "Paradise Lost",
+      "label": "Comic Sans Records",
+      "release_date": "2026-11-06",
+      "format": "EP",
+      "origin": "Lyon, France",
+      "sound": "'Straddles dubby downtempo and hazy pop' (RA).",
+      "sources": [
+        "https://ra.co/news/86220"
+      ]
+    }
+  ],
+  "labels": [
+    {
+      "label": "Nyege Nyege Tapes",
+      "city": "Kampala, Uganda",
+      "founded": "December 2016 (the Nyege Nyege collective dates from 2015)",
+      "founders": "Derek Debru and Arlen Dilsizian",
+      "key_artists": [
+        "Phelimuncasi (Durban gqom trio)",
+        "De Schuurman",
+        "Metal Preyers"
+      ],
+      "defining_releases": [
+        {
+          "title": "Various Artists - Sounds of Sisso (NNT005)",
+          "year": 2017
+        },
+        {
+          "title": "De Schuurman - Bubbling Inside",
+          "year": 2021
+        },
+        {
+          "title": "Rian Treanor & Ocen James - Saccades",
+          "year": 2023
+        }
+      ],
+      "stands_for": "Putting East African and wider African underground electronic music on the global map, from singeli and gqom to acholi fiddle music, without watering it down.",
+      "related": "Its experimental sister label Hakuna Kulala was founded in 2019 by Don Zilla, Rey Sapienz and Slikback.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Nyege_Nyege_(collective)",
+        "https://core-prod.cambridgecore.org/core/services/aop-cambridge-core/content/view/B4E79DFF5CA1A57B9EED7E82159A8E99/S0740155824000031a.pdf/genre-bending-explorations-and-remediations-a-curated-dive-into-nyege-nyege-tapes-various-artists-2017-sounds-of-sisso-nyege-nyege-tapes-nnt005-compiled-by-arlen-dilsizian-mastered-by-matt-colton-cass.pdf",
+        "https://djmag.com/news/nyege-nyege-tapes-announces-debut-collection-de-schuurman",
+        "https://crackmagazine.net/2021/06/hakuna-kulala-launches-white-label-series/",
+        "https://djmag.com/news/rian-treanor-and-ocen-james-announce-collaborative-album-nyege-nyege-tapes",
+        "https://www.themusic.com.au/features/album-of-the-week-rian-treanor-ocen-james-saccades-2023-week-3/N0uFKyotLC8/20-01-23",
+        "https://mixmag.net/read/gqom-phelimuncasi-album-nyege-nyege-tapes-news",
+        "https://xlr8r.com/?p=125584"
+      ]
+    },
+    {
+      "label": "TraTraTrax",
+      "city": "Colombia (Bogota / Medellin)",
+      "city_note": "Crack calls the label Colombian and says the founders have ties to both Bogota and Medellin. It does not name one home city.",
+      "founded": "2020",
+      "founders": "Nicolas Sanchez (Nyksan), JP Lopez (Verraco), Daniel Uribe (DJ Lomalinda)",
+      "key_artists": [
+        "Nick Leon",
+        "Verraco",
+        "Bitter Babe"
+      ],
+      "defining_releases": [
+        {
+          "title": "Nick Leon & Bitter Babe - Fuego Clandestino (EP)",
+          "year": 2020
+        },
+        {
+          "title": "DNGDNGDNG & Prisma - Pliegues",
+          "year": 2022
+        },
+        {
+          "title": "Various Artists - No Pare, Sigue Sigue (first label compilation)",
+          "year": 2022
+        }
+      ],
+      "stands_for": "Latin American club music on its own terms. Verraco put it as 'Let's write our own history' and 'It was time to unlearn and decolonise our mindsets, and our sounds.'",
+      "related": "The ambient sub-label Ambie-Ton launched in 2024. Recent EPs include Tomas Urquieta's '32 Balas' and Doctor Jeep's 'Push The Body'.",
+      "sources": [
+        "https://crackmagazine.net/article/profiles/tra-tra-trax/",
+        "https://crackmagazine.net/2024/04/tratratrax-sublabel-ambie-ton-ambient/",
+        "https://mixmag.net/feature/verraco-cover-feature-interview-dj-tratratrax-colombia",
+        "https://djmag.com/news/tomas-urquieta-releases-new-ep-32-balas-tratratrax-listen"
+      ]
+    },
+    {
+      "label": "Hyperdub",
+      "city": "London, UK",
+      "founded": "2004 (label; it grew out of Kode9's Hyperdub webzine)",
+      "founders": "Kode9 (Steve Goodman)",
+      "key_artists": [
+        "Burial",
+        "Kode9",
+        "DJ Rashad"
+      ],
+      "defining_releases": [
+        {
+          "title": "Burial - Burial",
+          "year": 2006
+        },
+        {
+          "title": "Burial - Untrue",
+          "year": 2007
+        },
+        {
+          "title": "DJ Rashad - Double Cup",
+          "year": 2013
+        }
+      ],
+      "stands_for": "Leftfield bass music that keeps moving between dubstep, footwork, jungle and pop experiments, with a strong sense of place and mood.",
+      "verification_note": "Founding year and release years are well-established facts that match the Wikipedia pages cited. I did not fetch those pages page-by-page this session, so please spot-check before posting.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Hyperdub",
+        "https://en.wikipedia.org/wiki/Untrue_(album)",
+        "https://xlr8r.com/news/hyperdub-to-release-jungle-album-from-tim-reaper-and-kloke/"
+      ]
+    }
+  ],
+  "news": [
+    {
+      "headline": "Rainbow Disco Club announces first acts for 2027",
+      "summary": "Japan's Rainbow Disco Club returns to the Higashi Izu Cross Country Course in Shizuoka from 16 to 18 April 2027. The first names are Jeff Mills, Ben UFO, DJ Nobu, Antal, DJ Masda, Chaos In The CBD, Sofia Kourtesis, Danilo Plessow, Craig Richards, Jyoty and Palms Trax, with more to be announced.",
+      "date": "2026-10-27",
+      "why_india": "One of Asia's most respected house and disco festivals, and an easy trip from India.",
+      "sources": [
+        "https://ra.co/news/86292",
+        "https://niewmedia.com/en/news/2610rdc/"
+      ]
+    },
+    {
+      "headline": "Apple Music to livestream The Warehouse Project's 20th anniversary sets for free",
+      "summary": "Apple Music's Club Live series will stream sets from Manchester's Warehouse Project as it turns 20. The sets come from Carl Cox, Overmono, Andy C, 2 Many DJs and Chloe Caillet.",
+      "date": "2026-10-28",
+      "why_india": "Indian fans can watch one of the UK's biggest club seasons as it happens, at no cost.",
+      "sources": [
+        "https://www.edmtunes.com/2026/10/28/apple-music-livestream-warehouse-project/",
+        "https://dancewax.net/2026/10/28/apple-music-announces-first-of-its-club-live-shows-from-the-warehouse-project/",
+        "https://djmag.com/news/apple-music-livestream-warehouse-project-20th-anniversary-sets-carl-cox-chloe-caillet-more",
+        "https://readdork.com/news/apple-music-warehouse-project-club-live-broadcasts-60178f7c2c"
+      ]
+    },
+    {
+      "headline": "Amsterdam's Gashouder reopens after renovation",
+      "summary": "The landmark round gasholder venue at Amsterdam's Westergas is officially open again after a major renovation. Events had already run there during an ADE pre-opening week.",
+      "date": "2026-11-02",
+      "why_india": "One of Europe's best-known techno rooms is back, which matters to anyone planning an ADE or Amsterdam trip.",
+      "sources": [
+        "https://www.edmtunes.com/2026/11/02/amsterdams-iconic-gashouder-reopens-following-historic-transformation/",
+        "https://www.housem.nl/2026/11/02/gashouder-heropent-na-transformatie/",
+        "https://edmsauce.com/2026/08/21/amsterdams-gashouder-sets-november-reopening-with-stacked-ade-pre-opening-week/"
+      ]
+    },
+    {
+      "headline": "Behringer teases an open-source all-in-one DJ system",
+      "summary": "EDMTunes reports that Behringer is teasing an open-source standalone DJ unit. Digital DJ Tips asks whether it is a roughly $300 standalone under the Klark Teknik name ('Anima'). There are no official specs, price or date yet.",
+      "date": "2026-11-02",
+      "why_india": "A cheap standalone DJ unit would matter a lot to bedroom DJs in India, where gear prices are a barrier.",
+      "caution": "This is still a teaser, and the price is speculation, so frame it as a rumour.",
+      "sources": [
+        "https://www.edmtunes.com/2026/11/02/behringer-teases-open-source-all-in-one-dj-system/",
+        "https://www.digitaldjtips.com/?p=2799488"
+      ]
+    },
+    {
+      "headline": "elrow and Brunch Electronik Halloween events in Spain cancelled after deadly train crash",
+      "summary": "Halloween events from elrow and Brunch Electronik were cancelled after a deadly high-speed train crash in Spain in late October. Other organisers faced questions about whether to go ahead.",
+      "date": "2026-11-01",
+      "why_india": "Two big international party brands paused major Halloween events. It is a reminder of how scene events respond to public tragedy.",
+      "caution": "This is a sensitive story. Use a plain, respectful tone or skip it for social posts.",
+      "sources": [
+        "https://www.edmtunes.com/2026/11/01/halloween-elrow-brunch-electronik-cancelled-train-crash/",
+        "https://www.euronews.com/video/2026/10/28/spain-first-footage-reveals-wreckage-of-deadly-high-speed-train-crash",
+        "https://euroweeklynews.com/2026/10/29/is-halloween-cancelled-in-spain-would-it-be-disrespectful-to-continue-with-events/"
+      ]
+    }
+  ],
+  "news_extra": [
+    {
+      "headline": "Factory Floor announce One Trip, their first album in a decade (Phantasy, PHLP27)",
+      "date": "approx. 23-27 Oct 2026 (RA story ID falls between items dated 23 Oct and 27 Oct; exact date not confirmed)",
+      "sources": [
+        "https://ra.co/news/86291",
+        "https://shop.phantasysound.co.uk/products/factory-floor-one-trip-phlp27",
+        "https://www.clashmusic.com/news/factory-floor-confirm-new-album-one-trip-their-first-in-a-decade"
+      ]
+    },
+    {
+      "headline": "Novelist to preview new album Scenes in London",
+      "date": "approx. 23-27 Oct 2026 (exact date not confirmed)",
+      "sources": [
+        "https://ra.co/news/86286"
+      ]
+    }
+  ]
+}

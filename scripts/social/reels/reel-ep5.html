@@ -1,0 +1,59 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+html,body{width:1080px;height:1920px}
+body{background:var(--blue);color:var(--cream)}
+/* beat-synced pieces */
+@keyframes pop{0%{transform:scale(0) rotate(-12deg)}60%{transform:scale(1.18) rotate(3deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes slam{0%{transform:scale(3.2);opacity:0}55%{transform:scale(.94);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes pulse{0%{transform:scale(1.06)}35%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes walk{from{transform:translateX(-520px)}to{transform:translateX(1180px)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-34px) rotate(3deg)}}
+@keyframes drop{0%{transform:translateY(-900px)}70%{transform:translateY(30px)}85%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+@keyframes swing{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes wipe{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes up{from{transform:translateY(160px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes jump{0%,100%{transform:translateY(0)}40%{transform:translateY(-120px)}}
+@keyframes rise{from{transform:translateY(700px)}to{transform:translateY(0)}}
+@keyframes lit{to{background:var(--acid);box-shadow:0 0 18px var(--acid)}}
+@keyframes run{to{transform:translateX(-50%)}}
+@keyframes stamp{0%{transform:scale(2.6) rotate(-20deg);opacity:0}60%{transform:scale(.92) rotate(-7deg);opacity:1}100%{transform:scale(1) rotate(-8deg);opacity:1}}
+.L{display:inline-block;transform:scale(0);animation:pop calc(var(--b)*.6) cubic-bezier(.2,.9,.3,1.4) forwards}
+.ink{position:absolute;inset:0;background:var(--ink);transform:scaleY(0);transform-origin:bottom;animation:wipe calc(var(--b)*.5) cubic-bezier(.7,0,.3,1) forwards;animation-delay:calc(var(--b)*8)}
+.band{position:absolute;top:150px;left:0;height:96px;width:max-content;background:var(--acid);border-block:6px solid var(--ink);display:flex;align-items:center;white-space:nowrap;animation:run calc(var(--b)*16) linear infinite}
+.band span{flex:none;font:400 52px/1 Bowlby;color:var(--ink);margin-right:34px}
+.band b{flex:none;color:var(--red);font-weight:400;margin-right:34px}
+</style></head><body>
+<div class="ink"></div>
+<div class="band"><span>CATS CAN DANCE</span><b>★</b><span>EPISODE 5</span><b>★</b><span>25.11</span><b>★</b><span>THE HUMMING TREE</span><b>★</b><span>CATS CAN DANCE</span><b>★</b><span>EPISODE 5</span><b>★</b><span>25.11</span><b>★</b><span>THE HUMMING TREE</span><b>★</b></div>
+
+<!-- EPISODE letters, on eighth notes -->
+<div class="abs bowl" style="left:70px;top:330px;font-size:150px;text-shadow:9px 9px 0 var(--ink)">
+<span class="L" style="animation-delay:0ms">E</span><span class="L" style="animation-delay:calc(var(--b)*.5)">P</span><span class="L" style="animation-delay:calc(var(--b)*1)">I</span><span class="L" style="animation-delay:calc(var(--b)*1.5)">S</span><span class="L" style="animation-delay:calc(var(--b)*2)">O</span><span class="L" style="animation-delay:calc(var(--b)*2.5)">D</span><span class="L" style="animation-delay:calc(var(--b)*3)">E</span></div>
+
+<!-- 05 slams on beat 4 and pulses every beat -->
+<div class="abs" style="left:60px;top:500px;opacity:0;animation:slam calc(var(--b)*.6) cubic-bezier(.2,.8,.3,1) forwards;animation-delay:calc(var(--b)*4)">
+  <div class="bowl" style="font-size:600px;color:var(--cream);text-shadow:22px 22px 0 var(--red);animation:pulse var(--b) ease-out infinite;animation-delay:calc(var(--b)*4)">05</div></div>
+
+<!-- disco ball drops on beat 5 -->
+<div class="abs" style="right:60px;top:230px;transform:translateY(-900px);animation:drop calc(var(--b)*1.2) cubic-bezier(.3,.9,.4,1) forwards;animation-delay:calc(var(--b)*5)">
+  <div style="width:6px;height:150px;background:var(--ink);margin-left:107px"></div>
+  <img src="../assets/disco-ball.png" style="width:220px;transform-origin:50% -150px;animation:swing calc(var(--b)*2) ease-in-out infinite" class="cut"></div>
+
+<!-- date + venue after the wipe -->
+<div class="abs" style="left:70px;top:1160px;opacity:0;animation:up calc(var(--b)*.6) cubic-bezier(.2,.8,.3,1) forwards;animation-delay:calc(var(--b)*8.5)">
+  <div class="bowl" style="display:inline-block;font-size:130px;background:var(--acid);color:var(--ink);border:7px solid var(--ink);box-shadow:14px 14px 0 var(--red);padding:18px 26px 6px;transform:rotate(-2deg)">WED 25.11</div></div>
+<div class="abs mono" style="left:76px;top:1390px;font-size:44px;opacity:0;animation:up calc(var(--b)*.6) ease-out forwards;animation-delay:calc(var(--b)*9.5)">The Humming Tree<br>Indiranagar, Bengaluru</div>
+
+<!-- lineup soon stamp on beat 12 -->
+<div class="abs bowl" style="left:640px;top:960px;font-size:64px;background:var(--red);color:var(--cream);border:7px solid var(--ink);box-shadow:12px 12px 0 var(--ink);padding:20px 24px 8px;opacity:0;animation:stamp calc(var(--b)*.5) ease-out forwards;animation-delay:calc(var(--b)*12)">LINEUP<br>SOON</div>
+
+<!-- walking cat across the bottom, bobbing on the beat -->
+<div class="abs" style="left:0;top:1420px;animation:walk calc(var(--b)*16) linear forwards">
+  <img src="../assets/cats/cat-left.svg" class="cut" style="width:420px;animation:bob var(--b) ease-in-out infinite"></div>
+<!-- arms-up cat rises on beat 12 and jumps each beat -->
+<div class="abs" style="right:30px;top:1380px;transform:translateY(700px);animation:rise calc(var(--b)*.6) cubic-bezier(.2,.9,.3,1.2) forwards;animation-delay:calc(var(--b)*12)">
+  <img src="../assets/cats/cat-right.svg" class="cut" style="width:300px;animation:jump var(--b) ease-out infinite;animation-delay:calc(var(--b)*12.6)"></div>
+
+<div class="bug" style="left:60px;bottom:70px;color:var(--cream)"><img src="../assets/ccd-logo-round.png">@CATSCAN.DANCE</div>
+<div class="pads" style="right:60px;bottom:88px;color:var(--cream)">
+<i style="animation:lit 1ms forwards;animation-delay:0ms"></i><i style="animation:lit 1ms forwards;animation-delay:calc(var(--b)*2)"></i><i style="animation:lit 1ms forwards;animation-delay:calc(var(--b)*4)"></i><i style="animation:lit 1ms forwards;animation-delay:calc(var(--b)*6)"></i><i style="animation:lit 1ms forwards;animation-delay:calc(var(--b)*8)"></i><i style="animation:lit 1ms forwards;animation-delay:calc(var(--b)*10)"></i><i style="animation:lit 1ms forwards;animation-delay:calc(var(--b)*12)"></i><i style="animation:lit 1ms forwards;animation-delay:calc(var(--b)*14)"></i></div>
+</body></html>
