@@ -1,0 +1,1441 @@
+[
+  {
+    "slug": "bass-camp",
+    "name": "Bass Camp",
+    "kind": "festival",
+    "city": "New Delhi",
+    "cities": [
+      "New Delhi",
+      "Mumbai",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune",
+      "Goa",
+      "Chennai",
+      "Pondicherry"
+    ],
+    "country": "India",
+    "founded": "2010",
+    "founders": [],
+    "genres": [
+      "bass music",
+      "drum and bass",
+      "jungle",
+      "dubstep",
+      "breaks"
+    ],
+    "website": "https://krunklive.com/bass-camp/",
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Bass Camp is a bass music festival presented by Krunk across several Indian cities, first held in February 2010.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.asia/read/bass-camp-festival-returns-for-its-11th-iteration-local",
+      "https://mixmag.asia/read/bass-camp-festival-12th-edition-15-venues-8-cities-india-rinse-fm-collaboration-event-local"
+    ],
+    "confidence": "high",
+    "notes": "Mixmag Asia says Krunk presents it and dates it to Feb 2010; one article says Krunk founded it, the other does not name a founder, so founders left empty. City list varies per edition (Indore and Dubai also appear). Krunk exists in promoters as agency; website URL came from search result, not opened.",
+    "existing": false
+  },
+  {
+    "slug": "enchanted-valley-carnival",
+    "name": "Enchanted Valley Carnival",
+    "kind": "festival",
+    "city": "Lonavala",
+    "cities": [
+      "Lonavala"
+    ],
+    "country": "India",
+    "founded": "2013",
+    "founders": [],
+    "genres": [
+      "EDM",
+      "techno",
+      "pop",
+      "fusion"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Enchanted Valley Carnival is a music festival held at Aamby Valley near Lonavala, first held in 2013.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Enchanted_Valley_Carnival"
+    ],
+    "confidence": "medium",
+    "notes": "Wikipedia: first edition 2013, owned 50/50 by Twisted Entertainment and Universal Music India, CEO Devraj Sanyal. Mixed genre, only partly electronic. No official site confirmed.",
+    "existing": false
+  },
+  {
+    "slug": "vh1-supersonic",
+    "name": "Vh1 Supersonic",
+    "kind": "festival",
+    "city": "Pune",
+    "cities": [
+      "Goa",
+      "Pune"
+    ],
+    "country": "India",
+    "founded": "2013",
+    "founders": [
+      "Nikhil Chinapa"
+    ],
+    "genres": [
+      "EDM",
+      "electronic",
+      "multi-genre"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Vh1 Supersonic is a music festival that began on a Goa beach in 2013 and moved to Pune in 2017.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://edm.fandom.com/wiki/Vh1_Supersonic_Festival"
+    ],
+    "confidence": "low",
+    "notes": "Only source is a fandom wiki page; Nikhil Chinapa named as leading setup with the Supercrew. Multi-genre since 2017. Verify with RA or Mixmag before publishing.",
+    "existing": false
+  },
+  {
+    "slug": "far-out-left",
+    "name": "Far Out Left Festival",
+    "kind": "festival",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai",
+      "Goa"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "techno",
+      "house",
+      "electro",
+      "breaks"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Far Out Left is a techno festival held in Mumbai and Goa, run by Social Offline and Regenerate Music.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://es.ra.co/news/80058"
+    ],
+    "confidence": "medium",
+    "notes": "RA: February 2024 was the fourth edition, collaboration between Social Offline and Regenerate Music (active in Mumbai since 2013). Genres listed are for Regenerate's label, not the festival. First year not stated.",
+    "existing": false
+  },
+  {
+    "slug": "milkman",
+    "name": "Milkman",
+    "kind": "party_series",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "techno",
+      "electro",
+      "acid",
+      "house"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Milkman is a Mumbai record label, touring agency and party collective that has brought Dekmantel and the Terminal 1 festival to India.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.asia/read/india-milkman-presents-6-years-of-milkman-events",
+      "https://homegrown.co.in/homegrown-creators/attend-a-two-city-underground-electronic-music-tour-curated-by-milkman-x-dekmantel"
+    ],
+    "confidence": "medium",
+    "notes": "Mixmag Asia calls it a label, touring agency and party collective and marks 6 years (so about 2017, implied only). Jai Anand is linked in a Mixmag Asia feature but founder role not confirmed. Not a pure party series; kind is a best fit.",
+    "existing": false
+  },
+  {
+    "slug": "terminal-1",
+    "name": "Terminal 1",
+    "kind": "festival",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "electronic",
+      "techno"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Terminal 1 is an electronic music festival in Mumbai organised by Milkman.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/directory/15373-terminal-1",
+      "https://rollingstoneindia.com/electronica-music-festival-terminal-1-is-back-for-a-second-edition-this-month/amp"
+    ],
+    "confidence": "medium",
+    "notes": "Wild City directory names Milkman as organiser; first year not stated on page. Rolling Stone India title says a second edition happened. Debut edition ended early on day 2 per an rsjonline headline.",
+    "existing": false
+  },
+  {
+    "slug": "groove-x",
+    "name": "Groove X",
+    "kind": "festival",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": "2024",
+    "founders": [],
+    "genres": [
+      "techno",
+      "house"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Groove X is a December 2024 festival at Famous Studios, Mumbai, curated by Milkman.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://homegrown.co.in/homegrown-explore/groove-x-milkman-is-bringing-its-underground-signature-to-famous-studios-this-december",
+      "https://mixmag.asia/read/milkman-returns-to-mumbai-famous-studios-groove-x-festival-december-jai-anand-local"
+    ],
+    "confidence": "low",
+    "notes": "Seen in search snippets and RA Mumbai guide news; the Homegrown and Mixmag pages were not opened. Year 2024 inferred from ticketfairy dated 6 Dec 2024. Check whether it recurs.",
+    "existing": false
+  },
+  {
+    "slug": "the-lab-mumbai",
+    "name": "The Lab Mumbai (Mixmag)",
+    "kind": "party_series",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": "2019",
+    "founders": [],
+    "genres": [
+      "house",
+      "techno"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "The Lab Mumbai is a weekly Mixmag and BUDX club series held in the antiSOCIAL basement at Khar Social, announced in November 2019.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.asia/read/mixmag-and-budx-present-lab-mumbai-local"
+    ],
+    "confidence": "medium",
+    "notes": "Mixmag Asia: Mumbai was the first location in Asia to host The Lab. Year 2019 from the announcement date.",
+    "existing": false
+  },
+  {
+    "slug": "kitty-su",
+    "name": "Kitty Su",
+    "kind": "club",
+    "city": "New Delhi",
+    "cities": [
+      "New Delhi"
+    ],
+    "country": "India",
+    "founded": "2011",
+    "founders": [],
+    "genres": [
+      "house",
+      "techno",
+      "EDM",
+      "Bollywood"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Kitty Su is a nightclub in The LaLiT hotel group, Delhi, with four rooms, each with its own sound system.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.businesstraveller.com/business-travel/kitty-su-celebrates-its-7th-anniversary/",
+      "https://www.thewildcity.com/features/2321-review-of-delhi-s-newest-nightclub-kitty-su",
+      "https://direct.djmag.com/top100clubs/2014/95/Kitty-Su"
+    ],
+    "confidence": "medium",
+    "notes": "Business Traveller says it opened 2011; Wild City reviews the launch and names Lalit Hotels as owner. Keshav Suri is linked as executive director of Lalit Suri Hospitality Group. A Bengaluru pop-up at The LaLiT Ashok was reported in 2025. Genre list mixed.",
+    "existing": false
+  },
+  {
+    "slug": "auro-kitchen-and-bar",
+    "name": "Auro Kitchen & Bar",
+    "kind": "venue",
+    "city": "New Delhi",
+    "cities": [
+      "New Delhi"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "techno",
+      "house",
+      "electronica",
+      "ambient"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Auro is a restaurant and live venue in Hauz Khas, Delhi, that has hosted Four Tet, Ben UFO, Helena Hauff and DVS1.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://trippin.world/guide/panelia-guide-to-new-delhi-electronic-scene",
+      "https://www.technoairlines.com/blog/top-5-in-india",
+      "https://www.ticketfairy.com/events-in-hauz-khas/auro-kitchen-and-bar?c=0"
+    ],
+    "confidence": "medium",
+    "notes": "Founding year not found. Trippin guide spells it Auro Bar & Kitchen.",
+    "existing": false
+  },
+  {
+    "slug": "summer-house-cafe",
+    "name": "Summer House Cafe",
+    "kind": "venue",
+    "city": "New Delhi",
+    "cities": [
+      "New Delhi"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "house",
+      "techno",
+      "melodic house"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Summer House Cafe is a venue on Sri Aurobindo Marg, Delhi, with a small dance floor where DJs regularly play.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://trippin.world/guide/panelia-guide-to-new-delhi-electronic-scene",
+      "https://www.ticketfairy.com/events-in-new-delhi/summer-house-cafe"
+    ],
+    "confidence": "medium",
+    "notes": "Ticketfairy lists it as Summer House Delhi; assumed same venue as the Trippin address. Founding not found.",
+    "existing": false
+  },
+  {
+    "slug": "soho-delhi",
+    "name": "Soho",
+    "kind": "club",
+    "city": "New Delhi",
+    "cities": [
+      "New Delhi"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "techno",
+      "house"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Soho is a club inside Hotel Ashok, Delhi, said to have hosted Nina Kraviz and Stephan Bodzin.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.technoairlines.com/blog/top-5-in-india"
+    ],
+    "confidence": "low",
+    "notes": "Single blog source (Techno Airlines). Not checked against RA or press. Confirm it is still open.",
+    "existing": false
+  },
+  {
+    "slug": "prism-club-hyderabad",
+    "name": "Prism Club & Kitchen",
+    "kind": "club",
+    "city": "Hyderabad",
+    "cities": [
+      "Hyderabad"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "techno",
+      "house",
+      "EDM"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Prism Club & Kitchen is a nightclub in Hyderabad's Financial District.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.technoairlines.com/blog/top-5-in-india",
+      "https://curlytales.com/prism-club-in-hyderabad"
+    ],
+    "confidence": "low",
+    "notes": "Techno Airlines claims it has hosted Charlotte de Witte, Nina Kraviz and Ben Bohmer; not confirmed elsewhere. Curlytales page not opened. Opening year unknown.",
+    "existing": false
+  },
+  {
+    "slug": "big-bull-hyderabad",
+    "name": "Big Bull",
+    "kind": "club",
+    "city": "Hyderabad",
+    "cities": [
+      "Hyderabad"
+    ],
+    "country": "India",
+    "founded": "2025",
+    "founders": [],
+    "genres": [
+      "electronic",
+      "Bollywood"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Big Bull is a 30,000 sq ft nightclub in Gachibowli, Hyderabad, that opened on 28 March 2025 with multi-genre nights.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://curlytales.com/step-into-the-future-big-bull-indias-first-tech-forward-nightclub-opens-in-hyderabad",
+      "https://rollingstoneindia.com/big-bull-hyderabad-club-review"
+    ],
+    "confidence": "low",
+    "notes": "Curlytales only; Rolling Stone India review not opened. Founders not named. Mixed genre, so low relevance.",
+    "existing": false
+  },
+  {
+    "slug": "ext-hyderabad",
+    "name": "EXT",
+    "kind": "venue",
+    "city": "Hyderabad",
+    "cities": [
+      "Hyderabad"
+    ],
+    "country": "India",
+    "founded": "2022",
+    "founders": [],
+    "genres": [
+      "house",
+      "techno",
+      "disco",
+      "drum and bass"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "EXT is a 350-capacity venue in Hyderabad, the former rooftop of The Moonshine Project, programming house, techno, disco and drum and bass.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.asia/read/indeed-weekender-ext-the-moonshine-project-second-edition-anniversary-hyderabad-india-local"
+    ],
+    "confidence": "low",
+    "notes": "Year 2022 inferred from article saying second anniversary in Sept 2024. Founders not named.",
+    "existing": false
+  },
+  {
+    "slug": "sunday-playground-hyderabad",
+    "name": "Sunday Playground",
+    "kind": "party_series",
+    "city": "Hyderabad",
+    "cities": [
+      "Hyderabad"
+    ],
+    "country": "India",
+    "founded": "2014",
+    "founders": [
+      "Aardy"
+    ],
+    "genres": [
+      "house",
+      "techno",
+      "electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Sunday Playground is a Hyderabad Sunday event series launched in 2014 by DJ Aardy, who also runs Hydrozoa Recordings.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/read/indias-longest-running-sunday-event-series-sunday-playground-to-celebrate-its-10-year-anniversary-news"
+    ],
+    "confidence": "high",
+    "notes": "Existing row is slug sunday-playground. This entry adds founded and founders; use it as a correction, not a new row.",
+    "existing": true
+  },
+  {
+    "slug": "antisocial",
+    "name": "antiSOCIAL",
+    "kind": "club",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai",
+      "Pune",
+      "Goa",
+      "New Delhi (closed)"
+    ],
+    "country": "India",
+    "founded": "2015",
+    "founders": [],
+    "genres": [
+      "techno",
+      "house",
+      "electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "antiSOCIAL launched in New Delhi in 2015 and has venues in Mumbai, Pune and Morjim, Goa, owned by Impresario Entertainment and Hospitality.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://ra.co/news/79891",
+      "https://mixmag.asia/read/antisocial-club-chain-new-venue-goa-morjim-beach-india-local"
+    ],
+    "confidence": "high",
+    "notes": "Existing row. Corrections: the Delhi venue has closed; Goa opened Dec 2023 at 4,000 capacity; a Hyderabad site was planned and a Hyderabad antiSOCIAL appears in a Deccan Chronicle result. Founders not named.",
+    "existing": true
+  },
+  {
+    "slug": "blue-frog",
+    "name": "Blue Frog",
+    "kind": "venue",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [
+      "Mahesh Mathai"
+    ],
+    "genres": [
+      "live music",
+      "electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Blue Frog is a Mumbai live music venue founded by Mahesh Mathai, set to reopen in early 2026.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.asia/features-1/venue-spotlight"
+    ],
+    "confidence": "low",
+    "notes": "Mixmag Asia names Mathai as founder and reopening early 2026. Electronic focus unconfirmed. Founding year not found. Reopening status needs checking as it is now Nov 2026.",
+    "existing": false
+  },
+  {
+    "slug": "bflat-bengaluru",
+    "name": "BFlat",
+    "kind": "venue",
+    "city": "Bengaluru",
+    "cities": [
+      "Bengaluru"
+    ],
+    "country": "India",
+    "founded": "2009",
+    "founders": [
+      "Arati Rao-Shetty",
+      "Sunil Shetty"
+    ],
+    "genres": [
+      "jazz",
+      "blues",
+      "electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "BFlat was an Indiranagar live venue in Bengaluru that opened in 2009 and closed in October 2019.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://rollingstoneindia.com/bengaluru-club-venue-bflat-shut-next-month/amp"
+    ],
+    "confidence": "medium",
+    "notes": "Closed. Rolling Stone India says it was run by the Shettys; it does not say they founded it, so check before listing as founders. Mostly jazz and blues, electronic occasional.",
+    "existing": false
+  },
+  {
+    "slug": "middle-room-bengaluru",
+    "name": "Middle Room",
+    "kind": "venue",
+    "city": "Bengaluru",
+    "cities": [
+      "Bengaluru"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "listening bar",
+      "vinyl"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Middle Room is a newly opened listening bar in Bengaluru that prioritises sound quality and vinyl.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.asia/features-1/venue-spotlight"
+    ],
+    "confidence": "low",
+    "notes": "One line in Mixmag Asia. Not clearly electronic or dance. Probably skip unless CCD wants listening bars.",
+    "existing": false
+  },
+  {
+    "slug": "go-madras-electronic-music-festival",
+    "name": "Go Madras Electronic Music Festival",
+    "kind": "festival",
+    "city": "Chennai",
+    "cities": [
+      "Chennai"
+    ],
+    "country": "India",
+    "founded": "2009",
+    "founders": [],
+    "genres": [
+      "electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Go Madras is an electronic music festival in Chennai listed in Wild City's directory as founded in 2009.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/directory/4284-the-go-madras-electronic-music-festival"
+    ],
+    "confidence": "low",
+    "notes": "Wild City directory only; organiser not stated; only a Facebook page (facebook.com/gomadras). Unknown if still running.",
+    "existing": false
+  },
+  {
+    "slug": "open-air-kochi",
+    "name": "Open Air Kochi",
+    "kind": "party_series",
+    "city": "Kochi",
+    "cities": [
+      "Kochi"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "techno",
+      "melodic techno",
+      "EDM"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Open Air is a techno and EDM event held at Crowne Plaza Kochi on 15 and 16 November 2024.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://onmanorama.com/entertainment/art-and-culture/2024/11/15/open-air-kochi-electronic-dance-music-techno-experience-dj-party.html"
+    ],
+    "confidence": "low",
+    "notes": "Single news article. Organiser and founding year not stated. Unclear if it recurs.",
+    "existing": false
+  },
+  {
+    "slug": "hill-top-vagator",
+    "name": "Hill Top",
+    "kind": "venue",
+    "city": "Goa",
+    "cities": [
+      "Vagator"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [
+      "John Stephen D'Souza"
+    ],
+    "genres": [
+      "psytrance"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Hill Top is a Vagator, Goa venue that has hosted psytrance parties for more than 35 years as of 2018.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thegoan.net/hill-top-the-big-party-destination-in-small-vagator/41951.html"
+    ],
+    "confidence": "medium",
+    "notes": "The Goan (April 2018): started by John Stephen D'Souza, later run by son Starling D'Souza. Exact founding year not stated, so left null.",
+    "existing": false
+  },
+  {
+    "slug": "kitty-su-bengaluru-popup",
+    "name": "Kitty Su Bengaluru pop-up",
+    "kind": "party_series",
+    "city": "Bengaluru",
+    "cities": [
+      "Bengaluru"
+    ],
+    "country": "India",
+    "founded": "2025",
+    "founders": [],
+    "genres": [
+      "techno",
+      "electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "A Kitty Su pop-up at The LaLiT Ashok Bengaluru on 17 May 2025 featured Arjun Vagale and Kohra.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://hospibuz.com/hotel/Hotel-listicles/kitty-su-pop-up-brings-indias-top-electronic-acts-to-the-lalit-ashok-bangalore-may-17-2025-9077876",
+      "https://www.district.in/events/kitty-su-presents-arjun-vagale-kohra-b2b-midnight-may17-2025-buy-tickets"
+    ],
+    "confidence": "low",
+    "notes": "Seen only as search results; not opened. Likely fold into the kitty-su entry, not a separate row.",
+    "existing": false
+  },
+  {
+    "slug": "lod-kathmandu",
+    "name": "LOD",
+    "kind": "club",
+    "city": "Kathmandu",
+    "cities": [
+      "Kathmandu"
+    ],
+    "country": "Nepal",
+    "founded": "2019",
+    "founders": [],
+    "genres": [
+      "EDM",
+      "electronic",
+      "Bollytech"
+    ],
+    "website": "https://clublod.com",
+    "instagram": "https://instagram.com/lodnepal",
+    "booking_email": null,
+    "short_description": "LOD is a Thamel club in Kathmandu with about 2,500 capacity, ranked on DJ Mag's Top 100 Clubs list.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.technoairlines.com/club/lod-kathmandu",
+      "https://djmag.com/top100clubs/2024/50/lod"
+    ],
+    "confidence": "medium",
+    "notes": "Techno Airlines lists 2019 opening and the website and Instagram; DJ Mag page failed to open (search result only). Ranking varies by year (No. 50 in 2024 URL, No. 40 in 2026 per Techno Airlines).",
+    "existing": false
+  },
+  {
+    "slug": "club-25-hours-kathmandu",
+    "name": "Club 25 Hours",
+    "kind": "club",
+    "city": "Kathmandu",
+    "cities": [
+      "Kathmandu"
+    ],
+    "country": "Nepal",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Club 25 Hours is a Kathmandu venue linked to Spandan Moktan, in Wild City's feature on electronic music in Nepal.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/features/19511-the-changing-face-of-electronic-music-in-nepal"
+    ],
+    "confidence": "low",
+    "notes": "Genre, founding and owner not stated. Moktan is described as helping start it.",
+    "existing": false
+  },
+  {
+    "slug": "sine-valley-festival",
+    "name": "Sine Valley Festival",
+    "kind": "festival",
+    "city": "Kathmandu",
+    "cities": [
+      "Kathmandu"
+    ],
+    "country": "Nepal",
+    "founded": "2016",
+    "founders": [
+      "Phatcowlee",
+      "Alien Panda Jury",
+      "Autonomotor"
+    ],
+    "genres": [
+      "leftfield",
+      "alternative electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Sine Valley is a multi-day alternative electronic festival in Kathmandu, first held in 2016.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/features/19511-the-changing-face-of-electronic-music-in-nepal",
+      "https://djmag.com/longreads/moving-mountains-how-community-electronic-artists-are-capturing-imagination-kathmandu",
+      "https://kathmandupost.com/art-entertainment/2017/10/19/sine-valley-2nd-edition-ready-to-kick-off"
+    ],
+    "confidence": "medium",
+    "notes": "Wild City names the three founders; DJ Mag says planned 2016 and names Alien Panda Jury and M.Manal (Autonomotor). Kathmandu Post confirms a 2nd edition in Oct 2017 (title only).",
+    "existing": false
+  },
+  {
+    "slug": "seashells-on-the-mountain",
+    "name": "Seashells On The Mountain",
+    "kind": "festival",
+    "city": "Pokhara",
+    "cities": [
+      "Pokhara"
+    ],
+    "country": "Nepal",
+    "founded": "2019",
+    "founders": [
+      "Rishi Jha",
+      "Marta"
+    ],
+    "genres": [
+      "electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Seashells On The Mountain is a festival and residency in Pokhara run by We All Should Play, first held in 2019.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/features/19511-the-changing-face-of-electronic-music-in-nepal"
+    ],
+    "confidence": "low",
+    "notes": "Genre not stated in source. Marta has no surname in the page.",
+    "existing": false
+  },
+  {
+    "slug": "grasslands-festival",
+    "name": "Grasslands Festival",
+    "kind": "festival",
+    "city": "Kathmandu",
+    "cities": [
+      "Kathmandu"
+    ],
+    "country": "Nepal",
+    "founded": "2021",
+    "founders": [
+      "Spektrum",
+      "Surge",
+      "Third Culture"
+    ],
+    "genres": [
+      "cross-border",
+      "multi-art"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Grasslands is an open-air festival in Nepal first held in 2021 by Spektrum, Surge and Third Culture.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/features/19511-the-changing-face-of-electronic-music-in-nepal"
+    ],
+    "confidence": "low",
+    "notes": "City not stated in the source; Kathmandu is assumed. Check.",
+    "existing": false
+  },
+  {
+    "slug": "spektrum-nepal",
+    "name": "Spektrum",
+    "kind": "party_series",
+    "city": "Kathmandu",
+    "cities": [
+      "Kathmandu"
+    ],
+    "country": "Nepal",
+    "founded": null,
+    "founders": [
+      "Ranzen",
+      "Prasidha Yonzon (YNZN.P)",
+      "Rishavh Shrestha (Enhancify)",
+      "Vinayak Tamang (Dipsoman)"
+    ],
+    "genres": [
+      "club music"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Spektrum is a Nepali collective, booking agency and promoter that started with parties every three months.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/features/19511-the-changing-face-of-electronic-music-in-nepal"
+    ],
+    "confidence": "low",
+    "notes": "Wild City lists members as a collective including these names; not necessarily founders.",
+    "existing": false
+  },
+  {
+    "slug": "dancemandu",
+    "name": "Dancemandu",
+    "kind": "festival",
+    "city": "Kathmandu",
+    "cities": [
+      "Kathmandu"
+    ],
+    "country": "Nepal",
+    "founded": "2014",
+    "founders": [],
+    "genres": [
+      "dance music"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Dancemandu was a multi-day dance music festival in Kathmandu held in 2014.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/features/19511-the-changing-face-of-electronic-music-in-nepal",
+      "https://thehimalayantimes.com/entertainment/dancing-hearts-content-dance-mandu-music-festival"
+    ],
+    "confidence": "low",
+    "notes": "Wild City lists it with Dance Valley Festival as 2014 events. DJ Mag lists Dancemandu among 2007 to 2014 festivals. Himalayan Times page not opened.",
+    "existing": false
+  },
+  {
+    "slug": "groove-into-the-void",
+    "name": "Groove Into The Void",
+    "kind": "party_series",
+    "city": "Karachi",
+    "cities": [
+      "Karachi"
+    ],
+    "country": "Pakistan",
+    "founded": "2021",
+    "founders": [
+      "Zee",
+      "Jalal"
+    ],
+    "genres": [
+      "techno",
+      "tech house",
+      "afro house",
+      "progressive house"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Groove Into The Void is a Karachi rave series founded in April 2021 by Zee and Jalal, held at a private farmhouse outside the city.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.asia/feature/groove-into-the-voice-functions-interview-pakistan-party-dance-music",
+      "https://mixmag.asia/read/radical-softness-groove-into-the-void-new-event-series-controlled-chaos-pakistan-events"
+    ],
+    "confidence": "high",
+    "notes": "Founders given by first name only. Invite-only events. Ran over 600 attendees per one article.",
+    "existing": false
+  },
+  {
+    "slug": "controlled-chaos",
+    "name": "Controlled Chaos",
+    "kind": "party_series",
+    "city": "Karachi",
+    "cities": [
+      "Karachi",
+      "Lahore",
+      "Berlin"
+    ],
+    "country": "Pakistan",
+    "founded": "2023",
+    "founders": [],
+    "genres": [
+      "techno"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Controlled Chaos is an eight-month event series across Karachi, Lahore and Berlin that began in Karachi on 6 May 2023.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.asia/read/radical-softness-groove-into-the-void-new-event-series-controlled-chaos-pakistan-events"
+    ],
+    "confidence": "medium",
+    "notes": "Organisers not named in the page. Berlin DJ Radical Softness headlined the first event.",
+    "existing": false
+  },
+  {
+    "slug": "karachi-detour-rampage",
+    "name": "Karachi Detour Rampage",
+    "kind": "party_series",
+    "city": "Karachi",
+    "cities": [
+      "Karachi"
+    ],
+    "country": "Pakistan",
+    "founded": "2010",
+    "founders": [],
+    "genres": [],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Karachi Detour Rampage was a Karachi collective from around 2010 that later went dormant.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://djmag.com/longreads/forging-electronic-futures-karachi"
+    ],
+    "confidence": "low",
+    "notes": "Year is from the article's account of the scene start. Genre and founders not stated. Collective more than a party series.",
+    "existing": false
+  },
+  {
+    "slug": "forever-south",
+    "name": "Forever South",
+    "kind": "party_series",
+    "city": "Karachi",
+    "cities": [
+      "Karachi"
+    ],
+    "country": "Pakistan",
+    "founded": null,
+    "founders": [
+      "Dynoman",
+      "Bilal Nasir Khan (Rudoh)"
+    ],
+    "genres": [],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Forever South was a Pakistani collective and label that stopped after its final collection in January 2017.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://djmag.com/longreads/forging-electronic-futures-karachi",
+      "https://budx.mixmag.net/feature/deep-dive-south-asian-music-pakistan-india-sri-lanka-bangladesh-nepal"
+    ],
+    "confidence": "low",
+    "notes": "Collective and label, not a party series. Founding year not given. Consider kind collective.",
+    "existing": false
+  },
+  {
+    "slug": "bhai-bhai-soundsystem",
+    "name": "Bhai Bhai Soundsystem",
+    "kind": "party_series",
+    "city": "Dhaka",
+    "cities": [
+      "Dhaka"
+    ],
+    "country": "Bangladesh",
+    "founded": "2022",
+    "founders": [
+      "Sakib Tonmoy",
+      "Shoummo Saha",
+      "Hasib Mahmud"
+    ],
+    "genres": [
+      "house",
+      "techno",
+      "disco",
+      "bass",
+      "jungle"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Bhai Bhai Soundsystem is a Dhaka DJ collective and party crew that started in early 2022 and took over Keep Hush Live Dhaka in May 2024.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://homegrown.co.in/homegrown-creators/bhai-bhai-soundsystem-is-a-collective-reshaping-electronic-music-in-dhaka",
+      "https://mixmag.asia/feature/mixmag-asia-radio-bangladesh-diy-heroes-bhai-bhai-soundsystem-take-over-sri-lanka-dots-bay-house"
+    ],
+    "confidence": "high",
+    "notes": "Homegrown names the three founders; Mixmag Asia says first party was March 2022. Collective, kind party_series is a best fit.",
+    "existing": false
+  },
+  {
+    "slug": "dhaka-electronic-scene",
+    "name": "Dhaka Electronic Scene",
+    "kind": "party_series",
+    "city": "Dhaka",
+    "cities": [
+      "Dhaka"
+    ],
+    "country": "Bangladesh",
+    "founded": "2012",
+    "founders": [],
+    "genres": [
+      "electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Dhaka Electronic Scene is a collective of over 100 Bangladeshi producers, DJs, visual artists and writers, started as a Facebook group in 2012.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://budx.mixmag.net/feature/deep-dive-south-asian-music-pakistan-india-sri-lanka-bangladesh-nepal",
+      "https://www.thewildcity.com/directory/4618-dhaka-electronic-scene"
+    ],
+    "confidence": "medium",
+    "notes": "Year from Mixmag; 100+ members from Wild City. Collective and label, not a party series. Facebook: facebook.com/dhakaelectronica.",
+    "existing": false
+  },
+  {
+    "slug": "hxtch",
+    "name": "HXTCH",
+    "kind": "festival",
+    "city": "Cox's Bazar",
+    "cities": [
+      "Cox's Bazar"
+    ],
+    "country": "Bangladesh",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "jungle",
+      "bass",
+      "house",
+      "techno"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "HXTCH is a Cox's Bazar festival described by Mixmag Asia as a local groundbreaker; Burning Crab and Banglafruit followed it.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.asia/feature/mixmag-asia-radio-bangladesh-diy-heroes-bhai-bhai-soundsystem-take-over-sri-lanka-dots-bay-house"
+    ],
+    "confidence": "low",
+    "notes": "Genres belong to the scene, not tied to HXTCH specifically by the article. 'Groundbreaker' is Mixmag's word, not used here.",
+    "existing": false
+  },
+  {
+    "slug": "pettah-interchange",
+    "name": "Pettah Interchange",
+    "kind": "party_series",
+    "city": "Colombo",
+    "cities": [
+      "Colombo"
+    ],
+    "country": "Sri Lanka",
+    "founded": "2012",
+    "founders": [
+      "Border Movement",
+      "Goethe-Institut",
+      "Asvajit"
+    ],
+    "genres": [
+      "techno",
+      "house"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Pettah Interchange was an annual Colombo electronic club night in derelict Pettah buildings, run from 2012 with Border Movement and the Goethe-Institut.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/features/18265-the-evolution-of-sri-lanka-s-alternative-nightlife",
+      "https://dailymirror.lk/opinion/uncompromising-techno-music/172-84207"
+    ],
+    "confidence": "medium",
+    "notes": "Wild City: annual for five years from 2012. Daily Mirror (2015) says 2015 was the fourth edition, so the start year differs by a year. Organisers are listed rather than founders.",
+    "existing": false
+  },
+  {
+    "slug": "good-music-movement",
+    "name": "Good Music Movement",
+    "kind": "party_series",
+    "city": "Colombo",
+    "cities": [
+      "Colombo"
+    ],
+    "country": "Sri Lanka",
+    "founded": "2012",
+    "founders": [
+      "Ravi Bandaranaike"
+    ],
+    "genres": [
+      "deep house",
+      "UK bass"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Good Music Movement began as a Colombo music blog in 2010 and became an event space in August 2012; its first party was Samsara on Unawatuna beach.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/features/18265-the-evolution-of-sri-lanka-s-alternative-nightlife"
+    ],
+    "confidence": "medium",
+    "notes": "Wild City gives founding as 2010 (blog) and 2012 (events). Ravi Bandaranaike named as co-founder; others not named.",
+    "existing": false
+  },
+  {
+    "slug": "dots-bay-house",
+    "name": "Dots Bay House",
+    "kind": "venue",
+    "city": "Sri Lanka",
+    "cities": [
+      "Sri Lanka"
+    ],
+    "country": "Sri Lanka",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "house",
+      "techno"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Dots Bay House is a beach venue in Sri Lanka that hosted a Bhai Bhai Soundsystem takeover with Mixmag Asia.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.asia/feature/mixmag-asia-radio-bangladesh-diy-heroes-bhai-bhai-soundsystem-take-over-sri-lanka-dots-bay-house",
+      "https://mixmag.asia/read/jambutek-recordings-drops-sonic-showcase-dots-bay-house-sri-lanka-events"
+    ],
+    "confidence": "low",
+    "notes": "Town not named in the page I opened; Jambutek page not opened. Genres not stated.",
+    "existing": false
+  },
+  {
+    "slug": "jambutek-recordings",
+    "name": "Jambutek Recordings",
+    "kind": "party_series",
+    "city": "Colombo",
+    "cities": [
+      "Colombo"
+    ],
+    "country": "Sri Lanka",
+    "founded": "2014",
+    "founders": [
+      "Asvajit"
+    ],
+    "genres": [
+      "deep house",
+      "progressive house",
+      "acid house",
+      "techno"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Jambutek Recordings is a Colombo electronic music imprint and artist collective founded in 2014 by Asvajit.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://budx.mixmag.net/feature/deep-dive-south-asian-music-pakistan-india-sri-lanka-bangladesh-nepal",
+      "https://www.thewildcity.com/features/18265-the-evolution-of-sri-lanka-s-alternative-nightlife"
+    ],
+    "confidence": "medium",
+    "notes": "Label and collective, not really a venue or party; probably belongs in the labels list.",
+    "existing": false
+  },
+  {
+    "slug": "basement-bhangra",
+    "name": "Basement Bhangra",
+    "kind": "party_series",
+    "city": "New York",
+    "cities": [
+      "New York"
+    ],
+    "country": "United States",
+    "founded": "1997",
+    "founders": [
+      "DJ Rekha"
+    ],
+    "genres": [
+      "bhangra",
+      "hip hop",
+      "Punjabi"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Basement Bhangra is a New York party started by DJ Rekha in 1997, which held a final show at SummerStage.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://americanbazaaronline.com/2017/08/08/basement-bhangra-closes-show-20th-anniversary-celebration-new-york/"
+    ],
+    "confidence": "medium",
+    "notes": "Diaspora, bhangra and hip hop rather than electronic. WNYC headline says it ended after 20 years.",
+    "existing": false
+  },
+  {
+    "slug": "kuch-kuch",
+    "name": "Kuch Kuch",
+    "kind": "party_series",
+    "city": "UK",
+    "cities": [
+      "UK"
+    ],
+    "country": "United Kingdom",
+    "founded": "2000",
+    "founders": [
+      "DJ Ritu"
+    ],
+    "genres": [
+      "Bollywood"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Kuch Kuch is a UK Bollywood club night started in 2000 by DJ Ritu and a co-founder.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/feature/south-asian-diaspora-dance-music-collectives-interview-series"
+    ],
+    "confidence": "low",
+    "notes": "City not stated; Bollywood, not electronic. Second co-founder not named.",
+    "existing": false
+  },
+  {
+    "slug": "discostan",
+    "name": "Discostan",
+    "kind": "party_series",
+    "city": "UK",
+    "cities": [
+      "UK"
+    ],
+    "country": "United Kingdom",
+    "founded": null,
+    "founders": [
+      "Arshia"
+    ],
+    "genres": [
+      "disco",
+      "re-edits",
+      "experimental"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Discostan is a diaspora collective focused on 1980s disco, folkloric sounds and dancefloor re-edits, led by Arshia.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/feature/south-asian-diaspora-dance-music-collectives-interview-series"
+    ],
+    "confidence": "low",
+    "notes": "City not stated in Mixmag. Verify.",
+    "existing": false
+  },
+  {
+    "slug": "representasian",
+    "name": "RepresentAsian",
+    "kind": "party_series",
+    "city": "Bristol",
+    "cities": [
+      "Bristol"
+    ],
+    "country": "United Kingdom",
+    "founded": "2022",
+    "founders": [
+      "Yusuf Suave",
+      "Safiya Bashir"
+    ],
+    "genres": [
+      "bhangra",
+      "Bollywood",
+      "garage",
+      "UK funky",
+      "afro house"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "RepresentAsian is a Bristol South Asian club night, started as a podcast in 2021, with its first night at The Crofters Rights on 18 February 2022.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/read/representasian-south-asian-bristol-club-night-electronic-music-news"
+    ],
+    "confidence": "medium",
+    "notes": "Founders are the podcast founders per Mixmag.",
+    "existing": false
+  },
+  {
+    "slug": "dialled-in",
+    "name": "Dialled In",
+    "kind": "party_series",
+    "city": "London",
+    "cities": [
+      "London",
+      "Manchester"
+    ],
+    "country": "United Kingdom",
+    "founded": null,
+    "founders": [],
+    "genres": [
+      "diasporic club music",
+      "electronic",
+      "pop",
+      "indie"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Dialled In is a South Asian diaspora collective whose flagship London day party took place at The Cause on 7 September.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/read/dialled-in-london-day-party-line-up-south-asian-festival-the-cause-naina-priya-ragu-baalti-news"
+    ],
+    "confidence": "low",
+    "notes": "Year of the day party is not in the page text. Manchester debut mentioned only as a link title.",
+    "existing": false
+  },
+  {
+    "slug": "no-id",
+    "name": "No I.D.",
+    "kind": "party_series",
+    "city": "London",
+    "cities": [
+      "London"
+    ],
+    "country": "United Kingdom",
+    "founded": "2019",
+    "founders": [
+      "Ahadadream"
+    ],
+    "genres": [],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "No I.D. is a London club night for South Asian diaspora artists, launched on 27 March 2019 at Rye Wax, Peckham.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/read/no-id-london-club-night-south-asian-artists-news",
+      "https://mixmag.net/feature/south-asian-diaspora-dance-music-collectives-interview-series"
+    ],
+    "confidence": "high",
+    "notes": "Existing row; adds founder and launch date. Ahadadream also heads More Time Records.",
+    "existing": true
+  },
+  {
+    "slug": "tawoos-initiative",
+    "name": "The Tawoos Initiative",
+    "kind": "party_series",
+    "city": "Toronto",
+    "cities": [
+      "Toronto"
+    ],
+    "country": "Canada",
+    "founded": "2017",
+    "founders": [
+      "Pratishta Kohli"
+    ],
+    "genres": [],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "The Tawoos Initiative is a Canadian collective founded in 2017 by Pratishta Kohli.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/feature/south-asian-diaspora-dance-music-collectives-interview-series"
+    ],
+    "confidence": "medium",
+    "notes": "Existing row as collective; adds founded and founder. Toronto is only 'referenced' in the source.",
+    "existing": true
+  }
+]
