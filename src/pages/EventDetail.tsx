@@ -156,12 +156,12 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
           <div className="container">
             <Breadcrumbs light={upcoming} items={[{ label: "Home", to: "/" }, { label: "Episodes", to: "/episodes" }, { label: event.title }]} />
 
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,380px)_1fr] lg:gap-14 items-end">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-14 items-end">
               {/* Poster */}
               <div className="order-2 lg:order-1 w-full max-w-sm lg:max-w-none">
                 {poster && !posterError ? (
                   <div className="relative aspect-[3/4] border-4 border-ink chunk-shadow-lg overflow-hidden bg-ink">
-                    <Image src={poster} alt={`${event.title} poster`} fill priority sizes="(max-width: 1024px) 90vw, 380px" className="object-cover" onError={() => setPosterError(true)} />
+                    <Image src={poster} alt={`${event.title} poster`} fill priority sizes="(max-width: 1024px) 90vw, 320px" className="object-cover" onError={() => setPosterError(true)} />
                   </div>
                 ) : (
                   <EventPosterPlaceholder title={event.title} date={displayDate(event)} city={event.city || "Bengaluru"} eyebrow={event.series_label ?? undefined} lineup={(event.lineup ?? []).join(" · ")} />
@@ -191,8 +191,8 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
                 <div className="flex flex-wrap items-center gap-3">
                   {upcoming && (
                     <button type="button" onClick={scrollToBox}
-                      className="lg:hidden font-display text-lg px-6 py-3 border-4 border-ink bg-acid-yellow text-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
-                      Get tickets
+                      className="font-display text-lg px-6 py-3 border-4 border-ink bg-acid-yellow text-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">
+                      {tiers && tiers.length > 0 && tiers.every((t) => t.sold_out) ? "Join waiting list" : tiers && tiers.length === 0 && event.rsvp_open ? "RSVP" : priceText && !priceText.startsWith("Sold") ? `Get tickets · ${priceText.split(" · ")[0]}` : "Get tickets"}
                     </button>
                   )}
                   {upcoming && <AddToCalendar night={event} time={content.doors_time ?? event.start_time} url={pageUrl} />}
