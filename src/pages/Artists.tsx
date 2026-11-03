@@ -206,12 +206,12 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
       <SEO
         title="Artists — Cats Can Dance | India's Electronic Music Directory"
         description="Discover India's top electronic music artists. Browse DJs, producers, and live acts from Bangalore, Mumbai, Delhi and beyond."
-        path="/litter"
+        path="/artists"
       />
       <Nav />
 
       <PageHero
-        eyebrow="BOOK · LITTER"
+        eyebrow="ARTISTS · BOOK AN ARTIST"
         title={<>THE<br/>ROSTER.</>}
         bg="bg-electric-blue"
         textColor="text-cream"
@@ -394,7 +394,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                   return (
                     <Link
                       key={a.id}
-                      href={`/litter/${a.slug}`}
+                      href={`/artists/${a.slug}`}
                       className={`group relative border-4 border-ink overflow-hidden chunk-shadow hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-transform ${
                         isLarge ? "col-span-2 row-span-2" : "aspect-square"
                       }`}

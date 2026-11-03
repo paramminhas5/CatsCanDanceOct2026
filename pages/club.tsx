@@ -10,17 +10,17 @@ import { supabase } from "@/lib/supabase";
 const box = "border-4 border-ink bg-cream p-4 shadow-[6px_6px_0_0_#0a0a0a]";
 const btn = "border-4 border-ink bg-acid-yellow px-3 py-1 font-display text-sm text-ink";
 
-// The eight CCD products, shown as the club's features.
+// The CCD products, shown as the club's features. verb = plain name, name = nickname.
 const FEATURES = [
-  { verb: "Go", name: "Episodes", to: "/episodes", line: "Watch the sets and the nights." },
-  { verb: "Find", name: "Prowl", to: "/prowl", line: "Nights and gigs in your city." },
-  { verb: "Book", name: "Litter", to: "/litter", line: "Book artists for your night." },
-  { verb: "Tour", name: "Tour", to: "/tour", line: "See where the crew plays next." },
+  { verb: "Our nights", name: "Episodes", to: "/nights", line: "Tickets, lineups and your crew." },
+  { verb: "What's on", name: "Gig guide", to: "/whats-on", line: "Nights and gigs in your city." },
+  { verb: "Artists", name: "Book an artist", to: "/artists", line: "Book artists for your night." },
+  { verb: "On tour", name: "Strays", to: "/tour", line: "Who is playing where, and when." },
   { verb: "Learn", name: "CCD.SCHOOL", to: "/school", line: "Learn to DJ and produce." },
-  { verb: "Wear", name: "Scratch", to: "/scratch", line: "Merch and drops." },
-  { verb: "Adopt", name: "Nine Lives", to: "/nine-lives", line: "Back the scene." },
-  { verb: "Listen", name: "Catwalk", to: "/catwalk", line: "Mixes and playlists." },
-];
+  { verb: "Shop", name: "Merch", to: "/shop", line: "Drops and streetwear." },
+  { verb: "Adopt", name: "Nine Lives", to: "/adopt", line: "Back the scene." },
+  { verb: "Listen", name: "Mixes", to: "/listen", line: "Mixes and playlists." },
+]
 
 type FeedItem = { id: string; title: string; url: string | null; city: string | null; venue: string | null; event_date: string | null; why: string | null };
 type Counts = Record<string, { likes: number; going: number }>;
@@ -165,6 +165,7 @@ function Extras() {
       )}
       <div>
         <h3 className="font-display">Going solo? Join a crew</h3>
+        <p className="text-sm">Crews for every night you&apos;re going to, including nights on What&apos;s on, are on <Link href="/me" className="underline font-bold">Your nights</Link>.</p>
         <p className="text-sm">Sign up alone and we group you with 4 or 5 people from your city who like the same music. You meet 30 minutes before.</p>
         {events.length === 0 ? <p className="text-sm">No upcoming nights yet.</p> : events.map((e) => (
           <div key={e.slug} className="border-t-2 border-ink py-2 text-sm">
@@ -263,6 +264,7 @@ function StaffPanel() {
     <div className={`${box} space-y-6`}>
       <h2 className="font-display text-2xl">CCD team</h2>
       <CheckIn />
+      <TicketChecks />
       <div>
         <h3 className="font-display">Pending scene events</h3>
         {vouch.length === 0 ? <p className="text-sm">None waiting.</p> : vouch.map((e) => (
@@ -288,6 +290,35 @@ function StaffPanel() {
   );
 }
 
+/** Staff check the tickets crew members upload for nights on What's on. Screenshots are private; staff can open them. */
+function TicketChecks() {
+  const [rows, setRows] = useState<any[] | null>(null);
+  const load = useCallback(async () => {
+    const r = await memberRpc<any[]>("staff_ticket_proofs", { p_key: null });
+    setRows(r.ok && Array.isArray(r.data) ? r.data : null);
+  }, []);
+  useEffect(() => { load(); }, [load]);
+  if (rows === null) return null;
+  const pending = rows.filter((x) => x.status === "pending");
+  async function open(path: string) {
+    const { data } = await supabase.storage.from("ticket-proofs").createSignedUrl(path, 120);
+    if (data?.signedUrl) window.open(data.signedUrl, "_blank", "noopener");
+  }
+  return (
+    <div>
+      <h3 className="font-display">Ticket checks ({pending.length} waiting)</h3>
+      <p className="text-xs text-ink/65">Crew members on What's on nights add their ticket so we can send the venue an entry list. Check the name, night and date match.</p>
+      {rows.length === 0 ? <p className="text-sm">None yet.</p> : rows.slice(0, 40).map((t) => (
+        <div key={t.id} className="flex flex-wrap items-center gap-2 border-t-2 border-ink py-2 text-sm">
+          <span className="flex-1 min-w-[200px]">{t.member_name ?? "Member"} · {t.title} {t.booking_ref ? `· ${t.booking_ref}` : ""} · <b>{t.status}</b></span>
+          {t.file_path && <button className={btn} onClick={() => open(t.file_path)}>Open ticket</button>}
+          <button className={btn} onClick={async () => { await memberRpc("staff_set_ticket_proof", { p_id: t.id, p_status: "verified" }); load(); }}>Looks right</button>
+          <button className={btn} onClick={async () => { await memberRpc("staff_set_ticket_proof", { p_id: t.id, p_status: "rejected" }); load(); }}>Not valid</button>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 const QUIZ = [
   { key: "good_night", q: "What makes a good night?", opts: ["Dancing until late", "Hearing a great set properly", "Meeting new people", "A good room with my friends"] },
@@ -459,7 +490,7 @@ function ArtistEditor() {
       }}>
         <h2 className="font-display text-2xl">Your artist page: {a.name}</h2>
         {a.status !== "approved" && <p className="text-sm text-hot-red">Not public yet. The CCD team approves it first, then it shows on /litter. Edit it any time.</p>}
-        <p className="text-sm">Leave a box empty and save to clear it. <Link href={`/litter/${a.slug}`} className="underline">See your public page</Link></p>
+        <p className="text-sm">Leave a box empty and save to clear it. <Link href={`/artists/${a.slug}`} className="underline">See your public page</Link></p>
         <div className="flex items-center gap-3">
           {f.photo ? <img src={f.photo} alt="" className="h-20 w-20 border-4 border-ink object-cover" /> : <div className="h-20 w-20 border-4 border-ink grid place-items-center text-xs">No photo</div>}
           <label className={`${btn} cursor-pointer`}>{busy ? "Uploading..." : "Upload profile photo"}<input type="file" accept="image/jpeg,image/png,image/webp" className="hidden" disabled={busy} onChange={(e) => { const x = e.target.files?.[0]; if (x) upload(x, true); e.target.value = ""; }} /></label>

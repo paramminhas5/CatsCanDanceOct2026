@@ -113,7 +113,7 @@ export async function emailBookingAnswers() {
   let sent = 0;
   for (const b of list as any[]) {
     const yes = b.response === "interested";
-    const html = shell(`<h2 style="margin:0 0 8px">${yes ? esc(b.artist) + " is interested" : "A reply from " + esc(b.artist)}</h2><p>Hi ${esc(b.name)}, ${yes ? "good news. They would like to talk about your request." : "they cannot do this one."}</p>${b.note ? `<p>Their note: ${esc(b.note)}</p>` : ""}<p>${yes ? "We will connect you by email." : "You can look for another artist on the Litter page."}</p><p><a href="${SITE()}/club">See your requests</a></p>`);
+    const html = shell(`<h2 style="margin:0 0 8px">${yes ? esc(b.artist) + " is interested" : "A reply from " + esc(b.artist)}</h2><p>Hi ${esc(b.name)}, ${yes ? "good news. They would like to talk about your request." : "they cannot do this one."}</p>${b.note ? `<p>Their note: ${esc(b.note)}</p>` : ""}<p>${yes ? "We will connect you by email." : "You can look for another artist at catscandance.com/artists."}</p><p><a href="${SITE()}/club">See your requests</a></p>`);
     const r = await sendMail(b.email, `${b.artist}: reply to your booking request`, html);
     if (r.ok) { await rpc("ops_mark_booking_answer_emailed", { p_token: token, p_id: b.id }); sent++; }
   }

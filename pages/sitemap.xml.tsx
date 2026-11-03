@@ -17,25 +17,24 @@ function buildSitemap(artistSlugs: string[]): string {
 
   const staticUrls = [
     url("/", "1.0", "weekly", today),
-    url("/prowl", "0.95", "weekly", today),
+    url("/whats-on", "0.95", "weekly", today),
     url("/about", "0.8", "monthly"),
-    url("/episodes", "1.0", "daily", today),
+    url("/nights", "1.0", "daily", today),
     url("/tour", "0.8", "daily", today),
-    url("/whats-on", "0.95", "daily", today),
     url("/llms.txt", "0.5", "daily", today),
     url("/guides", "0.8", "weekly", today),
     url("/talent", "0.8", "weekly", today),
     url("/playbook", "0.6", "monthly"),
-    url("/litter", "0.95", "weekly", today),
+    url("/artists", "0.95", "weekly", today),
     url("/promoters", "0.85", "weekly", today),
-    url("/scratch", "0.85", "weekly", today),
+    url("/shop", "0.85", "weekly", today),
     url("/journal", "0.9", "weekly", today),
     url("/videos", "0.7", "monthly"),
-    url("/catwalk", "0.7", "monthly"),
+    url("/listen", "0.7", "monthly"),
     url("/press", "0.6", "monthly"),
     url("/media", "0.6", "monthly"),
     url("/pets", "0.7", "monthly"),
-    url("/nine-lives", "0.7", "monthly"),
+    url("/adopt", "0.7", "monthly"),
     url("/bengaluru-underground-dance-music", "0.9", "monthly"),
     url("/bengaluru-techno-events", "0.85", "monthly"),
     url("/bengaluru-house-parties", "0.85", "monthly"),
@@ -58,7 +57,7 @@ function buildSitemap(artistSlugs: string[]): string {
   );
 
   const artistUrls = artistSlugs.map(slug =>
-    url(`/litter/${slug}`, "0.8", "monthly", today)
+    url(`/artists/${slug}`, "0.8", "monthly", today)
   );
 
   const allUrls = [

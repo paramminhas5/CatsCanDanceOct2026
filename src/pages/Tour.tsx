@@ -78,7 +78,7 @@ const Tour = () => {
                 <div key={d.id} className="grid md:grid-cols-[180px_1fr_auto] gap-2 md:gap-6 p-4 md:p-5 items-center">
                   <p className="font-display text-magenta">{fmt(d.from_date)} – {fmt(d.to_date)}</p>
                   <p><span className="font-display text-xl">{d.artist_name}</span> <span className="font-bold">· {d.city}</span>{d.note && <span className="text-muted-foreground"> · {d.note}</span>}</p>
-                  <Link href={`/litter/${d.artist_slug}#book`} className="font-display text-sm bg-acid-yellow border-4 border-ink px-4 py-2 hover:-translate-y-0.5 transition-transform text-center">BOOK →</Link>
+                  <Link href={`/artists/${d.artist_slug}#book`} className="font-display text-sm bg-acid-yellow border-4 border-ink px-4 py-2 hover:-translate-y-0.5 transition-transform text-center">BOOK →</Link>
                 </div>
               ))}
             </div>
