@@ -25,7 +25,7 @@ def by(rows, key='artist_slug'):
     for r in rows:
         if r.get(key) in slugs: d.setdefault(r[key], []).append(r)
     return d
-disc = by(sb('artist_discography?select=artist_slug,title,year,label,deezer_track_id'))
+disc = by(sb('artist_discography?select=artist_slug,title,year,label,deezer_track_id,bandcamp_item_id'))
 press = by(sb('artist_press?select=artist_slug,url'))
 eras = by(sb('artist_eras?select=artist_slug,from_year'))
 tags = by(sb('artist_sound_tags?select=artist_slug,tag'))
@@ -36,7 +36,7 @@ PLAY = ('soundcloud.com', 'youtube.com', 'youtu.be', 'mixcloud.com')
 rows, report = [], []
 for x in sorted(arts, key=lambda r: r['slug']):
     s = x['slug']; d = disc.get(s, []); idm = {i['scheme']: i['value'] for i in ids.get(s, [])}
-    plays = bool(x['spotify'] or x['soundcloud'] or any(r.get('deezer_track_id') for r in d) or 'deezer' in idm
+    plays = bool(x['spotify'] or x['soundcloud'] or any(r.get('deezer_track_id') or r.get('bandcamp_item_id') for r in d) or 'deezer' in idm
                  or any(any(p in (m['url'] or '') for p in PLAY) for m in mixes.get(s, []))
                  or any(p in (x['mix_url'] or '') for p in PLAY))
     gaps = [k for k, ok in [('bio', x['bio'] and len(x['bio'].strip()) > 40), ('photo', x['photo_url']), ('plays', plays),
