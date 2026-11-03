@@ -1,4 +1,4 @@
--- 039: Going on any night, who's going, crews for any night, ticket proofs, venue entry, set times, ratings, curation keywords.
+-- 042: Going on any night, who's going, crews for any night, ticket proofs, venue entry, set times, ratings, curation keywords.
 -- Additive. Night keys: CCD nights use their events.slug; scene nights use 'scene:' || scraped_events.id.
 -- crew_pool, crews, go_again and crew_reports key on event_slug text with no foreign key, so scene keys fit as they are.
 

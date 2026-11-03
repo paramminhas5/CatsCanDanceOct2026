@@ -1,8 +1,8 @@
 /**
  * Going, Interested, who's going and crews, for any night.
  * A night key is the event slug for our own nights and "scene:<id>" for a night on What's on.
- * Each call prefers the migration 039 RPCs and falls back to the older ones, so pages keep
- * working before 039 is applied (Interested and scene crews need 039).
+ * Each call prefers the migration 042 RPCs and falls back to the older ones, so pages keep
+ * working before 042 is applied (Interested and scene crews need 042).
  */
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";

@@ -102,7 +102,7 @@ export default async function CrewsOps({ searchParams }: { searchParams: { n?: s
       <p><Link href="/ops">← Ops</Link></p>
       <h1 style={{ margin: "8px 0 4px" }}>Crews and entry</h1>
       <p className="muted">Crews for any night: our nights and nights on What&apos;s on. Form crews 2 to 3 days before, check tickets in the club staff panel, then send the entry list to the venue.</p>
-      {missing && <p className="warn">Migration 039 is not applied yet, so this page is empty. Apply supabase/migrations/039_going_and_crews.sql in the Supabase SQL editor.</p>}
+      {missing && <p className="warn">Migration 042 is not applied yet, so this page is empty. Apply supabase/migrations/042_going_and_crews.sql in the Supabase SQL editor.</p>}
 
       <h2>Nights with crew sign-ups</h2>
       <table>
