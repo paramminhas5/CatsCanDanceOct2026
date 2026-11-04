@@ -38,7 +38,7 @@ const WHEN: { key: When; label: string }[] = [
 const SAVED_KEY = "ccd:saved-nights";
 
 const chip = (on: boolean) =>
-  `shrink-0 font-display text-sm px-3 py-1.5 border-2 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-acid-yellow/60 ${
+  `shrink-0 font-display text-sm px-3 py-1.5 min-h-[38px] border-2 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-acid-yellow/60 ${
     on ? "bg-acid-yellow text-ink border-acid-yellow" : "bg-transparent text-cream border-cream/40 hover:border-cream"
   }`;
 
@@ -339,7 +339,7 @@ function NightCard({ e, saved, onSave, crowd, onPlan }: { e: FindEvent; saved: b
           <p className="text-sm font-bold text-ink/70">
             {kindLabel(e.kind)}{e.event_time ? ` · ${displayTime(e.event_time) ?? e.event_time}` : ""}{e.featured ? <span className="ml-2 text-magenta">Our pick</span> : null}
           </p>
-          <h3 className="font-display text-2xl md:text-3xl leading-[0.95] mt-1 break-words">{e.title}</h3>
+          <h3 title={e.title} className={`font-display ${e.title.length > 55 ? "text-xl md:text-2xl" : "text-2xl md:text-3xl"} leading-[0.95] mt-1 break-words line-clamp-3`}>{e.title}</h3>
           <p className="mt-2 font-bold">{[e.venue, e.city].filter(Boolean).join(", ") || "Venue to be announced"}</p>
           {(e.artists.length > 0 || lineup.length > 0) && (
             <p className="mt-2 text-ink/85">

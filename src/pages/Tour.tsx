@@ -29,7 +29,7 @@ type View = "fans" | "promoters";
 const CITY_KEY = "ccd:tour-city";
 
 const chip = (on: boolean) =>
-  `shrink-0 font-display text-sm px-3 py-1.5 border-2 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-acid-yellow/60 ${
+  `shrink-0 font-display text-sm px-3 py-1.5 min-h-[38px] border-2 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-acid-yellow/60 ${
     on ? "bg-acid-yellow text-ink border-acid-yellow" : "bg-transparent text-cream border-cream/40 hover:border-cream"
   }`;
 

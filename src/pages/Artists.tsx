@@ -310,7 +310,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                   <button
                     key={g}
                     onClick={() => toggleGenre(g)}
-                    className={`px-3 py-1 border-2 border-ink font-display text-xs whitespace-nowrap transition-colors ${
+                    className={`px-3 py-1 min-h-[36px] border-2 border-ink font-display text-xs whitespace-nowrap transition-colors ${
                       active
                         ? "bg-ink text-cream"
                         : "bg-transparent text-ink hover:bg-acid-yellow"
@@ -323,7 +323,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
               {activeGenres.size > 0 && (
                 <button
                   onClick={() => setActiveGenres(new Set())}
-                  className="px-3 py-1 border-2 border-ink/40 font-display text-xs text-ink/50 hover:border-ink hover:text-ink transition-colors whitespace-nowrap"
+                  className="px-3 py-1 min-h-[36px] border-2 border-ink/40 font-display text-xs text-ink/50 hover:border-ink hover:text-ink transition-colors whitespace-nowrap"
                 >
                   CLEAR ×
                 </button>
