@@ -25,6 +25,16 @@ export type FeaturedArtist = {
   conn: { label: string; to: string } | null;
 };
 
+/** The artist story on the home: one real artist page with its newest gig, release and press. */
+export type ArtistStory = {
+  slug: string; name: string; city: string | null; genres: string[]; label: string | null; photo: string;
+  gig: { title: string; venue: string | null; city: string | null; date: string; time: string | null };
+  release: { title: string; meta: string } | null;
+  olderReleases: { title: string; meta: string }[];
+  press: { outlet: string; title: string } | null;
+  counts: { releases: number; press: number; eras: number; since: number | null };
+};
+
 export type HomeData = {
   next: CcdEvent | null;
   past: CcdEvent[];
@@ -39,6 +49,7 @@ export type HomeData = {
   featured: FeaturedArtist[];
   artistCount: number;
   tour: TouringDate[];
+  story: ArtistStory | null;
   today: string;
 };
 
@@ -140,16 +151,54 @@ async function getFeatured(): Promise<FeaturedArtist[]> {
   return ordered;
 }
 
+/** An artist whose next gig was found by the gig radar, with the most complete page among those. */
+export async function getStory(): Promise<ArtistStory | null> {
+  const ups = await rpc<any[]>("tour_board", {}).catch(() => [] as any[]);
+  const gigs = (ups ?? []).filter((r) => r.src === "gig" && r.artist_slug).sort((a, b) => String(a.from_date).localeCompare(String(b.from_date)));
+  const slugs = Array.from(new Set(gigs.map((g) => g.artist_slug as string))).slice(0, 30);
+  if (!slugs.length) return null;
+  const inList = slugs.join(",");
+  const [artists, rels, press, eras] = await Promise.all([
+    select<Cand>(`artists?status=eq.approved&photo_url=not.is.null&slug=in.(${inList})&select=slug,name,based_city,genres,labels,photo_url,is_resident`, 1800),
+    select<Rel>(`artist_discography?artist_slug=in.(${inList})&select=artist_slug,title,year,release_type,label,deezer_track_id&order=year.desc.nullslast`, 1800),
+    select<{ artist_slug: string; publication: string | null; title: string | null; date_published: string | null }>(`artist_press?artist_slug=in.(${inList})&select=artist_slug,publication,title,date_published&order=date_published.desc.nullslast`, 1800),
+    select<Era>(`artist_eras?artist_slug=in.(${inList})&select=artist_slug,from_year,to_year,sound,label`, 1800),
+  ]);
+  const best = artists
+    .map((a) => {
+      const r = rels.filter((x) => x.artist_slug === a.slug), p = press.filter((x) => x.artist_slug === a.slug), e = eras.filter((x) => x.artist_slug === a.slug);
+      return { a, r, p, e, score: Math.min(r.length, 12) + Math.min(p.length, 8) * 2 + e.length * 3 };
+    })
+    .filter((x) => x.r.length > 1 && x.p.length > 0)
+    .sort((x, y) => y.score - x.score)[0];
+  if (!best) return null;
+  const g = gigs.find((x) => x.artist_slug === best.a.slug)!;
+  const meta = (x: Rel) => [x.release_type ? cap(x.release_type) : null, x.year, x.label].filter(Boolean).join(" · ");
+  const years = best.e.map((x) => x.from_year).filter(Boolean);
+  const pr = best.p.find((x) => x.publication && x.title) ?? null;
+  return {
+    slug: best.a.slug, name: best.a.name, city: best.a.based_city, genres: (best.a.genres ?? []).slice(0, 3),
+    label: best.a.labels ? best.a.labels.split(",")[0].trim() : best.r.find((x) => x.label)?.label ?? null,
+    photo: best.a.photo_url as string,
+    gig: { title: g.title ?? "", venue: g.venue ?? null, city: g.city ?? null, date: g.from_date, time: null },
+    release: best.r[0] ? { title: best.r[0].title, meta: meta(best.r[0]) } : null,
+    olderReleases: best.r.slice(1, 3).map((x) => ({ title: x.title, meta: meta(x) })),
+    press: pr ? { outlet: pr.publication as string, title: pr.title as string } : null,
+    counts: { releases: best.r.length, press: best.p.length, eras: best.e.length, since: years.length ? Math.min(...years) : null },
+  };
+}
+
 export async function getHomeData(): Promise<HomeData> {
   const today = todayIST();
   const weekEnd = addDays(today, 7);
 
-  const [ours, scene, artistNames, featured, tourAll] = await Promise.all([
+  const [ours, scene, artistNames, featured, tourAll, story] = await Promise.all([
     getCcdEvents(),
     getSceneEvents(),
     select<FindArtist>("artists?status=eq.approved&select=name,slug", 1800),
     getFeatured().catch(() => [] as FeaturedArtist[]),
     getTouring(),
+    getStory().catch(() => null),
   ]);
 
   const listed = ours.filter((e) => isListed(e as any));
@@ -205,6 +254,7 @@ export async function getHomeData(): Promise<HomeData> {
     featured,
     artistCount: artistNames.length,
     tour,
+    story,
     today,
   };
 }

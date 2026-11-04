@@ -39,9 +39,24 @@ async function rpc<T>(fn: string, args: Record<string, unknown>): Promise<T | nu
 
 const dateBits = (iso: string | null) => {
   if (!iso) return { day: "", num: "", mon: "", long: "" };
-  const d = new Date(`${iso}T00:00:00+05:30`);
+  const d = new Date(`${iso.slice(0, 10)}T00:00:00Z`);
   return { day: DAY[d.getUTCDay()], num: String(d.getUTCDate()), mon: MON[d.getUTCMonth()], long: `${DAY[d.getUTCDay()]} ${d.getUTCDate()} ${MON[d.getUTCMonth()]}` };
 };
+/** Artist photos are webp, which the card renderer can't read. The site's image optimiser returns JPEG
+ *  when the request does not accept webp, so photos go through it and are inlined as data URIs. */
+async function jpeg(src: string | null, origin: string, w = 640): Promise<string | null> {
+  if (!src || !/^https?:\/\//.test(src)) return null;
+  try {
+    const r = await fetch(`${origin}/_next/image?url=${encodeURIComponent(src)}&w=${w}&q=80`, { headers: { Accept: "image/jpeg,image/png;q=0.9" } });
+    if (!r.ok) return null;
+    const type = r.headers.get("content-type") ?? "image/jpeg";
+    if (!/jpe?g|png/.test(type)) return null;
+    const bytes = new Uint8Array(await r.arrayBuffer());
+    let bin = "";
+    for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+    return `data:${type};base64,${btoa(bin)}`;
+  } catch { return null; }
+}
 const isUuid = (s: string) => /^[0-9a-f-]{36}$/i.test(s);
 const esc = (s: string | null | undefined, n = 60) => (s ?? "").slice(0, n);
 
@@ -86,7 +101,7 @@ const DateBox = ({ d, size, fg, bg }: { d: ReturnType<typeof dateBits>; size: nu
   </Col>
 );
 const Sticker = ({ text, bg, fg, size }: { text: string; bg: string; fg: string; size: number }) => (
-  <span style={{ display: "flex", fontFamily: "Bowlby", fontSize: size, padding: `${size * 0.4}px ${size * 0.7}px`, background: bg, color: fg, border: `6px solid ${C.ink}`, transform: "rotate(-5deg)", boxShadow: `8px 8px 0 ${C.ink}` }}>{text}</span>
+  <span style={{ display: "flex", alignSelf: "flex-start", fontFamily: "Bowlby", fontSize: size, padding: `${size * 0.4}px ${size * 0.7}px`, background: bg, color: fg, border: `6px solid ${C.ink}`, transform: "rotate(-5deg)", boxShadow: `8px 8px 0 ${C.ink}` }}>{text}</span>
 );
 const Photo = ({ src, size, fg }: { src: string | null; size: number; fg: string }) =>
   src ? <img src={src} width={size} height={size} style={{ objectFit: "cover", border: `6px solid ${fg}` }} /> : <div style={{ display: "flex", width: size, height: size, border: `6px solid ${fg}`, background: C.blue }} />;
@@ -114,7 +129,7 @@ export default async function handler(req: NextRequest) {
           {kind === "going" && <span style={{ fontFamily: "Bowlby", fontSize: big, lineHeight: 0.9, textShadow: `8px 8px 0 ${C.ink}` }}>I'M GOING.</span>}
           <Row style={{ gap: 28, alignItems: "stretch" }}>
             <DateBox d={d} size={story ? 220 : 130} fg={C.ink} bg={C.cream} />
-            <Col style={{ justifyContent: "center", gap: 10, flex: 1 }}>
+            <Col style={{ justifyContent: "center", gap: 10, flex: 1, minWidth: 0 }}>
               <span style={{ fontFamily: "Bowlby", fontSize: mid, lineHeight: 1.05 }}>{esc(n.title, 70)}</span>
               <span style={{ fontSize: small }}>{[n.venue, n.city].filter(Boolean).join(", ")}</span>
             </Col>
@@ -128,7 +143,7 @@ export default async function handler(req: NextRequest) {
     const a = await artist(target);
     if (!a) return notFound();
     const city = a.based_city ?? a.from_city;
-    const photo = a.photo_url && /^https?:\/\//.test(a.photo_url) ? a.photo_url : null;
+    const photo = await jpeg(a.photo_url, req.nextUrl.origin, story ? 640 : 384);
 
     if (kind === "booked") {
       const d = dateBits(searchParams.get("date"));
@@ -142,7 +157,7 @@ export default async function handler(req: NextRequest) {
             </Row>
             <Row style={{ gap: 28 }}>
               <Photo src={photo} size={story ? 300 : 170} fg={C.ink} />
-              <Col style={{ gap: 8 }}>
+              <Col style={{ gap: 8, flex: 1, minWidth: 0 }}>
                 <span style={{ fontFamily: "Bowlby", fontSize: mid, lineHeight: 1 }}>{esc(a.name, 30)}</span>
                 {d.long && <span style={{ fontSize: small }}>{d.long}{where ? ` · ${where}` : ""}</span>}
               </Col>
@@ -160,7 +175,7 @@ export default async function handler(req: NextRequest) {
           <Col style={{ gap: story ? 36 : 16 }}>
             <Row style={{ gap: 28 }}>
               <Photo src={photo} size={story ? 220 : 120} fg={C.ink} />
-              <span style={{ fontFamily: "Bowlby", fontSize: story ? 96 : 64, lineHeight: 0.92 }}>{esc(a.name, 24).toUpperCase()}<br />ON TOUR</span>
+              <Col style={{ fontFamily: "Bowlby", fontSize: story ? 96 : 64, lineHeight: 0.92, flex: 1, minWidth: 0 }}><span>{esc(a.name, 24).toUpperCase()}</span><span>ON TOUR</span></Col>
             </Row>
             <Col style={{ gap: 10 }}>
               {dates.length ? dates.map((e, i) => {
@@ -182,18 +197,18 @@ export default async function handler(req: NextRequest) {
     return render(
       <Frame story={story} bg={C.ink} fg={C.cream} label="Artists" url={`/artists/${a.slug}`} kids={next ? <Sticker text="Tickets" bg={C.acid} fg={C.ink} size={small} /> : <Sticker text="Follow" bg={C.acid} fg={C.ink} size={small} />}>
         <Col style={{ gap: story ? 34 : 16 }}>
-          <Row style={{ gap: 30, alignItems: "flex-end" }}>
-            <Photo src={photo} size={story ? 440 : 230} fg={C.cream} />
-            <Col style={{ gap: 12 }}>
+          <div style={{ display: "flex", flexDirection: story ? "column" : "row", gap: 30, alignItems: story ? "flex-start" : "flex-end" }}>
+            <Photo src={photo} size={story ? 640 : 230} fg={C.cream} />
+            <Col style={story ? { gap: 14, width: "100%" } : { gap: 12, flex: 1, minWidth: 0 }}>
               {next && <Sticker text="Plays next" bg={C.red} fg={C.cream} size={small} />}
               <span style={{ fontFamily: "Bowlby", fontSize: story ? 100 : 60, lineHeight: 0.92 }}>{esc(a.name, 28).toUpperCase()}</span>
               <span style={{ fontSize: small, opacity: 0.8 }}>{[city, (a.genres ?? []).slice(0, 3).join(", ")].filter(Boolean).join(" · ")}</span>
             </Col>
-          </Row>
+          </div>
           {next && (
             <Row style={{ gap: 24, border: `6px solid ${C.cream}`, padding: 20 }}>
               <DateBox d={d} size={story ? 170 : 110} fg={C.ink} bg={C.acid} />
-              <Col style={{ gap: 6 }}>
+              <Col style={{ gap: 6, flex: 1, minWidth: 0 }}>
                 <span style={{ fontFamily: "Bowlby", fontSize: mid, lineHeight: 1.05 }}>{esc(next.title, 50)}</span>
                 <span style={{ fontSize: small }}>{[next.venue, next.city].filter(Boolean).join(", ")}</span>
               </Col>

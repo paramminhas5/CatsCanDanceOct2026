@@ -3,7 +3,7 @@
  *
  *   Hero → Tonight ticker → What we are building →
  *   01 Nights: the demo, This week, then our Episodes (next one plus every past one) →
- *   02 Artists (featured, playable) → 03 School (the real app, a beat that builds itself) →
+ *   02 Artists (featured, playable), then the artist story (one real page updating itself) → 03 School (the real app, a beat that builds itself) →
  *   Your account → Work with us → Footer
  *
  * Every demo plays itself and can be clicked. Sections with nothing to show do not render.
@@ -23,6 +23,7 @@ import EpisodeSpotlight from "@/components/home/EpisodeSpotlight";
 import WeekRow from "@/components/home/WeekRow";
 import AccountBlock from "@/components/home/AccountBlock";
 import WorkWithUs from "@/components/home/WorkWithUs";
+import ArtistStory from "@/components/home/ArtistStory";
 import type { HomeData } from "@/lib/home";
 
 const Footer = dynamic(() => import("@/components/Footer"));
@@ -67,6 +68,7 @@ const Index = (data: HomeData) => {
         <WeekRow week={data.week} count={data.weekCount} cities={data.weekCities} today={data.today} />
         <EpisodeSpotlight next={next} past={data.past} hasTickets={data.nextHasTickets} lineup={data.nextLineup} />
         <ArtistsCarousel artists={data.featured} count={data.artistCount} />
+        <ArtistStory story={data.story} />
         <SchoolDemo />
         <AccountBlock />
         <WorkWithUs />
