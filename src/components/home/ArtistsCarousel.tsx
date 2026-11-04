@@ -235,7 +235,7 @@ export default function ArtistsCarousel({ artists, count }: Props) {
               aria-current={i === ai}
               className={`relative w-11 h-11 md:w-16 md:h-16 overflow-hidden border-[3px] transition-all duration-300 ${i === ai ? "border-acid-yellow -translate-y-1.5" : "border-cream/30"}`}
             >
-              <img src={a.photo} alt="" loading="lazy" className={`w-full h-full object-cover ${i === ai ? "" : "grayscale-[.7]"}`} />
+              <img src={a.photo} alt="" loading="eager" className={`w-full h-full object-cover ${i === ai ? "" : "grayscale-[.7]"}`} />
               {i === ai && !playing && <span className={`absolute left-0 bottom-0 h-[5px] bg-acid-yellow ${cycle % 2 ? "ccd-fillA" : "ccd-fillB"}`} />}
             </button>
           ))}

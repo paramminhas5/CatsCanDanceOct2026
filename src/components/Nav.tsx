@@ -211,8 +211,6 @@ const Nav = ({ forceDark = false }: { forceDark?: boolean }) => {
               </RouterNavLink>
             </li>
           ))}
-          <Dropdown label="Work With Us" links={partnersLinks} scrolled={effectiveScrolled} />
-          <Dropdown label="More" links={moreLinks} scrolled={effectiveScrolled} />
         </ul>
         <div className="hidden lg:flex items-center gap-3">
           <span className="hidden xl:block"><DiscoMute /></span>

@@ -13,7 +13,7 @@ import { sendSignInLink, useMe } from "@/lib/plans";
 const GETS: { name: string; head: string; dot: string; items: string[] }[] = [
   { name: "Nights", head: "bg-electric-blue text-cream", dot: "bg-electric-blue", items: ["Tickets and QR codes for our Episodes", "Nights you are going to, saved and in your calendar", "Your crew for each night, with the meet point and chat"] },
   { name: "Artists", head: "bg-acid-yellow text-ink", dot: "bg-acid-yellow", items: ["Artists you follow", "Booking requests you have sent, and the replies", "Your own artist page, if you are an artist"] },
-  { name: "School", head: "bg-magenta text-cream", dot: "bg-magenta", items: ["Your lessons and where you left off", "The tracks you are making", "Practice streak and progress"] },
+  { name: "School", head: "bg-magenta text-cream", dot: "bg-magenta", items: ["Opens with the same email", "Your lessons, tracks and streak, saved in School", "One login across both is on the way"] },
 ];
 
 export default function AccountBlock() {

@@ -1,10 +1,10 @@
 /**
  * Homepage (v3).
  *
- *   Hero (art and motion kept) → Tonight ticker → What we are building →
- *   01 Nights (find a night, find your crew, ours) → 02 Artists (featured, playable) →
- *   03 School (the real app, a beat that builds itself) → Next Episode → This week →
- *   Your account → Contact → Footer
+ *   Hero → Tonight ticker → What we are building →
+ *   01 Nights: the demo, This week, then our Episodes (next one plus every past one) →
+ *   02 Artists (featured, playable) → 03 School (the real app, a beat that builds itself) →
+ *   Your account → Work with us → Footer
  *
  * Every demo plays itself and can be clicked. Sections with nothing to show do not render.
  * Data comes in through getStaticProps (pages/index.tsx, src/lib/home.ts).
@@ -22,9 +22,9 @@ import SchoolDemo from "@/components/home/SchoolDemo";
 import EpisodeSpotlight from "@/components/home/EpisodeSpotlight";
 import WeekRow from "@/components/home/WeekRow";
 import AccountBlock from "@/components/home/AccountBlock";
+import WorkWithUs from "@/components/home/WorkWithUs";
 import type { HomeData } from "@/lib/home";
 
-const Contact = dynamic(() => import("@/components/Contact"));
 const Footer = dynamic(() => import("@/components/Footer"));
 const MoonwalkCat = dynamic(() => import("@/components/MoonwalkCat"), { ssr: false });
 
@@ -64,12 +64,12 @@ const Index = (data: HomeData) => {
         <TonightTicker tonight={data.tonight} week={data.week} today={data.today} />
         <Overview weekCount={data.weekCount} artistCount={data.artistCount} />
         <NightsDemo week={data.week} next={next} hasTickets={data.nextHasTickets} today={data.today} />
+        <WeekRow week={data.week} count={data.weekCount} cities={data.weekCities} today={data.today} />
+        <EpisodeSpotlight next={next} past={data.past} hasTickets={data.nextHasTickets} lineup={data.nextLineup} />
         <ArtistsCarousel artists={data.featured} count={data.artistCount} />
         <SchoolDemo />
-        <EpisodeSpotlight next={next} past={data.past} hasTickets={data.nextHasTickets} lineup={data.nextLineup} />
-        <WeekRow week={data.week} count={data.weekCount} cities={data.weekCities} today={data.today} />
         <AccountBlock />
-        <Contact />
+        <WorkWithUs />
         <Footer />
       </main>
     </>

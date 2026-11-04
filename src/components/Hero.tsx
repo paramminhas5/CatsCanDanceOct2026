@@ -174,6 +174,9 @@ const Hero = ({ next = null, hasTickets = false }: { next?: HeroNext; hasTickets
         )}
 
         {/* Desktop buttons */}
+        <div className="hidden md:flex absolute inset-x-0 bottom-[8.5rem] z-50 justify-center px-4 pointer-events-none">
+          <p className="bg-ink text-cream font-bold text-base px-4 py-2 border-4 border-ink">Nights, artists and a school for electronic music in India.</p>
+        </div>
         <div className="hidden md:flex absolute inset-x-0 bottom-16 z-50 flex-row gap-3 justify-center px-4">
           <Link href="/whats-on" className="bg-acid-yellow text-ink font-display text-xl px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform text-center">
             WHAT'S ON TONIGHT
@@ -185,6 +188,7 @@ const Hero = ({ next = null, hasTickets = false }: { next?: HeroNext; hasTickets
 
         {/* Mobile buttons */}
         <div className="md:hidden absolute inset-x-0 bottom-6 z-50 flex flex-col gap-3 justify-center px-6">
+          <p className="self-center bg-ink text-cream font-bold text-xs px-3 py-1.5 text-center">Nights, artists and a school for electronic music in India.</p>
           <Link href="/whats-on" className="bg-acid-yellow text-ink font-display text-lg px-6 py-3 border-4 border-ink chunk-shadow text-center">
             WHAT'S ON TONIGHT
           </Link>

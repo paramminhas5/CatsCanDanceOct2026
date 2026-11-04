@@ -157,25 +157,25 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
         <img src={imgUrl(catLeft)} alt="" className="wiggle w-full drop-shadow-[6px_6px_0_hsl(var(--ink))]" />
       </motion.div>
 
-      <div className="container relative z-[2] grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-14 items-center">
+      <div className="container relative z-[2] grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-14 items-center">
         <div>
           <p className="font-display text-acid-yellow text-xs md:text-sm uppercase tracking-[0.2em] mb-3">01 · Nights</p>
           <h2 className="font-display text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92] drop-shadow-[6px_6px_0_hsl(var(--ink))]">
             Find a night.<br />Find your crew.
           </h2>
           <p className="text-cream/90 text-base md:text-lg mt-5 mb-7 max-w-[34ch]">And when it's one of ours, you already know.</p>
-          <div className="grid gap-2.5">
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-2.5">
             {pillars.map((p) => (
               <button
                 key={p.n}
                 type="button"
                 onClick={p.go}
                 className={`flex items-start gap-4 w-full text-left px-4 py-3.5 border-[3px] transition-all duration-300 ${
-                  p.on ? "bg-acid-yellow text-ink border-ink translate-x-2 shadow-[5px_5px_0_0_hsl(var(--ink))]" : "border-cream/40 text-cream hover:border-cream"
+                  p.on ? "bg-acid-yellow text-ink border-ink md:translate-x-2 shadow-[5px_5px_0_0_hsl(var(--ink))]" : "border-cream/40 text-cream hover:border-cream"
                 }`}
               >
                 <span className="font-display text-xs opacity-70 pt-1">{p.n}</span>
-                <span>
+                <span className="min-w-0">
                   <span className="block font-display text-lg md:text-xl leading-none">{p.t}</span>
                   <span className="block text-sm mt-1 opacity-85">{p.s}</span>
                 </span>
@@ -189,7 +189,7 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
         </div>
 
         {/* The demo */}
-        <div className="relative border-4 border-ink bg-ink text-cream p-4 md:p-6 shadow-[12px_12px_0_0_hsl(var(--ink))] min-h-[520px]">
+        <div className="relative border-4 border-ink bg-ink text-cream p-4 md:p-6 shadow-[8px_8px_0_0_hsl(var(--ink))] md:shadow-[12px_12px_0_0_hsl(var(--ink))] min-h-[380px] md:min-h-[440px]">
           <div className="flex items-center justify-between mb-3">
             <span className="inline-flex items-center gap-2 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.14em] text-cream/60">
               <i className="inline-block h-2 w-2 rounded-full bg-magenta ccd-blink" aria-hidden />
@@ -213,24 +213,24 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
                   </button>
                 ))}
               </div>
-              <div className="grid gap-2">
+              <div className="grid grid-cols-[minmax(0,1fr)] gap-2">
                 {list.map((r) => {
                   const on = picked?.id === r.id;
                   return (
                     <button key={r.id} type="button" onClick={() => run(3, r)}
-                      className={`relative flex items-center gap-3 w-full px-3 py-2.5 border-[3px] bg-[#0f1322] text-left transition-all duration-300 ${on ? "border-acid-yellow translate-x-1.5 bg-[#16203a]" : "border-cream/20 hover:border-cream"}`}>
-                      <span className="w-14 shrink-0 text-center font-display text-[11px] uppercase tracking-wide text-acid-yellow">{r.day}</span>
+                      className={`relative flex items-center gap-3 w-full px-3 py-2.5 border-[3px] text-left transition-all duration-300 ${on ? "border-acid-yellow md:translate-x-1.5 bg-[#16203a]" : "bg-[#121a2e] border-cream/30 hover:border-cream"}`}>
+                      <span className="w-12 md:w-16 shrink-0 text-center font-display text-[10px] md:text-[11px] uppercase tracking-wide text-acid-yellow">{r.day === "Tomorrow" ? "Tmrw" : r.day}</span>
                       <span className="flex-1 min-w-0">
                         <span className="block font-display text-sm md:text-base leading-tight truncate">{r.title}</span>
-                        <span className="text-xs text-cream/60">{[r.venue, r.city].filter(Boolean).join(" · ")}</span>
+                        <span className="block text-xs text-cream/70 truncate">{[r.venue, r.city].filter(Boolean).join(" · ")}</span>
                       </span>
-                      <span className="text-xs text-acid-yellow whitespace-nowrap">{r.going ? `${r.going} going` : "be first"}</span>
+                      {r.going > 0 && <span className="hidden sm:inline text-xs text-acid-yellow whitespace-nowrap">{r.going} going</span>}
                       {on && <span className="ccd-tap right-10 top-1.5" aria-hidden />}
                     </button>
                   );
                 })}
               </div>
-              <p className="mt-3 text-xs text-cream/55">Checked by hand before it goes up. No Bollywood, no bar nights.</p>
+              <p className="mt-3 text-xs text-cream/65">Checked by hand. Every night has an artist or promoter we trust behind it.</p>
             </div>
           )}
 
