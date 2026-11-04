@@ -1,0 +1,36 @@
+<!doctype html><meta charset=utf-8><style>
+@font-face{font-family:Bowlby;src:url(../node_modules/@fontsource/bowlby-one/files/bowlby-one-latin-400-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:500;src:url(../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-500-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:700;src:url(../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2)}
+@font-face{font-family:Mono;font-weight:700;src:url(../node_modules/@fontsource/space-mono/files/space-mono-latin-700-normal.woff2)}
+:root{--ink:#020617;--cream:#e7e5e4;--paper:#f5f3ee;--red:#dc2626;--acid:#b6ef36;--blue:#2563eb;--orange:#f97316}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;font-family:Grotesk,sans-serif}
+.a{position:absolute}
+.bowl{font-family:Bowlby;text-transform:uppercase;line-height:.88}
+.mono{font-family:Mono;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.cut{filter:drop-shadow(4px 0 0 #fff) drop-shadow(-4px 0 0 #fff) drop-shadow(0 4px 0 #fff) drop-shadow(0 -4px 0 #fff) drop-shadow(10px 10px 0 var(--ink))}
+.cutd{filter:drop-shadow(4px 0 0 var(--cream)) drop-shadow(-4px 0 0 var(--cream)) drop-shadow(0 4px 0 var(--cream)) drop-shadow(0 -4px 0 var(--cream)) drop-shadow(10px 10px 0 var(--red))}
+
+body{background:var(--paper);color:var(--ink)}
+body:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(2,6,23,.07) 2px,transparent 2px),linear-gradient(90deg,rgba(2,6,23,.07) 2px,transparent 2px);background-size:54px 54px}
+.frame{inset:30px;border:7px solid var(--ink)}
+.bar{left:30px;right:30px;top:30px;height:74px;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:space-between;padding:0 28px;font-size:25px}
+.bar b{color:var(--acid)}
+.box{border:6px solid var(--ink);background:var(--paper);box-shadow:12px 12px 0 var(--ink)}
+.row{display:flex;justify-content:space-between;border-bottom:4px solid var(--ink);padding:16px 0;font-size:26px}
+.row span:first-child{opacity:.55}
+</style><body>
+<div class="a frame"></div>
+<div class="a bar mono"><span>CCD Nights</span><b>Admit one</b></div>
+<div class="a" style="left:84px;top:170px;width:912px;height:760px;background:var(--cream);border:7px solid var(--ink);box-shadow:16px 16px 0 var(--ink);transform:rotate(-1.5deg)">
+ <div class="a bowl" style="left:40px;top:40px;font-size:130px;color:var(--red)">Episode</div>
+ <div class="a bowl" style="left:40px;top:150px;font-size:520px;line-height:.8">05</div>
+ <div class="a" style="right:230px;top:0;bottom:0;border-left:6px dashed var(--ink)"></div>
+ <div class="a mono" style="right:44px;top:70px;font-size:26px;writing-mode:vertical-rl;transform:rotate(180deg);height:620px">Clear your Wednesday</div>
+ <div class="a mono" style="left:40px;bottom:50px;font-size:34px">Wed 25.11 &nbsp;/&nbsp; Humming Tree</div>
+</div>
+<img class="a cut" src="../assets/cats/cat-handstand.png" style="right:70px;top:960px;width:250px;transform:rotate(-7deg)">
+<div class="a bowl" style="left:84px;top:1010px;font-size:96px">Lineup<br>next week</div>
+<div class="a mono" style="left:84px;top:1240px;font-size:24px;background:var(--acid);padding:8px 16px">Follow so you don't miss it</div>

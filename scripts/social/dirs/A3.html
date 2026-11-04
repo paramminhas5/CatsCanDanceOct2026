@@ -1,0 +1,30 @@
+<!doctype html><meta charset=utf-8><style>
+@font-face{font-family:Bowlby;src:url(../node_modules/@fontsource/bowlby-one/files/bowlby-one-latin-400-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:500;src:url(../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-500-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:700;src:url(../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2)}
+@font-face{font-family:Mono;font-weight:700;src:url(../node_modules/@fontsource/space-mono/files/space-mono-latin-700-normal.woff2)}
+:root{--ink:#020617;--cream:#e7e5e4;--paper:#f5f3ee;--red:#dc2626;--acid:#b6ef36;--blue:#2563eb;--orange:#f97316}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;font-family:Grotesk,sans-serif}
+.a{position:absolute}
+.bowl{font-family:Bowlby;text-transform:uppercase;line-height:.88}
+.mono{font-family:Mono;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.cut{filter:drop-shadow(4px 0 0 #fff) drop-shadow(-4px 0 0 #fff) drop-shadow(0 4px 0 #fff) drop-shadow(0 -4px 0 #fff) drop-shadow(10px 10px 0 var(--ink))}
+.cutd{filter:drop-shadow(4px 0 0 var(--cream)) drop-shadow(-4px 0 0 var(--cream)) drop-shadow(0 4px 0 var(--cream)) drop-shadow(0 -4px 0 var(--cream)) drop-shadow(10px 10px 0 var(--red))}
+
+body{background:var(--ink);color:var(--cream)}
+.dots{inset:0;background-image:radial-gradient(circle,var(--red) 0 5px,transparent 6px);background-size:26px 26px;-webkit-mask-image:radial-gradient(ellipse at 100% 0%,#000 0,transparent 62%);mask-image:radial-gradient(ellipse at 100% 0%,#000 0,transparent 62%);opacity:.9}
+.top{left:54px;right:54px;top:54px;display:flex;justify-content:space-between;font-size:26px}
+.top b{color:var(--acid)}
+.stamp{border:5px solid var(--acid);color:var(--acid);padding:10px 20px;font-size:28px;transform:rotate(-6deg)}
+.sw{left:-40px;top:1010px;width:1200px;background:var(--acid);color:var(--ink);border-block:8px solid var(--ink);transform:rotate(-4deg);padding:14px 0;white-space:nowrap;font-size:78px}</style><body>
+<div class="a dots"></div>
+<div class="a top mono"><span>CCD Nights / Episode 5</span><b>Humming Tree</b></div>
+<img class="a" src="../assets/disco-ball.png" style="left:620px;top:90px;width:360px;filter:drop-shadow(12px 12px 0 var(--red))">
+<div class="a bowl" style="left:30px;top:240px;font-size:520px;color:var(--cream);letter-spacing:-8px">25</div>
+<div class="a bowl" style="left:30px;top:640px;font-size:520px;color:var(--red);letter-spacing:-8px;-webkit-text-stroke:0">11</div>
+<div class="a sw bowl">Clear your Wednesday &nbsp;*&nbsp; Clear your Wednesday</div>
+<img class="a cutd" src="../assets/cats/cat-handstand.png" style="right:70px;top:700px;width:300px;transform:rotate(-6deg)">
+<div class="a mono" style="left:54px;top:1230px;font-size:26px;color:var(--cream)">Lineup next week</div>
+<div class="a mono" style="left:54px;top:1278px;font-size:26px;color:var(--acid)">Follow so you don't miss it</div>

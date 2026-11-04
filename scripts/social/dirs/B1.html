@@ -1,0 +1,36 @@
+<!doctype html><meta charset=utf-8><style>
+@font-face{font-family:Bowlby;src:url(../node_modules/@fontsource/bowlby-one/files/bowlby-one-latin-400-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:500;src:url(../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-500-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:700;src:url(../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2)}
+@font-face{font-family:Mono;font-weight:700;src:url(../node_modules/@fontsource/space-mono/files/space-mono-latin-700-normal.woff2)}
+:root{--ink:#020617;--cream:#e7e5e4;--paper:#f5f3ee;--red:#dc2626;--acid:#b6ef36;--blue:#2563eb;--orange:#f97316}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;font-family:Grotesk,sans-serif}
+.a{position:absolute}
+.bowl{font-family:Bowlby;text-transform:uppercase;line-height:.88}
+.mono{font-family:Mono;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.cut{filter:drop-shadow(4px 0 0 #fff) drop-shadow(-4px 0 0 #fff) drop-shadow(0 4px 0 #fff) drop-shadow(0 -4px 0 #fff) drop-shadow(10px 10px 0 var(--ink))}
+.cutd{filter:drop-shadow(4px 0 0 var(--cream)) drop-shadow(-4px 0 0 var(--cream)) drop-shadow(0 4px 0 var(--cream)) drop-shadow(0 -4px 0 var(--cream)) drop-shadow(10px 10px 0 var(--red))}
+
+body{background:var(--paper);color:var(--ink)}
+body:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(2,6,23,.07) 2px,transparent 2px),linear-gradient(90deg,rgba(2,6,23,.07) 2px,transparent 2px);background-size:54px 54px}
+.frame{inset:30px;border:7px solid var(--ink)}
+.bar{left:30px;right:30px;top:30px;height:74px;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:space-between;padding:0 28px;font-size:25px}
+.bar b{color:var(--acid)}
+.box{border:6px solid var(--ink);background:var(--paper);box-shadow:12px 12px 0 var(--ink)}
+.row{display:flex;justify-content:space-between;border-bottom:4px solid var(--ink);padding:16px 0;font-size:26px}
+.row span:first-child{opacity:.55}
+</style><body>
+<div class="a frame"></div>
+<div class="a bar mono"><span>CCD Record Club</span><b>Pick 1 of 4</b></div>
+<img class="a" src="art/nikki.jpg" style="left:84px;top:170px;width:560px;height:560px;object-fit:cover;border:7px solid var(--ink);box-shadow:16px 16px 0 var(--red)">
+<div class="a box" style="left:690px;top:170px;width:310px;padding:6px 24px;box-shadow:12px 12px 0 var(--acid)">
+ <div class="row mono"><span>Artist</span></div><div class="mono" style="font-size:30px;padding:10px 0 16px">Nikki Nair</div>
+ <div class="row mono"><span>Label</span></div><div class="mono" style="font-size:30px;padding:10px 0 16px">Hyperdub</div>
+ <div class="mono" style="font-size:24px;padding:12px 0 12px;opacity:.55">Out</div><div class="mono" style="font-size:30px;padding:0 0 16px">16 Oct</div>
+</div>
+<img class="a cut" src="../assets/cats/cat-headphones.png" style="left:720px;top:560px;width:250px;transform:rotate(6deg)">
+<div class="a bowl" style="left:84px;top:790px;font-size:118px;line-height:.92">Majestic<br>Animals EP</div>
+<div class="a" style="left:84px;top:1110px;width:912px;border-top:7px solid var(--ink);padding-top:22px;display:flex;justify-content:space-between;font-size:25px" ><span class="mono">New this week</span><span class="mono" style="background:var(--acid);padding:6px 14px">Send to a friend who'd love it</span></div>
+<div class="a mono" style="left:84px;top:1200px;font-size:22px;opacity:.55">catscandance.com</div>

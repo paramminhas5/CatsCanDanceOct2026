@@ -1,0 +1,27 @@
+<!doctype html><meta charset=utf-8><style>
+@font-face{font-family:Bowlby;src:url(../node_modules/@fontsource/bowlby-one/files/bowlby-one-latin-400-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:500;src:url(../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-500-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:700;src:url(../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2)}
+@font-face{font-family:Mono;font-weight:700;src:url(../node_modules/@fontsource/space-mono/files/space-mono-latin-700-normal.woff2)}
+:root{--ink:#020617;--cream:#e7e5e4;--paper:#f5f3ee;--red:#dc2626;--acid:#b6ef36;--blue:#2563eb;--orange:#f97316}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;font-family:Grotesk,sans-serif}
+.a{position:absolute}
+.bowl{font-family:Bowlby;text-transform:uppercase;line-height:.88}
+.mono{font-family:Mono;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.cut{filter:drop-shadow(4px 0 0 #fff) drop-shadow(-4px 0 0 #fff) drop-shadow(0 4px 0 #fff) drop-shadow(0 -4px 0 #fff) drop-shadow(10px 10px 0 var(--ink))}
+.cutd{filter:drop-shadow(4px 0 0 var(--cream)) drop-shadow(-4px 0 0 var(--cream)) drop-shadow(0 4px 0 var(--cream)) drop-shadow(0 -4px 0 var(--cream)) drop-shadow(10px 10px 0 var(--red))}
+
+.sm{font-size:26px}
+.corner{left:54px;top:54px;right:54px;display:flex;justify-content:space-between}
+body{background:var(--blue);color:var(--cream)}</style><body>
+<div class="a corner mono sm"><span>CCD</span><span>Discover</span></div>
+<div class="a bowl" style="left:-40px;top:120px;font-size:300px;color:var(--cream);letter-spacing:-6px;white-space:nowrap">Nikki</div>
+<div class="a bowl" style="left:-40px;top:400px;font-size:300px;color:var(--ink);letter-spacing:-6px;white-space:nowrap">Nair</div>
+<img class="a" src="art/nikki.jpg" style="left:54px;top:760px;width:480px;height:480px;object-fit:cover;border:8px solid var(--cream);box-shadow:14px 14px 0 var(--ink)">
+<div class="a" style="left:590px;top:790px">
+ <div class="mono" style="font-size:34px;color:var(--acid)">New record</div>
+ <div class="bowl" style="font-size:64px;margin-top:16px">Majestic<br>Animals EP</div>
+ <div class="mono sm" style="margin-top:22px">Hyperdub &nbsp;/&nbsp; 16 Oct</div></div>
+<img class="a cut" src="../assets/cats/cat-headphones.png" style="right:40px;top:1060px;width:230px;transform:rotate(-10deg)">
