@@ -3,6 +3,8 @@
  * lesson that builds a house beat by itself, step by step. Tap any cell to change it.
  * Sound waits for a tap (browsers block audio until then). The cat jumps on every kick.
  */
+import { useOnScreen } from "@/lib/useOnScreen";
+import { track } from "@/lib/track";
 import { useEffect, useRef, useState } from "react";
 import catHpDance from "@/assets/cat-headphones-dance.png";
 import { imgUrl } from "@/lib/img";
@@ -55,7 +57,10 @@ export default function SchoolDemo() {
     if (row === "hat") { const s = noise(c, .08), f = c.createBiquadFilter(), g = c.createGain(); f.type = "highpass"; f.frequency.value = 7000; g.gain.setValueAtTime(.3, t); g.gain.exponentialRampToValueAtTime(.001, t + .06); s.connect(f).connect(g).connect(c.destination); s.start(t); s.stop(t + .08); }
   };
 
+  const secRef = useRef<HTMLElement>(null);
+  const visible = useOnScreen(secRef);
   useEffect(() => {
+    if (!visible) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
       setGrid({ kick: [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0], clap: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0], hat: [0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0] });
@@ -82,7 +87,7 @@ export default function SchoolDemo() {
       setSi((i) => (i + 1) % SCREENS.length);
     }, 2600);
     return () => { clearInterval(id); clearInterval(scr); };
-  }, []);
+  }, [visible]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const tap = (row: RowKey, i: number) => {
     const on = !state.current.grid[row][i];
@@ -98,7 +103,7 @@ export default function SchoolDemo() {
   const labelColor: Record<RowKey, string> = { kick: "text-magenta", clap: "text-acid-yellow", hat: "text-electric-blue" };
 
   return (
-    <section id="school" className="relative bg-cream bg-grain border-b-4 border-ink py-14 md:py-24 overflow-hidden">
+    <section id="school" ref={secRef} className="relative bg-cream bg-grain border-b-4 border-ink py-14 md:py-24 overflow-hidden">
       <div className="container grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-12 lg:gap-14 items-center">
         {/* The real app */}
         <div className="relative flex flex-col items-center order-2 lg:order-1">
@@ -172,7 +177,7 @@ export default function SchoolDemo() {
             />
           </div>
           <div className="flex flex-wrap items-center gap-5 mt-9">
-            <a href={SCHOOL_URL} className="bg-magenta text-cream font-display px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">Open the school</a>
+            <a href={SCHOOL_URL} onClick={() => track("open_school")} className="bg-magenta text-cream font-display px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">Open the school</a>
             <span className="text-sm font-semibold text-ink/70">Free for now · reads your Ableton Set</span>
           </div>
         </div>

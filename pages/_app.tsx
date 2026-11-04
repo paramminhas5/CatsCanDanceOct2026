@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/react";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -92,6 +93,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <SmoothScroll>
               <ScrollToTop />
               <Component {...pageProps} />
+              <Analytics />
               <ThemeSwitcher />
             </SmoothScroll>
           </DiscoProvider>

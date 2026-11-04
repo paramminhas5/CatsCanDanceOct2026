@@ -2,6 +2,7 @@
  * /claim/[token]: an artist opens the link we sent, signs in with an email link, and their page is theirs.
  * One step for them: sign in (if needed), then "Claim my page". Uses claim_invite_info and claim_with_invite (migration 048).
  */
+import { track } from "@/lib/track";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -32,6 +33,7 @@ export default function Claim() {
     const d = data as { ok: boolean; error?: string } | null;
     if (error || !d?.ok) { setState("error"); setErr(d?.error ?? error?.message ?? "Could not claim. Try again."); return; }
     setState("done");
+    track("claim");
   };
 
   const send = async (e: React.FormEvent) => {

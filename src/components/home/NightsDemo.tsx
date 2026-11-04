@@ -5,6 +5,7 @@
  * the three steps on the left jump to that part. The crew shown is an example; the
  * nights, cities and going counts are real.
  */
+import { useOnScreen } from "@/lib/useOnScreen";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
@@ -125,12 +126,14 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
     [demoNight],
   );
 
+  const visible = useOnScreen(ref);
   useEffect(() => {
     if (!demoNight) return;
     if (reduce) { setStage(4); setPicked(demoNight); setChecked(5); return; }
+    if (!visible) { clear(); return; }
     run(0);
     return clear;
-  }, [demoNight, reduce, run]);
+  }, [demoNight, reduce, run, visible]);
 
   const pickCity = (c: string) => {
     clear();

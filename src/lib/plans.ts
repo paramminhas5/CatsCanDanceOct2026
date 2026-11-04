@@ -4,6 +4,7 @@
  * Each call prefers the migration 042 RPCs and falls back to the older ones, so pages keep
  * working before 042 is applied (Interested and scene crews need 042).
  */
+import { track } from "@/lib/track";
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 
@@ -61,6 +62,7 @@ export async function loadMyPlans(): Promise<MyPlan[]> {
 
 export async function setPlan(key: string, state: PlanState, showName = false, hasTicket = false): Promise<{ ok: boolean; error?: string; need?: string }> {
   const v2 = await supabase.rpc("set_plan", { p_key: key, p_state: state ?? "", p_show_name: showName, p_has_ticket: hasTicket });
+  if (!v2.error && state === "going") track("going", { scene: key.startsWith("scene:") });
   if (!v2.error) return (v2.data as any) ?? { ok: true };
   if (!missing(v2.error)) return { ok: false, error: v2.error.message };
   if (state === "interested") return { ok: false, error: "Interested opens soon. Tap Going for now." };
@@ -74,6 +76,7 @@ export async function setPlan(key: string, state: PlanState, showName = false, h
 
 export async function joinCrew(key: string): Promise<{ ok: boolean; error?: string; need?: string }> {
   const v2 = await supabase.rpc("join_crew_pool_any", { p_key: key });
+  if (!v2.error && (v2.data as any)?.ok) track("join_crew");
   if (!v2.error) return v2.data as any;
   if (!missing(v2.error)) return { ok: false, error: v2.error.message };
   if (isScene(key)) return { ok: false, error: "Crews for this night open soon. You are on the going list." };

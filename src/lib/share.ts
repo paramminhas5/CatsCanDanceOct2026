@@ -2,10 +2,12 @@
  * Share cards and the loop. A card is an image at /api/card/<kind>/<target>; the share link carries
  * ?ref=<id> so opens can be counted against shares (log_share, migration 048). No personal data.
  */
+import { track } from "@/lib/track";
 import { supabase } from "@/lib/supabase";
 
 export type ShareKind = "going" | "night" | "artist" | "tour" | "episode" | "booked" | "beat";
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://catscandance.com";
+// Links and card images use the site the visitor is on (previews and production alike); the canonical domain on the server.
+const site = () => (typeof window !== "undefined" ? window.location.origin : process.env.NEXT_PUBLIC_SITE_URL ?? "https://catscandance.com");
 
 /** A short id for this browser so shares and opens can be joined without identifying anyone. */
 export function shareRef(): string {
@@ -17,12 +19,13 @@ export function shareRef(): string {
 }
 
 export const cardUrl = (kind: ShareKind, target: string, size: "story" | "link" = "story", extra: Record<string, string> = {}) =>
-  `${SITE}/api/card/${kind}/${encodeURIComponent(target)}?${new URLSearchParams({ size, ...extra })}`;
+  `${site()}/api/card/${kind}/${encodeURIComponent(target)}?${new URLSearchParams({ size, ...extra })}`;
 
 export const shareLink = (path: string, kind: ShareKind, target: string) =>
-  `${SITE}${path}${path.includes("?") ? "&" : "?"}ref=${shareRef()}&via=${kind}:${encodeURIComponent(target).slice(0, 80)}`;
+  `${site()}${path}${path.includes("?") ? "&" : "?"}ref=${shareRef()}&via=${kind}:${encodeURIComponent(target).slice(0, 80)}`;
 
 export function logShare(kind: ShareKind, target: string, action: "share" | "open", channel?: string) {
+  if (action === "share") track("share", { kind, channel: channel ?? null });
   supabase.rpc("log_share", { p_kind: kind, p_target: target, p_action: action, p_ref: shareRef(), p_channel: channel ?? null }).then(() => {}, () => {});
 }
 

@@ -9,6 +9,7 @@
  *
  * Data comes in through getStaticProps (pages/discover.tsx), so the list is in the HTML for search engines.
  */
+import { track } from "@/lib/track";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -103,6 +104,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
 
   // Who's going: one call for every night on the page.
   const [crowd, setCrowd] = useState<Record<string, Crowd>>({});
+  useEffect(() => { track("find_night", { shared: !!router.query.n }); }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const sharedId = router.isReady && typeof router.query.n === "string" ? router.query.n : "";
   const shared = sharedId ? events.find((e) => e.id === sharedId) ?? null : null;
   const me = useMe();

@@ -4,6 +4,7 @@
  * Every list is filtered by the era you pick and reorders around what is in focus.
  * Data comes from getArtistV2 (database rows with sources, plus Deezer at request time).
  */
+import { track as trackEvent } from "@/lib/track";
 import { shareCard } from "@/lib/share";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
@@ -186,6 +187,7 @@ export default function ArtistPage({ a }: { a: ArtistV2 }) {
         setProg(0);
       } else if (el.ended) el.currentTime = 0;
       await el.play();
+      trackEvent("play_preview", { where: "artist" });
       setPlaying(true);
     } catch {
       setPlaying(false);

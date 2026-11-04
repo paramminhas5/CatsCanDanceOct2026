@@ -5,6 +5,7 @@
  *   Member          Tonight (crew, meet point, set times, I'm in, ticket), coming up (crew status, ticket proof),
  *                   past (rate the night, go again with your crew)
  */
+import { track } from "@/lib/track";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -356,7 +357,7 @@ function SchoolBlock() {
       <h2 id="school" className="font-display text-3xl md:text-4xl leading-none">SCHOOL</h2>
       <div className="border-4 border-ink bg-magenta text-cream p-5 grid gap-3">
         <p>Your lessons, the tracks you are making and your streak live in School. Use the same email.</p>
-        <div><a href={SCHOOL_URL} className={`${btn} bg-cream text-ink inline-block`}>Open School</a></div>
+        <div><a href={SCHOOL_URL} onClick={() => track("open_school")} className={`${btn} bg-cream text-ink inline-block`}>Open School</a></div>
       </div>
     </section>
   );
