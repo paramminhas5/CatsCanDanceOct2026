@@ -211,14 +211,17 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
       <Nav />
 
       <PageHero
-        eyebrow="ARTISTS · BOOK AN ARTIST"
+        eyebrow="ARTISTS · THE ROSTER"
         title={<>THE<br/>ROSTER.</>}
-        bg="bg-electric-blue"
+        bg="bg-ink"
         textColor="text-cream"
         eyebrowColor="text-acid-yellow"
-      />
+        shadowColor="hsl(var(--acid-yellow))"
+      >
+        <p className="text-cream/85 font-medium text-lg max-w-xl">South Asian electronic artists, India and the diaspora. Every page is sourced and updates itself. Listen, read their story, book them, here or on tour.</p>
+      </PageHero>
 
-      <Marquee bg="bg-ink" />
+      <Marquee bg="bg-acid-yellow" items={["SOURCED PAGES", "PLAYABLE MIXES", "BOOK FROM THE PAGE", "ON TOUR", "INDIA AND THE DIASPORA"]} />
 
       {/* Filter bar */}
       <div className="sticky top-0 z-30 bg-cream border-b-4 border-ink">
@@ -429,9 +432,6 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                             <MapPin className="w-3 h-3 shrink-0" />
                             {cityOf(a)}
                           </p>
-                        )}
-                        {rateBand(a) !== "On request" && (
-                          <p className={`text-[10px] font-display mt-0.5 ${img ? "text-cream/70" : "text-ink/70"}`}>{rateBand(a).toUpperCase()}</p>
                         )}
                         {(a.genres ?? []).length > 0 && (
                           <div className="flex flex-wrap gap-1 mt-1">

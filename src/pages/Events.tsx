@@ -231,7 +231,7 @@ const Events = () => {
 
               {/* Hero card */}
               <motion.article
-                initial={{ opacity: 0, y: 40 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ type: "spring", stiffness: 140, damping: 18 }}
@@ -368,7 +368,7 @@ const Events = () => {
                   return (
                     <motion.div
                       key={e.slug}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={false}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.1 }}
                       transition={{ delay: Math.min(i * 0.05, 0.3), type: "spring", stiffness: 200, damping: 22 }}

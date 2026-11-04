@@ -1,71 +1,58 @@
 /**
- * Homepage.
+ * Homepage (v3).
  *
- *   Nav → Hero (kept as is) → Tonight ticker → Three products → Next Episode →
- *   This week (What's on + crews) → The roster (Artists + tour) → Learn →
- *   Instagram → Join → Contact → Footer
+ *   Hero (art and motion kept) → Tonight ticker → What we are building →
+ *   01 Nights (find a night, find your crew, ours) → 02 Artists (featured, playable) →
+ *   03 School (the real app, a beat that builds itself) → Next Episode → This week →
+ *   Your account → Contact → Footer
  *
- * Sections with nothing to show do not render. Data comes in through getStaticProps
- * (pages/index.tsx) so the first HTML already has the nights and artists.
+ * Every demo plays itself and can be clicked. Sections with nothing to show do not render.
+ * Data comes in through getStaticProps (pages/index.tsx, src/lib/home.ts).
  */
-import { lazy, Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import dynamic from "next/dynamic";
-import { useLocation } from "@/lib/compat-router";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import SEO from "@/components/SEO";
 import TonightTicker from "@/components/home/TonightTicker";
-import ProductTrio from "@/components/home/ProductTrio";
-import NextEpisode from "@/components/home/NextEpisode";
-import ThisWeek from "@/components/home/ThisWeek";
-import Roster from "@/components/home/Roster";
-import LearnBand from "@/components/home/LearnBand";
-import SectionReveal from "@/components/SectionReveal";
+import Overview from "@/components/home/Overview";
+import NightsDemo from "@/components/home/NightsDemo";
+import ArtistsCarousel from "@/components/home/ArtistsCarousel";
+import SchoolDemo from "@/components/home/SchoolDemo";
+import EpisodeSpotlight from "@/components/home/EpisodeSpotlight";
+import WeekRow from "@/components/home/WeekRow";
+import AccountBlock from "@/components/home/AccountBlock";
 import type { HomeData } from "@/lib/home";
 
 const Contact = dynamic(() => import("@/components/Contact"));
 const Footer = dynamic(() => import("@/components/Footer"));
 const MoonwalkCat = dynamic(() => import("@/components/MoonwalkCat"), { ssr: false });
-const Instagram = dynamic(() => import("@/components/Instagram"), { ssr: false });
-const EarlyAccess = lazy(() => import("@/components/EarlyAccess"));
 
-const SectionFallback = ({ bg = "bg-cream" }: { bg?: string }) => (
-  <div className={`${bg} border-b-4 border-ink min-h-[220px] animate-pulse`} aria-hidden />
-);
-
-const daysUntil = (iso: string | null | undefined, today: string) => {
-  if (!iso) return null;
-  const a = new Date(`${today}T00:00:00Z`).getTime();
-  const b = new Date(`${iso}T00:00:00Z`).getTime();
-  return Math.max(0, Math.round((b - a) / 86400000));
-};
+/** Cats wiggle faster while the page is scrolling. */
+function useScrollingClass() {
+  useEffect(() => {
+    let t: ReturnType<typeof setTimeout> | undefined;
+    const on = () => {
+      document.body.classList.add("is-scrolling");
+      clearTimeout(t);
+      t = setTimeout(() => document.body.classList.remove("is-scrolling"), 180);
+    };
+    window.addEventListener("scroll", on, { passive: true });
+    return () => { window.removeEventListener("scroll", on); clearTimeout(t); document.body.classList.remove("is-scrolling"); };
+  }, []);
+}
 
 const Index = (data: HomeData) => {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.hash === "#early-access") {
-      setTimeout(() => {
-        document.getElementById("early-access")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 80);
-    }
-  }, [location.hash]);
-
+  useScrollingClass();
   const next = data.next;
-  const days = next ? daysUntil(next.event_date, data.today) : null;
-  const goOutStat = data.weekCount > 0
-    ? { n: data.weekCount, label: data.weekCount === 1 ? "night this week" : "nights this week" }
-    : next
-      ? { n: days ?? "Soon", label: days === 1 ? "day to the next Episode" : "days to the next Episode" }
-      : { n: data.past.length, label: "Episodes so far" };
 
   return (
     <>
       <SEO
-        title="Cats Can Dance: nights, the gig guide and the roster for India's underground"
-        description="Our own nights, every night worth going to this week with a crew to go with, and the roster of South Asian electronic artists. Bengaluru, Mumbai, Delhi, Goa."
+        title="Cats Can Dance: nights, artists and a school for electronic music in India"
+        description="Find a night and a crew to go with. Look up South Asian electronic artists and book them. Learn to produce and DJ on a real instrument. Our own Episodes in Bengaluru."
         path="/"
-        keywords="india electronic music, bangalore underground, cats can dance, ccd events, gig guide india, book a dj india"
+        keywords="india electronic music, bangalore underground, cats can dance, gig guide india, book a dj india, learn music production india"
       />
       <main className="bg-background text-foreground">
         <Nav />
@@ -75,26 +62,13 @@ const Index = (data: HomeData) => {
           hasTickets={data.nextHasTickets}
         />
         <TonightTicker tonight={data.tonight} week={data.week} today={data.today} />
-
-        <SectionReveal>
-          <ProductTrio
-            goOut={goOutStat}
-            artists={{ n: data.artistCount, label: "artists on the roster" }}
-            learn={{ n: "Free", label: "for now, lessons that make a track" }}
-          />
-        </SectionReveal>
-
-        <SectionReveal><NextEpisode next={next} past={data.past} hasTickets={data.nextHasTickets} lineup={data.nextLineup} /></SectionReveal>
-        <SectionReveal><ThisWeek week={data.week} count={data.weekCount} cities={data.weekCities} today={data.today} /></SectionReveal>
-        <SectionReveal><Roster roster={data.roster} count={data.artistCount} tour={data.tour} /></SectionReveal>
-        <LearnBand />
-
-        <SectionReveal><Instagram /></SectionReveal>
-
-        <Suspense fallback={<SectionFallback bg="bg-electric-blue" />}>
-          <SectionReveal><EarlyAccess /></SectionReveal>
-        </Suspense>
-
+        <Overview weekCount={data.weekCount} artistCount={data.artistCount} />
+        <NightsDemo week={data.week} next={next} hasTickets={data.nextHasTickets} today={data.today} />
+        <ArtistsCarousel artists={data.featured} count={data.artistCount} />
+        <SchoolDemo />
+        <EpisodeSpotlight next={next} past={data.past} hasTickets={data.nextHasTickets} lineup={data.nextLineup} />
+        <WeekRow week={data.week} count={data.weekCount} cities={data.weekCities} today={data.today} />
+        <AccountBlock />
         <Contact />
         <Footer />
       </main>

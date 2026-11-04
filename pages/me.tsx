@@ -1,5 +1,5 @@
 /**
- * Your nights (/me). Everything about the nights you're going to, in one place.
+ * Your account (/me). Tickets, the nights you are going to, your crew, in one place.
  *   Signed out      email sign-in link (ticket buyers get one after checkout)
  *   Not joined yet  first name and city, one step
  *   Member          Tonight (crew, meet point, set times, I'm in, ticket), coming up (crew status, ticket proof),
@@ -33,14 +33,14 @@ export default function Me() {
   const { loading, signedIn, member, reload } = useMember();
   return (
     <>
-      <SEO title="Your nights · Cats Can Dance" description="The nights you're going to, your crew, your tickets." path="/me" noindex />
+      <SEO title="Your account · Cats Can Dance" description="Your tickets, the nights you are going to and your crew." path="/me" noindex />
       <main className="bg-background text-ink min-h-screen">
         <Nav />
         <section className="bg-ink text-cream pt-28 md:pt-36 pb-8">
           <div className="container">
-            <p className="font-bold text-acid-yellow mb-3">Your nights · crew</p>
-            <h1 className="font-display text-6xl md:text-8xl leading-[0.85]">YOUR NIGHTS.</h1>
-            <p className="mt-4 text-lg max-w-[48ch]">Nights you're going to, your crew, your tickets. Say you're going to any night on What's on, even if you bought the ticket somewhere else.</p>
+            <p className="font-bold text-acid-yellow mb-3">Your account</p>
+            <h1 className="font-display text-6xl md:text-8xl leading-[0.85]">YOUR ACCOUNT.</h1>
+            <p className="mt-4 text-lg max-w-[48ch]">One login for all of Cats Can Dance: your tickets, the nights you're going to and your crew. Say you're going to any night on What's on, even if you bought the ticket somewhere else.</p>
           </div>
         </section>
         <div className="container py-10 md:py-14 max-w-3xl">
