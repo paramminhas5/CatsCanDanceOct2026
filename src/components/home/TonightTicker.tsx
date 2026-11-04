@@ -31,7 +31,7 @@ export default function TonightTicker({ tonight, week, today }: Props) {
                 <Link
                   key={`${e.id}-${i}`}
                   href={`/whats-on?q=${encodeURIComponent(e.title)}`}
-                  className="group inline-flex items-center gap-3 text-cream/90 hover:text-acid-yellow transition-colors"
+                  className="group inline-flex items-center gap-3 min-h-[36px] text-cream/90 hover:text-acid-yellow transition-colors"
                 >
                   {stamp && <span className="font-display text-xs uppercase tracking-widest text-acid-yellow">{stamp}</span>}
                   <span className="font-semibold">{e.title}</span>

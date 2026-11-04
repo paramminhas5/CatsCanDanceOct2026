@@ -439,7 +439,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                               <button
                                 key={g}
                                 onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleGenre(g); }}
-                                className={`text-[10px] px-1.5 py-0.5 font-display border border-ink transition-colors ${
+                                className={`text-[10px] px-2 py-1 min-h-[28px] font-display border border-ink transition-colors ${
                                   activeGenres.has(g) ? "bg-ink text-cream" : "bg-acid-yellow text-ink hover:bg-orange"
                                 }`}
                               >

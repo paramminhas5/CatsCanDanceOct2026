@@ -119,7 +119,7 @@ export default function SchoolDemo() {
           <div className="flex flex-wrap justify-center gap-1.5 mt-7">
             {SCREENS.map((s, i) => (
               <button key={s.l} type="button" onClick={() => { setSi(i); siHold.current = 3; }}
-                className={`font-display text-xs px-3 py-1.5 border-2 border-ink transition-colors ${i === si ? "bg-ink text-cream" : "text-ink hover:bg-ink/10"}`}>
+                className={`font-display text-xs px-3 py-1.5 min-h-[36px] border-2 border-ink transition-colors ${i === si ? "bg-ink text-cream" : "text-ink hover:bg-ink/10"}`}>
                 {s.l}
               </button>
             ))}
@@ -131,7 +131,7 @@ export default function SchoolDemo() {
           <h2 className="font-display text-ink text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92]">Learn it<br />by making it.</h2>
           <p className="text-ink/80 text-base md:text-lg mt-5 mb-7 max-w-[40ch]">Every lesson adds a layer to your own track. Watch one build itself, then tap the grid.</p>
 
-          <div className="relative border-4 border-ink bg-ink text-cream p-4 md:p-6 shadow-[12px_12px_0_0_hsl(var(--ink))]">
+          <div className="relative border-4 border-ink bg-ink text-cream p-3 md:p-6 shadow-[12px_12px_0_0_hsl(var(--ink))]">
             <div className="flex items-center justify-between mb-3 gap-3">
               <span className="inline-flex items-center gap-2 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.14em] text-cream/60">
                 <i className="inline-block h-2 w-2 rounded-full bg-magenta ccd-blink" aria-hidden />Lesson 4 · building itself
@@ -142,11 +142,11 @@ export default function SchoolDemo() {
               </button>
             </div>
             <p className="font-display text-base md:text-lg mb-3">{caption}</p>
-            <div className="border-4 border-cream/25 bg-[#0f1322] p-3 md:p-4">
+            <div className="border-4 border-cream/25 bg-[#0f1322] p-2 md:p-4">
               {ROWS.map(([row, label, onCls]) => (
-                <div key={row} className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2 last:mb-0">
+                <div key={row} className="flex items-center gap-2 md:gap-3 mb-2.5 md:mb-2 last:mb-0">
                   <span className={`w-8 md:w-10 text-[9px] md:text-[10px] font-bold uppercase tracking-wider ${labelColor[row]}`}>{label}</span>
-                  <div className="flex-1 flex gap-[3px] md:gap-1.5">
+                  <div className="flex-1 grid grid-cols-8 gap-[4px] md:flex md:gap-1.5">
                     {grid[row].map((v, i) => (
                       <button
                         key={i}

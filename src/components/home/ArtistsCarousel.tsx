@@ -210,7 +210,7 @@ export default function ArtistsCarousel({ artists, count }: Props) {
                       </button>
                     )}
                     <Link href={`/artists/${a.slug}#book`} tabIndex={on ? 0 : -1} className="bg-magenta text-cream font-display text-sm px-4 py-2.5 border-4 border-ink shadow-[4px_4px_0_0_hsl(var(--ink))] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">Book</Link>
-                    <Link href={`/artists/${a.slug}`} tabIndex={on ? 0 : -1} className="font-bold underline underline-offset-4 decoration-2 text-sm">Full page →</Link>
+                    <Link href={`/artists/${a.slug}`} tabIndex={on ? 0 : -1} className="inline-block py-1 font-bold underline underline-offset-4 decoration-2 text-sm">Full page →</Link>
                     {a.conn && (
                       <button type="button" tabIndex={on ? 0 : -1} onClick={() => go(artists.findIndex((x) => x.slug === a.conn!.to))} className="md:ml-auto border-2 border-cream/45 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider hover:border-cream max-w-full truncate">
                         ↔ {a.conn.label}

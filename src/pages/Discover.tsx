@@ -296,7 +296,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
 
       {/* GUIDES */}
       <section className="bg-ink text-cream border-t-4 border-ink py-14 md:py-20">
-        <div className="container grid gap-12 md:grid-cols-3">
+        <div className="container grid gap-12 grid-cols-[minmax(0,1fr)] md:grid-cols-3">
           <GuideList title="Cities" note="Where to go, who runs it, what it sounds like." items={CITY_SCENES.map((c) => ({ href: `/scene/${c.slug}`, label: c.name, sub: c.tagline }))} />
           <GuideList title="Sounds" note="Each sound explained, with starter tracks." items={GENRE_PAGES.map((g) => ({ href: `/genres/${g.slug}`, label: g.name, sub: `${g.bpm} BPM` }))} />
           <GuideList title="Where it started" note="The scenes behind the music in India's clubs." items={GLOBAL_SCENES.map((s) => ({ href: `/scenes/${s.slug}`, label: s.name, sub: `${s.city}, ${s.decade}` }))} />
@@ -370,7 +370,7 @@ function NightCard({ e, saved, onSave, crowd, onPlan }: { e: FindEvent; saved: b
             className={`font-display text-sm px-3 py-2 border-2 border-ink transition-colors ${saved ? "bg-ink text-cream" : "bg-cream hover:bg-acid-yellow"}`}>
             {saved ? "Saved" : "Save"}
           </button>
-          {cal && <a href={cal} target="_blank" rel="noopener noreferrer" className="text-sm font-bold underline underline-offset-4 self-center md:self-end">Add to calendar</a>}
+          {cal && <a href={cal} target="_blank" rel="noopener noreferrer" className="text-sm font-bold underline underline-offset-4 self-center md:self-end py-1.5">Add to calendar</a>}
           <p className="text-xs text-ink/55 self-center md:self-end w-full md:w-auto md:text-right">via {SOURCE_LABEL[e.source] ?? e.source}</p>
         </div>
       </article>
@@ -387,7 +387,7 @@ function GuideList({ title, note, items }: { title: string; note: string; items:
         {items.map((it) => (
           <li key={it.href} className="border-b-2 border-cream/20">
             <Link href={it.href} className="flex items-baseline justify-between gap-3 py-3 hover:text-acid-yellow focus:outline-none focus-visible:text-acid-yellow">
-              <span className="font-display text-lg leading-tight">{it.label}</span>
+              <span className="font-display text-lg leading-tight min-w-0 break-words">{it.label}</span>
               {it.sub && <span className="text-sm text-cream/60 text-right truncate max-w-[50%]">{it.sub}</span>}
             </Link>
           </li>

@@ -147,7 +147,7 @@ export default function ArtistStory({ story }: { story: Story | null }) {
         <div className="grid gap-3 min-w-0">
           <div className="flex items-center justify-between mb-1">
             <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.14em] text-cream/70"><i className="inline-block h-2 w-2 rounded-full bg-magenta ccd-blink" aria-hidden /> How {story.name}'s page stays current</span>
-            <button type="button" onClick={() => setPaused((p) => !p)} className="text-[10px] font-bold uppercase tracking-[0.1em] border-2 border-cream/45 px-2 py-0.5">{paused ? "Play" : "Pause"}</button>
+            <button type="button" onClick={() => setPaused((p) => !p)} className="text-[10px] font-bold uppercase tracking-[0.1em] border-2 border-cream/45 px-2.5 py-1 min-h-[28px]">{paused ? "Play" : "Pause"}</button>
           </div>
           {feed.map((f, i) => {
             const on = step === i + 1, done = step > i + 1;

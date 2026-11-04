@@ -223,7 +223,7 @@ export default function BookDesk({ artists = [], live = false }: Partial<BookDes
 
       {/* HOW IT WORKS */}
       <section className="bg-ink text-cream border-t-4 border-ink py-14 md:py-20">
-        <div className="container grid gap-12 md:grid-cols-2">
+        <div className="container grid gap-12 grid-cols-[minmax(0,1fr)] md:grid-cols-2">
           <div>
             <h2 className="font-display text-4xl leading-none mb-6">If you are booking</h2>
             <ol className="grid gap-4">

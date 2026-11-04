@@ -103,7 +103,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 {g.links.map((l) => (
                   <li key={l.to}>
-                    <Link to={l.to} className="text-sm text-cream/80 hover:text-acid-yellow transition-colors">{l.label}</Link>
+                    <Link to={l.to} className="inline-block py-1.5 text-sm text-cream/80 hover:text-acid-yellow transition-colors">{l.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -112,7 +112,7 @@ const Footer = () => {
         </div>
         <div className="mt-12 pt-6 border-t-2 border-cream/15 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-sm text-cream/60">
           <span>© {new Date().getFullYear()} Cats Can Dance, Bengaluru. So can you.</span>
-          <span className="flex flex-wrap gap-x-5 gap-y-2">
+          <span className="flex flex-wrap gap-x-5 gap-y-0 [&>a]:py-2 [&>a]:inline-block">
             <a href="mailto:hello@catscandance.com" className="hover:text-acid-yellow">hello@catscandance.com</a>
             <a href="https://instagram.com/catscan.dance" target="_blank" rel="noopener noreferrer" className="hover:text-acid-yellow">Instagram</a>
             <a href="https://www.youtube.com/@thesecatscandance" target="_blank" rel="noopener noreferrer" className="hover:text-acid-yellow">YouTube</a>

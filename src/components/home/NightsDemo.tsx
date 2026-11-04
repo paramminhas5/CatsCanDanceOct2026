@@ -211,7 +211,7 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {cities.map((c) => (
                   <button key={c} type="button" onClick={() => pickCity(c)}
-                    className={`font-display text-xs px-3 py-1.5 border-2 transition-colors ${c === city ? "bg-acid-yellow text-ink border-acid-yellow" : "border-cream/40 text-cream hover:border-cream"}`}>
+                    className={`font-display text-xs px-3 py-1.5 min-h-[36px] border-2 transition-colors ${c === city ? "bg-acid-yellow text-ink border-acid-yellow" : "border-cream/40 text-cream hover:border-cream"}`}>
                     {c}
                   </button>
                 ))}

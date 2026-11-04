@@ -2,7 +2,7 @@
  * Improvement check. Run against a running build:  BASE=http://localhost:3000 node scripts/audit/check.cjs
  * For each page at 1440 and 390 wide it records: page errors, console errors, failed requests, sideways overflow,
  * elements wider than the screen, broken images, images without alt, buttons and links without a name,
- * em dashes in visible text, tap targets under 40px on phones, and load timing. Writes scripts/audit/out/report.json
+ * em dashes in visible text, tap targets under 24px on phones (WCAG 2.2 AA), and load timing. Writes scripts/audit/out/report.json
  * and full-page screenshots, and prints a short summary. No network beyond BASE.
  */
 const { chromium, devices } = require("playwright");
@@ -32,14 +32,15 @@ fs.mkdirSync(OUT, { recursive: true });
       const loadMs = Date.now() - t0;
       for (let y = 0; y < 20000; y += 800) { await page.evaluate((yy) => window.scrollTo(0, yy), y); await page.waitForTimeout(60); }
       await page.evaluate(() => window.scrollTo(0, 0)); await page.waitForTimeout(400);
-      const f = await page.evaluate((isPhone) => {
-        const vw = document.documentElement.clientWidth;
+      const f = await page.evaluate(({ isPhone, W }) => {
+        // The configured width, not clientWidth: phones stretch the layout viewport to fit too-wide content.
+        const vw = W;
         const wide = [];
         for (const el of document.querySelectorAll("body *")) {
           const r = el.getBoundingClientRect();
           if (r.width > 0 && r.right > vw + 2 && getComputedStyle(el).position !== "fixed") {
             let p = el.parentElement, clipped = false;
-            while (p) { const o = getComputedStyle(p); if (/(hidden|auto|scroll|clip)/.test(o.overflowX)) { clipped = true; break; } p = p.parentElement; }
+            while (p && p !== document.body && p !== document.documentElement) { const o = getComputedStyle(p); if (/(hidden|auto|scroll|clip)/.test(o.overflowX)) { clipped = true; break; } p = p.parentElement; }
             if (!clipped) wide.push(`${el.tagName.toLowerCase()}.${String(el.className).split(" ").slice(0, 2).join(".")} ${Math.round(r.right)}`);
           }
         }
@@ -51,12 +52,12 @@ fs.mkdirSync(OUT, { recursive: true });
         const unnamedSample = unnamedEls.slice(0, 3).map((b) => b.outerHTML.slice(0, 140));
         const text = document.body.innerText || "";
         const dashes = (text.match(/[^\n]{0,30}—[^\n]{0,30}/g) || []).slice(0, 5);
-        const smallEls = isPhone ? [...document.querySelectorAll("button, a[href]")].filter((b) => { const r = b.getBoundingClientRect(); return r.width > 0 && r.height > 0 && (r.height < 32 || r.width < 32) && getComputedStyle(b).display !== "inline"; }) : [];
+        const smallEls = isPhone ? [...document.querySelectorAll("button, a[href]")].filter((b) => { const r = b.getBoundingClientRect(); return r.width > 0 && r.height > 0 && (r.height < 24 || r.width < 24) && getComputedStyle(b).display !== "inline"; }) : [];
         const small = smallEls.length;
         const smallSample = [...new Set(smallEls.map((b) => `${b.tagName.toLowerCase()}.${String(b.className).split(" ").slice(0, 4).join(".")} "${(b.textContent || "").trim().slice(0, 20)}"`))].slice(0, 5);
         const lcp = performance.getEntriesByType("largest-contentful-paint").slice(-1)[0];
-        return { scrollWidth: document.documentElement.scrollWidth, vw, wide: wide.slice(0, 8), broken, noAlt, unnamed, unnamedSample, dashes, small, smallSample, title: document.title, h1: document.querySelectorAll("h1").length, lcp: lcp ? Math.round(lcp.startTime) : null };
-      }, vp === "phone");
+        return { scrollWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth), vw, wide: wide.slice(0, 8), broken, noAlt, unnamed, unnamedSample, dashes, small, smallSample, title: document.title, h1: document.querySelectorAll("h1").length, lcp: lcp ? Math.round(lcp.startTime) : null };
+      }, { isPhone: vp === "phone", W: vp === "phone" ? 390 : 1440 });
       const shot = path.join(OUT, `${vp}${p.replace(/[^a-z0-9]+/gi, "_") || "_home"}.png`);
       await page.screenshot({ path: shot, fullPage: true }).catch(() => {});
       report.push({ page: p, vp, status, loadMs, errors: errs, console: cons.slice(0, 6), failed: failed.slice(0, 6), ...f, shot });

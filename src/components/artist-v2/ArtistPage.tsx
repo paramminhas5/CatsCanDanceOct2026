@@ -468,7 +468,7 @@ html,body{overflow-x:visible!important}
       {children}
     </section>
   );
-  const chipStyle = (on: boolean): CSSProperties => ({ height: 30, padding: "0 10px", border: "1px solid rgba(244,239,228,.3)", fontWeight: 700, fontSize: 12, cursor: "pointer", whiteSpace: "nowrap", background: on ? CREAM : "transparent", color: on ? INK : "rgba(244,239,228,.82)" });
+  const chipStyle = (on: boolean): CSSProperties => ({ height: 36, padding: "0 12px", border: "1px solid rgba(244,239,228,.3)", fontWeight: 700, fontSize: 12, cursor: "pointer", whiteSpace: "nowrap", background: on ? CREAM : "transparent", color: on ? INK : "rgba(244,239,228,.82)" });
   const Seg = () => hasEras ? (
     <div role="tablist" aria-label="Eras" style={{ display: "flex", border: "1px solid rgba(244,239,228,.25)", flexWrap: "wrap" }}>
       {[{ id: "all", s: "All", c: CREAM }, ...eras.map((e) => ({ id: e.id, s: short(e), c: e.accent }))].map((x) => {
@@ -595,7 +595,7 @@ html,body{overflow-x:visible!important}
               {a.bio && (
                 <div style={{ flex: "1 1 460px", maxWidth: "64ch", display: "flex", flexDirection: "column", gap: 6 }}>
                   <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: "rgba(244,239,228,.86)", whiteSpace: "pre-line", ...(bioOpen ? {} : { display: "-webkit-box", WebkitLineClamp: 5, WebkitBoxOrient: "vertical", overflow: "hidden" }) }}>{a.bio}</p>
-                  {a.bio.length > 420 && <button onClick={() => setBioOpen((v) => !v)} style={{ alignSelf: "flex-start", border: 0, background: "none", padding: 0, fontWeight: 700, fontSize: 13, cursor: "pointer", textDecoration: "underline" }}>{bioOpen ? "Less" : "More"}</button>}
+                  {a.bio.length > 420 && <button onClick={() => setBioOpen((v) => !v)} style={{ alignSelf: "flex-start", border: 0, background: "none", padding: "8px 0", fontWeight: 700, fontSize: 13, cursor: "pointer", textDecoration: "underline" }}>{bioOpen ? "Less" : "More"}</button>}
                 </div>
               )}
               <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "flex-start" }}>

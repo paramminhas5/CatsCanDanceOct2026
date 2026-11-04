@@ -139,7 +139,7 @@ export default function EpisodeSpotlight({ next, past, hasTickets, lineup }: Pro
               <div className="flex items-center gap-2">
                 <button type="button" onClick={() => nudge(-1)} aria-label="Earlier Episodes" className="hidden md:grid place-items-center w-10 h-10 border-[3px] border-ink bg-cream text-ink font-display hover:bg-acid-yellow">←</button>
                 <button type="button" onClick={() => nudge(1)} aria-label="More Episodes" className="hidden md:grid place-items-center w-10 h-10 border-[3px] border-ink bg-cream text-ink font-display hover:bg-acid-yellow">→</button>
-                <Link href="/nights" className="text-sm font-bold underline underline-offset-4 decoration-2 ml-2">All Episodes →</Link>
+                <Link href="/nights" className="inline-block py-1 text-sm font-bold underline underline-offset-4 decoration-2 ml-2">All Episodes →</Link>
               </div>
             </div>
           </div>

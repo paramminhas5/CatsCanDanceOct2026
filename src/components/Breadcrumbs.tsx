@@ -30,7 +30,7 @@ const Breadcrumbs = ({ items, light = false }: { items: Crumb[]; light?: boolean
           {items.map((c, i) => (
             <li key={`${c.label}-${i}`} className="flex items-center gap-2">
               {c.to ? (
-                <Link to={c.to} className={`${text} underline decoration-2 underline-offset-2 transition-colors`}>
+                <Link to={c.to} className={`${text} inline-block py-1.5 underline decoration-2 underline-offset-2 transition-colors`}>
                   {c.label}
                 </Link>
               ) : (
