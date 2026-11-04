@@ -214,7 +214,9 @@ export default async function Ops() {
   const Cred = ({ id }: { id: string }) => {
     const c = cred?.[id];
     if (!c) return null;
-    const who = c.reasons.filter((r) => !r.startsWith("venue:")).map((r) => r.replace(/^(\w+):/, "$1 "));
+    const who = c.reasons.filter((r) => !r.startsWith("venue:") && !r.startsWith("dupe:")).map((r) => r.replace(/^(\w+):/, "$1 "));
+    const dupe = c.reasons.some((r) => r.startsWith("dupe:"));
+    if (dupe) return <div style={{ fontSize: 12, color: "#92400e" }}>Looks like a night already live{c.credible ? ` (credible: ${who.join(", ")})` : ""}. Skip it, or publish if it is a different night.</div>;
     return c.credible
       ? <div style={{ fontSize: 12, color: "#166534" }}>Credible: {who.join(", ")}</div>
       : <div style={{ fontSize: 12, color: "#b91c1c" }}>{c.reasons.some((r) => r.startsWith("block:")) ? `Blocked: ${c.reasons.filter((r) => r.startsWith("block:")).map((r) => r.slice(6)).join(", ")}` : "No credible artist, act or promoter"}</div>;
@@ -580,7 +582,7 @@ export default async function Ops() {
       </div>
 
       <h3 style={{ marginBottom: 10 }}>Pending picks ({s.pending.length})</h3>
-      <p className="muted" style={{ marginTop: 0 }}>Highest score first. Publish puts it on /events within a few minutes. Publish only nights marked Credible: a roster artist, a credible touring act or a credible promoter is behind it. A good venue alone is not enough.</p>
+      <p className="muted" style={{ marginTop: 0 }}>Highest score first. Publish puts it on /events within a few minutes. Publish only nights marked Credible: a roster artist, a credible touring act or a credible promoter is behind it. A good venue alone is not enough. With the <a href="/ops/flags">credible_auto_publish</a> flag on, credible club nights publish themselves; festivals and look-alikes of live nights still wait here.</p>
       <details style={{ marginBottom: 16 }}>
         <summary><b>Credible acts, promoters and blocks ({(trust ?? []).length})</b></summary>
         <form action={setTrust} style={{ display: "flex", gap: 8, flexWrap: "wrap", margin: "12px 0" }}>
