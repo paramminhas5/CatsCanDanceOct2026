@@ -1,0 +1,1416 @@
+[
+  {
+    "slug": "krunk",
+    "name": "Krunk",
+    "kind": "agency",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai",
+      "Delhi",
+      "Pune"
+    ],
+    "country": "India",
+    "founded": 2009,
+    "founders": [
+      "Sohail Arora"
+    ],
+    "genres": [
+      "Bass music",
+      "Drum and bass",
+      "Dubstep"
+    ],
+    "website": "https://krunklive.com",
+    "instagram": "krunklive",
+    "booking_email": null,
+    "short_description": "Booking agency and event promoter started in Mumbai in 2009 by Sohail Arora, later also running artist management and the Bass Camp festival.",
+    "related_artist_slugs": [
+      "sickflip",
+      "dualist-inquiry"
+    ],
+    "sources": [
+      "https://www.thewildcity.com/features/2524-tracing-the-journey-of-krunk",
+      "https://krunklive.com/"
+    ],
+    "confidence": "high",
+    "notes": "Existing. Our record lists genres Techno, House, Bass Music, D&B and kind promoter; source describes a bass-centric agency (drum and bass, dubstep). Suggest kind agency and reviewing the Techno/House tags. Founding year derived from the source's 2015 sixth anniversary; Wild City piece says first gig headlined by MIDIval Punditz. Instagram handle is as stored, not re-verified. Krunk also launched a label (Krunk Kulture) per Mixmag Asia.",
+    "existing": true
+  },
+  {
+    "slug": "qilla-records",
+    "name": "Qilla Records",
+    "kind": "collective",
+    "city": "Delhi",
+    "cities": [
+      "Delhi"
+    ],
+    "country": "India",
+    "founded": 2011,
+    "founders": [
+      "Madhav Shorey (Kohra)"
+    ],
+    "genres": [
+      "Experimental electronic",
+      "Hypnotic techno",
+      "Broken beat"
+    ],
+    "website": "https://qillarecords.com",
+    "instagram": "qillarecords",
+    "booking_email": null,
+    "short_description": "New Delhi label and collective founded by Madhav Shorey, who performs as Kohra, releasing experimental electronic and dance music.",
+    "related_artist_slugs": [
+      "kohra",
+      "midnight-traffic",
+      "hybrid-protokol"
+    ],
+    "sources": [
+      "https://djmag.com/features/sound-of-qilla-records",
+      "https://www.beatportal.com/articles/1133160-behind-the-label-qilla-records",
+      "https://homegrown.co.in/homegrown-explore/south-asian-independent-music-labels-you-should-know"
+    ],
+    "confidence": "high",
+    "notes": "Existing. Strictly a label; the kind list has no label value so collective is used. DJ Mag source gives founding 2011, Delhi, 100 releases marked by the Chakravyuh compilation. Our stored genres (Minimal, Industrial Techno) are not in the source wording; source says hypnotic techno, broken beat, experimental synth. Qilla also hosts nights (Mixmag Lab Mumbai takeover) per Mixmag headline only.",
+    "existing": true
+  },
+  {
+    "slug": "levitate",
+    "name": "Levitate",
+    "kind": "promoter",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "Techno",
+      "House"
+    ],
+    "website": "https://ra.co/promoters/86167",
+    "instagram": "levitate_india",
+    "booking_email": null,
+    "short_description": "Mumbai promoter that has co-presented club nights with antiSOCIAL, including a 2020 Tama Sumo and Lakuti show.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://insider.in/levitate-antisocial-presents-tama-sumo-lakuti-ostgut-ton-uzuri-berlin-feb7-2020/event"
+    ],
+    "confidence": "low",
+    "notes": "Existing. Only an event listing title was seen. The RA promoter page we hold could not be opened (permission not granted), so city, genres, founders and founding year are unverified. Keep stored values until a primary source is found.",
+    "existing": true
+  },
+  {
+    "slug": "drum-and-bass-india",
+    "name": "Drum and Bass India",
+    "kind": "promoter",
+    "city": "Bengaluru",
+    "cities": [
+      "Bengaluru"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "Drum and bass"
+    ],
+    "website": "https://ra.co/promoters/99325",
+    "instagram": "dnbindia",
+    "booking_email": null,
+    "short_description": "Bengaluru drum and bass promoter running the BangaloreMassive night, billed as Drum and Bass India x Social.",
+    "related_artist_slugs": [
+      "prismer"
+    ],
+    "sources": [
+      "https://www.ticketfairy.com/event/bangaloremassive030",
+      "https://de.ra.co/events/1847616",
+      "https://bangalore.explocity.com/events-in-bangalore/dnbindia-social-present-x-bass-christmas-party"
+    ],
+    "confidence": "medium",
+    "notes": "Existing. Event listings show BangaloreMassive reaching edition 030 at Social, Indiranagar. Our stored genres Jungle and Liquid DnB are unconfirmed. RA promoter page could not be opened. No founder or year found. Related artist slug prismer is from a weak cue (artist listed at a Social night), verify.",
+    "existing": true
+  },
+  {
+    "slug": "subculture-blr",
+    "name": "Subculture BLR",
+    "kind": "promoter",
+    "city": "Bengaluru",
+    "cities": [
+      "Bengaluru"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "Techno",
+      "House"
+    ],
+    "website": null,
+    "instagram": "subcultureblr",
+    "booking_email": null,
+    "short_description": "Listed in our database as a Bengaluru techno and house promoter; no independent source found.",
+    "related_artist_slugs": [],
+    "sources": [],
+    "confidence": "low",
+    "notes": "Existing. Nothing sourced. Searches only surfaced Foxtrot - House of Subculture, a Bengaluru nightlife venue in the Sly Granny family (Wild City directory), which may or may not be related. Do not publish facts until Param confirms the handle.",
+    "existing": true
+  },
+  {
+    "slug": "wild-city",
+    "name": "Wild City",
+    "kind": "agency",
+    "city": "Delhi",
+    "cities": [
+      "Delhi",
+      "Mumbai",
+      "Bengaluru"
+    ],
+    "country": "India",
+    "founded": 2011,
+    "founders": null,
+    "genres": [
+      "Alternative",
+      "Electronic"
+    ],
+    "website": "https://www.thewildcity.com",
+    "instagram": "thewildcity",
+    "booking_email": "info@thewildcity.com",
+    "short_description": "Online music guide and magazine started in 2011 that also works as a creative agency, runs events and venue programming, and co-founded festivals including Magnetic Fields.",
+    "related_artist_slugs": [
+      "pulpy-shilpy"
+    ],
+    "sources": [
+      "https://www.thewildcity.com/about",
+      "https://www.thewildcity.com/news/9388-wild-city-teams-up-with-detour-asia-to-launch-vital-agency-asia",
+      "https://www.thewildcity.com/news/1027-wild-city-krunk-partner-to-launch-movement"
+    ],
+    "confidence": "medium",
+    "notes": "Own About page gives 2011 and the contact addresses. About page does not name a headquarters city or founders; Delhi is assumed from the Magnetic Fields link and other Wild City pieces but not stated on that page, so verify. Description of its role is partly self-reported. Also launched Vital Agency in 2013 and ran Movement (2012, with Krunk) and MVMNT.",
+    "existing": false
+  },
+  {
+    "slug": "vital-agency-asia",
+    "name": "Vital Agency Asia",
+    "kind": "agency",
+    "city": null,
+    "cities": [],
+    "country": "India",
+    "founded": 2013,
+    "founders": null,
+    "genres": [
+      "Electronic",
+      "Underground"
+    ],
+    "website": "https://www.thewildcity.com/news/9388-wild-city-teams-up-with-detour-asia-to-launch-vital-agency-asia",
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Booking agency launched by Wild City in India in 2013 and relaunched in 2018 as a regional agency with Malaysia's Detour Asia.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/news/9388-wild-city-teams-up-with-detour-asia-to-launch-vital-agency-asia",
+      "https://www.thewildcity.com/news/1199-wild-city-launches-vital-agency"
+    ],
+    "confidence": "medium",
+    "notes": "City not stated in the source. Current operating status unknown. Partner Detour Asia is Kuala Lumpur based per the source text.",
+    "existing": false
+  },
+  {
+    "slug": "boxout-fm",
+    "name": "Boxout.fm",
+    "kind": "collective",
+    "city": "Delhi",
+    "cities": [
+      "Delhi"
+    ],
+    "country": "India",
+    "founded": 2017,
+    "founders": [
+      "Mohammed Abood (DJ MoCity)",
+      "Sahej Bakshi (Dualist Inquiry)"
+    ],
+    "genres": [
+      "Alternative",
+      "Electronic"
+    ],
+    "website": "https://boxout.fm",
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "New Delhi online community radio station that first aired on 7 April 2017, with around 30 resident DJs and a recordings label.",
+    "related_artist_slugs": [
+      "dualist-inquiry",
+      "sodhi",
+      "prismer",
+      "dreamstates"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Boxout.fm",
+      "https://djmag.com/features/sound-boxoutfm-recordings"
+    ],
+    "confidence": "medium",
+    "notes": "Wikipedia states present tense, but Selector News headline says boxout.fm ended broadcasting operations (https://selector.news/?p=11402, not opened). Verify current status before publishing. Station, not strictly a promoter; included because it runs Boxout Weekender and a label. Instagram not verified.",
+    "existing": false
+  },
+  {
+    "slug": "magnetic-fields-festival",
+    "name": "Magnetic Fields Festival",
+    "kind": "festival",
+    "city": "Alsisar",
+    "cities": [
+      "Alsisar",
+      "Abheygarh Khetri"
+    ],
+    "country": "India",
+    "founded": 2013,
+    "founders": null,
+    "genres": [
+      "Electronic",
+      "House",
+      "Techno"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Dance music festival held from 2013 at Alsisar Mahal in Rajasthan, renamed Nomads for its February 2026 edition at Abheygarh Khetri.",
+    "related_artist_slugs": [
+      "spryk",
+      "esa",
+      "monophonik",
+      "kaleekarma",
+      "mixtress",
+      "sunju-hargun"
+    ],
+    "sources": [
+      "https://ra.co/news/81302",
+      "https://homegrown.co.in/amp/story/homegrown-explore/after-a-decade-at-alsisar-magnetic-fields-becomes-nomads"
+    ],
+    "confidence": "medium",
+    "notes": "Founders and organiser company not named in pages opened. Wild City About page says Wild City co-founded the festival. The related slugs are artists whose bios mention Magnetic Fields, not verified performers.",
+    "existing": false
+  },
+  {
+    "slug": "dgtl-india",
+    "name": "DGTL India",
+    "kind": "festival",
+    "city": "Bengaluru",
+    "cities": [
+      "Bengaluru",
+      "Mumbai",
+      "Delhi"
+    ],
+    "country": "India",
+    "founded": 2020,
+    "founders": null,
+    "genres": [
+      "Techno",
+      "House",
+      "Electronic"
+    ],
+    "website": "https://dgtl-festival.com/en/dgtl-bengaluru",
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Indian edition of the Dutch DGTL festival; first held in Bengaluru in January 2020, with a 2024 edition in Mumbai and Bengaluru organised by Forward.",
+    "related_artist_slugs": [
+      "kibo",
+      "lost-stories",
+      "mogasu",
+      "dj-ravator",
+      "audio-units"
+    ],
+    "sources": [
+      "https://rollingstoneindia.com/?p=88617",
+      "https://rollingstoneindia.com/dgtl-india-2024-lineup-organizer-likwid"
+    ],
+    "confidence": "medium",
+    "notes": "Rolling Stone India names Forward as 2024 organiser; the earlier piece credits Tom Veldhuis as founder of the Dutch DGTL. Edition counts differ across outlets (2025 is called the 5th edition); gaps from 2021 to 2022 not checked.",
+    "existing": false
+  },
+  {
+    "slug": "sunburn",
+    "name": "Sunburn Festival",
+    "kind": "festival",
+    "city": "Goa",
+    "cities": [
+      "Goa",
+      "Pune",
+      "Mumbai",
+      "Bengaluru"
+    ],
+    "country": "India",
+    "founded": 2007,
+    "founders": [
+      "Shailendra Singh"
+    ],
+    "genres": [
+      "Electronic dance music",
+      "Trance",
+      "House"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Dance music festival first held 28 to 29 December 2007 in Goa, organised by Percept and founded by Shailendra Singh.",
+    "related_artist_slugs": [
+      "sickflip"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sunburn_Festival",
+      "https://www.freepressjournal.in/brand-focus/shailendra-singh-inceptor-of-sunburn-celebrates-15-years-of-asia-s-largest-dance-music-festival-in-goa"
+    ],
+    "confidence": "high",
+    "notes": "Wikipedia infobox and text disagree on first Goa location (Vagator vs Candolim). Sunburn Union is also a Bengaluru venue/brand (seen in scraped_events). Related slug sickflip is from an NH7 mention in the bio, remove if unwanted.",
+    "existing": false
+  },
+  {
+    "slug": "only-much-louder",
+    "name": "Only Much Louder (OML)",
+    "kind": "agency",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai",
+      "Pune"
+    ],
+    "country": "India",
+    "founded": 2006,
+    "founders": [
+      "Vijay Nair",
+      "Girish Talwar"
+    ],
+    "genres": [
+      "Rock",
+      "Alternative",
+      "Electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Mumbai artist management and events company, informally started in 2002 and incorporated in 2006, which created the NH7 Weekender festival.",
+    "related_artist_slugs": [
+      "sickflip"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Only_Much_Louder",
+      "https://www.thewildcity.com/features/2388-interview-vijay-nair"
+    ],
+    "confidence": "medium",
+    "notes": "Mostly comedy and multi-genre now, not electronic-first; include only if scope allows. Founded year uses incorporation year, informal start 2002. Related slug from bio mention of NH7.",
+    "existing": false
+  },
+  {
+    "slug": "nh7-weekender",
+    "name": "Bacardi NH7 Weekender",
+    "kind": "festival",
+    "city": "Pune",
+    "cities": [
+      "Pune",
+      "Bengaluru",
+      "Delhi",
+      "Kolkata"
+    ],
+    "country": "India",
+    "founded": 2010,
+    "founders": null,
+    "genres": [
+      "Multi-genre",
+      "Electronic",
+      "Rock"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Multi-stage music and comedy festival by Only Much Louder that started in Pune in 2010.",
+    "related_artist_slugs": [
+      "sickflip"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/NH7_Weekender",
+      "https://en.wikipedia.org/wiki/Only_Much_Louder"
+    ],
+    "confidence": "medium",
+    "notes": "Other cities listed here come from general knowledge of the festival, not a page I opened beyond 'other cities'; verify each. Brand title sponsor name changes over time.",
+    "existing": false
+  },
+  {
+    "slug": "sub-z",
+    "name": "Sub-Z",
+    "kind": "collective",
+    "city": "Delhi",
+    "cities": [
+      "Delhi"
+    ],
+    "country": "India",
+    "founded": 2017,
+    "founders": [
+      "Saksham Popli (Miredo)",
+      "Sourodeep Guha (Stain)",
+      "Suyagya Sharma (Tanzen)",
+      "Ankur Singh (Npstr)",
+      "Arjun Sodhi"
+    ],
+    "genres": [
+      "Grime",
+      "Jungle",
+      "Dub",
+      "Bass"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "New Delhi collective of five DJs and producers that runs the Bassmndi party series, with its first event in November 2017.",
+    "related_artist_slugs": [
+      "stain",
+      "sodhi"
+    ],
+    "sources": [
+      "https://www.thewildcity.com/features/8757-sub-z-new-delhi-s-evolving-underground"
+    ],
+    "confidence": "medium",
+    "notes": "Year 2017 is inferred (crew formed after May 2017, first Bassmndi Nov 2017); source gives no formal founding date. Members listed are described as members, not necessarily founders.",
+    "existing": false
+  },
+  {
+    "slug": "bassmndi",
+    "name": "Bassmndi",
+    "kind": "party_series",
+    "city": "Delhi",
+    "cities": [
+      "Delhi"
+    ],
+    "country": "India",
+    "founded": 2017,
+    "founders": null,
+    "genres": [
+      "Grime",
+      "Jungle",
+      "Dub",
+      "Bass"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Sporadic open-to-the-public bass music party series run by the Sub-Z collective in New Delhi, starting November 2017.",
+    "related_artist_slugs": [
+      "stain",
+      "sodhi"
+    ],
+    "sources": [
+      "https://www.thewildcity.com/features/8757-sub-z-new-delhi-s-evolving-underground"
+    ],
+    "confidence": "medium",
+    "notes": "Operated by Sub-Z; may be merged into that entry.",
+    "existing": false
+  },
+  {
+    "slug": "bassfoundation",
+    "name": "BASSFoundation",
+    "kind": "collective",
+    "city": "Delhi",
+    "cities": [
+      "Delhi"
+    ],
+    "country": "India",
+    "founded": 2009,
+    "founders": [
+      "Maarten Klein (Big Daddy Klein)",
+      "Ed Anderson (Praxis)"
+    ],
+    "genres": [
+      "Drum and bass",
+      "Dubstep",
+      "Reggae dancehall"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "New Delhi bass music collective and sound system active from 2009, with Delhi Sultanate on the mic.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/artists/4836-BASSFoundation"
+    ],
+    "confidence": "medium",
+    "notes": "Wild City page says active 2009 to 2013 but uses present tense, so status unclear. Another page (Scroll or Mixcloud for BASSFoundation) not opened.",
+    "existing": false
+  },
+  {
+    "slug": "unmute",
+    "name": "UnMute",
+    "kind": "agency",
+    "city": "Delhi",
+    "cities": [
+      "Delhi",
+      "Mumbai",
+      "Bengaluru"
+    ],
+    "country": "India",
+    "founded": 2012,
+    "founders": [
+      "Dev Bhatia",
+      "Arjun Vagale"
+    ],
+    "genres": [
+      "House",
+      "Techno",
+      "Electronica"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Management and booking agency launched in 2012 for Indian house and techno acts, set up by Dev Bhatia with Arjun Vagale.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/news/865-unmute-agency-the-new-home-for-india-s-top-house-techno-acts",
+      "https://www.thewildcity.com/news/1999-unmute-celebrates-4th-birthday-with-gigs-across-india"
+    ],
+    "confidence": "medium",
+    "notes": "City not stated in the 2012 article; Delhi is implied by the Mixcloud page title and the Scroll piece but verify. Article credits Vagale with launching it without calling him co-founder.",
+    "existing": false
+  },
+  {
+    "slug": "indo-warehouse",
+    "name": "Indo Warehouse",
+    "kind": "collective",
+    "city": "New York",
+    "cities": [
+      "New York"
+    ],
+    "country": "United States",
+    "founded": 2022,
+    "founders": [
+      "Armaan Gupta (Kahani)",
+      "Kunal Merchant"
+    ],
+    "genres": [
+      "Indo house",
+      "House",
+      "Techno"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "New York South Asian electronic collective founded in 2022 by Kahani and Kunal Merchant, which toured India for the first time with Sunburn.",
+    "related_artist_slugs": [
+      "indo-warehouse"
+    ],
+    "sources": [
+      "https://grayarea.co/magazine/indo-warehouse-bring-their-south-asian-roots-to-the-rave",
+      "https://www.hollywoodreporterindia.com/features/interviews/indo-warehouse-on-taking-south-asian-house-music-global",
+      "https://eventfaqs.com/news/ef-19958/new-york-citys-indo-warehouse-announces-india-debut-with-sunburn-plots-10-cities-tour"
+    ],
+    "confidence": "high",
+    "notes": "Hollywood Reporter India implies roughly 2021 for the first show; Gray Area says founded 2022 (Feb 2022 launch). Used Gray Area. Also an artist entry exists with the same slug.",
+    "existing": false
+  },
+  {
+    "slug": "bhavishyavani-future-soundz",
+    "name": "Bhavishyavani Future Soundz",
+    "kind": "collective",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": 1999,
+    "founders": null,
+    "genres": [
+      "Acid house",
+      "Drum and bass",
+      "Jungle",
+      "Breakbeat",
+      "Techno"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Mumbai underground party collective whose first event was held on 13 May 1999 at Razzberry Rhinoceros.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.theweek.in/leisure/lifestyle/2019/05/08/BFS-20-Celebrating-trailblazers-of-Mumbai-underground-party-scenes.html",
+      "https://www.redbull.com/in-en/bhavishyavani-20-years-playlist-part-2"
+    ],
+    "confidence": "medium",
+    "notes": "Four founding friends, not all named; Kutklass is named as a founding member and Loopkin is interviewed.",
+    "existing": false
+  },
+  {
+    "slug": "echoes-of-earth",
+    "name": "Echoes of Earth",
+    "kind": "festival",
+    "city": "Bengaluru",
+    "cities": [
+      "Bengaluru",
+      "Goa"
+    ],
+    "country": "India",
+    "founded": 2016,
+    "founders": null,
+    "genres": [
+      "Electronica",
+      "Electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Music festival with a first edition announced for 26 and 27 November 2016 in Bengaluru, directed by Roshan Netalkar.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://rollingstoneindia.com/echoes-of-earth-festival-announced-in-bengaluru/",
+      "https://yourstory.com/2024/02/enjoy-respect-explore-inspiration-echoes-earth-music-festival-goa-photography"
+    ],
+    "confidence": "low",
+    "notes": "Year 2016 is inferred from a 'newly announced' article; organising company not named. Goa edition is only seen in a search result title. The artist bios saying 'Echoes' (shantam, dotdat) may refer to this or something else; unconfirmed.",
+    "existing": false
+  },
+  {
+    "slug": "warehouse-project-india",
+    "name": "The Warehouse Project India",
+    "kind": "party_series",
+    "city": "Mumbai",
+    "cities": [
+      "Bengaluru",
+      "Mumbai",
+      "Hyderabad"
+    ],
+    "country": "India",
+    "founded": 2025,
+    "founders": null,
+    "genres": [
+      "House",
+      "Techno",
+      "Dance music"
+    ],
+    "website": "https://thewarehouseproject.com/india/",
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "India debut tour of Manchester's Warehouse Project, held in Bengaluru, Mumbai and Hyderabad in October 2025.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://de.ra.co/news/83558",
+      "https://www.thewildcity.com/news/21302-joy-orbison-logic1000-jyoty-more-arrive-in-india-for-the-warehouse-project"
+    ],
+    "confidence": "medium",
+    "notes": "UK brand launched 2006 in Manchester. Indian partner promoter not named in pages opened. Foreign-origin brand, include only as touring series.",
+    "existing": false
+  },
+  {
+    "slug": "verknipt-india",
+    "name": "Verknipt India",
+    "kind": "party_series",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai",
+      "Hyderabad"
+    ],
+    "country": "India",
+    "founded": 2025,
+    "founders": null,
+    "genres": [
+      "Hard techno",
+      "Hard dance"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Hard dance brand from Amsterdam that made its India debut in Mumbai and Hyderabad in May 2025 with partner Spacebound.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://in.eventfaqs.com/2025/03/05/verknipt-india-brings-hard-techno-to-mumbai-hyderabad-this-may/"
+    ],
+    "confidence": "medium",
+    "notes": "Founder of Verknipt is Mer Hajbarati; Indian partner is Spacebound (CEO Karan Singh). Foreign-origin brand.",
+    "existing": false
+  },
+  {
+    "slug": "spacebound",
+    "name": "Spacebound",
+    "kind": "promoter",
+    "city": null,
+    "cities": [],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "Hard techno",
+      "Techno"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Indian partner that brought Verknipt to Mumbai and Hyderabad in 2025; its CEO is Karan Singh.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://in.eventfaqs.com/2025/03/05/verknipt-india-brings-hard-techno-to-mumbai-hyderabad-this-may/"
+    ],
+    "confidence": "low",
+    "notes": "Thin: one source, city unknown.",
+    "existing": false
+  },
+  {
+    "slug": "circoloco-mumbai",
+    "name": "Sound Simplify",
+    "kind": "promoter",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "House",
+      "Techno"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Organiser named by Wild City as bringing Circoloco to Jio World Garden, Mumbai, on 19 April 2026.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/news/21614-a-brief-guide-to-circoloco-mumbai"
+    ],
+    "confidence": "low",
+    "notes": "One source, no founding facts. Circoloco itself is an Ibiza brand.",
+    "existing": false
+  },
+  {
+    "slug": "ziro-festival-of-music",
+    "name": "Ziro Festival of Music",
+    "kind": "festival",
+    "city": "Ziro",
+    "cities": [
+      "Ziro"
+    ],
+    "country": "India",
+    "founded": 2012,
+    "founders": [
+      "Bobby Hano",
+      "Anup Kutty"
+    ],
+    "genres": [
+      "Indie",
+      "Eclectic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Outdoor music festival in Ziro, Arunachal Pradesh, started in 2012, with emphasis on emerging acts from Northeast India.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ziro_Festival_of_Music",
+      "https://rollingstoneindia.com/menwhopause-guitarist-anup-kutty-on-setting-up-ziro-festival/amp"
+    ],
+    "confidence": "medium",
+    "notes": "Not electronic-led; include only as adjacent. Wikipedia founder claim is tagged citation needed; Rolling Stone India piece title supports Anup Kutty, not opened. Hip-hop adjacent acts not checked.",
+    "existing": false
+  },
+  {
+    "slug": "the-humming-tree",
+    "name": "The Humming Tree",
+    "kind": "club",
+    "city": "Bengaluru",
+    "cities": [
+      "Bengaluru"
+    ],
+    "country": "India",
+    "founded": 2013,
+    "founders": [
+      "Nikhil Barua"
+    ],
+    "genres": [
+      "Indie",
+      "Experimental",
+      "Live music"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Bengaluru live music venue in Indiranagar founded in 2013, closed in September 2019 and reopened in 2026.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://homegrown.co.in/homegrown-explore/the-humming-tree-20-what-the-iconic-venues-revival-means-for-indias-indie-landscape"
+    ],
+    "confidence": "medium",
+    "notes": "Appears 16+ times in our scraped_events as a venue. Venue not electronic-only.",
+    "existing": false
+  },
+  {
+    "slug": "antisocial",
+    "name": "antiSOCIAL",
+    "kind": "club",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai",
+      "Pune",
+      "Goa",
+      "Hyderabad",
+      "Delhi"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "Live music",
+      "Electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Mumbai performance venue and club chain with outposts in Pune and Goa, and a Hyderabad branch seen in event listings.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://ra.co/news/79891",
+      "https://hospibuz.com/mumbais-performance-venue-antisocial-launches-a-brand-new-outpost-in-pune",
+      "https://deccanchronicle.com/amp/lifestyle/food/jackfruit-dance-party-at-antisocial-hyderabad-895532"
+    ],
+    "confidence": "low",
+    "notes": "Taken from search result titles; pages not opened (RA and eventfaqs permission not granted). Founding year not confirmed (an 8th-anniversary article dated October 2023 suggests 2015, unverified). Delhi outpost is unconfirmed, remove if not sourced.",
+    "existing": false
+  },
+  {
+    "slug": "sunday-playground",
+    "name": "Sunday Playground",
+    "kind": "party_series",
+    "city": "Hyderabad",
+    "cities": [
+      "Hyderabad"
+    ],
+    "country": "India",
+    "founded": 2014,
+    "founders": [
+      "DJ Aardy"
+    ],
+    "genres": [
+      "Electronic",
+      "Dance"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Hyderabad Sunday event series started in 2014 by DJ Aardy, head of Hydrozoa Recordings, marking 10 years in 2024.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/read/indias-longest-running-sunday-event-series-sunday-playground-to-celebrate-its-10-year-anniversary-news"
+    ],
+    "confidence": "medium",
+    "notes": "Mixmag calls it India's longest running Sunday event series per URL slug.",
+    "existing": false
+  },
+  {
+    "slug": "hyderabad-underground-movement",
+    "name": "Hyderabad Underground Movement",
+    "kind": "collective",
+    "city": "Hyderabad",
+    "cities": [
+      "Hyderabad"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "Drum and bass",
+      "Dub"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Hyderabad collective that organised Bass Sanskriti on 3 August 2018 with DJ Dakta Dub.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://www.thewildcity.com/news/9323-hyderabad-underground-movement-bass-sanskriti-2018"
+    ],
+    "confidence": "low",
+    "notes": "One source, no founders or year.",
+    "existing": false
+  },
+  {
+    "slug": "focus-group-radio",
+    "name": "Focus Group Radio",
+    "kind": "collective",
+    "city": "Chennai",
+    "cities": [
+      "Chennai"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "Electronic",
+      "Indie"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Chennai music collective running pop-up vinyl showcases and small listening sessions, which also hosted the Angular Festival.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://homegrown.co.in/homegrown-explore/focus-group-radio-is-shining-a-light-on-chennais-criminally-underrated-music-scene"
+    ],
+    "confidence": "medium",
+    "notes": "Founders and year not given. Strong lead for Chennai coverage.",
+    "existing": false
+  },
+  {
+    "slug": "border-movement-lounge",
+    "name": "Border Movement Lounge",
+    "kind": "promoter",
+    "city": "Kolkata",
+    "cities": [
+      "Kolkata",
+      "Colombo"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": null,
+    "genres": [
+      "Underground electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Platform showcasing underground electronic music from South Asia, with Kolkata events at venues such as Burdwan Palace and Hooghly Jute Mill.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://theculturetrip.com/asia/india/articles/border-movement-electronic-musics-rise-in-kolkata-india"
+    ],
+    "confidence": "low",
+    "notes": "Source says it was launched by a Goethe-Institut in Sri Lanka (transcribed as Goeth Institute). Unclear if still active; date of article not seen.",
+    "existing": false
+  },
+  {
+    "slug": "jwala",
+    "name": "Jwala",
+    "kind": "collective",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai"
+    ],
+    "country": "India",
+    "founded": 2017,
+    "founders": [
+      "Palash Kothari",
+      "Apurv Agrawal"
+    ],
+    "genres": [
+      "Experimental electronic",
+      "Ambient",
+      "Chillwave"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Electronic collective of six producers formed in April 2017 after Palash Kothari proposed it to Apurv Agrawal.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://amp.scroll.in/article/848074/scroll_in"
+    ],
+    "confidence": "medium",
+    "notes": "City inferred from gigs at Mumbai Assembly; source does not state base. Founders listed are those named in the origin story.",
+    "existing": false
+  },
+  {
+    "slug": "reproduce",
+    "name": "REProduce",
+    "kind": "collective",
+    "city": "Mumbai",
+    "cities": [
+      "Mumbai",
+      "Delhi"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [
+      "Rana Ghose",
+      "Bhanuj Kappal"
+    ],
+    "genres": [
+      "Experimental"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Community initiative that runs Listening Room gigs for experimental artists, co-founded by Rana Ghose and Bhanuj Kappal.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://amp.scroll.in/article/848074/scroll_in"
+    ],
+    "confidence": "low",
+    "notes": "Year not given.",
+    "existing": false
+  },
+  {
+    "slug": "cyber-mehfil",
+    "name": "Cyber Mehfil",
+    "kind": "party_series",
+    "city": "Delhi",
+    "cities": [
+      "Delhi"
+    ],
+    "country": "India",
+    "founded": 1997,
+    "founders": [
+      "The Punditz (Midival Punditz)"
+    ],
+    "genres": [
+      "Electronic",
+      "Drum and bass"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Party series by Midival Punditz that began in 1997, per a Delhi scene overview.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://weraveyou.com/2025/05/india-underground-electronic-scene-is-growing-how-far-can-it-go/",
+      "https://mixmag.asia/feature/electric-india-bangin-the-drum-bass-with-the-legendary-midival-punditz"
+    ],
+    "confidence": "low",
+    "notes": "Year and creator rely on one overview piece and a summarised read; Mixmag piece not opened. City assumed Delhi.",
+    "existing": false
+  },
+  {
+    "slug": "moar-disco",
+    "name": "Moar Disco",
+    "kind": "party_series",
+    "city": "Delhi",
+    "cities": [
+      "Delhi"
+    ],
+    "country": "India",
+    "founded": 2010,
+    "founders": [
+      "BLOT!"
+    ],
+    "genres": [
+      "Disco",
+      "Electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Party series by BLOT! running since 2010, per a Delhi scene overview.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://weraveyou.com/2025/05/india-underground-electronic-scene-is-growing-how-far-can-it-go/"
+    ],
+    "confidence": "low",
+    "notes": "One source. City assumed.",
+    "existing": false
+  },
+  {
+    "slug": "maushi",
+    "name": "Maushi",
+    "kind": "promoter",
+    "city": "Delhi",
+    "cities": [
+      "Delhi"
+    ],
+    "country": "India",
+    "founded": null,
+    "founders": [
+      "Pradhumn Ranawat"
+    ],
+    "genres": [
+      "Electronic"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Delhi scene promoter run by Pradhumn Ranawat, per a scene overview.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://weraveyou.com/2025/05/india-underground-electronic-scene-is-growing-how-far-can-it-go/"
+    ],
+    "confidence": "low",
+    "notes": "City not stated in the summary; verify.",
+    "existing": false
+  },
+  {
+    "slug": "daytimers",
+    "name": "Daytimers",
+    "kind": "collective",
+    "city": "London",
+    "cities": [
+      "London"
+    ],
+    "country": "United Kingdom",
+    "founded": 2020,
+    "founders": [
+      "Provhat Rahman"
+    ],
+    "genres": [
+      "Punjabi club edits",
+      "South Asian underground",
+      "Dance music"
+    ],
+    "website": null,
+    "instagram": "daytimers_uk",
+    "booking_email": null,
+    "short_description": "London South Asian collective born around the 2020 lockdown that runs club nights and residencies, inspired by 1980s British Asian daytime parties.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/read/daytimers-londons-jazz-cafe-fridays-april-news",
+      "https://homegrown.co.in/homegrown-creators/inside-the-secret-daytime-raves-that-provided-space-for-diasporic-south-asians",
+      "https://mixmag.net/feature/south-asian-diaspora-dance-music-collectives-interview-series"
+    ],
+    "confidence": "high",
+    "notes": "Mixmag says 2020; other pieces imply around 2020. Instagram handle taken from Mixmag link. Not Indian-scene, diaspora.",
+    "existing": false
+  },
+  {
+    "slug": "mehfil-daytimers",
+    "name": "Mehfil",
+    "kind": "party_series",
+    "city": "London",
+    "cities": [
+      "London"
+    ],
+    "country": "United Kingdom",
+    "founded": 2022,
+    "founders": [
+      "Rohan Rakhit"
+    ],
+    "genres": [
+      "Poetry",
+      "Live music"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Event series from Daytimers focused on poetry and live music, first held at Rich Mix, London, in 2022.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://crackmagazine.net/article/profiles/mehfil-daytimers-interview/2"
+    ],
+    "confidence": "medium",
+    "notes": "Not electronic; adjacent.",
+    "existing": false
+  },
+  {
+    "slug": "hungama-ldn",
+    "name": "Hungama",
+    "kind": "party_series",
+    "city": "London",
+    "cities": [
+      "London"
+    ],
+    "country": "United Kingdom",
+    "founded": null,
+    "founders": [
+      "Ryan Lanji"
+    ],
+    "genres": [
+      "Bollywood",
+      "Hip hop"
+    ],
+    "website": null,
+    "instagram": "hungama_ldn",
+    "booking_email": null,
+    "short_description": "East London club night curated by Ryan Lanji, mixing Bollywood and hip hop.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/feature/south-asian-diaspora-dance-music-collectives-interview-series"
+    ],
+    "confidence": "low",
+    "notes": "Year not given.",
+    "existing": false
+  },
+  {
+    "slug": "no-id",
+    "name": "No I.D.",
+    "kind": "party_series",
+    "city": "London",
+    "cities": [
+      "London"
+    ],
+    "country": "United Kingdom",
+    "founded": 2019,
+    "founders": [
+      "Ahadadream"
+    ],
+    "genres": [
+      "South Asian heritage DJs"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "London series launched in 2019 by Ahadadream featuring DJs of South Asian heritage.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/feature/south-asian-diaspora-dance-music-collectives-interview-series"
+    ],
+    "confidence": "low",
+    "notes": "Single source.",
+    "existing": false
+  },
+  {
+    "slug": "kuch-kuch",
+    "name": "Kuch Kuch",
+    "kind": "party_series",
+    "city": "London",
+    "cities": [
+      "London"
+    ],
+    "country": "United Kingdom",
+    "founded": 2000,
+    "founders": [
+      "DJ Ritu"
+    ],
+    "genres": [
+      "Bollywood"
+    ],
+    "website": "https://kuchkuchnights.com",
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Bollywood club night opened in 2000, co-launched by DJ Ritu.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/feature/south-asian-diaspora-dance-music-collectives-interview-series"
+    ],
+    "confidence": "low",
+    "notes": "Not electronic; mainstream Bollywood. City not stated in the summary, UK only.",
+    "existing": false
+  },
+  {
+    "slug": "cousins",
+    "name": "COUSINS",
+    "kind": "party_series",
+    "city": "London",
+    "cities": [
+      "London",
+      "Toronto"
+    ],
+    "country": "United Kingdom",
+    "founded": null,
+    "founders": [
+      "MANARA",
+      "DJ basmati"
+    ],
+    "genres": [
+      "Desi classics",
+      "Bassline",
+      "Garage"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "UK imprint of a Canadian club night run by MANARA and DJ basmati.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/feature/south-asian-diaspora-dance-music-collectives-interview-series"
+    ],
+    "confidence": "low",
+    "notes": "Toronto origin inferred from 'Canadian'; city not stated.",
+    "existing": false
+  },
+  {
+    "slug": "discostan",
+    "name": "Discostan",
+    "kind": "party_series",
+    "city": null,
+    "cities": [],
+    "country": null,
+    "founded": null,
+    "founders": [
+      "Arshia"
+    ],
+    "genres": [
+      "Disco",
+      "Re-edits",
+      "Diasporic"
+    ],
+    "website": null,
+    "instagram": "discostan",
+    "booking_email": null,
+    "short_description": "Party and edit project founded by Arshia, built on 1980s disco and diasporic dance music.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/feature/south-asian-diaspora-dance-music-collectives-interview-series"
+    ],
+    "confidence": "low",
+    "notes": "City not stated in the source.",
+    "existing": false
+  },
+  {
+    "slug": "tawoos-initiative",
+    "name": "The Tawoos Initiative",
+    "kind": "collective",
+    "city": "Toronto",
+    "cities": [
+      "Toronto"
+    ],
+    "country": "Canada",
+    "founded": 2017,
+    "founders": [
+      "Pratishta Kohli"
+    ],
+    "genres": [
+      "Electronic",
+      "Multi-genre"
+    ],
+    "website": null,
+    "instagram": "tawoosinitiative",
+    "booking_email": null,
+    "short_description": "Toronto initiative founded in 2017 by Pratishta Kohli that books South Asian and diaspora artists, including an RA-listed Standard Time collaboration.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/feature/south-asian-diaspora-dance-music-collectives-interview-series",
+      "https://ra.co/events/2131525"
+    ],
+    "confidence": "medium",
+    "notes": "Toronto inferred from the founder's remarks in Mixmag. RA event page not opened (blocked).",
+    "existing": false
+  },
+  {
+    "slug": "chalo",
+    "name": "Chalo",
+    "kind": "collective",
+    "city": null,
+    "cities": [],
+    "country": null,
+    "founded": null,
+    "founders": [
+      "Jitwam",
+      "Dhruva Balram"
+    ],
+    "genres": [
+      "South Asian diaspora artists"
+    ],
+    "website": null,
+    "instagram": "chalohq",
+    "booking_email": null,
+    "short_description": "Collective focused on artists from South Asia and the diaspora, run by Jitwam and Dhruva Balram.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://mixmag.net/feature/south-asian-diaspora-dance-music-collectives-interview-series"
+    ],
+    "confidence": "low",
+    "notes": "City not stated.",
+    "existing": false
+  },
+  {
+    "slug": "basement-bhangra",
+    "name": "Basement Bhangra",
+    "kind": "party_series",
+    "city": "New York",
+    "cities": [
+      "New York"
+    ],
+    "country": "United States",
+    "founded": 1997,
+    "founders": [
+      "DJ Rekha"
+    ],
+    "genres": [
+      "Bhangra",
+      "Dance"
+    ],
+    "website": null,
+    "instagram": null,
+    "booking_email": null,
+    "short_description": "Monthly dance party founded by DJ Rekha in 1997 at SOB's in New York, ending with a SummerStage show on 6 August 2017.",
+    "related_artist_slugs": [],
+    "sources": [
+      "https://en.wikipedia.org/wiki/DJ_Rekha",
+      "https://wnyc.org/story/after-20-years-new-york-says-bye-basement-bhangra"
+    ],
+    "confidence": "high",
+    "notes": "Ended in 2017. Bhangra, not strictly electronic; adjacent.",
+    "existing": false
+  }
+]

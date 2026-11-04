@@ -1,0 +1,1005 @@
+[
+ {
+  "slug": "qilla-records",
+  "name": "Qilla Records",
+  "city": "New Delhi",
+  "country": "India",
+  "founded": 2011,
+  "founders": [
+   "Madhav Shorey (Kohra)",
+   "Gaurav Malekar"
+  ],
+  "genres": [
+   "techno",
+   "house",
+   "drum and bass",
+   "electronica",
+   "ambient"
+  ],
+  "website": "http://www.qillarecords.com",
+  "instagram": "https://www.instagram.com/qillarecords/",
+  "bandcamp": null,
+  "soundcloud": "https://soundcloud.com/qilla",
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "New Delhi label for forward-thinking dance music, started by Kohra.",
+  "roster_artist_slugs": [
+   "kohra",
+   "audio-units",
+   "midnight-traffic",
+   "monophonik",
+   "murthovic"
+  ],
+  "sources": [
+   "https://homegrown.co.in/homegrown-explore/south-asian-independent-music-labels-you-should-know",
+   "https://homegrown.co.in/homegrown-explore/game-changing-independent-indian-music-labels-on-our-radar",
+   "https://www.thewildcity.com/directory/318-qilla-records",
+   "https://www.beatportal.com/articles/1133160-behind-the-label-qilla-records"
+  ],
+  "confidence": "high",
+  "notes": "Founding year conflicts: Homegrown says 2011, Wild City directory says started in 2012 as a label. Co-founder Gaurav Malekar only on the first Homegrown page; Beatportal credits Kohra alone."
+ },
+ {
+  "slug": "boxout-fm-recordings",
+  "name": "Boxout.FM Recordings",
+  "city": "New Delhi",
+  "country": "India",
+  "founded": null,
+  "founders": [
+   "Mohammed Abood (DJ MoCity)",
+   "Sahej Bakshi (Dualist Inquiry)"
+  ],
+  "genres": [
+   "experimental electronic",
+   "downtempo",
+   "gqom",
+   "dub",
+   "ambient"
+  ],
+  "website": "https://boxout.fm/",
+  "instagram": null,
+  "bandcamp": "https://boxoutfm.bandcamp.com",
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Record label of boxout.fm, an online radio station and platform started in 2016 or 2017.",
+  "roster_artist_slugs": [
+   "prismer",
+   "suchi",
+   "lush-lata",
+   "stain",
+   "monophonik"
+  ],
+  "sources": [
+   "https://djmag.com/features/sound-boxoutfm-recordings",
+   "https://en.wikipedia.org/wiki/DJ_MoCity",
+   "https://www.thewildcity.com/features/6791-championing-new-music-with-an-uncompromising-vision-boxout-fm"
+  ],
+  "confidence": "medium",
+  "notes": "Label launch year not stated in opened sources. Radio founding date: May 2016 or April 2017 (Wikipedia gives both). City New Delhi per DJ Mag."
+ },
+ {
+  "slug": "wind-horse-records",
+  "name": "Wind Horse Records",
+  "city": null,
+  "country": "India",
+  "founded": null,
+  "founders": [
+   "DJ Hamza",
+   "Stalvart John"
+  ],
+  "genres": [
+   "house",
+   "deep house"
+  ],
+  "website": "http://www.windhorserecords.com/",
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Label described by Wild City as India's first house music record label.",
+  "roster_artist_slugs": [
+   "audio-units",
+   "hamza-rahimtula",
+   "stalvart-john"
+  ],
+  "sources": [
+   "https://www.thewildcity.com/directory/8108-wind-horse-record-label",
+   "https://evl.one/5-year-anniversary-sampler-by-wind-horse-records"
+  ],
+  "confidence": "medium",
+  "notes": "City and year not stated. A May 2015 article marks a 5 year anniversary, which suggests about 2010, but that is an inference. Country India inferred from Wild City directory (Indian listing) and Bangalore and Mumbai producers."
+ },
+ {
+  "slug": "nrtya",
+  "name": "nrtya",
+  "city": "Mumbai",
+  "country": "India",
+  "founded": 2017,
+  "founders": null,
+  "genres": [
+   "hip-hop",
+   "electronica",
+   "ambient",
+   "drum and bass",
+   "garage"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Mumbai label started in 2017 by Indian musicians for Indian independent music, with weekly releases.",
+  "roster_artist_slugs": [
+   "hybrid-protokol",
+   "reble"
+  ],
+  "sources": [
+   "https://www.thewildcity.com/news/2284-nrtya-are-a-new-independent-indian-label",
+   "https://www.thewildcity.com/features/5118-spotlight-nrtya-s-weekly-releases"
+  ],
+  "confidence": "medium",
+  "notes": "Year inferred from June 2017 and January 2018 articles. Genre range is mixed, not electronic only."
+ },
+ {
+  "slug": "antariksh-records",
+  "name": "Antariksh Records",
+  "city": "Delhi",
+  "country": "India",
+  "founded": null,
+  "founders": null,
+  "genres": [
+   "genre-free rave",
+   "drum and bass",
+   "jungle",
+   "experimental"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Delhi label for genre-free independent rave records; debut release Sentient's Radiant Energy in February 2021.",
+  "roster_artist_slugs": [
+   "spiralynk"
+  ],
+  "sources": [
+   "https://mixmag.asia/read/kon-ark-debut-release-antariksh-records-new-releases"
+  ],
+  "confidence": "medium",
+  "notes": "Founders and founding year not stated. Twelve EPs by January 2022."
+ },
+ {
+  "slug": "padmini-records",
+  "name": "Padmini Records",
+  "city": null,
+  "country": "India",
+  "founded": null,
+  "founders": [
+   "Nikhil Kaul (Frame/Frame)",
+   "Sahil Mendiratta (Inspector Maal)"
+  ],
+  "genres": [
+   "breakbeat",
+   "UK garage",
+   "acid",
+   "bass"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Label tracing the strange, trippy currents under India's dancefloors; second release a compilation in March 2026.",
+  "roster_artist_slugs": [
+   "chhabb"
+  ],
+  "sources": [
+   "https://www.thewildcity.com/news/21593-padmini-records-includes-monophonik-shantam-chhabb-more-on-yaar-dost-vol-2"
+  ],
+  "confidence": "low",
+  "notes": "City and year not stated. India placement from Indian artists and Wild City coverage only. Description is the label's own wording, kept as a quote of intent."
+ },
+ {
+  "slug": "dualism-records",
+  "name": "Dualism Records",
+  "city": "Delhi",
+  "country": "India",
+  "founded": 2013,
+  "founders": [
+   "Sahej Bakshi (Dualist Inquiry)",
+   "Tej Brar",
+   "Mohammed Abood (DJ MoCity)"
+  ],
+  "genres": [
+   "Indian electronica",
+   "indie electronic"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": "https://dualismrecords.bandcamp.com/",
+  "soundcloud": "https://soundcloud.com/dualismrecords",
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Label set up to release Indian electronica, launched in 2013.",
+  "roster_artist_slugs": [
+   "dualist-inquiry"
+  ],
+  "sources": [
+   "https://www.thewildcity.com/news/1170-dualist-inquiry-announces-debut-lp-album-tour-new-record-label-stream-new-single",
+   "https://en.wikipedia.org/wiki/DJ_MoCity",
+   "https://homegrown.co.in/homegrown-explore/south-asian-independent-music-labels-you-should-know"
+  ],
+  "confidence": "medium",
+  "notes": "Wikipedia says Delhi, 2013, with Mo and Tej Brar; Wild City names Bakshi as founder; Homegrown names Bakshi and Brar. Audio Aashram in our DB (dualist-inquiry) was not confirmed as a separate label."
+ },
+ {
+  "slug": "lowlit-records",
+  "name": "Lowlit",
+  "city": null,
+  "country": "India",
+  "founded": 2015,
+  "founders": [
+   "Vishnu PS (Soulspace)",
+   "Nikhil Kaul (Frame/Frame)"
+  ],
+  "genres": [
+   "Indian electronica",
+   "genre-less"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": "https://soundcloud.com/lowlit",
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Artist collective, culture platform and record label launched in July 2015.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://www.thewildcity.com/news/1855-lowlit-new-artist-collective-culture-platform-and-record-label-launches",
+   "https://homegrown.co.in/homegrown-explore/south-asian-independent-music-labels-you-should-know"
+  ],
+  "confidence": "low",
+  "notes": "City not stated in sources. Homegrown mentions events in Mumbai and Bangalore; co-founder Nikhil Kaul is Delhi based per Wild City."
+ },
+ {
+  "slug": "consolidate",
+  "name": "Consolidate",
+  "city": "Bangalore",
+  "country": "India",
+  "founded": 2015,
+  "founders": [
+   "Rahul Giri",
+   "Aniruddh Menon"
+  ],
+  "genres": [
+   "experimental electronic",
+   "ambient",
+   "house",
+   "hip-hop"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": "https://consolidate.bandcamp.com/releases",
+  "soundcloud": "https://soundcloud.com/consolidate",
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Bangalore electronic collective and label, founded 2015 by Rahul Giri and Aniruddh Menon.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://daily.bandcamp.com/consolidate-records-and-the-thriving-electronic-scene-in-bangalore",
+   "https://homegrown.co.in/homegrown-explore/south-asian-independent-music-labels-you-should-know"
+  ],
+  "confidence": "high",
+  "notes": "Homegrown says official label launch early 2016; Bandcamp Daily says founded 2015."
+ },
+ {
+  "slug": "maktub-music",
+  "name": "Maktub Music Records",
+  "city": null,
+  "country": "India",
+  "founded": null,
+  "founders": [
+   "Arjun Vagale"
+  ],
+  "genres": [
+   "techno"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Underground techno label run by Arjun Vagale, focused on the dancefloor.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://homegrown.co.in/homegrown-explore/south-asian-independent-music-labels-you-should-know"
+  ],
+  "confidence": "low",
+  "notes": "Single source. City and year not stated. Beatport label page listed by Homegrown. India placement inferred from Vagale being an Indian techno DJ (not verified on an opened page)."
+ },
+ {
+  "slug": "high-chai-recordings",
+  "name": "High Chai Recordings",
+  "city": "New York",
+  "country": "United States",
+  "founded": null,
+  "founders": [
+   "dimmSummer"
+  ],
+  "genres": [
+   "dub",
+   "dubstep",
+   "drum and bass",
+   "left-field electronica"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "New York label for Asian-tinged left-field electronica; South Asian diaspora focus.",
+  "roster_artist_slugs": [
+   "sandunes"
+  ],
+  "sources": [
+   "https://homegrown.co.in/homegrown-explore/south-asian-independent-music-labels-you-should-know",
+   "https://www.thewildcity.com/news/1910-high-chai-recordings-release-sub-continental-bass-vol-2-with-3-free-tracks"
+  ],
+  "confidence": "low",
+  "notes": "Homegrown says about 15 years active as of 2021. Diaspora-run status is inferred from its Sub Continental Bass compilations; founder background not verified."
+ },
+ {
+  "slug": "forever-south",
+  "name": "Forever South",
+  "city": "Karachi",
+  "country": "Pakistan",
+  "founded": null,
+  "founders": [
+   "Haamid Rahim (Dynoman)",
+   "Bilal Nasir Khan (Rudoh)"
+  ],
+  "genres": [
+   "live electronic",
+   "experimental",
+   "EDM"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": "https://foreversouthmusic.bandcamp.com/",
+  "soundcloud": "http://www.soundcloud.com/foreversouthmusic",
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Karachi label run by Dynoman and Rudoh for live electronic and experimental music.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://homegrown.co.in/homegrown-explore/south-asian-independent-music-labels-you-should-know",
+   "https://www.stampthewax.com/2016/09/27/karachi-files/"
+  ],
+  "confidence": "medium",
+  "notes": "Karachi per Homegrown listing and Stamp The Wax mention. Year not stated."
+ },
+ {
+  "slug": "noland",
+  "name": "Noland",
+  "city": null,
+  "country": "Pakistan",
+  "founded": 2016,
+  "founders": null,
+  "genres": [
+   "ambient",
+   "broken beat",
+   "electro",
+   "UK bass",
+   "IDM"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Label whose first release, Karachi Files, collected Karachi DIY electronic music in 2016.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://www.stampthewax.com/2016/09/27/karachi-files/"
+  ],
+  "confidence": "low",
+  "notes": "Label base and founders not stated; Karachi Files was organised by Berlin-based Hannes and Andi Teichmann with Forever South. Country Pakistan inferred from release content; label may be Berlin-run."
+ },
+ {
+  "slug": "knowmad-records",
+  "name": "Knowmad Records",
+  "city": null,
+  "country": "India",
+  "founded": null,
+  "founders": [
+   "Aazin Printer",
+   "Kumail Hamid"
+  ],
+  "genres": [
+   "electronic"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Label described as focused on forward-thinking electronic sounds.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://homegrown.co.in/homegrown-explore/south-asian-independent-music-labels-you-should-know"
+  ],
+  "confidence": "low",
+  "notes": "Single source, no city or year."
+ },
+ {
+  "slug": "export-quality-records",
+  "name": "Export Quality Records",
+  "city": null,
+  "country": "India",
+  "founded": 2021,
+  "founders": [
+   "Tej Brar"
+  ],
+  "genres": [
+   "experimental",
+   "contemporary Indian music"
+  ],
+  "website": null,
+  "instagram": "https://www.instagram.com/exportquality_records/",
+  "bandcamp": "https://exportquality.bandcamp.com/music",
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Label of Third Culture Entertainment, launched in August 2021.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://homegrown.co.in/homegrown-explore/game-changing-independent-indian-music-labels-on-our-radar",
+   "https://theindianmusicdiaries.com/third-cultures-export-quality-records-an-indian-label-with-a-global-outlook/"
+  ],
+  "confidence": "medium",
+  "notes": "City not stated in opened sources. Genres are broad, not club only."
+ },
+ {
+  "slug": "milkman-records",
+  "name": "Milkman Records",
+  "city": "Mumbai",
+  "country": "India",
+  "founded": null,
+  "founders": [
+   "Milkman Crew"
+  ],
+  "genres": [
+   "electronic",
+   "warehouse rave"
+  ],
+  "website": null,
+  "instagram": "https://www.instagram.com/milk_mankind/",
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Label of the Mumbai Milkman crew, announced in July 2021.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://homegrown.co.in/homegrown-explore/game-changing-independent-indian-music-labels-on-our-radar",
+   "https://mixmag.asia/read/mumbais-milkman-crew-announce-new-label-local"
+  ],
+  "confidence": "medium",
+  "notes": "Crew active since 2016. The Mixmag Asia article does not name the label Milkman Records; Homegrown does."
+ },
+ {
+  "slug": "all-star-sauce",
+  "name": "All Star Sauce",
+  "city": "Delhi",
+  "country": "India",
+  "founded": null,
+  "founders": [
+   "Kunal Chabbra"
+  ],
+  "genres": [
+   "experimental hip-hop",
+   "electronic"
+  ],
+  "website": null,
+  "instagram": "https://www.instagram.com/allstarsauceoffline/",
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Delhi label for experimental hip-hop and electronic music.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://homegrown.co.in/homegrown-explore/game-changing-independent-indian-music-labels-on-our-radar"
+  ],
+  "confidence": "low",
+  "notes": "Single source. Borderline scope (hip-hop heavy)."
+ },
+ {
+  "slug": "liquid-frequency",
+  "name": "Liquid Frequency",
+  "city": "Kolkata",
+  "country": "India",
+  "founded": 2009,
+  "founders": [
+   "Varun Desai"
+  ],
+  "genres": [
+   "ambient",
+   "electronic"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": "https://liquidfrequency.bandcamp.com/music",
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Kolkata label releasing only Indian artists under a Creative Commons model.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://www.thewildcity.com/features/18371-spotlight-varun-desai-on-bringing-out-india-s-ambient-music-from-obscurity"
+  ],
+  "confidence": "medium",
+  "notes": "Single source for year and city."
+ },
+ {
+  "slug": "social-isolation",
+  "name": "Social Isolation",
+  "city": null,
+  "country": "India",
+  "founded": null,
+  "founders": [
+   "Varun Desai"
+  ],
+  "genres": [
+   "ambient",
+   "dark ambient",
+   "industrial",
+   "noise"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Compilation series and label by Varun Desai started around the COVID-19 lockdown.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://www.thewildcity.com/features/18371-spotlight-varun-desai-on-bringing-out-india-s-ambient-music-from-obscurity",
+   "https://www.thewildcity.com/directory/17727-social-isolation"
+  ],
+  "confidence": "low",
+  "notes": "City and year not stated; lockdown tie suggests about 2020 (inference)."
+ },
+ {
+  "slug": "krunk-kulture",
+  "name": "Krunk Kulture",
+  "city": "Mumbai",
+  "country": "India",
+  "founded": 2020,
+  "founders": null,
+  "genres": [
+   "house",
+   "techno",
+   "breaks",
+   "electro",
+   "leftfield"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": "https://krunkkulture.bandcamp.com/music",
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Mumbai label of the Krunk booking agency, launched in 2020 with the Kaala Khatta compilation.",
+  "roster_artist_slugs": [
+   "nikki-nair"
+  ],
+  "sources": [
+   "https://mixmag.asia/read/krunk-kulture-mumbai-record-label-local",
+   "https://mixmag.asia/feature/asia-rising-record-labels-2021"
+  ],
+  "confidence": "high",
+  "notes": "Mixmag Asia attributes the agency to Sohail Arora in one article; kept founders null as the label article does not name them."
+ },
+ {
+  "slug": "jugaar-records",
+  "name": "Jugaar Records",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "founded": 2021,
+  "founders": [
+   "Rudoh (Bilal Khan)",
+   "Sameer Arshad"
+  ],
+  "genres": [
+   "breaks",
+   "electro",
+   "jungle"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": "https://jugaar.bandcamp.com/releases",
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Label co-founded by Karachi-born Rudoh and Bangkok promoter Sameer Arshad, launched 2021.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://mixmag.asia/read/mixmag-asia-radio-jugaar-records-co-founder-rudoh-slams-the-breaks-karachi-exclusive-mixes",
+   "https://mixmag.asia/feature/asia-rising-record-labels-2021"
+  ],
+  "confidence": "medium",
+  "notes": "Diaspora-linked: base Bangkok, origins Pakistan. Genres in Mixmag are from the mix, not label catalogue."
+ },
+ {
+  "slug": "jambutek-recordings",
+  "name": "Jambutek Recordings",
+  "city": "Colombo",
+  "country": "Sri Lanka",
+  "founded": null,
+  "founders": [
+   "Asvajit",
+   "Nigel Perera"
+  ],
+  "genres": [
+   "underground electronic"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Sri Lankan underground electronic label running for over a decade as of 2025.",
+  "roster_artist_slugs": [
+   "audio-units"
+  ],
+  "sources": [
+   "https://mixmag.asia/feature/jambutek-recordings-label-sri-lanka-underground-showcase"
+  ],
+  "confidence": "medium",
+  "notes": "Mixmag says founders run a design studio in Colombo; Nigel's surname Perera is from RA URL slug only, not opened. Year not stated."
+ },
+ {
+  "slug": "idyllik-records",
+  "name": "Idyllik Records",
+  "city": "Chicago",
+  "country": "United States",
+  "founded": 2017,
+  "founders": null,
+  "genres": [
+   "house",
+   "techno"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Label homegrown in Colombo, Sri Lanka, now based in Chicago.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://ra.co/labels/18314"
+  ],
+  "confidence": "low",
+  "notes": "Single source (RA). Diaspora-linked. Founders not named."
+ },
+ {
+  "slug": "dynamite-disco-club",
+  "name": "Dynamite Disco Club",
+  "city": "Bengaluru",
+  "country": "India",
+  "founded": 2021,
+  "founders": [
+   "Stalvart John"
+  ],
+  "genres": [
+   "disco",
+   "house"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": "https://soundcloud.com/dynamitediscoclub",
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Bengaluru disco and house imprint announced in 2021, grown from a radio show by Stalvart John.",
+  "roster_artist_slugs": [
+   "stalvart-john"
+  ],
+  "sources": [
+   "https://mixmag.asia/read/dynamite-disco-club-indias-first-disco-house-music-imprint-local"
+  ],
+  "confidence": "medium",
+  "notes": "Mixmag does not use the word founder. A&R Farhan Rehman is in Mumbai."
+ },
+ {
+  "slug": "submerge-records",
+  "name": "Submerge Records",
+  "city": "Mumbai",
+  "country": "India",
+  "founded": 2018,
+  "founders": [
+   "Nikhil Chinapa",
+   "Pearl Sethi",
+   "Hermit Sethi"
+  ],
+  "genres": [
+   "underground electronic"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Label of Mumbai agency Submerge, announced in November 2018.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://www.business-standard.com/article/news-ians/submerge-to-launch-music-label-118111000251_1.html"
+  ],
+  "confidence": "low",
+  "notes": "Label name is not confirmed in the article beyond Submerge's label. Founders listed are those of the parent company, founded 2003."
+ },
+ {
+  "slug": "fresh-air-records",
+  "name": "Fresh Air Records",
+  "city": null,
+  "country": "India",
+  "founded": null,
+  "founders": [
+   "OX7GEN (Aditya Ashok)"
+  ],
+  "genres": [
+   "techno",
+   "drum and bass"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Label started by Goa-based producer OX7GEN, debut Stomp Nouveau.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://rollingstoneindia.com/ox7gen-stomp-nouveau-ep-fresh-air-records"
+  ],
+  "confidence": "medium",
+  "notes": "Label city not stated; founder is Goa-based."
+ },
+ {
+  "slug": "soupherb-records",
+  "name": "SoupHerb Records",
+  "city": "New Delhi",
+  "country": "India",
+  "founded": 2013,
+  "founders": [
+   "Ash Roy",
+   "Ashvin Mani Sharma"
+  ],
+  "genres": [
+   "techno",
+   "minimal",
+   "house"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Delhi label by two members of Jalebee Cartel, announced for May 2013.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://rollingstoneindia.com/delhi-producers-ash-roy-and-ashvin-mani-sharma-to-launch-indie-label-in-may",
+   "https://www.thewildcity.com/directory/4678-soupherb-records"
+  ],
+  "confidence": "high",
+  "notes": ""
+ },
+ {
+  "slug": "kekao",
+  "name": "KEKAO",
+  "city": "Kochi",
+  "country": "India",
+  "founded": 2019,
+  "founders": null,
+  "genres": [
+   "underground electronic dance music"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Kochi electronic label launched in January 2019 at the Kochi Muziris Biennale.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://www.thewildcity.com/news/10979-kochi-based-electronic-music-label-kekao-to-launch-at-kochi-muziris-biennale"
+  ],
+  "confidence": "medium",
+  "notes": "Founders not named."
+ },
+ {
+  "slug": "onno-collective",
+  "name": "ONNO Collective",
+  "city": "Kolkata",
+  "country": "India",
+  "founded": 2021,
+  "founders": [
+   "TITO+"
+  ],
+  "genres": [
+   "experimental",
+   "leftfield electronic"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Audiovisual collective and label formed in 2021, released the 20g cassette compilation in 2025.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://www.thewildcity.com/directory/19561-onno-collective",
+   "https://theindianmusicdiaries.com/fields-of-sound-20g-maps-indian-left-field-electronica-experimentation-into-a-tape/"
+  ],
+  "confidence": "medium",
+  "notes": "TITO+ named as head of the collective in one source; Wild City names no founders."
+ },
+ {
+  "slug": "subcontinental-records",
+  "name": "Subcontinental Records",
+  "city": null,
+  "country": "India",
+  "founded": null,
+  "founders": null,
+  "genres": [
+   "ambient",
+   "IDM",
+   "dub",
+   "techno",
+   "drum and bass",
+   "noise",
+   "experimental"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": "https://subcontinentalrecords.bandcamp.com",
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Bandcamp label calling itself India's first experimental music label.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://subcontinentalrecords.bandcamp.com/music"
+  ],
+  "confidence": "low",
+  "notes": "Self-description only; no city, founders or year in opened source."
+ },
+ {
+  "slug": "bone-fm",
+  "name": "Bone.FM",
+  "city": "New Delhi",
+  "country": "India",
+  "founded": 2021,
+  "founders": [
+   "Bonehead"
+  ],
+  "genres": [
+   "progressive ambient",
+   "bass",
+   "melodic house",
+   "experimental"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "New Delhi label with magazine and internet radio, founded by Bonehead in 2021.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://mixmag.asia/read/bonehead-independent-label-bone-fm-debuts-30-strong-global-va-new-releases"
+  ],
+  "confidence": "medium",
+  "notes": "Single source."
+ },
+ {
+  "slug": "orbs-cure-labs",
+  "name": "Orbs Cure Labs",
+  "city": "Pune",
+  "country": "India",
+  "founded": null,
+  "founders": null,
+  "genres": [
+   "left-field",
+   "genre-bending"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Pune collective backing left-field projects, focused on underground female producers.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://www.thewildcity.com/directory/13783-orbs-cure-labs"
+  ],
+  "confidence": "low",
+  "notes": "Not confirmed as a record label; Wild City calls it a collective."
+ },
+ {
+  "slug": "indo-warehouse",
+  "name": "Indo Warehouse",
+  "city": "New York",
+  "country": "United States",
+  "founded": 2022,
+  "founders": [
+   "Kahani",
+   "Kunal Merchant"
+  ],
+  "genres": [
+   "house",
+   "electronic"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Electronic music collective, record label and live experience founded in 2022 in New York.",
+  "roster_artist_slugs": [
+   "indo-warehouse",
+   "lost-stories",
+   "sickflip"
+  ],
+  "sources": [
+   "https://www.thewildcity.com/directory/21610-indo-warehouse"
+  ],
+  "confidence": "medium",
+  "notes": "South Asian diaspora-run. Single opened source for founding year and city."
+ },
+ {
+  "slug": "dialled-in-records",
+  "name": "Dialled In Records",
+  "city": "London",
+  "country": "United Kingdom",
+  "founded": 2026,
+  "founders": null,
+  "genres": [
+   "electronic",
+   "South Asian diaspora music"
+  ],
+  "website": null,
+  "instagram": null,
+  "bandcamp": null,
+  "soundcloud": null,
+  "discogs_url": null,
+  "musicbrainz_url": null,
+  "short_description": "Label of the Dialled In South Asian arts platform, launched around March 2026.",
+  "roster_artist_slugs": [],
+  "sources": [
+   "https://www.beatportal.com/articles/1343747-dialled-in-build-out-their-ecosystem-with-new-label-launch"
+  ],
+  "confidence": "low",
+  "notes": "Founders not confirmed. City London per search coverage of the label launch with Island/EMI's The Collective, not opened. Beatportal page opened but gives no city, founders or year."
+ }
+]

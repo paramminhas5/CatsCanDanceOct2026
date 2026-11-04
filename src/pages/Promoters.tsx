@@ -19,7 +19,11 @@ type Promoter = {
   booking_email: string | null;
   logo_url: string | null;
   trusted: boolean;
+  kind?: string | null;
+  founded?: number | null;
 };
+
+const AGENCY_KINDS = ["agency", "management", "pr", "production"];
 
 const ensureUrl = (s: string | null) => (s ? (/^https?:\/\//i.test(s) ? s : `https://${s}`) : null);
 
@@ -30,7 +34,7 @@ const PromoterCard = ({ p }: { p: Promoter }) => (
         <Link href={`/promoters/${p.slug}`}>
           <h3 className="font-display text-xl text-ink leading-tight uppercase truncate hover:text-magenta transition-colors">{p.name}</h3>
         </Link>
-        <p className="text-xs text-ink/60 mt-1">{p.city ?? p.cities[0] ?? ""}</p>
+        <p className="text-xs text-ink/60 mt-1">{[p.kind ? p.kind.replace("_", " ") : null, p.city ?? p.cities?.[0] ?? null].filter(Boolean).join(" · ")}{p.founded ? ` · since ${p.founded}` : ""}</p>
       </div>
       {p.trusted && (
         <span className="shrink-0 text-[10px] font-display bg-magenta text-cream px-2 py-1 border-2 border-ink">
@@ -70,7 +74,8 @@ const PromotersPage = () => {
   const [loading, setLoading] = useState(true);
   const [q, setQ] = useState("");
   const [city, setCity] = useState("All");
-  const [trustedOnly, setTrustedOnly] = useState(true);
+  const [trustedOnly, setTrustedOnly] = useState(false);
+  const [kind, setKind] = useState("All");
 
   useEffect(() => {
     (async () => {
@@ -78,7 +83,7 @@ const PromotersPage = () => {
         const res = await fetch("/api/promoters");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        setRows((data ?? []) as Promoter[]);
+        setRows(((data ?? []) as Promoter[]).filter((p) => !AGENCY_KINDS.includes(p.kind ?? "")));
       } catch (e) {
         console.error("promoters fetch", e);
       } finally {
@@ -100,6 +105,7 @@ const PromotersPage = () => {
     const ql = q.toLowerCase().trim();
     return rows.filter((p) => {
       if (trustedOnly && !p.trusted) return false;
+      if (kind !== "All" && (p.kind ?? "promoter") !== kind) return false;
       if (city !== "All") {
         const all = [p.city, ...(p.cities ?? [])].filter(Boolean).join(" ").toLowerCase();
         if (!all.includes(city.toLowerCase())) return false;
@@ -111,7 +117,9 @@ const PromotersPage = () => {
         (p.blurb ?? "").toLowerCase().includes(ql)
       );
     });
-  }, [rows, q, city, trustedOnly]);
+  }, [rows, q, city, trustedOnly, kind]);
+
+  const kinds = useMemo(() => Array.from(new Set(rows.map((p) => p.kind ?? "promoter"))).sort(), [rows]);
 
   return (
     <div className="min-h-screen bg-cream">
@@ -139,6 +147,13 @@ const PromotersPage = () => {
             <select value={city} onChange={(e) => setCity(e.target.value)} className="h-10 px-3 border-4 border-ink bg-cream font-display max-w-[200px]">
               <option value="All">All cities</option>
               {cities.map((c) => <option key={c} value={c}>{c}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="block font-display text-sm text-ink mb-1">Type</label>
+            <select value={kind} onChange={(e) => setKind(e.target.value)} className="h-10 px-3 border-4 border-ink bg-cream font-display max-w-[200px]">
+              <option value="All">All types</option>
+              {kinds.map((k) => <option key={k} value={k}>{k.replace("_", " ")}</option>)}
             </select>
           </div>
           <label className="inline-flex items-center gap-2 font-display text-sm text-ink">
