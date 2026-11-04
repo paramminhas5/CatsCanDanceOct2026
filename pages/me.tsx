@@ -19,6 +19,11 @@ import {
   applyPending, type CrewCard, isScene, joinCrew, leaveCrew, loadCrewCard, loadMyPlans, type Mate, type MyPlan,
   refreshMe, sendSignInLink, setPlan,
 } from "@/lib/plans";
+import { loadMyThreads, type ThreadRow } from "@/lib/booking-desk";
+import { StagePill } from "@/components/booking/StageTrack";
+import { dayShort, inrShort } from "@/lib/desk";
+import { artistPath, threadPath } from "@/lib/routes";
+import { SCHOOL_URL } from "@/lib/ccd-db";
 
 const CITIES = ["Bengaluru", "Mumbai", "Delhi NCR", "Goa", "Pune", "Hyderabad", "Chennai", "Kolkata"];
 const inp = "w-full border-4 border-ink bg-white p-3 text-ink";
@@ -40,7 +45,7 @@ export default function Me() {
           <div className="container">
             <p className="font-bold text-acid-yellow mb-3">Your account</p>
             <h1 className="font-display text-6xl md:text-8xl leading-[0.85]">YOUR ACCOUNT.</h1>
-            <p className="mt-4 text-lg max-w-[48ch]">One login for all of Cats Can Dance: your tickets, the nights you're going to and your crew. Say you're going to any night on What's on, even if you bought the ticket somewhere else.</p>
+            <p className="mt-4 text-lg max-w-[48ch]">One login for all of Cats Can Dance: your tickets, the nights you're going to, your crew, your booking requests and the artists you follow.</p>
           </div>
         </section>
         <div className="container py-10 md:py-14 max-w-3xl">
@@ -199,8 +204,105 @@ function YourNights({ memberId, name }: { memberId: string; name: string }) {
         </section>
       )}
 
+      <BookingsBlock />
+      <FollowsBlock />
+      <SchoolBlock />
+
       <p className="text-sm text-ink/70">Profile, taste quiz and hosting are on <Link href="/club" className="underline font-bold">your club page</Link>.</p>
     </div>
+  );
+}
+
+/** Booking requests you sent and, if you own an artist page, the ones sent to you. Same data as /bookings. */
+function BookingsBlock() {
+  const [rows, setRows] = useState<ThreadRow[] | null>(null);
+  useEffect(() => { loadMyThreads(true).then((r) => setRows(r.rows)).catch(() => setRows([])); }, []);
+  const open = (rows ?? []).filter((r) => !["declined", "cancelled"].includes(r.stage));
+  const yourMove = open.filter((r) => (r.role === "artist" && ["sent", "seen"].includes(r.stage)) || (r.role === "requester" && ["interested", "countered"].includes(r.stage) && r.last_actor === "artist")).length;
+  return (
+    <section aria-labelledby="bookings" className="grid gap-4">
+      <div className="flex items-end justify-between gap-3">
+        <h2 id="bookings" className="font-display text-3xl md:text-4xl leading-none">BOOKINGS</h2>
+        {rows && rows.length > 0 && <Link href="/bookings" className="text-sm font-bold underline underline-offset-4">All requests →</Link>}
+      </div>
+      {rows === null ? <div className="h-20 border-4 border-ink/20 bg-ink/5" aria-busy="true" />
+        : rows.length === 0 ? (
+          <div className="border-4 border-ink bg-cream p-5 grid gap-3">
+            <p>Booking an artist for your night? Send one brief to up to three artists. Their replies, fee and the confirmation land here.</p>
+            <div><Link href="/book" className={`${btn} bg-acid-yellow inline-block`}>Book an artist</Link></div>
+          </div>
+        ) : (
+          <ul className="grid gap-3">
+            {yourMove > 0 && <li className="font-bold text-magenta">{yourMove === 1 ? "One request is waiting on you." : `${yourMove} requests are waiting on you.`}</li>}
+            {rows.slice(0, 4).map((r) => {
+              const who = r.role === "artist" ? `${r.name}${r.org ? `, ${r.org}` : ""}` : r.artist ?? r.artist_slug;
+              const facts = [r.event_date && dayShort(r.event_date), r.city, r.fee_inr ? `Fee ${inrShort(r.fee_inr)}` : r.budget_band].filter(Boolean).join(" · ");
+              return (
+                <li key={r.id}>
+                  <Link href={threadPath(r.id, r.key)} className="flex items-center gap-3 border-4 border-ink bg-cream p-3 hover:bg-acid-yellow/40 transition-colors">
+                    <StagePill stage={r.stage} />
+                    <span className="min-w-0 flex-1">
+                      <b className="font-display font-normal text-lg leading-tight block truncate">{r.role === "artist" ? "For you: " : ""}{who}</b>
+                      <span className="text-sm text-ink/70">{facts}</span>
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+    </section>
+  );
+}
+
+/** Artists you follow, newest first. */
+function FollowsBlock() {
+  const [list, setList] = useState<{ slug: string; name: string; photo_url: string | null }[] | null>(null);
+  useEffect(() => {
+    (async () => {
+      const { data } = await supabase.from("member_follows").select("artist_slug").order("created_at", { ascending: false }).limit(12);
+      const slugs = ((data as any[]) ?? []).map((x) => x.artist_slug);
+      if (!slugs.length) return setList([]);
+      const { data: a } = await supabase.from("artists").select("slug,name,photo_url").in("slug", slugs);
+      const by = new Map(((a as any[]) ?? []).map((x) => [x.slug, x]));
+      setList(slugs.map((s) => by.get(s)).filter(Boolean));
+    })().catch(() => setList([]));
+  }, []);
+  return (
+    <section aria-labelledby="follows" className="grid gap-4">
+      <h2 id="follows" className="font-display text-3xl md:text-4xl leading-none">ARTISTS YOU FOLLOW</h2>
+      {list === null ? <div className="h-20 border-4 border-ink/20 bg-ink/5" aria-busy="true" />
+        : list.length === 0 ? (
+          <div className="border-4 border-ink bg-cream p-5 grid gap-3">
+            <p>Follow an artist and their next gigs, tours and releases come to you.</p>
+            <div><Link href="/artists" className={`${btn} bg-acid-yellow inline-block`}>Browse artists</Link></div>
+          </div>
+        ) : (
+          <ul className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+            {list.map((a) => (
+              <li key={a.slug}>
+                <Link href={artistPath(a.slug)} className="block border-4 border-ink bg-cream hover:-translate-y-1 transition-transform">
+                  {a.photo_url ? <img src={a.photo_url} alt="" className="w-full aspect-square object-cover border-b-4 border-ink" loading="lazy" />
+                    : <span className="w-full aspect-square grid place-items-center bg-electric-blue text-cream font-display text-3xl border-b-4 border-ink">{a.name.slice(0, 1)}</span>}
+                  <span className="block font-display text-sm leading-tight p-2 truncate">{a.name}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+    </section>
+  );
+}
+
+function SchoolBlock() {
+  return (
+    <section aria-labelledby="school" className="grid gap-4">
+      <h2 id="school" className="font-display text-3xl md:text-4xl leading-none">SCHOOL</h2>
+      <div className="border-4 border-ink bg-magenta text-cream p-5 grid gap-3">
+        <p>Your lessons, the tracks you are making and your streak live in School. Use the same email.</p>
+        <div><a href={SCHOOL_URL} className={`${btn} bg-cream text-ink inline-block`}>Open School</a></div>
+      </div>
+    </section>
   );
 }
 
