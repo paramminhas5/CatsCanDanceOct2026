@@ -53,11 +53,11 @@ const Index = (data: HomeData) => {
 
   const next = data.next;
   const days = next ? daysUntil(next.event_date, data.today) : null;
-  const nightsStat = next
-    ? days === 0
-      ? { n: "Tonight", label: next.episode_no ? `Episode ${next.episode_no}` : next.title }
-      : { n: days ?? "Soon", label: days === 1 ? "day to the next Episode" : "days to the next Episode" }
-    : { n: data.past.length, label: "Episodes so far" };
+  const goOutStat = data.weekCount > 0
+    ? { n: data.weekCount, label: data.weekCount === 1 ? "night this week" : "nights this week" }
+    : next
+      ? { n: days ?? "Soon", label: days === 1 ? "day to the next Episode" : "days to the next Episode" }
+      : { n: data.past.length, label: "Episodes so far" };
 
   return (
     <>
@@ -78,9 +78,9 @@ const Index = (data: HomeData) => {
 
         <SectionReveal>
           <ProductTrio
-            nights={nightsStat}
-            whatsOn={{ n: data.weekCount, label: data.weekCount === 1 ? "night this week" : "nights this week" }}
+            goOut={goOutStat}
             artists={{ n: data.artistCount, label: "artists on the roster" }}
+            learn={{ n: "Free", label: "for now, lessons that make a track" }}
           />
         </SectionReveal>
 

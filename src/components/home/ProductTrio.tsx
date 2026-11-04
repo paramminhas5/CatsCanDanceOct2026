@@ -12,9 +12,9 @@ import { imgUrl } from "@/lib/img";
 export type Stat = { n: number | string; label: string };
 
 type Props = {
-  nights: Stat;
-  whatsOn: Stat;
+  goOut: Stat;
   artists: Stat;
+  learn: Stat;
 };
 
 const CARD = "relative border-4 border-ink bg-cream flex flex-col min-h-[300px] md:min-h-[340px] overflow-hidden group";
@@ -58,52 +58,39 @@ function Card({
   );
 }
 
-export default function ProductTrio({ nights, whatsOn, artists }: Props) {
+export default function ProductTrio({ goOut, artists, learn }: Props) {
   return (
     <section id="products" className="bg-cream bg-grain border-b-4 border-ink py-12 md:py-20">
       <div className="container">
         <div className="mb-8 md:mb-12 max-w-3xl">
-          <p className="font-display text-magenta text-sm uppercase tracking-[0.2em] mb-3">Three things, one night out</p>
+          <p className="font-display text-magenta text-sm uppercase tracking-[0.2em] mb-3">Three products, one scene</p>
           <h2 className="font-display text-ink text-4xl sm:text-5xl md:text-6xl leading-[0.95]">
-            We throw. You go. They play.
+            You go. They play.<br className="hidden sm:block" /> You make.
           </h2>
           <p className="text-ink/80 text-lg md:text-xl mt-4 max-w-2xl">
-            Cats Can Dance is three products that share one scene: our own nights, a gig guide that gets you a crew, and the roster of the artists you came to hear.
+            Cats Can Dance is three products that share one scene: the nights (ours and everyone's, with a crew to go with), the artists (their pages, their bookings, their tours), and the school.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           <Card
-            product="Our nights"
-            nick="Episodes"
-            verb="We throw."
-            line="Small rooms, big systems, house to jungle. Tickets on the site, QR at the door, pets welcome by day."
-            href="/nights"
-            cta="Next Episode"
-            color="bg-magenta"
-            text="text-cream"
-            cat={imgUrl(catHeadphones)}
-            catPos="right-3 top-16 md:top-14"
-            stat={nights}
-          />
-          <Card
-            product="What's on"
-            nick="the gig guide"
+            product="Go out"
+            nick="Episodes · the gig guide · crews"
             verb="You go."
-            line="Every night worth leaving the house for, checked by hand. See who's going. Never go alone: we put you in a crew."
+            line="Our own Episodes, plus every other night worth leaving the house for, checked by hand. See who's going and never go alone."
             href="/whats-on"
             cta="Find a night"
             color="bg-electric-blue"
             text="text-cream"
             cat={imgUrl(catCap)}
             catPos="right-3 top-16 md:top-14"
-            stat={whatsOn}
+            stat={goOut}
           />
           <Card
             product="Artists"
-            nick="the roster"
+            nick="the roster · Strays"
             verb="They play."
-            line="South Asian electronic music, one artist at a time. Mixes, releases, gigs, and a booking desk that answers."
+            line="A page for every South Asian electronic artist that stays current on its own. Book them from the page, at home or on tour."
             href="/artists"
             cta="Meet the roster"
             color="bg-acid-yellow"
@@ -112,17 +99,30 @@ export default function ProductTrio({ nights, whatsOn, artists }: Props) {
             catPos="right-2 top-14 md:top-12"
             stat={artists}
           />
+          <Card
+            product="Learn"
+            nick="CCD.SCHOOL"
+            verb="You make."
+            line="Produce, DJ and mix on an instrument that runs in the browser and talks to Ableton. Every lesson adds to a track you keep."
+            href="/school"
+            cta="Open the school"
+            color="bg-magenta"
+            text="text-cream"
+            cat={imgUrl(catHeadphones)}
+            catPos="right-3 top-16 md:top-14"
+            stat={learn}
+          />
         </div>
 
         {/* The loop */}
         <div className="mt-10 md:mt-14 border-4 border-ink bg-ink text-cream px-5 py-5 md:px-8 md:py-6">
           <ol className="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-3 text-sm md:text-base font-semibold">
             {[
-              ["Find a night", "/whats-on", "text-electric-blue"],
+              ["Find a night, ours or anyone's", "/whats-on", "text-electric-blue"],
               ["See who's going, get a crew", "/me", "text-electric-blue"],
-              ["Hear the lineup, follow the artists", "/artists", "text-acid-yellow"],
-              ["Book them for your own night", "/artists", "text-acid-yellow"],
-              ["Come to ours", "/nights", "text-magenta"],
+              ["Follow the lineup to their pages", "/artists", "text-acid-yellow"],
+              ["Book them, at home or on tour", "/tour", "text-acid-yellow"],
+              ["Learn to play like them", "/school", "text-magenta"],
             ].map(([label, href, color], i) => (
               <li key={label} className="flex items-start gap-3">
                 <span className={`font-display text-xl leading-none ${color}`}>{String(i + 1).padStart(2, "0")}</span>
@@ -130,7 +130,7 @@ export default function ProductTrio({ nights, whatsOn, artists }: Props) {
               </li>
             ))}
           </ol>
-          <p className="text-cream/60 text-sm mt-4">One night, one artist, one account, everywhere on the site. Each product works on its own. Together they close the loop.</p>
+          <p className="text-cream/60 text-sm mt-4">One night, one artist, one account, everywhere on the site. Each product stands on its own. Together they close the loop: the people who go are the people who book are the people who learn.</p>
         </div>
       </div>
     </section>
