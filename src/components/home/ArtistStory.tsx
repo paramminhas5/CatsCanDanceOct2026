@@ -64,7 +64,7 @@ export default function ArtistStory({ story }: { story: Story | null }) {
   const landed = step > 0 && t < 900;
   const feed = [
     { src: "Gig radar", title: `${story.gig.title}, ${g.day} ${g.num} ${g.mon}`, note: "Added to Playing next, with tickets." },
-    { src: "Release check", title: story.release ? story.release.title : "Newest release", note: story.release ? `${story.release.meta}. Added with the source.` : "Added with the source." },
+    { src: "Release check", title: story.release ? story.release.title : "Newest release", note: story.release ? `${story.release.meta}. Added when it came out, with the source.` : "Added when it came out, with the source." },
     { src: story.press ? `Press · ${story.press.outlet}` : "Press", title: story.press?.title ?? "A new feature", note: "Added to Press, with the link." },
     { src: "You · 30 seconds", title: "Two tour dates, Goa and Mumbai", note: "On your page and on On tour. Example." },
     { src: "Booking request", title: "Sat 12 Dec, Bengaluru, 400 people, 2h", note: "A brief, not a DM. Example." },
@@ -93,7 +93,7 @@ export default function ArtistStory({ story }: { story: Story | null }) {
                 <span className={`text-[10px] font-bold uppercase tracking-[0.1em] border-2 border-ink px-2 py-0.5 ${step > 0 ? "bg-acid-yellow" : "bg-cream"}`}>{step > 0 ? "Updated just now" : "Updated today"}</span>
                 <span className="text-[10px] font-bold uppercase tracking-[0.1em] border-2 border-ink/40 text-ink/70 px-2 py-0.5">Real page</span>
               </div>
-              <p className="font-display text-3xl md:text-5xl leading-[0.95] truncate">{story.name.toUpperCase()}</p>
+              <p className="font-display text-2xl sm:text-3xl md:text-5xl leading-[0.95] break-words">{story.name.toUpperCase()}</p>
               <p className="text-xs md:text-sm text-ink/70 mt-1 truncate">{[story.city, story.genres.join(", "), story.label].filter(Boolean).join(" · ")}</p>
             </div>
             <Link href={`/artists/${story.slug}`} className="hidden sm:inline-block shrink-0 font-display text-xs px-3 py-2 border-[3px] border-ink bg-magenta text-cream">Book</Link>
@@ -146,7 +146,7 @@ export default function ArtistStory({ story }: { story: Story | null }) {
 
         <div className="grid gap-3 min-w-0">
           <div className="flex items-center justify-between mb-1">
-            <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.14em] text-cream/70"><i className="inline-block h-2 w-2 rounded-full bg-magenta ccd-blink" aria-hidden /> This week on {story.name}'s page</span>
+            <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.14em] text-cream/70"><i className="inline-block h-2 w-2 rounded-full bg-magenta ccd-blink" aria-hidden /> How {story.name}'s page stays current</span>
             <button type="button" onClick={() => setPaused((p) => !p)} className="text-[10px] font-bold uppercase tracking-[0.1em] border-2 border-cream/45 px-2 py-0.5">{paused ? "Play" : "Pause"}</button>
           </div>
           {feed.map((f, i) => {
@@ -230,7 +230,7 @@ export default function ArtistStory({ story }: { story: Story | null }) {
 
 function Block({ title, children, last, tag }: { title: string; children: React.ReactNode; last?: boolean; tag?: string }) {
   return (
-    <div className={`border-t-[3px] border-ink px-4 md:px-5 py-3.5 grid gap-2 ${last ? "pb-5" : ""}`}>
+    <div className={`border-t-[3px] border-ink px-4 md:px-5 py-3.5 grid grid-cols-[minmax(0,1fr)] gap-2 ${last ? "pb-5" : ""}`}>
       <div className="flex items-center justify-between gap-2">
         <p className="font-display text-[11px] uppercase tracking-[0.16em] text-ink/60">{title}</p>
         {tag && <span className="text-[10px] font-bold text-ink/60">{tag}</span>}
