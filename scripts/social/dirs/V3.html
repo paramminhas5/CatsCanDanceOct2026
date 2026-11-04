@@ -1,0 +1,34 @@
+<!doctype html><meta charset=utf-8><style>
+@font-face{font-family:Bowlby;src:url(../node_modules/@fontsource/bowlby-one/files/bowlby-one-latin-400-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:500;src:url(../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-500-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:700;src:url(../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2)}
+@font-face{font-family:Mono;font-weight:700;src:url(../node_modules/@fontsource/space-mono/files/space-mono-latin-700-normal.woff2)}
+:root{--ink:#020617;--cream:#e7e5e4;--paper:#f5f3ee;--red:#dc2626;--acid:#b6ef36;--blue:#2563eb;--orange:#f97316}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;font-family:Grotesk,sans-serif}
+.a{position:absolute}
+.bowl{font-family:Bowlby;text-transform:uppercase;line-height:.88}
+.mono{font-family:Mono;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.cut{filter:drop-shadow(4px 0 0 #fff) drop-shadow(-4px 0 0 #fff) drop-shadow(0 4px 0 #fff) drop-shadow(0 -4px 0 #fff) drop-shadow(10px 10px 0 var(--ink))}
+.cutd{filter:drop-shadow(4px 0 0 var(--cream)) drop-shadow(-4px 0 0 var(--cream)) drop-shadow(0 4px 0 var(--cream)) drop-shadow(0 -4px 0 var(--cream)) drop-shadow(10px 10px 0 var(--red))}
+
+body{background:var(--ink);color:var(--cream)}
+.top{left:54px;right:54px;top:48px;display:flex;justify-content:space-between;font-size:26px}
+.top b{color:var(--acid)}
+.disc{left:150px;top:110px;width:780px;height:780px;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#0c1226 0 3px,#050914 3px 7px);box-shadow:16px 16px 0 var(--red);border:8px solid var(--cream)}.sheen{left:150px;top:110px;width:780px;height:780px;border-radius:50%;background:conic-gradient(from 20deg,transparent 0 12%,rgba(255,255,255,.16) 18%,transparent 26% 62%,rgba(255,255,255,.12) 70%,transparent 78%)}</style><body>
+<div class="a top mono"><span>Now playing</span><b>CCD / Discover</b></div>
+<div class="a disc"></div><div class="a sheen"></div>
+<img class="a" src="art/nikki.jpg" style="left:360px;top:320px;width:360px;height:360px;border-radius:50%;object-fit:cover;border:8px solid var(--ink)">
+<div class="a" style="left:520px;top:480px;width:40px;height:40px;border-radius:50%;background:var(--cream);border:6px solid var(--ink)"></div>
+<img class="a cutd" src="../assets/cats/cat-headphones.png" style="left:30px;top:640px;width:270px;transform:rotate(-8deg)">
+<div class="a mono" style="right:60px;top:790px;font-size:26px;background:var(--acid);color:var(--ink);padding:8px 16px;transform:rotate(-4deg)">New record</div>
+<div class="a bowl" style="left:54px;top:945px;font-size:76px;white-space:nowrap">Majestic Animals EP</div>
+<div class="a mono" style="left:56px;top:1040px;font-size:30px;color:var(--acid)">Nikki Nair</div>
+<div class="a" style="left:54px;top:1112px;width:972px;height:14px;border-radius:7px;background:rgba(231,229,228,.25)"></div>
+<div class="a" style="left:54px;top:1112px;width:370px;height:14px;border-radius:7px;background:var(--acid)"></div>
+<div class="a" style="left:410px;top:1100px;width:38px;height:38px;border-radius:50%;background:var(--cream);border:6px solid var(--ink)"></div>
+<div class="a mono" style="left:54px;top:1150px;font-size:22px;opacity:.8">Hyperdub</div><div class="a mono" style="right:54px;top:1150px;font-size:22px;opacity:.8">Out 16 Oct</div>
+<div class="a" style="left:424px;top:1210px;width:120px;height:120px;border-radius:50%;background:var(--acid);border:6px solid var(--cream)"></div>
+<div class="a" style="left:468px;top:1244px;border-left:48px solid var(--ink);border-block:26px solid transparent"></div>
+<div class="a bowl" style="left:300px;top:1246px;font-size:50px">&laquo;</div><div class="a bowl" style="left:590px;top:1246px;font-size:50px">&raquo;</div>

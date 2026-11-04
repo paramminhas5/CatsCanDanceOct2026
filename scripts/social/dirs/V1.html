@@ -1,0 +1,27 @@
+<!doctype html><meta charset=utf-8><style>
+@font-face{font-family:Bowlby;src:url(../node_modules/@fontsource/bowlby-one/files/bowlby-one-latin-400-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:500;src:url(../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-500-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:700;src:url(../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2)}
+@font-face{font-family:Mono;font-weight:700;src:url(../node_modules/@fontsource/space-mono/files/space-mono-latin-700-normal.woff2)}
+:root{--ink:#020617;--cream:#e7e5e4;--paper:#f5f3ee;--red:#dc2626;--acid:#b6ef36;--blue:#2563eb;--orange:#f97316}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;font-family:Grotesk,sans-serif}
+.a{position:absolute}
+.bowl{font-family:Bowlby;text-transform:uppercase;line-height:.88}
+.mono{font-family:Mono;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.cut{filter:drop-shadow(4px 0 0 #fff) drop-shadow(-4px 0 0 #fff) drop-shadow(0 4px 0 #fff) drop-shadow(0 -4px 0 #fff) drop-shadow(10px 10px 0 var(--ink))}
+.cutd{filter:drop-shadow(4px 0 0 var(--cream)) drop-shadow(-4px 0 0 var(--cream)) drop-shadow(0 4px 0 var(--cream)) drop-shadow(0 -4px 0 var(--cream)) drop-shadow(10px 10px 0 var(--red))}
+
+body{background:var(--ink);color:var(--cream)}
+.top{left:54px;right:54px;top:48px;display:flex;justify-content:space-between;font-size:26px}
+.top b{color:var(--acid)}
+</style><body>
+<img class="a" src="art/nikki.jpg" style="left:0;top:0;width:1080px;height:1080px;object-fit:cover">
+<div class="a mono" style="left:40px;top:40px;font-size:24px;background:var(--ink);color:var(--cream);padding:8px 14px">CCD / Discover</div>
+<div class="a mono" style="right:40px;top:44px;font-size:26px;background:var(--acid);color:var(--ink);padding:8px 16px;transform:rotate(4deg)">New record</div>
+<div class="a" style="left:0;top:1080px;width:1080px;height:270px;background:var(--ink);border-top:10px solid var(--acid)"></div>
+<div class="a bowl" style="left:44px;top:1124px;font-size:104px;color:var(--cream)">Nikki Nair</div>
+<div class="a mono" style="left:48px;top:1244px;font-size:30px;color:var(--acid)">Majestic Animals EP</div>
+<div class="a mono" style="left:48px;top:1292px;font-size:24px;color:var(--cream);opacity:.8">Hyperdub &nbsp;/&nbsp; Out 16 Oct</div>
+<img class="a cutd" src="../assets/cats/cat-headphones.png" style="right:50px;top:960px;width:300px;transform:rotate(6deg)">
