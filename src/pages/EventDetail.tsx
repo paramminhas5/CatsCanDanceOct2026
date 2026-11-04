@@ -147,7 +147,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
         description={event.blurb || content.narrative || `Cats Can Dance ${event.title} at ${event.venue}, ${event.city}.`}
         path={`/nights/${slug}`}
         type="event"
-        image={poster ?? undefined}
+        image={poster ?? `https://catscandance.com/api/card/episode/${slug}?size=link`}
         jsonLd={[eventLd, faqLd]}
       />
 
@@ -199,7 +199,8 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
                     </button>
                   )}
                   {upcoming && <AddToCalendar night={event} time={content.doors_time ?? event.start_time} url={pageUrl} />}
-                  <ShareButton title={`Cats Can Dance: ${event.title}`} text={`${event.title}, ${when} at ${event.venue}`} url={pageUrl} tone={upcoming ? "light" : "dark"} />
+                  <ShareButton title={`Cats Can Dance: ${event.title}`} text={upcoming ? `${event.title}, ${when} at ${event.venue}. Coming?` : `I was there: Cats Can Dance ${event.title}.`} url={pageUrl} tone={upcoming ? "light" : "dark"}
+                    label={upcoming ? "Share" : "Share: I was there"} card={{ kind: "episode", target: slug, path: `/nights/${slug}` }} />
                 </div>
               </div>
             </div>

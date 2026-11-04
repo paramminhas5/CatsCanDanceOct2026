@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { revalidatePath } from "next/cache";
-import { rpc, fmtDate } from "@/lib/ccd-db";
+import { rpc, fmtDate, select } from "@/lib/ccd-db";
 import { emailCrews, emailCityWaitlist } from "@/lib/mailer";
 
 export const dynamic = "force-dynamic";
@@ -14,6 +14,12 @@ type Snapshot = {
   build: { id: number; area: string; title: string; status: string; detail: string | null; link: string | null; updated_at: string }[];
   ccd_events: { slug: string; title: string; date: string | null; event_date: string | null; venue: string | null; published: boolean }[];
 };
+
+async function makeInvite(formData: FormData) {
+  "use server";
+  await rpc("ops_claim_invite", { p_token: process.env.OPS_TOKEN, p_slug: String(formData.get("slug") ?? "").trim().toLowerCase() });
+  revalidatePath("/ops");
+}
 
 async function setTrust(formData: FormData) {
   "use server";
@@ -207,6 +213,11 @@ export default async function Ops() {
     rpc<any[]>("ops_city_waitlist", { p_token: T() }).catch(() => []),
   ]);
   const credIds = [...s.pending.map((e) => e.id), ...s.published.map((e) => e.id)];
+  const [shares, invites, rosterSlugs] = await Promise.all([
+    rpc<{ by_kind: { kind: string; shares: number; opens: number }[]; top: { kind: string; target: string; shares: number; opens: number }[] }>("ops_share_stats", { p_token: T() }).catch(() => null),
+    rpc<{ token: string; artist_slug: string; name: string | null; created_at: string; expires_at: string; used_at: string | null; used_email: string | null; owned: boolean }[]>("ops_claim_invites", { p_token: T() }).catch(() => []),
+    select<{ slug: string; name: string }>("artists?status=eq.approved&owner_member=is.null&select=slug,name&order=name", 60).catch(() => []),
+  ]);
   const [cred, trust] = await Promise.all([
     rpc<Record<string, { reasons: string[]; credible: boolean }>>("ops_scene_credibility", { p_token: T(), p_ids: credIds }).catch(() => ({} as Record<string, { reasons: string[]; credible: boolean }>)),
     rpc<{ kind: string; pattern: string; note: string | null }[]>("ops_curation_trust_list", { p_token: T() }).catch(() => []),
@@ -642,6 +653,45 @@ export default async function Ops() {
           </tbody>
         </table>
       </div>
+
+      <h3 style={{ marginBottom: 10 }}>Claim links for artists</h3>
+      <p className="muted" style={{ marginTop: 0 }}>Make a one-time link and send it to the artist. They sign in with any email and the page is theirs: calendar, booking requests, tour dates. Links last 21 days.</p>
+      <form action={makeInvite} style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
+        <select name="slug" required defaultValue="">
+          <option value="" disabled>Pick an artist without an owner</option>
+          {(rosterSlugs ?? []).map((a) => <option key={a.slug} value={a.slug}>{a.name}</option>)}
+        </select>
+        <button className="btn sm">Make a claim link</button>
+      </form>
+      {(invites ?? []).length > 0 && (
+        <div className="scroll" style={{ marginBottom: 36 }}>
+          <table>
+            <thead><tr><th>Artist</th><th>Link to send</th><th>Status</th></tr></thead>
+            <tbody>
+              {(invites ?? []).slice(0, 20).map((i) => (
+                <tr key={i.token}>
+                  <td><b>{i.name ?? i.artist_slug}</b></td>
+                  <td style={{ fontSize: 12, wordBreak: "break-all" }}>https://catscandance.com/claim/{i.token}</td>
+                  <td className="muted">{i.used_at ? `Claimed by ${i.used_email}` : i.owned ? "Page has an owner" : new Date(i.expires_at) < new Date() ? "Expired" : `Open until ${fmtDate(i.expires_at.slice(0, 10))}`}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      <h3 style={{ marginBottom: 10 }}>Share cards, last 30 days</h3>
+      {shares && shares.by_kind.length > 0 ? (
+        <div className="scroll" style={{ marginBottom: 36 }}>
+          <table>
+            <thead><tr><th>Card</th><th>Shared</th><th>Opened</th></tr></thead>
+            <tbody>
+              {shares.by_kind.map((k) => <tr key={k.kind}><td><b>{k.kind}</b></td><td>{k.shares}</td><td>{k.opens}</td></tr>)}
+              {shares.top.slice(0, 8).map((t) => <tr key={`${t.kind}${t.target}`}><td className="muted">{t.kind} · {t.target.slice(0, 40)}</td><td>{t.shares}</td><td>{t.opens}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+      ) : <p className="muted" style={{ marginBottom: 36 }}>No shares yet.</p>}
 
       <h3 style={{ marginBottom: 10 }}>Cron runs</h3>
       <div className="scroll">

@@ -103,6 +103,8 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
 
   // Who's going: one call for every night on the page.
   const [crowd, setCrowd] = useState<Record<string, Crowd>>({});
+  const sharedId = router.isReady && typeof router.query.n === "string" ? router.query.n : "";
+  const shared = sharedId ? events.find((e) => e.id === sharedId) ?? null : null;
   const me = useMe();
   const keysSig = upcoming.map((e) => e.id).join(",");
   const refreshCrowd = () => { loadCrowd(upcoming.map((e) => sceneKey(e.id))).then(setCrowd).catch(() => {}); };
@@ -163,6 +165,16 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
         </div>
       </section>
 
+      {/* A night someone shared with you sits on top */}
+      {shared && (
+        <section className="bg-acid-yellow border-b-4 border-ink py-6 md:py-8">
+          <div className="container">
+            <p className="font-display text-sm uppercase tracking-[0.14em] mb-3">Shared with you</p>
+            <ul><NightCard e={shared} saved={saved.includes(shared.id)} onSave={() => toggleSave(shared.id)} crowd={crowd[sceneKey(shared.id)]} onPlan={refreshCrowd} /></ul>
+          </div>
+        </section>
+      )}
+
       {/* FILTERS */}
       <div className="sticky top-[64px] md:top-[76px] z-30 bg-ink text-cream border-y-4 border-ink">
         <div className="container py-3 grid gap-2.5">
@@ -174,7 +186,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
             <button type="button" aria-pressed={savedOnly} aria-label={`Show saved nights${saved.length ? ` (${saved.length})` : ""}`} onClick={() => setSavedOnly(!savedOnly)} className={chip(savedOnly)}>
               Saved{saved.length ? ` ${saved.length}` : ""}
             </button>
-            {goingCount > 0 && <Link href="/me" className={chip(false)}>Your nights {goingCount}</Link>}
+            {goingCount > 0 && <Link href="/me" className={chip(false)}>Going {goingCount}</Link>}
             <label className="ml-auto shrink-0 hidden md:flex items-center border-2 border-cream/40 focus-within:border-acid-yellow">
               <span className="sr-only">Search nights</span>
               <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search artist, venue, sound"

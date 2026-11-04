@@ -4,6 +4,7 @@
  * Every list is filtered by the era you pick and reorders around what is in focus.
  * Data comes from getArtistV2 (database rows with sources, plus Deezer at request time).
  */
+import { shareCard } from "@/lib/share";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import dynamic from "next/dynamic";
@@ -295,13 +296,13 @@ export default function ArtistPage({ a }: { a: ArtistV2 }) {
     } catch { /* storage blocked */ }
     if (member) await memberRpc("set_i_was_there", { p_slug: a.slug, p_moment: id, p_on: on });
   };
+  // Shares the artist card (with their next gig when there is one) and a tracked link back here.
   const share = async () => {
-    const url = `${SITE}/artists/${a.slug}${focus ? `?at=${encodeURIComponent(focus.id)}` : era ? `?era=${era.id}` : ""}`;
-    try {
-      if (navigator.share) { await navigator.share({ title: `${name} on Cats Can Dance`, url }); return; }
-      await navigator.clipboard.writeText(url);
-      setCopied(true); setTimeout(() => setCopied(false), 1600);
-    } catch { /* closed */ }
+    const path = `/artists/${a.slug}${focus ? `?at=${encodeURIComponent(focus.id)}` : era ? `?era=${era.id}` : ""}`;
+    const next = a.upcoming[0];
+    const text = next ? `${name} plays next: ${next.title}${next.city ? `, ${next.city}` : ""}.` : `${name} on Cats Can Dance.`;
+    const r = await shareCard({ kind: "artist", target: a.slug, path, text });
+    if (r === "copied") { setCopied(true); setTimeout(() => setCopied(false), 1600); }
   };
   const toggleRail = () => {
     setRail((v) => { try { localStorage.setItem(LS_RAIL, v ? "closed" : "open"); } catch { /* blocked */ } return !v; });

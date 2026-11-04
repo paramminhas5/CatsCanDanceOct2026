@@ -13,6 +13,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import "@/index.css";
 import "@/pages/ccd.css";
 import React from "react";
+import { logOpenFromRef } from "@/lib/share";
 
 function makeQueryClient() {
   return new QueryClient({
@@ -76,6 +77,8 @@ function PageTransition() {
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  // A visit from a shared card counts as an open for that card (src/lib/share.ts).
+  useEffect(() => { logOpenFromRef(); }, []);
   const queryClient = getQueryClient();
 
   return (
