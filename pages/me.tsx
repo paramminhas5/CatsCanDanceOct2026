@@ -24,6 +24,8 @@ import { StagePill } from "@/components/booking/StageTrack";
 import { dayShort, inrShort } from "@/lib/desk";
 import { artistPath, threadPath } from "@/lib/routes";
 import { SCHOOL_URL } from "@/lib/ccd-db";
+import TicketPass from "@/components/tickets/TicketPass";
+import { shareCard } from "@/lib/share";
 
 const CITIES = ["Bengaluru", "Mumbai", "Delhi NCR", "Goa", "Pune", "Hyderabad", "Chennai", "Kolkata"];
 const inp = "w-full border-4 border-ink bg-white p-3 text-ink";
@@ -329,11 +331,24 @@ function NightBlock({ n, mode, focused, memberId, onChange }: { n: Night; mode: 
         <div className="flex flex-wrap gap-3 mt-3 text-sm font-bold">
           {dir && mode !== "past" && <a href={dir} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Directions</a>}
           {n.tickets.length > 0 && <Link href="/tickets" className="underline underline-offset-4">Your ticket{n.tickets.length > 1 ? "s" : ""} ({n.tickets.length})</Link>}
-          {n.kind === "scene" && mode !== "past" && <Link href="/whats-on" className="underline underline-offset-4">On What's on</Link>}
+          {n.kind === "scene" && mode !== "past" && <Link href={`/whats-on?n=${n.key.slice(6)}`} className="underline underline-offset-4">On What's on</Link>}
+          {mode === "next" && n.date && <a href={`/api/ics/${encodeURIComponent(n.key)}`} className="underline underline-offset-4">Add to calendar</a>}
+          {mode !== "past" && n.plan?.state === "going" && (
+            <button type="button" className="underline underline-offset-4" onClick={() => shareCard({ kind: "going", target: n.kind === "scene" ? n.key.slice(6) : n.key, path: n.kind === "scene" ? `/whats-on?n=${n.key.slice(6)}` : `/nights/${n.key}`, text: `I'm going to ${n.title}. Come with me:` })}>Share: I'm going</button>
+          )}
+          {mode === "past" && n.kind === "ccd" && (
+            <button type="button" className="underline underline-offset-4" onClick={() => shareCard({ kind: "episode", target: n.key, path: `/nights/${n.key}`, text: `I was there: Cats Can Dance ${n.title}.` })}>Share: I was there</button>
+          )}
         </div>
       </header>
 
       <div className="p-5 grid gap-5">
+        {mode === "tonight" && n.tickets.length > 0 && (
+          <div className="grid gap-3">
+            <p className="font-display text-lg">Your ticket{n.tickets.length > 1 ? "s" : ""}</p>
+            {n.tickets.map((t, i) => <TicketPass key={t.code} t={t} when={when} venue={n.venue} index={i} total={n.tickets.length} />)}
+          </div>
+        )}
         {mode === "tonight" && times.length > 0 && (
           <div>
             <p className="font-display text-lg">Set times</p>
