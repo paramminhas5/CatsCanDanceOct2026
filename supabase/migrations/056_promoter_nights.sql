@@ -14,7 +14,7 @@ alter table public.promoters add column if not exists reviewed_at timestamptz;
 alter table public.promoters add column if not exists review_note text;
 
 create table if not exists public.promoter_team (
-  promoter_id uuid not null references public.promoters(id) on delete cascade,
+  promoter_id uuid not null,
   email text not null,
   role text not null default 'admin' check (role in ('owner', 'admin')),
   added_by uuid,
@@ -23,7 +23,7 @@ create table if not exists public.promoter_team (
 );
 alter table public.promoter_team enable row level security;
 
-alter table public.events add column if not exists promoter_id uuid references public.promoters(id) on delete set null;
+alter table public.events add column if not exists promoter_id uuid;
 alter table public.events add column if not exists review_status text check (review_status in ('draft', 'pending', 'approved', 'rejected'));
 alter table public.events add column if not exists review_note text;
 alter table public.events add column if not exists submitted_at timestamptz;
