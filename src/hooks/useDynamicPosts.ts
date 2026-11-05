@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { supabase } from "@/lib/supabase-shim";
-import { setDynamicPosts, type Post } from "@/content/posts";
+import { setDynamicPosts, markDynamicPostsLoaded, type Post } from "@/content/posts";
 
 let loaded = false;
 
-/** Fetches AI-published blog posts from site_settings.blog_posts and merges
- *  them into the in-memory posts list. Runs at most once per session. */
+/** Fetches published blog posts from site_settings.blog_posts and merges
+ *  them into the in-memory posts list. Runs at most once per session.
+ *  Marks the store as loaded when done, even on failure, so a post page
+ *  knows when "not found" is final. */
 export const useDynamicPosts = () => {
   useEffect(() => {
     if (loaded) return;
@@ -23,6 +25,8 @@ export const useDynamicPosts = () => {
         setDynamicPosts(raw as Post[]);
       } catch {
         /* silent */
+      } finally {
+        markDynamicPostsLoaded();
       }
     })();
   }, []);

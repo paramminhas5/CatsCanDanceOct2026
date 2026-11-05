@@ -1,11 +1,12 @@
 import { useParams, Link, Navigate } from "@/lib/compat-router";
 import { useSyncExternalStore } from "react";
+import { useRouter } from "next/router";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import BlogCover from "@/components/BlogCover";
-import { getPost, getRelatedPosts, subscribePosts, getAllPosts, type Category } from "@/content/posts";
+import { getPost, getRelatedPosts, subscribePosts, getAllPosts, dynamicPostsLoaded, type Category } from "@/content/posts";
 import { useDynamicPosts } from "@/hooks/useDynamicPosts";
 
 const SITE = "https://catscandance.com";
@@ -68,10 +69,23 @@ const BlogPost = () => {
   useDynamicPosts();
   // Re-render when dynamic posts arrive
   useSyncExternalStore(subscribePosts, getAllPosts, getAllPosts);
+  const postsLoaded = useSyncExternalStore(subscribePosts, dynamicPostsLoaded, () => false);
+  const router = useRouter();
   const { slug = "" } = useParams();
   const post = getPost(slug);
 
-  if (!post) return <Navigate to="/" replace />;
+  if (!post) {
+    // On a direct load the slug arrives after the first render (router not ready)
+    // and database posts arrive after that. Only give up once both are in.
+    if (!router.isReady || !postsLoaded) {
+      return (
+        <main className="bg-background text-foreground min-h-screen">
+          <Nav />
+        </main>
+      );
+    }
+    return <Navigate to="/" replace />;
+  }
 
   const related = getRelatedPosts(post.slug, 3);
   const cat = (post.category as Category | undefined) ?? "JOURNAL";

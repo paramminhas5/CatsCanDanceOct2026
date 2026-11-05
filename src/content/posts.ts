@@ -241,7 +241,17 @@ const staticPosts: Post[] = rawPosts.map((p, i) => ({
 
 let dynamicPosts: Post[] = [];
 let mergedPosts: Post[] = staticPosts;
+let dynamicLoaded = false;
 const subscribers = new Set<() => void>();
+
+/** True once the database posts have been fetched (or the fetch failed). */
+export const dynamicPostsLoaded = (): boolean => dynamicLoaded;
+
+export const markDynamicPostsLoaded = () => {
+  if (dynamicLoaded) return;
+  dynamicLoaded = true;
+  for (const fn of subscribers) fn();
+};
 
 const rebuildMergedPosts = () => {
   mergedPosts = dynamicPosts.length > 0 ? [...dynamicPosts, ...staticPosts] : staticPosts;
