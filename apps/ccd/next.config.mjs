@@ -1,6 +1,8 @@
-// CCD.SCHOOL lives in its own app (repo: paramminhas5/Ableton-Final-Next).
-// Switch this to https://learn.catscandance.com once that DNS record is live.
-const SCHOOL_URL = process.env.NEXT_PUBLIC_SCHOOL_URL || "https://ableton-final-next-ccd-school.vercel.app";
+// Cats Can Dance, apps/ccd in the platform monorepo (docs/platform-split.md).
+// The other products live at their own URLs. Each one reads an env override so Vercel
+// previews can point at previews, and falls back to the production URL. The same values
+// live in packages/brand (productUrl); this file cannot import TypeScript, so they are repeated here.
+const SCHOOL_URL = (process.env.NEXT_PUBLIC_SCHOOL_URL || "https://school.catscandance.com").replace(/\/$/, "");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,6 +15,8 @@ const nextConfig = {
   reactStrictMode: true,
   // Enable gzip/brotli compression and reduce JS payload
   compress: true,
+  // Workspace packages ship TypeScript source; Next compiles them with the app.
+  transpilePackages: ["@ccd/brand", "@ccd/banner", "@ccd/db", "@ccd/auth"],
   // Tree-shake barrel imports from large packages (experimental in Next 14)
   experimental: {
     optimizePackageImports: [
@@ -40,7 +44,7 @@ const nextConfig = {
       { protocol: "https", hostname: "img.youtube.com" },
       { protocol: "https", hostname: "catscandance.com" },
       { protocol: "https", hostname: "res.cloudinary.com" },
-      // Behold.so CDN — Instagram feed images
+      // Behold.so CDN: Instagram feed images
       { protocol: "https", hostname: "pictures.behold.so" },
       { protocol: "https", hostname: "**.behold.so" },
       // Catch-all for any other HTTPS image sources
@@ -53,7 +57,7 @@ const nextConfig = {
     return config;
   },
   // Suite names serve the existing page files (no duplicate code).
-  // Plain names (3 Nov 2026): /nights, /whats-on, /artists, /tour, /shop, /listen, /adopt.
+  // Plain names (3 Nov 2026): /nights, /whats-on, /shop, /listen, /adopt.
   // Nicknames (Gig guide, Strays, Crew, Episodes, Nine Lives) live in page copy, not URLs.
   async rewrites() {
     return [
@@ -65,15 +69,13 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Old names for pages that still live here.
       { source: "/events", destination: "/nights", permanent: true },
       { source: "/events/:slug", destination: "/nights/:slug", permanent: true },
       { source: "/episodes", destination: "/nights", permanent: true },
       { source: "/episodes/:slug", destination: "/nights/:slug", permanent: true },
       { source: "/prowl", destination: "/whats-on", permanent: true },
       { source: "/discover", destination: "/whats-on", permanent: true },
-      { source: "/litter", destination: "/artists", permanent: true },
-      { source: "/litter/:slug", destination: "/artists/:slug", permanent: true },
-      { source: "/litter/:slug/epk", destination: "/artists/:slug/epk", permanent: true },
       { source: "/scratch", destination: "/shop", permanent: true },
       { source: "/catwalk", destination: "/listen", permanent: true },
       { source: "/playlists", destination: "/listen", permanent: true },
@@ -83,6 +85,12 @@ const nextConfig = {
       { source: "/blog/:slug", destination: "/journal/:slug", permanent: true },
       { source: "/ccdxsocial", destination: "/playbook", permanent: true },
       { source: "/ccdxsocial/:path*", destination: "/playbook", permanent: true },
+
+      { source: "/litter", destination: "/artists", permanent: true },
+      { source: "/litter/:slug", destination: "/artists/:slug", permanent: true },
+      { source: "/litter/:slug/epk", destination: "/artists/:slug/epk", permanent: true },
+
+      // School (working name Ustad) has its own app and repo.
       { source: "/school", destination: SCHOOL_URL, permanent: false },
       { source: "/school/:path*", destination: `${SCHOOL_URL}/:path*`, permanent: false },
     ];

@@ -1,7 +1,8 @@
 {
   "name": "cats-can-dance",
   "private": true,
-  "version": "2.0.0",
+  "version": "3.0.0",
+  "description": "Cats Can Dance: the go-out product. Nights, What's on, crews, Episodes, tickets, Your account and /ops. Lives at apps/ccd in the platform monorepo.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,6 +10,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@ccd/banner": "workspace:*",
+    "@ccd/brand": "workspace:*",
     "@clerk/react": "^6.6.4",
     "@clerk/themes": "^2.4.57",
     "@hookform/resolvers": "^3.10.0",
