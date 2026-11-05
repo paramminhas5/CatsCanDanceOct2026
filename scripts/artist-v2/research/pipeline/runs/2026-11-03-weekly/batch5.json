@@ -1,0 +1,440 @@
+[
+ {
+  "slug": "merman",
+  "name": "MERMAN",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": "Bengaluru",
+  "genres": [
+   "Garage",
+   "Jungle",
+   "D&B"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "merman",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Garage, jungle, and the kind of low-end that fixes posture problems. CCD resident and founder. Producer, DJ and VJ.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "mogasu",
+  "name": "MOGASU",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/mogasu",
+  "instagram": "mogasu",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=WGpxE82dKkc",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "DGTL India 2025 and Echoes of Earth 2024.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "exploring diverse tunes",
+   "no fixed style, drawing on a wide world of music"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=9dLP_cofmv0",
+   "https://www.youtube.com/watch?v=WGpxE82dKkc",
+   "https://www.youtube.com/watch?v=fvFuK5sQFDs",
+   "https://soundcloud.com/mogasu/disco-on-a-wednesday",
+   "https://soundcloud.com/mogasu/yatrigan-kripya-dhyan-de"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "murthovic",
+  "name": "MURTHOVIC",
+  "kind": "musician",
+  "based_city": "Hyderabad",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "Live Electronica",
+   "Transmedia",
+   "Techno",
+   "Carnatic-Electronic",
+   "Bass",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "murthovic",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=vA75LkFzeb4",
+  "labels": "Qilla Records",
+  "members": null,
+  "bio_excerpt": "Murthovic (MSR Murthy) is a Hyderabad DJ, producer, sound practitioner and researcher with close to 20 years in electronic music, and a Magnetic Fields regular. With visual artist Thiruda (Avinash Kumar) he created Elsewhere In India, a transmedia project that joins game engine technology with live performance, set in 2079 with digital avatars of both artists. Their project Jal, Jungle, Zameen deb",
+  "releases_on_record": 7,
+  "release_years": [
+   2017,
+   2024
+  ],
+  "sample_releases": [
+   "Automated Inside (Murthovic's Inside Out Remix), Aardy & Shaun Moses (2024, Hydrozoa)",
+   "Banaue Riddim (on Forte Vol. 9) (2021, Qilla Records)",
+   "Antariksha Sanchar: Transmissions in Space - Vol. 1 (2020)",
+   "Antariksha Sanchar: Transmissions in Space - Vol. 2 (2020)",
+   "In The Flesh, on India Gets Physical Vol. 01 (2019, Get Physical Music)",
+   "Baby Git Down (S-pot & Murthovic Remix), DJ EFX (2017, Abracadabra Recordings)",
+   "They Say (S-pot & Murthovic Remix), on Digitail - Speculator EP (2017, G-Stoned Recordings)"
+  ],
+  "press_urls_already_stored": [
+   "https://homegrown.co.in/homegrown-explore/hyderabad-this-weekend-attend-an-audiovisual-bharatnatyam-dj-set-by-murthovic",
+   "https://magzter.com/stories/entertainment/RollingStone-India/AUDIOVISUAL-ARTISTS-MURTHOVIC-AND-THIRUDA-UNVEIL-NEW-PROJECT-ELSEWHERE-IN-INDIA",
+   "https://www.asianage.com/entertainment/music/281118/a-bandwagon-of-sounds.html"
+  ],
+  "sound_tags_already_stored": [
+   "tunes resting on electronic music and ambient vocals",
+   "electro-classical score blends modular synthesis with South Asian folk sound"
+  ],
+  "mix_urls_already_stored": [
+   "https://soundcloud.com/murthovic/murthovic-house-min-ukg-july",
+   "https://www.youtube.com/watch?v=vA75LkFzeb4",
+   "https://www.youtube.com/watch?v=gHKRdwIGS8c",
+   "https://www.mixcloud.com/murthovic/murthovic-nada-bramha-25-pioneer-dj-underground-sounds-of-india/",
+   "https://www.mixcloud.com/PioneerDJRadio/murthovic-nada-bramha-001-underground-sounds-of-india/"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://murthovic.bandcamp.com",
+   "musicbrainz": "b71af333-6ae8-42b0-97bc-883c47afeee3",
+   "discogs": "https://www.discogs.com/artist/7582131"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "natasha-diggs",
+  "name": "NATASHA DIGGS",
+  "kind": "musician",
+  "based_city": "New York, United States",
+  "from_city": "USA",
+  "genres": [
+   "Soul",
+   "Funk",
+   "Disco",
+   "Hip-Hop"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/NTSRadio/natasha-diggs-30th-august-2019/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Natasha Diggs is a New York City DJ and the resident of the Soul in the Horn party series. She plays soul, funk, hip-hop, disco and Latin records, mostly on vinyl. She was the official DJ on Lauryn Hill's 2015 international tour.",
+  "releases_on_record": 5,
+  "release_years": [
+   2015,
+   2026
+  ],
+  "sample_releases": [
+   "What Went Wrong Last Night (Natasha Diggs Remixes) - Millie Jackson (2026, Acid Jazz)",
+   "Soul In The Horn - The 10 Year Anniversary Edition (2025, Fat Beats)",
+   "Think About This Day (feat. Omar) (2024, Soul in the Horn / Sassafrass Girl)",
+   "Breathe (Natasha Diggs Extended Remix) - Blaze (2023, Slip 'n' Slide)",
+   "Soul Box 45s (with Mr. Len) (2015, Brunswick Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://uproxx.com/music/soul-in-the-horn-interview",
+   "https://the-drop.serato.com/culture/natasha-diggs/",
+   "https://udiscovermusic.com/news/natasha-diggs-celebrating-janet-jackson",
+   "https://mixmag.net/read/soul-in-the-horn-takeover-with-natasha-diggs-in-the-lab-nyc-the-lab"
+  ],
+  "sound_tags_already_stored": [
+   "eclectic range and deep musical knowledge"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=Y2UOn2slU30",
+   "https://www.mixcloud.com/NTSRadio/natasha-diggs-30th-august-2019/",
+   "https://www.mixcloud.com/magneticfieldsfestival/natasha-diggs-desert-disco-mf19/",
+   "https://www.youtube.com/watch?v=auh7d8oMHv4",
+   "https://www.youtube.com/watch?v=28Y_2pIkRB0"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/natashadiggs",
+   "discogs": "https://www.discogs.com/artist/10262428"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "okedo",
+  "name": "OKEDO",
+  "kind": "musician",
+  "based_city": "London and New Delhi",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": "https://open.spotify.com/artist/632612LK6yqJ8mwdqYILAE",
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/14644-wild-city-180-ishaan-okedo",
+  "labels": null,
+  "members": "Ishaan Gandhi",
+  "bio_excerpt": "Okedo is the production name of Ishaan Gandhi, based between London and New Delhi. It started as a duo with Will Clarke. Okedo made the EP New Fusion Movements with Pluto Monkey (2023), the joint project Okedolo with Dolorblind (Season 1, 2022) and the two Soft Serve releases (2025).",
+  "releases_on_record": 7,
+  "release_years": [
+   2019,
+   2025
+  ],
+  "sample_releases": [
+   "Soft Serve (Side A) (2025)",
+   "Soft Serve (Side B) (2025)",
+   "New Fusion Movements (with Pluto Monkey) (2023, Creative Bin Records)",
+   "Season 1 (as Okedolo with Dolorblind) (2022, Export Quality Records)",
+   "Fairy Land (2020, Stamp The Wax)",
+   "Destiny (with King Prawns) (2020)",
+   "Wacheewan // Wacheenee (2019)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/17589-okedo-amp-up-their-individual-voices-danceability-on-new-single-impulse",
+   "https://www.thewildcity.com/news/20141-okedo-pluto-monkey-release-collaborative-ep-new-fusion-movements",
+   "https://www.thewildcity.com/news/12572-listen-wacheewan-by-okedo",
+   "https://www.thewildcity.com/news/19853-okedo-dolorblind-introduce-their-duo-okedolo-with-ep-season-1",
+   "https://mixmag.asia/read/okedolo-okedo-dolorblind-india-season-1-export-quality-records-new-releases",
+   "https://homegrown.co.in/homegrown-creators/new-fusion-movements-listen-to-okedo-pluto-monkeys-new-layered-textural-ep",
+   "https://mixmag.asia/read/okedo-pluto-monkey-prayer-for-a-simple-time-audio-asia"
+  ],
+  "sound_tags_already_stored": [
+   "deep house, hazy",
+   "lo-fi electronic swagger",
+   "live instrumentation, dusty drums",
+   "synthesizer-heavy; indie-pop, Afrobeat, glitch, psychedelia",
+   "percussion-rich downtempo with IDM influences",
+   "percussion-centric, glitch-inspired",
+   "house and electronica",
+   "intricate rhythmic interplay"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/14644-wild-city-180-ishaan-okedo",
+   "https://www.thewildcity.com/mixes/19819-wild-city-213-okedolo",
+   "https://soundcloud.com/okedomusic/sets/mixes",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-185-okedo-11-05-2022/",
+   "https://www.mixcloud.com/skipabeatlive/skip-a-beat-041-guest-mix-by-okedo-30-10-2020/",
+   "https://www.mixcloud.com/boxoutfm/chai-and-chill-085-okedo-19-07-2020/",
+   "https://www.mixcloud.com/krunklive/krunk-guest-mix-106-okedo/"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://okedo.bandcamp.com/"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "ids"
+  ]
+ },
+ {
+  "slug": "prismer",
+  "name": "PRISMER",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "India",
+  "genres": [
+   "Techno",
+   "Bass",
+   "Jungle",
+   "House",
+   "Dubstep",
+   "Breakbeat",
+   "Disco"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/prismeratti",
+  "instagram": "prismertraxx",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=9E_2C4o8KlU",
+  "labels": "Boxout.FM, Reel Long Overdub, Tokyo Hell",
+  "members": null,
+  "bio_excerpt": "Prismer is Rohan Kale, a New Delhi producer and DJ whose music runs across techno, jungle, drum and bass, dubstep, breakbeat and house. His early releases came out on Boxout.FM, Reel Long Overdub and Tokyo Hell. He has played alongside DJ Stingray, Pangaea, Ivy Lab and Rider Shafique, and has played Magnetic Fields and Grasslands in Nepal. He was on the bill for The Warehouse Project India in Octo",
+  "releases_on_record": 2,
+  "release_years": [
+   2021,
+   2022
+  ],
+  "sample_releases": [
+   "Rushh (on Reel Small World: India) (2022, Reel Long Overdub)",
+   "Babel (on SUCHI SELECTS) (2021, boxout.fm Recordings)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.ticketfairy.com/word/2023/01/20/tfword-in-conversation-with-prismer",
+   "https://theindianmusicdiaries.com/electrifying-nights-await-g5as-port-after-dark-with-dj-nariki-prismer/",
+   "https://www.goethe.de/prj/zei/en/exp/25808212.html",
+   "https://www.thewildcity.com/mixes/6930-wild-city-148-rohan-kal"
+  ],
+  "sound_tags_already_stored": [
+   "dark and arresting sets",
+   "deep, boundaryless realm of sound",
+   "thumping bass, breaks and techno"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=JxvsTrIbq-Q",
+   "https://www.youtube.com/watch?v=9E_2C4o8KlU",
+   "https://www.youtube.com/watch?v=28cFJOVcjc8",
+   "https://soundcloud.com/thewildcity/wild-city-148-rohan-kale",
+   "https://soundcloud.com/tfword/tf-guest-mix-prismer"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "ids",
+   "claims"
+  ]
+ },
+ {
+  "slug": "pulpy-shilpy",
+  "name": "PULPY SHILPY",
+  "kind": "musician",
+  "based_city": "Pune, India",
+  "from_city": "India",
+  "genres": [
+   "Electro",
+   "Disco"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "pulpyshilpy",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=hqkNChaS0kM",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Pulpy Shilpy is an electronic producer who works from a home studio in Pune. Her debut electro EP Slough was covered by Wild City. A second EP, heavy on disco and synths, was in progress, and she releases on OCL Records.",
+  "releases_on_record": 4,
+  "release_years": [
+   2017,
+   2023
+  ],
+  "sample_releases": [
+   "Greaser (2023, OCL Records)",
+   "Swarm Intel Vol.1 (track: Rigor Tortoise) (2022, OCL Records)",
+   "Slough (2019)",
+   "Kaadal Mannan (2017)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/20021-pulpy-shilpy-is-at-the-peripheries-of-leftfield-acid-house-on-greaser",
+   "https://www.thewildcity.com/news/12016-first-listen-slough-by-pulpy-shilpy"
+  ],
+  "sound_tags_already_stored": [
+   "cyborg sex funk (her SoundCloud tag)"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "bandcamp": "https://pulpyshilpy.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "ids"
+  ]
+ },
+ {
+  "slug": "reble",
+  "name": "REBLE",
+  "kind": "musician",
+  "based_city": "Meghalaya, India",
+  "from_city": "India",
+  "genres": [
+   "Hip-Hop",
+   "Trap",
+   "Hardcore"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "rebleofficial",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=4DVgVN8r_k4",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Reble is Daiaphi Lamare, a rapper and songwriter from Nangbah in West Jaintia Hills, Meghalaya. She began in 2018 as Daya, released her debut EP Entropy on Kamani Records in 2022, and contributed to the Dhurandhar film soundtracks in 2025.",
+  "releases_on_record": 25,
+  "release_years": [
+   2019,
+   2026
+  ],
+  "sample_releases": [
+   "Move - Yeh Ishq Ishq (Eclipsa Audio) (2026, Saregama India Ltd)",
+   "Run Down The City (Monica Eclipsa Audio) (2026, Saregama India Ltd)",
+   "Praying Mantis (Radio Edit) (2026, A Homegrown Records / Atlantic Records Release)",
+   "Didi (Sher-E-Baloch) (From \"Dhurandhar The Revenge\") (2026, Super Cassettes Industries Private Limited)",
+   "Vaari Jaavan (From \"Dhurandhar The Revenge\") (2026, Super Cassettes Industries Private Limited)",
+   "Rang De Lal (Oye Oye) (From \"Dhurandhar The Revenge\") (2026, Super Cassettes Industries Private Limited)",
+   "Main Aur Tu (From \"Dhurandhar The Revenge\") (2026, Super Cassettes Industries Private Limited)",
+   "Naal Nachna (From \"Dhurandhar\") (2025, Saregama India Ltd)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/20729-reble-releases-ambitious-music-video-for-tre-ess-produced-terror",
+   "https://www.thewildcity.com/news/21693-reble-returns-to-her-aggressive-trap-roots-with-praying-mantis-after-bollywood-breakthrough",
+   "https://rollingstoneindia.com/shillong-hip-hop-artist-reble-entropy-ep-bond-fission-video/",
+   "https://www.freepressjournal.in/lifestyle/meet-reble-the-24-year-old-artist-from-meghalaya-reshaping-the-sound-of-indian-hip-hop",
+   "https://www.esquireindia.co.in/amp/story/culture/books-and-music/rapper-reble-story-from-shillong-outsider-to-indias-most-uncompromising-hip-hop-voice"
+  ],
+  "sound_tags_already_stored": [
+   "raw energy, distorted synths",
+   "hip hop with elements from trap, hardcore, alternative and R&B"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "wikidata": "Q137773348",
+   "musicbrainz": "0a14e86f-9305-4de7-8b6d-2f8998dc2cdc",
+   "deezer": "14384615"
+  },
+  "has_eras": true,
+  "mbid": "0a14e86f-9305-4de7-8b6d-2f8998dc2cdc",
+  "gaps": [
+   "photo"
+  ]
+ }
+]

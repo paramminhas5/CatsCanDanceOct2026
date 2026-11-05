@@ -1,0 +1,58 @@
+[
+ {
+  "slug": "weird-sounding-dude",
+  "name": "WEIRD SOUNDING DUDE",
+  "kind": "musician",
+  "based_city": "Bengaluru, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/weirdsoundingdude",
+  "instagram": "weirdsoundingdude",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Indian electronic producer. Echoes of Earth 2024.",
+  "releases_on_record": 68,
+  "release_years": [
+   2014,
+   2026
+  ],
+  "sample_releases": [
+   "Withdraw (2026, Movement Recordings)",
+   "Profound Concept (2026, Armoony Records)",
+   "Jumbo (Jamie Stevens Remix) / Summersault (Weird Sounding Dude Remix) (2026, UV)",
+   "Fluorite (2026, Stripped Recordings)",
+   "Passing Nights (2025, Mango Alley)",
+   "Weightless Moments / Inside Clouds (2025, UV)",
+   "Living Dust (2025, Movement Recordings)",
+   "Nightshift / Patches & Patterns (2025, Mango Alley)"
+  ],
+  "press_urls_already_stored": [
+   "https://electronicgroove.com/eg-artists/eg-spotlight-274-weird-sounding-dude/",
+   "https://balancemusic.com.au/weird-sounding-dude-goes-deep-down-under-on-tour-of-australia-and-new-zealand/"
+  ],
+  "sound_tags_already_stored": [
+   "progressive house",
+   "chuggy grooves, squelchy rhythms, and winding melodies"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "bandcamp": "https://weirdsoundingdude.bandcamp.com/",
+   "ra": "weirdsoundingdude",
+   "discogs": "3801958",
+   "musicbrainz": "de3c8bdb-36ab-48c4-aaaf-afdca647d63b",
+   "deezer": "6208430",
+   "beatport": "https://www.beatport.com/artist/weird-sounding-dude/363002"
+  },
+  "has_eras": true,
+  "mbid": "de3c8bdb-36ab-48c4-aaaf-afdca647d63b",
+  "gaps": [
+   "photo"
+  ]
+ }
+]
