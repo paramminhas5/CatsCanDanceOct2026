@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SignInGate from "@/components/SignInGate";
+import ImageField from "@/components/promoters/ImageField";
 import { getDashboard, nightStatus, saveNight, stateOf, type PNight, type Tier } from "@/lib/promoters";
 
 const inp = "w-full border-4 border-ink bg-white p-3";
@@ -88,7 +89,7 @@ function Editor({ promoter, night }: { promoter: string; night: string | null })
         <div><label className={lab}>Lineup</label><input className={inp} value={f.lineup} onChange={(e) => setF({ ...f, lineup: e.target.value })} placeholder="Names, comma separated" /></div>
         <div><label className={lab}>Sounds</label><input className={inp} value={f.genres} onChange={(e) => setF({ ...f, genres: e.target.value })} placeholder="e.g. house, disco" /></div>
         <div><label className={lab}>About the night</label><textarea className={inp} rows={4} value={f.blurb} onChange={(e) => setF({ ...f, blurb: e.target.value })} maxLength={1500} placeholder="What to expect, in a few plain lines" /></div>
-        <div><label className={lab}>Poster image link</label><input className={inp} value={f.poster_url} onChange={(e) => setF({ ...f, poster_url: e.target.value })} placeholder="https://…" autoCapitalize="none" /></div>
+        <ImageField promoter={promoter} kind="poster" label="Poster" hint="Portrait (4:5) works best." value={f.poster_url} onChange={(u) => setF((x) => ({ ...x, poster_url: u }))} inputClass={inp} />
         <div><label className={lab}>Capacity</label><input className={inp} inputMode="numeric" value={f.capacity} onChange={(e) => setF({ ...f, capacity: e.target.value.replace(/\D/g, "") })} placeholder="How many the room holds" /></div>
       </section>
 

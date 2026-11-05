@@ -4,13 +4,16 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import PageHero from "@/components/PageHero";
 import { Input } from "@/components/ui/input";
-import { NGOS, NGO_CITIES, NGO_CATEGORIES, type Ngo } from "@/content/ngos";
+import { NGOS as NGO_ROWS, NGO_CITIES, NGO_CATEGORIES, type Ngo } from "@/content/ngos";
 
 const ensureUrl = (s: string | null) => {
   if (!s) return null;
   if (/^https?:\/\//i.test(s)) return s;
   return `https://${s}`;
 };
+
+// Ranks, founding details and impact lines in the source file were not sourced, so the page shows only name, place, focus and links, A to Z.
+const NGOS = [...NGO_ROWS].sort((a, b) => a.name.localeCompare(b.name));
 
 const NgoCard = ({ n }: { n: Ngo }) => {
   const site = ensureUrl(n.website);
@@ -22,15 +25,9 @@ const NgoCard = ({ n }: { n: Ngo }) => {
       <header className="flex items-start justify-between gap-3">
         <div>
           <h3 className="font-display text-xl text-ink leading-tight">{n.name}</h3>
-          <p className="text-xs text-ink/60 mt-1">
-            {n.location} · est. {n.founded}
-          </p>
+          <p className="text-xs text-ink/60 mt-1">{n.location}</p>
         </div>
-        <span className="shrink-0 text-[10px] font-display bg-ink text-cream px-2 py-1 border-2 border-ink">
-          #{n.rank}
-        </span>
       </header>
-      <p className="text-sm text-ink/80 line-clamp-4">{n.impact}</p>
       <div className="flex flex-wrap gap-1.5">
         {n.categories.map((c) => (
           <span key={c} className="text-[10px] font-display uppercase bg-acid-yellow text-ink px-2 py-0.5 border-2 border-ink">
@@ -77,7 +74,6 @@ const CatsCanCare = () => {
       return (
         n.name.toLowerCase().includes(ql) ||
         n.location.toLowerCase().includes(ql) ||
-        n.impact.toLowerCase().includes(ql) ||
         n.focus.join(" ").toLowerCase().includes(ql)
       );
     });
@@ -124,7 +120,7 @@ const CatsCanCare = () => {
             <Input
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Name, city, focus, impact…"
+              placeholder="Name, city, focus…"
               className="border-4 border-ink"
             />
           </div>
@@ -195,7 +191,6 @@ const CatsCanCare = () => {
               >
                 <h3 className="font-display text-lg leading-tight">{n.name}</h3>
                 <p className="text-xs text-ink/60 mt-1">{n.location}</p>
-                <p className="text-sm mt-2 line-clamp-3">{n.impact}</p>
               </a>
             ))}
           </div>

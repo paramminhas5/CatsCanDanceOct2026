@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SignInGate from "@/components/SignInGate";
+import ImageField from "@/components/promoters/ImageField";
 import {
   ACCENT, ACCENTS, accentOf, getDashboard, nightPath, nightStatus, promoterPath, saveBrand, setTeam, stateOf, type Accent, type Dashboard, type PNight,
 } from "@/lib/promoters";
@@ -76,8 +77,8 @@ function Brand({ d, onSaved }: { d: Dashboard; onSaved: () => void }) {
             ))}
           </div>
         </div>
-        <input className={inp} value={f.logo_url} onChange={(e) => setF({ ...f, logo_url: e.target.value })} placeholder="Logo image link (https://…), square works best" autoCapitalize="none" />
-        <input className={inp} value={f.cover_url} onChange={(e) => setF({ ...f, cover_url: e.target.value })} placeholder="Cover photo link (https://…), wide" autoCapitalize="none" />
+        <ImageField promoter={p.slug} kind="logo" label="Logo" hint="Square works best." value={f.logo_url} onChange={(u) => setF((x) => ({ ...x, logo_url: u }))} inputClass={inp} />
+        <ImageField promoter={p.slug} kind="cover" label="Cover photo" hint="Wide works best. It sits behind your name." value={f.cover_url} onChange={(u) => setF((x) => ({ ...x, cover_url: u }))} inputClass={inp} />
         <textarea className={inp} rows={4} value={f.blurb} onChange={(e) => setF({ ...f, blurb: e.target.value })} placeholder="About you, in a few plain lines" maxLength={1200} />
         <div className="grid grid-cols-2 gap-2">
           <input className={inp} value={f.city} onChange={(e) => setF({ ...f, city: e.target.value })} placeholder="City" />

@@ -1,6 +1,6 @@
 /**
  * /promote: run your night on CCD. What a promoter gets, the application, and the promoters you already run.
- * Free for now (Param, 5 Nov 2026: "we will charge a cut eventually, let's not charge anything right now").
+ * Free for now. Later: 10% of paid ticket sales only (Param, 5 Nov 2026).
  */
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -103,6 +103,10 @@ export default function PromotePage() {
               </li>
             ))}
           </ul>
+          <div className="mt-6 border-4 border-ink bg-acid-yellow p-4">
+            <p className="font-display text-lg leading-tight">What it costs</p>
+            <p className="text-sm mt-1">Nothing. When paid tickets come to CCD, we will take 10% of paid ticket sales. Free tickets, the free list and the door stay free. We will tell you before anything changes.</p>
+          </div>
           <p className="mt-6 text-sm text-ink/70">How it works: apply, we approve you, you build a night, we approve the night, it goes live. Your team and your door staff sign in with their own email.</p>
         </div>
         <div>

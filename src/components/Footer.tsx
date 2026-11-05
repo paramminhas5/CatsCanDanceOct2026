@@ -75,7 +75,7 @@ const Footer = () => {
             </Link>
             <p className="mt-3 text-sm text-cream/70 max-w-[34ch]">Nights, artists and a school for electronic music in India. Bengaluru.</p>
             <div className="mt-6 max-w-sm">
-              <p className="font-display text-xs uppercase tracking-[0.14em] text-acid-yellow mb-2">The week's picks, every Thursday</p>
+              <p className="font-display text-xs uppercase tracking-[0.14em] text-acid-yellow mb-2">Join the newsletter</p>
               {state === "done" ? (
                 <p className="font-display text-acid-yellow text-sm">You're on the list.</p>
               ) : (
