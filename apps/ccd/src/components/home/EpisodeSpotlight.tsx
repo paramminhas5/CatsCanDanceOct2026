@@ -8,6 +8,7 @@ import Link from "next/link";
 import catHeadphones from "@/assets/cat-headphones.png";
 import { imgUrl } from "@/lib/img";
 import type { CcdEvent } from "@/lib/ccd-db";
+import { LINKS, productLink } from "@ccd/brand";
 import { displayDate, displayTime, startDate } from "@/lib/nights";
 import { resolvePoster } from "@/lib/poster";
 import { loadCrowd, type Crowd } from "@/lib/plans";
@@ -104,7 +105,7 @@ export default function EpisodeSpotlight({ next, past, hasTickets, lineup }: Pro
               <div className="flex flex-wrap gap-2">
                 {lineup.map(({ name, slug }) =>
                   slug ? (
-                    <Link key={name} href={`/artists/${slug}`} className="font-display text-xs md:text-sm border-2 border-acid-yellow px-2.5 py-1 hover:bg-acid-yellow hover:text-ink transition-colors">{name}</Link>
+                    <a key={name} href={productLink("artists", LINKS.artists.artist(slug))} className="font-display text-xs md:text-sm border-2 border-acid-yellow px-2.5 py-1 hover:bg-acid-yellow hover:text-ink transition-colors">{name}</a>
                   ) : (
                     <span key={name} className="font-display text-xs md:text-sm border-2 border-cream/40 px-2.5 py-1">{name}</span>
                   ),

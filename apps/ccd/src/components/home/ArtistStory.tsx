@@ -5,10 +5,10 @@
  * step can be clicked. Data from src/lib/home.ts (getStory).
  */
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import catDj from "@/assets/cat-headphones.png";
 import { imgUrl } from "@/lib/img";
 import type { ArtistStory as Story } from "@/lib/home";
+import { LINKS, productLink } from "@ccd/brand";
 
 const DUR = [1400, 3200, 3200, 3200, 3200, 6600];
 const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -96,7 +96,7 @@ export default function ArtistStory({ story }: { story: Story | null }) {
               <p className="font-display text-2xl sm:text-3xl md:text-5xl leading-[0.95] break-words">{story.name.toUpperCase()}</p>
               <p className="text-xs md:text-sm text-ink/70 mt-1 truncate">{[story.city, story.genres.join(", "), story.label].filter(Boolean).join(" · ")}</p>
             </div>
-            <Link href={`/artists/${story.slug}`} className="hidden sm:inline-block shrink-0 font-display text-xs px-3 py-2 border-[3px] border-ink bg-magenta text-cream">Book</Link>
+            <a href={productLink("artists", LINKS.artists.book(story.slug))} className="hidden sm:inline-block shrink-0 font-display text-xs px-3 py-2 border-[3px] border-ink bg-magenta text-cream">Book</a>
           </div>
           <div className="grid grid-cols-4 gap-2 px-4 md:px-5 pb-4">
             {[[story.counts.releases + (step >= 2 ? 0 : -1), "releases"], [story.counts.press - (step >= 3 ? 0 : 1), "press"], [story.counts.eras, "eras"], [story.counts.since ?? "", "since"]].map(([n, l]) => (
@@ -195,7 +195,7 @@ export default function ArtistStory({ story }: { story: Story | null }) {
 
           {/* what you do */}
           <div className="grid grid-cols-[minmax(0,1fr)] md:grid-cols-3 gap-5 md:gap-7 mt-12 md:mt-16">
-            <Do title="Claim your page." body="It is already built. Claim it, check it and fix anything we got wrong. Then it is yours to edit." cta="Claim your page" href="/for-artists#claim" tone="bg-acid-yellow">
+            <Do title="Claim your page." body="It is already built. Claim it, check it and fix anything we got wrong. Then it is yours to edit." cta="Claim your page" href={productLink("artists", LINKS.artists.home)} tone="bg-acid-yellow">
               <div className="flex gap-3 items-center">
                 <img src={story.photo} alt="" className="w-14 h-14 object-cover border-[3px] border-ink" />
                 <div>
@@ -204,7 +204,7 @@ export default function ArtistStory({ story }: { story: Story | null }) {
                 </div>
               </div>
             </Do>
-            <Do title="Post tour dates." body="City and date, that's it. They show on your page and on On tour, and promoters there can book the nights you left open." cta="Post tour dates" href="/tour" tone="bg-electric-blue text-cream">
+            <Do title="Post tour dates." body="City and date, that's it. They show on your page and on On tour, and promoters there can book the nights you left open." cta="Post tour dates" href={productLink("artists", LINKS.artists.tour)} tone="bg-electric-blue text-cream">
               <div className="grid grid-cols-2 gap-2 text-ink">
                 {[["City", "Goa", 800], ["Date", "Sat 26 Dec", 800], ["City", "Mumbai", 2600], ["Date", "Thu 31 Dec", 2600]].map(([l, v, at], i) => (
                   <div key={i}><p className="text-[10px] font-bold uppercase tracking-[0.12em] text-cream mb-1">{l}</p><div className="border-[3px] border-ink bg-white px-2 py-1.5 text-xs font-semibold min-h-[30px]">{mini > (at as number) ? v : ""}</div></div>
@@ -212,7 +212,7 @@ export default function ArtistStory({ story }: { story: Story | null }) {
               </div>
               {mini > 4800 && <span className="ccd-pop absolute right-4 bottom-4 font-display text-lg border-4 border-ink bg-acid-yellow text-ink px-3 py-0.5 -rotate-6">Posted</span>}
             </Do>
-            <Do title="Answer bookings." body="Every request arrives as a brief. Reply, counter with your fee, confirm. Numbers and emails stay hidden until it's confirmed." cta="See the booking desk" href="/book" tone="bg-cream">
+            <Do title="Answer bookings." body="Every request arrives as a brief. Reply, counter with your fee, confirm. Numbers and emails stay hidden until it's confirmed." cta="See the booking desk" href={productLink("artists", LINKS.artists.bookings)} tone="bg-cream">
               <div className="grid gap-2 text-xs">
                 <div className="border-[3px] border-ink bg-white px-2.5 py-1.5 max-w-[85%]"><b>Brief:</b> Sat 12 Dec · Bengaluru · 400 people · 2h</div>
                 {mini > 1500 && <div className="ccd-rise border-[3px] border-ink bg-electric-blue text-cream px-2.5 py-1.5 max-w-[85%] justify-self-end">Interested. Counter: ₹80k, 90 min.</div>}
@@ -256,7 +256,7 @@ function Do({ title, body, cta, href, tone, children }: { title: string; body: s
       <div className="p-5 flex flex-col gap-3 flex-1">
         <h4 className="font-display text-2xl leading-none">{title}</h4>
         <p className="text-sm md:text-base text-ink/75">{body}</p>
-        <Link href={href} className="mt-auto self-start font-display text-sm px-4 py-2.5 border-4 border-ink bg-ink text-cream hover:bg-acid-yellow hover:text-ink transition-colors">{cta}</Link>
+        <a href={href} className="mt-auto self-start font-display text-sm px-4 py-2.5 border-4 border-ink bg-ink text-cream hover:bg-acid-yellow hover:text-ink transition-colors">{cta}</a>
       </div>
     </div>
   );
