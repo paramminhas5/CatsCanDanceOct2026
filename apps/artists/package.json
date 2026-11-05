@@ -1,0 +1,37 @@
+{
+  "name": "@ccd/artists",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Artists (working name Headliner): sourced artist pages, discovery, the booking desk, On tour and claims. Next 16 App Router.",
+  "scripts": {
+    "dev": "next dev -p 3101",
+    "build": "next build",
+    "start": "next start -p 3101",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "dependencies": {
+    "@ccd/auth": "workspace:*",
+    "@ccd/banner": "workspace:*",
+    "@ccd/brand": "workspace:*",
+    "@ccd/db": "workspace:*",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.119.0",
+    "lucide-react": "^1.69.0",
+    "next": "16.4.5",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.4",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "16.4.5",
+    "tailwindcss": "4.3.4",
+    "typescript": "5.9.3"
+  }
+}
