@@ -1,0 +1,20 @@
+{
+  "name": "@ccd/banner",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The Cats Can Dance banner: the strip above every product that links the suite together.",
+  "type": "module",
+  "main": "./src/index.tsx",
+  "types": "./src/index.tsx",
+  "exports": {
+    ".": "./src/index.tsx",
+    "./banner.css": "./src/banner.css"
+  },
+  "files": ["src"],
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "dependencies": {
+    "@ccd/brand": "workspace:*"
+  }
+}

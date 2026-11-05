@@ -1,0 +1,96 @@
+/* The Cats Can Dance banner: one strip above every product. */
+.ccd-banner {
+  --banner-bg: #0a0a0c;
+  --banner-text: #f2f2f7;
+  --banner-muted: #9a9aa3;
+  --banner-h: 36px;
+  position: relative;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: var(--banner-h);
+  padding: 0 16px;
+  background: var(--banner-bg);
+  color: var(--banner-text);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+@media (max-width: 640px) {
+  .ccd-banner { --banner-h: 32px; gap: 10px; padding: 0 12px; font-size: 12px; }
+  .ccd-banner__promise { display: none; }
+}
+
+.ccd-banner__home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--banner-text);
+  text-decoration: none;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.ccd-banner__cat { width: 16px; height: 16px; flex: none; }
+
+.ccd-banner__products {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ccd-banner__products::-webkit-scrollbar { display: none; }
+
+.ccd-banner__product {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: var(--banner-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 120ms ease, background 120ms ease;
+}
+.ccd-banner__product:hover { color: var(--banner-text); background: rgba(255, 255, 255, 0.06); }
+.ccd-banner__product[aria-current="true"] {
+  color: var(--banner-text);
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: 700;
+}
+.ccd-banner__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--dot, #fff);
+  flex: none;
+}
+.ccd-banner__verb { opacity: 0.7; font-weight: 500; }
+.ccd-banner__product[aria-current="true"] .ccd-banner__verb { opacity: 1; }
+
+.ccd-banner__promise {
+  margin-left: auto;
+  color: var(--banner-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ccd-banner__account {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--banner-text);
+  text-decoration: none;
+  white-space: nowrap;
+  flex: none;
+}
+.ccd-banner__account:hover { border-color: rgba(255, 255, 255, 0.4); }

@@ -1,0 +1,16 @@
+{
+  "name": "@ccd/brand",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cats Can Dance product registry and design tokens for every product (CCD, Artists, Gate, School).",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./products": "./src/products.ts",
+    "./tokens": "./src/tokens.ts",
+    "./css/*": "./css/*"
+  },
+  "files": ["src", "css"]
+}

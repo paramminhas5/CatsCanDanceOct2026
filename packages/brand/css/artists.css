@@ -1,0 +1,62 @@
+/* Artists (working name Headliner) tokens. Mirrors packages/brand/src/tokens.ts. */
+:root {
+  --paper: #ffffff;
+  --bone: #f4f2ec;
+  --ink: #0a0a0c;
+  --graphite: #2b2b30;
+  --mute: #6b6b70;
+  --line: #e6e4de;
+  --acid: #b6ef36;
+  --acid-deep: #8fd013;
+  --live: #ff3d00;
+
+  --font-display: 'Bricolage Grotesque', 'Inter Tight', system-ui, sans-serif;
+  --font-body: Geist, Inter, system-ui, sans-serif;
+
+  --radius-card: 16px;
+  --radius-input: 12px;
+  --radius-photo: 14px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 1px 2px rgba(10, 10, 12, 0.04), 0 12px 32px rgba(10, 10, 12, 0.08);
+  --shadow-float: 0 24px 60px rgba(10, 10, 12, 0.16);
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --t-fast: 160ms;
+  --t-base: 280ms;
+}
+
+:root:not([data-theme="light"]) {
+  @media (prefers-color-scheme: dark) {
+    --paper: #0f0f12;
+    --bone: #16161a;
+    --ink: #f4f2ec;
+    --graphite: #d6d4ce;
+    --mute: #9a9aa3;
+    --line: #26262c;
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.5);
+    --shadow-float: 0 24px 60px rgba(0, 0, 0, 0.6);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f0f12;
+  --bone: #16161a;
+  --ink: #f4f2ec;
+  --graphite: #d6d4ce;
+  --mute: #9a9aa3;
+  --line: #26262c;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  font-variation-settings: "opsz" 96;
+}
+
+.mark {
+  /* The acid marker behind a word. */
+  background: linear-gradient(transparent 55%, var(--acid) 55%, var(--acid) 92%, transparent 92%);
+  padding: 0 0.08em;
+}

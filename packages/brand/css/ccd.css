@@ -1,0 +1,18 @@
+/* Cats Can Dance tokens. These match src/index.css in apps/ccd and must not drift. */
+:root {
+  --stone: #e8e6e3;
+  --cream: #fffdf5;
+  --ink: #050a14;
+  --red: #dc2626;
+  --acid: #b6ef36;
+  --electric: #2563eb;
+
+  --font-display: 'Bowlby One', system-ui, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  --shadow-hard: 8px 8px 0 0 var(--ink);
+  --shadow-hard-lg: 14px 14px 0 0 var(--ink);
+  --border-ink: 3px solid var(--ink);
+}

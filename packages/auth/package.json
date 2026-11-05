@@ -1,0 +1,13 @@
+{
+  "name": "@ccd/auth",
+  "version": "0.1.0",
+  "private": true,
+  "description": "One login across the Cats Can Dance products: the shared cookie domain for Supabase Auth, and signed hand-off tokens for School.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": ["src"]
+}

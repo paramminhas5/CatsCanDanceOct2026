@@ -1,0 +1,30 @@
+/* School (working name Ustad) identity tokens. The instrument's own design system (Model 1)
+   lives inside the School app; these cover the wordmark, banner and marketing pages. */
+:root {
+  --body: #121214;
+  --graphite: #1c1c1e;
+  --silicone: #2c2c30;
+  --seam: #0b0b0d;
+  --label: #8e8e93;
+  --cream: #f2f2f7;
+  --glass: #0f1f1b;
+  --lcd: #9df5d8;
+  --go: #ff4d8d;
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --radius-device: 22px;
+  --radius-pad: 8px;
+  --radius-screen: 10px;
+  --engrave: 0 1px 0 rgba(255, 255, 255, 0.08), 0 -1px 0 rgba(0, 0, 0, 0.6);
+}
+
+.engraved {
+  color: var(--label);
+  text-shadow: var(--engrave);
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  font-size: 11px;
+}

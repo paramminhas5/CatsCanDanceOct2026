@@ -1,5 +1,6 @@
 node_modules
 .next
+.turbo
 .env*
 !.env.example
 *.tsbuildinfo
@@ -7,4 +8,6 @@ next-env.d.ts
 .vercel
 __pycache__/
 .claude/worktrees/
-scripts/audit/out/
+apps/*/scripts/audit/out/
+apps/*/test-results/
+apps/*/playwright-report/
