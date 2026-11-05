@@ -45,7 +45,7 @@ const VideosPage = () => {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     name: v.title,
-    description: `${v.title} — Cats Can Dance, Bangalore underground.`,
+    description: `${v.title} | Cats Can Dance, Bangalore underground.`,
     thumbnailUrl: [v.thumbnail],
     uploadDate: v.publishedAt,
     contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
@@ -60,7 +60,7 @@ const VideosPage = () => {
     ? {
         "@context": "https://schema.org",
         "@type": "ItemList",
-        name: "Cats Can Dance — videos",
+        name: "Cats Can Dance: videos",
         itemListElement: videos.slice(0, 25).map((v, i) => ({
           "@type": "ListItem",
           position: i + 1,
@@ -73,8 +73,8 @@ const VideosPage = () => {
   return (
     <main className="bg-background text-foreground">
       <SEO
-        title="Videos — Cats Can Dance | Sets, recaps & behind the scenes"
-        description="Watch the tapes — every live set, recap and behind the scenes drop from the Cats Can Dance YouTube channel."
+        title="Videos | Cats Can Dance | Sets, recaps & behind the scenes"
+        description="Watch the tapes: every live set, recap and behind the scenes drop from the Cats Can Dance YouTube channel."
         path="/videos"
         jsonLd={itemListLd ? [...videoLd, itemListLd] : videoLd}
       />
@@ -120,7 +120,7 @@ const VideosPage = () => {
           {error && (
             <div className="aspect-video border-4 border-ink chunk-shadow bg-ink overflow-hidden">
               <iframe
-                title="Cats Can Dance — Channel Uploads"
+                title="Cats Can Dance: Channel Uploads"
                 src="https://www.youtube.com/embed/videoseries?list=UUmtg0d8E2PXfs3vlQIcGwdQ"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

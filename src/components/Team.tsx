@@ -12,7 +12,7 @@ const founders = [
 ];
 
 const roles = [
-  { name: "Music & Curation", desc: "Help shape the sound — DJs, lineups, playlists.", bg: "bg-lime", text: "text-ink", img: catHeadphones },
+  { name: "Music & Curation", desc: "Help shape the sound: DJs, lineups, playlists.", bg: "bg-lime", text: "text-ink", img: catHeadphones },
   { name: "Brand & Design", desc: "Identity, posters, merch, art direction.", bg: "bg-orange", text: "text-ink", img: catLeft },
   { name: "Community & Ops", desc: "Run the door, the pack, the experience.", bg: "bg-electric-blue", text: "text-cream", img: catRight },
   { name: "Content & Video", desc: "Capture nights, edit recaps, grow channels.", bg: "bg-cream", text: "text-ink", img: catDancer },

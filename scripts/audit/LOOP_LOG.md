@@ -52,3 +52,23 @@ Second scheduled round, same branch and PR #20.
   - Home hero on phones: the cat illustrations sit on top of "DANCE" and the left edge of the word is cut. Moving the left cats down or behind the word would fix it. Design change, so canvas first.
   - Episode 5 poster still shows "PLACEHOLDER · POSTER COMING" in the public page. Param to swap in the real poster when it exists (data, not code).
   - The data side of title cleanup: the same rules as `tidyTitle` in the scraper or a trigger would clean titles at the source for share cards and emails too. Needs a migration (Param).
+
+## Loop round 3 (5 Nov 2026)
+Third scheduled round, same branch and PR #20.
+- Date: Thu 5 Nov 2026.
+- Audit before: default 13 pages, desktop 13 of 13 clean, phone 12 of 13 (/artists 6 small tap targets). Extra pages: /about, /cookies and /journal had em dashes on both widths; /school was "too wide" on phone.
+- Audit after: default 13 pages clean on both widths. /about, /cookies, /journal, /events, /videos, /privacy, /press, /pets and the two Bengaluru guides clean on both widths.
+- Note for next rounds: /school is a redirect to the separate School app (ableton-final-next-ccd-school.vercel.app), so its findings (a 450px electric blue card on phone, one em dash in "Each path is a mission snake") belong to that repo, not this one. Leave /school out of `PAGES`.
+- Fixed:
+  - /artists: the featured cards (every 9th artist with a photo, Kohra first) collapsed to a thin strip on phones because `col-span-2 row-span-2` had no height of its own. They now keep a square shape and show as large photo cards. This was the "6 small tap targets" the audit kept reporting; they were real, not mid-animation.
+  - /artists: cards with no photo printed the bio on top of the name and genre chips on phones. The bio now shows from the small tablet width up, 3 lines.
+  - Em dash sweep, part 2: About, Team, Cookies, Events, BlogPost, ProductDetail, TalentDirectory, Videos, PromoterDetail, CatsCanCare, content/posts.ts (journal), content/scenes.ts and content/artists.ts. Page titles use " | Cats Can Dance". Journal prose was read line by line: dashes became a full stop, a colon or brackets where a comma would have made a run-on.
+  - check.cjs now waits for entrance animations to finish (up to 1.5s, marquees skipped) before measuring.
+- Built:
+  - Artist page v2, Watch and listen: research notes in brackets are dropped from video and mix titles on display ("Kohra | Boiler Room: Bengaluru (set79 tracklist, no date on page)" now reads "Kohra | Boiler Room: Bengaluru"). Only brackets with words like tracklist, no date, on page, unverified or source are removed.
+- Suggested next, not built:
+  - Data: the Kohra mix title above carries a research note in `artist_mixes` (or wherever mixes live). The research validator should reject titles with notes in brackets, and that row needs a clean title (data edit, Param).
+  - Em dash sweep, part 3: components About, Audiences, Drops, GenreWheel, PartnerContactDialog, Playlist, ProductCard, PromoterLogin, Catbot, ArtistDetail (old page) and ArtistEPK. Mostly titles and alt text.
+  - /tour cards on phones: Follow sits alone on its own row under the dates. Moving it up beside the act line would make each card a row shorter. Small layout change, safe to build next round.
+  - Home week row: a tidied title that ends in "pres." then gets the clamp ellipsis reads "pres.…". Trim a trailing full stop before clamping.
+  - Artist page on phones: the fixed mini player covers the Start here and Follow buttons on first view. Lift the buttons above the fold or start the player collapsed. Design change, canvas first.

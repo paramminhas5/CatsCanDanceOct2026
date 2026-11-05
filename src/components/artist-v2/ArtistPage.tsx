@@ -319,10 +319,12 @@ export default function ArtistPage({ a }: { a: ArtistV2 }) {
   const ofType = (r: Release, t: string) => t === "all" || (t === "single" ? !["album", "ep", "remix"].includes(r.type) : r.type === t);
   const releases = first(relEra.filter((r) => ofType(r, type)), (r) => isFoc("rel", r.id));
   const popular = a.popular.filter((p) => inEra(p.y)).slice(0, 5);
+  // Research notes sometimes ride along in a title, e.g. "(set79 tracklist, no date on page)". Show the title without them.
+  const noteless = (t: string) => t.replace(/\s*\((?=[^)]*\b(?:tracklist|no date|on page|unverified|unconfirmed|source)\b)[^)]*\)/gi, "").trim() || t;
   type Watch = { key: string; title: string; url: string; kind: string; meta: string; y: number | null; img: string | null; mix?: Mix };
   const watchAll: Watch[] = [
-    ...a.videos.map((v: Video) => ({ key: v.url, title: v.title, url: v.url, kind: v.kind ? v.kind.replace(/_/g, " ") : "Video", meta: sourceName(v.url) ?? "", y: v.y, img: thumb(v.url) })),
-    ...a.mixes.map((m: Mix) => ({ key: m.url, title: m.title, url: m.url, kind: "Mix", meta: [sourceName(m.url), m.date, m.tracks.length ? `${m.tracks.length} tracks` : null].filter(Boolean).join(" · "), y: m.y, img: thumb(m.url), mix: m })),
+    ...a.videos.map((v: Video) => ({ key: v.url, title: noteless(v.title), url: v.url, kind: v.kind ? v.kind.replace(/_/g, " ") : "Video", meta: sourceName(v.url) ?? "", y: v.y, img: thumb(v.url) })),
+    ...a.mixes.map((m: Mix) => ({ key: m.url, title: noteless(m.title), url: m.url, kind: "Mix", meta: [sourceName(m.url), m.date, m.tracks.length ? `${m.tracks.length} tracks` : null].filter(Boolean).join(" · "), y: m.y, img: thumb(m.url), mix: m })),
   ];
   const watch = watchAll.filter((w) => (w.y == null ? !era : inEra(w.y)));
   const feature = watch.find((w) => w.img) ?? null;
