@@ -7,7 +7,7 @@
  */
 import type { NextApiRequest, NextApiResponse } from "next";
 import { rpc } from "@/lib/api-rpc";
-import { notifyTeam } from "@/lib/mailer";
+import { emailBookingOutbox, notifyTeam } from "@/lib/mailer";
 
 const SITE = "https://catscandance.com";
 
@@ -26,5 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       ],
     ).catch(() => {});
   }
-  return res.status(200).json({ ok: true, sent: list.length });
+  // Artists and requesters hear about each request and reply once (migration 051).
+  const out = await emailBookingOutbox().catch(() => ({ sent: 0 }));
+  return res.status(200).json({ ok: true, sent: list.length, mailed: out.sent });
 }

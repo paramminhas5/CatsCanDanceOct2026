@@ -8,7 +8,7 @@ import ccdLogo from "@/assets/ccd-logo.png";
 import { imgUrl } from "@/lib/img";
 
 const SHORT_BIO_50 =
-  "Cats Can Dance — Bangalore party brand & streetwear label.";
+  "Cats Can Dance: Bangalore party brand & streetwear label.";
 
 const SHORT_BIO_150 =
   "Cats Can Dance is a Bangalore, India brand running underground dance music Episodes and dropping limited streetwear & music collectibles tied to each night.";
@@ -20,10 +20,10 @@ const Press = () => {
   const pressLd = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    name: "Cats Can Dance — Press Kit",
+    name: "Cats Can Dance: Press Kit",
     url: "https://catscandance.com/press",
     description:
-      "Press kit for Cats Can Dance — Bangalore underground party organiser and streetwear label. Brand bios, logos, photos, contact.",
+      "Press kit for Cats Can Dance, Bangalore underground party organiser and streetwear label. Brand bios, logos, photos, contact.",
   };
 
   const copy = (text: string) => navigator.clipboard?.writeText(text);
@@ -31,8 +31,8 @@ const Press = () => {
   return (
     <>
       <SEO
-        title="Press Kit — Cats Can Dance | Bangalore Party & Streetwear Brand"
-        description="Cats Can Dance press kit — bios, logos, photos and contact. For media, editors and journalists covering Bangalore's underground scene and India's streetwear drops."
+        title="Press Kit | Cats Can Dance | Bangalore Party & Streetwear Brand"
+        description="Cats Can Dance press kit: bios, logos, photos and contact. For media, editors and journalists covering Bangalore's underground scene and India's streetwear drops."
         path="/press"
         jsonLd={pressLd}
       />
@@ -48,7 +48,7 @@ const Press = () => {
           <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Press" }]} />
 
           <h2 className="font-display text-3xl mb-4 mt-10">/ BRAND BIOS</h2>
-          <p className="text-ink/70 mb-6">Three lengths — copy whichever you need.</p>
+          <p className="text-ink/70 mb-6">Three lengths. Copy whichever you need.</p>
 
           <div className="space-y-4">
             {[
@@ -61,7 +61,7 @@ const Press = () => {
                   <p className="font-display text-magenta text-sm">/ {b.label}</p>
                   <button
                     onClick={() => copy(b.text)}
-                    className="bg-ink text-cream font-display text-xs px-3 py-1 hover:bg-magenta transition-colors"
+                    className="bg-ink text-cream font-display text-xs px-3 py-1.5 min-h-[28px] hover:bg-magenta transition-colors"
                   >
                     COPY
                   </button>

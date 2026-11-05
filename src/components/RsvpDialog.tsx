@@ -129,7 +129,7 @@ const RsvpDialog = ({ open, onOpenChange, eventSlug, eventTitle, eventDate, even
     }
   };
 
-  const calUrl = eventDate ? buildCalendarUrl(`Cats Can Dance — ${eventTitle}`, eventDate, eventVenue) : null;
+  const calUrl = eventDate ? buildCalendarUrl(`Cats Can Dance: ${eventTitle}`, eventDate, eventVenue) : null;
 
   return (
     <Dialog open={open} onOpenChange={(v) => { onOpenChange(v); if (!v) setDone(false); }}>
@@ -169,7 +169,7 @@ const RsvpDialog = ({ open, onOpenChange, eventSlug, eventTitle, eventDate, even
             <DialogHeader>
               <DialogTitle className="font-display text-3xl text-ink">RSVP</DialogTitle>
               <DialogDescription className="text-ink/70 font-medium">
-                {eventTitle} — save your spot.
+                {eventTitle}. Save your spot.
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={onSubmit} className="space-y-4">
@@ -225,7 +225,7 @@ const RsvpDialog = ({ open, onOpenChange, eventSlug, eventTitle, eventDate, even
               <div>
                 <label htmlFor="rsvp-wa" className="font-display text-sm text-ink mb-1 block">
                   WHATSAPP
-                  <span className="font-sans font-normal text-ink/40 text-xs ml-2 normal-case">(optional — day-of reminder)</span>
+                  <span className="font-sans font-normal text-ink/40 text-xs ml-2 normal-case">(optional, day-of reminder)</span>
                 </label>
                 <input
                   id="rsvp-wa"

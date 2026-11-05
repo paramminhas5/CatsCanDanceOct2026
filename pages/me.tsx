@@ -1,10 +1,11 @@
 /**
- * Your nights (/me). Everything about the nights you're going to, in one place.
+ * Your account (/me). Tickets, the nights you are going to, your crew, in one place.
  *   Signed out      email sign-in link (ticket buyers get one after checkout)
  *   Not joined yet  first name and city, one step
  *   Member          Tonight (crew, meet point, set times, I'm in, ticket), coming up (crew status, ticket proof),
  *                   past (rate the night, go again with your crew)
  */
+import { track } from "@/lib/track";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -19,6 +20,14 @@ import {
   applyPending, type CrewCard, isScene, joinCrew, leaveCrew, loadCrewCard, loadMyPlans, type Mate, type MyPlan,
   refreshMe, sendSignInLink, setPlan,
 } from "@/lib/plans";
+import { loadMyThreads, type ThreadRow } from "@/lib/booking-desk";
+import { StagePill } from "@/components/booking/StageTrack";
+import { dayShort, inrShort } from "@/lib/desk";
+import { artistPath, threadPath } from "@/lib/routes";
+import { SCHOOL_URL } from "@/lib/ccd-db";
+import TicketPass from "@/components/tickets/TicketPass";
+import { shareCard } from "@/lib/share";
+import { disablePush, enablePush, pushSupported, VAPID } from "@/lib/push";
 
 const CITIES = ["Bengaluru", "Mumbai", "Delhi NCR", "Goa", "Pune", "Hyderabad", "Chennai", "Kolkata"];
 const inp = "w-full border-4 border-ink bg-white p-3 text-ink";
@@ -33,14 +42,14 @@ export default function Me() {
   const { loading, signedIn, member, reload } = useMember();
   return (
     <>
-      <SEO title="Your nights · Cats Can Dance" description="The nights you're going to, your crew, your tickets." path="/me" noindex />
+      <SEO title="Your account · Cats Can Dance" description="Your tickets, the nights you are going to and your crew." path="/me" noindex />
       <main className="bg-background text-ink min-h-screen">
         <Nav />
         <section className="bg-ink text-cream pt-28 md:pt-36 pb-8">
           <div className="container">
-            <p className="font-bold text-acid-yellow mb-3">Your nights · crew</p>
-            <h1 className="font-display text-6xl md:text-8xl leading-[0.85]">YOUR NIGHTS.</h1>
-            <p className="mt-4 text-lg max-w-[48ch]">Nights you're going to, your crew, your tickets. Say you're going to any night on What's on, even if you bought the ticket somewhere else.</p>
+            <p className="font-bold text-acid-yellow mb-3">Your account</p>
+            <h1 className="font-display text-6xl md:text-8xl leading-[0.85]">YOUR ACCOUNT.</h1>
+            <p className="mt-4 text-lg max-w-[48ch]">One login for all of Cats Can Dance: your tickets, the nights you're going to, your crew, your booking requests and the artists you follow.</p>
           </div>
         </section>
         <div className="container py-10 md:py-14 max-w-3xl">
@@ -199,8 +208,158 @@ function YourNights({ memberId, name }: { memberId: string; name: string }) {
         </section>
       )}
 
+      <RemindersBlock />
+      <BookingsBlock />
+      <FollowsBlock />
+      <SchoolBlock />
+
       <p className="text-sm text-ink/70">Profile, taste quiz and hosting are on <Link href="/club" className="underline font-bold">your club page</Link>.</p>
     </div>
+  );
+}
+
+/** Reminders: web push on this device now, WhatsApp opt-in for when it is switched on. */
+function RemindersBlock() {
+  const [state, setState] = useState<{ push: boolean; whatsapp: boolean; phone: boolean } | null>(null);
+  const [msg, setMsg] = useState("");
+  const [phone, setPhone] = useState("");
+  const [busy, setBusy] = useState(false);
+  const load = useCallback(() => { supabase.rpc("my_reminders").then(({ data }) => setState((data as any) ?? { push: false, whatsapp: false, phone: false })); }, []);
+  useEffect(load, [load]);
+  if (!state) return null;
+  const canPush = pushSupported();
+  return (
+    <section aria-labelledby="reminders" className="grid gap-4">
+      <h2 id="reminders" className="font-display text-3xl md:text-4xl leading-none">REMINDERS</h2>
+      <div className="border-4 border-ink bg-cream p-5 grid gap-5">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="font-display text-lg leading-tight">On this phone</p>
+            <p className="text-sm text-ink/75">The day before a night you're going to, and when an artist you follow gets a new date.</p>
+          </div>
+          {canPush ? (
+            <button type="button" disabled={busy} className={`${btn} ${state.push ? "bg-electric-blue text-cream" : "bg-acid-yellow"}`}
+              onClick={async () => {
+                setBusy(true); setMsg("");
+                if (state.push) { await disablePush(); } else { const r = await enablePush(); if (!r.ok) setMsg(r.error ?? ""); }
+                setBusy(false); load();
+              }}>{state.push ? "On ✓" : "Turn on"}</button>
+          ) : <span className="text-sm text-ink/60">{VAPID ? "Not available in this browser. On iPhone, add the site to your Home Screen first." : "Coming soon."}</span>}
+        </div>
+        <div className="flex flex-wrap items-end justify-between gap-3 border-t-4 border-ink pt-4">
+          <div className="min-w-0">
+            <p className="font-display text-lg leading-tight">On WhatsApp</p>
+            <p className="text-sm text-ink/75">{state.whatsapp ? "You're on the list. Reminders start the day WhatsApp goes live here." : "Say yes now and reminders come on WhatsApp once we switch it on. Only reminders, never ads."}</p>
+          </div>
+          {state.whatsapp ? (
+            <button type="button" className={`${btn} bg-cream`} onClick={async () => { await supabase.rpc("set_whatsapp_opt_in", { p_on: false }); load(); }}>Stop</button>
+          ) : (
+            <form className="flex flex-wrap gap-2" onSubmit={async (e) => {
+              e.preventDefault(); setMsg("");
+              const { data } = await supabase.rpc("set_whatsapp_opt_in", { p_on: true, p_phone: phone || null });
+              if (!(data as any)?.ok) setMsg((data as any)?.error ?? "Could not save."); else load();
+            }}>
+              {!state.phone && <input value={phone} onChange={(e) => setPhone(e.target.value)} inputMode="tel" placeholder="WhatsApp number" className="border-4 border-ink bg-white px-3 py-2 w-44" />}
+              <button className={`${btn} bg-acid-yellow`}>Yes, WhatsApp me</button>
+            </form>
+          )}
+        </div>
+        {msg && <p className="text-sm font-bold text-magenta">{msg}</p>}
+      </div>
+    </section>
+  );
+}
+
+/** Booking requests you sent and, if you own an artist page, the ones sent to you. Same data as /bookings. */
+function BookingsBlock() {
+  const [rows, setRows] = useState<ThreadRow[] | null>(null);
+  useEffect(() => { loadMyThreads(true).then((r) => setRows(r.rows)).catch(() => setRows([])); }, []);
+  const open = (rows ?? []).filter((r) => !["declined", "cancelled"].includes(r.stage));
+  const yourMove = open.filter((r) => (r.role === "artist" && ["sent", "seen"].includes(r.stage)) || (r.role === "requester" && ["interested", "countered"].includes(r.stage) && r.last_actor === "artist")).length;
+  return (
+    <section aria-labelledby="bookings" className="grid gap-4">
+      <div className="flex items-end justify-between gap-3">
+        <h2 id="bookings" className="font-display text-3xl md:text-4xl leading-none">BOOKINGS</h2>
+        {rows && rows.length > 0 && <Link href="/bookings" className="text-sm font-bold underline underline-offset-4">All requests →</Link>}
+      </div>
+      {rows === null ? <div className="h-20 border-4 border-ink/20 bg-ink/5" aria-busy="true" />
+        : rows.length === 0 ? (
+          <div className="border-4 border-ink bg-cream p-5 grid gap-3">
+            <p>Booking an artist for your night? Send one brief to up to three artists. Their replies, fee and the confirmation land here.</p>
+            <div><Link href="/book" className={`${btn} bg-acid-yellow inline-block`}>Book an artist</Link></div>
+          </div>
+        ) : (
+          <ul className="grid gap-3">
+            {yourMove > 0 && <li className="font-bold text-magenta">{yourMove === 1 ? "One request is waiting on you." : `${yourMove} requests are waiting on you.`}</li>}
+            {rows.slice(0, 4).map((r) => {
+              const who = r.role === "artist" ? `${r.name}${r.org ? `, ${r.org}` : ""}` : r.artist ?? r.artist_slug;
+              const facts = [r.event_date && dayShort(r.event_date), r.city, r.fee_inr ? `Fee ${inrShort(r.fee_inr)}` : r.budget_band].filter(Boolean).join(" · ");
+              return (
+                <li key={r.id}>
+                  <Link href={threadPath(r.id, r.key)} className="flex items-center gap-3 border-4 border-ink bg-cream p-3 hover:bg-acid-yellow/40 transition-colors">
+                    <StagePill stage={r.stage} />
+                    <span className="min-w-0 flex-1">
+                      <b className="font-display font-normal text-lg leading-tight block truncate">{r.role === "artist" ? "For you: " : ""}{who}</b>
+                      <span className="text-sm text-ink/70">{facts}</span>
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+    </section>
+  );
+}
+
+/** Artists you follow, newest first. */
+function FollowsBlock() {
+  const [list, setList] = useState<{ slug: string; name: string; photo_url: string | null }[] | null>(null);
+  useEffect(() => {
+    (async () => {
+      const { data } = await supabase.from("member_follows").select("artist_slug").order("created_at", { ascending: false }).limit(12);
+      const slugs = ((data as any[]) ?? []).map((x) => x.artist_slug);
+      if (!slugs.length) return setList([]);
+      const { data: a } = await supabase.from("artists").select("slug,name,photo_url").in("slug", slugs);
+      const by = new Map(((a as any[]) ?? []).map((x) => [x.slug, x]));
+      setList(slugs.map((s) => by.get(s)).filter(Boolean));
+    })().catch(() => setList([]));
+  }, []);
+  return (
+    <section aria-labelledby="follows" className="grid gap-4">
+      <h2 id="follows" className="font-display text-3xl md:text-4xl leading-none">ARTISTS YOU FOLLOW</h2>
+      {list === null ? <div className="h-20 border-4 border-ink/20 bg-ink/5" aria-busy="true" />
+        : list.length === 0 ? (
+          <div className="border-4 border-ink bg-cream p-5 grid gap-3">
+            <p>Follow an artist and their next gigs, tours and releases come to you.</p>
+            <div><Link href="/artists" className={`${btn} bg-acid-yellow inline-block`}>Browse artists</Link></div>
+          </div>
+        ) : (
+          <ul className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+            {list.map((a) => (
+              <li key={a.slug}>
+                <Link href={artistPath(a.slug)} className="block border-4 border-ink bg-cream hover:-translate-y-1 transition-transform">
+                  {a.photo_url ? <img src={a.photo_url} alt="" className="w-full aspect-square object-cover border-b-4 border-ink" loading="lazy" />
+                    : <span className="w-full aspect-square grid place-items-center bg-electric-blue text-cream font-display text-3xl border-b-4 border-ink">{a.name.slice(0, 1)}</span>}
+                  <span className="block font-display text-sm leading-tight p-2 truncate">{a.name}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+    </section>
+  );
+}
+
+function SchoolBlock() {
+  return (
+    <section aria-labelledby="school" className="grid gap-4">
+      <h2 id="school" className="font-display text-3xl md:text-4xl leading-none">SCHOOL</h2>
+      <div className="border-4 border-ink bg-magenta text-cream p-5 grid gap-3">
+        <p>Your lessons, the tracks you are making and your streak live in School. Use the same email.</p>
+        <div><a href={SCHOOL_URL} onClick={() => track("open_school")} className={`${btn} bg-cream text-ink inline-block`}>Open School</a></div>
+      </div>
+    </section>
   );
 }
 
@@ -227,11 +386,24 @@ function NightBlock({ n, mode, focused, memberId, onChange }: { n: Night; mode: 
         <div className="flex flex-wrap gap-3 mt-3 text-sm font-bold">
           {dir && mode !== "past" && <a href={dir} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Directions</a>}
           {n.tickets.length > 0 && <Link href="/tickets" className="underline underline-offset-4">Your ticket{n.tickets.length > 1 ? "s" : ""} ({n.tickets.length})</Link>}
-          {n.kind === "scene" && mode !== "past" && <Link href="/whats-on" className="underline underline-offset-4">On What's on</Link>}
+          {n.kind === "scene" && mode !== "past" && <Link href={`/whats-on?n=${n.key.slice(6)}`} className="underline underline-offset-4">On What's on</Link>}
+          {mode === "next" && n.date && <a href={`/api/ics/${encodeURIComponent(n.key)}`} className="underline underline-offset-4">Add to calendar</a>}
+          {mode !== "past" && n.plan?.state === "going" && (
+            <button type="button" className="underline underline-offset-4" onClick={() => shareCard({ kind: "going", target: n.kind === "scene" ? n.key.slice(6) : n.key, path: n.kind === "scene" ? `/whats-on?n=${n.key.slice(6)}` : `/nights/${n.key}`, text: `I'm going to ${n.title}. Come with me:` })}>Share: I'm going</button>
+          )}
+          {mode === "past" && n.kind === "ccd" && (
+            <button type="button" className="underline underline-offset-4" onClick={() => shareCard({ kind: "episode", target: n.key, path: `/nights/${n.key}`, text: `I was there: Cats Can Dance ${n.title}.` })}>Share: I was there</button>
+          )}
         </div>
       </header>
 
       <div className="p-5 grid gap-5">
+        {mode === "tonight" && n.tickets.length > 0 && (
+          <div className="grid gap-3">
+            <p className="font-display text-lg">Your ticket{n.tickets.length > 1 ? "s" : ""}</p>
+            {n.tickets.map((t, i) => <TicketPass key={t.code} t={t} when={when} venue={n.venue} index={i} total={n.tickets.length} />)}
+          </div>
+        )}
         {mode === "tonight" && times.length > 0 && (
           <div>
             <p className="font-display text-lg">Set times</p>

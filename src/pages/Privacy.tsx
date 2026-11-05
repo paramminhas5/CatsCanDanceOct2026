@@ -9,8 +9,8 @@ const Privacy = () => {
   return (
     <>
       <SEO
-        title="Privacy Policy — Cats Can Dance"
-        description="How Cats Can Dance collects, uses, and protects your data — RSVPs, signups, shop orders, cookies, and your rights."
+        title="Privacy Policy | Cats Can Dance"
+        description="How Cats Can Dance collects, uses, and protects your data: RSVPs, signups, shop orders, cookies, and your rights."
         path="/privacy"
       />
       <main className="bg-background text-foreground min-h-screen">
@@ -32,12 +32,12 @@ const Privacy = () => {
 
           <h2>1. What we collect</h2>
           <ul>
-            <li><strong>RSVPs &amp; signups</strong> — your name, email, phone (if you provide it), and the event you RSVP'd to.</li>
-            <li><strong>Contact form</strong> — your name, email, and message.</li>
-            <li><strong>Shop orders</strong> — handled by Shopify. We don't store card details. See Shopify's privacy policy.</li>
-            <li><strong>Cart state</strong> — kept in your browser's local storage so your cart survives a refresh.</li>
-            <li><strong>Analytics</strong> — anonymous, aggregated traffic data (page views, country, referrer). No personal profiles, no cross-site tracking.</li>
-            <li><strong>Cookies</strong> — only what's needed to keep you logged into admin tools and to remember your theme. See <a href="/cookies">Cookies</a>.</li>
+            <li><strong>RSVPs &amp; signups</strong>: your name, email, phone (if you provide it), and the event you RSVP'd to.</li>
+            <li><strong>Contact form</strong>: your name, email, and message.</li>
+            <li><strong>Shop orders</strong>: handled by Shopify. We don't store card details. See Shopify's privacy policy.</li>
+            <li><strong>Cart state</strong>: kept in your browser's local storage so your cart survives a refresh.</li>
+            <li><strong>Analytics</strong>: anonymous, aggregated traffic data (page views, country, referrer). No personal profiles, no cross-site tracking.</li>
+            <li><strong>Cookies</strong>: only what's needed to keep you logged into admin tools and to remember your theme. See <a href="/cookies">Cookies</a>.</li>
           </ul>
 
           <h2>2. Why we collect it</h2>

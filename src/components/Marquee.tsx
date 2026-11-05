@@ -1,10 +1,9 @@
 const defaultItems = [
-  "DANCE MUSIC 🎧",
-  "PET CULTURE 🐾",
-  "STREETWEAR 👕",
-  "EXPERIENCES 🪩",
-  "DROPS 💎",
-  "COMMUNITY ✨",
+  "FIND A NIGHT",
+  "FIND YOUR CREW",
+  "BOOK THE ARTISTS",
+  "LEARN TO MAKE IT",
+  "BENGALURU",
 ];
 
 type Size = "lg" | "sm";

@@ -6,6 +6,7 @@
  *   - threads, counters, calendar and settings report `missing: true`, and the UI says
  *     "Coming soon, needs database update".
  */
+import { track } from "@/lib/track";
 import { supabase } from "@/lib/supabase";
 import { BUDGETS, roomLabel, dayLong, type Stage } from "@/lib/desk";
 
@@ -78,6 +79,7 @@ export async function sendBookingRequest(slugs: string[], names: Record<string, 
     if (!d?.ok) return { ok: false, error: d?.error ?? "Could not send. Try again." };
     const reqs = (d.requests ?? []) as { id: string; key: string; artist_slug: string; stage: Stage }[];
     saveKeys(reqs.map((r) => ({ id: r.id, key: r.key, artist: names[r.artist_slug] ?? r.artist_slug, date: b.date })));
+    track("book_request", { artists: reqs.length });
     fetch("/api/booking-desk/notify", { method: "POST" }).catch(() => {});
     return { ok: true, mode: "v2", requests: reqs };
   }
@@ -123,9 +125,11 @@ export type Thread = {
 };
 
 export const loadThread = (id: string, key: string | null) => call<Thread>("booking_thread", { p_id: id, p_key: key });
-export const postMessage = (id: string, key: string | null, body: string) => call("booking_post", { p_id: id, p_key: key, p_body: body });
+// After a message or an action the server emails the other side (no input, so it can't send arbitrary mail).
+const nudgeMail = <T,>(r: Res<T>) => { if (r.ok) fetch("/api/booking-desk/notify", { method: "POST" }).catch(() => {}); return r; };
+export const postMessage = (id: string, key: string | null, body: string) => call("booking_post", { p_id: id, p_key: key, p_body: body }).then(nudgeMail);
 export const actOn = (id: string, key: string | null, action: string, fee: number | null, set: string | null, note: string | null) =>
-  call<{ stage: Stage }>("booking_act", { p_id: id, p_key: key, p_action: action, p_fee_inr: fee, p_set_terms: set, p_note: note });
+  call<{ stage: Stage }>("booking_act", { p_id: id, p_key: key, p_action: action, p_fee_inr: fee, p_set_terms: set, p_note: note }).then(nudgeMail);
 export const review = (id: string, key: string | null, rating: number, body: string) => call("booking_review", { p_id: id, p_key: key, p_rating: rating, p_body: body });
 
 export type ThreadRow = {

@@ -69,7 +69,7 @@ const Events = () => {
           const featuredPoster = resolvePoster(nextUp.poster_url);
           return (
             <motion.article
-              initial={{ opacity: 0, y: 60, rotate: -1 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0, rotate: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ type: "spring", stiffness: 140, damping: 18 }}

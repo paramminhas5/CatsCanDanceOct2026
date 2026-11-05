@@ -12,7 +12,6 @@ import catHpDance from "@/assets/cat-headphones-dance.png";
 import { useDisco } from "@/contexts/DiscoContext";
 import DiscoBall from "@/components/DiscoBall";
 import Lasers from "@/components/Lasers";
-import { supabase } from "@/lib/supabase";
 import { imgUrl } from "@/lib/img";
 
 // next/image with priority handles critical image preloading automatically.
@@ -30,45 +29,20 @@ function useIsMobile() {
   return mobile;
 }
 
-/** Next upcoming Episode, read from the database. Hides the chip when none is scheduled. */
-function useNextEvent() {
-  const [next, setNext] = useState<{ title: string; date: string; venue: string; slug: string } | null>(null);
-  const [daysAway, setDaysAway] = useState<number | null>(null);
+export type HeroNext = { slug: string; title: string; venue: string | null; event_date: string | null } | null;
 
-  useEffect(() => {
-    let off = false;
-    const today = new Date().toISOString().slice(0, 10);
-    supabase
-      .from("events")
-      .select("slug,title,date,venue,event_date,start_time")
-      .eq("published", true)
-      .gte("event_date", today)
-      .order("event_date", { ascending: true })
-      .limit(1)
-      .then(({ data }) => {
-        const e = data?.[0];
-        if (off || !e) return;
-        setNext({ title: e.title, date: e.date, venue: e.venue, slug: e.slug });
-        const d = e.event_date ? new Date(`${e.event_date}T00:00:00`) : null;
-        if (d) {
-          d.setHours(16, 0, 0, 0);
-          const diff = Math.ceil((d.getTime() - Date.now()) / 86400000);
-          if (diff >= 0 && diff <= 60) setDaysAway(diff);
-        }
-      });
-    return () => { off = true; };
-  }, []);
-
-  return { next, daysAway };
-}
-
-const Hero = () => {
+const Hero = ({ next = null, hasTickets = false }: { next?: HeroNext; hasTickets?: boolean }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const { disco } = useDisco();
   const reduce = useReducedMotion();
   const isMobile = useIsMobile();
-  const { next, daysAway } = useNextEvent();
+  const daysAway = (() => {
+    if (!next?.event_date) return null;
+    const d = new Date(`${next.event_date}T16:00:00`);
+    const diff = Math.ceil((d.getTime() - Date.now()) / 86400000);
+    return diff >= 0 && diff <= 60 ? diff : null;
+  })();
 
   // Skip all parallax on mobile or when reduced motion is preferred
   const skipParallax = reduce || isMobile;
@@ -100,8 +74,8 @@ const Hero = () => {
   const FLANK_CATS = [
     { id: "cap",        src: catCap,        pos: "top-[28%] left-[6%] md:top-[26%] md:left-[14%]",   x: flankDriftL },
     { id: "hpDance",    src: catHpDance,    pos: "top-[28%] right-[6%] md:top-[26%] md:right-[14%]", x: flankDriftR },
-    { id: "headphones", src: catHeadphones, pos: "top-[52%] left-[6%] md:top-[54%] md:left-[14%]",   x: flankDriftL },
-    { id: "handstand",  src: catHandstand,  pos: "top-[52%] right-[6%] md:top-[54%] md:right-[14%]", x: flankDriftR },
+    { id: "headphones", src: catHeadphones, pos: "hidden md:block top-[52%] left-[6%] md:top-[54%] md:left-[14%]",   x: flankDriftL },
+    { id: "handstand",  src: catHandstand,  pos: "hidden md:block top-[52%] right-[6%] md:top-[54%] md:right-[14%]", x: flankDriftR },
   ];
 
   return (
@@ -157,7 +131,7 @@ const Hero = () => {
             />
           </motion.div>
 
-          {/* Four flank cats bracketing the wordmark — simplified transforms */}
+          {/* Four flank cats bracketing the wordmark. On phones the lower pair is hidden: it sat on top of DANCE. */}
           {FLANK_CATS.map((c) => (
             <motion.div
               key={c.id}
@@ -187,36 +161,40 @@ const Hero = () => {
         {next && daysAway !== null && (
           <div className="absolute top-[72px] md:top-[80px] inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
             <Link
-              href={`/nights/${next.slug}`}
+              href={hasTickets ? `/tickets/${next.slug}` : `/nights/${next.slug}`}
               className="pointer-events-auto inline-flex items-center gap-3 bg-acid-yellow text-ink border-4 border-ink px-4 py-2 font-display text-xs md:text-sm uppercase tracking-widest chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform"
             >
               <span className="inline-block w-2 h-2 bg-magenta rounded-full animate-pulse shrink-0" aria-hidden />
               <span>
-                ▶ {next.title} — {next.venue}
+                ▶ {next.title}{next.venue ? ` · ${next.venue}` : ""}{daysAway === 0 ? " · tonight" : daysAway === 1 ? " · tomorrow" : ` · in ${daysAway} days`}
               </span>
-              <span className="bg-ink text-acid-yellow px-2 py-0.5 text-[10px] font-display uppercase">RSVP →</span>
+              <span className="bg-ink text-acid-yellow px-2 py-0.5 text-[10px] font-display uppercase">{hasTickets ? "Tickets →" : "Details →"}</span>
             </Link>
           </div>
         )}
 
         {/* Desktop buttons */}
+        <div className="hidden md:flex absolute inset-x-0 bottom-[8.5rem] z-50 justify-center px-4 pointer-events-none">
+          <p className="bg-ink text-cream font-bold text-base px-4 py-2 border-4 border-ink">Nights, artists and a school for electronic music in India.</p>
+        </div>
         <div className="hidden md:flex absolute inset-x-0 bottom-16 z-50 flex-row gap-3 justify-center px-4">
-          <a href="#early-access" className="bg-magenta text-cream font-display text-xl px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform text-center">
-            JOIN THE PACK
-          </a>
-          <a href="#drops" className="bg-acid-yellow text-ink font-display text-xl px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform text-center">
-            SEE THE DROPS
-          </a>
+          <Link href="/whats-on" className="bg-acid-yellow text-ink font-display text-xl px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform text-center">
+            WHAT'S ON TONIGHT
+          </Link>
+          <Link href={next ? (hasTickets ? `/tickets/${next.slug}` : `/nights/${next.slug}`) : "/artists"} className="bg-magenta text-cream font-display text-xl px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform text-center">
+            {next ? (hasTickets ? "GET TICKETS" : "NEXT EPISODE") : "MEET THE ROSTER"}
+          </Link>
         </div>
 
         {/* Mobile buttons */}
         <div className="md:hidden absolute inset-x-0 bottom-6 z-50 flex flex-col gap-3 justify-center px-6">
-          <a href="#early-access" className="bg-magenta text-cream font-display text-lg px-6 py-3 border-4 border-ink chunk-shadow text-center">
-            JOIN THE PACK
-          </a>
-          <a href="#drops" className="bg-acid-yellow text-ink font-display text-lg px-6 py-3 border-4 border-ink chunk-shadow text-center">
-            SEE THE DROPS
-          </a>
+          <p className="self-center bg-ink text-cream font-bold text-xs px-3 py-1.5 text-center">Nights, artists and a school for electronic music in India.</p>
+          <Link href="/whats-on" className="bg-acid-yellow text-ink font-display text-lg px-6 py-3 border-4 border-ink chunk-shadow text-center">
+            WHAT'S ON TONIGHT
+          </Link>
+          <Link href={next ? (hasTickets ? `/tickets/${next.slug}` : `/nights/${next.slug}`) : "/artists"} className="bg-magenta text-cream font-display text-lg px-6 py-3 border-4 border-ink chunk-shadow text-center">
+            {next ? (hasTickets ? "GET TICKETS" : "NEXT EPISODE") : "MEET THE ROSTER"}
+          </Link>
         </div>
       </section>
     </>

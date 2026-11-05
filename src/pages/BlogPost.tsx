@@ -12,14 +12,14 @@ const SITE = "https://catscandance.com";
 
 const FAQ_BY_CATEGORY: Record<string, { q: string; a: string }[]> = {
   GUIDES: [
-    { q: "Where are the best underground parties in Bangalore?", a: "The best underground parties in Bangalore are RSVP-driven, 200–400 capacity nights run by independent crews — Cats Can Dance Episodes, plus rotating pop-ups in CBD, Indiranagar, and Whitefield. Full guide and upcoming dates at catscandance.com/events." },
-    { q: "How do I find dance music events in Bengaluru?", a: "Follow independent organisers on Instagram, sign up to Cats Can Dance early-access at catscandance.com, and check our curated /events feed — most real underground nights never hit aggregator apps." },
-    { q: "What is RSVP culture in Bangalore's party scene?", a: "Most credible Bangalore underground nights are RSVP-only with capped capacity. RSVP early, show up on time, and respect the room. Cats Can Dance episodes are free entry with name on the door — RSVP at catscandance.com/events." },
+    { q: "Where are the best underground parties in Bangalore?", a: "The best underground parties in Bangalore are RSVP-driven, 200–400 capacity nights run by independent crews: Cats Can Dance Episodes, plus rotating pop-ups in CBD, Indiranagar, and Whitefield. Full guide and upcoming dates at catscandance.com/events." },
+    { q: "How do I find dance music events in Bengaluru?", a: "Follow independent organisers on Instagram, sign up to Cats Can Dance early-access at catscandance.com, and check our curated /events feed. Most real underground nights never hit aggregator apps." },
+    { q: "What is RSVP culture in Bangalore's party scene?", a: "Most credible Bangalore underground nights are RSVP-only with capped capacity. RSVP early, show up on time, and respect the room. Cats Can Dance episodes are free entry with name on the door, RSVP at catscandance.com/events." },
   ],
   DROPS: [
     { q: "Where can I buy Cats Can Dance streetwear?", a: "All current Cats Can Dance drops are at catscandance.com/shop. Pet streetwear (cat bandanas, bucket hats, treats) lives at /pets." },
     { q: "Do Cats Can Dance drops restock?", a: "No. Every drop is limited and screen-printed in Bangalore. Once a piece sells out, it doesn't come back." },
-    { q: "Does Cats Can Dance ship across India?", a: "Yes — pan-India shipping is available on every order from catscandance.com/shop." },
+    { q: "Does Cats Can Dance ship across India?", a: "Yes, pan-India shipping is available on every order from catscandance.com/shop." },
   ],
   ARTISTS: [
     { q: "Who plays at Cats Can Dance events?", a: "Cats Can Dance lineups feature resident selectors and guest DJs from Bangalore and across India playing House, Disco, Jungle, Garage, and Drum & Bass. Recent lineups are at catscandance.com/events." },
@@ -29,10 +29,10 @@ const FAQ_BY_CATEGORY: Record<string, { q: string; a: string }[]> = {
   CULTURE: [
     { q: "What is Cats Can Dance?", a: "Cats Can Dance is a Bengaluru-based underground dance music collective and streetwear label running RSVP-only Episodes and limited drops rooted in dance music culture." },
     { q: "Where do Cats Can Dance events happen?", a: "Cats Can Dance Episodes run at intimate venues across Bengaluru including Bar Wild in Indiranagar. All upcoming dates and RSVP links are at catscandance.com/events." },
-    { q: "How do I join the Cats Can Dance pack?", a: "Sign up for early access at catscandance.com — we send drop alerts, RSVP openings, and the journal." },
+    { q: "How do I join the Cats Can Dance pack?", a: "Sign up for early access at catscandance.com. We send drop alerts, RSVP openings, and the journal." },
   ],
   JOURNAL: [
-    { q: "Who writes the Cats Can Dance journal?", a: "The Pack — the people running the floor and the drops in Bangalore. Honest, by humans." },
+    { q: "Who writes the Cats Can Dance journal?", a: "The Pack: the people running the floor and the drops in Bangalore. Honest, by humans." },
     { q: "How often does Cats Can Dance publish?", a: "Roughly weekly. Subscribe via RSS at catscandance.com/rss.xml." },
     { q: "What does Cats Can Dance write about?", a: "Bangalore's underground party scene, India's drop culture, the artists behind the nights, and the brand's own Episodes." },
   ],
@@ -110,7 +110,7 @@ const BlogPost = () => {
       "@type": "WebPage",
       "@id": `${SITE}/journal/${post.slug}`,
     },
-    isPartOf: { "@type": "Blog", name: "Cats Can Dance — Journal", url: `${SITE}/blog` },
+    isPartOf: { "@type": "Blog", name: "Cats Can Dance: Journal", url: `${SITE}/blog` },
     about: ["dance music", "events in Bangalore", "underground parties India"],
   };
 
@@ -127,7 +127,7 @@ const BlogPost = () => {
   return (
     <>
       <SEO
-        title={`${post.title} — Cats Can Dance`}
+        title={`${post.title} | Cats Can Dance`}
         description={post.excerpt}
         path={`/journal/${post.slug}`}
         type="article"
@@ -237,7 +237,7 @@ const BlogPost = () => {
               )}
 
               <p className="mt-10 font-display text-ink text-sm sm:text-base border-t-4 border-ink pt-6">
-                — Written by The Pack, on the floor in Bangalore.
+                Written by The Pack, on the floor in Bangalore.
               </p>
             </div>
 

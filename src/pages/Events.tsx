@@ -145,7 +145,7 @@ const Events = () => {
   const jsonLd = upcoming.map((e) => ({
     "@context": "https://schema.org",
     "@type": "MusicEvent",
-    name: `Cats Can Dance — ${e.title}`,
+    name: `Cats Can Dance: ${e.title}`,
     startDate: e.date,
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
@@ -162,7 +162,7 @@ const Events = () => {
   return (
     <>
       <SEO
-        title="Episodes — Cats Can Dance | Underground Dance Music in Bengaluru"
+        title="Episodes: Underground Dance Music in Bengaluru | Cats Can Dance"
         description="Every Cats Can Dance Episode: dates, venues, lineups and RSVP. Small rooms, pets welcome, Bengaluru."
         path="/nights"
         jsonLd={jsonLd}
@@ -231,7 +231,7 @@ const Events = () => {
 
               {/* Hero card */}
               <motion.article
-                initial={{ opacity: 0, y: 40 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ type: "spring", stiffness: 140, damping: 18 }}
@@ -368,7 +368,7 @@ const Events = () => {
                   return (
                     <motion.div
                       key={e.slug}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={false}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.1 }}
                       transition={{ delay: Math.min(i * 0.05, 0.3), type: "spring", stiffness: 200, damping: 22 }}

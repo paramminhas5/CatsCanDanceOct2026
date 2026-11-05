@@ -123,7 +123,7 @@ function wrap(body: string): string {
 
 // ── Date formatter ─────────────────────────────────────────────────────────────
 function fmtDate(iso?: string | null): string {
-  if (!iso) return "—";
+  if (!iso) return "-";
   try {
     return new Date(iso + "T00:00:00").toLocaleDateString("en-IN", {
       weekday: "short", day: "numeric", month: "long", year: "numeric",
@@ -132,7 +132,7 @@ function fmtDate(iso?: string | null): string {
 }
 
 function fmtInr(n?: number | null): string {
-  if (!n) return "—";
+  if (!n) return "-";
   return `₹${n.toLocaleString("en-IN")}`;
 }
 
@@ -155,7 +155,7 @@ const templates: Record<BookingEmailEvent, (d: BookingEmailData) => { to: "artis
 
   new_inquiry: (d) => ({
     to: "artist",
-    subject: `New booking request — ${d.promoterName} wants to book you`,
+    subject: `New booking request: ${d.promoterName} wants to book you`,
     html: wrap(`
       <span class="badge">New Request</span>
       <h2 style="margin:16px 0 4px;font-size:22px;text-transform:uppercase">${d.promoterName}</h2>
@@ -171,7 +171,7 @@ const templates: Record<BookingEmailEvent, (d: BookingEmailData) => { to: "artis
 
   quoted: (d) => ({
     to: "promoter",
-    subject: `${d.artistName} sent you a quote — ${fmtInr(d.quotedInr)}`,
+    subject: `${d.artistName} sent you a quote: ${fmtInr(d.quotedInr)}`,
     html: wrap(`
       <span class="badge magenta">Quote Received</span>
       <h2 style="margin:16px 0 4px;font-size:22px;text-transform:uppercase">${d.artistName}</h2>
@@ -186,7 +186,7 @@ const templates: Record<BookingEmailEvent, (d: BookingEmailData) => { to: "artis
 
   hold_placed: (d) => ({
     to: "promoter",
-    subject: `Hold placed — ${d.artistName} is holding your date`,
+    subject: `Hold placed: ${d.artistName} is holding your date`,
     html: wrap(`
       <span class="badge blue">Hold Placed</span>
       <h2 style="margin:16px 0 4px;font-size:22px;text-transform:uppercase">${d.artistName}</h2>
@@ -202,7 +202,7 @@ const templates: Record<BookingEmailEvent, (d: BookingEmailData) => { to: "artis
 
   confirmed: (d) => ({
     to: "both",
-    subject: `✅ Booking confirmed — ${d.artistName} × ${d.promoterName}`,
+    subject: `✅ Booking confirmed: ${d.artistName} × ${d.promoterName}`,
     html: wrap(`
       <span class="badge lime">Confirmed ✅</span>
       <h2 style="margin:16px 0 4px;font-size:24px;text-transform:uppercase">${d.artistName}</h2>
@@ -226,7 +226,7 @@ const templates: Record<BookingEmailEvent, (d: BookingEmailData) => { to: "artis
       <hr class="divider"/>
       ${eventBlock(d)}
       <hr class="divider"/>
-      <p style="font-size:13px;color:#444">Browse more artists on the marketplace — filter by your date and city.</p>
+      <p style="font-size:13px;color:#444">Browse more artists on the marketplace. Filter by your date and city.</p>
       <a href="${BASE_URL}/book" class="cta">Browse Artists →</a>
     `),
   }),
@@ -270,7 +270,7 @@ const templates: Record<BookingEmailEvent, (d: BookingEmailData) => { to: "artis
       ${eventBlock(d)}
       ${d.notes ? `<div class="snippet">"${d.notes}"</div>` : ""}
       <hr class="divider"/>
-      <p style="font-size:13px;color:#444">Review the brief and respond — you can quote, hold, or decline directly from your portal.</p>
+      <p style="font-size:13px;color:#444">Review the brief and respond. You can quote, hold, or decline directly from your portal.</p>
       <a href="${BASE_URL}/for-artists" class="cta">Review Brief →</a>
     `),
   }),

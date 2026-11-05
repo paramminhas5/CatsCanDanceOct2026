@@ -18,7 +18,7 @@ const audiences: Audience[] = [
     key: "brands",
     label: "BRAND PARTNERS",
     headline: "Reach the audience ads can't.",
-    pitch: "CCD creates earned attention and authentic brand relevance — culture and repetition, not interruption.",
+    pitch: "CCD creates earned attention and authentic brand relevance: culture and repetition, not interruption.",
     bullets: [
       "High-intent, affluent, trend-setting audience",
       "Real-world experiences + digital amplification",
@@ -49,7 +49,7 @@ const audiences: Audience[] = [
     key: "artists",
     label: "ARTISTS",
     headline: "A platform, not just a set time.",
-    pitch: "Most gigs are transactional. CCD helps artists compound — audience, identity, visibility.",
+    pitch: "Most gigs are transactional. CCD helps artists compound: audience, identity, visibility.",
     bullets: [
       "Curated crowd that cares about music",
       "Content assets: full sets, clips, photos",
@@ -64,7 +64,7 @@ const audiences: Audience[] = [
     key: "investors",
     label: "INVESTORS",
     headline: "An ecosystem, not an event business.",
-    pitch: "A multi-revenue culture company with expanding moats — monetized across many engagement points.",
+    pitch: "A multi-revenue culture company with expanding moats, monetized across many engagement points.",
     bullets: [
       "Low initial capex vs traditional consumer brands",
       "Audience compounds monthly",

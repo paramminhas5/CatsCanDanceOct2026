@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { revalidatePath } from "next/cache";
-import { rpc, fmtDate } from "@/lib/ccd-db";
+import { rpc, fmtDate, select } from "@/lib/ccd-db";
 import { emailCrews, emailCityWaitlist } from "@/lib/mailer";
 
 export const dynamic = "force-dynamic";
@@ -14,6 +14,24 @@ type Snapshot = {
   build: { id: number; area: string; title: string; status: string; detail: string | null; link: string | null; updated_at: string }[];
   ccd_events: { slug: string; title: string; date: string | null; event_date: string | null; venue: string | null; published: boolean }[];
 };
+
+async function makeInvite(formData: FormData) {
+  "use server";
+  await rpc("ops_claim_invite", { p_token: process.env.OPS_TOKEN, p_slug: String(formData.get("slug") ?? "").trim().toLowerCase() });
+  revalidatePath("/ops");
+}
+
+async function setTrust(formData: FormData) {
+  "use server";
+  await rpc("ops_curation_trust_set", {
+    p_token: process.env.OPS_TOKEN,
+    p_kind: String(formData.get("kind")),
+    p_pattern: String(formData.get("pattern") ?? ""),
+    p_note: String(formData.get("note") ?? "") || null,
+    p_remove: formData.get("remove") === "1",
+  });
+  revalidatePath("/ops");
+}
 
 async function setStatus(formData: FormData) {
   "use server";
@@ -194,6 +212,26 @@ export default async function Ops() {
     rpc<any[]>("ops_crew_reports", { p_token: T() }).catch(() => []),
     rpc<any[]>("ops_city_waitlist", { p_token: T() }).catch(() => []),
   ]);
+  const credIds = [...s.pending.map((e) => e.id), ...s.published.map((e) => e.id)];
+  const [shares, invites, rosterSlugs] = await Promise.all([
+    rpc<{ by_kind: { kind: string; shares: number; opens: number }[]; top: { kind: string; target: string; shares: number; opens: number }[] }>("ops_share_stats", { p_token: T() }).catch(() => null),
+    rpc<{ token: string; artist_slug: string; name: string | null; created_at: string; expires_at: string; used_at: string | null; used_email: string | null; owned: boolean }[]>("ops_claim_invites", { p_token: T() }).catch(() => []),
+    select<{ slug: string; name: string }>("artists?status=eq.approved&owner_member=is.null&select=slug,name&order=name", 60).catch(() => []),
+  ]);
+  const [cred, trust] = await Promise.all([
+    rpc<Record<string, { reasons: string[]; credible: boolean }>>("ops_scene_credibility", { p_token: T(), p_ids: credIds }).catch(() => ({} as Record<string, { reasons: string[]; credible: boolean }>)),
+    rpc<{ kind: string; pattern: string; note: string | null }[]>("ops_curation_trust_list", { p_token: T() }).catch(() => []),
+  ]);
+  const Cred = ({ id }: { id: string }) => {
+    const c = cred?.[id];
+    if (!c) return null;
+    const who = c.reasons.filter((r) => !r.startsWith("venue:") && !r.startsWith("dupe:")).map((r) => r.replace(/^(\w+):/, "$1 "));
+    const dupe = c.reasons.some((r) => r.startsWith("dupe:"));
+    if (dupe) return <div style={{ fontSize: 12, color: "#92400e" }}>Looks like a night already live{c.credible ? ` (credible: ${who.join(", ")})` : ""}. Skip it, or publish if it is a different night.</div>;
+    return c.credible
+      ? <div style={{ fontSize: 12, color: "#166534" }}>Credible: {who.join(", ")}</div>
+      : <div style={{ fontSize: 12, color: "#b91c1c" }}>{c.reasons.some((r) => r.startsWith("block:")) ? `Blocked: ${c.reasons.filter((r) => r.startsWith("block:")).map((r) => r.slice(6)).join(", ")}` : "No credible artist, act or promoter"}</div>;
+  };
   const inboxCount = inbox
     ? (inbox.contact?.length ?? 0) + (inbox.promoters?.length ?? 0) + (inbox.artists?.length ?? 0) + (inbox.dates?.length ?? 0) + (inbox.bookings?.length ?? 0)
     : 0;
@@ -555,7 +593,27 @@ export default async function Ops() {
       </div>
 
       <h3 style={{ marginBottom: 10 }}>Pending picks ({s.pending.length})</h3>
-      <p className="muted" style={{ marginTop: 0 }}>Highest score first. Publish puts it on /events within a few minutes.</p>
+      <p className="muted" style={{ marginTop: 0 }}>Highest score first. Publish puts it on /events within a few minutes. Publish only nights marked Credible: a roster artist, a credible touring act or a credible promoter is behind it. A good venue alone is not enough. With the <a href="/ops/flags">credible_auto_publish</a> flag on, credible club nights publish themselves; festivals and look-alikes of live nights still wait here.</p>
+      <details style={{ marginBottom: 16 }}>
+        <summary><b>Credible acts, promoters and blocks ({(trust ?? []).length})</b></summary>
+        <form action={setTrust} style={{ display: "flex", gap: 8, flexWrap: "wrap", margin: "12px 0" }}>
+          <select name="kind" defaultValue="act"><option value="act">Act</option><option value="promoter">Promoter or series</option><option value="venue">Venue (noted only)</option><option value="block">Block</option></select>
+          <input name="pattern" placeholder="Name as it appears on listings" required minLength={3} />
+          <input name="note" placeholder="Why (optional)" />
+          <button className="btn sm">Add</button>
+        </form>
+        {(["act", "promoter", "block", "venue"] as const).map((k) => (
+          <p key={k} style={{ fontSize: 13, margin: "6px 0" }}>
+            <b>{k}:</b>{" "}
+            {(trust ?? []).filter((t) => t.kind === k).map((t) => (
+              <form key={t.pattern} action={setTrust} style={{ display: "inline" }}>
+                <input type="hidden" name="kind" value={k} /><input type="hidden" name="pattern" value={t.pattern} /><input type="hidden" name="remove" value="1" />
+                <button className="btn sm alt" title={t.note ?? "Remove"} style={{ margin: "0 4px 4px 0" }}>{t.pattern} ×</button>
+              </form>
+            ))}
+          </p>
+        ))}
+      </details>
       <div className="scroll" style={{ marginBottom: 36 }}>
         <table>
           <thead><tr><th>Score</th><th>Date</th><th>Event</th><th>Why</th><th></th></tr></thead>
@@ -567,6 +625,7 @@ export default async function Ops() {
                 <td>
                   <a href={e.url} target="_blank" rel="noreferrer"><b>{e.title}</b></a>
                   <div className="muted">{[e.venue, e.city, e.source].filter(Boolean).join(" · ")}</div>
+                  <Cred id={e.id} />
                 </td>
                 <td className="muted" style={{ fontSize: 13 }}>{e.score_reasons.join(", ")}</td>
                 <td style={{ whiteSpace: "nowrap" }}>
@@ -587,13 +646,52 @@ export default async function Ops() {
             {s.published.map((e) => (
               <tr key={e.id}>
                 <td>{fmtDate(e.event_date)}</td>
-                <td><b>{e.title}</b><div className="muted">{[e.venue, e.city].filter(Boolean).join(" · ")}</div></td>
+                <td><b>{e.title}</b><div className="muted">{[e.venue, e.city].filter(Boolean).join(" · ")}</div><Cred id={e.id} /></td>
                 <td><form action={setStatus}><input type="hidden" name="id" value={e.id} /><input type="hidden" name="status" value="pending" /><button className="btn sm alt">Unpublish</button></form></td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      <h3 style={{ marginBottom: 10 }}>Claim links for artists</h3>
+      <p className="muted" style={{ marginTop: 0 }}>Make a one-time link and send it to the artist. They sign in with any email and the page is theirs: calendar, booking requests, tour dates. Links last 21 days.</p>
+      <form action={makeInvite} style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
+        <select name="slug" required defaultValue="">
+          <option value="" disabled>Pick an artist without an owner</option>
+          {(rosterSlugs ?? []).map((a) => <option key={a.slug} value={a.slug}>{a.name}</option>)}
+        </select>
+        <button className="btn sm">Make a claim link</button>
+      </form>
+      {(invites ?? []).length > 0 && (
+        <div className="scroll" style={{ marginBottom: 36 }}>
+          <table>
+            <thead><tr><th>Artist</th><th>Link to send</th><th>Status</th></tr></thead>
+            <tbody>
+              {(invites ?? []).slice(0, 20).map((i) => (
+                <tr key={i.token}>
+                  <td><b>{i.name ?? i.artist_slug}</b></td>
+                  <td style={{ fontSize: 12, wordBreak: "break-all" }}>https://catscandance.com/claim/{i.token}</td>
+                  <td className="muted">{i.used_at ? `Claimed by ${i.used_email}` : i.owned ? "Page has an owner" : new Date(i.expires_at) < new Date() ? "Expired" : `Open until ${fmtDate(i.expires_at.slice(0, 10))}`}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      <h3 style={{ marginBottom: 10 }}>Share cards, last 30 days</h3>
+      {shares && shares.by_kind.length > 0 ? (
+        <div className="scroll" style={{ marginBottom: 36 }}>
+          <table>
+            <thead><tr><th>Card</th><th>Shared</th><th>Opened</th></tr></thead>
+            <tbody>
+              {shares.by_kind.map((k) => <tr key={k.kind}><td><b>{k.kind}</b></td><td>{k.shares}</td><td>{k.opens}</td></tr>)}
+              {shares.top.slice(0, 8).map((t) => <tr key={`${t.kind}${t.target}`}><td className="muted">{t.kind} · {t.target.slice(0, 40)}</td><td>{t.shares}</td><td>{t.opens}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+      ) : <p className="muted" style={{ marginBottom: 36 }}>No shares yet.</p>}
 
       <h3 style={{ marginBottom: 10 }}>Cron runs</h3>
       <div className="scroll">
