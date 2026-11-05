@@ -26,6 +26,7 @@ import { dayShort, inrShort } from "@/lib/desk";
 import { artistPath, threadPath } from "@/lib/routes";
 import { SCHOOL_URL } from "@/lib/ccd-db";
 import { fetchNights, type NightRow } from "@/lib/door";
+import { accentOf, myPromoters, type MyPromoter } from "@/lib/promoters";
 import TicketPass from "@/components/tickets/TicketPass";
 import { shareCard } from "@/lib/share";
 import { disablePush, enablePush, pushSupported, VAPID } from "@/lib/push";
@@ -214,6 +215,7 @@ function YourNights({ memberId, name }: { memberId: string; name: string }) {
       <FollowsBlock />
       <SchoolBlock />
       <DoorBlock />
+      <PromoterBlock />
 
       <p className="text-sm text-ink/70">Profile, taste quiz and hosting are on <Link href="/club" className="underline font-bold">your club page</Link>.</p>
     </div>
@@ -361,6 +363,28 @@ function SchoolBlock() {
         <p>Your lessons, the tracks you are making and your streak live in School. Use the same email.</p>
         <div><a href={SCHOOL_URL} onClick={() => track("open_school")} className={`${btn} bg-cream text-ink inline-block`}>Open School</a></div>
       </div>
+    </section>
+  );
+}
+
+/** Promoters this person runs on CCD (migration 056). Hidden when there are none. */
+function PromoterBlock() {
+  const [rows, setRows] = useState<MyPromoter[]>([]);
+  useEffect(() => { myPromoters().then(setRows); }, []);
+  if (!rows.length) return null;
+  return (
+    <section aria-labelledby="promoters" className="grid gap-4">
+      <h2 id="promoters" className="font-display text-3xl md:text-4xl leading-none">YOUR NIGHTS ON CCD</h2>
+      <ul className="grid gap-3 sm:grid-cols-2">
+        {rows.map((p) => (
+          <li key={p.slug}>
+            <Link href={`/promote/${p.slug}`} className={`block border-4 border-ink ${accentOf(p.accent).bg} ${accentOf(p.accent).on} p-4`}>
+              <b className="font-display font-normal text-xl">{p.name}</b>
+              <span className="block text-sm">{p.status === "approved" ? `${p.nights} night${p.nights === 1 ? "" : "s"}` : p.status === "pending" ? "Waiting for CCD" : "Not approved"}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

@@ -87,6 +87,7 @@ const Events = () => {
         const { data } = await supabase
           .from("events")
           .select("*")
+          .is("promoter_id", null) // promoter nights have their own pages (migration 056)
           .order("sort_order", { ascending: true });
         if (!cancelled && Array.isArray(data) && data.length > 0) {
           // Prefer the curated local poster path from the static catalogue over

@@ -31,6 +31,7 @@ const Events = () => {
         const { data } = await supabase
           .from("events")
           .select("*")
+          .is("promoter_id", null)
           .order("sort_order", { ascending: true });
         if (data && (data as unknown as EventRow[]).length > 0) {
           setEvents(data as unknown as EventRow[]);

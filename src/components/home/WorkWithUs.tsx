@@ -9,7 +9,7 @@ import { imgUrl } from "@/lib/img";
 const WAYS = [
   { href: "/for-artists", who: "Artists", line: "Claim your page, post tour dates, take bookings.", tone: "bg-electric-blue text-cream" },
   { href: "/for-venues", who: "Venues", line: "Host an Episode, or list your nights on What's on.", tone: "bg-cream text-ink" },
-  { href: "/submit-event", who: "Promoters", line: "Send us your night. If it fits, it goes up.", tone: "bg-magenta text-cream" },
+  { href: "/promote", who: "Promoters", line: "Run your night on CCD: your page, free tickets, crews and the door.", tone: "bg-magenta text-cream" },
   { href: "/press", who: "Brands and press", line: "Collabs, partnerships and interviews.", tone: "bg-ink text-cream" },
 ];
 

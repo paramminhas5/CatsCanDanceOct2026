@@ -23,6 +23,9 @@ import { displayTime, googleCalendarUrl, todayIST } from "@/lib/nights";
 import Going from "@/components/going/Going";
 import { type Crowd, crowdLine, loadCrowd, sceneKey, useMe } from "@/lib/plans";
 
+/** Going key: our own and promoter nights use their slug, scene nights use scene:<id>. */
+const keyOf = (e: FindEvent) => e.night_key ?? sceneKey(e.id);
+
 export type FindProps = {
   events: FindEvent[];
   ours: { slug: string; title: string; event_date: string | null; date: string | null; venue: string | null; city: string | null; start_time: string | null } | null;
@@ -109,7 +112,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
   const shared = sharedId ? events.find((e) => e.id === sharedId) ?? null : null;
   const me = useMe();
   const keysSig = upcoming.map((e) => e.id).join(",");
-  const refreshCrowd = () => { loadCrowd(upcoming.map((e) => sceneKey(e.id))).then(setCrowd).catch(() => {}); };
+  const refreshCrowd = () => { loadCrowd(upcoming.map((e) => keyOf(e))).then(setCrowd).catch(() => {}); };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { refreshCrowd(); }, [keysSig]);
   const goingCount = Object.values(me.plans).filter((p) => p.state === "going").length;
@@ -172,7 +175,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
         <section className="bg-acid-yellow border-b-4 border-ink py-6 md:py-8">
           <div className="container">
             <p className="font-display text-sm uppercase tracking-[0.14em] mb-3">Shared with you</p>
-            <ul><NightCard e={shared} saved={saved.includes(shared.id)} onSave={() => toggleSave(shared.id)} crowd={crowd[sceneKey(shared.id)]} onPlan={refreshCrowd} /></ul>
+            <ul><NightCard e={shared} saved={saved.includes(shared.id)} onSave={() => toggleSave(shared.id)} crowd={crowd[keyOf(shared)]} onPlan={refreshCrowd} /></ul>
           </div>
         </section>
       )}
@@ -272,7 +275,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
                 </div>
                 <ul className="grid gap-4">
                   {list.map((e) => (
-                    <NightCard key={e.id} e={e} saved={saved.includes(e.id)} onSave={() => toggleSave(e.id)} crowd={crowd[sceneKey(e.id)]} onPlan={refreshCrowd} />
+                    <NightCard key={e.id} e={e} saved={saved.includes(e.id)} onSave={() => toggleSave(e.id)} crowd={crowd[keyOf(e)]} onPlan={refreshCrowd} />
                   ))}
                 </ul>
               </li>
@@ -328,9 +331,10 @@ function DayBlock({ iso, today, tone }: { iso: string | null; today: string; ton
 
 function NightCard({ e, saved, onSave, crowd, onPlan }: { e: FindEvent; saved: boolean; onSave: () => void; crowd?: Crowd; onPlan: () => void }) {
   const me = useMe();
-  const line = crowdLine(crowd, me.plans[sceneKey(e.id)]?.state ?? null);
+  const line = crowdLine(crowd, me.plans[keyOf(e)]?.state ?? null);
+  const internal = e.url.startsWith("/");
   const href = e.ticket_url || e.url;
-  const cal = googleCalendarUrl({ slug: e.id, title: e.title, event_date: e.event_date, venue: e.venue, city: e.city }, { time: e.event_time, url: href });
+  const cal = googleCalendarUrl({ slug: e.id, title: e.title, event_date: e.event_date, venue: e.venue, city: e.city }, { time: e.event_time, url: internal ? `https://catscandance.com${href}` : href });
   const lineup = (e.lineup ?? []).filter((n) => !e.artists.some((a) => a.name.toLowerCase() === n.toLowerCase()));
   return (
     <li className={`border-4 border-ink bg-cream ${e.featured ? "chunk-shadow" : ""}`}>
@@ -361,17 +365,21 @@ function NightCard({ e, saved, onSave, crowd, onPlan }: { e: FindEvent; saved: b
           {line && <p className="mt-3 text-sm font-bold text-electric-blue">{line}</p>}
         </div>
         <div className="flex md:flex-col md:items-end gap-2 flex-wrap">
-          <a href={href} target="_blank" rel="noopener noreferrer"
-            className="font-display px-4 py-2.5 border-4 border-ink bg-acid-yellow hover:bg-ink hover:text-acid-yellow transition-colors">
-            {e.ticket_url ? "Tickets" : "Details"} <span aria-hidden>↗</span>
-          </a>
-          <Going nightKey={sceneKey(e.id)} title={e.title} crowd={crowd} onChange={onPlan} />
+          {internal ? (
+            <Link href={href} className="font-display px-4 py-2.5 border-4 border-ink bg-acid-yellow hover:bg-ink hover:text-acid-yellow transition-colors">Tickets and details</Link>
+          ) : (
+            <a href={href} target="_blank" rel="noopener noreferrer"
+              className="font-display px-4 py-2.5 border-4 border-ink bg-acid-yellow hover:bg-ink hover:text-acid-yellow transition-colors">
+              {e.ticket_url ? "Tickets" : "Details"} <span aria-hidden>↗</span>
+            </a>
+          )}
+          <Going nightKey={keyOf(e)} title={e.title} crowd={crowd} onChange={onPlan} />
           <button type="button" onClick={onSave} aria-pressed={saved} aria-label={saved ? `Saved: ${e.title}. Remove` : `Save ${e.title}`}
             className={`font-display text-sm px-3 py-2 border-2 border-ink transition-colors ${saved ? "bg-ink text-cream" : "bg-cream hover:bg-acid-yellow"}`}>
             {saved ? "Saved" : "Save"}
           </button>
           {cal && <a href={cal} target="_blank" rel="noopener noreferrer" className="text-sm font-bold underline underline-offset-4 self-center md:self-end py-1.5">Add to calendar</a>}
-          <p className="text-xs text-ink/55 self-center md:self-end w-full md:w-auto md:text-right">via {SOURCE_LABEL[e.source] ?? e.source}</p>
+          <p className="text-xs text-ink/55 self-center md:self-end w-full md:w-auto md:text-right">{e.presenter ? `${e.presenter} on CCD` : `via ${SOURCE_LABEL[e.source] ?? e.source}`}</p>
         </div>
       </article>
     </li>

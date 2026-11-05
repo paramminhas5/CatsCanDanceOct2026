@@ -85,6 +85,7 @@ const HomepageEvents = () => {
         const { data, error } = await supabase
           .from("events")
           .select("*")
+          .is("promoter_id", null)
           .order("sort_order", { ascending: true })
           .abortSignal(controller.signal);
         if (!error && data && data.length > 0 && !controller.signal.aborted) {

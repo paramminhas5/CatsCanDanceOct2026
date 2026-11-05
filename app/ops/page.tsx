@@ -418,6 +418,7 @@ export default async function Ops() {
         </table>
       )}
 
+      <p style={{ margin: "0 0 16px" }}><a href="/ops/promoters"><b>Promoters</b></a> <span className="muted">: approve promoters who applied at /promote, then each night they send before it goes public.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/door"><b>Door</b></a> <span className="muted">: scan tickets, the free list and walk-ins on the night, set the door team and rules, share a live count with the venue, and the report after. Opens with your member sign-in, not this password.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/ops/curation"><b>Artist curation</b></a> <span className="muted">: filter by fit, commercial and photo, edit scores, bulk publish or hide.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/ops/photos"><b>Photo rights</b></a> <span className="muted">: every artist photo, whether its rights are recorded, and where to ask for better ones.</span></p>

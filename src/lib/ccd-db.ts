@@ -130,7 +130,7 @@ export type TouringDate = {
 const today = () => new Date().toISOString().slice(0, 10);
 
 export const getCcdEvents = () =>
-  select<CcdEvent>("events?published=is.true&order=event_date.asc.nullslast,sort_order.asc");
+  select<CcdEvent>("events?published=is.true&promoter_id=is.null&order=event_date.asc.nullslast,sort_order.asc");
 
 export const getScenePicks = (limit = 60) =>
   select<SceneEvent>(

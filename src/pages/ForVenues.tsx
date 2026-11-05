@@ -66,6 +66,7 @@ const ForVenues = () => (
             }
           />
         </div>
+        <p className="md:col-span-2 -mt-4 order-last text-ink/80 font-medium">Throw your own nights? <a href="/promote" className="underline font-bold">Run them on CCD</a>: a night page in your look, free tickets, crews and the door.</p>
         <ul className="space-y-3">
           {bullets.map((b, i) => (
             <li key={b} className="bg-lime border-4 border-ink chunk-shadow p-3 sm:p-4 font-display text-base sm:text-lg md:text-xl text-ink flex gap-3">

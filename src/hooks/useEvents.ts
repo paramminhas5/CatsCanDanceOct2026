@@ -22,7 +22,7 @@ export function useEvents(options: UseEventsOptions = {}) {
   return useQuery<EventRow[]>({
     queryKey: ["events", options],
     queryFn: async () => {
-      let query = supabase.from("events").select("*").order("sort_order");
+      let query = supabase.from("events").select("*").is("promoter_id", null).order("sort_order");
 
       if (options.series) query = query.eq("series", options.series);
       if (options.status) query = query.eq("status", options.status);
