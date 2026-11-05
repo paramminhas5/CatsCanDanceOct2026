@@ -1,0 +1,182 @@
+/* Gate. Dark only, built for 1am at the door. Tokens come from @ccd/brand/css/gate.css (imported in the layout). */
+@import "tailwindcss";
+
+@theme {
+  --color-*: initial;
+  --color-black: #0a0a0a;
+  --color-surface: #161616;
+  --color-raised: #1f1f1f;
+  --color-line: #2a2a2a;
+  --color-text: #f5f5f5;
+  --color-muted: #9a9a9a;
+  --color-yellow: #ffe600;
+  --color-in: #22c55e;
+  --color-out: #3b82f6;
+  --color-no: #ef4444;
+  --color-warn: #f97316;
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  /* Text that reads on each status colour. */
+  --color-on-in: #052e16;
+  --color-on-out: #0b1b3a;
+  --color-on-no: #3b0a0a;
+  --color-on-warn: #3a1403;
+
+  --font-display: var(--font-anton), Anton, "Bebas Neue", Impact, sans-serif;
+  --font-sans: var(--font-grotesk), "Space Grotesk", system-ui, sans-serif;
+
+  --radius-card: 12px;
+  --radius-button: 10px;
+  --radius-pill: 999px;
+
+  --spacing-tap: 56px;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background: var(--color-black);
+  color: var(--color-text);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100dvh;
+}
+
+/* The wristband: the only decoration. */
+.stripe {
+  background: repeating-linear-gradient(135deg, var(--color-yellow) 0 14px, var(--color-black) 14px 28px);
+}
+
+/* Big numbers and the wordmark. */
+.display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.count {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 22vw, 160px);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Shared controls. Every tap target is at least 56px tall at the door. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: var(--spacing-tap);
+  padding: 0 20px;
+  border-radius: var(--radius-button);
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: transform 80ms ease, background 120ms ease, border-color 120ms ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.btn:active { transform: scale(0.98); }
+.btn:disabled { opacity: 0.4; pointer-events: none; }
+.btn-primary { background: var(--color-yellow); color: var(--color-black); border-color: var(--color-yellow); }
+.btn-primary:hover { background: #fff04d; }
+.btn-ghost { background: transparent; color: var(--color-text); border-color: var(--color-line); }
+.btn-ghost:hover { border-color: var(--color-muted); }
+.btn-dark { background: var(--color-raised); color: var(--color-text); border-color: var(--color-raised); }
+.btn-sm { min-height: 44px; padding: 0 14px; font-size: 16px; }
+.btn-lg { min-height: 64px; padding: 0 28px; font-size: 24px; }
+
+.field {
+  width: 100%;
+  min-height: var(--spacing-tap);
+  padding: 12px 14px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 2px solid var(--color-line);
+  border-radius: var(--radius-button);
+  font: inherit;
+  font-size: 17px;
+}
+.field::placeholder { color: var(--color-muted); }
+.field:focus { outline: none; border-color: var(--color-yellow); }
+select.field { appearance: none; }
+textarea.field { min-height: 120px; }
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+}
+.raised { background: var(--color-raised); }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.pill-in { background: var(--color-in); color: var(--color-on-in); }
+.pill-out { background: var(--color-out); color: #fff; }
+.pill-no { background: var(--color-no); color: #fff; }
+.pill-warn { background: var(--color-warn); color: var(--color-on-warn); }
+.pill-yellow { background: var(--color-yellow); color: var(--color-black); }
+.pill-idle { background: var(--color-raised); color: var(--color-text); border: 1px solid var(--color-line); }
+
+/* Full-screen flashes. The word carries the meaning; the colour only makes it faster. */
+.flash-in { background: var(--color-in); color: var(--color-on-in); }
+.flash-out { background: var(--color-out); color: #fff; }
+.flash-no { background: var(--color-no); color: #fff; }
+.flash-warn { background: var(--color-warn); color: var(--color-on-warn); }
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+}
+
+.prose-plain p + p { margin-top: 0.75em; }
+
+/* The laminate on the landing page: a backstage pass. */
+.laminate {
+  position: relative;
+  background: var(--color-yellow);
+  color: var(--color-black);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.laminate::before {
+  /* the slot for the lanyard */
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 56px;
+  height: 10px;
+  margin-left: -28px;
+  border-radius: 999px;
+  background: var(--color-black);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Safe areas on phones with a notch, when installed. */
+.safe-bottom { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+.safe-top { padding-top: max(8px, env(safe-area-inset-top)); }
