@@ -1,4 +1,5 @@
 /** Small actions shared by the event page and the ticket pass: add to calendar, share, directions. */
+import { shareCard, type ShareKind } from "@/lib/share";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { downloadIcs, googleCalendarUrl, type NightLike } from "@/lib/nights";
@@ -35,10 +36,16 @@ export function AddToCalendar({ night, time, url, tone = "light" }: { night: Nig
   );
 }
 
-export function ShareButton({ title, text, url, tone = "light", label = "Share" }: { title: string; text?: string; url: string; tone?: "light" | "dark"; label?: string }) {
+/** Share a night. With `card`, shares the card image and a tracked link (src/lib/share.ts). */
+export function ShareButton({ title, text, url, tone = "light", label = "Share", card }: { title: string; text?: string; url: string; tone?: "light" | "dark"; label?: string; card?: { kind: ShareKind; target: string; path: string } }) {
   return (
     <button type="button" className={`${base} ${tone === "dark" ? "bg-ink text-cream" : "bg-cream text-ink"}`}
       onClick={async () => {
+        if (card) {
+          const r = await shareCard({ ...card, text: text ?? title });
+          if (r === "copied") toast.success("Link copied");
+          return;
+        }
         if (typeof navigator.share === "function") {
           try { await navigator.share({ title, text, url }); return; } catch (e: any) { if (e?.name === "AbortError") return; }
         }

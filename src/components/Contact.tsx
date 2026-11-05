@@ -77,7 +77,7 @@ const Contact = () => {
       />
       <div className="container relative z-10 max-w-3xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ type: "spring", stiffness: 160, damping: 18 }}
@@ -94,7 +94,7 @@ const Contact = () => {
 
         <motion.form
           onSubmit={onSubmit}
-          initial={{ opacity: 0, y: 24 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ type: "spring", stiffness: 160, damping: 18, delay: 0.1 }}

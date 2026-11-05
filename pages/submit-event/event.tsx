@@ -20,9 +20,10 @@ export default function SubmitSceneEvent() {
     if (f.get("company")) { setState("done"); return; }
     setState("busy"); setErr("");
     const v = (k: string) => String(f.get(k) ?? "").trim() || null;
-    const { error } = await supabase.rpc("submit_event", {
+    const { error } = await supabase.rpc("submit_event_v2", {
       p_email: v("email"), p_title: v("title"), p_url: v("url"), p_venue: v("venue"),
       p_city: v("city"), p_date: v("date"), p_time: v("time"), p_description: v("description"),
+      p_lineup: v("lineup"), p_promoter: v("promoter"), p_hp: null,
     });
     if (error) { setErr(error.message); setState("idle"); return; }
     setState("done");
@@ -37,7 +38,7 @@ export default function SubmitSceneEvent() {
       />
       <Nav />
       <PageHero eyebrow="SUBMIT" title="SEND US A NIGHT." bg="bg-acid-yellow" textColor="text-ink" eyebrowColor="text-magenta" shadowColor="hsl(var(--ink))">
-        <p className="text-ink/80 font-display text-xl md:text-2xl mt-2">WE CHECK EVERY ONE BEFORE IT GOES ON THE LIST.</p>
+        <p className="text-ink/80 font-display text-xl md:text-2xl mt-2">NIGHTS BY ARTISTS AND PROMOTERS WE TRUST GO UP. THE LINEUP IS WHAT WE CHECK.</p>
       </PageHero>
       <div className="container max-w-2xl py-12 md:py-20">
         <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "What's on", to: "/whats-on" }, { label: "Send an event" }]} />
@@ -59,7 +60,9 @@ export default function SubmitSceneEvent() {
               <div><label className={label} htmlFor="venue">VENUE</label><input id="venue" name="venue" className={field} /></div>
               <div><label className={label} htmlFor="city">CITY</label><input id="city" name="city" placeholder="Bengaluru" className={field} /></div>
             </div>
-            <div><label className={label} htmlFor="description">LINEUP AND DETAILS</label><textarea id="description" name="description" rows={4} maxLength={1000} className={field} /></div>
+            <div><label className={label} htmlFor="lineup">LINEUP <span className="text-ink/50 font-normal text-xs">(names, comma separated)</span></label><input id="lineup" name="lineup" placeholder="Kohra, Sandunes, Midnight Traffic" maxLength={600} className={field} /></div>
+            <div><label className={label} htmlFor="promoter">WHO IS THROWING IT <span className="text-ink/50 font-normal text-xs">(promoter, collective or series)</span></label><input id="promoter" name="promoter" placeholder="e.g. Nightvibe" maxLength={120} className={field} /></div>
+            <div><label className={label} htmlFor="description">ANYTHING ELSE</label><textarea id="description" name="description" rows={3} maxLength={1000} className={field} /></div>
             <div><label className={label} htmlFor="email">YOUR EMAIL * <span className="text-ink/50 font-normal text-xs">(private)</span></label><input id="email" name="email" type="email" required className={field} /></div>
             <input name="company" tabIndex={-1} autoComplete="off" aria-hidden className="absolute -left-[9999px] h-0 w-0" />
             {err && <p className="text-magenta font-bold">{err}</p>}

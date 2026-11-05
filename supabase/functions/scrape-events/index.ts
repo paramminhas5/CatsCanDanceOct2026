@@ -129,11 +129,16 @@ function fromLd(it: Record<string, any>, source: string, fallbackUrl: string, fa
 // ---- sources -------------------------------------------------------------
 
 // Listing pages that ship Event JSON-LD in the HTML (no browser needed). Failures are logged per page in stats.errors.
-// Not covered: Insider and Skillbox (single-page apps with no data in the HTML) and BookMyShow (blocks us).
+// Not covered: Insider and Skillbox (single-page apps with no data in the HTML), BookMyShow and Resident Advisor (both block us).
+// Promoters on those sites send their nights through /submit-event instead.
+// allevents paginates 15 at a time, so the first three pages of music and parties are read per city.
+const AE_CITIES = ["bangalore", "mumbai", "delhi", "goa", "pune", "hyderabad", "chennai", "kolkata"];
 const PAGES: [string, string, string | null][] = [
   ["https://www.district.in/events/", "district", null],
   ...["bangalore", "mumbai", "delhi", "goa", "pune", "hyderabad"].map((c): [string, string, string | null] => [`https://www.highape.com/${c}`, "highape", city(c)]),
-  ...["bangalore", "mumbai", "delhi", "goa", "hyderabad", "chennai", "kolkata"].map((c): [string, string, string | null] => [`https://allevents.in/${c}/music`, "allevents", city(c)]),
+  ...AE_CITIES.flatMap((c) =>
+    ["music", "parties"].flatMap((cat) =>
+      [1, 2, 3].map((pg): [string, string, string | null] => [`https://allevents.in/${c}/${cat}${pg > 1 ? `?page=${pg}` : ""}`, "allevents", city(c)]))),
 ];
 
 async function listings(): Promise<Raw[]> {
@@ -146,7 +151,7 @@ async function listings(): Promise<Raw[]> {
         const r = fromLd(it, source, url, c);
         if (r && relevant(r)) { out.push(r); n++; }
       }
-      if (n === 0) note(source, `0 relevant events at ${url}`);
+      if (n === 0 && !url.includes("page=")) note(source, `0 relevant events at ${url}`);
     } catch (e) { note(source, e); }
     await sleep(400);
   }
@@ -185,13 +190,19 @@ function parseGigsDetail(html: string, url: string): Raw | null {
 }
 
 async function gigscalendar(): Promise<Raw[]> {
+  // The homepage shows the next few weeks; the sitemap lists every event page, so both are read.
   const home = await get("https://gigscalendar.com/", 20000);
-  const slugs = [...new Set([...home.matchAll(/href="\/events\/([a-z0-9-]+)"/g)].map((m) => m[1]))];
+  let map = "";
+  try { map = await get("https://gigscalendar.com/sitemap.xml", 20000); } catch (e) { note("gigscalendar-sitemap", e); }
+  const slugs = [...new Set([
+    ...[...home.matchAll(/href="\/events\/([a-z0-9-]+)"/g)].map((m) => m[1]),
+    ...[...map.matchAll(/gigscalendar\.com\/events\/([a-z0-9-]+)</g)].map((m) => m[1]),
+  ])];
   if (!slugs.length) { note("gigscalendar", "no event links on homepage"); return []; }
   const known = new Set<string>();
   const kr = await sb("scraped_events?select=url&source=eq.gigscalendar&limit=2000");
   if (kr.ok) for (const r of await kr.json()) known.add(r.url);
-  const fresh = slugs.map((x) => `https://gigscalendar.com/events/${x}`).filter((u) => !known.has(u)).slice(0, 100);
+  const fresh = slugs.map((x) => `https://gigscalendar.com/events/${x}`).filter((u) => !known.has(u)).slice(0, 150);
   const out: Raw[] = [];
   for (const u of fresh) {
     try {

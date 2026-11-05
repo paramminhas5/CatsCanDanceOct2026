@@ -211,14 +211,17 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
       <Nav />
 
       <PageHero
-        eyebrow="ARTISTS · BOOK AN ARTIST"
+        eyebrow="ARTISTS · THE ROSTER"
         title={<>THE<br/>ROSTER.</>}
-        bg="bg-electric-blue"
+        bg="bg-ink"
         textColor="text-cream"
         eyebrowColor="text-acid-yellow"
-      />
+        shadowColor="hsl(var(--acid-yellow))"
+      >
+        <p className="text-cream/85 font-medium text-lg max-w-xl">South Asian electronic artists, India and the diaspora. Every page is sourced and updates itself. Listen, read their story, book them, here or on tour.</p>
+      </PageHero>
 
-      <Marquee bg="bg-ink" />
+      <Marquee bg="bg-acid-yellow" items={["SOURCED PAGES", "PLAYABLE MIXES", "BOOK FROM THE PAGE", "ON TOUR", "INDIA AND THE DIASPORA"]} />
 
       {/* Filter bar */}
       <div className="sticky top-0 z-30 bg-cream border-b-4 border-ink">
@@ -307,7 +310,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                   <button
                     key={g}
                     onClick={() => toggleGenre(g)}
-                    className={`px-3 py-1 border-2 border-ink font-display text-xs whitespace-nowrap transition-colors ${
+                    className={`px-3 py-1 min-h-[36px] border-2 border-ink font-display text-xs whitespace-nowrap transition-colors ${
                       active
                         ? "bg-ink text-cream"
                         : "bg-transparent text-ink hover:bg-acid-yellow"
@@ -320,7 +323,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
               {activeGenres.size > 0 && (
                 <button
                   onClick={() => setActiveGenres(new Set())}
-                  className="px-3 py-1 border-2 border-ink/40 font-display text-xs text-ink/50 hover:border-ink hover:text-ink transition-colors whitespace-nowrap"
+                  className="px-3 py-1 min-h-[36px] border-2 border-ink/40 font-display text-xs text-ink/50 hover:border-ink hover:text-ink transition-colors whitespace-nowrap"
                 >
                   CLEAR ×
                 </button>
@@ -396,7 +399,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                       key={a.id}
                       href={`/artists/${a.slug}`}
                       className={`group relative border-4 border-ink overflow-hidden chunk-shadow hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-transform ${
-                        isLarge ? "col-span-2 row-span-2" : "aspect-square"
+                        isLarge ? "col-span-2 row-span-2 aspect-square" : "aspect-square"
                       }`}
                     >
                       {img ? (
@@ -415,7 +418,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                             <Music className="w-16 h-16" />
                           </div>
                           {a.bio && (
-                            <p className="absolute top-3 left-3 right-3 text-xs leading-snug line-clamp-4 opacity-80">{a.bio}</p>
+                            <p className="max-sm:hidden absolute top-3 left-3 right-3 text-xs leading-snug line-clamp-3 opacity-80">{a.bio}</p>
                           )}
                         </div>
                       )}
@@ -430,16 +433,13 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                             {cityOf(a)}
                           </p>
                         )}
-                        {rateBand(a) !== "On request" && (
-                          <p className={`text-[10px] font-display mt-0.5 ${img ? "text-cream/70" : "text-ink/70"}`}>{rateBand(a).toUpperCase()}</p>
-                        )}
                         {(a.genres ?? []).length > 0 && (
                           <div className="flex flex-wrap gap-1 mt-1">
                             {(a.genres ?? []).slice(0, 2).map((g) => (
                               <button
                                 key={g}
                                 onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleGenre(g); }}
-                                className={`text-[10px] px-1.5 py-0.5 font-display border border-ink transition-colors ${
+                                className={`text-[10px] px-2 py-1 min-h-[28px] font-display border border-ink transition-colors ${
                                   activeGenres.has(g) ? "bg-ink text-cream" : "bg-acid-yellow text-ink hover:bg-orange"
                                 }`}
                               >

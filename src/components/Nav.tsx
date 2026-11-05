@@ -7,14 +7,15 @@ import DiscoMute from "@/components/DiscoMute";
 import DiscoHint from "@/components/DiscoHint";
 import ccdLogo from "@/assets/ccd-logo.png";
 import { imgUrl } from "@/lib/img";
+import { useMe } from "@/lib/plans";
 
 // Plain names lead; nicknames (hints) show in the mobile menu and on the pages themselves.
 const primaryLinks = [
-  { to: "/nights",   label: "Our nights", hint: "Episodes" },
-  { to: "/whats-on", label: "What's on",  hint: "Gig guide" },
-  { to: "/artists",  label: "Artists",    hint: "Book an artist" },
-  { to: "/tour",     label: "On tour",    hint: "Strays" },
-  { to: "/school",   label: "Learn",      hint: "CCD.SCHOOL" },
+  { to: "/nights",   label: "Nights",    hint: "Our Episodes" },
+  { to: "/whats-on", label: "What's on", hint: "Gig guide" },
+  { to: "/artists",  label: "Artists",   hint: "Book an artist" },
+  { to: "/tour",     label: "On tour",   hint: "Strays" },
+  { to: "/school",   label: "School",    hint: "CCD.SCHOOL" },
 ];
 
 const partnersLinks = [
@@ -25,7 +26,7 @@ const partnersLinks = [
 ];
 
 const moreLinks: { to: string; label: string; external?: boolean }[] = [
-  { to: "/me",         label: "Your nights" },
+  { to: "/me",         label: "Your account" },
   { to: "/tickets",    label: "Your tickets" },
   { to: "/listen",     label: "Listen" },
   { to: "/shop",       label: "Shop" },
@@ -146,6 +147,8 @@ const Nav = ({ forceDark = false }: { forceDark?: boolean }) => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const me = useMe();
+  const accountLabel = me.signedIn ? "Your account" : "Sign in";
 
   const lightBgRoutes = ["/listen", "/videos", "/shop"];
   const forceScrolledStyle = lightBgRoutes.some((r) => location.pathname === r || location.pathname.startsWith(r + "/"));
@@ -208,19 +211,17 @@ const Nav = ({ forceDark = false }: { forceDark?: boolean }) => {
               </RouterNavLink>
             </li>
           ))}
-          <Dropdown label="Work With Us" links={partnersLinks} scrolled={effectiveScrolled} />
-          <Dropdown label="More" links={moreLinks} scrolled={effectiveScrolled} />
         </ul>
         <div className="hidden lg:flex items-center gap-3">
           <span className="hidden xl:block"><DiscoMute /></span>
-          <DiscoButton compact />
-          <a
-            href="/#early-access"
-            onClick={goToEarlyAccess}
-            className="inline-block bg-ink text-cream font-display px-3 py-2 xl:px-4 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform text-xs xl:text-sm"
+          <span className="hidden xl:block"><DiscoButton /></span>
+          <span className="xl:hidden"><DiscoButton compact /></span>
+          <RouterNavLink
+            to="/me"
+            className="inline-block bg-cream text-ink font-display px-3 py-2 xl:px-4 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform text-xs xl:text-sm"
           >
-            Early Access
-          </a>
+            {accountLabel}
+          </RouterNavLink>
         </div>
 
         <div className="lg:hidden flex items-center gap-1.5 sm:gap-2 relative">
@@ -282,9 +283,9 @@ const Nav = ({ forceDark = false }: { forceDark?: boolean }) => {
 
             {/* ── Utilities ── */}
             <div className="pt-3 border-t-2 border-ink/20 space-y-1">
-              <a href="/#early-access" onClick={goToEarlyAccess} className="block font-display text-xl text-magenta py-2">
-                Early Access →
-              </a>
+              <RouterNavLink to="/me" className="block font-display text-xl text-magenta py-2">
+                {accountLabel} →
+              </RouterNavLink>
               {/* Disco mode toggle */}
               <div className="flex items-center gap-3 pt-2 border-t border-ink/10">
                 <span className="font-display text-sm uppercase text-ink/40 tracking-widest">Disco Mode</span>

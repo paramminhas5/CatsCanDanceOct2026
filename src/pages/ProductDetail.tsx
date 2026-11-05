@@ -40,7 +40,7 @@ function SizeGuideModal({ onClose }: { onClose: () => void }) {
           <X className="w-4 h-4" />
         </button>
         <h2 className="font-display text-2xl text-ink mb-1">SIZE GUIDE</h2>
-        <p className="text-xs text-ink/50 mb-4 font-medium">All measurements are in inches. Screen-printed on heavyweight 240gsm cotton — fits true to size.</p>
+        <p className="text-xs text-ink/50 mb-4 font-medium">All measurements are in inches. Screen-printed on heavyweight 240gsm cotton. Fits true to size.</p>
         <table className="w-full border-4 border-ink text-sm">
           <thead className="bg-ink text-cream font-display">
             <tr>
@@ -131,7 +131,7 @@ const ProductDetail = () => {
           {
             "@type": "Question",
             name: "Is this a limited drop?",
-            acceptedAnswer: { "@type": "Answer", text: "Yes — every Cats Can Dance piece is a limited drop with no restocks. Once it's gone, it's gone." },
+            acceptedAnswer: { "@type": "Answer", text: "Yes, every Cats Can Dance piece is a limited drop with no restocks. Once it's gone, it's gone." },
           },
           {
             "@type": "Question",
@@ -153,12 +153,12 @@ const ProductDetail = () => {
     : null;
 
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
-  const shareText = product ? `${product.title} — Cats Can Dance` : "";
+  const shareText = product ? `${product.title} | Cats Can Dance` : "";
 
   return (
     <>
       <SEO
-        title={product ? `${product.title} — Cats Can Dance Streetwear Drop` : "Product"}
+        title={product ? `${product.title} | Cats Can Dance Streetwear Drop` : "Product"}
         description={
           product?.description?.slice(0, 155) ||
           "Limited streetwear drop and music collectible from Cats Can Dance, Bangalore."
@@ -191,7 +191,7 @@ const ProductDetail = () => {
                 {img && (
                   <img
                     src={img.url}
-                    alt={img.altText || `${product.title} — Cats Can Dance limited streetwear drop, Bangalore`}
+                    alt={img.altText || `${product.title} | Cats Can Dance limited streetwear drop, Bangalore`}
                     loading="eager"
                     fetchPriority="high"
                     className="w-full h-full object-cover"
@@ -238,7 +238,7 @@ const ProductDetail = () => {
                           >
                             {e.node.selectedOptions[0]?.value || e.node.title}
                             {outOfStock && (
-                              <span className="sr-only"> — sold out</span>
+                              <span className="sr-only"> (sold out)</span>
                             )}
                           </button>
                         );

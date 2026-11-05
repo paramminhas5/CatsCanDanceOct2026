@@ -1,102 +1,77 @@
 /**
- * Homepage — clean, non-repetitive layout.
+ * Homepage (v3).
  *
- * Sections:
- *   Nav → Hero → Identity strip → About → Early Access →
- *   HomepageEvents (single unified section) →
- *   Videos → Playlist → Drops → Instagram → Contact → Footer
+ *   Hero → Tonight ticker → What we are building →
+ *   01 Nights: the demo, This week, then our Episodes (next one plus every past one) →
+ *   02 Artists (featured, playable), then the artist story (one real page updating itself) → 03 School (the real app, a beat that builds itself) →
+ *   Your account → Work with us → Footer
  *
- * Performance: Hero + Nav load eagerly (above-the-fold).
- * Everything below the fold is lazy-loaded to reduce initial JS bundle.
+ * Every demo plays itself and can be clicked. Sections with nothing to show do not render.
+ * Data comes in through getStaticProps (pages/index.tsx, src/lib/home.ts).
  */
-import { lazy, Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import dynamic from "next/dynamic";
-import { useLocation } from "@/lib/compat-router";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import SEO from "@/components/SEO";
+import TonightTicker from "@/components/home/TonightTicker";
+import Overview from "@/components/home/Overview";
+import NightsDemo from "@/components/home/NightsDemo";
+import ArtistsCarousel from "@/components/home/ArtistsCarousel";
+import SchoolDemo from "@/components/home/SchoolDemo";
+import EpisodeSpotlight from "@/components/home/EpisodeSpotlight";
+import WeekRow from "@/components/home/WeekRow";
+import AccountBlock from "@/components/home/AccountBlock";
+import WorkWithUs from "@/components/home/WorkWithUs";
+import ArtistStory from "@/components/home/ArtistStory";
+import type { HomeData } from "@/lib/home";
 
-// Below-the-fold components — loaded after initial paint
-const TicketsStrip = dynamic(() => import("@/components/TicketsStrip"), { ssr: false });
-const MarqueeBySlot = dynamic(() => import("@/components/MarqueeBySlot"));
-const About = dynamic(() => import("@/components/About"));
-const HomepageEvents = dynamic(() => import("@/components/HomepageEvents"));
-const Contact = dynamic(() => import("@/components/Contact"));
 const Footer = dynamic(() => import("@/components/Footer"));
-import SectionReveal from "@/components/SectionReveal";
 const MoonwalkCat = dynamic(() => import("@/components/MoonwalkCat"), { ssr: false });
 
-const Playlist = lazy(() => import("@/components/Playlist"));
-const Drops = lazy(() => import("@/components/Drops"));
-const Videos = lazy(() => import("@/components/Videos"));
-const EarlyAccess = lazy(() => import("@/components/EarlyAccess"));
-const Instagram = dynamic(() => import("@/components/Instagram"), { ssr: false });
-
-const SectionFallback = ({ bg = "bg-cream" }: { bg?: string }) => (
-  <div className={`${bg} border-b-4 border-ink min-h-[220px] animate-pulse`} aria-hidden />
-);
-
-const Index = () => {
-  const location = useLocation();
-
+/** Cats wiggle faster while the page is scrolling. */
+function useScrollingClass() {
   useEffect(() => {
-    if (location.hash === "#early-access") {
-      setTimeout(() => {
-        document.getElementById("early-access")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 80);
-    }
-  }, [location.hash]);
+    let t: ReturnType<typeof setTimeout> | undefined;
+    const on = () => {
+      document.body.classList.add("is-scrolling");
+      clearTimeout(t);
+      t = setTimeout(() => document.body.classList.remove("is-scrolling"), 180);
+    };
+    window.addEventListener("scroll", on, { passive: true });
+    return () => { window.removeEventListener("scroll", on); clearTimeout(t); document.body.classList.remove("is-scrolling"); };
+  }, []);
+}
+
+const Index = (data: HomeData) => {
+  useScrollingClass();
+  const next = data.next;
 
   return (
     <>
       <SEO
-        title="Cats Can Dance — India's Underground Electronic Music Scene"
-        description="Discover India's underground electronic music scene. Events in Bengaluru, Mumbai, Delhi & Goa. Limited apparel drops. Free RSVP events."
+        title="Cats Can Dance: nights, artists and a school for electronic music in India"
+        description="Find a night and a crew to go with. Look up South Asian electronic artists and book them. Learn to produce and DJ on a real instrument. Our own Episodes in Bengaluru."
         path="/"
-        keywords="india electronic music, bangalore underground, cats can dance, ccd events, underground dance music india"
+        keywords="india electronic music, bangalore underground, cats can dance, gig guide india, book a dj india, learn music production india"
       />
       <main className="bg-background text-foreground">
         <Nav />
         <MoonwalkCat />
-        <Hero />
-        <TicketsStrip />
-
-        {/* ── Identity strip ── */}
-        <div className="bg-ink border-b-4 border-ink py-3 px-4">
-          <p className="container font-display text-cream text-xs md:text-sm uppercase tracking-[0.18em] text-center">
-            Bengaluru underground crew · Dance music episodes · Limited streetwear drops
-          </p>
-        </div>
-
-        <MarqueeBySlot id="above-about" />
-        <SectionReveal><About /></SectionReveal>
-
-        {/* ── Events — one unified section, no repetition ── */}
-        <SectionReveal><HomepageEvents /></SectionReveal>
-
-        <MarqueeBySlot id="above-videos" />
-        <Suspense fallback={<SectionFallback bg="bg-ink" />}>
-          <SectionReveal><Videos /></SectionReveal>
-        </Suspense>
-
-        <MarqueeBySlot id="above-playlist" />
-        <Suspense fallback={<SectionFallback bg="bg-magenta" />}>
-          <SectionReveal><Playlist /></SectionReveal>
-        </Suspense>
-
-        <MarqueeBySlot id="above-drops" />
-        <Suspense fallback={<SectionFallback bg="bg-cream" />}>
-          <SectionReveal id="drops"><Drops /></SectionReveal>
-        </Suspense>
-
-        <Suspense fallback={<SectionFallback bg="bg-electric-blue" />}>
-          <SectionReveal><EarlyAccess /></SectionReveal>
-        </Suspense>
-
-        <MarqueeBySlot id="above-instagram" />
-        <SectionReveal><Instagram /></SectionReveal>
-
-        <Contact />
+        <Hero
+          next={next ? { slug: next.slug, title: next.title, venue: next.venue, event_date: next.event_date } : null}
+          hasTickets={data.nextHasTickets}
+        />
+        <TonightTicker tonight={data.tonight} week={data.week} today={data.today} />
+        <Overview weekCount={data.weekCount} artistCount={data.artistCount} />
+        <NightsDemo week={data.week} next={next} hasTickets={data.nextHasTickets} today={data.today} />
+        <WeekRow week={data.week} count={data.weekCount} cities={data.weekCities} today={data.today} />
+        <EpisodeSpotlight next={next} past={data.past} hasTickets={data.nextHasTickets} lineup={data.nextLineup} />
+        <ArtistsCarousel artists={data.featured} count={data.artistCount} />
+        <ArtistStory story={data.story} />
+        <SchoolDemo />
+        <AccountBlock />
+        <WorkWithUs />
         <Footer />
       </main>
     </>

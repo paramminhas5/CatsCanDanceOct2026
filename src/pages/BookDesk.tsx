@@ -26,7 +26,7 @@ import { ARTISTS_BASE, ARTIST_DESK, BOOKINGS_BASE } from "@/lib/routes";
 export type BookDeskProps = { artists: DeskArtist[]; live: boolean; updated: string };
 
 const chip = (on: boolean) =>
-  `shrink-0 font-display text-sm px-3 py-1.5 border-2 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-acid-yellow/60 ${
+  `shrink-0 font-display text-sm px-3 py-1.5 min-h-[38px] border-2 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-acid-yellow/60 ${
     on ? "bg-acid-yellow text-ink border-acid-yellow" : "bg-transparent text-cream border-cream/40 hover:border-cream"
   }`;
 const EMPTY: Brief = { date: "", city: "", budget: "", act: "", sound: "", q: "" };
@@ -223,7 +223,7 @@ export default function BookDesk({ artists = [], live = false }: Partial<BookDes
 
       {/* HOW IT WORKS */}
       <section className="bg-ink text-cream border-t-4 border-ink py-14 md:py-20">
-        <div className="container grid gap-12 md:grid-cols-2">
+        <div className="container grid gap-12 grid-cols-[minmax(0,1fr)] md:grid-cols-2">
           <div>
             <h2 className="font-display text-4xl leading-none mb-6">If you are booking</h2>
             <ol className="grid gap-4">
@@ -293,17 +293,29 @@ export default function BookDesk({ artists = [], live = false }: Partial<BookDes
 
 }
 
+const PAGE = 24;
+
 function Section({ title, note, list, picked, toggle }: { title: string; note: string; list: Ranked[]; picked: string[]; toggle: (s: string) => void }) {
+  // 80 cards is a very long scroll on a phone. Show the best matches first and the rest on request.
+  const [limit, setLimit] = useState(PAGE);
+  const shown = list.slice(0, limit);
+  const left = list.length - shown.length;
   return (
     <section>
       {title && <h3 className="font-display text-2xl md:text-3xl leading-none">{title} <span className="text-ink/50 tabular">{list.length}</span></h3>}
       {note && <p className="mt-2 mb-6 text-ink/70">{note}</p>}
       {list.length > 0 && (
         <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {list.map((r) => (
+          {shown.map((r) => (
             <ArtistListing key={r.a.slug} a={r.a} reasons={r.reasons} rate={r.rate} selected={picked.includes(r.a.slug)} disabled={picked.length >= 3} onToggle={() => toggle(r.a.slug)} />
           ))}
         </ul>
+      )}
+      {left > 0 && (
+        <button type="button" onClick={() => setLimit(list.length)}
+          className="mt-8 w-full sm:w-auto font-display text-lg px-6 py-3 border-4 border-ink bg-cream chunk-shadow hover:bg-acid-yellow transition-colors">
+          Show {left} more {left === 1 ? "artist" : "artists"}
+        </button>
       )}
     </section>
   );

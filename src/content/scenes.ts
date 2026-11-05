@@ -18,7 +18,7 @@ export const CITY_SCENES: CityScene[] = [
     name: "Bengaluru",
     tagline: "India's underground capital.",
     description:
-      "Bengaluru's underground started in basements and rooftops and never looked back. The city runs on House, Disco, Jungle and Drum & Bass — genres that reward patience and curiosity. Bar Wild in Indiranagar is its beating heart; Cats Can Dance its loudest voice.",
+      "Bengaluru's underground started in basements and rooftops and never looked back. The city runs on House, Disco, Jungle and Drum & Bass, genres that reward patience and curiosity. Bar Wild in Indiranagar is its beating heart; Cats Can Dance its loudest voice.",
     accentColor: "bg-electric-blue",
     textColor: "text-cream",
     activeGenres: ["House", "Disco", "Jungle", "Drum & Bass", "Garage", "Techno"],
@@ -54,7 +54,7 @@ export const CITY_SCENES: CityScene[] = [
     name: "Goa",
     tagline: "Where it all started for Indian electronic music.",
     description:
-      "Goa Trance isn't a niche — it's an origin story. The beaches and forests of North Goa gave birth to a psychedelic sound that circled the globe. Today, the state hosts some of India's biggest festivals (Sunburn, Magnetic Fields' sibling events) alongside intimate jungle parties that carry the original spirit.",
+      "Goa Trance isn't a niche, it's an origin story. The beaches and forests of North Goa gave birth to a psychedelic sound that circled the globe. Today, the state hosts some of India's biggest festivals (Sunburn, Magnetic Fields' sibling events) alongside intimate jungle parties that carry the original spirit.",
     accentColor: "bg-lime",
     textColor: "text-ink",
     activeGenres: ["Goa Trance", "Psytrance", "Techno", "Ambient", "World"],
@@ -78,7 +78,7 @@ export const CITY_SCENES: CityScene[] = [
     name: "Pune",
     tagline: "Student energy meets serious selector culture.",
     description:
-      "Pune's large student population and proximity to Mumbai creates a unique energy — a city that's always been willing to try something different. Promoters here take risks; the crowd follows. A strong live electronics scene sits alongside the DJ culture.",
+      "Pune's large student population and proximity to Mumbai creates a unique energy, a city that's always been willing to try something different. Promoters here take risks; the crowd follows. A strong live electronics scene sits alongside the DJ culture.",
     accentColor: "bg-acid-yellow",
     textColor: "text-ink",
     activeGenres: ["House", "Techno", "Live Electronics", "Funk", "Disco"],
@@ -114,7 +114,7 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     decade: "1980s",
     tagline: "Machines and soul in a post-industrial city.",
     origin:
-      "Detroit Techno was born in the mid-80s from three Black teenagers — Juan Atkins, Derrick May, and Kevin Saunderson — who fed Kraftwerk, funk and the bleakness of a city gutted by deindustrialisation into synthesisers and drum machines. The result was hypnotic, mechanical, deeply human.",
+      "Detroit Techno was born in the mid-80s from three Black teenagers (Juan Atkins, Derrick May and Kevin Saunderson) who fed Kraftwerk, funk and the bleakness of a city gutted by deindustrialisation into synthesisers and drum machines. The result was hypnotic, mechanical, deeply human.",
     indiaConnection:
       "Delhi's techno scene is the most direct descendant of Detroit in India. Kohra's minimalist, industrial sets trace a clear line back to Atkins' Model 500. Several Indian artists have played Movement Festival in Detroit.",
     keyArtists: ["Juan Atkins", "Derrick May", "Kevin Saunderson", "Underground Resistance", "Jeff Mills"],
@@ -137,7 +137,7 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     origin:
       "House music was born in Chicago's Warehouse club under DJ Frankie Knuckles in the late 70s/early 80s. It married the 4/4 kick of disco with synthesised basslines, Roland 808s and the emotional intensity of gospel. It was Black, queer, working-class music made in spite of everything.",
     indiaConnection:
-      "Chicago House is the backbone of India's underground. Virtually every Indian selector who isn't playing techno is playing some branch of House — Deep, Tech, Soulful — that roots back to Chicago. Bengaluru's scene runs on it.",
+      "Chicago House is the backbone of India's underground. Virtually every Indian selector who isn't playing techno is playing some branch of House (Deep, Tech, Soulful) that roots back to Chicago. Bengaluru's scene runs on it.",
     keyArtists: ["Frankie Knuckles", "Larry Heard", "Marshall Jefferson", "Jesse Saunders", "Larry Levan"],
     starterTracks: [
       { title: "Your Love", artist: "Frankie Knuckles", youtubeId: "rBOA2Kk0oBc" },
@@ -156,9 +156,9 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     decade: "1990s",
     tagline: "170 BPM. South London. Never slowing down.",
     origin:
-      "Jungle emerged from London's rave scene in the early 90s — a collision of Jamaican sound system culture, breakbeat hardcore and reggae that Black and mixed-heritage youth in South and East London made their own. It became Drum & Bass; the energy never changed.",
+      "Jungle emerged from London's rave scene in the early 90s, a collision of Jamaican sound system culture, breakbeat hardcore and reggae that Black and mixed-heritage youth in South and East London made their own. It became Drum & Bass; the energy never changed.",
     indiaConnection:
-      "Bengaluru has India's most passionate D&B and Jungle community, anchored by Cats Can Dance. The link is cultural as well as musical — India's sound system culture and Jungle's Jamaican roots share a spiritual DNA.",
+      "Bengaluru has India's most passionate D&B and Jungle community, anchored by Cats Can Dance. The link is cultural as well as musical, India's sound system culture and Jungle's Jamaican roots share a spiritual DNA.",
     keyArtists: ["Goldie", "LTJ Bukem", "Grooverider", "Fabio", "4hero", "DJ Hype"],
     starterTracks: [
       { title: "Inner City Life", artist: "Goldie", youtubeId: "gXXFbsB1koo" },
@@ -177,9 +177,9 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     decade: "1990s",
     tagline: "Post-wall. Industrial. All night. No cameras.",
     origin:
-      "When the Berlin Wall fell in 1989, empty factories and bunkers became clubs. Tresor, Berghain, Watergate — institutions built in the ruins of a divided city. Berlin Techno is harder, longer, more industrial than Detroit's original. It invented club culture as a 12-hour devotional practice.",
+      "When the Berlin Wall fell in 1989, empty factories and bunkers became clubs. Tresor, Berghain, Watergate: institutions built in the ruins of a divided city. Berlin Techno is harder, longer, more industrial than Detroit's original. It invented club culture as a 12-hour devotional practice.",
     indiaConnection:
-      "Berlin is the finishing school for Indian artists who've broken through. Kohra, Sandunes and others have played Tresor and Berghain residencies. The Berlin template — late nights, serious crowds, no phones — is what serious Indian promoters aspire to recreate.",
+      "Berlin is the finishing school for Indian artists who've broken through. Kohra, Sandunes and others have played Tresor and Berghain residencies. The Berlin template (late nights, serious crowds, no phones) is what serious Indian promoters aspire to recreate.",
     keyArtists: ["Berghain residents", "Marcel Dettmann", "Ben Klock", "Surgeon", "DVS1"],
     starterTracks: [
       { title: "Cascade", artist: "Marcel Dettmann", youtubeId: "8GVFPuBYa4c" },
@@ -197,7 +197,7 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     decade: "1990s",
     tagline: "Pitched-up vocals, shuffled beats, late-night energy.",
     origin:
-      "UK Garage emerged from London's pirate radio stations in the mid-90s — a British reinterpretation of US house and R&B that got faster, more syncopated, and distinctly South London. It gave birth to Grime and Dubstep and never really went away.",
+      "UK Garage emerged from London's pirate radio stations in the mid-90s, a British reinterpretation of US house and R&B that got faster, more syncopated, and distinctly South London. It gave birth to Grime and Dubstep and never really went away.",
     indiaConnection:
       "UK Garage is a growing sound in Bengaluru and Mumbai, introduced through CCD nights and Bengaluru selectors who tracked UK pirate radio from afar. Its syncopated rhythms resonate strongly with Indian music's own polyrhythmic traditions.",
     keyArtists: ["Todd Edwards", "MJ Cole", "DJ EZ", "Artful Dodger", "Craig David"],
@@ -217,9 +217,9 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     decade: "1980s–90s",
     tagline: "Paradise Garage. Larry Levan. The church of dance.",
     origin:
-      "If Chicago invented house, New York elevated it into a religion. Larry Levan's Paradise Garage was the cathedral — a place where Black and Latino gay men danced all night to music that was equal parts joy and survival. NYC house is warmer, more gospel-influenced, more emotional than its Chicago cousin.",
+      "If Chicago invented house, New York elevated it into a religion. Larry Levan's Paradise Garage was the cathedral, a place where Black and Latino gay men danced all night to music that was equal parts joy and survival. NYC house is warmer, more gospel-influenced, more emotional than its Chicago cousin.",
     indiaConnection:
-      "Soulful and vocal House — the New York tradition — is popular in Mumbai and Pune. The city's cosmopolitan crowd connects with the warmth and emotional depth that defines the NYC sound.",
+      "Soulful and vocal House, the New York tradition, is popular in Mumbai and Pune. The city's cosmopolitan crowd connects with the warmth and emotional depth that defines the NYC sound.",
     keyArtists: ["Larry Levan", "François Kevorkian", "Masters At Work", "Todd Terry", "Louie Vega"],
     starterTracks: [
       { title: "The Basement", artist: "Kenny Dope presents The Bucketheads", youtubeId: "MQiWqSmNOdw" },
@@ -237,7 +237,7 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     decade: "1980s–90s",
     tagline: "India's own genre that circled the globe.",
     origin:
-      "Goa Trance is the only electronic music genre to originate in India. It grew from the hippie-trail beach parties of North Goa in the 80s — Western travellers bringing synthesisers and drum machines, fusing them with Indian spirituality and the trance-inducing qualities of traditional ritual music. By the 90s it had spawned Psytrance worldwide.",
+      "Goa Trance is the only electronic music genre to originate in India. It grew from the hippie-trail beach parties of North Goa in the 80s: Western travellers bringing synthesisers and drum machines, fusing them with Indian spirituality and the trance-inducing qualities of traditional ritual music. By the 90s it had spawned Psytrance worldwide.",
     indiaConnection:
       "This is India's contribution to global electronic music. The legacy lives on in Goa's festival circuit, in Indian psytrance artists touring globally, and in the spiritual approach to club culture that distinguishes Indian underground from its Western counterparts.",
     keyArtists: ["Astral Projection", "Man With No Name", "Juno Reactor", "Infected Mushroom", "Shpongle"],
@@ -278,7 +278,7 @@ export const GENRE_PAGES: GenrePage[] = [
     name: "Techno",
     tagline: "Repetition as transcendence.",
     description:
-      "Techno is the most minimalist and hypnotic of all electronic music genres. Built on relentless 4/4 kick drums, synthesised basslines and industrial textures, it was designed to induce a trance-like state on crowded dance floors. It rewards patience — the pay-off comes after twenty minutes.",
+      "Techno is the most minimalist and hypnotic of all electronic music genres. Built on relentless 4/4 kick drums, synthesised basslines and industrial textures, it was designed to induce a trance-like state on crowded dance floors. It rewards patience, the pay-off comes after twenty minutes.",
     bpm: "130–150",
     origin: "Detroit, USA",
     originDecade: "1980s",
@@ -299,7 +299,7 @@ export const GENRE_PAGES: GenrePage[] = [
     name: "House",
     tagline: "Four-to-the-floor. Timeless.",
     description:
-      "House music is the most democratic of all dance music genres — it welcomes everyone onto the floor. At its core: a 4/4 kick on every beat, a synthesised bassline, soulful chords and often a vocal. It came from Chicago's Black gay community and has never stopped moving.",
+      "House music is the most democratic of all dance music genres, it welcomes everyone onto the floor. At its core: a 4/4 kick on every beat, a synthesised bassline, soulful chords and often a vocal. It came from Chicago's Black gay community and has never stopped moving.",
     bpm: "120–135",
     origin: "Chicago, USA",
     originDecade: "1980s",
@@ -320,7 +320,7 @@ export const GENRE_PAGES: GenrePage[] = [
     name: "Jungle / Drum & Bass",
     tagline: "170 BPM. Never surrender.",
     description:
-      "Jungle and Drum & Bass are built on the breakbeat — a looped drum break played at 160–180 BPM over deep sub-bass. Born in London from Jamaica's sound system culture, it's physically and emotionally intense. At its best, D&B produces the most energetic dance floors on the planet.",
+      "Jungle and Drum & Bass are built on the breakbeat, a looped drum break played at 160–180 BPM over deep sub-bass. Born in London from Jamaica's sound system culture, it's physically and emotionally intense. At its best, D&B produces the most energetic dance floors on the planet.",
     bpm: "160–180",
     origin: "London, UK",
     originDecade: "1990s",
@@ -341,7 +341,7 @@ export const GENRE_PAGES: GenrePage[] = [
     name: "UK Garage",
     tagline: "Shuffled beats and pitched vocals.",
     description:
-      "UK Garage is House music refracted through a British lens — faster, more syncopated, with pitched-up R&B vocals and a distinctly London energy. It came from South London's pirate radio scene and spawned Grime and Dubstep as it evolved. The original 2-Step sound is having a global revival.",
+      "UK Garage is House music refracted through a British lens: faster, more syncopated, with pitched-up R&B vocals and a distinctly London energy. It came from South London's pirate radio scene and spawned Grime and Dubstep as it evolved. The original 2-Step sound is having a global revival.",
     bpm: "130–135",
     origin: "London, UK",
     originDecade: "1990s",
@@ -367,7 +367,7 @@ export const GENRE_PAGES: GenrePage[] = [
     origin: "New York, USA",
     originDecade: "1970s",
     indianScene:
-      "Disco is deeply embedded in Indian party culture — both through Bollywood's disco era and through the underground revival of classic disco and nu-disco. Mumbai and Bengaluru both have thriving disco nights.",
+      "Disco is deeply embedded in Indian party culture, both through Bollywood's disco era and through the underground revival of classic disco and nu-disco. Mumbai and Bengaluru both have thriving disco nights.",
     keyIndianArtists: ["Hamza Rahimtula", "Noni Mouse", "The F16s (live)"],
     globalLandmarks: ["Studio 54 NYC", "Paradise Garage NYC", "The Loft NYC"],
     starterTracks: [
@@ -383,7 +383,7 @@ export const GENRE_PAGES: GenrePage[] = [
     name: "Ambient",
     tagline: "Music as environment. Silence as rhythm.",
     description:
-      "Ambient music is designed to be heard and ignored simultaneously — to create atmosphere rather than demand attention. Brian Eno coined the term. Its modern iterations include drone, dark ambient, and the chill-out room culture that developed alongside rave culture. In India, it intersects with devotional and meditative traditions.",
+      "Ambient music is designed to be heard and ignored simultaneously, to create atmosphere rather than demand attention. Brian Eno coined the term. Its modern iterations include drone, dark ambient, and the chill-out room culture that developed alongside rave culture. In India, it intersects with devotional and meditative traditions.",
     bpm: "60–90 (or none)",
     origin: "UK / Global",
     originDecade: "1970s–80s",

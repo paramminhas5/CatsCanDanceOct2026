@@ -161,7 +161,7 @@ const Playlist = () => {
           ) : (
             <iframe
               key={`${active?.platform}-${active?.embed_id || active?.url}`}
-              title={`Cats Can Dance — ${active?.title ?? "Playlist"}`}
+              title={`Cats Can Dance: ${active?.title ?? "Playlist"}`}
               src={buildEmbedSrc(active)}
               width="100%"
               height={480}

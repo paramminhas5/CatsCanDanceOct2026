@@ -8,7 +8,7 @@ import SEO from "@/components/SEO";
 
 const pillars = [
   { label: "NIGHTS", desc: "Underground dance music parties built around sound, design and the room.", bg: "bg-magenta", text: "text-cream" },
-  { label: "DROPS", desc: "Limited apparel and goods for humans and pets — wearable culture.", bg: "bg-acid-yellow", text: "text-ink" },
+  { label: "DROPS", desc: "Limited apparel and goods for humans and pets. Wearable culture.", bg: "bg-acid-yellow", text: "text-ink" },
   { label: "COMMUNITY", desc: "A pack of dancers, designers, DJs, photographers and pet people.", bg: "bg-lime", text: "text-ink" },
 ];
 
@@ -37,7 +37,7 @@ const aboutFaqLd = {
     {
       "@type": "Question",
       name: "How do I attend a Cats Can Dance event?",
-      acceptedAnswer: { "@type": "Answer", text: "Check catscandance.com/events for upcoming parties and RSVP. Follow @catscan.dance on Instagram for announcements. Most events are RSVP-only with controlled capacity — free entry." },
+      acceptedAnswer: { "@type": "Answer", text: "Check catscandance.com/events for upcoming parties and RSVP. Follow @catscan.dance on Instagram for announcements. Most events are RSVP-only with controlled capacity, free entry." },
     },
     {
       "@type": "Question",
@@ -56,7 +56,7 @@ const About = () => (
   <main className="bg-background text-foreground">
     <SEO
       title="About Cats Can Dance | Bangalore's Underground Crew"
-      description="The mission, the people and the pack behind Cats Can Dance — Bangalore's underground dance music and culture crew."
+      description="The mission, the people and the pack behind Cats Can Dance: Bangalore's underground dance music and culture crew."
       path="/about"
       jsonLd={[aboutLd, aboutFaqLd]}
     />
@@ -82,7 +82,7 @@ const About = () => (
         <div className="space-y-4 text-ink/85 text-lg md:text-xl font-medium">
           <p>
             Cats Can Dance started in Bangalore as a small crew obsessed with dance music, design and the
-            feeling of a great room. We're building a culture brand for the people who actually show up —
+            feeling of a great room. We're building a culture brand for the people who actually show up:
             dancers, DJs, designers, pet people and the kind of crowd that travels for a night.
           </p>
           <p>

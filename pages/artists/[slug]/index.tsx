@@ -226,10 +226,12 @@ function ArtistV2Page({ a }: { a: ArtistV2 }) {
         <meta property="og:description" content={desc} />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="profile" />
-        <meta property="og:image" content={ogImg} />
+        <meta property="og:image" content={`${SITE}/api/card/artist/${a.slug}?size=link`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Cats Can Dance" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={ogImg} />
+        <meta name="twitter:image" content={`${SITE}/api/card/artist/${a.slug}?size=link`} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </Head>
       <ArtistPage a={a} />

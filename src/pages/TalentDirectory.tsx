@@ -275,7 +275,7 @@ export default function TalentDirectoryPage() {
   return (
     <main className="bg-cream text-ink min-h-screen">
       <SEO
-        title="Talent Directory — Cats Can Dance | Book Musicians, Photographers, Lighting & More"
+        title="Talent Directory | Cats Can Dance | Book Musicians, Photographers, Lighting & More"
         description="Find and book musicians, DJs, photographers, videographers, lighting designers, mix engineers, and production crew across India. Direct bookings, no middleman."
         path="/talent"
         keywords="book musician india, hire photographer event india, lighting designer booking, mix engineer india, event production crew"
@@ -292,7 +292,7 @@ export default function TalentDirectoryPage() {
             Find Your<br /><span className="text-acid-yellow">Talent</span>
           </h1>
           <p className="text-cream/70 max-w-xl leading-relaxed mb-8">
-            Musicians, photographers, videographers, lighting designers, mix engineers, and production crew —
+            Musicians, photographers, videographers, lighting designers, mix engineers, and production crew,
             all in one place. Direct bookings. No commission.
           </p>
 
@@ -468,7 +468,7 @@ export default function TalentDirectoryPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               { step: "01", title: "Browse & Filter", body: "Find talent by role, city, genre, and budget. Every profile shows packages, pricing, and availability." },
-              { step: "02", title: "Send a Request", body: "Pick a package or describe your needs. The talent sees your brief directly — no middleman, no commission." },
+              { step: "02", title: "Send a Request", body: "Pick a package or describe your needs. The talent sees your brief directly. No middleman, no commission." },
               { step: "03", title: "Confirm & Brief", body: "Chat in-app, agree terms, and confirm. You'll both get email updates at every step." },
             ].map(s => (
               <div key={s.step} className="border-4 border-cream/20 bg-white/5 p-6">
@@ -486,7 +486,7 @@ export default function TalentDirectoryPage() {
         <div className="container flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="font-display text-3xl text-cream uppercase">Are You a Creative?</h3>
-            <p className="text-cream/80 mt-1">Get listed — musicians, photographers, videographers, lighting, engineers, production.</p>
+            <p className="text-cream/80 mt-1">Get listed: musicians, photographers, videographers, lighting, engineers, production.</p>
           </div>
           <div className="flex gap-3 flex-wrap">
             <Link href="/for-artists" className="bg-acid-yellow text-ink font-display px-6 py-3 border-4 border-ink chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">

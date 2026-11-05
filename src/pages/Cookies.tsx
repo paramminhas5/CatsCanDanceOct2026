@@ -9,7 +9,7 @@ const Cookies = () => {
   return (
     <>
       <SEO
-        title="Cookie Policy — Cats Can Dance"
+        title="Cookie Policy | Cats Can Dance"
         description="The cookies and local storage Cats Can Dance uses, why, and how to opt out."
         path="/cookies"
       />
@@ -28,9 +28,9 @@ const Cookies = () => {
 
           <h2>Essential</h2>
           <ul>
-            <li><strong>Session</strong> — keeps admin users signed in. Cleared when you log out.</li>
-            <li><strong>Cart</strong> — local storage only, holds your shop cart between visits.</li>
-            <li><strong>Theme</strong> — local storage, remembers your selected theme.</li>
+            <li><strong>Session</strong>: keeps admin users signed in. Cleared when you log out.</li>
+            <li><strong>Cart</strong>: local storage only, holds your shop cart between visits.</li>
+            <li><strong>Theme</strong>: local storage, remembers your selected theme.</li>
           </ul>
 
           <h2>Analytics (anonymous)</h2>

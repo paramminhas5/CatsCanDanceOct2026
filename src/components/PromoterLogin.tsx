@@ -36,7 +36,7 @@ export default function PromoterLogin({ onSuccess }: Props) {
       toast.success(`Welcome, ${data.promoter?.name ?? data.promoter_user?.display_name ?? "promoter"}!`);
       onSuccess(data.promoter_user ?? data.promoter);
     } catch (err: any) {
-      toast.error(err.message === "Invalid promoter token" ? "Invalid token — check with your CCD contact" : err.message ?? "Login failed");
+      toast.error(err.message === "Invalid promoter token" ? "Invalid token. Check with your CCD contact" : err.message ?? "Login failed");
     } finally {
       setBusy(false);
     }
@@ -54,7 +54,7 @@ export default function PromoterLogin({ onSuccess }: Props) {
 
         {/* Token login — always shown */}
         <div className="border-4 border-ink bg-cream chunk-shadow p-6 mb-5">
-          <p className="font-display text-sm uppercase text-ink mb-1">Option 1 — Promoter token</p>
+          <p className="font-display text-sm uppercase text-ink mb-1">Option 1: Promoter token</p>
           <p className="text-ink/50 text-xs mb-4">
             Your token was generated when your application was approved.
             Check the email you used to apply, or ask your CCD contact.
@@ -76,7 +76,7 @@ export default function PromoterLogin({ onSuccess }: Props) {
         {/* Clerk login — only if configured */}
         {clerkEnabled && (
           <div className="border-4 border-ink bg-cream chunk-shadow p-6 mb-5">
-            <p className="font-display text-sm uppercase text-ink mb-3">Option 2 — Sign in with account</p>
+            <p className="font-display text-sm uppercase text-ink mb-3">Option 2: Sign in with account</p>
             <a href="/sign-in?redirect_url=/promoter"
               className="block w-full text-center bg-ink text-cream font-display text-base py-3 border-4 border-ink hover:bg-acid-yellow hover:text-ink transition-colors">
               SIGN IN WITH CLERK →
