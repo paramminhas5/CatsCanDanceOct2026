@@ -145,7 +145,7 @@ const Events = () => {
   const jsonLd = upcoming.map((e) => ({
     "@context": "https://schema.org",
     "@type": "MusicEvent",
-    name: `Cats Can Dance — ${e.title}`,
+    name: `Cats Can Dance: ${e.title}`,
     startDate: e.date,
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
@@ -162,7 +162,7 @@ const Events = () => {
   return (
     <>
       <SEO
-        title="Episodes — Cats Can Dance | Underground Dance Music in Bengaluru"
+        title="Episodes: Underground Dance Music in Bengaluru | Cats Can Dance"
         description="Every Cats Can Dance Episode: dates, venues, lineups and RSVP. Small rooms, pets welcome, Bengaluru."
         path="/nights"
         jsonLd={jsonLd}

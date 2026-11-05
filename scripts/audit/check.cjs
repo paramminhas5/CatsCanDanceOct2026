@@ -32,6 +32,9 @@ fs.mkdirSync(OUT, { recursive: true });
       const loadMs = Date.now() - t0;
       for (let y = 0; y < 20000; y += 800) { await page.evaluate((yy) => window.scrollTo(0, yy), y); await page.waitForTimeout(60); }
       await page.evaluate(() => window.scrollTo(0, 0)); await page.waitForTimeout(400);
+      // Let entrance animations finish so sizes are final (infinite ones, like marquees, are skipped).
+      await page.evaluate(() => Promise.race([Promise.all(document.getAnimations().filter((x) => x.effect && x.effect.getComputedTiming().iterations !== Infinity).map((x) => x.finished.catch(() => {}))), new Promise((r) => setTimeout(r, 1500))])).catch(() => {});
+      await page.waitForTimeout(300);
       const f = await page.evaluate(({ isPhone, W }) => {
         // The configured width, not clientWidth: phones stretch the layout viewport to fit too-wide content.
         const vw = W;

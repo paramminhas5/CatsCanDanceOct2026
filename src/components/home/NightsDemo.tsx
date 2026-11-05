@@ -14,7 +14,7 @@ import catLeft from "@/assets/cat-left.svg";
 import { imgUrl } from "@/lib/img";
 import type { HomeNight } from "@/lib/home";
 import type { CcdEvent } from "@/lib/ccd-db";
-import { dayStamp } from "@/lib/find";
+import { dayStamp, tidyTitle } from "@/lib/find";
 import { displayTime, startDate } from "@/lib/nights";
 import { loadCrowd, sceneKey, type Crowd } from "@/lib/plans";
 
@@ -71,7 +71,7 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
     () =>
       week.map((e) => ({
         id: e.id,
-        title: e.title,
+        title: tidyTitle(e.title),
         venue: e.venue ?? "",
         city: e.city ?? "",
         day: dayStamp(e.event_date, today).label,

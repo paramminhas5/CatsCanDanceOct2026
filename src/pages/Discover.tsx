@@ -18,7 +18,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import PassItOn from "@/components/PassItOn";
 import { CITY_SCENES, GLOBAL_SCENES, GENRE_PAGES } from "@/content/scenes";
-import { dayStamp, inWhen, kindLabel, SOURCE_LABEL, type FindEvent, type Kind, type When } from "@/lib/find";
+import { dayStamp, inWhen, kindLabel, SOURCE_LABEL, tidyGenres, tidyTitle, type FindEvent, type Kind, type When } from "@/lib/find";
 import { displayTime, googleCalendarUrl, todayIST } from "@/lib/nights";
 import Going from "@/components/going/Going";
 import { type Crowd, crowdLine, loadCrowd, sceneKey, useMe } from "@/lib/plans";
@@ -85,7 +85,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
     try { localStorage.setItem(SAVED_KEY, JSON.stringify(next)); } catch {}
   };
 
-  const upcoming = useMemo(() => events.filter((e) => !e.event_date || e.event_date >= today), [events, today]);
+  const upcoming = useMemo(() => events.filter((e) => !e.event_date || e.event_date >= today).map((e) => ({ ...e, title: tidyTitle(e.title), genres: tidyGenres(e.genres) })), [events, today]);
   const cities = useMemo(() => countBy(upcoming.map((e) => e.city ?? "").filter(Boolean)), [upcoming]);
   const genres = useMemo(() => countBy(upcoming.flatMap((e) => e.genres ?? [])), [upcoming]);
   const kinds = new Set(upcoming.map((e) => (e.kind === "club" ? "club" : "big")));
@@ -96,7 +96,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
       (!city || e.city === city) &&
       inWhen(e, when, today) &&
       (kind === "all" || (kind === "club" ? e.kind === "club" : e.kind !== "club")) &&
-      (!genre || (e.genres ?? []).includes(genre)) &&
+      (!genre || (e.genres ?? []).some((x) => x.toLowerCase() === genre.toLowerCase())) &&
       (!savedOnly || saved.includes(e.id)) &&
       (!needle || [e.title, e.venue, e.city, ...(e.lineup ?? []), ...(e.genres ?? []), ...e.artists.map((a) => a.name)].join(" ").toLowerCase().includes(needle)),
     ).sort((a, b) => (a.event_date ?? "9999").localeCompare(b.event_date ?? "9999") || Number(b.featured) - Number(a.featured));
@@ -214,7 +214,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
               {genres.length > 1 && (<>
                 <span className="w-px h-6 bg-cream/25 shrink-0 mx-1" aria-hidden />
                 {genres.slice(0, 10).map(([g]) => (
-                  <button key={g} type="button" aria-pressed={genre === g} onClick={() => setGenre(genre === g ? "" : g)} className={chip(genre === g)}>{g}</button>
+                  <button key={g} type="button" aria-pressed={genre.toLowerCase() === g.toLowerCase()} onClick={() => setGenre(genre.toLowerCase() === g.toLowerCase() ? "" : g)} className={chip(genre.toLowerCase() === g.toLowerCase())}>{g}</button>
                 ))}
               </>)}
             </div>
@@ -339,7 +339,7 @@ function NightCard({ e, saved, onSave, crowd, onPlan }: { e: FindEvent; saved: b
           <p className="text-sm font-bold text-ink/70">
             {kindLabel(e.kind)}{e.event_time ? ` · ${displayTime(e.event_time) ?? e.event_time}` : ""}{e.featured ? <span className="ml-2 text-magenta">Our pick</span> : null}
           </p>
-          <h3 title={e.title} className={`font-display ${e.title.length > 55 ? "text-xl md:text-2xl" : "text-2xl md:text-3xl"} leading-[0.95] mt-1 break-words line-clamp-3`}>{e.title}</h3>
+          <h3 title={e.title} className={`font-display ${e.title.length > 55 ? "text-xl md:text-2xl" : "text-2xl md:text-3xl"} !leading-[1.05] mt-1 break-words line-clamp-3`}>{e.title}</h3>
           <p className="mt-2 font-bold">{[e.venue, e.city].filter(Boolean).join(", ") || "Venue to be announced"}</p>
           {(e.artists.length > 0 || lineup.length > 0) && (
             <p className="mt-2 text-ink/85">

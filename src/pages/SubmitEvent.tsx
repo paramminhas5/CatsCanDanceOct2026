@@ -73,7 +73,7 @@ const SubmitEvent = () => {
   return (
     <main className="bg-background text-foreground">
       <SEO
-        title="Submit Your Event | Cats Can Dance — Bangalore Underground"
+        title="Submit Your Event | Cats Can Dance, Bangalore Underground"
         description="Apply to become a verified promoter and submit your underground dance music events to the Cats Can Dance discover feed."
         path="/submit-event"
       />
@@ -114,7 +114,7 @@ const SubmitEvent = () => {
               <p className="font-display text-magenta text-lg mb-3">/ HOW IT WORKS</p>
               <div className="grid sm:grid-cols-3 gap-4">
                 {[
-                  ["01", "Apply", "Fill in this form — tell us who you are and what you run."],
+                  ["01", "Apply", "Fill in this form. Tell us who you are and what you run."],
                   ["02", "Get verified", "We review and approve promoters within 48 hours."],
                   ["03", "Submit events", "Approved promoters can add events straight to the discover feed."],
                 ].map(([num, title, desc]) => (
@@ -202,7 +202,7 @@ const SubmitEvent = () => {
                 <div>
                   <label className="block font-display text-sm text-ink mb-1">
                     LINK TO A RECENT EVENT
-                    <span className="text-ink/50 font-normal text-xs ml-2">Optional — Instagram post, event page, etc.</span>
+                    <span className="text-ink/50 font-normal text-xs ml-2">Optional. Instagram post, event page, etc.</span>
                   </label>
                   <input value={form.sample_event} onChange={(e) => upd("sample_event", e.target.value)}
                     placeholder="https://instagram.com/p/..."
@@ -219,7 +219,7 @@ const SubmitEvent = () => {
                 Already a verified promoter?{" "}
                 <PartnerContactDialog
                   kind="submit-event"
-                  defaultReason="Verified promoter — submit event"
+                  defaultReason="Verified promoter: submit event"
                   trigger={
                     <button type="button" className="underline hover:text-ink">Send us your event</button>
                   }

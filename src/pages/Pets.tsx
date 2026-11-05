@@ -28,9 +28,9 @@ const Pets = () => {
   const collectionLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Pet Streetwear in India — Cat Bandanas, Bucket Hats & Cat Treats | Cats Can Dance",
+    name: "Pet Streetwear in India: Cat Bandanas, Bucket Hats & Cat Treats | Cats Can Dance",
     description:
-      "Pet streetwear from Cats Can Dance — cat bandanas, cat bucket hats and CCD cat treats. Made in Bangalore, India.",
+      "Pet streetwear from Cats Can Dance: cat bandanas, cat bucket hats and CCD cat treats. Made in Bangalore, India.",
     url: "https://catscandance.com/pets",
     inLanguage: "en-IN",
     isPartOf: { "@type": "WebSite", name: "Cats Can Dance", url: "https://catscandance.com" },
@@ -90,7 +90,7 @@ const Pets = () => {
         <Nav />
         <PageHero eyebrow="PETS" title="PETS THAT PARTY." bg="bg-electric-blue" eyebrowColor="text-acid-yellow">
           <p className="font-display text-cream text-2xl mt-4">
-            Apparel & pet products — CCD-branded, made for the floor.
+            Apparel & pet products: CCD-branded, made for the floor.
           </p>
         </PageHero>
 
@@ -99,13 +99,13 @@ const Pets = () => {
             <CartDrawer />
           </div>
 
-          <h1 className="sr-only">
-            Pet streetwear in India — cat bandanas, bucket hats & cat treats from Bangalore
-          </h1>
+          <h2 className="sr-only">
+            Pet streetwear in India: cat bandanas, bucket hats & cat treats from Bangalore
+          </h2>
           <p className="sr-only">
             Cats Can Dance pet streetwear is designed in Bangalore, India. Shop cat bandanas, cat bucket
             hats and CCD cat treats. Limited drops, no restocks. Buy pet streetwear, cat bandana India,
-            pet bucket hat and cat treats Bangalore — all from the same brand that runs the Episodes.
+            pet bucket hat and cat treats Bangalore, all from the same brand that runs the Episodes.
           </p>
 
           <h2 className="font-display text-3xl md:text-5xl mb-2">
@@ -133,7 +133,7 @@ const Pets = () => {
           )}
 
           <div className="mt-16 border-4 border-ink chunk-shadow bg-acid-yellow p-8">
-            <h2 className="font-display text-2xl md:text-3xl mb-3">FAQ — PET STREETWEAR INDIA</h2>
+            <h2 className="font-display text-2xl md:text-3xl mb-3">FAQ: PET STREETWEAR INDIA</h2>
             <dl className="space-y-4 text-ink">
               <div>
                 <dt className="font-display text-lg">Where can I buy cat bandanas in Bangalore?</dt>

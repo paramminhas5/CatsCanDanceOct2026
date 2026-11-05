@@ -16,7 +16,7 @@ Param asked for this on 5 Nov 2026: run the improvement check, build fixes, sugg
    - empty or broken blocks, and layouts that break
    - weak hierarchy and unclear next steps
    - copy that breaks the brand rules: plain and direct, no em dashes, no hype
-4. Fix what is broken first. Then pick up to 3 improvements, visual or product, that make the site clearly better for someone finding a night, an artist, or School. Prefer finishing loops that already exist (share, going, crews, booking, reminders, claims) over adding new surfaces.
+4. Fix what is broken first. Then copy (Param, 5 Nov 2026: "AI and bullshit content" is a bigger problem than em dashes; every line should be intentional, useful, no slop, written like a person). See "Copy pass" below. Then pick up to 3 improvements, visual or product, that make the site clearly better for someone finding a night, an artist, or School. Prefer finishing loops that already exist (share, going, crews, booking, reminders, claims) over adding new surfaces.
 5. Run `npm run build` (it must pass). Re-run the audit and check the screenshots of every page you touched.
 6. Commit with the message `loop round N: <summary>` and push. Before round 1, open a PR from `loops/auto` into `loops/v1` titled `Improvement loop` (use `gh api repos/paramminhas5/CatsCanDanceOct2026/pulls` with a JSON body if `gh pr create` fails). After that, keep pushing to the same PR.
 7. Append the round to `scripts/audit/LOOP_LOG.md` under a heading `## Loop round N (<date>)`, in this order:
@@ -25,6 +25,15 @@ Param asked for this on 5 Nov 2026: run the improvement check, build fixes, sugg
    - what you fixed
    - what you built
    - what you suggest next but did not build, and why
+
+## Copy pass
+Each round takes one or two pages and reads every visible line out loud. A line stays only if a person looking for a night, an artist or School learns something from it.
+- Cut: filler and hype ("culture brand", "wearable culture", "expanding moats", "the secret heart", "more than just", "curated" used as praise), lines that say what the page is instead of being it, FAQ blocks written for search engines, and triplets of adjectives.
+- Cut or flag any claim nobody can back: firsts, "India's most/leading", who played where, numbers. Do not rewrite a claim into a new claim. If a fact needs Param (for example the journal posts in `src/content/posts.ts` and the scene guides in `src/content/scenes.ts`), list the line in the log under "Param to check" and leave it.
+- Journal posts and scene/genre guides (Param, 5 Nov): cut to facts only. Keep the pages, strip each one down to what the data or a public source backs (dates, venues, lineups, release facts). Drop SEO FAQ blocks and opinion written as fact. Every line you were unsure about goes in the log under "Param to check".
+- Write like Param talking to a friend at the bar: short, concrete, first person plural, real names and real numbers from the data. Say the thing, then stop.
+- Never invent copy to fill a gap. An empty block hides; a missing fact goes in the log.
+- Log each rewritten line as before and after.
 
 ## Limits
 - One round per session, 5 rounds in total. If a round finds nothing broken and nothing worth building, write that in the log and turn the task off early.

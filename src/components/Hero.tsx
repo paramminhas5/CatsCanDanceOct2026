@@ -74,8 +74,8 @@ const Hero = ({ next = null, hasTickets = false }: { next?: HeroNext; hasTickets
   const FLANK_CATS = [
     { id: "cap",        src: catCap,        pos: "top-[28%] left-[6%] md:top-[26%] md:left-[14%]",   x: flankDriftL },
     { id: "hpDance",    src: catHpDance,    pos: "top-[28%] right-[6%] md:top-[26%] md:right-[14%]", x: flankDriftR },
-    { id: "headphones", src: catHeadphones, pos: "top-[52%] left-[6%] md:top-[54%] md:left-[14%]",   x: flankDriftL },
-    { id: "handstand",  src: catHandstand,  pos: "top-[52%] right-[6%] md:top-[54%] md:right-[14%]", x: flankDriftR },
+    { id: "headphones", src: catHeadphones, pos: "hidden md:block top-[52%] left-[6%] md:top-[54%] md:left-[14%]",   x: flankDriftL },
+    { id: "handstand",  src: catHandstand,  pos: "hidden md:block top-[52%] right-[6%] md:top-[54%] md:right-[14%]", x: flankDriftR },
   ];
 
   return (
@@ -131,7 +131,7 @@ const Hero = ({ next = null, hasTickets = false }: { next?: HeroNext; hasTickets
             />
           </motion.div>
 
-          {/* Four flank cats bracketing the wordmark — simplified transforms */}
+          {/* Four flank cats bracketing the wordmark. On phones the lower pair is hidden: it sat on top of DANCE. */}
           {FLANK_CATS.map((c) => (
             <motion.div
               key={c.id}

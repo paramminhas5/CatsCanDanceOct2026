@@ -319,10 +319,12 @@ export default function ArtistPage({ a }: { a: ArtistV2 }) {
   const ofType = (r: Release, t: string) => t === "all" || (t === "single" ? !["album", "ep", "remix"].includes(r.type) : r.type === t);
   const releases = first(relEra.filter((r) => ofType(r, type)), (r) => isFoc("rel", r.id));
   const popular = a.popular.filter((p) => inEra(p.y)).slice(0, 5);
+  // Research notes sometimes ride along in a title, e.g. "(set79 tracklist, no date on page)". Show the title without them.
+  const noteless = (t: string) => t.replace(/\s*\((?=[^)]*\b(?:tracklist|no date|on page|unverified|unconfirmed|source)\b)[^)]*\)/gi, "").trim() || t;
   type Watch = { key: string; title: string; url: string; kind: string; meta: string; y: number | null; img: string | null; mix?: Mix };
   const watchAll: Watch[] = [
-    ...a.videos.map((v: Video) => ({ key: v.url, title: v.title, url: v.url, kind: v.kind ? v.kind.replace(/_/g, " ") : "Video", meta: sourceName(v.url) ?? "", y: v.y, img: thumb(v.url) })),
-    ...a.mixes.map((m: Mix) => ({ key: m.url, title: m.title, url: m.url, kind: "Mix", meta: [sourceName(m.url), m.date, m.tracks.length ? `${m.tracks.length} tracks` : null].filter(Boolean).join(" · "), y: m.y, img: thumb(m.url), mix: m })),
+    ...a.videos.map((v: Video) => ({ key: v.url, title: noteless(v.title), url: v.url, kind: v.kind ? v.kind.replace(/_/g, " ") : "Video", meta: sourceName(v.url) ?? "", y: v.y, img: thumb(v.url) })),
+    ...a.mixes.map((m: Mix) => ({ key: m.url, title: noteless(m.title), url: m.url, kind: "Mix", meta: [sourceName(m.url), m.date, m.tracks.length ? `${m.tracks.length} tracks` : null].filter(Boolean).join(" · "), y: m.y, img: thumb(m.url), mix: m })),
   ];
   const watch = watchAll.filter((w) => (w.y == null ? !era : inEra(w.y)));
   const feature = watch.find((w) => w.img) ?? null;
@@ -448,11 +450,11 @@ html,body{overflow-x:visible!important}
 .ap .railtog{transition:transform .15s ease,box-shadow .15s ease}.ap .railtog:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 #f4efe4!important}.ap .railtog:active{transform:translate(2px,2px);box-shadow:0 0 0 #f4efe4!important}
 .ap .railtog:hover .chev{animation:ccdnudge .5s ease infinite alternate}@keyframes ccdnudge{from{transform:translateX(0)}to{transform:translateX(-4px)}}.ap .railtog[aria-expanded=false]:hover .chev{animation-name:ccdnudger}@keyframes ccdnudger{from{transform:translateX(0)}to{transform:translateX(4px)}}
 .ap .rt{transition:transform .15s ease,box-shadow .15s ease,opacity .2s ease}.ap .rt:hover{transform:translate(-2px,-2px)!important;box-shadow:4px 4px 0 #f4efe4!important;opacity:1!important}
-.ap .rail{display:none}.ap .erasm{display:flex}.ap .dk{display:none}.ap .ph{display:inline-flex;align-items:center;justify-content:center}
+.ap .rail{display:none}.ap .erasm{display:flex}.ap .dk{display:none}.ap .ph{display:inline-flex;align-items:center;justify-content:center}.ap .idlebar{display:none}
 .ap .hero{height:340px}.ap .heroimg{left:0;width:100%}.ap .heroname{font-size:clamp(44px,13vw,64px)}
 .ap .pad{padding-left:16px;padding-right:16px}
 @media (min-width:1024px){
- .ap .rail{display:flex}.ap .erasm{display:none}.ap .dk{display:inline-flex}.ap .ph{display:none}
+ .ap .rail{display:flex}.ap .erasm{display:none}.ap .dk{display:inline-flex}.ap .ph{display:none}.ap .idlebar{display:flex}
  .ap .hero{height:380px}.ap .heroimg{left:40%;width:60%}.ap .heroname{font-size:${a.name.length > 12 ? 76 : 104}px}
  .ap .pad{padding-left:44px;padding-right:44px}
 }
@@ -866,7 +868,7 @@ html,body{overflow-x:visible!important}
                     <BookButton fromQuery artist={{ slug: a.slug, name, photo_url: a.photo, city: a.city, sound: a.genres.slice(0, 2).join(", ") || undefined }}
                       label="Ask for a date" className="btn"
                       style={{ height: 44, background: RED, color: "#ffffff", border: `2px solid ${CREAM}`, fontWeight: 700, cursor: "pointer", fontSize: 14 }} />
-                    <a href={`/artists/${a.slug}/epk`} style={{ fontSize: 13, fontWeight: 700 }}>Press kit ↗</a>
+                    <a href={`/artists/${a.slug}/epk`} style={{ fontSize: 13, fontWeight: 700, display: "inline-block", lineHeight: "24px" }}>Press kit ↗</a>
                   </div>
                 )}
                 {a.ccdNights.some((n) => !n.upcoming) && (
@@ -888,7 +890,7 @@ html,body{overflow-x:visible!important}
 
             <footer className="pad" style={{ paddingTop: 18, paddingBottom: 110, fontSize: 13, color: MUTE, display: "flex", justifyContent: "space-between", gap: 16, flexWrap: "wrap", borderTop: `1px solid ${RULE}` }}>
               <span>Compiled by Cats Can Dance from press, labels and listings. Every line links to its source. Previews from Deezer.</span>
-              <span style={{ display: "flex", gap: 16, flexWrap: "wrap", fontWeight: 700 }}>
+              <span style={{ display: "flex", gap: 16, flexWrap: "wrap", fontWeight: 700, lineHeight: "24px" }}>
                 <a href="/artists">All artists</a>
                 {!a.claimed && <a href={`/for-artists?claim=${encodeURIComponent(a.slug)}#claim`} style={{ color: CREAM }}>Are you {name}? Claim this page</a>}
               </span>
@@ -897,8 +899,9 @@ html,body{overflow-x:visible!important}
         </div>
 
         {/* ── Player bar ── */}
+        {/* On phones the bar waits until something plays, so it does not cover Start here and Follow on first view. */}
         {track && (
-          <div className="fade pad" style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 40, display: "flex", alignItems: "center", gap: 14, paddingTop: 10, paddingBottom: 10, background: "rgba(12,12,12,.97)", borderTop: "1px solid rgba(244,239,228,.2)", boxShadow: `0 -1px 0 ${accent}` }}>
+          <div className={`fade pad${cur ? "" : " idlebar"}`} style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 40, display: cur ? "flex" : undefined, alignItems: "center", gap: 14, paddingTop: 10, paddingBottom: 10, background: "rgba(12,12,12,.97)", borderTop: "1px solid rgba(244,239,228,.2)", boxShadow: `0 -1px 0 ${accent}` }}>
             {track.cover ? <img src={track.cover} alt="" style={{ width: 44, height: 44, objectFit: "cover", flex: "0 0 44px" }} /> : <span style={{ width: 44, height: 44, flex: "0 0 44px", background: tint }} />}
             <span style={{ flex: "1 1 160px", maxWidth: 300, minWidth: 0, display: "flex", flexDirection: "column", lineHeight: 1.3 }}>
               <span style={{ fontWeight: 700, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{track.t}</span>
@@ -1021,14 +1024,14 @@ function ConnCard({ name, what, years, url, img, accent, peers, internal }: {
       {peers && peers.length > 0 && (
         <span style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", fontSize: 12 }}>
           <span style={{ color: MUTE }}>Also on CCD</span>
-          {peers.map((p) => <a key={p.slug} href={`/artists/${p.slug}`} style={{ fontWeight: 700, padding: "1px 7px", border: "1px solid rgba(244,239,228,.4)" }}>{displayName(p.name)}</a>)}
+          {peers.map((p) => <a key={p.slug} href={`/artists/${p.slug}`} style={{ fontWeight: 700, padding: "4px 8px", minHeight: 24, display: "inline-flex", alignItems: "center", border: "1px solid rgba(244,239,228,.4)" }}>{displayName(p.name)}</a>)}
         </span>
       )}
     </>
   );
   const style: CSSProperties = { display: "flex", flexDirection: "column", gap: 10, padding: 12, border: "1px solid rgba(244,239,228,.14)" };
   // A card with peers holds links of its own, so it is not itself a link.
-  if (!url || (peers && peers.length)) return <div className="hl" style={style}>{inner}{url && <a href={url} target="_blank" rel="noreferrer" style={{ fontSize: 12, fontWeight: 700, color: MUTE }}>Source ↗</a>}</div>;
+  if (!url || (peers && peers.length)) return <div className="hl" style={style}>{inner}{url && <a href={url} target="_blank" rel="noreferrer" style={{ fontSize: 12, fontWeight: 700, color: MUTE, minHeight: 24, display: "inline-flex", alignItems: "center", alignSelf: "flex-start" }}>Source ↗</a>}</div>;
   return <a href={url} target={internal ? undefined : "_blank"} rel="noreferrer" className="hl" style={style}>{inner}</a>;
 }
 

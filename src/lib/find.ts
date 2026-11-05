@@ -68,3 +68,36 @@ export const SOURCE_LABEL: Record<string, string> = {
   gigscalendar: "Gigs Calendar", district: "District", insider: "Insider", highape: "HighApe", skillbox: "Skillbox",
   allevents: "AllEvents", submitted: "Sent in", member: "A member",
 };
+
+/** Source categories that are not sounds ("club gigs", "music shows"). Hidden from chips and filters. */
+const NOT_A_SOUND = new Set(["club gigs", "music shows", "gigs", "events", "nightlife", "concerts", "club night", "club nights"]);
+
+/** One spelling per sound: drop source categories, start each word with a capital, dedupe ignoring case. */
+export function tidyGenres(list: string[] | null | undefined): string[] {
+  const out = new Map<string, string>();
+  for (const raw of list ?? []) {
+    const g = raw.trim().replace(/\s+/g, " ");
+    const k = g.toLowerCase();
+    if (!g || NOT_A_SOUND.has(k) || out.has(k)) continue;
+    out.set(k, g === k ? g.replace(/(^|[\s&/-])([a-z])/g, (_, p, c) => p + c.toUpperCase()) : g);
+  }
+  return [...out.values()];
+}
+
+/**
+ * Display tidy for scraped titles. Source punctuation stays in the database; this only cleans what people read:
+ * three or more dots become one ellipsis ("pres...." to "pres…"); two dots stay ("Fred again.." is a name), "Housed- Featuring" becomes "Housed: Featuring", stray spaces before
+ * punctuation go, and em dashes (or spaced en dashes) become a colon.
+ */
+export function tidyTitle(t: string | null | undefined): string {
+  if (!t) return "";
+  return t
+    .replace(/\s*\u2014\s*|\s+\u2013\s+/g, ": ")
+    .replace(/\.{3,}|\u2026/g, "\u2026")
+    .replace(/(\w)-\s+(?=\S)/g, "$1: ")
+    .replace(/\s+([,.:;!?\u2026])/g, "$1")
+    .replace(/:\s*:/g, ":")
+    .replace(/\s{2,}/g, " ")
+    .replace(/^[\s:.,-]+|[\s:,-]+$/g, "")
+    .trim();
+}

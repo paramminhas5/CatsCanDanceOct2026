@@ -293,17 +293,29 @@ export default function BookDesk({ artists = [], live = false }: Partial<BookDes
 
 }
 
+const PAGE = 24;
+
 function Section({ title, note, list, picked, toggle }: { title: string; note: string; list: Ranked[]; picked: string[]; toggle: (s: string) => void }) {
+  // 80 cards is a very long scroll on a phone. Show the best matches first and the rest on request.
+  const [limit, setLimit] = useState(PAGE);
+  const shown = list.slice(0, limit);
+  const left = list.length - shown.length;
   return (
     <section>
       {title && <h3 className="font-display text-2xl md:text-3xl leading-none">{title} <span className="text-ink/50 tabular">{list.length}</span></h3>}
       {note && <p className="mt-2 mb-6 text-ink/70">{note}</p>}
       {list.length > 0 && (
         <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {list.map((r) => (
+          {shown.map((r) => (
             <ArtistListing key={r.a.slug} a={r.a} reasons={r.reasons} rate={r.rate} selected={picked.includes(r.a.slug)} disabled={picked.length >= 3} onToggle={() => toggle(r.a.slug)} />
           ))}
         </ul>
+      )}
+      {left > 0 && (
+        <button type="button" onClick={() => setLimit(list.length)}
+          className="mt-8 w-full sm:w-auto font-display text-lg px-6 py-3 border-4 border-ink bg-cream chunk-shadow hover:bg-acid-yellow transition-colors">
+          Show {left} more {left === 1 ? "artist" : "artists"}
+        </button>
       )}
     </section>
   );

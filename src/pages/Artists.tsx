@@ -399,7 +399,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                       key={a.id}
                       href={`/artists/${a.slug}`}
                       className={`group relative border-4 border-ink overflow-hidden chunk-shadow hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-transform ${
-                        isLarge ? "col-span-2 row-span-2" : "aspect-square"
+                        isLarge ? "col-span-2 row-span-2 aspect-square" : "aspect-square"
                       }`}
                     >
                       {img ? (
@@ -418,7 +418,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                             <Music className="w-16 h-16" />
                           </div>
                           {a.bio && (
-                            <p className="absolute top-3 left-3 right-3 text-xs leading-snug line-clamp-4 opacity-80">{a.bio}</p>
+                            <p className="max-sm:hidden absolute top-3 left-3 right-3 text-xs leading-snug line-clamp-3 opacity-80">{a.bio}</p>
                           )}
                         </div>
                       )}

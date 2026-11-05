@@ -84,7 +84,7 @@ const Drops = () => {
         </h2>
         <p className="font-display text-ink/70 text-base md:text-lg mb-8">Streetwear + pet drops. Limited. No restocks.</p>
         <p className="sr-only">
-          Limited streetwear drops, pet merch and collectibles from Cats Can Dance — a Bangalore streetwear brand and India's leading independent drop culture label.
+          Limited streetwear drops, pet merch and collectibles from Cats Can Dance, a Bangalore streetwear brand and India's leading independent drop culture label.
         </p>
 
         <div className="grid md:grid-cols-2 gap-10 mb-10">
