@@ -41,6 +41,7 @@ function buildSitemap(artistSlugs: string[]): string {
     url("/submit-event", "0.6", "monthly"),
     url("/for-artists", "0.75", "monthly"),
     url("/for-venues", "0.75", "monthly"),
+    url("/promote", "0.7", "monthly"),
     url("/for-investors", "0.7", "monthly"),
   ];
 

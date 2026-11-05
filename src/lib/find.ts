@@ -9,7 +9,8 @@ export type When = "tonight" | "weekend" | "week" | "all";
 export type Kind = "all" | "club" | "big";
 
 export type FindArtist = { name: string; slug: string };
-export type FindEvent = SceneBoardEvent & { artists: FindArtist[] };
+/** A night on What's on. Promoter nights on CCD (migration 056) carry their own night_key (the event slug) and who presents them. */
+export type FindEvent = SceneBoardEvent & { artists: FindArtist[]; night_key?: string; presenter?: string };
 
 const addDays = (iso: string, n: number) => {
   const d = new Date(`${iso}T00:00:00Z`);

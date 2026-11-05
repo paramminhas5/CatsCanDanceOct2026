@@ -7,7 +7,7 @@ export default function TicketsStrip() {
   const [ev, setEv] = useState<{ slug: string; title: string; event_date: string | null; venue: string | null } | null>(null);
   useEffect(() => {
     (async () => {
-      const { data } = await supabase.from("events").select("slug,title,event_date,venue").eq("published", true).gte("event_date", new Date().toISOString().slice(0, 10)).order("event_date").limit(5);
+      const { data } = await supabase.from("events").select("slug,title,event_date,venue").eq("published", true).is("promoter_id", null).gte("event_date", new Date().toISOString().slice(0, 10)).order("event_date").limit(5);
       for (const e of data ?? []) {
         const t = await supabase.rpc("public_tiers", { p_slug: (e as any).slug });
         if ((t.data as any[])?.length) { setEv(e as any); return; }
