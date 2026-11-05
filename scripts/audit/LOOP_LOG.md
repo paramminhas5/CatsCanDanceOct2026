@@ -72,3 +72,5 @@ Third scheduled round, same branch and PR #20.
   - /tour cards on phones: Follow sits alone on its own row under the dates. Moving it up beside the act line would make each card a row shorter. Small layout change, safe to build next round.
   - Home week row: a tidied title that ends in "pres." then gets the clamp ellipsis reads "pres.…". Trim a trailing full stop before clamping.
   - Artist page on phones: the fixed mini player covers the Start here and Follow buttons on first view. Lift the buttons above the fold or start the player collapsed. Design change, canvas first.
+
+- 5 Nov 2026, after round 3: Param said AI and filler copy matters more than em dashes. LOOP.md now has a Copy pass section; rounds 4 and 5 put copy ahead of polish. Claims nobody can back (journal posts, scene guides) go to "Param to check", not into new rewrites.
