@@ -17,7 +17,7 @@
   - Phone: 10 of 13 pages clean. What's left are inline text links, and the artist cards that are mid-animation when measured.
 
 ## Loop round 1 (5 Nov 2026)
-First scheduled round, on branch loops/auto (from loops/v1). Rounds 1-3 above were by hand.
+First scheduled round, on branch loops/auto (from loops/v1), PR #20 into loops/v1. Rounds 1-3 above were by hand.
 - Date: Thu 5 Nov 2026.
 - Audit before: desktop 13 of 13 clean, phone 10 of 13 clean (home 2, artists 6, kohra 10 small tap targets). After: the same. Phone /book page height went from 42,200px to 15,400px.
 - Note for next rounds: the local build needs `.env.local` with the public anon key (from Supabase get_publishable_keys) or every page renders empty. Kill `next-server` before rebuilding, or the old server serves stale chunk hashes and the audit reports 404s.
