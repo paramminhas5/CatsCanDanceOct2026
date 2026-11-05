@@ -20,7 +20,7 @@ const ROWS: [string, string, string][] = [
   ["Gigs", "You post each one, then delete it.", "Found and added for you, with tickets. Past gigs stay as your history."],
   ["Releases", "A row of links to other apps.", "Every release with label and year. Press play on the page."],
   ["History", "Lost in old posts.", "Your eras, releases, gigs and press in one place, every fact sourced."],
-  ["Booking", "DMs, missed emails, “what's your fee?”", "One brief: date, room, set, budget. Reply, counter, confirm. Your calendar updates."],
+  ["Booking", "DMs, missed emails, “what's your fee?”", "One brief: date, room, set, budget. Reply, counter, confirm."],
   ["Touring", "A story that's gone in a day.", "Tour dates on your page and on On tour, where promoters in each city book the open nights."],
 ];
 

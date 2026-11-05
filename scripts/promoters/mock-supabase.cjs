@@ -16,6 +16,8 @@ const RPC = {
   promoter_night_save: (a) => { const slug = a.p_night || 'basement-club-' + a.p_data.event_date; const ex = state.nights.find((n) => n.slug === slug); const row = { ...(ex || DRAFT), ...a.p_data, slug, published: ex ? ex.published : false, review_status: ex ? ex.review_status : 'draft' }; state.nights = state.nights.filter((n) => n.slug !== slug).concat(row); return { ok: true, slug, published: row.published }; },
   promoter_night_status: (a) => { const n = state.nights.find((x) => x.slug === a.p_night); if (n) n.review_status = a.p_action === 'submit' ? 'pending' : 'draft'; return { ok: true }; },
   public_tiers: () => [{ id: 't1', name: 'Free entry', price_inr: 0, capacity: 100, max_per_order: 2, left: 63 }],
+  promoter_page: (a) => (a.p_slug === P.slug ? { ok: true, promoter: P, nights: state.nights.filter((n) => n.published), scene: [] } : { ok: false }),
+  promoters_public: () => [{ ...P, cities: [P.city], kind: 'promoter', nights_on_ccd: 1 }],
   night_counts: () => [], my_night_state: () => null, load_crowd: () => [],
 };
 http.createServer((req, res) => {

@@ -20,19 +20,19 @@ const KIND_CONFIG: Record<PartnerKind, KindConfig> = {
     title: "PARTNER WITH US",
     eyebrow: "/ VENUE PARTNERSHIPS",
     reasons: ["Host an episode at our venue", "Long-term residency", "One-off collab", "Other"],
-    fallbackEmail: "venues@catscandance.com",
+    fallbackEmail: "hello@catscandance.com",
   },
   artists: {
     title: "PLAY WITH US",
     eyebrow: "/ ARTIST BOOKINGS",
     reasons: ["I want to play a CCD episode", "Booking enquiry", "Demo / mix submission", "Other"],
-    fallbackEmail: "artists@catscandance.com",
+    fallbackEmail: "hello@catscandance.com",
   },
   investors: {
     title: "REQUEST DECK",
     eyebrow: "/ INVESTORS",
     reasons: ["Request the deck", "Schedule a call", "Diligence questions", "Other"],
-    fallbackEmail: "invest@catscandance.com",
+    fallbackEmail: "hello@catscandance.com",
   },
   press: {
     title: "PRESS ENQUIRY",

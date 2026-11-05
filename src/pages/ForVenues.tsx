@@ -10,15 +10,14 @@ const bullets = [
   "We promote the night and run the guest list",
   "We can run the door, or your door staff can use ours: QR scan, guest list and walk-ins on one phone",
   "You get a live count link: how many are inside against capacity, no names",
-  "We shoot photos and clips you can use",
-  "You run the bar. Split and any minimum agreed per night",
+  "You run the bar. We agree the terms with you before each night",
 ];
 
 const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "Who runs the bar and the door?", acceptedAnswer: { "@type": "Answer", text: "The venue runs the bar. We bring the lineup, the crowd, the promotion and the photos and clips afterwards, and we can run the door with our own QR tickets and guest list. The split and any minimum are agreed per Episode." } },
+    { "@type": "Question", name: "Who runs the bar and the door?", acceptedAnswer: { "@type": "Answer", text: "The venue runs the bar. We bring the lineup and the promotion, and we can run the door with our own QR tickets and guest list. Terms are agreed with the venue before each night." } },
     { "@type": "Question", name: "How do I propose my venue?", acceptedAnswer: { "@type": "Answer", text: "Use the Partner With Us form on this page or email hello@catscandance.com with venue capacity, sound system details, and a few photos." } },
   ],
 };

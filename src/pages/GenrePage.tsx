@@ -39,8 +39,8 @@ export default function GenrePage({ slug }: Props) {
   return (
     <main className="bg-cream text-ink">
       <SEO
-        title={`${genre.name} — Genre Guide | Cats Can Dance`}
-        description={`${genre.tagline} ${genre.description.slice(0, 120)}… Discover Indian artists, key tracks and where to hear ${genre.name} in India.`}
+        title={`${genre.name} in India: artists, tracks and where to hear it | Cats Can Dance`}
+        description={`${genre.tagline} ${(genre.description.match(/^[^.]+\./) ?? [""])[0]} Indian ${genre.name.toLowerCase()} artists, key tracks and where to hear it in India.`}
         path={`/genres/${genre.slug}`}
         keywords={`${genre.name.toLowerCase()} music india, ${genre.name.toLowerCase()} artists india, ${genre.origin.toLowerCase()} ${genre.name.toLowerCase()}`}
         jsonLd={[

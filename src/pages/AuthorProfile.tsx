@@ -90,7 +90,7 @@ const AuthorProfile = () => {
   return (
     <>
       <SEO
-        title={`${author.name} — ${author.role} | Cats Can Dance`}
+        title={`${author.name}, ${author.role} | Cats Can Dance`}
         description={author.bio[0]}
         path={`/authors/${author.slug}`}
         jsonLd={[personLd]}

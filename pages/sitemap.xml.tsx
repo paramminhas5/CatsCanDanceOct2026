@@ -12,7 +12,7 @@ function url(loc: string, priority: string, changefreq: string, lastmod?: string
   </url>`;
 }
 
-function buildSitemap(artistSlugs: string[]): string {
+function buildSitemap(artistSlugs: string[], promoterSlugs: string[] = [], nights: { slug: string; updated_at?: string | null }[] = []): string {
   const today = new Date().toISOString().split("T")[0];
 
   const staticUrls = [
@@ -42,6 +42,7 @@ function buildSitemap(artistSlugs: string[]): string {
     url("/for-artists", "0.75", "monthly"),
     url("/for-venues", "0.75", "monthly"),
     url("/promote", "0.7", "monthly"),
+    url("/gate", "0.75", "monthly"),
     url("/for-investors", "0.7", "monthly"),
   ];
 
@@ -61,12 +62,17 @@ function buildSitemap(artistSlugs: string[]): string {
     url(`/artists/${slug}`, "0.8", "monthly", today)
   );
 
+  const promoterUrls = promoterSlugs.map((slug) => url(`/promoters/${slug}`, "0.7", "weekly", today));
+  const nightUrls = nights.map((n) => url(`/nights/${n.slug}`, "0.8", "weekly", (n.updated_at ?? today).slice(0, 10)));
+
   const allUrls = [
     ...staticUrls,
     ...cityUrls,
     ...genreUrls,
     ...sceneUrls,
     ...artistUrls,
+    ...promoterUrls,
+    ...nightUrls,
   ];
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -95,7 +101,22 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     // silently skip — sitemap still works without artist slugs
   }
 
-  const sitemap = buildSitemap(artistSlugs);
+  // Promoters that qualify for a page (migration 057) and published nights, ours and promoters'.
+  let promoterSlugs: string[] = [];
+  let nights: { slug: string; updated_at?: string | null }[] = [];
+  try {
+    const { rpc, select } = await import("@/lib/ccd-db");
+    const [p, n] = await Promise.all([
+      rpc<{ slug: string }[]>("promoters_public", {}).catch(() => []),
+      select<{ slug: string; updated_at: string | null }>("events?published=is.true&select=slug,updated_at&order=event_date.desc&limit=500", 3600).catch(() => []),
+    ]);
+    promoterSlugs = (p ?? []).map((x) => x.slug).filter(Boolean);
+    nights = (n ?? []).filter((x) => x.slug && !/^test-/.test(x.slug));
+  } catch {
+    // skip: the rest of the sitemap still works
+  }
+
+  const sitemap = buildSitemap(artistSlugs, promoterSlugs, nights);
 
   res.setHeader("Content-Type", "application/xml");
   res.setHeader("Cache-Control", "public, s-maxage=86400, stale-while-revalidate=43200");

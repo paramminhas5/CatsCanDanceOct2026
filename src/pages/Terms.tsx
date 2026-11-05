@@ -9,7 +9,7 @@ const Terms = () => {
   return (
     <>
       <SEO
-        title="Terms of Use — Cats Can Dance"
+        title="Terms of use | Cats Can Dance"
         description="The rules for using catscandance.com — RSVPs, door policy, shop orders, IP, and disclaimers."
         path="/terms"
       />

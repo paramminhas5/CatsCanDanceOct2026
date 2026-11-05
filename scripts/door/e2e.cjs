@@ -17,7 +17,12 @@ const S = {
     { code: 'DEAD000033', name: 'Refund Person', tier: 'Free list', in_at: null, void: true, order: 'o4' },
   ],
   rsvps: [{ id: 'r1', name: 'Neha Iyer', party: 3, in_count: 0, in_at: null }],
-  walkins: [], calls: [], team: [], live_key: null,
+  walkins: [], calls: [], team: [], live_key: null, imports: [],
+  // Outside tickets (migration 060): one imported from District, one added by the guest from BookMyShow.
+  guests: [
+    { id: 'g1', code: 'DST12345', name: 'Tara M', source: 'district', party: 2, in_count: 0, in_at: null, uploaded: false, proof: null },
+    { id: 'g2', code: 'BMS998877', name: 'Kabir D', source: 'bookmyshow', party: 1, in_count: 0, in_at: null, uploaded: true, proof: 'door/episode-5/u/1.jpg' },
+  ],
   settings: { age_check: true, note: 'Wristband after ID', upi_vpa: 'ccd@okhdfc', upi_name: 'Cats Can Dance', lead: true },
 };
 const night = { slug: 'episode-5', title: 'Cats Can Dance Episode 5', event_date: new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' }), date: 'Wed 25 Nov 2026', start_time: '8pm', venue: 'The Humming Tree', city: 'Bengaluru', capacity: 150 };
@@ -43,6 +48,11 @@ function rpc(name, a) {
   if (name === 'door_rsvp') { const r = S.rsvps.find((x) => x.id === a.p_id); r.in_count = Math.max(0, Math.min(r.party, a.p_count)); r.in_at = r.in_count ? (r.in_at || new Date().toISOString()) : null; return { ok: true, in_count: r.in_count }; }
   if (name === 'door_walkin') { if (!S.walkins.find((w) => w.id === a.p_id)) S.walkins.unshift({ id: a.p_id, name: a.p_name, party: a.p_party, amount: a.p_amount, method: a.p_method, at: new Date().toISOString() }); return { ok: true }; }
   if (name === 'door_void_walkin') { S.walkins = S.walkins.filter((w) => w.id !== a.p_id); return { ok: true }; }
+  if (name === 'door_guests_list') return { ok: true, guests: S.guests, limits: { plan: 'pro', billing: false, import_cap: 5000, plan_if_billing: 'free' }, imports: S.imports };
+  if (name === 'door_guest_set') { const g = S.guests.find((x) => x.id === a.p_id); g.in_count = Math.max(0, Math.min(g.party, a.p_count)); g.in_at = g.in_count ? (g.in_at || new Date().toISOString()) : null; return { ok: true, in_count: g.in_count }; }
+  if (name === 'door_check_guest') { const c = a.p_code.toUpperCase().replace(/[^A-Z0-9]/g, ''); const g = S.guests.find((x) => c.includes(x.code)); if (!g) return { ok: true, result: 'not_found' }; if (g.in_count >= g.party) return { ok: true, result: 'already', name: g.name, tier: g.source, party: g.party, at: g.in_at }; g.in_count = g.party; g.in_at = new Date().toISOString(); return { ok: true, result: 'admit', name: g.name, tier: g.source, party: g.party }; }
+  if (name === 'door_import_guests') { const b = 'b' + (S.imports.length + 1); let added = 0; for (const r of a.p_rows) { const c = (r.code || '').toUpperCase().replace(/[^A-Z0-9]/g, ''); if (c && S.guests.find((g) => g.code === c)) continue; S.guests.push({ id: 'g' + (S.guests.length + 1), code: c || null, name: r.name, source: a.p_source, party: r.party || 1, in_count: 0, in_at: null, uploaded: false, proof: null, batch: b }); added++; } S.imports.unshift({ batch: b, source: a.p_source, rows: added, at: new Date().toISOString() }); return { ok: true, batch: b, added, updated: a.p_rows.length - added, skipped: 0, cap: 5000, plan: 'pro' }; }
+  if (name === 'door_void_import') { const n = S.guests.filter((g) => g.batch === a.p_batch && !g.in_count).length; S.guests = S.guests.filter((g) => g.batch !== a.p_batch || g.in_count); S.imports = S.imports.filter((x) => x.batch !== a.p_batch); return { ok: true, removed: n }; }
   if (name === 'door_undo_ticket') { const t = S.tickets.find((x) => x.code === a.p_code); if (t) t.in_at = null; return { ok: true }; }
   return { ok: false, error: 'unknown' };
 }
@@ -141,9 +151,37 @@ function rpc(name, a) {
   await page.getByPlaceholder('Amount paid, ₹ (total)').fill('600');
   await page.getByAltText('UPI QR for ₹600').waitFor();
   await step('12-upi-qr');
+  // Outside tickets: a District code scans from the phone's list (party of 2 in on one scan), a BookMyShow link QR matches its code.
+  await page.getByText('Scan', { exact: true }).click();
+  await page.getByPlaceholder('Ticket code').fill('dst-12345');
+  await page.getByRole('button', { name: 'Check', exact: true }).click();
+  await page.getByText('Let them in', { exact: true }).waitFor();
+  console.log('outside ticket admit shows source:', await page.getByText('District · party of 2').isVisible());
+  await step('12b-outside-admit');
+  await page.getByText('Let them in', { exact: true }).click();
+  await page.getByPlaceholder('Ticket code').fill('https://in.bookmyshow.com/t/BMS998877?ref=x');
+  await page.getByRole('button', { name: 'Check', exact: true }).click();
+  await page.getByText('Let them in', { exact: true }).waitFor();
+  await page.getByText('Let them in', { exact: true }).click();
+  await page.waitForTimeout(1500);
+  console.log('guest sets sent:', S.calls.filter((c) => c.startsWith('door_guest_set')).length, 'tara in:', S.guests[0].in_count, 'kabir in:', S.guests[1].in_count);
+  await page.getByText('Guests', { exact: true }).click();
+  await page.getByRole('button', { name: 'Everyone' }).click();
+  await page.getByPlaceholder('Search a name or code').fill('kabir');
+  console.log('guest-added row:', await page.getByText(/added by the guest/).isVisible(), 'ticket link:', await page.getByRole('button', { name: 'Ticket', exact: true }).isVisible());
+  await step('12c-outside-guests');
   await page.goto('http://localhost:3322/door/episode-5/setup', { waitUntil: 'networkidle' });
   await page.getByText('Door rules').waitFor();
-  await page.getByPlaceholder('Email').fill('Venue.Door@example.com');
+  await page.getByText('Tickets sold elsewhere').scrollIntoViewIfNeeded();
+  await page.getByRole('button', { name: 'BookMyShow', exact: true }).click();
+  await page.getByPlaceholder(/Booking ID, Name/).fill('Booking ID,Customer Name,Email,No. of Tickets\nBK1001,Zoya A,z@example.com,2\n"BK1002","Dev, R",d@example.com,1\nBK1003,Ira P,,3');
+  await page.getByRole('button', { name: /^Import 3 from BookMyShow/ }).waitFor();
+  await step('13a-import-preview');
+  await page.getByRole('button', { name: /^Import 3 from BookMyShow/ }).click();
+  await page.getByText(/3 added, 0 updated/).waitFor();
+  console.log('imported rows:', S.guests.filter((g) => g.source === 'bookmyshow').length - 1, 'party read:', S.guests.find((g) => g.code === 'BK1003')?.party, 'quoted name:', S.guests.find((g) => g.code === 'BK1002')?.name);
+  await step('13b-imported');
+  await page.getByPlaceholder('Email', { exact: true }).fill('Venue.Door@example.com');
   await page.getByRole('button', { name: 'Add', exact: true }).click();
   await page.getByText('venue.door@example.com').waitFor();
   await page.getByRole('button', { name: 'Make the link' }).click();

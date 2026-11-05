@@ -145,3 +145,33 @@ export async function emailBookingOutbox() {
   }
   return { sent };
 }
+
+/**
+ * Tell a promoter's team what CCD decided: about the promoter (approved or not), or about one night (live, or sent back with a note).
+ * Called from /ops/promoters after a review. Does nothing until RESEND_API_KEY is set; reaches everyone once RESEND_FROM uses the verified domain.
+ */
+export async function emailPromoterReview(opts: { promoter?: string; night?: string; approved: boolean }) {
+  const token = process.env.OPS_TOKEN;
+  if (!token || !process.env.RESEND_API_KEY) return { sent: 0, skipped: true };
+  const d = await rpc("ops_promoter_mail_data", { p_token: token, p_promoter: opts.promoter ?? null, p_night: opts.night ?? null });
+  if (!d.ok || !d.data?.ok) return { sent: 0 };
+  const x = d.data;
+  const dash = `${SITE()}/promote/${encodeURIComponent(x.promoter_slug)}`;
+  const note = x.note ? `<p>Our note: ${esc(x.note)}</p>` : "";
+  let subject: string, body: string;
+  if (opts.night && x.night) {
+    const page = `${SITE()}/nights/${encodeURIComponent(x.night.slug)}`;
+    subject = opts.approved ? `${x.night.title} is live on CCD` : `${x.night.title}: not approved yet`;
+    body = opts.approved
+      ? `<h2 style="margin:0 0 8px">${esc(x.night.title)} is live.</h2><p>It is on Cats Can Dance and on What's on. Share the page: <a href="${page}">${page}</a></p><p>Before doors, add your door team and import any lists from other ticket platforms in Door setup, from <a href="${dash}">your dashboard</a>.</p>`
+      : `<h2 style="margin:0 0 8px">${esc(x.night.title)} is not live yet.</h2>${note}<p>Change it and send it again from <a href="${dash}">your dashboard</a>.</p>`;
+  } else {
+    subject = opts.approved ? `${x.promoter} is approved on CCD` : `Your CCD promoter application`;
+    body = opts.approved
+      ? `<h2 style="margin:0 0 8px">You're in.</h2><p>${esc(x.promoter)} is approved on Cats Can Dance. Set your look and make your first night: <a href="${dash}">${dash}</a></p><p>Every night is checked by us before it goes up, usually within a day. It is free.</p>`
+      : `<h2 style="margin:0 0 8px">Not approved this time.</h2>${note}<p>Reply to this email if you want to talk about it.</p>`;
+  }
+  let sent = 0;
+  for (const to of (x.emails as string[]) ?? []) { const r = await sendMail(to, subject, shell(body)); if (r.ok) sent++; }
+  return { sent };
+}

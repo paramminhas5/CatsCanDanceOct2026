@@ -12,7 +12,6 @@ import type { ArtistStory as Story } from "@/lib/home";
 const bullets = [
   "Small rooms in Bengaluru",
   "A crowd that came for the music",
-  "Your set recorded, with photos and clips",
   "A roster page that stays current",
 ];
 

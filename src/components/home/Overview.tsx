@@ -64,7 +64,7 @@ export default function Overview({ weekCount, artistCount }: Props) {
           <Tile
             href="#school" n="03" name="School" delay="ccd-d3"
             line="Learn to produce and DJ on a real instrument. Free for now."
-            live="Web, iPhone, Android" color="bg-magenta" dot="bg-magenta" cat={imgUrl(catHeadphones)}
+            live="In your browser" color="bg-magenta" dot="bg-magenta" cat={imgUrl(catHeadphones)}
           />
         </div>
       </div>

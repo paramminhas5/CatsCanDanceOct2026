@@ -66,8 +66,8 @@ export default function SceneCityPage({ slug }: Props) {
   return (
     <main className="bg-cream text-ink">
       <SEO
-        title={`${scene.name} Electronic Music Scene | Cats Can Dance`}
-        description={`${scene.tagline} Discover artists, events, promoters and venues from ${scene.name}'s underground electronic music scene.`}
+        title={`Electronic music in ${scene.name}: techno and house nights | Cats Can Dance`}
+        description={`Upcoming electronic music nights in ${scene.name}, and the artists and promoters behind the scene. ${scene.tagline}`}
         path={`/scene/${scene.slug}`}
         keywords={`${scene.name.toLowerCase()} electronic music, ${scene.name.toLowerCase()} underground, ${scene.activeGenres.join(", ").toLowerCase()}`}
         jsonLd={[

@@ -1,6 +1,6 @@
 /**
  * /promote: run your night on CCD. What a promoter gets, the application, and the promoters you already run.
- * Free for now (Param, 5 Nov 2026: "we will charge a cut eventually, let's not charge anything right now").
+ * Free for now. Later: 10% of paid ticket sales only (Param, 5 Nov 2026).
  */
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -16,7 +16,7 @@ const WHAT = [
   ["Your night page", "On catscandance.com, in your colour, with your logo, lineup, poster and venue."],
   ["Free tickets and a free list", "Guests get a QR ticket. Paid nights use your own ticket link for now."],
   ["Going and crews", "People say they are going, and solo goers get matched into crews of 3 to 6."],
-  ["The door", "Scan QR tickets, search names, add walk-ins, pass-outs, a live count for the venue."],
+  ["The door (Gate)", "Scan QR tickets, including ones sold on District, BookMyShow or Skillbox. Search names, add walk-ins, pass-outs, a live count for the venue. Works offline."],
   ["The report", "Turnout, no-shows, busiest 15 minutes and who came back, after every night."],
   ["On What's on", "Approved nights show in the gig guide next to everything else we rate."],
 ];
@@ -103,6 +103,11 @@ export default function PromotePage() {
               </li>
             ))}
           </ul>
+          <div className="mt-6 border-4 border-ink bg-acid-yellow p-4">
+            <p className="font-display text-lg leading-tight">What it costs</p>
+            <p className="text-sm mt-1">Nothing. When paid tickets come to CCD, we will take 10% of paid ticket sales. Free tickets, the free list and the door stay free. We will tell you before anything changes.</p>
+          </div>
+          <p className="mt-4 text-sm"><Link href="/gate" className="underline font-bold">More about Gate, the door app</Link></p>
           <p className="mt-6 text-sm text-ink/70">How it works: apply, we approve you, you build a night, we approve the night, it goes live. Your team and your door staff sign in with their own email.</p>
         </div>
         <div>

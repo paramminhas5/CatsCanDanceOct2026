@@ -112,7 +112,7 @@ export default function PromoterEventSubmit() {
   return (
     <main className="bg-cream min-h-screen">
       <SEO
-        title="Submit Event — Cats Can Dance"
+        title="Submit an event | Cats Can Dance"
         description="Submit your upcoming event to the CCD Discover feed."
         path="/submit-event/event"
       />

@@ -30,7 +30,7 @@ export default function GlobalScenePage({ slug }: Props) {
   return (
     <main className="bg-cream text-ink">
       <SEO
-        title={`${scene.name} — Scene Origin | Cats Can Dance`}
+        title={`${scene.name}: where it came from | Cats Can Dance`}
         description={`${scene.tagline} The origin story of ${scene.name} from ${scene.city} and how it connects to India's underground music scene.`}
         path={`/scenes/${scene.slug}`}
         keywords={`${scene.name.toLowerCase()}, ${scene.city.toLowerCase()} electronic music, ${scene.relatedGenres.join(", ").toLowerCase()} india`}

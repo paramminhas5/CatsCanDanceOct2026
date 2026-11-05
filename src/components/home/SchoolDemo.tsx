@@ -115,7 +115,6 @@ export default function SchoolDemo() {
           </div>
           <span className="ccd-bob absolute left-0 md:-left-6 top-16 md:top-24 border-[3px] border-ink bg-cream px-3 py-2 text-xs font-bold shadow-[4px_4px_0_0_hsl(var(--ink))]">lesson 4 · clap on 2 and 4</span>
           <span className="ccd-bob absolute right-0 md:-right-6 top-72 border-[3px] border-ink bg-acid-yellow px-3 py-2 text-xs font-bold shadow-[4px_4px_0_0_hsl(var(--ink))] [animation-delay:.6s]">+1 layer to your track</span>
-          <span className="ccd-bob hidden md:block absolute -left-4 top-[440px] border-[3px] border-ink bg-ink text-cream px-3 py-2 text-xs font-bold shadow-[4px_4px_0_0_hsl(var(--ink))] [animation-delay:1.1s]">tempo synced to Live</span>
           <div className="flex flex-wrap justify-center gap-1.5 mt-7">
             {SCREENS.map((s, i) => (
               <button key={s.l} type="button" onClick={() => { setSi(i); siHold.current = 3; }}
@@ -178,7 +177,7 @@ export default function SchoolDemo() {
           </div>
           <div className="flex flex-wrap items-center gap-5 mt-9">
             <a href={SCHOOL_URL} onClick={() => track("open_school")} className="bg-magenta text-cream font-display px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">Open the school</a>
-            <span className="text-sm font-semibold text-ink/70">Free for now · reads your Ableton Set</span>
+            <span className="text-sm font-semibold text-ink/70">Free for now · works in your browser</span>
           </div>
         </div>
       </div>

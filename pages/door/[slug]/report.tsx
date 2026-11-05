@@ -8,12 +8,13 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import DoorGate from "@/components/door/DoorGate";
-import { fetchReport, timeIST } from "@/lib/door";
+import { fetchReport, sourceLabel, timeIST } from "@/lib/door";
 
 type Report = {
   night: { title: string; date: string | null; venue: string | null; capacity: number | null };
   tiers: { tier: string; sold: number; in: number }[];
   list: { people: number; in: number };
+  outside?: { source: string; people: number; in: number; uploaded: number }[];
   walkins: { people: number; takings: Record<string, number> };
   arrivals: { t: string; n: number }[];
   repeat: number; first_timers: number; passouts: number;
@@ -30,8 +31,10 @@ function ReportBody({ slug }: { slug: string }) {
 
   const sold = r.tiers.reduce((s, t) => s + t.sold, 0);
   const ticketsIn = r.tiers.reduce((s, t) => s + t.in, 0);
-  const expected = sold + r.list.people;
-  const came = ticketsIn + r.list.in;
+  const outP = (r.outside ?? []).reduce((s, o) => s + o.people, 0);
+  const outIn = (r.outside ?? []).reduce((s, o) => s + o.in, 0);
+  const expected = sold + r.list.people + outP;
+  const came = ticketsIn + r.list.in + outIn;
   const total = came + r.walkins.people;
   const turnout = expected ? Math.round((came / expected) * 100) : null;
   const takings = Object.values(r.walkins.takings).reduce((s, v) => s + v, 0);
@@ -95,6 +98,7 @@ function ReportBody({ slug }: { slug: string }) {
           <tbody>
             {r.tiers.map((t) => <tr key={t.tier} className="border-t-2 border-cream/20"><td className="py-2">{t.tier}</td><td className="text-right tabular-nums">{t.sold}</td><td className="text-right tabular-nums">{t.in}</td></tr>)}
             {r.list.people > 0 && <tr className="border-t-2 border-cream/20"><td className="py-2">Free list (RSVP)</td><td className="text-right tabular-nums">{r.list.people}</td><td className="text-right tabular-nums">{r.list.in}</td></tr>}
+            {(r.outside ?? []).map((o) => <tr key={o.source} className="border-t-2 border-cream/20"><td className="py-2">{sourceLabel(o.source)}{o.uploaded ? ` (${o.uploaded} added by guests)` : ""}</td><td className="text-right tabular-nums">{o.people}</td><td className="text-right tabular-nums">{o.in}</td></tr>)}
           </tbody>
         </table>
         {Object.keys(r.walkins.takings).length > 0 && (
