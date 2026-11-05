@@ -5,6 +5,7 @@
  * the three steps on the left jump to that part. The crew shown is an example; the
  * nights, cities and going counts are real.
  */
+import { useOnScreen } from "@/lib/useOnScreen";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
@@ -13,7 +14,7 @@ import catLeft from "@/assets/cat-left.svg";
 import { imgUrl } from "@/lib/img";
 import type { HomeNight } from "@/lib/home";
 import type { CcdEvent } from "@/lib/ccd-db";
-import { dayStamp } from "@/lib/find";
+import { dayStamp, tidyTitle } from "@/lib/find";
 import { displayTime, startDate } from "@/lib/nights";
 import { loadCrowd, sceneKey, type Crowd } from "@/lib/plans";
 
@@ -70,7 +71,7 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
     () =>
       week.map((e) => ({
         id: e.id,
-        title: e.title,
+        title: tidyTitle(e.title),
         venue: e.venue ?? "",
         city: e.city ?? "",
         day: dayStamp(e.event_date, today).label,
@@ -125,12 +126,14 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
     [demoNight],
   );
 
+  const visible = useOnScreen(ref);
   useEffect(() => {
     if (!demoNight) return;
     if (reduce) { setStage(4); setPicked(demoNight); setChecked(5); return; }
+    if (!visible) { clear(); return; }
     run(0);
     return clear;
-  }, [demoNight, reduce, run]);
+  }, [demoNight, reduce, run, visible]);
 
   const pickCity = (c: string) => {
     clear();
@@ -208,7 +211,7 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {cities.map((c) => (
                   <button key={c} type="button" onClick={() => pickCity(c)}
-                    className={`font-display text-xs px-3 py-1.5 border-2 transition-colors ${c === city ? "bg-acid-yellow text-ink border-acid-yellow" : "border-cream/40 text-cream hover:border-cream"}`}>
+                    className={`font-display text-xs px-3 py-1.5 min-h-[36px] border-2 transition-colors ${c === city ? "bg-acid-yellow text-ink border-acid-yellow" : "border-cream/40 text-cream hover:border-cream"}`}>
                     {c}
                   </button>
                 ))}

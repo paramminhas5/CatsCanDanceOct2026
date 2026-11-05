@@ -3,6 +3,8 @@
  * lesson that builds a house beat by itself, step by step. Tap any cell to change it.
  * Sound waits for a tap (browsers block audio until then). The cat jumps on every kick.
  */
+import { useOnScreen } from "@/lib/useOnScreen";
+import { track } from "@/lib/track";
 import { useEffect, useRef, useState } from "react";
 import catHpDance from "@/assets/cat-headphones-dance.png";
 import { imgUrl } from "@/lib/img";
@@ -55,7 +57,10 @@ export default function SchoolDemo() {
     if (row === "hat") { const s = noise(c, .08), f = c.createBiquadFilter(), g = c.createGain(); f.type = "highpass"; f.frequency.value = 7000; g.gain.setValueAtTime(.3, t); g.gain.exponentialRampToValueAtTime(.001, t + .06); s.connect(f).connect(g).connect(c.destination); s.start(t); s.stop(t + .08); }
   };
 
+  const secRef = useRef<HTMLElement>(null);
+  const visible = useOnScreen(secRef);
   useEffect(() => {
+    if (!visible) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
       setGrid({ kick: [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0], clap: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0], hat: [0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0] });
@@ -82,7 +87,7 @@ export default function SchoolDemo() {
       setSi((i) => (i + 1) % SCREENS.length);
     }, 2600);
     return () => { clearInterval(id); clearInterval(scr); };
-  }, []);
+  }, [visible]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const tap = (row: RowKey, i: number) => {
     const on = !state.current.grid[row][i];
@@ -98,7 +103,7 @@ export default function SchoolDemo() {
   const labelColor: Record<RowKey, string> = { kick: "text-magenta", clap: "text-acid-yellow", hat: "text-electric-blue" };
 
   return (
-    <section id="school" className="relative bg-cream bg-grain border-b-4 border-ink py-14 md:py-24 overflow-hidden">
+    <section id="school" ref={secRef} className="relative bg-cream bg-grain border-b-4 border-ink py-14 md:py-24 overflow-hidden">
       <div className="container grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-12 lg:gap-14 items-center">
         {/* The real app */}
         <div className="relative flex flex-col items-center order-2 lg:order-1">
@@ -114,7 +119,7 @@ export default function SchoolDemo() {
           <div className="flex flex-wrap justify-center gap-1.5 mt-7">
             {SCREENS.map((s, i) => (
               <button key={s.l} type="button" onClick={() => { setSi(i); siHold.current = 3; }}
-                className={`font-display text-xs px-3 py-1.5 border-2 border-ink transition-colors ${i === si ? "bg-ink text-cream" : "text-ink hover:bg-ink/10"}`}>
+                className={`font-display text-xs px-3 py-1.5 min-h-[36px] border-2 border-ink transition-colors ${i === si ? "bg-ink text-cream" : "text-ink hover:bg-ink/10"}`}>
                 {s.l}
               </button>
             ))}
@@ -126,7 +131,7 @@ export default function SchoolDemo() {
           <h2 className="font-display text-ink text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92]">Learn it<br />by making it.</h2>
           <p className="text-ink/80 text-base md:text-lg mt-5 mb-7 max-w-[40ch]">Every lesson adds a layer to your own track. Watch one build itself, then tap the grid.</p>
 
-          <div className="relative border-4 border-ink bg-ink text-cream p-4 md:p-6 shadow-[12px_12px_0_0_hsl(var(--ink))]">
+          <div className="relative border-4 border-ink bg-ink text-cream p-3 md:p-6 shadow-[12px_12px_0_0_hsl(var(--ink))]">
             <div className="flex items-center justify-between mb-3 gap-3">
               <span className="inline-flex items-center gap-2 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.14em] text-cream/60">
                 <i className="inline-block h-2 w-2 rounded-full bg-magenta ccd-blink" aria-hidden />Lesson 4 · building itself
@@ -137,11 +142,11 @@ export default function SchoolDemo() {
               </button>
             </div>
             <p className="font-display text-base md:text-lg mb-3">{caption}</p>
-            <div className="border-4 border-cream/25 bg-[#0f1322] p-3 md:p-4">
+            <div className="border-4 border-cream/25 bg-[#0f1322] p-2 md:p-4">
               {ROWS.map(([row, label, onCls]) => (
-                <div key={row} className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2 last:mb-0">
+                <div key={row} className="flex items-center gap-2 md:gap-3 mb-2.5 md:mb-2 last:mb-0">
                   <span className={`w-8 md:w-10 text-[9px] md:text-[10px] font-bold uppercase tracking-wider ${labelColor[row]}`}>{label}</span>
-                  <div className="flex-1 flex gap-[3px] md:gap-1.5">
+                  <div className="flex-1 grid grid-cols-8 gap-[4px] md:flex md:gap-1.5">
                     {grid[row].map((v, i) => (
                       <button
                         key={i}
@@ -172,7 +177,7 @@ export default function SchoolDemo() {
             />
           </div>
           <div className="flex flex-wrap items-center gap-5 mt-9">
-            <a href={SCHOOL_URL} className="bg-magenta text-cream font-display px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">Open the school</a>
+            <a href={SCHOOL_URL} onClick={() => track("open_school")} className="bg-magenta text-cream font-display px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">Open the school</a>
             <span className="text-sm font-semibold text-ink/70">Free for now · reads your Ableton Set</span>
           </div>
         </div>

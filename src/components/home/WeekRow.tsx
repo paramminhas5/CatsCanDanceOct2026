@@ -7,7 +7,7 @@ import Link from "next/link";
 import catLeft from "@/assets/cat-left.svg";
 import { imgUrl } from "@/lib/img";
 import type { HomeNight } from "@/lib/home";
-import { dayStamp, kindLabel } from "@/lib/find";
+import { dayStamp, kindLabel, tidyTitle } from "@/lib/find";
 import { displayTime } from "@/lib/nights";
 import Going from "@/components/going/Going";
 import { loadCrowd, sceneKey, type Crowd } from "@/lib/plans";
@@ -27,7 +27,7 @@ function Card({ e, c, today, onChange }: { e: HomeNight; c?: Crowd; today: strin
       </div>
       <div className="p-3.5 flex-1 flex flex-col min-w-0">
         <p className="text-xs text-ink/65 mb-1">{kindLabel(e.kind)}{time ? ` · ${time}` : ""}{e.featured ? <span className="text-magenta font-bold"> · Our pick</span> : null}</p>
-        <a href={e.ticket_url || e.url} target="_blank" rel="noreferrer" className="font-display text-base md:text-lg leading-tight line-clamp-2 hover:text-electric-blue">{e.title}</a>
+        <a href={e.ticket_url || e.url} target="_blank" rel="noreferrer" className="font-display text-base md:text-lg leading-tight line-clamp-2 min-h-[24px] hover:text-electric-blue">{tidyTitle(e.title)}</a>
         <p className="text-sm text-ink/75 truncate">{[e.venue, e.city].filter(Boolean).join(", ")}</p>
         {e.artists.length > 0 && (
           <p className="text-sm truncate">

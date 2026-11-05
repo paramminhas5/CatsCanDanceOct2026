@@ -24,7 +24,7 @@ const ProductCard = ({ product, altSuffix = "Cats Can Dance limited drop" }: Pro
           {img && (
             <img
               src={img.url}
-              alt={img.altText || `${product.node.title} — ${altSuffix}`}
+              alt={img.altText || `${product.node.title}, ${altSuffix}`}
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover"

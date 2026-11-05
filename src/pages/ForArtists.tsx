@@ -6,6 +6,8 @@ import Marquee from "@/components/Marquee";
 import SEO from "@/components/SEO";
 import PartnerContactDialog from "@/components/PartnerContactDialog";
 import ArtistSubmitForm from "@/components/ArtistSubmitForm";
+import ArtistStory from "@/components/home/ArtistStory";
+import type { ArtistStory as Story } from "@/lib/home";
 
 const bullets = [
   "Curated crowd that cares about music",
@@ -26,32 +28,33 @@ const faqLd = {
   ],
 };
 
-const ForArtists = () => (
+const ForArtists = ({ story = null }: { story?: Story | null }) => (
   <main className="bg-background text-foreground">
     <SEO
-      title="For Artists — Cats Can Dance | Bangalore, India"
-      description="Play Cats Can Dance in Bangalore. A platform, not just a set time — curated crowd, premium content, real audience growth for electronic artists in India."
+      title="For artists · Cats Can Dance"
+      description="Your artist page, kept current: gigs, releases and press added as they happen, bookings as proper briefs, tour dates in thirty seconds. Claim yours. Play our Episodes in Bengaluru."
       path="/for-artists"
       jsonLd={[faqLd]}
     />
     <Nav />
     <PageHero
       eyebrow="FOR ARTISTS"
-      title={<>A PLATFORM,<br/>NOT JUST<br/>A SET TIME.</>}
+      title={<>YOUR PAGE.<br/>KEPT CURRENT.<br/>BOOKABLE.</>}
       bg="bg-orange"
       textColor="text-ink"
       eyebrowColor="text-cream"
       shadow={false}
     />
     <Marquee bg="bg-magenta" />
+    <ArtistStory story={story} />
     <section className="bg-cream border-b-4 border-ink py-24 md:py-32 bg-grain">
       <div className="container grid md:grid-cols-2 gap-12">
         <div>
           <h2 className="font-display text-4xl md:text-6xl text-ink leading-[0.95] mb-6">
-            BUILD AN<br/>AUDIENCE,<br/>NOT JUST A NIGHT.
+            PLAY OUR<br/>EPISODES.
           </h2>
           <p className="text-ink/80 text-lg md:text-xl font-medium mb-6">
-            Most gigs are transactional. CCD turns each set into a content drop, a community moment and people want to experience again.
+            Small rooms in Bengaluru, a crowd that came for the music, and your set recorded with photos and clips you can use.
           </p>
           <div className="flex flex-wrap gap-3">
             <PartnerContactDialog
@@ -91,7 +94,7 @@ const ForArtists = () => (
             ADD YOURSELF.<br/>OR CLAIM YOUR PAGE.
           </h2>
           <p className="text-cream/60 mt-3 max-w-md">
-            Send your links and a mix. We check every profile by hand, then it goes live on the roster. If you are already listed, claim your page and we will hand it over. Tour dates go up at <Link href="/tour#post" className="underline">/tour</Link>.
+            Send your links and a mix. We check every profile by hand, then it goes live on the roster. Already listed? Claim your page below, or ask us for a claim link and it is yours in two minutes. Tour dates go up at <Link href="/tour#post" className="underline">/tour</Link>.
           </p>
           <Link
             href="/artists"

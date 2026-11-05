@@ -35,9 +35,9 @@ export const ARTISTS: Artist[] = [
       "Hï Ibiza",
       "F1 Singapore"
     ],
-    "boilerRoom": "Yes — London (Dialled In crew)",
+    "boilerRoom": "Yes, London (Dialled In crew)",
     "labels": null,
-    "why": "First South Asian electronic collective at Coachella. Coined \"Indo House\" — a globally recognized genre blending Indian classical/folk with house/techno. The biggest Indian electronic export right now.",
+    "why": "First South Asian electronic collective at Coachella. Coined \"Indo House\", a globally recognized genre blending Indian classical/folk with house/techno. The biggest Indian electronic export right now.",
     "management": "indowarehouse.com | Instagram: @indowarehouse",
     "instagram": "indowarehouse",
     "website": "indowarehouse.com",
@@ -59,7 +59,7 @@ export const ARTISTS: Artist[] = [
     "festivals": [
       "Multiple global bookings"
     ],
-    "boilerRoom": "Yes — Hyderabad (May 2022)",
+    "boilerRoom": "Yes, Hyderabad (May 2022)",
     "labels": null,
     "why": "Most booked Indian-origin producer in global underground. Pure electronic, not Bollywood, not EDM. Represents Indian-origin talent at highest level.",
     "management": "Direct via Instagram @nikkinair",
@@ -85,7 +85,7 @@ export const ARTISTS: Artist[] = [
       "DGTL",
       "Echoes of Earth"
     ],
-    "boilerRoom": "Yes — Delhi NCR (June 2024) + Bengaluru schedule (Aug 2024)",
+    "boilerRoom": "Yes, Delhi NCR (June 2024) + Bengaluru schedule (Aug 2024)",
     "labels": "Qilla Records (founder)",
     "why": "Most Boiler Room appearances by an Indian solo electronic artist. Defines India's credible techno output. Qilla Records is the hub for underground electronic music in India.",
     "management": "booking@artistivity.com | WhatsApp: +91 70577 23129 qillarecords.com/bookings | Instagram: @kohra",
@@ -109,7 +109,7 @@ export const ARTISTS: Artist[] = [
       "Magnetic Fields",
       "DGTL circuit"
     ],
-    "boilerRoom": "Yes — Delhi NCR (June 2024)",
+    "boilerRoom": "Yes, Delhi NCR (June 2024)",
     "labels": null,
     "why": "Rising female DJ in Indian electronic scene. Part of new wave getting global platform exposure.",
     "management": "Direct via Instagram @sheral",
@@ -131,7 +131,7 @@ export const ARTISTS: Artist[] = [
     "festivals": [
       "Magnetic Fields"
     ],
-    "boilerRoom": "Yes — Delhi NCR (June 2024)",
+    "boilerRoom": "Yes, Delhi NCR (June 2024)",
     "labels": null,
     "why": "Emerging Indian electronic producer on world stage.",
     "management": "Direct via Instagram @prismer",
@@ -153,7 +153,7 @@ export const ARTISTS: Artist[] = [
     "festivals": [
       "Magnetic Fields"
     ],
-    "boilerRoom": "Yes — Delhi NCR (June 2024)",
+    "boilerRoom": "Yes, Delhi NCR (June 2024)",
     "labels": null,
     "why": "Collective pushing India's electronic sound forward.",
     "management": "Direct via Instagram",
@@ -175,7 +175,7 @@ export const ARTISTS: Artist[] = [
     "festivals": [
       "Magnetic Fields"
     ],
-    "boilerRoom": "Yes — Delhi NCR (June 2024)",
+    "boilerRoom": "Yes, Delhi NCR (June 2024)",
     "labels": null,
     "why": "New generation of Indian electronic acts breaking into global platforms.",
     "management": "Direct via Instagram @aksports",
@@ -199,7 +199,7 @@ export const ARTISTS: Artist[] = [
       "Krunk events",
       "Hyderabad scene"
     ],
-    "boilerRoom": "Yes — Hyderabad (May 2022)",
+    "boilerRoom": "Yes, Hyderabad (May 2022)",
     "labels": null,
     "why": "Active Hyderabad electronic duo, regional scene builders keeping Hyderabad's electronic scene alive outside Mumbai/Delhi.",
     "management": "Direct via Instagram @midnighttraffic",
@@ -221,7 +221,7 @@ export const ARTISTS: Artist[] = [
     "festivals": [
       "Krunk events"
     ],
-    "boilerRoom": "Yes — Hyderabad (May 2022)",
+    "boilerRoom": "Yes, Hyderabad (May 2022)",
     "labels": null,
     "why": "Early Indian electronic artist to get Boiler Room platform.",
     "management": "Direct via Instagram",
@@ -243,7 +243,7 @@ export const ARTISTS: Artist[] = [
     "festivals": [
       "Magnetic Fields (multiple years)"
     ],
-    "boilerRoom": "Yes — Hyderabad (May 2022)",
+    "boilerRoom": "Yes, Hyderabad (May 2022)",
     "labels": null,
     "why": "Part of India's original Boiler Room class. Magnetic Fields regular.",
     "management": "Direct via Instagram @murthovic",
@@ -265,7 +265,7 @@ export const ARTISTS: Artist[] = [
     "festivals": [
       "Magnetic Fields"
     ],
-    "boilerRoom": "Yes — Bengaluru schedule (Aug 2024)",
+    "boilerRoom": "Yes, Bengaluru schedule (Aug 2024)",
     "labels": null,
     "why": "South Indian electronic representative on Boiler Room.",
     "management": "Direct via Instagram @kandykuri",
@@ -291,7 +291,7 @@ export const ARTISTS: Artist[] = [
       "multiple international"
     ],
     "boilerRoom": null,
-    "labels": "Revealed Recordings (Hardwell) — FIRST Indian on this label",
+    "labels": "Revealed Recordings (Hardwell), FIRST Indian on this label",
     "why": "First Indian on Hardwell's Revealed Recordings. All releases on Beatport Top 100. Opened for David Guetta, Justin Bieber, Martin Garrix, Steve Aoki, Tiesto. Meta Awards winner 2024. Bridges Indian folk with global progressive.",
     "management": "sartekmusic.in | Instagram: @sartek",
     "instagram": "sartek",
@@ -317,7 +317,7 @@ export const ARTISTS: Artist[] = [
       "international"
     ],
     "boilerRoom": null,
-    "labels": "Anjunadeep (UK) — prestigious UK label",
+    "labels": "Anjunadeep (UK), prestigious UK label",
     "why": "Only Indian on Anjunadeep. Credible progressive sound, not commercial EDM. Performed with David Guetta, Kygo, Tiesto. 15+ years experience.",
     "management": "hello@anyasa.com | Instagram: @anyasa.music",
     "instagram": "anyasa.com",
@@ -391,7 +391,7 @@ export const ARTISTS: Artist[] = [
       "Multiple international"
     ],
     "boilerRoom": null,
-    "labels": "Musical Freedom (Tiesto's label) — FIRST Indian on this label",
+    "labels": "Musical Freedom (Tiesto's label), FIRST Indian on this label",
     "why": "First Indian signed to Tiesto's Musical Freedom. Shared stage with world's top DJs. Rare achievement for Indian artist.",
     "management": "@theartisteco on Instagram | Instagram: @ravetek",
     "instagram": "theartisteco",
@@ -512,7 +512,7 @@ export const ARTISTS: Artist[] = [
     ],
     "boilerRoom": null,
     "labels": null,
-    "why": "Trained jazz saxophonist + electronic producer. Signed to Only Much Louder. \"If you included a Sid Vashi track in a mix with Four Tet, he'd stand shoulder to shoulder with them.\" — Monica Dogra",
+    "why": "Trained jazz saxophonist + electronic producer. Signed to Only Much Louder. \"If you included a Sid Vashi track in a mix with Four Tet, he'd stand shoulder to shoulder with them.\" (Monica Dogra)",
     "management": "Only Much Louder (OML) | Instagram: @sidvashi",
     "instagram": "sidvashi",
     "website": null,
@@ -704,7 +704,7 @@ export const ARTISTS: Artist[] = [
     "boilerRoom": null,
     "labels": null,
     "why": "Standout figure in Indian techno scene. Goa-based. Groove-infused sci-fi techno. Rising force.",
-    "management": "India — rajat@oddx.in | ROW — dotdatin@gmail.com Instagram: @dotdatofficial",
+    "management": "India, rajat@oddx.in | ROW, dotdatin@gmail.com Instagram: @dotdatofficial",
     "instagram": "oddx.in",
     "website": "oddx.in",
     "bookingEmail": "rajat@oddx.in",

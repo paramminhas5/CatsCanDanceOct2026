@@ -9,9 +9,9 @@ import { Link } from "@/lib/compat-router";
 const sceneLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Bengaluru Underground Dance Music Scene — Complete Guide 2026",
+  headline: "Bengaluru Underground Dance Music Scene: Complete Guide 2026",
   description:
-    "The complete guide to Bengaluru's underground dance music scene — House, Techno, Disco, Jungle and Drum & Bass. Best venues, events, collectives, and how to find parties in Bangalore.",
+    "The complete guide to Bengaluru's underground dance music scene: House, Techno, Disco, Jungle and Drum & Bass. Best venues, events, collectives, and how to find parties in Bangalore.",
   author: { "@type": "Organization", name: "Cats Can Dance" },
   publisher: {
     "@type": "Organization",
@@ -47,7 +47,7 @@ const faqLd = {
       name: "What genres does Cats Can Dance play at Bengaluru parties?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Cats Can Dance events in Bengaluru feature House, Disco, Jungle, Garage, and Drum & Bass music — underground dance music genres curated by resident and guest selectors.",
+        text: "Cats Can Dance events in Bengaluru feature House, Disco, Jungle, Garage, and Drum & Bass music, underground dance music genres curated by resident and guest selectors.",
       },
     },
     {
@@ -63,7 +63,7 @@ const faqLd = {
       name: "What makes Cats Can Dance different from other Bengaluru nightlife?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Cats Can Dance is a community-first event series combining underground dance music with cat culture and streetwear. Unlike mainstream clubs, CCD focuses on curated selectors, specific underground genres, RSVP-only capacity, and a safe space ethos — a culture for people who move.",
+        text: "Cats Can Dance is a community-first event series combining underground dance music with cat culture and streetwear. Unlike mainstream clubs, CCD focuses on curated selectors, specific underground genres, RSVP-only capacity, and a safe space ethos, a culture for people who move.",
       },
     },
     {
@@ -71,7 +71,7 @@ const faqLd = {
       name: "Is there a Bengaluru streetwear brand connected to dance music culture?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — Cats Can Dance produces limited-edition streetwear drops rooted in underground dance music culture. The brand exists at the intersection of dance music, pet culture, and streetwear, all based in Bengaluru.",
+        text: "Yes. Cats Can Dance produces limited-edition streetwear drops rooted in underground dance music culture. The brand exists at the intersection of dance music, pet culture, and streetwear, all based in Bengaluru.",
       },
     },
   ],
@@ -103,7 +103,7 @@ const faqItems = [
   },
   {
     q: "What genres does Cats Can Dance play?",
-    a: "Cats Can Dance events feature House, Disco, Jungle, Garage, and Drum & Bass — underground dance music genres curated by resident and guest selectors.",
+    a: "Cats Can Dance events feature House, Disco, Jungle, Garage, and Drum & Bass, underground dance music genres curated by resident and guest selectors.",
   },
   {
     q: "How do I find underground music events in Bengaluru?",
@@ -111,19 +111,19 @@ const faqItems = [
   },
   {
     q: "What makes Cats Can Dance different from other Bengaluru nightlife?",
-    a: "CCD is RSVP-only, genre-specific, and community-first. No mainstream drops, no bottle service, no gimmicks — just curated selectors, underground music, and a safe space for people who actually move.",
+    a: "CCD is RSVP-only, genre-specific, and community-first. No mainstream drops, no bottle service, no gimmicks. Just curated selectors, underground music, and a safe space for people who actually move.",
   },
   {
     q: "Does Cats Can Dance sell streetwear?",
-    a: "Yes — Cats Can Dance produces limited-edition streetwear drops rooted in underground dance music culture. Each drop is tied to an episode. No restocks.",
+    a: "Yes. Cats Can Dance produces limited-edition streetwear drops rooted in underground dance music culture. Each drop is tied to an episode. No restocks.",
   },
 ];
 
 const BengaluruSceneGuide = () => (
   <main className="bg-background text-foreground">
     <SEO
-      title="Bengaluru Underground Dance Music Scene — Complete Guide 2026"
-      description="The complete guide to Bengaluru's underground dance music scene — House, Techno, Disco, Jungle and Drum & Bass. Best venues, events, collectives, and how to find parties in Bangalore."
+      title="Bengaluru Underground Dance Music Scene: Complete Guide 2026"
+      description="The complete guide to Bengaluru's underground dance music scene: House, Techno, Disco, Jungle and Drum & Bass. Best venues, events, collectives, and how to find parties in Bangalore."
       path="/bengaluru-underground-dance-music"
       keywords="underground dance music bangalore, underground parties bengaluru, house music events bangalore, techno events bengaluru, electronic music bangalore, cats can dance bangalore"
       jsonLd={[sceneLd, faqLd]}
@@ -139,7 +139,7 @@ const BengaluruSceneGuide = () => (
       shadowColor="hsl(var(--magenta))"
     >
       <p className="text-cream/80 font-medium text-lg md:text-xl mt-2 max-w-2xl">
-        The complete guide to Bengaluru's underground dance music scene — House, Disco, Jungle, Garage & DnB.
+        The complete guide to Bengaluru's underground dance music scene: House, Disco, Jungle, Garage & DnB.
       </p>
     </PageHero>
 
@@ -165,7 +165,7 @@ const BengaluruSceneGuide = () => (
         <p className="text-ink/85 text-lg md:text-xl font-medium mb-4 border-l-4 border-magenta pl-5">
           Bengaluru's underground dance music scene is one of India's most active, built around House,
           Techno, Disco, Jungle, Garage, and Drum & Bass. Independent collectives like Cats Can Dance
-          host regular RSVP-only episodes at intimate venues across the city — distinct from mainstream
+          host regular RSVP-only episodes at intimate venues across the city, distinct from mainstream
           nightlife, built entirely on community and sound.
         </p>
         <p className="text-ink/75 text-lg font-medium mb-4">
@@ -178,7 +178,7 @@ const BengaluruSceneGuide = () => (
         </p>
         <ul className="mt-4 space-y-2 text-ink/80 font-medium text-lg">
           {[
-            ["House", "Deep, soulful, and jackin' — from Chicago and UK influences"],
+            ["House", "Deep, soulful, and jackin', from Chicago and UK influences"],
             ["Disco", "Classic and nu-disco, high energy, built for the dancefloor"],
             ["Jungle / Drum & Bass", "Fast-paced, bass-heavy, roots in UK rave culture"],
             ["Garage", "UK Garage and Bass music"],
@@ -186,7 +186,7 @@ const BengaluruSceneGuide = () => (
           ].map(([genre, desc]) => (
             <li key={genre} className="flex gap-3">
               <span className="font-display text-magenta shrink-0">★</span>
-              <span><strong>{genre}</strong> — {desc}</span>
+              <span><strong>{genre}</strong>: {desc}</span>
             </li>
           ))}
         </ul>
@@ -199,7 +199,7 @@ const BengaluruSceneGuide = () => (
           BEST UNDERGROUND VENUES IN BENGALURU
         </h2>
         <p className="text-ink/75 text-lg font-medium mb-6">
-          The underground scene doesn't have one permanent home — it moves across venues that support
+          The underground scene doesn't have one permanent home. It moves across venues that support
           the culture. Here are the key spaces:
         </p>
         <div className="grid gap-4">
@@ -216,7 +216,7 @@ const BengaluruSceneGuide = () => (
       <section id="cats-can-dance-bengaluru" className="mb-14 bg-magenta border-4 border-ink p-8 chunk-shadow">
         <p className="font-display text-acid-yellow text-lg mb-3">/ THE COLLECTIVE</p>
         <h2 className="font-display text-cream text-3xl md:text-4xl leading-[0.95] mb-5">
-          CATS CAN DANCE — BENGALURU'S UNDERGROUND DANCE COLLECTIVE
+          CATS CAN DANCE: BENGALURU'S UNDERGROUND DANCE COLLECTIVE
         </h2>
         <div className="space-y-4 text-cream/90 font-medium text-lg mb-6">
           <p>
@@ -225,13 +225,13 @@ const BengaluruSceneGuide = () => (
             alive, CCD hosts regular RSVP-only episodes at Bar Wild and other Bengaluru venues.
           </p>
           <p>
-            Every episode is a curated selector lineup — no commercial breaks, no mainstream drops.
+            Every episode is a curated selector lineup. No commercial breaks, no mainstream drops.
             The music policy covers House, Disco, Jungle, Garage, and Drum & Bass. Resident selectors
             include Djazz, Hedz, and Sartdawg, with regular guest appearances.
           </p>
           <p>
             Beyond events, Cats Can Dance produces limited-edition streetwear drops rooted in dance music
-            culture — one of the few collectives in India operating at the intersection of music, fashion,
+            culture, one of the few collectives in India operating at the intersection of music, fashion,
             and community.
           </p>
         </div>
@@ -277,7 +277,7 @@ const BengaluruSceneGuide = () => (
           BENGALURU UNDERGROUND MUSIC & STREETWEAR
         </h2>
         <p className="text-ink/85 font-medium text-lg mb-4">
-          The connection between underground dance music and streetwear is global — and Bengaluru is no
+          The connection between underground dance music and streetwear is global, and Bengaluru is no
           exception. Cats Can Dance sits at this intersection, producing limited-edition apparel drops
           that reflect the music, the culture, and the community. Each drop is tied to an episode, making
           the clothing a wearable piece of the scene.

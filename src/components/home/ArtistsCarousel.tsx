@@ -5,6 +5,8 @@
  * 30 second Deezer preview through /api/deezer/track. The DJ cat grooves while it plays
  * and the cat on the thumbnails walks to whoever is on.
  */
+import { useOnScreen } from "@/lib/useOnScreen";
+import { track } from "@/lib/track";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import heroCenter from "@/assets/hero-center.svg";
@@ -47,8 +49,10 @@ export default function ArtistsCarousel({ artists, count }: Props) {
     return () => window.removeEventListener("resize", set);
   }, []);
 
+  const secRef = useRef<HTMLElement>(null);
+  const visible = useOnScreen(secRef);
   useEffect(() => {
-    if (!artists.length || playing) return;
+    if (!artists.length || playing || !visible) return;
     const id = setInterval(() => {
       if (hold.current > 0) { hold.current -= 1; return; }
       tick.current += 1;
@@ -61,7 +65,7 @@ export default function ArtistsCarousel({ artists, count }: Props) {
       }
     }, TICK);
     return () => clearInterval(id);
-  }, [artists.length, playing]);
+  }, [artists.length, playing, visible]);
 
   useEffect(() => () => { audio.current?.pause(); }, []);
 
@@ -88,6 +92,7 @@ export default function ArtistsCarousel({ artists, count }: Props) {
       el.src = j.preview;
       el.onended = () => setPlaying(null);
       await el.play();
+      track("play_preview", { where: "home" });
       setPlaying(a.slug);
     } catch {
       setPlaying(null);
@@ -98,7 +103,7 @@ export default function ArtistsCarousel({ artists, count }: Props) {
   const shift = ai * (cardW + GAP);
 
   return (
-    <section id="artists-product" className="relative bg-ink text-cream border-b-4 border-ink py-14 md:py-24 overflow-hidden">
+    <section id="artists-product" ref={secRef} className="relative bg-ink text-cream border-b-4 border-ink py-14 md:py-24 overflow-hidden">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-10 mb-10">
           <div>
@@ -205,7 +210,7 @@ export default function ArtistsCarousel({ artists, count }: Props) {
                       </button>
                     )}
                     <Link href={`/artists/${a.slug}#book`} tabIndex={on ? 0 : -1} className="bg-magenta text-cream font-display text-sm px-4 py-2.5 border-4 border-ink shadow-[4px_4px_0_0_hsl(var(--ink))] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">Book</Link>
-                    <Link href={`/artists/${a.slug}`} tabIndex={on ? 0 : -1} className="font-bold underline underline-offset-4 decoration-2 text-sm">Full page →</Link>
+                    <Link href={`/artists/${a.slug}`} tabIndex={on ? 0 : -1} className="inline-block py-1 font-bold underline underline-offset-4 decoration-2 text-sm">Full page →</Link>
                     {a.conn && (
                       <button type="button" tabIndex={on ? 0 : -1} onClick={() => go(artists.findIndex((x) => x.slug === a.conn!.to))} className="md:ml-auto border-2 border-cream/45 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider hover:border-cream max-w-full truncate">
                         ↔ {a.conn.label}

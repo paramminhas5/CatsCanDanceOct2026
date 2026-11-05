@@ -4,6 +4,7 @@
  *   member          Going / Interested / Not going, guest list name, join a crew
  * Crews: CCD nights need a ticket or RSVP; any other night needs Going. Ticket proof comes after matching (on Your nights).
  */
+import ShareButton from "@/components/ShareButton";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -127,7 +128,7 @@ function MemberStep({ nightKey, title, hasTicket, onChange }: { nightKey: string
     setCrewNote(""); setNeedPhone(false);
     if (state !== "going") await save("going");
     const r = await joinCrew(nightKey);
-    if (r.ok) setCrewNote("You're on the crew list. We match people from your city before the night and tell you on Your nights.");
+    if (r.ok) setCrewNote("You're on the crew list. We match people from your city before the night and tell you on Your account.");
     else { setNeedPhone(r.need === "phone"); setCrewNote(r.error ?? "Could not join."); }
   }
 
@@ -141,6 +142,12 @@ function MemberStep({ nightKey, title, hasTicket, onChange }: { nightKey: string
         </label>
       )}
       {msg && <p className="text-sm text-magenta font-bold">{msg}</p>}
+      {state === "going" && (
+        <div className="flex flex-wrap items-center gap-3">
+          <ShareButton kind="going" target={scene ? nightKey.slice(6) : nightKey} path={scene ? `/whats-on?n=${nightKey.slice(6)}` : `/nights/${nightKey}`} text={`I'm going to ${title}. Come with me:`} label="Share: I'm going" />
+          <a href={`/api/ics/${encodeURIComponent(nightKey)}`} className="text-sm font-bold underline underline-offset-4 decoration-2">Add to calendar</a>
+        </div>
+      )}
       <div className="border-t-4 border-ink pt-4 grid gap-2">
         <p className="font-display text-lg leading-tight">Going solo or as two?</p>
         <p className="text-sm">Join a crew of 3 to 6 people from your city. You meet before, get in together and leave together.
@@ -159,7 +166,7 @@ function MemberStep({ nightKey, title, hasTicket, onChange }: { nightKey: string
         )}
         {crewNote && <p className="text-sm">{crewNote}</p>}
       </div>
-      <Link href={`/me?n=${encodeURIComponent(nightKey)}`} className="text-sm font-bold underline underline-offset-4">Open Your nights</Link>
+      <Link href={`/me?n=${encodeURIComponent(nightKey)}`} className="text-sm font-bold underline underline-offset-4">Open Your account</Link>
       <span className="sr-only">{title}</span>
     </div>
   );

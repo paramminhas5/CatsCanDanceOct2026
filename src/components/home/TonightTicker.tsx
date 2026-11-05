@@ -4,7 +4,7 @@
  */
 import Link from "next/link";
 import type { HomeNight } from "@/lib/home";
-import { dayStamp } from "@/lib/find";
+import { dayStamp, tidyTitle } from "@/lib/find";
 
 type Props = { tonight: HomeNight[]; week: HomeNight[]; today: string };
 
@@ -30,11 +30,11 @@ export default function TonightTicker({ tonight, week, today }: Props) {
               return (
                 <Link
                   key={`${e.id}-${i}`}
-                  href={`/whats-on?q=${encodeURIComponent(e.title)}`}
-                  className="group inline-flex items-center gap-3 text-cream/90 hover:text-acid-yellow transition-colors"
+                  href={`/whats-on?q=${encodeURIComponent(tidyTitle(e.title))}`}
+                  className="group inline-flex items-center gap-3 min-h-[36px] text-cream/90 hover:text-acid-yellow transition-colors"
                 >
                   {stamp && <span className="font-display text-xs uppercase tracking-widest text-acid-yellow">{stamp}</span>}
-                  <span className="font-semibold">{e.title}</span>
+                  <span className="font-semibold">{tidyTitle(e.title)}</span>
                   <span className="text-cream/55 text-sm">{[e.venue, e.city].filter(Boolean).join(", ")}</span>
                   <span className="text-magenta" aria-hidden>★</span>
                 </Link>

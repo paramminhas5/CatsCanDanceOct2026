@@ -48,7 +48,7 @@ function ClaimButton({ promoter, userId }: { promoter: Promoter; userId: string 
         toast.error("This profile has already been claimed.");
       } else {
         setStatus("idle");
-        toast.error(data.error ?? "Claim failed — try again.");
+        toast.error(data.error ?? "Claim failed, try again.");
       }
     } catch {
       setStatus("idle");
@@ -143,8 +143,8 @@ export default function PromoterDetail({ slug }: Props) {
   return (
     <main className="bg-cream text-ink">
       <SEO
-        title={`${promoter.name} — Promoter | Cats Can Dance`}
-        description={promoter.blurb || `${promoter.name} — trusted electronic music promoter in ${allCities.join(", ") || "India"}.`}
+        title={`${promoter.name}: Promoter | Cats Can Dance`}
+        description={promoter.blurb || `${promoter.name} is a trusted electronic music promoter in ${allCities.join(", ") || "India"}.`}
         path={`/promoters/${slug}`}
       />
       <Nav />

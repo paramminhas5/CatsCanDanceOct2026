@@ -2,6 +2,7 @@
  * /bookings/[id]/confirmed: the booking receipt. Who, where, when, fee, set, tech, travel and
  * cancellation terms, as agreed when the artist confirmed. Prints on one page.
  */
+import ShareButton from "@/components/ShareButton";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -51,6 +52,11 @@ export default function Receipt() {
             <button type="button" onClick={() => window.print()} className={btn}>Print or save as PDF</button>
             <Link href={threadPath(id, key)} className={btnAlt}>Back to the thread</Link>
             <Link href={BOOKINGS_BASE} className={btnAlt}>All requests</Link>
+            {t.artist && (
+              <ShareButton kind="booked" target={t.artist.slug} path={`/artists/${t.artist.slug}`}
+                extra={{ ...(r.event_date ? { date: r.event_date } : {}), ...(r.city ? { city: r.city } : {}) }}
+                text={`Booked: ${t.artist.name}${r.city ? `, ${r.city}` : ""}.`} label="Share: Booked" />
+            )}
           </div>
 
           <article className="border-4 border-ink bg-cream text-ink chunk-shadow max-w-3xl print:shadow-none print:max-w-none">

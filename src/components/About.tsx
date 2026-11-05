@@ -8,7 +8,7 @@ import { useHomeContent } from "@/hooks/useHomeContent";
 const ABOUT_FALLBACK = {
   kicker: "Bangalore underground crew",
   title: "WE MAKE\nNIGHTS\nHAPPEN.",
-  body: "Cats Can Dance is a Bengaluru-based collective throwing underground dance music nights — House, Disco, Jungle, Garage, Drum & Bass — and dropping limited streetwear rooted in the culture.",
+  body: "Cats Can Dance is a Bengaluru-based collective throwing underground dance music nights (House, Disco, Jungle, Garage, Drum & Bass) and dropping limited streetwear rooted in the culture.",
   ctaLabel: "Our Story →",
   ctaHref: "/about",
 };

@@ -310,7 +310,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                   <button
                     key={g}
                     onClick={() => toggleGenre(g)}
-                    className={`px-3 py-1 border-2 border-ink font-display text-xs whitespace-nowrap transition-colors ${
+                    className={`px-3 py-1 min-h-[36px] border-2 border-ink font-display text-xs whitespace-nowrap transition-colors ${
                       active
                         ? "bg-ink text-cream"
                         : "bg-transparent text-ink hover:bg-acid-yellow"
@@ -323,7 +323,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
               {activeGenres.size > 0 && (
                 <button
                   onClick={() => setActiveGenres(new Set())}
-                  className="px-3 py-1 border-2 border-ink/40 font-display text-xs text-ink/50 hover:border-ink hover:text-ink transition-colors whitespace-nowrap"
+                  className="px-3 py-1 min-h-[36px] border-2 border-ink/40 font-display text-xs text-ink/50 hover:border-ink hover:text-ink transition-colors whitespace-nowrap"
                 >
                   CLEAR ×
                 </button>
@@ -399,7 +399,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                       key={a.id}
                       href={`/artists/${a.slug}`}
                       className={`group relative border-4 border-ink overflow-hidden chunk-shadow hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-transform ${
-                        isLarge ? "col-span-2 row-span-2" : "aspect-square"
+                        isLarge ? "col-span-2 row-span-2 aspect-square" : "aspect-square"
                       }`}
                     >
                       {img ? (
@@ -418,7 +418,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                             <Music className="w-16 h-16" />
                           </div>
                           {a.bio && (
-                            <p className="absolute top-3 left-3 right-3 text-xs leading-snug line-clamp-4 opacity-80">{a.bio}</p>
+                            <p className="max-sm:hidden absolute top-3 left-3 right-3 text-xs leading-snug line-clamp-3 opacity-80">{a.bio}</p>
                           )}
                         </div>
                       )}
@@ -439,7 +439,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
                               <button
                                 key={g}
                                 onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleGenre(g); }}
-                                className={`text-[10px] px-1.5 py-0.5 font-display border border-ink transition-colors ${
+                                className={`text-[10px] px-2 py-1 min-h-[28px] font-display border border-ink transition-colors ${
                                   activeGenres.has(g) ? "bg-ink text-cream" : "bg-acid-yellow text-ink hover:bg-orange"
                                 }`}
                               >

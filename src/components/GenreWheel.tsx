@@ -18,7 +18,7 @@ export default function GenreWheel() {
             Pick Your Sound
           </h2>
           <p className="text-cream/50 mt-2 max-w-xl text-sm">
-            Six genres. Every one explained — origin, BPM, key tracks, Indian scene.
+            Six genres. Every one explained: origin, BPM, key tracks, Indian scene.
           </p>
         </div>
 

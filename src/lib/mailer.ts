@@ -119,3 +119,29 @@ export async function emailBookingAnswers() {
   }
   return { sent };
 }
+
+/** Booking emails: new requests to artists who own their page, and each reply to the other side (migration 051). */
+export async function emailBookingOutbox() {
+  const token = process.env.OPS_TOKEN;
+  if (!token || !process.env.RESEND_API_KEY) return { sent: 0, skipped: true };
+  const d = await rpc("ops_booking_outbox", { p_token: token });
+  const list = (d.ok && Array.isArray(d.data) ? d.data : []) as any[];
+  let sent = 0;
+  for (const b of list) {
+    if (!b.to_email) continue;
+    const link = `${SITE()}/bookings/${b.id}${b.key ? `?k=${b.key}` : ""}`;
+    const when = [b.event_date, b.city].filter(Boolean).map(esc).join(", ");
+    const [subject, head, line] =
+      b.kind === "new_request" ? [`Booking request: ${b.requester}${b.city ? `, ${b.city}` : ""}`, `${esc(b.requester)} wants to book you`, `${when}${b.budget_band ? `. Budget ${esc(b.budget_band)}` : ""}. Reply, counter or pass in the thread.`]
+      : b.kind.startsWith("reply_artist_confirmed") ? [`${b.artist} confirmed your booking`, `${esc(b.artist)} confirmed`, `${when}. The receipt with the terms is in the thread.`]
+      : b.kind.startsWith("reply_artist_counter") ? [`${b.artist} sent a counter offer`, `${esc(b.artist)} sent a counter offer`, `${when}. Accept it or reply in the thread.`]
+      : b.kind.startsWith("reply_artist_interested") ? [`${b.artist} is interested`, `${esc(b.artist)} is interested`, `${when}. Talk it through in the thread.`]
+      : b.kind.startsWith("reply_artist_declined") ? [`${b.artist} can't do this one`, `A reply from ${esc(b.artist)}`, `They can't do ${when}. Find someone free on your date at catscandance.com/book.`]
+      : b.kind.startsWith("reply_requester") ? [`New message about your booking`, `A message from ${esc(b.requester)}`, `${when}.`]
+      : [`Update on your booking request`, `An update from Cats Can Dance`, `${when}.`];
+    const html = shell(`<h2 style="margin:0 0 8px">${head}</h2><p>${line}</p>${b.body ? `<p style="border-left:3px solid #111;padding-left:10px">${esc(b.body)}</p>` : ""}<p><a href="${link}" style="display:inline-block;background:#b6ef36;color:#020617;border:3px solid #020617;padding:12px 18px;font-weight:bold;text-decoration:none">Open the thread</a></p>`);
+    const r = await sendMail(b.to_email, subject, html);
+    if (r.ok) sent++;
+  }
+  return { sent };
+}

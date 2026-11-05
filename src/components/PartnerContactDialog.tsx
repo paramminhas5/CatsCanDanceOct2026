@@ -51,7 +51,7 @@ const KIND_CONFIG: Record<PartnerKind, KindConfig> = {
   "submit-event": {
     title: "SUBMIT AN EVENT",
     eyebrow: "/ EVENT SUBMISSION",
-    reasons: ["Verified promoter — submit event", "New promoter application", "General question", "Other"],
+    reasons: ["Verified promoter: submit event", "New promoter application", "General question", "Other"],
     fallbackEmail: "hello@catscandance.com",
   },
   general: {
@@ -62,7 +62,7 @@ const KIND_CONFIG: Record<PartnerKind, KindConfig> = {
   },
   sponsors: {
     title: "SPONSORSHIP ENQUIRY",
-    eyebrow: "/ CCD × SOCIAL — SPONSORSHIP",
+    eyebrow: "/ CCD × SOCIAL: SPONSORSHIP",
     reasons: [
       "Title sponsor",
       "Show sponsor",
@@ -72,7 +72,7 @@ const KIND_CONFIG: Record<PartnerKind, KindConfig> = {
       "Other",
     ],
     fallbackEmail: "sponsors@catscandance.com",
-    fallbackSubject: "CCD × SOCIAL — Sponsorship enquiry",
+    fallbackSubject: "CCD × SOCIAL: Sponsorship enquiry",
   },
 };
 

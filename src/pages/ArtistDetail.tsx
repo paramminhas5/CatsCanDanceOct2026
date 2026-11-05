@@ -274,7 +274,7 @@ function AvailabilityStrip({
                     return (
                       <span
                         key={iso}
-                        title={`${iso} — ${s.label}`}
+                        title={`${iso}: ${s.label}`}
                         className={`text-[10px] font-display flex items-center justify-center w-full aspect-square border ${s.bg} ${s.text} ${s.border}`}
                       >
                         {day}
@@ -499,8 +499,8 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
   return (
     <main className="bg-background text-foreground">
       <SEO
-        title={`${artist.name} — Cats Can Dance Artist`}
-        description={artist.bio?.slice(0, 155) || `${artist.name} on Cats Can Dance — ${artist.genres?.join(", ")}`}
+        title={`${artist.name} | Cats Can Dance Artist`}
+        description={artist.bio?.slice(0, 155) || `${artist.name} on Cats Can Dance: ${artist.genres?.join(", ")}`}
         path={`/artists/${slug}`}
       />
       <Nav />
@@ -681,7 +681,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
 
           {usedFallback && (
             <div className="border-4 border-ink bg-orange chunk-shadow p-4 mb-6 inline-block">
-              <p className="font-display text-sm text-ink">⚠ LIMITED DATA — some sections may be empty</p>
+              <p className="font-display text-sm text-ink">⚠ LIMITED DATA: some sections may be empty</p>
             </div>
           )}
 
@@ -839,7 +839,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                   <button onClick={() => goToTab("epk")} className="text-left border-4 border-ink bg-cream text-ink chunk-shadow p-5 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-transform">
                     <p className="font-display text-xl uppercase mb-3">Press kit</p>
                     <p className="text-ink/70 text-sm leading-relaxed mb-3">
-                      Bio, contact, links and downloadable assets — everything a venue or promoter needs.
+                      Bio, contact, links and downloadable assets. Everything a venue or promoter needs.
                     </p>
                     <p className="font-display text-xs text-magenta underline">OPEN EPK →</p>
                   </button>
@@ -852,7 +852,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                         <span className="bg-magenta text-cream font-display text-[10px] uppercase px-2 py-1 border-2 border-acid-yellow">BOOKINGS OPEN</span>
                       </div>
                       <p className="text-cream/80 text-sm leading-relaxed mb-3 max-w-xl">
-                        Send a direct booking request — no middleman, no commission. Reply lands in their inbox the same day.
+                        Send a direct booking request. No middleman, no commission. Reply lands in their inbox the same day.
                         {hasOpenSlot && " They have open slots in the calendar this season."}
                       </p>
                       <p className="font-display text-sm text-acid-yellow underline">SEND A REQUEST →</p>
@@ -1070,7 +1070,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                 <div>
                   <p className="font-display text-3xl text-ink">{artist.name.toUpperCase()}</p>
                   <p className="font-display text-sm text-ink/50 mt-1">
-                    {[artist.genres.join(" · "), artist.based_city].filter(Boolean).join(" — ")}
+                    {[artist.genres.join(" · "), artist.based_city].filter(Boolean).join(" · ")}
                   </p>
                   {artist.bio && <p className="text-sm text-ink/70 mt-2 line-clamp-3">{artist.bio}</p>}
                   <div className="flex flex-wrap gap-3 mt-3 font-display text-xs text-ink/50">
@@ -1091,7 +1091,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
                     <blockquote key={p.id} className="border-l-4 border-magenta pl-4 py-1">
                       <p className="text-ink/80 italic text-base">"{p.quote_for_epk}"</p>
                       <footer className="font-display text-xs text-ink/50 mt-1 uppercase">
-                        — {p.publication}{p.author ? `, ${p.author}` : ""}
+                        · {p.publication}{p.author ? `, ${p.author}` : ""}
                         {p.url && <a href={p.url} target="_blank" rel="noreferrer" className="ml-2 text-magenta hover:underline">↗</a>}
                       </footer>
                     </blockquote>
@@ -1283,7 +1283,7 @@ export default function ArtistDetailPage({ initialArtist, slug: slugProp, initia
               <div className="border-4 border-ink bg-ink text-cream chunk-shadow p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                   <p className="font-display text-xl uppercase">Looking for someone else?</p>
-                  <p className="text-cream/60 text-sm mt-1">Browse the full marketplace — filter by city, genre, and budget.</p>
+                  <p className="text-cream/60 text-sm mt-1">Browse the full marketplace. Filter by city, genre, and budget.</p>
                 </div>
                 <Link href="/book" className="bg-acid-yellow text-ink font-display px-5 py-3 border-4 border-cream chunk-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">
                   BROWSE MARKETPLACE →

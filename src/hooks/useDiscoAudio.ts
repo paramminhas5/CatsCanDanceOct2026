@@ -18,7 +18,8 @@ const getAudio = () => {
   if (typeof window === "undefined") return null;
   const a = new Audio(AUDIO_SRC);
   a.loop = true;
-  a.preload = "auto";
+  // Only fetched when disco starts: the loop is 4.8 MB and most visitors never press the button.
+  a.preload = "none";
   a.volume = 0;
   a.addEventListener("error", () => {
     available = false;
@@ -63,7 +64,6 @@ export const useDiscoAudio = () => {
   const [, force] = useState(0);
 
   useEffect(() => {
-    getAudio();
     const l = () => force((n) => n + 1);
     listeners.add(l);
     return () => { listeners.delete(l); };
@@ -71,7 +71,7 @@ export const useDiscoAudio = () => {
 
   // React to disco/muted changes (handles toggle off + mute toggling)
   useEffect(() => {
-    const el = getAudio();
+    const el = disco && !muted ? getAudio() : audioEl;
     if (!el || !available) return;
     if (disco && !muted) {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -9,6 +9,7 @@
  *
  * Data comes in through getStaticProps (pages/discover.tsx), so the list is in the HTML for search engines.
  */
+import { track } from "@/lib/track";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -17,7 +18,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import PassItOn from "@/components/PassItOn";
 import { CITY_SCENES, GLOBAL_SCENES, GENRE_PAGES } from "@/content/scenes";
-import { dayStamp, inWhen, kindLabel, SOURCE_LABEL, type FindEvent, type Kind, type When } from "@/lib/find";
+import { dayStamp, inWhen, kindLabel, SOURCE_LABEL, tidyGenres, tidyTitle, type FindEvent, type Kind, type When } from "@/lib/find";
 import { displayTime, googleCalendarUrl, todayIST } from "@/lib/nights";
 import Going from "@/components/going/Going";
 import { type Crowd, crowdLine, loadCrowd, sceneKey, useMe } from "@/lib/plans";
@@ -37,7 +38,7 @@ const WHEN: { key: When; label: string }[] = [
 const SAVED_KEY = "ccd:saved-nights";
 
 const chip = (on: boolean) =>
-  `shrink-0 font-display text-sm px-3 py-1.5 border-2 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-acid-yellow/60 ${
+  `shrink-0 font-display text-sm px-3 py-1.5 min-h-[38px] border-2 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-acid-yellow/60 ${
     on ? "bg-acid-yellow text-ink border-acid-yellow" : "bg-transparent text-cream border-cream/40 hover:border-cream"
   }`;
 
@@ -84,7 +85,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
     try { localStorage.setItem(SAVED_KEY, JSON.stringify(next)); } catch {}
   };
 
-  const upcoming = useMemo(() => events.filter((e) => !e.event_date || e.event_date >= today), [events, today]);
+  const upcoming = useMemo(() => events.filter((e) => !e.event_date || e.event_date >= today).map((e) => ({ ...e, title: tidyTitle(e.title), genres: tidyGenres(e.genres) })), [events, today]);
   const cities = useMemo(() => countBy(upcoming.map((e) => e.city ?? "").filter(Boolean)), [upcoming]);
   const genres = useMemo(() => countBy(upcoming.flatMap((e) => e.genres ?? [])), [upcoming]);
   const kinds = new Set(upcoming.map((e) => (e.kind === "club" ? "club" : "big")));
@@ -95,7 +96,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
       (!city || e.city === city) &&
       inWhen(e, when, today) &&
       (kind === "all" || (kind === "club" ? e.kind === "club" : e.kind !== "club")) &&
-      (!genre || (e.genres ?? []).includes(genre)) &&
+      (!genre || (e.genres ?? []).some((x) => x.toLowerCase() === genre.toLowerCase())) &&
       (!savedOnly || saved.includes(e.id)) &&
       (!needle || [e.title, e.venue, e.city, ...(e.lineup ?? []), ...(e.genres ?? []), ...e.artists.map((a) => a.name)].join(" ").toLowerCase().includes(needle)),
     ).sort((a, b) => (a.event_date ?? "9999").localeCompare(b.event_date ?? "9999") || Number(b.featured) - Number(a.featured));
@@ -103,6 +104,9 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
 
   // Who's going: one call for every night on the page.
   const [crowd, setCrowd] = useState<Record<string, Crowd>>({});
+  useEffect(() => { track("find_night", { shared: !!router.query.n }); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  const sharedId = router.isReady && typeof router.query.n === "string" ? router.query.n : "";
+  const shared = sharedId ? events.find((e) => e.id === sharedId) ?? null : null;
   const me = useMe();
   const keysSig = upcoming.map((e) => e.id).join(",");
   const refreshCrowd = () => { loadCrowd(upcoming.map((e) => sceneKey(e.id))).then(setCrowd).catch(() => {}); };
@@ -163,6 +167,16 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
         </div>
       </section>
 
+      {/* A night someone shared with you sits on top */}
+      {shared && (
+        <section className="bg-acid-yellow border-b-4 border-ink py-6 md:py-8">
+          <div className="container">
+            <p className="font-display text-sm uppercase tracking-[0.14em] mb-3">Shared with you</p>
+            <ul><NightCard e={shared} saved={saved.includes(shared.id)} onSave={() => toggleSave(shared.id)} crowd={crowd[sceneKey(shared.id)]} onPlan={refreshCrowd} /></ul>
+          </div>
+        </section>
+      )}
+
       {/* FILTERS */}
       <div className="sticky top-[64px] md:top-[76px] z-30 bg-ink text-cream border-y-4 border-ink">
         <div className="container py-3 grid gap-2.5">
@@ -174,7 +188,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
             <button type="button" aria-pressed={savedOnly} aria-label={`Show saved nights${saved.length ? ` (${saved.length})` : ""}`} onClick={() => setSavedOnly(!savedOnly)} className={chip(savedOnly)}>
               Saved{saved.length ? ` ${saved.length}` : ""}
             </button>
-            {goingCount > 0 && <Link href="/me" className={chip(false)}>Your nights {goingCount}</Link>}
+            {goingCount > 0 && <Link href="/me" className={chip(false)}>Going {goingCount}</Link>}
             <label className="ml-auto shrink-0 hidden md:flex items-center border-2 border-cream/40 focus-within:border-acid-yellow">
               <span className="sr-only">Search nights</span>
               <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search artist, venue, sound"
@@ -200,7 +214,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
               {genres.length > 1 && (<>
                 <span className="w-px h-6 bg-cream/25 shrink-0 mx-1" aria-hidden />
                 {genres.slice(0, 10).map(([g]) => (
-                  <button key={g} type="button" aria-pressed={genre === g} onClick={() => setGenre(genre === g ? "" : g)} className={chip(genre === g)}>{g}</button>
+                  <button key={g} type="button" aria-pressed={genre.toLowerCase() === g.toLowerCase()} onClick={() => setGenre(genre.toLowerCase() === g.toLowerCase() ? "" : g)} className={chip(genre.toLowerCase() === g.toLowerCase())}>{g}</button>
                 ))}
               </>)}
             </div>
@@ -282,7 +296,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
 
       {/* GUIDES */}
       <section className="bg-ink text-cream border-t-4 border-ink py-14 md:py-20">
-        <div className="container grid gap-12 md:grid-cols-3">
+        <div className="container grid gap-12 grid-cols-[minmax(0,1fr)] md:grid-cols-3">
           <GuideList title="Cities" note="Where to go, who runs it, what it sounds like." items={CITY_SCENES.map((c) => ({ href: `/scene/${c.slug}`, label: c.name, sub: c.tagline }))} />
           <GuideList title="Sounds" note="Each sound explained, with starter tracks." items={GENRE_PAGES.map((g) => ({ href: `/genres/${g.slug}`, label: g.name, sub: `${g.bpm} BPM` }))} />
           <GuideList title="Where it started" note="The scenes behind the music in India's clubs." items={GLOBAL_SCENES.map((s) => ({ href: `/scenes/${s.slug}`, label: s.name, sub: `${s.city}, ${s.decade}` }))} />
@@ -325,7 +339,7 @@ function NightCard({ e, saved, onSave, crowd, onPlan }: { e: FindEvent; saved: b
           <p className="text-sm font-bold text-ink/70">
             {kindLabel(e.kind)}{e.event_time ? ` · ${displayTime(e.event_time) ?? e.event_time}` : ""}{e.featured ? <span className="ml-2 text-magenta">Our pick</span> : null}
           </p>
-          <h3 className="font-display text-2xl md:text-3xl leading-[0.95] mt-1 break-words">{e.title}</h3>
+          <h3 title={e.title} className={`font-display ${e.title.length > 55 ? "text-xl md:text-2xl" : "text-2xl md:text-3xl"} !leading-[1.05] mt-1 break-words line-clamp-3`}>{e.title}</h3>
           <p className="mt-2 font-bold">{[e.venue, e.city].filter(Boolean).join(", ") || "Venue to be announced"}</p>
           {(e.artists.length > 0 || lineup.length > 0) && (
             <p className="mt-2 text-ink/85">
@@ -356,7 +370,7 @@ function NightCard({ e, saved, onSave, crowd, onPlan }: { e: FindEvent; saved: b
             className={`font-display text-sm px-3 py-2 border-2 border-ink transition-colors ${saved ? "bg-ink text-cream" : "bg-cream hover:bg-acid-yellow"}`}>
             {saved ? "Saved" : "Save"}
           </button>
-          {cal && <a href={cal} target="_blank" rel="noopener noreferrer" className="text-sm font-bold underline underline-offset-4 self-center md:self-end">Add to calendar</a>}
+          {cal && <a href={cal} target="_blank" rel="noopener noreferrer" className="text-sm font-bold underline underline-offset-4 self-center md:self-end py-1.5">Add to calendar</a>}
           <p className="text-xs text-ink/55 self-center md:self-end w-full md:w-auto md:text-right">via {SOURCE_LABEL[e.source] ?? e.source}</p>
         </div>
       </article>
@@ -373,7 +387,7 @@ function GuideList({ title, note, items }: { title: string; note: string; items:
         {items.map((it) => (
           <li key={it.href} className="border-b-2 border-cream/20">
             <Link href={it.href} className="flex items-baseline justify-between gap-3 py-3 hover:text-acid-yellow focus:outline-none focus-visible:text-acid-yellow">
-              <span className="font-display text-lg leading-tight">{it.label}</span>
+              <span className="font-display text-lg leading-tight min-w-0 break-words">{it.label}</span>
               {it.sub && <span className="text-sm text-cream/60 text-right truncate max-w-[50%]">{it.sub}</span>}
             </Link>
           </li>

@@ -13,7 +13,7 @@ const NotFound = () => {
 
   return (
     <>
-      <SEO title="404 — Cats Can Dance" description="This page wandered off. Head back home." path="/404" noindex />
+      <SEO title="404 | Cats Can Dance" description="This page wandered off. Head back home." path="/404" noindex />
       <main className="bg-background text-foreground min-h-screen">
         <Nav forceDark />
         <section className="container pt-40 pb-32 text-center">
@@ -22,7 +22,7 @@ const NotFound = () => {
             LOST<br/>IN THE<br/><span className="text-magenta">MIX.</span>
           </h1>
           <p className="text-ink/80 font-medium text-lg max-w-md mx-auto mb-10">
-            This page doesn't exist — or it left the party early. Either way, the floor's still open.
+            This page doesn't exist, or it left the party early. Either way, the floor's still open.
           </p>
           <Link
             to="/"

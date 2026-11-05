@@ -60,7 +60,7 @@ const ThemeSwitcher = () => {
         onClick={() => setOpen((v) => !v)}
         aria-label="Theme"
         title=""
-        className="block w-2.5 h-2.5 rounded-full bg-ink/30 hover:bg-ink/90 pointer-events-auto"
+        className="block w-6 h-6 p-[7px] bg-clip-content rounded-full bg-ink/30 hover:bg-ink/90 pointer-events-auto"
       />
     </div>
   );
