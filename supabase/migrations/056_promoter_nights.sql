@@ -3,6 +3,9 @@
 -- Additive. Promoters apply, CCD approves them, then they create nights that CCD approves before they go public.
 -- A promoter night is an `events` row with promoter_id set, so tickets (free tiers for now), the free list, going,
 -- crews and the door all work on it unchanged. CCD's own lists filter promoter_id is null.
+-- Applied in pieces (056a tables, 056b1 to b4 functions, 056c team soft-remove, 056d team list) because the Supabase
+-- approval prompt did not reach the chat. No foreign keys with cascades, and removing a team member marks the row
+-- removed instead of deleting it. This file is the end state.
 
 alter table public.promoters add column if not exists accent text not null default 'blue'
   check (accent in ('blue', 'red', 'acid', 'pink', 'orange', 'lime', 'cream'));
@@ -19,6 +22,7 @@ create table if not exists public.promoter_team (
   role text not null default 'admin' check (role in ('owner', 'admin')),
   added_by uuid,
   created_at timestamptz not null default now(),
+  removed_at timestamptz,
   primary key (promoter_id, email)
 );
 alter table public.promoter_team enable row level security;
@@ -35,7 +39,7 @@ create or replace function public.promoter_role(p_promoter uuid) returns text
 language sql stable security definer set search_path = public as $$
   select case
     when exists (select 1 from public.members where id = auth.uid() and role in ('staff', 'owner') and banned_at is null) then 'staff'
-    else (select t.role from public.promoter_team t where t.promoter_id = p_promoter and t.email = public.door_me_email()
+    else (select t.role from public.promoter_team t where t.promoter_id = p_promoter and t.email = public.door_me_email() and t.removed_at is null
           and not exists (select 1 from public.members where id = auth.uid() and banned_at is not null))
   end;
 $$;
@@ -78,7 +82,7 @@ begin
       'slug', p.slug, 'name', p.name, 'status', p.status, 'city', p.city, 'accent', p.accent, 'role', public.promoter_role(p.id),
       'nights', (select count(*) from public.events e where e.promoter_id = p.id)) order by p.name)
     from public.promoters p
-    where exists (select 1 from public.promoter_team t where t.promoter_id = p.id and t.email = public.door_me_email())), '[]'::jsonb));
+    where exists (select 1 from public.promoter_team t where t.promoter_id = p.id and t.email = public.door_me_email() and t.removed_at is null)), '[]'::jsonb));
 end $$;
 
 -- Everything the dashboard needs.
@@ -93,7 +97,7 @@ begin
   return jsonb_build_object('ok', true, 'role', r,
     'promoter', jsonb_build_object('id', p.id, 'slug', p.slug, 'name', p.name, 'status', p.status, 'city', p.city, 'genres', p.genres, 'blurb', p.blurb,
       'tagline', p.tagline, 'instagram', p.instagram, 'website', p.website, 'accent', p.accent, 'logo_url', p.logo_url, 'cover_url', p.cover_url, 'review_note', p.review_note),
-    'team', coalesce((select jsonb_agg(jsonb_build_object('email', t.email, 'role', t.role) order by t.role desc, t.email) from public.promoter_team t where t.promoter_id = p.id), '[]'::jsonb),
+    'team', coalesce((select jsonb_agg(jsonb_build_object('email', t.email, 'role', t.role) order by t.role desc, t.email) from public.promoter_team t where t.promoter_id = p.id and t.removed_at is null), '[]'::jsonb),
     'nights', coalesce((select jsonb_agg(jsonb_build_object(
         'slug', e.slug, 'title', e.title, 'event_date', e.event_date, 'start_time', e.start_time, 'venue', e.venue, 'city', e.city, 'capacity', e.capacity,
         'blurb', e.blurb, 'lineup', e.lineup, 'genres', e.genres, 'poster_url', e.poster_url, 'ticket_url', e.ticket_url, 'rsvp_open', e.rsvp_open,
@@ -144,13 +148,13 @@ begin
   if coalesce(r, '') not in ('owner', 'staff') then return jsonb_build_object('ok', false, 'error', 'Only the owner can change the team.'); end if;
   if em !~ '^[^@\s]+@[^@\s]+\.[^@\s]+$' then return jsonb_build_object('ok', false, 'error', 'Add a real email.'); end if;
   if coalesce(p_remove, false) then
-    if (select count(*) from public.promoter_team where promoter_id = p.id and role = 'owner' and email <> em) = 0
-       and exists (select 1 from public.promoter_team where promoter_id = p.id and email = em and role = 'owner') then
+    if (select count(*) from public.promoter_team where promoter_id = p.id and role = 'owner' and email <> em and removed_at is null) = 0
+       and exists (select 1 from public.promoter_team where promoter_id = p.id and email = em and role = 'owner' and removed_at is null) then
       return jsonb_build_object('ok', false, 'error', 'Add another owner before removing the last one.'); end if;
-    delete from public.promoter_team where promoter_id = p.id and email = em;
+    update public.promoter_team set removed_at = now() where promoter_id = p.id and email = em;
   else
     insert into public.promoter_team (promoter_id, email, role, added_by) values (p.id, em, case when p_role = 'owner' then 'owner' else 'admin' end, auth.uid())
-    on conflict (promoter_id, email) do update set role = excluded.role;
+    on conflict (promoter_id, email) do update set role = excluded.role, removed_at = null;
   end if;
   return jsonb_build_object('ok', true);
 end $$;
@@ -282,7 +286,7 @@ language sql stable security definer set search_path = public as $$
     public.door_can()
     or exists (select 1 from public.door_team d where d.event_slug = p_slug and d.email = public.door_me_email())
     or exists (select 1 from public.events e join public.promoter_team t on t.promoter_id = e.promoter_id
-               where e.slug = p_slug and t.email = public.door_me_email())
+               where e.slug = p_slug and t.email = public.door_me_email() and t.removed_at is null)
   ) and not exists (select 1 from public.members where id = auth.uid() and banned_at is not null);
 $$;
 
@@ -291,7 +295,7 @@ language sql stable security definer set search_path = public as $$
   select exists (select 1 from public.members where id = auth.uid() and role in ('staff', 'owner') and banned_at is null)
     or exists (select 1 from public.door_team d where d.event_slug = p_slug and d.email = public.door_me_email() and d.role = 'lead')
     or exists (select 1 from public.events e join public.promoter_team t on t.promoter_id = e.promoter_id
-               where e.slug = p_slug and t.email = public.door_me_email());
+               where e.slug = p_slug and t.email = public.door_me_email() and t.removed_at is null);
 $$;
 
 revoke all on function public.promoter_role(uuid), public.promoter_apply(text, text, text, text, text, text[]), public.my_promoters(), public.promoter_get(text),
