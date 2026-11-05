@@ -68,3 +68,18 @@ export const SOURCE_LABEL: Record<string, string> = {
   gigscalendar: "Gigs Calendar", district: "District", insider: "Insider", highape: "HighApe", skillbox: "Skillbox",
   allevents: "AllEvents", submitted: "Sent in", member: "A member",
 };
+
+/** Source categories that are not sounds ("club gigs", "music shows"). Hidden from chips and filters. */
+const NOT_A_SOUND = new Set(["club gigs", "music shows", "gigs", "events", "nightlife", "concerts", "club night", "club nights"]);
+
+/** One spelling per sound: drop source categories, start each word with a capital, dedupe ignoring case. */
+export function tidyGenres(list: string[] | null | undefined): string[] {
+  const out = new Map<string, string>();
+  for (const raw of list ?? []) {
+    const g = raw.trim().replace(/\s+/g, " ");
+    const k = g.toLowerCase();
+    if (!g || NOT_A_SOUND.has(k) || out.has(k)) continue;
+    out.set(k, g === k ? g.replace(/(^|[\s&/-])([a-z])/g, (_, p, c) => p + c.toUpperCase()) : g);
+  }
+  return [...out.values()];
+}

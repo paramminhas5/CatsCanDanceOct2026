@@ -16,11 +16,13 @@ const hash = (s: string) => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >
 
 export function TypePoster({ name, sound, city, className = "" }: { name: string; sound?: string; city?: string | null; className?: string }) {
   const tone = TONES[hash(name) % TONES.length];
-  const long = name.length > 14;
+  // Size by the longest word too, so a single long name ("SARTDAWG") never breaks mid-word.
+  const word = Math.max(...name.split(/\s+/).map((w) => w.length));
+  const size = name.length > 14 || word > 10 ? "text-3xl md:text-4xl" : word > 7 ? "text-4xl md:text-5xl" : "text-5xl md:text-6xl";
   return (
     <div className={`relative w-full h-full ${tone} flex flex-col justify-between p-4 overflow-hidden ${className}`} aria-hidden>
       <p className="text-xs font-bold uppercase tracking-widest opacity-80 truncate">{city ?? "Cats Can Dance"}</p>
-      <p className={`font-display leading-[0.85] break-words ${long ? "text-3xl md:text-4xl" : "text-5xl md:text-6xl"}`}>{name}</p>
+      <p className={`font-display leading-[0.85] break-words ${size}`}>{name}</p>
       <p className="text-sm font-bold opacity-90 line-clamp-1">{sound || "Artist"}</p>
     </div>
   );
