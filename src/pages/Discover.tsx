@@ -18,7 +18,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import PassItOn from "@/components/PassItOn";
 import { CITY_SCENES, GLOBAL_SCENES, GENRE_PAGES } from "@/content/scenes";
-import { dayStamp, inWhen, kindLabel, SOURCE_LABEL, tidyGenres, type FindEvent, type Kind, type When } from "@/lib/find";
+import { dayStamp, inWhen, kindLabel, SOURCE_LABEL, tidyGenres, tidyTitle, type FindEvent, type Kind, type When } from "@/lib/find";
 import { displayTime, googleCalendarUrl, todayIST } from "@/lib/nights";
 import Going from "@/components/going/Going";
 import { type Crowd, crowdLine, loadCrowd, sceneKey, useMe } from "@/lib/plans";
@@ -85,7 +85,7 @@ export default function DiscoverPage({ events = [], ours = null, updated = "" }:
     try { localStorage.setItem(SAVED_KEY, JSON.stringify(next)); } catch {}
   };
 
-  const upcoming = useMemo(() => events.filter((e) => !e.event_date || e.event_date >= today).map((e) => ({ ...e, genres: tidyGenres(e.genres) })), [events, today]);
+  const upcoming = useMemo(() => events.filter((e) => !e.event_date || e.event_date >= today).map((e) => ({ ...e, title: tidyTitle(e.title), genres: tidyGenres(e.genres) })), [events, today]);
   const cities = useMemo(() => countBy(upcoming.map((e) => e.city ?? "").filter(Boolean)), [upcoming]);
   const genres = useMemo(() => countBy(upcoming.flatMap((e) => e.genres ?? [])), [upcoming]);
   const kinds = new Set(upcoming.map((e) => (e.kind === "club" ? "club" : "big")));

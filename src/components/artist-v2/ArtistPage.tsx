@@ -866,7 +866,7 @@ html,body{overflow-x:visible!important}
                     <BookButton fromQuery artist={{ slug: a.slug, name, photo_url: a.photo, city: a.city, sound: a.genres.slice(0, 2).join(", ") || undefined }}
                       label="Ask for a date" className="btn"
                       style={{ height: 44, background: RED, color: "#ffffff", border: `2px solid ${CREAM}`, fontWeight: 700, cursor: "pointer", fontSize: 14 }} />
-                    <a href={`/artists/${a.slug}/epk`} style={{ fontSize: 13, fontWeight: 700 }}>Press kit ↗</a>
+                    <a href={`/artists/${a.slug}/epk`} style={{ fontSize: 13, fontWeight: 700, display: "inline-block", lineHeight: "24px" }}>Press kit ↗</a>
                   </div>
                 )}
                 {a.ccdNights.some((n) => !n.upcoming) && (
@@ -888,7 +888,7 @@ html,body{overflow-x:visible!important}
 
             <footer className="pad" style={{ paddingTop: 18, paddingBottom: 110, fontSize: 13, color: MUTE, display: "flex", justifyContent: "space-between", gap: 16, flexWrap: "wrap", borderTop: `1px solid ${RULE}` }}>
               <span>Compiled by Cats Can Dance from press, labels and listings. Every line links to its source. Previews from Deezer.</span>
-              <span style={{ display: "flex", gap: 16, flexWrap: "wrap", fontWeight: 700 }}>
+              <span style={{ display: "flex", gap: 16, flexWrap: "wrap", fontWeight: 700, lineHeight: "24px" }}>
                 <a href="/artists">All artists</a>
                 {!a.claimed && <a href={`/for-artists?claim=${encodeURIComponent(a.slug)}#claim`} style={{ color: CREAM }}>Are you {name}? Claim this page</a>}
               </span>
@@ -1021,14 +1021,14 @@ function ConnCard({ name, what, years, url, img, accent, peers, internal }: {
       {peers && peers.length > 0 && (
         <span style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", fontSize: 12 }}>
           <span style={{ color: MUTE }}>Also on CCD</span>
-          {peers.map((p) => <a key={p.slug} href={`/artists/${p.slug}`} style={{ fontWeight: 700, padding: "1px 7px", border: "1px solid rgba(244,239,228,.4)" }}>{displayName(p.name)}</a>)}
+          {peers.map((p) => <a key={p.slug} href={`/artists/${p.slug}`} style={{ fontWeight: 700, padding: "4px 8px", minHeight: 24, display: "inline-flex", alignItems: "center", border: "1px solid rgba(244,239,228,.4)" }}>{displayName(p.name)}</a>)}
         </span>
       )}
     </>
   );
   const style: CSSProperties = { display: "flex", flexDirection: "column", gap: 10, padding: 12, border: "1px solid rgba(244,239,228,.14)" };
   // A card with peers holds links of its own, so it is not itself a link.
-  if (!url || (peers && peers.length)) return <div className="hl" style={style}>{inner}{url && <a href={url} target="_blank" rel="noreferrer" style={{ fontSize: 12, fontWeight: 700, color: MUTE }}>Source ↗</a>}</div>;
+  if (!url || (peers && peers.length)) return <div className="hl" style={style}>{inner}{url && <a href={url} target="_blank" rel="noreferrer" style={{ fontSize: 12, fontWeight: 700, color: MUTE, minHeight: 24, display: "inline-flex", alignItems: "center", alignSelf: "flex-start" }}>Source ↗</a>}</div>;
   return <a href={url} target={internal ? undefined : "_blank"} rel="noreferrer" className="hl" style={style}>{inner}</a>;
 }
 

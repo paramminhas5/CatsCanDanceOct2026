@@ -33,3 +33,22 @@ First scheduled round, on branch loops/auto (from loops/v1), PR #20 into loops/v
   - Book an artist on phones: the coloured type poster repeats the name that sits right under it. A shorter poster (16:9) or no poster on phones would halve each card. Design change, so it goes on the canvas first.
   - Scraped titles keep source punctuation ("pres....", "Get Housed- Featuring"). A rule in the scraper or a display tidy (collapse runs of dots, fix "word- Word") would clean them. The display part is safe to build next round; the data part needs a migration (Param).
   - Remaining small tap targets are inline text links on the artist page (label chips, "Source") and artist cards mid-animation. Padding the label chips to 24px is the next small fix.
+
+## Loop round 2 (5 Nov 2026)
+Second scheduled round, same branch and PR #20.
+- Date: Thu 5 Nov 2026.
+- Audit before (13 pages): desktop 13 of 13 clean, phone 10 of 13 clean (home 2, artists 6, kohra 10 small tap targets). Round 2 added /privacy, /press, /bengaluru-underground-dance-music, /bengaluru-techno-events and /pets to the run (pass them with `PAGES=`): press had 3 small tap targets and pets had 2 h1s.
+- Audit after (18 pages): desktop 18 of 18 clean, phone 17 of 18 clean. Only /artists is left: the 6 cards are mid-animation when measured, not really small.
+- Note for next rounds: `pkill -f next-server` or `pgrep -f next-server | xargs kill` also matches the shell running the command and kills it (exit 144). Use `ps aux | grep "[n]ext-ser"` to find the server, and start it with `setsid nohup npx next start -p 3322 &`.
+- Fixed:
+  - Phone tap targets: the "Also on CCD" label chips, "Source", "Press kit", "All artists" and "Claim this page" on the artist page, the night titles in the home week row, and the Copy buttons on /press. All now 24px or more.
+  - /pets had two h1s (the hero and a hidden SEO line). The hidden one is now an h2.
+- Built:
+  - `tidyTitle` in `src/lib/find.ts`: scraped titles read cleanly without touching the data. Runs of dots become one ("pres...." to "pres."), "Housed- Featuring" becomes "Housed: Featuring", em dashes become a colon, stray spaces before punctuation go. Used on What's on, the home week row, the home nights demo and the tonight ticker. Date ranges like "5-7 Nov" with an en dash are left alone.
+  - Em dash sweep, part 1: visible copy in BengaluruSceneGuide, SceneHub, Privacy, Press, Pets, CheckoutDialog, RsvpDialog and the booking emails (subjects and body). About 64 lines. Code comments were left as they are.
+- Suggested next, not built:
+  - Em dash sweep, part 2: src/content/posts.ts (65), ArtistDetail (23, old page), content/scenes.ts (19), content/artists.ts (17), Events (13), BlogPost (11), HomepageEvents (10), ProductDetail, TalentDirectory, PromoterDetail, About, Videos, CatsCanCare, Cookies. posts.ts is journal copy, so check each one reads right rather than sweeping blind.
+  - /artists cards on phones: the audit flags them because they animate in. Measure after the animation ends (wait for `transitionend` or add a 600ms settle in check.cjs) so the number means something.
+  - Home hero on phones: the cat illustrations sit on top of "DANCE" and the left edge of the word is cut. Moving the left cats down or behind the word would fix it. Design change, so canvas first.
+  - Episode 5 poster still shows "PLACEHOLDER · POSTER COMING" in the public page. Param to swap in the real poster when it exists (data, not code).
+  - The data side of title cleanup: the same rules as `tidyTitle` in the scraper or a trigger would clean titles at the source for share cards and emails too. Needs a migration (Param).

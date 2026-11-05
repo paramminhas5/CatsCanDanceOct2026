@@ -85,7 +85,7 @@ export default function CheckoutDialog({
         setBurst(true); setTimeout(() => setBurst(false), 1500);
         setStep("rsvp_success");
       } catch {
-        toast.error("RSVP failed — please try again");
+        toast.error("RSVP failed. Please try again");
         setStep("info");
       }
       return;
@@ -139,7 +139,7 @@ export default function CheckoutDialog({
           }
         },
         modal: {
-          ondismiss: () => { toast("Payment cancelled — your selection is still held for 10 min."); setStep("info"); },
+          ondismiss: () => { toast("Payment cancelled. Your selection is still held for 10 min."); setStep("info"); },
         },
       });
       rzp.open();
@@ -222,7 +222,7 @@ export default function CheckoutDialog({
               <p className="font-display text-2xl text-ink uppercase mb-1">Tickets confirmed!</p>
               <p className="text-ink/70 text-sm">
                 {qrTokens.length
-                  ? "Your tickets are below — save these links or screenshot this screen."
+                  ? "Your tickets are below. Save these links or screenshot this screen."
                   : "Check your email for your QR tickets. Show them at the door."}
               </p>
             </div>
@@ -232,11 +232,11 @@ export default function CheckoutDialog({
                 {qrTokens.map((token, i) => (
                   <a key={token} href={`/my-tickets/${token}`} target="_blank" rel="noreferrer"
                     className="flex items-center justify-between border-2 border-ink px-4 py-3 bg-acid-yellow/20 hover:bg-acid-yellow transition-colors">
-                    <span className="font-display text-xs text-ink uppercase">Ticket {i + 1} — View QR →</span>
+                    <span className="font-display text-xs text-ink uppercase">Ticket {i + 1}: View QR →</span>
                     <span className="font-mono text-[9px] text-ink/40 truncate max-w-[120px]">{token.slice(0, 12)}…</span>
                   </a>
                 ))}
-                <p className="text-[10px] text-ink/40 text-center">Bookmark these links — they are your tickets</p>
+                <p className="text-[10px] text-ink/40 text-center">Bookmark these links. They are your tickets.</p>
               </div>
             )}
             <div className="flex gap-3">

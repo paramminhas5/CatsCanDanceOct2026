@@ -26,10 +26,10 @@ const HUBS: Record<string, Hub> = {
     title: "TECHNO IN BENGALURU.",
     hero: <>TECHNO IN<br/>BENGALURU.</>,
     description:
-      "A working guide to techno events in Bengaluru — venues, promoters, and how to actually find the parties that don't show up on aggregator apps.",
+      "A working guide to techno events in Bengaluru: venues, promoters, and how to actually find the parties that don't show up on aggregator apps.",
     intro: [
       "Bengaluru's techno scene runs on a few rooms, a few crews, and a calendar that moves by Instagram. The good nights are 200-400 cap, the systems are honest, and the door is RSVP-driven.",
-      "This page is the working map — the venues that book real techno, the promoters worth following, and the questions people ask us most often.",
+      "This page is the working map: the venues that book real techno, the promoters worth following, and the questions people ask us most often.",
     ],
     venues: [
       { name: "Bar Wild", area: "Indiranagar", note: "Listening-bar feel, sharp bookings, the regular Cats Can Dance home." },
@@ -37,12 +37,12 @@ const HUBS: Record<string, Hub> = {
       { name: "CBD basements", area: "Central Bengaluru", note: "Rotating spaces, tight rooms, often unannounced until 48 hours before." },
     ],
     promoters: [
-      "Cats Can Dance (@catscan.dance) — RSVP Episodes, curated lineups",
+      "Cats Can Dance (@catscan.dance): RSVP Episodes, curated lineups",
       "Independent crews from Mumbai and Goa running guest editions in Bengaluru",
     ],
     faq: [
       { q: "Where can I find techno events in Bengaluru?", a: "Most credible Bengaluru techno nights are RSVP-only and shared on Instagram 5-10 days out. Cats Can Dance lists upcoming Episodes at catscandance.com/events; broader listings live at /bengaluru-underground-dance-music." },
-      { q: "Are there regular techno nights in Bangalore?", a: "Yes — there's a recurring rhythm of techno nights in Indiranagar, CBD, and east Bengaluru, anchored by independent crews. Most are 200-400 capacity and free with RSVP." },
+      { q: "Are there regular techno nights in Bangalore?", a: "Yes. There's a recurring rhythm of techno nights in Indiranagar, CBD, and east Bengaluru, anchored by independent crews. Most are 200-400 capacity and free with RSVP." },
       { q: "What time do techno parties in Bengaluru run?", a: "Doors usually 9pm, peak between 12am and 2am. Bengaluru's licensing means most nights wrap by 1-2am unless it's a private warehouse event." },
     ],
   },
@@ -52,7 +52,7 @@ const HUBS: Record<string, Hub> = {
     title: "HOUSE IN BENGALURU.",
     hero: <>HOUSE IN<br/>BENGALURU.</>,
     description:
-      "House music parties in Bengaluru — where to find them, who's playing, and the venues that actually book deep, soulful, and disco-leaning house.",
+      "House music parties in Bengaluru: where to find them, who's playing, and the venues that actually book deep, soulful, and disco-leaning house.",
     intro: [
       "House in Bengaluru splits two ways: the listening-bar, disco-leaning evenings in Indiranagar and CBD, and the longer, deeper Saturday nights at warehouse pop-ups out east.",
       "If you want soulful, deep, or disco house instead of stadium tech-house, this is the working guide.",
@@ -63,12 +63,12 @@ const HUBS: Record<string, Hub> = {
       { name: "East Bengaluru warehouse spaces", area: "Whitefield", note: "Longer-format Saturday nights when the lineup hits." },
     ],
     promoters: [
-      "Cats Can Dance — house & disco-leaning Episodes, RSVP at /events",
+      "Cats Can Dance: house & disco-leaning Episodes, RSVP at /events",
       "Selectors crossing over from the Mumbai disco scene for guest sets",
     ],
     faq: [
-      { q: "Where can I dance to house music in Bangalore?", a: "Independent venues in Indiranagar and CBD host the best house nights in Bangalore — RSVP-driven, 200-400 cap, no bottle service. See catscandance.com/events for the curated calendar." },
-      { q: "Is there a disco scene in Bengaluru?", a: "Yes — there's a small but real disco and edits scene in Bengaluru, mostly running Friday and Saturday nights at listening bars and pop-ups in Indiranagar and CBD." },
+      { q: "Where can I dance to house music in Bangalore?", a: "Independent venues in Indiranagar and CBD host the best house nights in Bangalore: RSVP-driven, 200-400 cap, no bottle service. See catscandance.com/events for the curated calendar." },
+      { q: "Is there a disco scene in Bengaluru?", a: "Yes. There's a small but real disco and edits scene in Bengaluru, mostly running Friday and Saturday nights at listening bars and pop-ups in Indiranagar and CBD." },
       { q: "Do Cats Can Dance Episodes play house?", a: "Frequently. Many Episodes lean house and disco-edits, with detours into garage, breaks, and dub. Lineups are at catscandance.com/events." },
     ],
   },
@@ -101,7 +101,7 @@ const SceneHub = () => {
   return (
     <>
       <SEO
-        title={`${hub.genre} Events in Bengaluru — Venues, Promoters & Guide | Cats Can Dance`}
+        title={`${hub.genre} Events in Bengaluru: Venues, Promoters & Guide | Cats Can Dance`}
         description={hub.description}
         path={`/${hub.slug}`}
         jsonLd={[placeLd, faqLd]}
