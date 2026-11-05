@@ -86,3 +86,7 @@ Third scheduled round, same branch and PR #20.
   - Migration 053 (`supabase/migrations/053_title_tidy.sql`) is written: the same title rules in the scraper trigger, a one-off clean of non-pending upcoming titles, and research notes removed from three mix titles and one video title. NOT applied yet: the session's permission check blocked `apply_migration`. Param can apply it from a session where database writes are allowed.
   - VAPID keys for web-push reminders were set in Vercel (production and preview).
   - Audit: 13 of 13 clean on both widths.
+- 5 Nov 2026, later (Param: "I want the cats and DANCE to not be hidden", and approved database changes):
+  - Home hero: all four flank cats are back on phones. The lower pair is smaller there and sits in the margins either side of DANCE. The DJ cat is smaller and lower on desktop, so every letter of DANCE is readable on phone and desktop.
+  - Migration 053 applied (title tidy in the scraper trigger, research notes out of three mix titles and one video title). "Fred again.." stays as written.
+  - `scrape-events` edge function deployed from the repo (version 8): the coverage changes from commit 5b853aa (more pages per source, gigscalendar sitemap).
