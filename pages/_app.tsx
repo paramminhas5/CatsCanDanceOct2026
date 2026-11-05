@@ -90,12 +90,17 @@ export default function App({ Component, pageProps }: AppProps) {
         <PageTransition />
         <ThemeProvider>
           <DiscoProvider>
-            <SmoothScroll>
-              <ScrollToTop />
+            {router.pathname.startsWith("/door") ? (
+              // The door is a tool: native scrolling, no theme button over the scan screen.
               <Component {...pageProps} />
-              <Analytics />
-              <ThemeSwitcher />
-            </SmoothScroll>
+            ) : (
+              <SmoothScroll>
+                <ScrollToTop />
+                <Component {...pageProps} />
+                <Analytics />
+                <ThemeSwitcher />
+              </SmoothScroll>
+            )}
           </DiscoProvider>
         </ThemeProvider>
       </TooltipProvider>

@@ -26,9 +26,9 @@ const Blog = () => {
   const blogLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Cats Can Dance — Journal",
-    description: "Long reads on Bangalore's underground party scene, India's drop culture, and the artists behind the nights.",
-    url: "https://catscandance.com/blog",
+    name: "Cats Can Dance Journal",
+    description: "Short notes from Cats Can Dance in Bengaluru: how we find good nights, how RSVP lists work, our Episodes and the DJs who played them.",
+    url: "https://catscandance.com/journal",
     inLanguage: "en-IN",
     publisher: {
       "@type": "Organization",
@@ -47,8 +47,8 @@ const Blog = () => {
   return (
     <>
       <SEO
-        title="Field Notes from Bangalore's Underground | Cats Can Dance"
-        description="Long reads on Bangalore's party scene, apparel drops, cool culture & streetwear, and the artists behind the nights."
+        title="Journal · Cats Can Dance"
+        description="Short notes from Cats Can Dance in Bengaluru: how we find good nights, how RSVP lists work, our Episodes and the DJs who played them."
         path="/journal"
         jsonLd={[blogLd, itemListLd]}
       />
@@ -56,18 +56,18 @@ const Blog = () => {
         <Nav />
         <PageHero
           eyebrow="READ · JOURNAL"
-          title="THE BLOG."
+          title="THE JOURNAL."
           bg="bg-acid-yellow"
           textColor="text-ink"
           eyebrowColor="text-magenta"
           shadow={false}
         >
           <p className="text-ink/80 font-medium text-base sm:text-lg max-w-2xl">
-            Long reads on Bangalore's underground scene, India's best event organisers, and the DJs you should know.
+            Short notes from us in Bengaluru: how we find good nights, how RSVP lists work, and what happened at our Episodes.
           </p>
         </PageHero>
         <section className="container py-12 md:py-20">
-          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Blog" }]} />
+          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Journal" }]} />
           <div className="grid gap-6 sm:grid-cols-2 max-w-5xl">
             {posts.map((p) => (
               <Link

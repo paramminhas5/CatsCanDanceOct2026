@@ -40,25 +40,25 @@ export default function Overview({ weekCount, artistCount }: Props) {
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-10 mb-10 md:mb-12">
           <div>
-            <p className="font-display text-magenta text-xs md:text-sm uppercase tracking-[0.2em] mb-3">What we are building</p>
+            <p className="font-display text-magenta text-xs md:text-sm uppercase tracking-[0.2em] mb-3">What this site does</p>
             <h2 className="font-display text-ink text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92]">
-              The home of<br className="hidden md:block" /> electronic music<br className="hidden md:block" /> in India.
+              Nights, artists<br className="hidden md:block" /> and a school<br className="hidden md:block" /> in one place.
             </h2>
           </div>
           <p className="text-ink/75 text-base md:text-lg leading-relaxed max-w-[40ch]">
-            Three products, one account. Find the nights worth going to and a crew to go with. Look up the artists and book them, at home or on tour.
-            Learn to make the music on a real instrument. Built by the people who throw the parties.
+            Find a night across India and people to go with. Look up South Asian electronic artists and book them.
+            Learn to produce and DJ. We run it from Bengaluru, where we also throw our own nights.
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-5 md:gap-7">
           <Tile
             href="#nights-product" n="01" name="Nights" delay="ccd-d1"
-            line="Find a night, find your crew. And our own Episodes, the ones you don't miss."
+            line="Nights across India, a crew to go with, and our own Episodes in Bengaluru."
             live={`${weekCount} nights this week`} color="bg-electric-blue" dot="bg-electric-blue" cat={imgUrl(catCap)}
           />
           <Tile
             href="#artists-product" n="02" name="Artists" delay="ccd-d2"
-            line="Look up South Asian electronic artists, listen, and book them, here or on tour."
+            line="South Asian electronic artists. Listen, read up, send a booking request."
             live={`${artistCount} on the roster`} color="bg-acid-yellow" dot="bg-acid-yellow border-2 border-ink" cat={imgUrl(catHandstand)}
           />
           <Tile

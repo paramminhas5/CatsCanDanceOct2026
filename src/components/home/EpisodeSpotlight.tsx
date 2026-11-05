@@ -85,9 +85,9 @@ export default function EpisodeSpotlight({ next, past, hasTickets, lineup }: Pro
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-7 md:mb-9">
           <div>
             <p className="font-display text-acid-yellow text-xs md:text-sm uppercase tracking-[0.2em] mb-3">Our nights · the Episodes</p>
-            <h2 className="font-display text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92] drop-shadow-[6px_6px_0_hsl(var(--ink))]">Small rooms.<br />Big sound.</h2>
+            <h2 className="font-display text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92] drop-shadow-[6px_6px_0_hsl(var(--ink))]">Our own<br />nights.</h2>
           </div>
-          <p className="text-cream/90 text-base md:text-lg max-w-[36ch]">We throw our own nights in Bengaluru. Every Episode is a lineup we'd queue for ourselves.</p>
+          <p className="text-cream/90 text-base md:text-lg max-w-[36ch]">We throw them in Bengaluru. Residents DJazz, Hedz, Merman and Sartdawg, plus guests.</p>
         </div>
 
         {next && (

@@ -25,6 +25,7 @@ import { StagePill } from "@/components/booking/StageTrack";
 import { dayShort, inrShort } from "@/lib/desk";
 import { artistPath, threadPath } from "@/lib/routes";
 import { SCHOOL_URL } from "@/lib/ccd-db";
+import { fetchNights, type NightRow } from "@/lib/door";
 import TicketPass from "@/components/tickets/TicketPass";
 import { shareCard } from "@/lib/share";
 import { disablePush, enablePush, pushSupported, VAPID } from "@/lib/push";
@@ -49,7 +50,7 @@ export default function Me() {
           <div className="container">
             <p className="font-bold text-acid-yellow mb-3">Your account</p>
             <h1 className="font-display text-6xl md:text-8xl leading-[0.85]">YOUR ACCOUNT.</h1>
-            <p className="mt-4 text-lg max-w-[48ch]">One login for all of Cats Can Dance: your tickets, the nights you're going to, your crew, your booking requests and the artists you follow.</p>
+            <p className="mt-4 text-lg max-w-[48ch]">Your tickets, the nights you're going to, your crew, your booking requests and the artists you follow, in one place.</p>
           </div>
         </section>
         <div className="container py-10 md:py-14 max-w-3xl">
@@ -212,6 +213,7 @@ function YourNights({ memberId, name }: { memberId: string; name: string }) {
       <BookingsBlock />
       <FollowsBlock />
       <SchoolBlock />
+      <DoorBlock />
 
       <p className="text-sm text-ink/70">Profile, taste quiz and hosting are on <Link href="/club" className="underline font-bold">your club page</Link>.</p>
     </div>
@@ -331,7 +333,7 @@ function FollowsBlock() {
       {list === null ? <div className="h-20 border-4 border-ink/20 bg-ink/5" aria-busy="true" />
         : list.length === 0 ? (
           <div className="border-4 border-ink bg-cream p-5 grid gap-3">
-            <p>Follow an artist and their next gigs, tours and releases come to you.</p>
+            <p>Follow an artist from their page and they show up here.</p>
             <div><Link href="/artists" className={`${btn} bg-acid-yellow inline-block`}>Browse artists</Link></div>
           </div>
         ) : (
@@ -358,6 +360,36 @@ function SchoolBlock() {
       <div className="border-4 border-ink bg-magenta text-cream p-5 grid gap-3">
         <p>Your lessons, the tracks you are making and your streak live in School. Use the same email.</p>
         <div><a href={SCHOOL_URL} onClick={() => track("open_school")} className={`${btn} bg-cream text-ink inline-block`}>Open School</a></div>
+      </div>
+    </section>
+  );
+}
+
+/** Nights this person can run the door for (CCD team, hosts, or a night's door team). Hidden for everyone else. */
+function DoorBlock() {
+  const [nights, setNights] = useState<NightRow[]>([]);
+  useEffect(() => {
+    fetchNights().then((r) => {
+      if (!r.ok) return;
+      const today = todayIST();
+      setNights((r.nights ?? []).filter((n) => (n.event_date ?? "") >= today).sort((a, b) => (a.event_date ?? "").localeCompare(b.event_date ?? "")).slice(0, 3));
+    });
+  }, []);
+  if (!nights.length) return null;
+  return (
+    <section aria-labelledby="door" className="grid gap-4">
+      <h2 id="door" className="font-display text-3xl md:text-4xl leading-none">THE DOOR</h2>
+      <div className="border-4 border-ink bg-ink text-cream p-5 grid gap-3">
+        <p>You are on the door for {nights.length === 1 ? "this night" : "these nights"}. Open it on the phone you will scan with, before doors, while there is signal.</p>
+        <ul className="grid gap-2">
+          {nights.map((n) => (
+            <li key={n.slug} className="flex flex-wrap items-center gap-3">
+              <span className="flex-1 min-w-0"><b className="font-display font-normal">{n.title}</b> <span className="text-cream/70 text-sm">{n.date ?? n.event_date}</span></span>
+              <Link href={`/door/${n.slug}`} className={`${btn} bg-acid-yellow text-ink`}>Open door</Link>
+              {n.lead && <Link href={`/door/${n.slug}/setup`} className="underline text-sm">Setup</Link>}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

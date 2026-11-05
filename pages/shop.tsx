@@ -57,14 +57,14 @@ export default function Shop() {
 
   return (
     <>
-      <SEO title="Shop" description="Cats Can Dance merch and drops. Ships across India." path="/shop" />
+      <SEO title="Shop" description="Cats Can Dance merch, when we have some. Ships across India." path="/shop" />
       <main className="bg-background text-foreground min-h-screen">
         <Nav />
-        <PageHero eyebrow="SHOP · MERCH" title="THE SHOP." bg="bg-acid-yellow" textColor="text-ink" eyebrowColor="text-hot-red"><p>Small drops. Ships across India.</p></PageHero>
+        <PageHero eyebrow="SHOP · MERCH" title="THE SHOP." bg="bg-acid-yellow" textColor="text-ink" eyebrowColor="text-hot-red"><p>Merch, when we have some. Ships across India.</p></PageHero>
         <section className="container py-12 grid gap-10 lg:grid-cols-[2fr_1fr]">
           <div>
             {done && <p className="border-4 border-ink bg-acid-yellow p-4 mb-6 font-display">Order placed. Check your email. We will ship in 3 to 5 days.</p>}
-            {products.length === 0 ? <p className="border-4 border-ink p-6">The next drop is coming. Follow us on Instagram.</p> : (
+            {products.length === 0 ? <p className="border-4 border-ink p-6">Nothing for sale right now. When there is, it shows up here and on our Instagram.</p> : (
               <ul className="grid gap-6 sm:grid-cols-2">
                 {products.map((p) => (
                   <li key={p.id} className="border-4 border-ink bg-cream chunk-shadow">

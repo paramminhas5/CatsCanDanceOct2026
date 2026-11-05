@@ -247,12 +247,12 @@ function FansView({ stops, all, city, today, onAllCities }: { stops: TourStop[];
         <h2 className="font-display text-3xl md:text-5xl leading-none">{city ? `Coming to ${city}` : "Coming to India"}</h2>
         <p className="text-ink/70 tabular shrink-0">{actCount} act{actCount === 1 ? "" : "s"}</p>
       </div>
-      <p className="text-ink/75 mb-8 max-w-[60ch]">{city ? "Pick another city in the bar above." : "Pick your city in the bar above."} Follow an act to get their new dates in your CCD feed.</p>
+      <p className="text-ink/75 mb-8 max-w-[60ch]">{city ? "Pick another city in the bar above." : "Pick your city in the bar above."} Follow an act to hear when they add a date.</p>
 
       {weeks.length === 0 ? (
         <Empty
           title={city ? `Nobody is posted for ${city} yet.` : "Nobody is on the road right now."}
-          body="Follow acts you like on their profile and their new dates land in your feed. Know an act coming through? Send them this page so they can post."
+          body="Follow acts on their profile to hear when they add a date. Know an act coming through? Send them this page so they can post."
         >
           {city && <button type="button" onClick={onAllCities} className="font-display px-5 py-3 border-4 border-ink bg-acid-yellow">See every city</button>}
           <Link href="/whats-on" className="font-display px-5 py-3 border-4 border-ink bg-cream">See what&apos;s on</Link>
@@ -419,7 +419,7 @@ function PromotersView({ open, travelling, city, today, onAllCities }: { open: T
       <div className="mt-14 border-4 border-ink bg-cream p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4 justify-between">
         <div>
           <p className="font-display text-2xl leading-tight">Booking acts in India?</p>
-          <p className="text-ink/75">Get your crew listed so artists know who to talk to in your city.</p>
+          <p className="text-ink/75">Get listed as a promoter so artists know who to talk to in your city.</p>
         </div>
         <Link href="/promoters" className="font-display px-5 py-3 border-4 border-ink bg-acid-yellow self-start md:self-auto">For promoters</Link>
       </div>

@@ -74,8 +74,8 @@ const Hero = ({ next = null, hasTickets = false }: { next?: HeroNext; hasTickets
   const FLANK_CATS = [
     { id: "cap",        src: catCap,        pos: "top-[28%] left-[6%] md:top-[26%] md:left-[14%]",   x: flankDriftL },
     { id: "hpDance",    src: catHpDance,    pos: "top-[28%] right-[6%] md:top-[26%] md:right-[14%]", x: flankDriftR },
-    { id: "headphones", src: catHeadphones, pos: "hidden md:block top-[52%] left-[6%] md:top-[54%] md:left-[14%]",   x: flankDriftL },
-    { id: "handstand",  src: catHandstand,  pos: "hidden md:block top-[52%] right-[6%] md:top-[54%] md:right-[14%]", x: flankDriftR },
+    { id: "headphones", src: catHeadphones, pos: "max-md:w-16 top-[50%] left-[1%] md:top-[54%] md:left-[14%]",   x: flankDriftL },
+    { id: "handstand",  src: catHandstand,  pos: "max-md:w-16 top-[50%] right-[1%] md:top-[54%] md:right-[14%]", x: flankDriftR },
   ];
 
   return (
@@ -111,16 +111,16 @@ const Hero = ({ next = null, hasTickets = false }: { next?: HeroNext; hasTickets
             CATS<br/>CAN<br/>DANCE
           </motion.h1>
           <p className="sr-only">
-            Cats Can Dance is a Bangalore-based event organiser hosting the best underground dance music parties and electronic events in Bangalore, India.
+            Cats Can Dance throws underground dance music nights in Bengaluru and lists nights, artists and a school for electronic music across India.
           </p>
         </div>
 
         {/* All cats grouped */}
         <div className="contents">
-          {/* DJ cat — slightly overlaps the headline */}
+          {/* DJ cat: sits under the headline so every letter of DANCE stays readable (Param, 5 Nov). */}
           <motion.div
             style={{ y: djY }}
-            className="absolute inset-x-0 mx-auto bottom-20 md:-bottom-8 z-30 w-[100%] md:w-[92%] min-w-[300px] max-w-[820px] pointer-events-none"
+            className="absolute inset-x-0 mx-auto bottom-14 md:-bottom-24 z-30 w-[100%] md:w-[72%] min-w-[300px] max-w-[640px] pointer-events-none"
           >
             <Image
               src={heroCenter}
@@ -131,7 +131,7 @@ const Hero = ({ next = null, hasTickets = false }: { next?: HeroNext; hasTickets
             />
           </motion.div>
 
-          {/* Four flank cats bracketing the wordmark. On phones the lower pair is hidden: it sat on top of DANCE. */}
+          {/* Four flank cats bracketing the wordmark. On phones the lower pair is smaller and sits in the margins either side of DANCE, so both stay in view. */}
           {FLANK_CATS.map((c) => (
             <motion.div
               key={c.id}

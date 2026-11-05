@@ -45,9 +45,9 @@ export default function AccountBlock() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-10">
           <div>
             <p className="font-display text-acid-yellow text-xs md:text-sm uppercase tracking-[0.2em] mb-3">Your account</p>
-            <h2 className="font-display text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92] drop-shadow-[6px_6px_0_hsl(var(--ink))]">One login.<br />All of CCD.</h2>
+            <h2 className="font-display text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92] drop-shadow-[6px_6px_0_hsl(var(--ink))]">Sign in<br />once.</h2>
           </div>
-          <p className="text-cream/90 text-base md:text-lg max-w-[36ch]">Sign in once and everything you do on Cats Can Dance is in one place, on your phone and your laptop.</p>
+          <p className="text-cream/90 text-base md:text-lg max-w-[36ch]">Your tickets, the nights you're going to, your crew, the artists you follow and your booking requests, on your phone and your laptop.</p>
         </div>
         <div className="grid md:grid-cols-3 gap-4 md:gap-6 my-8 md:my-10">
           {GETS.map((g) => (

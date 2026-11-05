@@ -91,7 +91,7 @@ const CatsCanCare = () => {
   const itemListLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "India Animal Welfare NGOs | Cats Can Care",
+    name: "Animal welfare groups in India | Nine Lives",
     itemListElement: NGOS.slice(0, 25).map((n, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -103,8 +103,8 @@ const CatsCanCare = () => {
   return (
     <div className="min-h-screen bg-cream">
       <SEO
-        title="Cats Can Care: Animal NGOs & Adoption in India | Cats Can Dance"
-        description="A searchable directory of India's top 100 animal welfare NGOs. Find rescues, shelters, sanctuaries, and adoption centres. Donate or adopt responsibly."
+        title="Adopt or donate: animal welfare groups in India · Cats Can Dance"
+        description="A searchable list of 100 animal welfare groups in India: rescues, shelters, sanctuaries and adoption centres, with links to donate or adopt."
         path="/adopt"
         keywords="animal NGO India, donate animal welfare India, adopt pet India, animal shelter India"
         jsonLd={itemListLd}
@@ -112,8 +112,8 @@ const CatsCanCare = () => {
       <Nav />
       <PageHero eyebrow="ADOPT · NINE LIVES" title="Care, Donate, Adopt">
         <p className="text-cream/90 max-w-2xl">
-          A directory of India's top 100 animal welfare organisations, searchable by city, focus,
-          and what they need most.
+          100 animal welfare groups in India. Search by name or city, or filter by what they do,
+          then donate or adopt through their own site.
         </p>
       </PageHero>
 
@@ -181,8 +181,8 @@ const CatsCanCare = () => {
         <div className="container">
           <h2 className="font-display text-4xl md:text-5xl mb-3">Adopt, don't shop.</h2>
           <p className="max-w-2xl text-cream/80 mb-8">
-            India has thousands of healthy, vaccinated dogs, cats, and other animals waiting for homes. These shelters and
-            sanctuaries run active adoption programs. Visit, foster, or take one home for life.
+            These groups list adoption or sanctuary work. Contact them before you visit to ask about fostering or
+            adopting.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {adoptionNgos.slice(0, 12).map((n) => (

@@ -16,73 +16,73 @@ export const CITY_SCENES: CityScene[] = [
   {
     slug: "bengaluru",
     name: "Bengaluru",
-    tagline: "India's underground capital.",
+    tagline: "House, disco, jungle and D&B.",
     description:
-      "Bengaluru's underground started in basements and rooftops and never looked back. The city runs on House, Disco, Jungle and Drum & Bass, genres that reward patience and curiosity. Bar Wild in Indiranagar is its beating heart; Cats Can Dance its loudest voice.",
+      "Bengaluru's club nights lean on house, disco, jungle and drum & bass, with garage and techno too. Cats Can Dance started here with a Wednesday night at Bar Wild in Indiranagar in April 2025.",
     accentColor: "bg-electric-blue",
     textColor: "text-cream",
     activeGenres: ["House", "Disco", "Jungle", "Drum & Bass", "Garage", "Techno"],
-    keyVenues: ["Bar Wild", "Skyye", "The Humming Tree", "Plan B"],
+    keyVenues: ["Bar Wild", "The Humming Tree", "Indiranagar Social", "Kitty Ko"],
     starterPlaylistEmbed: "PLFgquLnL59alCl_2TQvOiD5Vgm1hCaGSK",
   },
   {
     slug: "mumbai",
     name: "Mumbai",
-    tagline: "South Bombay selectors and Bandra rooftops.",
+    tagline: "Techno, house and Afro house.",
     description:
-      "Mumbai's scene splits across Bandra's rooftop parties, Byculla warehouse nights and South Bombay jazz-inflected selector sets. Techno found its footing here first; House and Afro followed. The city has deep Boiler Room history and a growing roster of internationally bookable artists.",
+      "Mumbai has regular techno and house nights, many of them at antiSOCIAL in Lower Parel. Afro house, minimal and more experimental sets turn up too. Sandunes, an electronic producer and composer, is based here.",
     accentColor: "bg-magenta",
     textColor: "text-cream",
     activeGenres: ["Techno", "House", "Afro House", "Minimal", "Experimental"],
-    keyVenues: ["antiSOCIAL", "Kitty Su", "Trilogy", "The Cove"],
+    keyVenues: ["antiSOCIAL", "Khar Social"],
     starterPlaylistEmbed: null,
   },
   {
     slug: "delhi",
     name: "Delhi",
-    tagline: "The capital of Indian Techno.",
+    tagline: "Techno, minimal and house.",
     description:
-      "Delhi is where Indian techno was born. Kohra, Sandunes, and a generation of selectors built a scene defined by restraint and depth. The city's nights run late, its crowds are discerning, and its artists are the most internationally connected in the country.",
+      "Delhi and Gurgaon have a long-running techno and house scene. Kohra, a Delhi DJ and producer, founded the label Qilla Records in 2011. Hamza Rahimtula, who makes deep house, is also based in Delhi.",
     accentColor: "bg-ink",
     textColor: "text-cream",
     activeGenres: ["Techno", "Minimal", "Industrial", "Ambient", "House"],
-    keyVenues: ["Auro Kitchen & Bar", "Misfits", "Summer House Cafe", "PCO"],
+    keyVenues: ["Dirty Good", "Room XO", "Bianco", "Cosy Box", "KAI"],
     starterPlaylistEmbed: null,
   },
   {
     slug: "goa",
     name: "Goa",
-    tagline: "Where it all started for Indian electronic music.",
+    tagline: "Goa trance started here.",
     description:
-      "Goa Trance isn't a niche, it's an origin story. The beaches and forests of North Goa gave birth to a psychedelic sound that circled the globe. Today, the state hosts some of India's biggest festivals (Sunburn, Magnetic Fields' sibling events) alongside intimate jungle parties that carry the original spirit.",
+      "Goa trance grew out of beach parties in North Goa in the late 1980s and early 1990s, and spread worldwide as psytrance. Goa still hosts parties and festivals, from beach clubs to one-off events.",
     accentColor: "bg-lime",
     textColor: "text-ink",
     activeGenres: ["Goa Trance", "Psytrance", "Techno", "Ambient", "World"],
-    keyVenues: ["Hilltop", "Curlies", "Club Cabana", "Nyex Beach Club"],
+    keyVenues: ["The Loft at Ānamiva", "JUNA", "RROV"],
     starterPlaylistEmbed: null,
   },
   {
     slug: "hyderabad",
     name: "Hyderabad",
-    tagline: "The city that gave the world Nikki Nair.",
+    tagline: "Techno, breaks, electro and house.",
     description:
-      "Hyderabad's electronic music scene punches above its weight. Home to Nikki Nair (Boiler Room Hyderabad, 2022), the city has a growing underground following and a tech-savvy crowd that discovered dance music through YouTube rabbit holes and is now building real venues and communities.",
+      "Boiler Room came to Hyderabad in May 2022. Murthovic, a Hyderabad DJ and producer, played it, and so did the US-based producer Nikki Nair.",
     accentColor: "bg-orange",
     textColor: "text-ink",
     activeGenres: ["Techno", "Breakbeat", "Electro", "House"],
-    keyVenues: ["10D", "Plan B", "Tito's"],
+    keyVenues: [],
     starterPlaylistEmbed: null,
   },
   {
     slug: "pune",
     name: "Pune",
-    tagline: "Student energy meets serious selector culture.",
+    tagline: "House, techno and live electronics.",
     description:
-      "Pune's large student population and proximity to Mumbai creates a unique energy, a city that's always been willing to try something different. Promoters here take risks; the crowd follows. A strong live electronics scene sits alongside the DJ culture.",
+      "Pune is a few hours from Mumbai and has a large student population. Its nights mix house, techno, funk and disco, with some live electronic sets.",
     accentColor: "bg-acid-yellow",
     textColor: "text-ink",
     activeGenres: ["House", "Techno", "Live Electronics", "Funk", "Disco"],
-    keyVenues: ["High Spirits", "Elephant & Co", "Hard Rock Cafe"],
+    keyVenues: [],
     starterPlaylistEmbed: null,
   },
 ];
@@ -112,11 +112,11 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     name: "Detroit Techno",
     city: "Detroit, USA",
     decade: "1980s",
-    tagline: "Machines and soul in a post-industrial city.",
+    tagline: "Where techno started.",
     origin:
-      "Detroit Techno was born in the mid-80s from three Black teenagers (Juan Atkins, Derrick May and Kevin Saunderson) who fed Kraftwerk, funk and the bleakness of a city gutted by deindustrialisation into synthesisers and drum machines. The result was hypnotic, mechanical, deeply human.",
+      "Techno came out of Detroit in the mid-1980s. Juan Atkins, Derrick May and Kevin Saunderson, school friends from nearby Belleville, mixed Kraftwerk, funk and electro using synths and drum machines. Atkins released records as Model 500.",
     indiaConnection:
-      "Delhi's techno scene is the most direct descendant of Detroit in India. Kohra's minimalist, industrial sets trace a clear line back to Atkins' Model 500. Several Indian artists have played Movement Festival in Detroit.",
+      "Techno is played across India's big cities. In Delhi, Kohra's label Qilla Records has put out Indian techno and house since 2011.",
     keyArtists: ["Juan Atkins", "Derrick May", "Kevin Saunderson", "Underground Resistance", "Jeff Mills"],
     starterTracks: [
       { title: "No UFOs", artist: "Model 500", youtubeId: "SHMaEa4Mj7c" },
@@ -133,12 +133,12 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     name: "Chicago House",
     city: "Chicago, USA",
     decade: "1980s",
-    tagline: "Four-to-the-floor gospel from the Midwest.",
+    tagline: "Where house started.",
     origin:
-      "House music was born in Chicago's Warehouse club under DJ Frankie Knuckles in the late 70s/early 80s. It married the 4/4 kick of disco with synthesised basslines, Roland 808s and the emotional intensity of gospel. It was Black, queer, working-class music made in spite of everything.",
+      "House took its name from the Warehouse, a Chicago club where Frankie Knuckles was the resident DJ from 1977. Early house paired disco's 4/4 kick with drum machines and cheap synths. Its first crowds were mostly Black and gay.",
     indiaConnection:
-      "Chicago House is the backbone of India's underground. Virtually every Indian selector who isn't playing techno is playing some branch of House (Deep, Tech, Soulful) that roots back to Chicago. Bengaluru's scene runs on it.",
-    keyArtists: ["Frankie Knuckles", "Larry Heard", "Marshall Jefferson", "Jesse Saunders", "Larry Levan"],
+      "Deep, tech and soulful house all come from this root. Cats Can Dance nights in Bengaluru play house alongside disco, jungle and drum & bass.",
+    keyArtists: ["Frankie Knuckles", "Larry Heard", "Marshall Jefferson", "Jesse Saunders"],
     starterTracks: [
       { title: "Your Love", artist: "Frankie Knuckles", youtubeId: "rBOA2Kk0oBc" },
       { title: "Can You Feel It", artist: "Larry Heard", youtubeId: "P2JgFVH3-Cs" },
@@ -154,11 +154,11 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     name: "London Jungle / Drum & Bass",
     city: "London, UK",
     decade: "1990s",
-    tagline: "170 BPM. South London. Never slowing down.",
+    tagline: "Breakbeats and sub-bass, around 170 BPM.",
     origin:
-      "Jungle emerged from London's rave scene in the early 90s, a collision of Jamaican sound system culture, breakbeat hardcore and reggae that Black and mixed-heritage youth in South and East London made their own. It became Drum & Bass; the energy never changed.",
+      "Jungle came out of London's rave scene in the early 1990s. It mixed breakbeat hardcore with the bass, reggae and MC culture of Jamaican sound systems. By the mid-90s the music was mostly called drum & bass.",
     indiaConnection:
-      "Bengaluru has India's most passionate D&B and Jungle community, anchored by Cats Can Dance. The link is cultural as well as musical, India's sound system culture and Jungle's Jamaican roots share a spiritual DNA.",
+      "Cats Can Dance nights in Bengaluru play jungle and drum & bass.",
     keyArtists: ["Goldie", "LTJ Bukem", "Grooverider", "Fabio", "4hero", "DJ Hype"],
     starterTracks: [
       { title: "Inner City Life", artist: "Goldie", youtubeId: "gXXFbsB1koo" },
@@ -175,12 +175,12 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     name: "Berlin Techno",
     city: "Berlin, Germany",
     decade: "1990s",
-    tagline: "Post-wall. Industrial. All night. No cameras.",
+    tagline: "Techno in empty buildings after the Wall fell.",
     origin:
-      "When the Berlin Wall fell in 1989, empty factories and bunkers became clubs. Tresor, Berghain, Watergate: institutions built in the ruins of a divided city. Berlin Techno is harder, longer, more industrial than Detroit's original. It invented club culture as a 12-hour devotional practice.",
+      "After the Berlin Wall fell in 1989, empty buildings in the old East became clubs. Tresor opened in 1991 in a vault under a former department store. Berghain opened in 2004 in a former power station. Berlin techno tends to be harder and darker than Detroit's, and clubs often run through the weekend.",
     indiaConnection:
-      "Berlin is the finishing school for Indian artists who've broken through. Kohra, Sandunes and others have played Tresor and Berghain residencies. The Berlin template (late nights, serious crowds, no phones) is what serious Indian promoters aspire to recreate.",
-    keyArtists: ["Berghain residents", "Marcel Dettmann", "Ben Klock", "Surgeon", "DVS1"],
+      "For techno in India, see the Delhi city page and the techno genre page.",
+    keyArtists: ["Marcel Dettmann", "Ben Klock", "Surgeon", "DVS1"],
     starterTracks: [
       { title: "Cascade", artist: "Marcel Dettmann", youtubeId: "8GVFPuBYa4c" },
       { title: "Accelerator", artist: "Ben Klock", youtubeId: "oNvqIh6H8rY" },
@@ -195,11 +195,11 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     name: "UK Garage",
     city: "London, UK",
     decade: "1990s",
-    tagline: "Pitched-up vocals, shuffled beats, late-night energy.",
+    tagline: "Pitched-up vocals and shuffled beats.",
     origin:
-      "UK Garage emerged from London's pirate radio stations in the mid-90s, a British reinterpretation of US house and R&B that got faster, more syncopated, and distinctly South London. It gave birth to Grime and Dubstep and never really went away.",
+      "UK garage came out of London in the mid-1990s and spread through pirate radio. It took US house and R&B and made them faster and more syncopated, with chopped and pitched vocals. Grime and dubstep grew out of it.",
     indiaConnection:
-      "UK Garage is a growing sound in Bengaluru and Mumbai, introduced through CCD nights and Bengaluru selectors who tracked UK pirate radio from afar. Its syncopated rhythms resonate strongly with Indian music's own polyrhythmic traditions.",
+      "Cats Can Dance nights in Bengaluru play garage alongside house, disco and jungle.",
     keyArtists: ["Todd Edwards", "MJ Cole", "DJ EZ", "Artful Dodger", "Craig David"],
     starterTracks: [
       { title: "Re-Rewind", artist: "Artful Dodger ft. Craig David", youtubeId: "mRfSM-0jBiM" },
@@ -215,11 +215,11 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     name: "New York House",
     city: "New York, USA",
     decade: "1980s–90s",
-    tagline: "Paradise Garage. Larry Levan. The church of dance.",
+    tagline: "Paradise Garage, Larry Levan and vocal house.",
     origin:
-      "If Chicago invented house, New York elevated it into a religion. Larry Levan's Paradise Garage was the cathedral, a place where Black and Latino gay men danced all night to music that was equal parts joy and survival. NYC house is warmer, more gospel-influenced, more emotional than its Chicago cousin.",
+      "Larry Levan was the resident DJ at the Paradise Garage in New York from 1977 to 1987. Its crowd was mostly Black, Latino and gay. New York house, often called garage after the club, leans on gospel and soul vocals.",
     indiaConnection:
-      "Soulful and vocal House, the New York tradition, is popular in Mumbai and Pune. The city's cosmopolitan crowd connects with the warmth and emotional depth that defines the NYC sound.",
+      "For house in India, see the house and disco genre pages.",
     keyArtists: ["Larry Levan", "François Kevorkian", "Masters At Work", "Todd Terry", "Louie Vega"],
     starterTracks: [
       { title: "The Basement", artist: "Kenny Dope presents The Bucketheads", youtubeId: "MQiWqSmNOdw" },
@@ -235,12 +235,12 @@ export const GLOBAL_SCENES: GlobalScene[] = [
     name: "Goa Trance",
     city: "Goa, India",
     decade: "1980s–90s",
-    tagline: "India's own genre that circled the globe.",
+    tagline: "Trance from the beaches of North Goa.",
     origin:
-      "Goa Trance is the only electronic music genre to originate in India. It grew from the hippie-trail beach parties of North Goa in the 80s: Western travellers bringing synthesisers and drum machines, fusing them with Indian spirituality and the trance-inducing qualities of traditional ritual music. By the 90s it had spawned Psytrance worldwide.",
+      "Goa trance grew out of beach parties in North Goa run by Western travellers in the late 1980s and early 1990s. DJs such as Goa Gil played long sets there. The sound spread to Europe and Israel in the 90s and became psytrance.",
     indiaConnection:
-      "This is India's contribution to global electronic music. The legacy lives on in Goa's festival circuit, in Indian psytrance artists touring globally, and in the spiritual approach to club culture that distinguishes Indian underground from its Western counterparts.",
-    keyArtists: ["Astral Projection", "Man With No Name", "Juno Reactor", "Infected Mushroom", "Shpongle"],
+      "Goa trance started in India, in North Goa.",
+    keyArtists: ["Goa Gil", "Astral Projection", "Man With No Name", "Juno Reactor", "Infected Mushroom"],
     starterTracks: [
       { title: "Trust in Trance", artist: "Astral Projection", youtubeId: "SPlSZPsepbI" },
       { title: "Outside the Asylum", artist: "Man With No Name", youtubeId: "dFtmFkAVA80" },
@@ -276,15 +276,15 @@ export const GENRE_PAGES: GenrePage[] = [
   {
     slug: "techno",
     name: "Techno",
-    tagline: "Repetition as transcendence.",
+    tagline: "Repetitive, machine-made dance music from Detroit.",
     description:
-      "Techno is the most minimalist and hypnotic of all electronic music genres. Built on relentless 4/4 kick drums, synthesised basslines and industrial textures, it was designed to induce a trance-like state on crowded dance floors. It rewards patience, the pay-off comes after twenty minutes.",
+      "Techno is built on a steady 4/4 kick, synth lines and drum machines, usually between 130 and 150 BPM. Tracks repeat and change slowly, so DJs often mix them in long blends.",
     bpm: "130–150",
     origin: "Detroit, USA",
     originDecade: "1980s",
     indianScene:
-      "Delhi is the capital of Indian techno, built on artists like Kohra, Sandunes and Murthovic who play the international festival circuit. Mumbai and Bengaluru have growing techno communities with regular underground nights.",
-    keyIndianArtists: ["Kohra", "Sandunes", "Murthovic", "Dobby", "Blot!"],
+      "Kohra, a Delhi DJ and producer, has run the label Qilla Records since 2011. Murthovic, from Hyderabad, played Boiler Room there in 2022. Techno nights run in Delhi, Mumbai and Bengaluru.",
+    keyIndianArtists: ["Kohra", "Murthovic", "BLOT!"],
     globalLandmarks: ["Movement Festival Detroit", "Berghain Berlin", "Tresor Berlin", "fabric London"],
     starterTracks: [
       { title: "No UFOs", artist: "Model 500", youtubeId: "SHMaEa4Mj7c" },
@@ -297,15 +297,15 @@ export const GENRE_PAGES: GenrePage[] = [
   {
     slug: "house",
     name: "House",
-    tagline: "Four-to-the-floor. Timeless.",
+    tagline: "Four to the floor, from Chicago.",
     description:
-      "House music is the most democratic of all dance music genres, it welcomes everyone onto the floor. At its core: a 4/4 kick on every beat, a synthesised bassline, soulful chords and often a vocal. It came from Chicago's Black gay community and has never stopped moving.",
+      "House has a kick drum on every beat, a bassline, chords and often a vocal. It started in Chicago in the early 1980s, in clubs with mostly Black and gay crowds.",
     bpm: "120–135",
     origin: "Chicago, USA",
     originDecade: "1980s",
     indianScene:
-      "House is the most widely played genre in India's underground. From Bengaluru's basement nights to Mumbai's rooftop parties, deep house and soulful house dominate. Artists like BLOT!, Ishan Bhatt and Ankytrixx have been playing house for over a decade.",
-    keyIndianArtists: ["BLOT!", "Ishan Bhatt", "Ankytrixx", "Qilla", "Hamza Rahimtula"],
+      "House is played at club nights in most Indian cities. Hamza Rahimtula in Delhi makes deep house; his album Origins with Rajasthan Folkstars came out on Sol Selectas in 2025. Cats Can Dance nights in Bengaluru play house.",
+    keyIndianArtists: ["Hamza Rahimtula", "Kohra", "BLOT!"],
     globalLandmarks: ["The Warehouse Chicago", "Paradise Garage NYC", "Fabric London", "DC-10 Ibiza"],
     starterTracks: [
       { title: "Your Love", artist: "Frankie Knuckles", youtubeId: "rBOA2Kk0oBc" },
@@ -318,15 +318,15 @@ export const GENRE_PAGES: GenrePage[] = [
   {
     slug: "jungle-dnb",
     name: "Jungle / Drum & Bass",
-    tagline: "170 BPM. Never surrender.",
+    tagline: "Breakbeats at around 170 BPM.",
     description:
-      "Jungle and Drum & Bass are built on the breakbeat, a looped drum break played at 160–180 BPM over deep sub-bass. Born in London from Jamaica's sound system culture, it's physically and emotionally intense. At its best, D&B produces the most energetic dance floors on the planet.",
+      "Jungle and drum & bass are built on chopped-up drum breaks at 160 to 180 BPM over heavy sub-bass. They came out of London in the early 1990s and borrow a lot from Jamaican sound system culture.",
     bpm: "160–180",
     origin: "London, UK",
     originDecade: "1990s",
     indianScene:
-      "Bengaluru has India's most dedicated D&B community. Cats Can Dance was built partly around Jungle and D&B nights. A small but deeply passionate scene exists in Mumbai too.",
-    keyIndianArtists: ["Subculture DJs", "MAXI", "Sequence"],
+      "Cats Can Dance nights in Bengaluru play jungle and drum & bass.",
+    keyIndianArtists: [],
     globalLandmarks: ["Fabric Room Two London", "Metalheadz Sundays (Blue Note London)", "Hospital Records"],
     starterTracks: [
       { title: "Inner City Life", artist: "Goldie", youtubeId: "gXXFbsB1koo" },
@@ -341,13 +341,13 @@ export const GENRE_PAGES: GenrePage[] = [
     name: "UK Garage",
     tagline: "Shuffled beats and pitched vocals.",
     description:
-      "UK Garage is House music refracted through a British lens: faster, more syncopated, with pitched-up R&B vocals and a distinctly London energy. It came from South London's pirate radio scene and spawned Grime and Dubstep as it evolved. The original 2-Step sound is having a global revival.",
+      "UK garage takes house and R&B and makes them faster and more syncopated, with pitched-up vocals. It came out of London in the mid-1990s through pirate radio. Grime and dubstep grew out of it.",
     bpm: "130–135",
     origin: "London, UK",
     originDecade: "1990s",
     indianScene:
-      "UK Garage is growing in Bengaluru and Mumbai, brought in by selectors who followed UK pirate radio. Its syncopated rhythms connect naturally with Indian music's own polyrhythmic traditions.",
-    keyIndianArtists: ["Sumer Chandna", "DJ Sahil Makhija", "Pune selectors"],
+      "Cats Can Dance nights in Bengaluru play garage.",
+    keyIndianArtists: [],
     globalLandmarks: ["Ministry of Sound London", "Twice as Nice nights", "Kiss 100 FM"],
     starterTracks: [
       { title: "Re-Rewind", artist: "Artful Dodger ft. Craig David", youtubeId: "mRfSM-0jBiM" },
@@ -362,13 +362,13 @@ export const GENRE_PAGES: GenrePage[] = [
     name: "Disco",
     tagline: "Before house, there was disco.",
     description:
-      "Disco is the mother of all dance music. Born in New York's LGBTQ+ and Black communities in the 1970s, it gave us the 4/4 kick, the Roland 808, the DJ as artist, and the concept of the all-night dance floor. Every genre on this list is its direct descendant. It never died; it just went underground and became house.",
+      "Disco came out of New York clubs in the early 1970s, with mostly Black, Latino and gay crowds. It made the steady 4/4 kick and the all-night DJ set standard. House grew directly out of it.",
     bpm: "110–130",
     origin: "New York, USA",
     originDecade: "1970s",
     indianScene:
-      "Disco is deeply embedded in Indian party culture, both through Bollywood's disco era and through the underground revival of classic disco and nu-disco. Mumbai and Bengaluru both have thriving disco nights.",
-    keyIndianArtists: ["Hamza Rahimtula", "Noni Mouse", "The F16s (live)"],
+      "Hindi film music had a disco era in the late 1970s and 1980s, led by Bappi Lahiri's soundtracks. Cats Can Dance nights in Bengaluru play disco.",
+    keyIndianArtists: ["Bappi Lahiri"],
     globalLandmarks: ["Studio 54 NYC", "Paradise Garage NYC", "The Loft NYC"],
     starterTracks: [
       { title: "I Feel Love", artist: "Donna Summer", youtubeId: "k5HWR1JGgyM" },
@@ -381,15 +381,15 @@ export const GENRE_PAGES: GenrePage[] = [
   {
     slug: "ambient",
     name: "Ambient",
-    tagline: "Music as environment. Silence as rhythm.",
+    tagline: "Music for a room, not a dance floor.",
     description:
-      "Ambient music is designed to be heard and ignored simultaneously, to create atmosphere rather than demand attention. Brian Eno coined the term. Its modern iterations include drone, dark ambient, and the chill-out room culture that developed alongside rave culture. In India, it intersects with devotional and meditative traditions.",
+      "Ambient music sets a mood rather than asking for attention. Brian Eno named it with Music for Airports in 1978. Chill-out rooms at early UK raves played it between dance sets.",
     bpm: "60–90 (or none)",
     origin: "UK / Global",
     originDecade: "1970s–80s",
     indianScene:
-      "Ambient has a natural home in India given the country's deep meditation and devotional music traditions. Artists like Sandunes blur the line between ambient electronics and Indian classical.",
-    keyIndianArtists: ["Sandunes", "Dualist Inquiry", "When Chai Met Toast"],
+      "Sandunes is a Mumbai electronic producer and composer. Dualist Inquiry is a Delhi electronica producer.",
+    keyIndianArtists: ["Sandunes", "Dualist Inquiry"],
     globalLandmarks: ["chill-out rooms of early UK raves", "Kompakt label Germany"],
     starterTracks: [
       { title: "Music For Airports (1/1)", artist: "Brian Eno", youtubeId: "vNwYtllyt3Q" },

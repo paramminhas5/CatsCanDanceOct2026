@@ -367,7 +367,7 @@ function BookingFormInner({
         <div className="w-16 h-16 border-4 border-ink bg-cream flex items-center justify-center mx-auto mb-4">
           <Check className="w-8 h-8 text-ink" />
         </div>
-        <h3 className="font-display text-2xl text-ink uppercase mb-2">Request Sent!</h3>
+        <h3 className="font-display text-2xl text-ink uppercase mb-2">Request sent</h3>
         <p className="text-ink/70 max-w-md mx-auto text-sm leading-relaxed">
           Your booking request for <strong>{artistName}</strong> is in.
           {selectedPackage && <> They'll see you selected "<em>{selectedPackage.name}</em>".</>}

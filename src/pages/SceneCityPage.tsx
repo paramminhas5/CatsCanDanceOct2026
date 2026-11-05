@@ -103,7 +103,7 @@ export default function SceneCityPage({ slug }: Props) {
               <p className={`font-display text-xs uppercase tracking-widest mb-2 ${scene.textColor} opacity-70`}>
                 <MapPin className="inline w-3 h-3 mr-1" />India
               </p>
-              <h1 className={`font-display text-[14vw] md:text-[9vw] leading-[0.85] uppercase ${scene.textColor}`}>
+              <h1 className={`font-display text-[12vw] md:text-[9vw] leading-[0.85] uppercase ${scene.textColor}`}>
                 {scene.name}
               </h1>
               <p className={`text-xl md:text-2xl mt-4 ${scene.textColor} opacity-80 max-w-2xl`}>
@@ -125,15 +125,15 @@ export default function SceneCityPage({ slug }: Props) {
         </div>
       </section>
 
-      {/* ── Key Venues ── */}
-      <section className="border-b-4 border-ink bg-acid-yellow">
+      {/* ── Key Venues (hidden when we have none we can confirm) ── */}
+      {scene.keyVenues.length > 0 && <section className="border-b-4 border-ink bg-acid-yellow">
         <div className="container py-8 flex flex-wrap gap-6 items-center">
           <p className="font-display text-xs uppercase text-ink/60 tracking-widest">Key venues</p>
           {scene.keyVenues.map(v => (
             <span key={v} className="font-display text-ink text-sm border-2 border-ink px-3 py-1">{v}</span>
           ))}
         </div>
-      </section>
+      </section>}
 
       {/* ── Artists from this city ── */}
       <section className="container py-14 border-b-4 border-ink">

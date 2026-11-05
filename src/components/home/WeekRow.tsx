@@ -58,7 +58,7 @@ export default function WeekRow({ week, count, cities, today }: Props) {
         <div>
           <p className="font-display text-electric-blue text-xs md:text-sm uppercase tracking-[0.2em] mb-3">What's on · the gig guide</p>
           <h2 className="font-display text-ink text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92]">This week.</h2>
-          <p className="text-ink/70 text-base md:text-lg mt-3">{count} nights in the next seven days{cityLine ? ` across ${cityLine}` : ""}. Each one has an artist or promoter we trust behind it.</p>
+          <p className="text-ink/70 text-base md:text-lg mt-3">{count} nights in the next seven days{cityLine ? ` across ${cityLine}` : ""}.</p>
         </div>
         <Link href="/whats-on" className="self-start md:self-auto bg-electric-blue text-cream font-display px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">All {count} nights →</Link>
       </div>

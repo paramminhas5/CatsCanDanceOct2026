@@ -8,13 +8,13 @@ import ccdLogo from "@/assets/ccd-logo.png";
 import { imgUrl } from "@/lib/img";
 
 const SHORT_BIO_50 =
-  "Cats Can Dance: Bangalore party brand & streetwear label.";
+  "Cats Can Dance: electronic nights from Bengaluru.";
 
 const SHORT_BIO_150 =
-  "Cats Can Dance is a Bangalore, India brand running underground dance music Episodes and dropping limited streetwear & music collectibles tied to each night.";
+  "Cats Can Dance runs Episodes, electronic music nights in Bengaluru, keeps sourced pages for South Asian electronic artists and teaches DJing for free.";
 
 const LONG_BIO_500 =
-  "Cats Can Dance (CCD) is a Bangalore, India independent brand operating across two arms: an event organiser producing the best underground dance music parties and electronic events in Bangalore and across India under an RSVP-only Episode format, and a streetwear label dropping limited apparel and music collectibles tied to each Episode. Founded in 2025, the brand has built a cult following through small-room curation, no-flyer marketing, and limited heavyweight cotton drops screen-printed in Bangalore. Press contact: hello@catscandance.com.";
+  "Cats Can Dance (CCD) is Param Minhas (Merman) and Satwik Harisenany (Sartdawg) in Bengaluru. They run Episodes, small electronic music nights with residents DJazz, Hedz, Merman and Sartdawg. Episode 1 was at Bar Wild in April 2025; Episode 5 is at The Humming Tree on 25 November 2026. The site also lists nights across India with a credible artist or promoter behind them, keeps sourced pages for South Asian electronic artists, and runs School, free lessons in producing and DJing.";
 
 const Press = () => {
   const pressLd = {
@@ -23,7 +23,7 @@ const Press = () => {
     name: "Cats Can Dance: Press Kit",
     url: "https://catscandance.com/press",
     description:
-      "Press kit for Cats Can Dance, Bangalore underground party organiser and streetwear label. Brand bios, logos, photos, contact.",
+      "Press kit for Cats Can Dance, a Bengaluru crew running electronic music nights. Bios, logos and contact.",
   };
 
   const copy = (text: string) => navigator.clipboard?.writeText(text);
@@ -31,8 +31,8 @@ const Press = () => {
   return (
     <>
       <SEO
-        title="Press Kit | Cats Can Dance | Bangalore Party & Streetwear Brand"
-        description="Cats Can Dance press kit: bios, logos, photos and contact. For media, editors and journalists covering Bangalore's underground scene and India's streetwear drops."
+        title="Press kit · Cats Can Dance"
+        description="Cats Can Dance press kit: short and long bios, logos, key facts and a press contact."
         path="/press"
         jsonLd={pressLd}
       />
@@ -40,7 +40,7 @@ const Press = () => {
         <Nav />
         <PageHero eyebrow="PRESS" title="PRESS KIT." bg="bg-ink" eyebrowColor="text-acid-yellow">
           <p className="font-display text-cream text-2xl mt-4">
-            For journalists, editors, podcasters and curators covering Cats Can Dance.
+            Bios, logos and a contact if you are writing about us.
           </p>
         </PageHero>
 
@@ -104,9 +104,9 @@ const Press = () => {
           <div className="bg-cream border-4 border-ink chunk-shadow p-6 grid sm:grid-cols-2 gap-4 text-ink/85">
             <div><span className="font-display text-magenta">Name:</span> Cats Can Dance (CCD)</div>
             <div><span className="font-display text-magenta">Founded:</span> 2025</div>
-            <div><span className="font-display text-magenta">HQ:</span> Bangalore, Karnataka, India</div>
-            <div><span className="font-display text-magenta">Format:</span> RSVP-only Episodes</div>
-            <div><span className="font-display text-magenta">Drops:</span> Limited streetwear & collectibles</div>
+            <div><span className="font-display text-magenta">Based in:</span> Bengaluru, India</div>
+            <div><span className="font-display text-magenta">Founders:</span> Param Minhas, Satwik Harisenany</div>
+            <div><span className="font-display text-magenta">Nights:</span> Episodes, Bengaluru, since April 2025</div>
             <div><span className="font-display text-magenta">Web:</span> catscandance.com</div>
           </div>
 
