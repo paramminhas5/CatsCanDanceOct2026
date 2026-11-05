@@ -78,7 +78,7 @@ export default function ArtistStory({ story }: { story: Story | null }) {
         <div className="min-w-0">
           <p className="font-display text-acid-yellow text-xs md:text-sm uppercase tracking-[0.2em] mb-3">For artists</p>
           <h2 className="font-display text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92]">The page that<br />keeps up with you.</h2>
-          <p className="text-cream/80 text-base md:text-lg mt-5 max-w-[46ch]">Your gigs, releases and press land on your page as they happen, each with its source. Bookings come in as proper briefs. Tour dates take thirty seconds.</p>
+          <p className="text-cream/80 text-base md:text-lg mt-5 max-w-[46ch]">Your gigs, releases and press get added to your page, each with its source. Booking requests come in as briefs with the date, room and budget.</p>
         </div>
         <img src={imgUrl(catDj)} alt="" aria-hidden className={`w-24 md:w-36 self-end drop-shadow-[6px_6px_0_hsl(var(--acid-yellow))] ${landed ? "ccd-cat-3" : "wiggle"}`} />
       </div>
@@ -169,7 +169,7 @@ export default function ArtistStory({ story }: { story: Story | null }) {
               </button>
             );
           })}
-          <p className="text-xs leading-relaxed text-cream/60 mt-1">Gigs come from the gig radar. Releases are checked against Deezer, Bandcamp and MusicBrainz. Press is added with the link. You never fill a form to keep this current.</p>
+          <p className="text-xs leading-relaxed text-cream/60 mt-1">Gigs come from the gig radar. Releases are checked against Deezer every week. Press is added with the link.</p>
         </div>
       </div>
 
@@ -177,8 +177,8 @@ export default function ArtistStory({ story }: { story: Story | null }) {
       <div className="bg-cream text-ink border-t-4 border-ink py-14 md:py-20">
         <div className="container">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
-            <h3 className="font-display text-4xl md:text-6xl leading-[0.92]">Better than<br />a link in bio.</h3>
-            <p className="text-base md:text-lg text-ink/75 max-w-[40ch]">A link page is a list you keep fixing. A Cats Can Dance page is your whole career, kept current, that promoters can book from.</p>
+            <h3 className="font-display text-4xl md:text-6xl leading-[0.92]">Instead of<br />a link in bio.</h3>
+            <p className="text-base md:text-lg text-ink/75 max-w-[40ch]">A link page is a list you keep fixing. Your CCD page fills in your gigs, releases and press, and promoters can book you from it.</p>
           </div>
           <div className="border-4 border-ink shadow-[8px_8px_0_0_hsl(var(--ink))] bg-cream">
             <div className="hidden md:grid grid-cols-[140px_minmax(0,1fr)_minmax(0,1.3fr)] bg-ink text-cream font-display text-xs uppercase tracking-[0.12em]">

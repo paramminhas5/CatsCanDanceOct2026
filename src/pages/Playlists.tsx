@@ -79,8 +79,8 @@ const Playlists = () => {
   return (
     <main className="bg-background text-foreground">
       <SEO
-        title="Playlists — Cats Can Dance | What we play, on rotation"
-        description="Every Cats Can Dance playlist across Spotify, YouTube and SoundCloud — dance music, late-night sets and warehouse cuts."
+        title="Playlists · Cats Can Dance"
+        description="What we play at Cats Can Dance, as playlists you can open and play."
         path="/listen"
       />
       <Nav />
@@ -141,7 +141,7 @@ const Playlists = () => {
                         </div>
                       ) : (
                         <iframe
-                          title={`Cats Can Dance — ${p.title}`}
+                          title={`Cats Can Dance: ${p.title}`}
                           src={buildEmbedSrc(p)}
                           className="block w-full h-[380px] border-0"
                           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"

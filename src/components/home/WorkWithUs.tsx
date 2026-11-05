@@ -19,7 +19,7 @@ export default function WorkWithUs() {
       <img src={imgUrl(catDj)} alt="" aria-hidden className="wiggle hidden md:block absolute right-6 top-8 w-28 drop-shadow-[5px_5px_0_hsl(var(--ink))] pointer-events-none" />
       <div className="container">
         <p className="font-display text-magenta text-xs md:text-sm uppercase tracking-[0.2em] mb-3">Work with us</p>
-        <h2 className="font-display text-[2.4rem] sm:text-5xl md:text-6xl leading-[0.92] mb-8 md:mb-10">Make the scene with us.</h2>
+        <h2 className="font-display text-[2.4rem] sm:text-5xl md:text-6xl leading-[0.92] mb-8 md:mb-10">Got a night, a venue or a page?</h2>
         <div className="grid grid-cols-[minmax(0,1fr)] sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {WAYS.map((w) => (
             <Link key={w.href} href={w.href} className={`group flex flex-col justify-between min-h-[150px] p-5 border-4 border-ink shadow-[6px_6px_0_0_hsl(var(--ink))] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0_0_hsl(var(--ink))] transition-all ${w.tone}`}>

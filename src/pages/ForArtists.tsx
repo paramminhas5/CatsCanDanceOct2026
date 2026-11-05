@@ -10,21 +10,18 @@ import ArtistStory from "@/components/home/ArtistStory";
 import type { ArtistStory as Story } from "@/lib/home";
 
 const bullets = [
-  "Curated crowd that cares about music",
-  "Content assets: full sets, clips, photos",
-  "Stronger personal brand association",
-  "Collabs, merch, community building",
-  "Repeat bookings and ecosystem value",
+  "Small rooms in Bengaluru",
+  "A crowd that came for the music",
+  "Your set recorded, with photos and clips",
+  "A roster page that stays current",
 ];
 
 const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "How do DJs get booked at Cats Can Dance?", acceptedAnswer: { "@type": "Answer", text: "Send a 30-60 minute mix link, your Instagram, and one line on what you'd play in our room to hello@catscandance.com. We listen to everything; we book per Episode based on lineup balance." } },
-    { "@type": "Question", name: "What genres does CCD book in Bangalore?", acceptedAnswer: { "@type": "Answer", text: "House, disco, UK garage, breaks, drum & bass, jungle, and dub techno. We don't book commercial EDM or top-40 sets." } },
-    { "@type": "Question", name: "Do you book artists from outside Bangalore?", acceptedAnswer: { "@type": "Answer", text: "Yes. We book Indian and international artists for special editions. Travel and accommodation are negotiated per booking." } },
-    { "@type": "Question", name: "What do you provide besides the gig?", acceptedAnswer: { "@type": "Answer", text: "Full set recording, photo and video assets you can use, soundcheck time, and a curated room of 200-400 people who listen. Plus a feature on /playlists and our newsletter." } },
+    { "@type": "Question", name: "How do I play a Cats Can Dance Episode?", acceptedAnswer: { "@type": "Answer", text: "Send a 30 to 60 minute mix, your Instagram and one line on what you would play to hello@catscandance.com, or use Play with us on /for-artists. We book each Episode around the lineup." } },
+    { "@type": "Question", name: "How do I get a page on the Cats Can Dance roster?", acceptedAnswer: { "@type": "Answer", text: "Add yourself on /for-artists with your links and a mix. We check every profile by hand before it goes live. If you already have a page, claim it and you can edit it." } },
   ],
 };
 
@@ -54,7 +51,7 @@ const ForArtists = ({ story = null }: { story?: Story | null }) => (
             PLAY OUR<br/>EPISODES.
           </h2>
           <p className="text-ink/80 text-lg md:text-xl font-medium mb-6">
-            Small rooms in Bengaluru, a crowd that came for the music, and your set recorded with photos and clips you can use.
+            Our own nights in Bengaluru. Four so far at Bar Wild and Indiranagar Social; Episode 5 is at The Humming Tree on 25 Nov. Send a mix and tell us what you would play.
           </p>
           <div className="flex flex-wrap gap-3">
             <PartnerContactDialog

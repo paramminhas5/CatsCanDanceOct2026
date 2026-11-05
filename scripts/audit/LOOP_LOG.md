@@ -86,3 +86,20 @@ Third scheduled round, same branch and PR #20.
   - Migration 053 (`supabase/migrations/053_title_tidy.sql`) is written: the same title rules in the scraper trigger, a one-off clean of non-pending upcoming titles, and research notes removed from three mix titles and one video title. NOT applied yet: the session's permission check blocked `apply_migration`. Param can apply it from a session where database writes are allowed.
   - VAPID keys for web-push reminders were set in Vercel (production and preview).
   - Audit: 13 of 13 clean on both widths.
+
+## Copy pass (5 Nov 2026, Param live: "forget the rounds, do everything now")
+The scheduled loop is turned off. Rounds 4 and 5 were done in one go, with copy first.
+- Audit after: default 13 pages clean on desktop and phone; /about, /for-artists, /for-venues, /for-investors, /press, /pets, /journal and the Bengaluru guide clean. /scene/* phone hero no longer scrolls sideways (h1 12vw).
+- Journal (src/content/posts.ts, 11 posts): cut to facts only, as Param chose. Same slugs. About 4,200 words down to about 1,300. Episode facts come from the `events` table. tldr, quick picks and pull quotes dropped. Author is "Cats Can Dance".
+- Scene and genre guides (src/content/scenes.ts, BengaluruSceneGuide): hype and unbacked claims out, genre history kept to well-documented facts, venues limited to ones on published nights or Episodes. City pages hide "Key venues" when the list is empty.
+- Pages: About and Team rewritten from facts (founders, residents, Episodes, the three products; "We're hiring" became "Want to help?"). Home sections, hero, /nights, Episode page, /tour, /me, booking form, /for-artists, /for-venues, /for-investors, /press, /pets, /shop, /care, /journal index, BlogPost FAQ (15 questions down to 9 true ones), /playlists and the /artists intro.
+- Small: scraped titles read "presents" instead of "pres." (it clamped to "pres.…").
+- Param to check (claims removed or new lines that need his OK):
+  - School tile says "Web, iPhone, Android"; School demo says it reads your Ableton Set and syncs tempo to Live.
+  - Venue page now says CCD books, promotes and shoots the night, the venue runs bar and door, split agreed per night. Artist page says sets are recorded with photos and clips.
+  - Footer "The week's picks, every Thursday" while email is off.
+  - invest@catscandance.com is the investor dialog fallback.
+  - Removed from the journal: "4-6 nights a year", the Episode 01 story details, merch unit counts and fabrics, room sizes, city geography, set times, Insider as main ticket source (now "District and Resident Advisor", unverified).
+  - Removed from the guides: Indian artists at Tresor, Berghain or Movement; Mumbai Boiler Room history; venues not confirmed open (Skyye, Plan B, Kitty Su, Trilogy, The Cove and others; Hilltop reported shut). Nikki Nair was listed as from Hyderabad; the data says Atlanta.
+  - Data: Episode 2's series tagline "BROAD · WELCOMING · FIRST IMPRESSION" shows on /nights; scene taglines in the database still say "India's underground capital"; src/content/ngos.ts ranks NGOs #1 to #100 with unsourced claims ("India's only", "Largest"); two TEST NIGHT rows are still published in `events`; the Kohra mix title still carries a research note.
+- Suggested, not built: drop the "Instead of a link in bio" comparison table on the home and the "Where it started" list on What's on; hide /pets and /for-investors from nav until there is something real; delete unused components (Audiences, Drops, GenreWheel, Playlist, CuratedEvents*, What/Why/WhyNow).

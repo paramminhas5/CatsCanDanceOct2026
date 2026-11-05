@@ -6,21 +6,18 @@ import SEO from "@/components/SEO";
 import PartnerContactDialog from "@/components/PartnerContactDialog";
 
 const bullets = [
-  "Dedicated, higher-value crowd",
-  "Better spend per head",
-  "Longer late-night retention",
-  "Stronger repeat footfall",
-  "Premium content for venue marketing",
-  "Distinct identity in a crowded market",
+  "We book the lineup: our residents plus guests",
+  "We promote the night and run the list",
+  "We shoot photos and clips you can use",
+  "You run the bar and the door",
+  "Split and any minimum agreed per night",
 ];
 
 const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "What kind of venues does Cats Can Dance partner with in Bangalore?", acceptedAnswer: { "@type": "Answer", text: "We partner with intimate 150–500 capacity venues in Bangalore that care about sound and room feel — listening bars, warehouse spaces, and independent rooftops in Indiranagar, CBD, Koramangala and Whitefield." } },
-    { "@type": "Question", name: "How are Cats Can Dance Episodes different from a regular night?", acceptedAnswer: { "@type": "Answer", text: "Episodes are RSVP-only, capped, curated lineups. The crowd is here for the music, which means longer dwell time, better F&B spend, and content the venue can use for months after." } },
-    { "@type": "Question", name: "Does the venue handle bar and entry, or does CCD?", acceptedAnswer: { "@type": "Answer", text: "Venues run their own bar and entry. CCD brings the crowd, the lineup, the production direction, and the post-event content. Revenue split and minimums are agreed per Episode." } },
+    { "@type": "Question", name: "Does the venue handle bar and entry, or does Cats Can Dance?", acceptedAnswer: { "@type": "Answer", text: "The venue runs its own bar and entry. We bring the lineup, the crowd, the promotion and the photos and clips afterwards. The split and any minimum are agreed per Episode." } },
     { "@type": "Question", name: "How do I propose my venue?", acceptedAnswer: { "@type": "Answer", text: "Use the Partner With Us form on this page or email hello@catscandance.com with venue capacity, sound system details, and a few photos." } },
   ],
 };
@@ -28,22 +25,22 @@ const faqLd = {
 const ForVenues = () => (
   <main className="bg-background text-foreground">
     <SEO
-      title="Venue Partners — Cats Can Dance | Bangalore, India"
-      description="Become a Venue Partner with Cats Can Dance in Bangalore. We bring the right crowd, stronger spend and recurring moments people come back for."
+      title="For venues · Cats Can Dance"
+      description="Host a Cats Can Dance Episode in Bengaluru. We book the lineup, bring the crowd and promote the night; you run the bar and the door. Tell us about your room."
       path="/for-venues"
       jsonLd={[faqLd]}
     />
     <Nav />
     <PageHero
       eyebrow="VENUE PARTNERS"
-      title={<>LET'S BUILD<br/>MEMORIES<br/>TOGETHER.</>}
+      title={<>HOST AN<br/>EPISODE.</>}
       bg="bg-lime"
       textColor="text-ink"
       eyebrowColor="text-magenta"
       shadow={false}
     >
       <p className="font-display text-ink/80 text-xl sm:text-2xl md:text-3xl max-w-2xl">
-        Creating moments people come back for, again and again…
+        Our Episodes have run at Bar Wild and Indiranagar Social. Episode 5 is at The Humming Tree on 25 Nov.
       </p>
     </PageHero>
     <Marquee bg="bg-acid-yellow" />
@@ -51,10 +48,10 @@ const ForVenues = () => (
       <div className="container grid md:grid-cols-2 gap-10 md:gap-12">
         <div>
           <h2 className="font-display text-ink leading-[0.95] mb-6 text-3xl sm:text-4xl md:text-6xl break-words">
-            VENUE PARTNERSHIPS THAT GROW OVER TIME.
+            WHO DOES WHAT.
           </h2>
           <p className="text-ink/80 text-base sm:text-lg md:text-xl font-medium mb-6">
-            We partner with venues to bring the right crowd, stronger spend and recurring moments that grow over time.
+            Send us your capacity, your sound system and a few photos of the room. If it fits, we plan a night together.
           </p>
           <PartnerContactDialog
             kind="venues"

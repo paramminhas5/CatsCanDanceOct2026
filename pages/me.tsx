@@ -49,7 +49,7 @@ export default function Me() {
           <div className="container">
             <p className="font-bold text-acid-yellow mb-3">Your account</p>
             <h1 className="font-display text-6xl md:text-8xl leading-[0.85]">YOUR ACCOUNT.</h1>
-            <p className="mt-4 text-lg max-w-[48ch]">One login for all of Cats Can Dance: your tickets, the nights you're going to, your crew, your booking requests and the artists you follow.</p>
+            <p className="mt-4 text-lg max-w-[48ch]">Your tickets, the nights you're going to, your crew, your booking requests and the artists you follow, in one place.</p>
           </div>
         </section>
         <div className="container py-10 md:py-14 max-w-3xl">
@@ -331,7 +331,7 @@ function FollowsBlock() {
       {list === null ? <div className="h-20 border-4 border-ink/20 bg-ink/5" aria-busy="true" />
         : list.length === 0 ? (
           <div className="border-4 border-ink bg-cream p-5 grid gap-3">
-            <p>Follow an artist and their next gigs, tours and releases come to you.</p>
+            <p>Follow an artist from their page and they show up here.</p>
             <div><Link href="/artists" className={`${btn} bg-acid-yellow inline-block`}>Browse artists</Link></div>
           </div>
         ) : (

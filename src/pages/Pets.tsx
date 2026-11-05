@@ -28,9 +28,9 @@ const Pets = () => {
   const collectionLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Pet Streetwear in India: Cat Bandanas, Bucket Hats & Cat Treats | Cats Can Dance",
+    name: "Pet merch | Cats Can Dance",
     description:
-      "Pet streetwear from Cats Can Dance: cat bandanas, cat bucket hats and CCD cat treats. Made in Bangalore, India.",
+      "Cats Can Dance pet merch. Nothing for sale right now.",
     url: "https://catscandance.com/pets",
     inLanguage: "en-IN",
     isPartOf: { "@type": "WebSite", name: "Cats Can Dance", url: "https://catscandance.com" },
@@ -40,7 +40,6 @@ const Pets = () => {
     "@context": "https://schema.org",
     "@type": "Brand",
     name: "Cats Can Dance",
-    slogan: "Pet streetwear that actually fits.",
     url: "https://catscandance.com",
     logo: "https://catscandance.com/ccd-logo.png",
     category: "Pet Products",
@@ -81,8 +80,8 @@ const Pets = () => {
   return (
     <>
       <SEO
-        title="Pet Streetwear & Products | Cats Can Dance Bangalore"
-        description="Cat bandanas, bucket hats, treats. Cool culture & streetwear, made for cats who party."
+        title="Pet merch · Cats Can Dance"
+        description="Cats Can Dance merch for pets. Nothing for sale right now; when there is, it shows up here."
         path="/pets"
         jsonLd={[collectionLd, brandLd, ...(products.length ? [itemListLd] : [])]}
       />
@@ -90,7 +89,7 @@ const Pets = () => {
         <Nav />
         <PageHero eyebrow="PETS" title="PETS THAT PARTY." bg="bg-electric-blue" eyebrowColor="text-acid-yellow">
           <p className="font-display text-cream text-2xl mt-4">
-            Apparel & pet products: CCD-branded, made for the floor.
+            Merch for your cat or dog, when we have some.
           </p>
         </PageHero>
 
@@ -99,20 +98,11 @@ const Pets = () => {
             <CartDrawer />
           </div>
 
-          <h2 className="sr-only">
-            Pet streetwear in India: cat bandanas, bucket hats & cat treats from Bangalore
-          </h2>
-          <p className="sr-only">
-            Cats Can Dance pet streetwear is designed in Bangalore, India. Shop cat bandanas, cat bucket
-            hats and CCD cat treats. Limited drops, no restocks. Buy pet streetwear, cat bandana India,
-            pet bucket hat and cat treats Bangalore, all from the same brand that runs the Episodes.
-          </p>
-
           <h2 className="font-display text-3xl md:text-5xl mb-2">
-            Pet streetwear made in Bangalore.
+            Pet merch.
           </h2>
           <p className="text-ink/80 text-lg max-w-2xl mb-10">
-            Cat bandanas, bucket hats and treats. Designed for cats who party.
+            Looking to adopt instead? The <a href="/adopt" className="underline">Nine Lives directory</a> lists animal welfare groups across India.
           </p>
 
           {loading ? (
@@ -122,7 +112,7 @@ const Pets = () => {
           ) : products.length === 0 ? (
             <div className="text-center py-32 border-4 border-ink chunk-shadow bg-cream">
               <p className="font-display text-3xl mb-2">NO PET PRODUCTS YET</p>
-              <p className="text-muted-foreground">Drop incoming.</p>
+              <p className="text-muted-foreground">When there is a drop, it shows up here.</p>
             </div>
           ) : (
             <div className="grid sm:grid-cols-2 gap-8">
@@ -131,24 +121,6 @@ const Pets = () => {
               ))}
             </div>
           )}
-
-          <div className="mt-16 border-4 border-ink chunk-shadow bg-acid-yellow p-8">
-            <h2 className="font-display text-2xl md:text-3xl mb-3">FAQ: PET STREETWEAR INDIA</h2>
-            <dl className="space-y-4 text-ink">
-              <div>
-                <dt className="font-display text-lg">Where can I buy cat bandanas in Bangalore?</dt>
-                <dd className="font-medium text-ink/80">Right here. Cats Can Dance ships cat bandanas across India from Bangalore.</dd>
-              </div>
-              <div>
-                <dt className="font-display text-lg">Are CCD cat treats safe for kittens?</dt>
-                <dd className="font-medium text-ink/80">Our treats are small-batch made for adult cats. Check ingredients on the product page.</dd>
-              </div>
-              <div>
-                <dt className="font-display text-lg">Do you restock pet bucket hats?</dt>
-                <dd className="font-medium text-ink/80">No restocks. Each pet streetwear drop is limited.</dd>
-              </div>
-            </dl>
-          </div>
         </section>
         <Footer />
       </main>

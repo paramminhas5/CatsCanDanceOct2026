@@ -23,14 +23,14 @@ import type {
 // ──────────────────── Defaults by event_type ────────────────────
 
 const DEFAULT_VIBE_PILLARS_STANDARD: VibePillar[] = [
-  { icon: "🎧", label: "MUSIC",     desc: "Underground house, disco, garage, jungle and D&B. Picked, never random." },
-  { icon: "🪩", label: "FLOOR",     desc: "Intimate room, real sound, no dress code beyond move." },
-  { icon: "🐾", label: "COMMUNITY", desc: "Small capacity on purpose. Come solo or with your pack." },
+  { icon: "🎧", label: "MUSIC",     desc: "House, disco, garage, jungle and D&B." },
+  { icon: "🪩", label: "FLOOR",     desc: "A small room with proper sound. No dress code." },
+  { icon: "🐾", label: "COMMUNITY", desc: "Come solo or bring your friends." },
 ];
 
 const DEFAULT_VIBE_PILLARS_CCDXSOCIAL: VibePillar[] = [
-  { icon: "🎧", label: "MUSIC",   desc: "Underground selectors from each city: open decks, residents and guests carrying the floor." },
-  { icon: "🪩", label: "FLOOR",   desc: "Outdoor afternoon into the evening. Easy format, no dress code, real sound." },
+  { icon: "🎧", label: "MUSIC",   desc: "Open decks, then residents and guests." },
+  { icon: "🪩", label: "FLOOR",   desc: "Outdoors in the afternoon, inside in the evening. No dress code." },
   { icon: "🐾", label: "PETS",    desc: "Dogs and cats welcome. Pet-friendly all afternoon." },
 ];
 
@@ -41,7 +41,7 @@ const DEFAULT_VIBE_PILLARS_CCDXSOCIAL: VibePillar[] = [
 export const EVENT_ROWS: Record<string, EventRow> = {
   "episode-1": {
     slug: "episode-1", title: "EPISODE 1", date: "Wed, Apr 2, 2025", city: "Bengaluru", venue: "Bar Wild",
-    blurb: "Where it started. A Wednesday at Bar Wild in Indiranagar. House, disco and garage, and a floor that stayed full until close.",
+    blurb: "Where it started. A Wednesday at Bar Wild in Indiranagar. House, disco and garage.",
     lineup: ["Sartdawg", "Merman"], status: "past", poster_url: null, sort_order: 1,
     series: null, series_label: null, event_type: "standard", pet_friendly: false, series_tagline: null, is_finale: false,
   },
