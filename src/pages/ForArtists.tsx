@@ -53,6 +53,7 @@ const ForArtists = ({ story = null }: { story?: Story | null }) => (
           <p className="text-ink/80 text-lg md:text-xl font-medium mb-6">
             Our own nights in Bengaluru. Four so far at Bar Wild and Indiranagar Social; Episode 5 is at The Humming Tree on 25 Nov. Send a mix and tell us what you would play.
           </p>
+          <p className="text-ink/80 font-medium mb-6">Throw your own nights? <a href="/promote" className="underline font-bold">Run them on CCD</a>.</p>
           <div className="flex flex-wrap gap-3">
             <PartnerContactDialog
               kind="artists"
