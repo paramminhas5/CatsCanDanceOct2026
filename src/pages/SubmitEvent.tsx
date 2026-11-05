@@ -219,7 +219,7 @@ const SubmitEvent = () => {
                 Already a verified promoter?{" "}
                 <PartnerContactDialog
                   kind="submit-event"
-                  defaultReason="Verified promoter — submit event"
+                  defaultReason="Verified promoter: submit event"
                   trigger={
                     <button type="button" className="underline hover:text-ink">Send us your event</button>
                   }

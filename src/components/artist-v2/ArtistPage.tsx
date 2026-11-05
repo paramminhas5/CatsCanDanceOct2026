@@ -450,11 +450,11 @@ html,body{overflow-x:visible!important}
 .ap .railtog{transition:transform .15s ease,box-shadow .15s ease}.ap .railtog:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 #f4efe4!important}.ap .railtog:active{transform:translate(2px,2px);box-shadow:0 0 0 #f4efe4!important}
 .ap .railtog:hover .chev{animation:ccdnudge .5s ease infinite alternate}@keyframes ccdnudge{from{transform:translateX(0)}to{transform:translateX(-4px)}}.ap .railtog[aria-expanded=false]:hover .chev{animation-name:ccdnudger}@keyframes ccdnudger{from{transform:translateX(0)}to{transform:translateX(4px)}}
 .ap .rt{transition:transform .15s ease,box-shadow .15s ease,opacity .2s ease}.ap .rt:hover{transform:translate(-2px,-2px)!important;box-shadow:4px 4px 0 #f4efe4!important;opacity:1!important}
-.ap .rail{display:none}.ap .erasm{display:flex}.ap .dk{display:none}.ap .ph{display:inline-flex;align-items:center;justify-content:center}
+.ap .rail{display:none}.ap .erasm{display:flex}.ap .dk{display:none}.ap .ph{display:inline-flex;align-items:center;justify-content:center}.ap .idlebar{display:none}
 .ap .hero{height:340px}.ap .heroimg{left:0;width:100%}.ap .heroname{font-size:clamp(44px,13vw,64px)}
 .ap .pad{padding-left:16px;padding-right:16px}
 @media (min-width:1024px){
- .ap .rail{display:flex}.ap .erasm{display:none}.ap .dk{display:inline-flex}.ap .ph{display:none}
+ .ap .rail{display:flex}.ap .erasm{display:none}.ap .dk{display:inline-flex}.ap .ph{display:none}.ap .idlebar{display:flex}
  .ap .hero{height:380px}.ap .heroimg{left:40%;width:60%}.ap .heroname{font-size:${a.name.length > 12 ? 76 : 104}px}
  .ap .pad{padding-left:44px;padding-right:44px}
 }
@@ -899,8 +899,9 @@ html,body{overflow-x:visible!important}
         </div>
 
         {/* ── Player bar ── */}
+        {/* On phones the bar waits until something plays, so it does not cover Start here and Follow on first view. */}
         {track && (
-          <div className="fade pad" style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 40, display: "flex", alignItems: "center", gap: 14, paddingTop: 10, paddingBottom: 10, background: "rgba(12,12,12,.97)", borderTop: "1px solid rgba(244,239,228,.2)", boxShadow: `0 -1px 0 ${accent}` }}>
+          <div className={`fade pad${cur ? "" : " idlebar"}`} style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 40, display: cur ? "flex" : undefined, alignItems: "center", gap: 14, paddingTop: 10, paddingBottom: 10, background: "rgba(12,12,12,.97)", borderTop: "1px solid rgba(244,239,228,.2)", boxShadow: `0 -1px 0 ${accent}` }}>
             {track.cover ? <img src={track.cover} alt="" style={{ width: 44, height: 44, objectFit: "cover", flex: "0 0 44px" }} /> : <span style={{ width: 44, height: 44, flex: "0 0 44px", background: tint }} />}
             <span style={{ flex: "1 1 160px", maxWidth: 300, minWidth: 0, display: "flex", flexDirection: "column", lineHeight: 1.3 }}>
               <span style={{ fontWeight: 700, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{track.t}</span>

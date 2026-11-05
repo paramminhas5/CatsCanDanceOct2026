@@ -18,11 +18,12 @@ export function TypePoster({ name, sound, city, className = "" }: { name: string
   const tone = TONES[hash(name) % TONES.length];
   // Size by the longest word too, so a single long name ("SARTDAWG") never breaks mid-word.
   const word = Math.max(...name.split(/\s+/).map((w) => w.length));
-  const size = name.length > 14 || word > 10 ? "text-3xl md:text-4xl" : word > 7 ? "text-4xl md:text-5xl" : "text-5xl md:text-6xl";
+  // One step smaller on phones, where the poster is a short 2:1 strip and the add button sits top right.
+  const size = name.length > 14 || word > 10 ? "text-2xl sm:text-3xl md:text-4xl" : word > 7 ? "text-3xl sm:text-4xl md:text-5xl" : "text-4xl sm:text-5xl md:text-6xl";
   return (
     <div className={`relative w-full h-full ${tone} flex flex-col justify-between p-4 overflow-hidden ${className}`} aria-hidden>
       <p className="text-xs font-bold uppercase tracking-widest opacity-80 truncate">{city ?? "Cats Can Dance"}</p>
-      <p className={`font-display leading-[0.85] break-words ${size}`}>{name}</p>
+      <p className={`font-display leading-[0.85] break-words pr-12 sm:pr-0 ${size}`}>{name}</p>
       <p className="text-sm font-bold opacity-90 line-clamp-1">{sound || "Artist"}</p>
     </div>
   );
@@ -44,7 +45,7 @@ export default function ArtistListing({ a, reasons, rate, selected, disabled, on
   const [top, ...rest] = reasons;
   return (
     <li className={`min-w-0 border-4 border-ink bg-cream flex flex-col transition-transform ${selected ? "chunk-shadow -translate-x-[2px] -translate-y-[2px] outline outline-4 outline-acid-yellow" : ""}`}>
-      <div className="relative aspect-[4/3] border-b-4 border-ink overflow-hidden bg-ink">
+      <div className={`relative ${a.photo_url ? "aspect-[4/3]" : "aspect-[2/1] sm:aspect-[4/3]"} border-b-4 border-ink overflow-hidden bg-ink`}>
         <Link href={artistPath(a.slug)} className="block w-full h-full" tabIndex={-1} aria-hidden>
           {a.photo_url ? (
             <img src={a.photo_url} alt="" loading="lazy" className="w-full h-full object-cover" />

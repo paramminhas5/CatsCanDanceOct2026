@@ -75,3 +75,14 @@ Third scheduled round, same branch and PR #20.
 
 - 5 Nov 2026, after round 3: Param said AI and filler copy matters more than em dashes. LOOP.md now has a Copy pass section; rounds 4 and 5 put copy ahead of polish. Claims nobody can back (journal posts, scene guides) go to "Param to check", not into new rewrites.
 - Param chose "cut to facts only" for the journal posts and scene/genre guides.
+
+- 5 Nov 2026, by hand after round 3 (Param: "I approve everything, go ahead"):
+  - Em dash sweep, part 3: About, Audiences, Drops, GenreWheel, PartnerContactDialog (and the matching default reason on Submit event), Playlist, ProductCard, PromoterLogin, ArtistEPK, ArtistDetail.
+  - /tour on phones: Follow sits beside the act name; acts without a page show their links under the dates. Each card is a row shorter.
+  - `tidyTitle`: three or more dots become one ellipsis. Two dots now stay as they are, because "Fred again.." is the artist's name (round 2 had turned it into "Fred again.").
+  - Book an artist on phones: cards without a photo use a 2:1 poster with the name one size smaller (was 4:3).
+  - Home hero on phones: the lower pair of flank cats is hidden; they sat on top of DANCE.
+  - Artist page v2 on phones: the player bar waits until something plays, so it no longer covers Start here and Follow on first view.
+  - Migration 053 (`supabase/migrations/053_title_tidy.sql`) is written: the same title rules in the scraper trigger, a one-off clean of non-pending upcoming titles, and research notes removed from three mix titles and one video title. NOT applied yet: the session's permission check blocked `apply_migration`. Param can apply it from a session where database writes are allowed.
+  - VAPID keys for web-push reminders were set in Vercel (production and preview).
+  - Audit: 13 of 13 clean on both widths.

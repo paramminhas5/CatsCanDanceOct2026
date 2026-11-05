@@ -97,8 +97,8 @@ export default function ArtistEPK() {
   return (
     <main className="bg-cream min-h-screen">
       <SEO
-        title={`${artist.name} EPK — Electronic Press Kit`}
-        description={artist.bio?.slice(0, 155) || `${artist.name} — Electronic Press Kit. ${artist.genres?.join(", ")}`}
+        title={`${artist.name} EPK | Electronic Press Kit`}
+        description={artist.bio?.slice(0, 155) || `${artist.name}: Electronic Press Kit. ${artist.genres?.join(", ")}`}
         path={`/artists/${slug}/epk`}
       />
 
@@ -202,7 +202,7 @@ export default function ArtistEPK() {
                 <blockquote key={p.id} className="border-l-4 border-magenta pl-5 py-1">
                   <p className="text-ink/85 italic text-xl leading-snug">"{p.quote_for_epk}"</p>
                   <footer className="font-display text-xs text-ink/50 mt-2 uppercase flex items-center gap-2">
-                    <span>— {p.publication}{p.author ? `, ${p.author}` : ""}</span>
+                    <span>· {p.publication}{p.author ? `, ${p.author}` : ""}</span>
                     {p.date_published && <span>· {p.date_published}</span>}
                     {p.url && (
                       <a href={p.url} target="_blank" rel="noreferrer" className="text-magenta hover:underline flex items-center gap-0.5">

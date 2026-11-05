@@ -274,7 +274,7 @@ function AvailabilityStrip({
                     return (
                       <span
                         key={iso}
-                        title={`${iso} — ${s.label}`}
+                        title={`${iso}: ${s.label}`}
                         className={`text-[10px] font-display flex items-center justify-center w-full aspect-square border ${s.bg} ${s.text} ${s.border}`}
                       >
                         {day}

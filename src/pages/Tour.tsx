@@ -282,13 +282,14 @@ function ActCard({ g, city, trip }: { g: ActGroup; city: string; trip: TourStop[
   const first = dayParts(g.stops[0].from_date);
   return (
     <li className={`border-4 border-ink bg-cream ${g.stops.some((s) => s.state === "playing") ? "chunk-shadow" : ""}`}>
-      <article className="p-5 md:p-6 grid gap-4 md:grid-cols-[96px_1fr_auto] md:gap-6">
-        <div className="hidden md:block leading-none" aria-hidden>
+      {/* Phones: Follow sits beside the act name, so the card is a row shorter. */}
+      <article className="p-5 md:p-6 grid grid-cols-[minmax(0,1fr)_auto] gap-x-3 md:grid-cols-[96px_minmax(0,1fr)_auto] md:gap-x-6">
+        <div className="hidden md:block md:row-span-2 leading-none" aria-hidden>
           <p className="font-display text-base text-ink/65">{first.dow}</p>
           <p className="font-display text-5xl md:text-6xl tabular md:mt-1">{first.day}</p>
           <p className="font-display text-base">{first.month}</p>
         </div>
-        <div className="min-w-0">
+        <div className="min-w-0 md:col-start-2">
           <p className="text-sm font-bold text-ink/70">
             <KindTag kind={g.kind} src={g.src} />{g.home ? <> · from {g.home}</> : null}
           </p>
@@ -300,6 +301,11 @@ function ActCard({ g, city, trip }: { g: ActGroup; city: string; trip: TourStop[
               {g.genres.map((x) => <li key={x} className="text-xs font-bold px-2 py-0.5 border-2 border-ink">{x}</li>)}
             </ul>
           )}
+        </div>
+        <div className="row-start-1 col-start-2 md:col-start-3 md:row-span-2 flex flex-col items-end gap-2">
+          {g.slug ? <FollowButton artistSlug={g.slug} artistName={prettyName(g.name)} /> : <div className="hidden md:block"><ActLinks g={g} /></div>}
+        </div>
+        <div className="min-w-0 col-span-2 md:col-span-1 md:col-start-2">
           <ul className="mt-4 grid gap-2.5">
             {g.stops.map((s) => <StopLine key={s.id} s={s} showCity={!city} />)}
           </ul>
@@ -310,9 +316,7 @@ function ActCard({ g, city, trip }: { g: ActGroup; city: string; trip: TourStop[
               {trip.length > 5 ? ` and ${trip.length - 5} more` : ""}
             </p>
           )}
-        </div>
-        <div className="flex md:flex-col md:items-end gap-2 flex-wrap">
-          {g.slug ? <FollowButton artistSlug={g.slug} artistName={prettyName(g.name)} /> : <ActLinks g={g} />}
+          {!g.slug && <div className="mt-3 md:hidden"><ActLinks g={g} inline /></div>}
         </div>
       </article>
     </li>

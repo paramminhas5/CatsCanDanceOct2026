@@ -86,16 +86,16 @@ export function tidyGenres(list: string[] | null | undefined): string[] {
 
 /**
  * Display tidy for scraped titles. Source punctuation stays in the database; this only cleans what people read:
- * runs of dots ("pres....") become one, "Housed- Featuring" becomes "Housed: Featuring", stray spaces before
+ * three or more dots become one ellipsis ("pres...." to "pres…"); two dots stay ("Fred again.." is a name), "Housed- Featuring" becomes "Housed: Featuring", stray spaces before
  * punctuation go, and em dashes (or spaced en dashes) become a colon.
  */
 export function tidyTitle(t: string | null | undefined): string {
   if (!t) return "";
   return t
     .replace(/\s*\u2014\s*|\s+\u2013\s+/g, ": ")
-    .replace(/\.{2,}/g, ".")
+    .replace(/\.{3,}|\u2026/g, "\u2026")
     .replace(/(\w)-\s+(?=\S)/g, "$1: ")
-    .replace(/\s+([,.:;!?])/g, "$1")
+    .replace(/\s+([,.:;!?\u2026])/g, "$1")
     .replace(/:\s*:/g, ":")
     .replace(/\s{2,}/g, " ")
     .replace(/^[\s:.,-]+|[\s:,-]+$/g, "")
