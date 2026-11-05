@@ -8,7 +8,8 @@ import PartnerContactDialog from "@/components/PartnerContactDialog";
 const bullets = [
   "We book the lineup: our residents plus guests",
   "We promote the night and run the guest list",
-  "We can run the door: every guest has a QR ticket or a name on our list, checked in at entry",
+  "We can run the door, or your door staff can use ours: QR scan, guest list and walk-ins on one phone",
+  "You get a live count link: how many are inside against capacity, no names",
   "We shoot photos and clips you can use",
   "You run the bar. Split and any minimum agreed per night",
 ];

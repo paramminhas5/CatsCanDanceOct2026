@@ -17,17 +17,26 @@ const S = {
     { code: 'DEAD000033', name: 'Refund Person', tier: 'Free list', in_at: null, void: true, order: 'o4' },
   ],
   rsvps: [{ id: 'r1', name: 'Neha Iyer', party: 3, in_count: 0, in_at: null }],
-  walkins: [], calls: [],
+  walkins: [], calls: [], team: [], live_key: null,
+  settings: { age_check: true, note: 'Wristband after ID', upi_vpa: 'ccd@okhdfc', upi_name: 'Cats Can Dance', lead: true },
 };
 const night = { slug: 'episode-5', title: 'Cats Can Dance Episode 5', event_date: new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' }), date: 'Wed 25 Nov 2026', start_time: '8pm', venue: 'The Humming Tree', city: 'Bengaluru', capacity: 150 };
 function rpc(name, a) {
   S.calls.push(name + ' ' + JSON.stringify(a));
   if (name === 'door_nights') return { ok: true, nights: [{ ...night, expected: 7, inside: 1 }] };
-  if (name === 'door_list') return { ok: true, night, tickets: S.tickets, rsvps: S.rsvps, walkins: S.walkins, server_time: new Date().toISOString() };
+  if (name === 'door_list') return { ok: true, night, settings: S.settings, tickets: S.tickets, rsvps: S.rsvps, walkins: S.walkins, server_time: new Date().toISOString() };
+  if (name === 'door_passout') { const t = S.tickets.find((x) => x.code === a.p_code); if (!t || !t.in_at) return { ok: true, result: 'not_in' }; if (t.out_at) return { ok: true, result: 'already_out' }; t.out_at = new Date().toISOString(); return { ok: true, result: 'out', name: t.name }; }
+  if (name === 'door_setup') return { ok: true, settings: { ...S.settings, live_key: S.live_key }, team: S.team };
+  if (name === 'door_save_settings') { Object.assign(S.settings, { age_check: a.p_age_check, note: a.p_note, upi_vpa: a.p_upi_vpa, upi_name: a.p_upi_name }); return { ok: true }; }
+  if (name === 'door_team_set') { S.team = S.team.filter((t) => t.email !== a.p_email.toLowerCase()); if (!a.p_remove) S.team.push({ email: a.p_email.toLowerCase(), role: a.p_role, name: a.p_name, joined: false }); return { ok: true }; }
+  if (name === 'door_live_link') { S.live_key = S.live_key || 'k'.repeat(32); return { ok: true, key: S.live_key }; }
+  if (name === 'door_live') return { ok: true, title: night.title, venue: night.venue, date: night.date, capacity: 150, inside: 9, expected: 6, last15: 4, at: new Date().toISOString() };
+  if (name === 'door_report') return { ok: true, night, tiers: [{ tier: 'Free list', sold: 3, in: 3 }], list: { people: 3, in: 3 }, walkins: { people: 2, takings: { upi: 1000 } }, arrivals: [{ t: new Date(Date.now() - 30 * 60000).toISOString(), n: 2 }, { t: new Date(Date.now() - 15 * 60000).toISOString(), n: 5 }, { t: new Date().toISOString(), n: 1 }], repeat: 2, first_timers: 1, passouts: 1, devices: [{ device: 'Door A', actions: 9 }] };
   if (name === 'door_checkin') {
     const t = S.tickets.find((x) => x.code === a.p_code.toUpperCase());
     if (!t) return { ok: true, result: 'not_found' };
     if (t.void) return { ok: true, result: 'void', name: t.name };
+    if (t.in_at && t.out_at) { t.out_at = null; return { ok: true, result: 'back', name: t.name }; }
     if (t.in_at) return { ok: true, result: 'already', name: t.name, at: t.in_at };
     t.in_at = a.p_client_at || new Date().toISOString(); return { ok: true, result: 'admit', name: t.name, tier: t.tier, at: t.in_at };
   }
@@ -111,6 +120,45 @@ function rpc(name, a) {
   await page.getByText('Count', { exact: true }).click();
   await step('09-count');
   console.log('header:', await page.locator('header').innerText());
+  // v2: pass-out and back, ID check banner, UPI QR, setup, report, live
+  await page.getByText('Scan', { exact: true }).click();
+  await page.getByRole('button', { name: 'Out (pass-out)' }).click();
+  await page.getByPlaceholder('Ticket code').fill('A1B2C3D4E5');
+  await page.getByRole('button', { name: 'Check', exact: true }).click();
+  await page.getByText('Pass-out', { exact: true }).waitFor();
+  await step('10-passout');
+  await page.getByText('Pass-out', { exact: true }).click();
+  await page.getByRole('button', { name: 'In', exact: true }).click();
+  await page.getByPlaceholder('Ticket code').fill('A1B2C3D4E5');
+  await page.getByRole('button', { name: 'Check', exact: true }).click();
+  await page.getByText('Welcome back', { exact: true }).waitFor();
+  console.log('ID check banner on green:', await page.getByText('Check ID', { exact: true }).isVisible());
+  await step('11-back-id');
+  await page.getByText('Welcome back', { exact: true }).click();
+  await page.waitForTimeout(1500);
+  console.log('passout calls:', S.calls.filter((c) => c.startsWith('door_passout')).length, 'back:', !S.tickets[0].out_at);
+  await page.getByText('Walk-in', { exact: true }).click();
+  await page.getByPlaceholder('Amount paid, ₹ (total)').fill('600');
+  await page.getByAltText('UPI QR for ₹600').waitFor();
+  await step('12-upi-qr');
+  await page.goto('http://localhost:3322/door/episode-5/setup', { waitUntil: 'networkidle' });
+  await page.getByText('Door rules').waitFor();
+  await page.getByPlaceholder('Email').fill('Venue.Door@example.com');
+  await page.getByRole('button', { name: 'Add', exact: true }).click();
+  await page.getByText('venue.door@example.com').waitFor();
+  await page.getByRole('button', { name: 'Make the link' }).click();
+  await page.getByText('/door/live/').waitFor();
+  await step('13-setup');
+  await page.goto('http://localhost:3322/door/episode-5/report', { waitUntil: 'networkidle' });
+  await page.getByText('Through the door', { exact: true }).waitFor();
+  await step('14-report');
+  const anon = await browser.newContext({ ...devices['iPhone 13'], deviceScaleFactor: 2 });
+  await anon.route('**/rest/v1/rpc/door_*', async (route) => route.fulfill({ json: rpc(route.request().url().split('/rpc/')[1].split('?')[0], JSON.parse(route.request().postData() || '{}')) }));
+  const lp = await anon.newPage();
+  await lp.goto('http://localhost:3322/door/live/' + 'k'.repeat(32), { waitUntil: 'networkidle' });
+  await lp.getByText('LIVE COUNT', { exact: true }).waitFor();
+  await lp.screenshot({ path: OUT + '15-live.png' }); console.log('shot 15-live');
+
   console.log('errors:', errs);
   await browser.close();
 })().catch((e) => { console.error('FAIL', e.message); process.exit(1); });

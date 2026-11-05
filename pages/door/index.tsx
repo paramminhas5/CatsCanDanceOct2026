@@ -52,7 +52,7 @@ function Nights() {
         {rows && (
           <>
             <h2 className="font-display text-xl mt-8">Coming up</h2>
-            {upcoming.length ? <ul className="mt-3 space-y-3">{upcoming.map(card)}</ul> : <p className="mt-2 text-cream/70">No nights coming up.</p>}
+            {upcoming.length ? <ul className="mt-3 space-y-3">{upcoming.map(card)}</ul> : <p className="mt-2 text-cream/70">{rows.length ? "No nights coming up." : "You're not on a door yet. Ask the door lead to add the email you signed in with."}</p>}
             {past.length > 0 && (
               <>
                 <h2 className="font-display text-xl mt-8">Last 30 days</h2>
