@@ -108,10 +108,10 @@ export default function ArtistsCarousel({ artists, count }: Props) {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-10 mb-10">
           <div>
             <p className="font-display text-acid-yellow text-xs md:text-sm uppercase tracking-[0.2em] mb-3">02 · Artists</p>
-            <h2 className="font-display text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92]">Every artist.<br />Whole story.</h2>
+            <h2 className="font-display text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92]">Look them up.<br />Book them.</h2>
           </div>
           <div className="flex items-end gap-6">
-            <p className="text-cream/80 text-base md:text-lg max-w-[34ch]">Every page is sourced and updates itself. Listen, read their story, book them.</p>
+            <p className="text-cream/80 text-base md:text-lg max-w-[34ch]">Pages for South Asian electronic artists. Every fact has a source. New gigs and releases get added as we find them.</p>
             <img
               src={imgUrl(heroCenter)}
               alt=""
@@ -247,7 +247,7 @@ export default function ArtistsCarousel({ artists, count }: Props) {
           <span className="font-display text-xl ml-3">{String(ai + 1).padStart(2, "0")} <span className="text-cream/40">/ {String(artists.length).padStart(2, "0")}</span></span>
         </div>
         <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
-          <span className="text-sm text-cream/60 max-w-[32ch] md:text-right">Touring artists post their dates under On tour. Book them while they're in your city.</span>
+          <span className="text-sm text-cream/60 max-w-[32ch] md:text-right">Touring artists post their dates under On tour, so you can book them while they're in your city.</span>
           <div className="flex gap-3">
             <Link href="/tour" className="border-4 border-cream text-cream font-display px-4 py-3 hover:bg-cream hover:text-ink transition-colors">On tour</Link>
             <Link href="/artists" className="bg-acid-yellow text-ink font-display px-5 py-3 border-4 border-ink shadow-[5px_5px_0_0_hsl(var(--cream))] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">All {count} artists →</Link>

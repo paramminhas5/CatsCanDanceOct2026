@@ -111,7 +111,7 @@ const Hero = ({ next = null, hasTickets = false }: { next?: HeroNext; hasTickets
             CATS<br/>CAN<br/>DANCE
           </motion.h1>
           <p className="sr-only">
-            Cats Can Dance is a Bangalore-based event organiser hosting the best underground dance music parties and electronic events in Bangalore, India.
+            Cats Can Dance throws underground dance music nights in Bengaluru and lists nights, artists and a school for electronic music across India.
           </p>
         </div>
 

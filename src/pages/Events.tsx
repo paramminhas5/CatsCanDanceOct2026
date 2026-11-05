@@ -163,7 +163,7 @@ const Events = () => {
     <>
       <SEO
         title="Episodes: Underground Dance Music in Bengaluru | Cats Can Dance"
-        description="Every Cats Can Dance Episode: dates, venues, lineups and RSVP. Small rooms, pets welcome, Bengaluru."
+        description="Every Cats Can Dance Episode in Bengaluru: dates, venues, lineups and tickets. Small rooms, and pets welcome at the daytime ones."
         path="/nights"
         jsonLd={jsonLd}
       />
@@ -180,10 +180,10 @@ const Events = () => {
           shadowColor="hsl(var(--ink))"
         >
           <p className="text-cream/90 font-display text-2xl md:text-3xl mb-2">
-            UNDERGROUND. CURATED. OURS.
+            OUR OWN NIGHTS IN BENGALURU.
           </p>
           <p className="text-cream/80 font-medium text-lg max-w-xl">
-            Our own nights. House, disco, garage, jungle and D&amp;B in small rooms. Book on the site, show the QR at the door. Pets welcome at the daytime ones.
+            House, disco, garage, jungle and D&amp;B in small rooms. Book on the site, show the QR at the door. Pets welcome at the daytime ones.
           </p>
         </PageHero>
 
@@ -206,7 +206,7 @@ const Events = () => {
             <section className="container py-12 md:py-16">
               <p className="font-display text-magenta text-base md:text-lg mb-3">/ NEXT UP</p>
               <h2 className="font-display text-ink text-3xl md:text-5xl leading-tight mb-8">
-                THIS IS THE ONE.
+                THE NEXT EPISODE.
               </h2>
 
               {/* Countdown strip */}
@@ -325,7 +325,7 @@ const Events = () => {
               <div>
                 <p className="font-display text-magenta text-base md:text-lg mb-3">/ ALL EVENTS</p>
                 <h2 className="font-display text-ink text-3xl md:text-5xl leading-tight">
-                  BROWSE THE ARCHIVE.
+                  EVERY EPISODE.
                 </h2>
               </div>
               {/* Filter tabs */}

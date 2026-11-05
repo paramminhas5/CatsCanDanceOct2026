@@ -207,7 +207,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
           </div>
         </section>
 
-        <Marquee bg="bg-acid-yellow" items={content.marquee_items ?? ["SMALL ROOM", "REAL SOUND", "BRING YOUR PACK", "NO DRESS CODE, JUST MOVE"]} />
+        <Marquee bg="bg-acid-yellow" items={content.marquee_items ?? ["SMALL ROOM", "NO DRESS CODE", "QR AT THE DOOR", "COME SOLO OR WITH FRIENDS"]} />
 
         {/* BODY */}
         <div className="container py-10 md:py-16 grid gap-10 lg:grid-cols-[1fr_380px] lg:gap-14 items-start">
@@ -267,7 +267,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
               ) : (
                 <div className="border-4 border-dashed border-ink/40 p-6">
                   <p className="font-display text-xl mb-1">Announced soon.</p>
-                  <p className="text-ink/75">Sartdawg and Merman are the residents. Guests drop on Instagram first.</p>
+                  <p className="text-ink/75">The residents are DJazz, Hedz, Merman and Sartdawg. We post guests on Instagram first.</p>
                   <a href="https://instagram.com/catscandance" target="_blank" rel="noopener noreferrer" className="inline-block mt-3 font-bold underline underline-offset-4">Follow @catscandance</a>
                 </div>
               )}

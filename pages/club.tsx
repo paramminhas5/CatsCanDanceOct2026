@@ -215,6 +215,7 @@ function CheckIn() {
   return (
     <div>
       <h3 className="font-display">Door check-in</h3>
+      <p className="text-sm mt-1"><Link href="/door" className="underline font-bold">Open the door screen</Link>: camera scan, guest list, walk-ins and the live count.</p>
       <form className="flex gap-2 mt-1" onSubmit={async (e) => { e.preventDefault(); const r = await memberRpc("checkin_ticket", { p_code: code }); setRes(r.ok ? `OK: ${(r.data as any).holder}` : r.error ?? "Failed"); setCode(""); }}>
         <input className="border-4 border-ink bg-cream p-2 flex-1 font-mono uppercase" placeholder="Ticket code" value={code} onChange={(e) => setCode(e.target.value)} required />
         <button className={btn}>Check in</button>

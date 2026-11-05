@@ -147,9 +147,9 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
   const night = picked ?? demoNight;
   const catCls = ["ccd-cat-0", "ccd-cat-0", "ccd-cat-1", "ccd-cat-0", "ccd-cat-2", "ccd-cat-3", "ccd-cat-3"][stage];
   const pillars = [
-    { n: "01", t: "Find a night", s: "Every underground night in India worth going to, checked by hand.", on: stage <= 1, go: () => run(0) },
+    { n: "01", t: "Find a night", s: "Underground nights across India. We check each one before it goes up.", on: stage <= 1, go: () => run(0) },
     { n: "02", t: "Find your crew", s: "Say you're going. We match you with 3 to 6 people from your city.", on: stage >= 2 && stage <= 5, go: () => run(4, picked) },
-    { n: "03", t: "Our nights", s: "CCD Episodes. Small rooms, big sound. The ones you don't miss.", on: stage === 6, go: () => run(10, picked) },
+    { n: "03", t: "Our nights", s: "CCD Episodes, the nights we throw in Bengaluru.", on: stage === 6, go: () => run(10, picked) },
   ];
 
   if (!rows.length && !next) return null;
@@ -166,7 +166,7 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
           <h2 className="font-display text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.92] drop-shadow-[6px_6px_0_hsl(var(--ink))]">
             Find a night.<br />Find your crew.
           </h2>
-          <p className="text-cream/90 text-base md:text-lg mt-5 mb-7 max-w-[34ch]">And when it's one of ours, you already know.</p>
+          <p className="text-cream/90 text-base md:text-lg mt-5 mb-7 max-w-[34ch]">Pick a night, say you're going, meet people going to the same one.</p>
           <div className="grid grid-cols-[minmax(0,1fr)] gap-2.5">
             {pillars.map((p) => (
               <button
@@ -233,7 +233,7 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
                   );
                 })}
               </div>
-              <p className="mt-3 text-xs text-cream/65">Checked by hand. Every night has an artist or promoter we trust behind it.</p>
+              <p className="mt-3 text-xs text-cream/65">Every night here has an artist or promoter we trust behind it.</p>
             </div>
           )}
 
@@ -290,7 +290,7 @@ export default function NightsDemo({ week, next, hasTickets, today }: Props) {
             <div className="ccd-rise relative mt-3 flex items-center gap-4 border-4 border-cream bg-electric-blue text-cream p-4">
               <div className="flex-1">
                 <span className="block font-display text-xl md:text-2xl leading-none">Walk in together.</span>
-                <span className="text-xs md:text-sm opacity-90">Crew entry list goes to partner venues · one door time</span>
+                <span className="text-xs md:text-sm opacity-90">Crew entry list goes to the venue · one door time</span>
               </div>
               <Star style={{ left: "30%", top: 6, ["--x" as any]: "-70px", ["--y" as any]: "-90px", color: "hsl(var(--acid-yellow))" }} />
               <Star style={{ left: "55%", top: 6, ["--x" as any]: "40px", ["--y" as any]: "-110px", color: "hsl(var(--cream))", animationDelay: ".1s" }} />

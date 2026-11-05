@@ -204,8 +204,8 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
   return (
     <main className="bg-background text-foreground">
       <SEO
-        title="Artists — Cats Can Dance | India's Electronic Music Directory"
-        description="Discover India's top electronic music artists. Browse DJs, producers, and live acts from Bangalore, Mumbai, Delhi and beyond."
+        title="Artists · Cats Can Dance"
+        description="South Asian electronic artists from India and the diaspora: DJs, producers and live acts. Every fact sourced, with mixes, gigs and booking requests on each page."
         path="/artists"
       />
       <Nav />
@@ -218,7 +218,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
         eyebrowColor="text-acid-yellow"
         shadowColor="hsl(var(--acid-yellow))"
       >
-        <p className="text-cream/85 font-medium text-lg max-w-xl">South Asian electronic artists, India and the diaspora. Every page is sourced and updates itself. Listen, read their story, book them, here or on tour.</p>
+        <p className="text-cream/85 font-medium text-lg max-w-xl">South Asian electronic artists, from India and the diaspora. Every fact on a page has a source, and new gigs and releases are added as they happen. Listen, read, or send a booking request.</p>
       </PageHero>
 
       <Marquee bg="bg-acid-yellow" items={["SOURCED PAGES", "PLAYABLE MIXES", "BOOK FROM THE PAGE", "ON TOUR", "INDIA AND THE DIASPORA"]} />
@@ -465,7 +465,7 @@ export default function ArtistsPage({ initialArtists }: { initialArtists?: DBArt
               {/* CTA */}
               <div className="mt-12 border-4 border-ink bg-orange chunk-shadow p-6 inline-block">
                 <p className="font-display text-2xl text-ink mb-2">ARE YOU AN ARTIST?</p>
-                <p className="text-ink/70 text-sm mb-4">Get listed in the CCD artist directory.</p>
+                <p className="text-ink/70 text-sm mb-4">Add your page, or claim the one we already made.</p>
                 <Link
                   href="/for-artists"
                   className="inline-block bg-ink text-cream font-display px-5 py-2 border-4 border-ink hover:bg-ink/80 transition-colors"
