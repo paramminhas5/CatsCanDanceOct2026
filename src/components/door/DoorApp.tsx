@@ -1,7 +1,8 @@
 /**
  * The door for one night. Four tabs, thumb-reachable at the bottom:
  *   Scan    camera, instant green or red, holder name and tier, undo
- *   Guests  search tickets, free list and walk-ins by name; tap to check in; party counter for the list
+ *   Guests  search tickets, free list, outside tickets and walk-ins by name; tap to check in; party counter for the list
+ * Outside tickets (District, BookMyShow, Skillbox and any CSV, migration 060) are imported in setup and scan like ours.
  *   Walk-in add someone at the door, with what they paid
  *   Count   inside, expected, capacity, arrivals per 15 minutes, door takings
  * Scan has two modes: In (the default) and Out, for pass-outs. A guest scanned out comes back in with one scan.
@@ -12,9 +13,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Scanner from "@/components/door/Scanner";
 import {
-  applyLocal, arrivals, cleanCode, counts, deviceName, fetchList, loadCache, loadQueue, localCheck, localCheckOut, saveCache, saveQueue,
-  sendOp, serverCheck, timeIST, uid, upiLink, withPending, type DoorData, type DTicket, type Op, type ScanResult,
+  applyLocal, arrivals, cleanCode, counts, deviceName, fetchList, loadCache, loadQueue, localCheck, localCheckOut, localGuest, saveCache, saveQueue,
+  sendOp, serverCheck, serverGuestCheck, sourceLabel, timeIST, uid, upiLink, withPending, type DGuest, type DoorData, type DTicket, type Op, type ScanResult,
 } from "@/lib/door";
+import { supabase } from "@/lib/supabase";
 import QRCode from "qrcode";
 
 type Tab = "scan" | "guests" | "walkin" | "count";
@@ -143,11 +145,21 @@ export default function DoorApp({ slug }: { slug: string }) {
       if (r.kind === "out") act({ id: uid(), kind: "passout", at: now(), code });
     } else {
       r = localCheck(d, code);
+      const g = r.kind === "check_name" ? localGuest(d, raw) : null;
       if (r.kind === "admit" || r.kind === "back") {
         act({ id: uid(), kind: "ticket", at: now(), code });
+      } else if (g) {
+        // An outside ticket (District, BookMyShow, any imported list): the whole party goes in on one scan.
+        const tier = `${sourceLabel(g.source)}${g.party > 1 ? ` · party of ${g.party}` : ""}`;
+        if (g.in_count >= g.party && g.in_at) r = { kind: "already", name: g.name || "Guest", tier, at: g.in_at, code };
+        else { r = { kind: "admit", name: g.name || "Guest", tier, code, party: g.party }; act({ id: uid(), kind: "guest", at: now(), guest: g.id, count: g.party }); }
       } else if (r.kind === "check_name" && navigator.onLine) {
         const s = await serverCheck(slug, code, device);
-        if (s) { r = s; if (s.kind === "admit" || s.kind === "back") refresh(); }
+        if (s && s.kind !== "not_found") { r = s; if (s.kind === "admit" || s.kind === "back") refresh(); }
+        else {
+          const o = await serverGuestCheck(slug, raw, device);
+          if (o) { r = o; if (o.kind === "admit") refresh(); } else if (s) r = s;
+        }
       }
     }
     beep(good(r));
@@ -225,6 +237,7 @@ export default function DoorApp({ slug }: { slug: string }) {
         {/* The scanner stays mounted so the camera keeps running between tabs; it only reads codes on the Scan tab. */}
         <div className={tab === "scan" ? "" : "hidden"}><ScanTab onScan={onScan} onCode={onCode} paused={!!result || tab !== "scan"} mode={mode} setMode={setMode} /></div>
         {tab === "guests" && <GuestsTab data={data} onTicket={admitTicket} onRsvp={(id, n) => act({ id: uid(), kind: "rsvp", at: now(), rsvp: id, count: n })}
+          onGuest={(id, n) => act({ id: uid(), kind: "guest", at: now(), guest: id, count: n })}
           onUndo={(code) => act({ id: uid(), kind: "undo_ticket", at: now(), code })}
           onPass={(t) => { act({ id: uid(), kind: t.out_at ? "ticket" : "passout", at: now(), code: t.code }); setToast({ text: t.out_at ? `${t.name || "Guest"} is back in.` : `${t.name || "Guest"} is on a pass-out.` }); }} />}
         {tab === "walkin" && <WalkinTab data={data} slug={slug} onAdd={(w) => { act({ id: uid(), kind: "walkin", at: now(), walk: w }); setToast({ text: `${w.name}${w.party > 1 ? ` +${w.party - 1}` : ""} added.`, undo: () => act({ id: uid(), kind: "void_walkin", at: now(), walk: w.id }) }); }}
@@ -304,9 +317,30 @@ function ScanTab({ onScan, onCode, paused, mode, setMode }: { onScan: (c: string
 type Row =
   | { k: "ticket"; key: string; name: string; sub: string; done: boolean; t: DTicket }
   | { k: "rsvp"; key: string; name: string; sub: string; done: boolean; id: string; party: number; inCount: number }
-  | { k: "walk"; key: string; name: string; sub: string; done: true };
+  | { k: "walk"; key: string; name: string; sub: string; done: true }
+  | { k: "guest"; key: string; name: string; sub: string; done: boolean; g: DGuest };
 
-function GuestsTab({ data, onTicket, onRsvp, onUndo, onPass }: { data: DoorData; onTicket: (t: DTicket) => void; onRsvp: (id: string, n: number) => void; onUndo: (code: string) => void; onPass: (t: DTicket) => void }) {
+/** The guest's own screenshot of an outside ticket. Signed link, readable only by this night's door (migration 060 storage policy). */
+async function openProof(path: string) {
+  const w = window.open("", "_blank");
+  const { data } = await supabase.storage.from("ticket-proofs").createSignedUrl(path, 300);
+  if (data?.signedUrl && w) w.location.href = data.signedUrl; else w?.close();
+}
+
+function Counter({ label, n, of, set }: { label: string; n: number; of: number; set: (n: number) => void }) {
+  return (
+    <div className="shrink-0 flex items-center gap-1">
+      <button type="button" aria-label={`One fewer for ${label}`} onClick={() => set(n - 1)} disabled={n === 0}
+        className="w-11 h-11 border-4 border-cream font-display text-xl disabled:opacity-30">−</button>
+      <span className="w-12 text-center font-display tabular-nums">{n}/{of}</span>
+      <button type="button" aria-label={`One more for ${label}`} onClick={() => set(n + 1)} disabled={n >= of}
+        className="w-11 h-11 border-4 border-ink bg-acid-yellow text-ink font-display text-xl disabled:opacity-30">+</button>
+      {of > 1 && n < of && <button type="button" onClick={() => set(of)} className="ml-1 text-sm underline min-h-[44px] px-1">All</button>}
+    </div>
+  );
+}
+
+function GuestsTab({ data, onTicket, onRsvp, onGuest, onUndo, onPass }: { data: DoorData; onTicket: (t: DTicket) => void; onRsvp: (id: string, n: number) => void; onGuest: (id: string, n: number) => void; onUndo: (code: string) => void; onPass: (t: DTicket) => void }) {
   const [q, setQ] = useState("");
   const [show, setShow] = useState<"waiting" | "all" | "in">("waiting");
   const rows = useMemo<Row[]>(() => {
@@ -317,9 +351,11 @@ function GuestsTab({ data, onTicket, onRsvp, onUndo, onPass }: { data: DoorData;
     }
     for (const r of data.rsvps) out.push({ k: "rsvp", key: r.id, name: r.name, sub: `List${r.party > 1 ? ` · party of ${r.party}` : ""}${r.in_count ? ` · ${r.in_count} in` : ""}`, done: r.in_count >= r.party, id: r.id, party: r.party, inCount: r.in_count });
     for (const w of data.walkins) out.push({ k: "walk", key: w.id, name: w.name, sub: `Walk-in${w.party > 1 ? ` · party of ${w.party}` : ""} · ${timeIST(w.at)}`, done: true });
+    for (const g of data.guests ?? []) out.push({ k: "guest", key: g.code || g.id, name: g.name || "Guest", done: g.in_count >= g.party, g,
+      sub: [sourceLabel(g.source), g.code, g.party > 1 ? `party of ${g.party}` : null, g.uploaded ? "added by the guest, check their ticket" : null, g.in_count ? `${g.in_count} in` : null].filter(Boolean).join(" · ") });
     const needle = q.trim().toLowerCase();
     return out
-      .filter((r) => (show === "all" ? true : show === "in" ? r.done || (r.k === "rsvp" && r.inCount > 0) : !r.done))
+      .filter((r) => (show === "all" ? true : show === "in" ? r.done || (r.k === "rsvp" && r.inCount > 0) || (r.k === "guest" && r.g.in_count > 0) : !r.done))
       .filter((r) => !needle || r.name.toLowerCase().includes(needle) || r.key.toLowerCase().includes(needle))
       .sort((a, b) => a.name.localeCompare(b.name));
   }, [data, q, show]);
@@ -347,16 +383,13 @@ function GuestsTab({ data, onTicket, onRsvp, onUndo, onPass }: { data: DoorData;
                 <button type="button" onClick={() => onUndo(r.t.code)} className="text-sm underline min-h-[44px] px-2">Undo</button>
               </div>
             ) : <button type="button" onClick={() => onTicket(r.t)} className="shrink-0 font-display px-4 py-3 bg-acid-yellow text-ink border-4 border-ink">In</button>)}
-            {r.k === "rsvp" && (
+            {r.k === "rsvp" && <Counter label={r.name} n={r.inCount} of={r.party} set={(n) => onRsvp(r.id, n)} />}
+            {r.k === "guest" && (
               <div className="shrink-0 flex items-center gap-1">
-                <button type="button" aria-label={`One fewer for ${r.name}`} onClick={() => onRsvp(r.id, r.inCount - 1)} disabled={r.inCount === 0}
-                  className="w-11 h-11 border-4 border-cream font-display text-xl disabled:opacity-30">−</button>
-                <span className="w-12 text-center font-display tabular-nums">{r.inCount}/{r.party}</span>
-                <button type="button" aria-label={`One more for ${r.name}`} onClick={() => onRsvp(r.id, r.inCount + 1)} disabled={r.inCount >= r.party}
-                  className="w-11 h-11 border-4 border-ink bg-acid-yellow text-ink font-display text-xl disabled:opacity-30">+</button>
-                {r.party > 1 && r.inCount < r.party && (
-                  <button type="button" onClick={() => onRsvp(r.id, r.party)} className="ml-1 text-sm underline min-h-[44px] px-1">All</button>
-                )}
+                {r.g.proof && <button type="button" onClick={() => openProof(r.g.proof as string)} className="text-sm underline min-h-[44px] px-1">Ticket</button>}
+                {r.g.party > 1 ? <Counter label={r.name} n={r.g.in_count} of={r.g.party} set={(n) => onGuest(r.g.id, n)} />
+                  : r.done ? <button type="button" onClick={() => onGuest(r.g.id, 0)} className="text-sm underline min-h-[44px] px-2">Undo</button>
+                  : <button type="button" onClick={() => onGuest(r.g.id, 1)} className="font-display px-4 py-3 bg-acid-yellow text-ink border-4 border-ink">In</button>}
               </div>
             )}
           </li>
@@ -451,9 +484,10 @@ function CountTab({ data }: { data: DoorData }) {
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
         {stat("Inside", c.inside, cap ? `${Math.max(0, cap - c.inside)} spaces left` : undefined)}
-        {stat("Not in yet", Math.max(0, c.expected - c.ticketsIn - c.listIn), `of ${c.expected} on the list`)}
+        {stat("Not in yet", Math.max(0, c.expected - c.ticketsIn - c.listIn - c.outsideIn), `of ${c.expected} on the list`)}
         {stat("Tickets", `${c.ticketsIn}/${c.tickets}`)}
         {stat("Free list", `${c.listIn}/${c.list}`)}
+        {c.outside > 0 && stat("Outside tickets", `${c.outsideIn}/${c.outside}`, "District, BookMyShow and other lists")}
         {stat("Walk-ins", c.walkins)}
         {c.out > 0 && stat("On a pass-out", c.out, "not counted inside")}
         {stat("Door takings", `₹${takings.toLocaleString("en-IN")}`)}

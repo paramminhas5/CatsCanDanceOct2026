@@ -44,7 +44,7 @@ export default function PromoterPage({ p, nights, scene }: Props) {
   );
   return (
     <main className="bg-cream text-ink min-h-screen">
-      <SEO title={`${p.name} | Cats Can Dance`} description={p.tagline || p.blurb?.slice(0, 150) || `${p.name}, a promoter on Cats Can Dance.`} path={`/promoters/${p.slug}`}
+      <SEO title={`${p.name}: upcoming nights${p.city ? ` in ${p.city}` : ""} | Cats Can Dance`} description={[p.tagline || p.blurb, upcoming.length + scene.length ? `${upcoming.length + scene.length} upcoming ${upcoming.length + scene.length === 1 ? "night" : "nights"} on Cats Can Dance.` : `${p.name} on Cats Can Dance.`].filter(Boolean).join(" ").slice(0, 300)} path={`/promoters/${p.slug}`}
         image={p.cover_url ?? p.logo_url ?? undefined}
         jsonLd={[{ "@context": "https://schema.org", "@type": "Organization", name: p.name, url: `https://catscandance.com/promoters/${p.slug}`, logo: p.logo_url ?? undefined, sameAs: [ig, web].filter(Boolean) }]} />
       <Nav />

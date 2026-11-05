@@ -20,6 +20,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import Marquee from "@/components/Marquee";
 import RsvpDialog from "@/components/RsvpDialog";
 import Going from "@/components/going/Going";
+import OutsideTicket from "@/components/door/OutsideTicket";
 import { type Crowd, loadCrowd } from "@/lib/plans";
 import EventLineupCard from "@/components/EventLineupCard";
 import EventPosterPlaceholder from "@/components/EventPosterPlaceholder";
@@ -227,6 +228,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
             {upcoming && (
               <div className="mt-6"><Going variant="panel" nightKey={slug} title={event.title} crowd={crowd} onChange={() => loadCrowd([slug]).then((c) => setCrowd(c[slug]))} /></div>
             )}
+            {upcoming && event.ticket_url && <div className="mt-6"><OutsideTicket slug={slug} title={event.title} /></div>}
           </aside>
 
           <div className="lg:order-1 min-w-0 grid gap-14">

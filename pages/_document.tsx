@@ -4,19 +4,12 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Charset and viewport are set by Next.js automatically */}
-        <meta name="author" content="Cats Can Dance" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <meta name="theme-color" content="#ff2bd6" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#0E0E10" media="(prefers-color-scheme: dark)" />
+        {/* Charset and viewport are set by Next.js. Robots, author and theme colour are per page in src/components/SEO.tsx, so a noindex page is not also marked index. */}
         <meta name="color-scheme" content="light dark" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-        {/* Hreflang */}
-        <link rel="alternate" hrefLang="x-default" href="https://catscandance.com/" />
-        <link rel="alternate" hrefLang="en-IN" href="https://catscandance.com/" />
-        <link rel="alternate" type="application/rss+xml" title="Cats Can Dance — Blog" href="https://catscandance.com/rss.xml" />
+        <link rel="alternate" type="application/rss+xml" title="Cats Can Dance journal" href="https://catscandance.com/rss.xml" />
 
         {/* Icons */}
         <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />

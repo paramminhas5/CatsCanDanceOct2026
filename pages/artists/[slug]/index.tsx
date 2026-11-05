@@ -37,6 +37,17 @@ import type {
   ArtistFact,
 } from "@/lib/db/types";
 
+/** Whole sentences up to `max` characters, for meta descriptions. A first sentence longer than that is cut at a word, with an ellipsis. */
+function firstSentences(text: string, max: number): string {
+  const t = text.replace(/\s+/g, " ").trim();
+  const parts = t.match(/[^.!?]+[.!?]+(\s|$)/g) ?? [t];
+  let out = "";
+  for (const p of parts) { if ((out + p).trim().length > max) break; out += p; }
+  out = out.trim();
+  if (out) return out;
+  return t.slice(0, max).replace(/\s\S*$/, "") + "…";
+}
+
 // ── Full profile shape passed as props ────────────────────────────────────────
 
 export interface FullProfile {
@@ -70,7 +81,7 @@ export default function ArtistSlugPage({ profile, v2, slug }: Props) {
   const city  = artist.based_city ?? artist.from_city ?? "India";
   const genre = (artist.genres ?? []).slice(0, 3).join(", ");
   const desc  = artist.bio
-    ? artist.bio.slice(0, 155) + (artist.bio.length > 155 ? "…" : "")
+    ? firstSentences(artist.bio, 155)
     : `${artist.name} is a ${genre} artist from ${city}. Book, follow, and explore their full profile on Cats Can Dance.`;
   const ogImg = artist.photo_url ?? `${SITE}/og-image.jpg`;
   const url   = `${SITE}/artists/${artist.slug}`;
@@ -91,11 +102,11 @@ export default function ArtistSlugPage({ profile, v2, slug }: Props) {
   return (
     <>
       <Head>
-        <title>{`${artist.name} — Artist Profile | Cats Can Dance`}</title>
+        <title>{`${artist.name}: shows, music and booking | Cats Can Dance`}</title>
         <meta name="description"         content={desc} />
         <link rel="canonical"            href={url} />
         {/* Open Graph */}
-        <meta property="og:title"        content={`${artist.name} — Artist Profile`} />
+        <meta property="og:title"        content={`${artist.name} on Cats Can Dance`} />
         <meta property="og:description"  content={desc} />
         <meta property="og:url"          content={url} />
         <meta property="og:type"         content="profile" />
@@ -104,7 +115,7 @@ export default function ArtistSlugPage({ profile, v2, slug }: Props) {
         <meta property="og:site_name"    content="Cats Can Dance" />
         {/* Twitter */}
         <meta name="twitter:card"        content="summary_large_image" />
-        <meta name="twitter:title"       content={`${artist.name} — Cats Can Dance`} />
+        <meta name="twitter:title"       content={`${artist.name} on Cats Can Dance`} />
         <meta name="twitter:description" content={desc} />
         <meta name="twitter:image"       content={ogImg} />
         {/* JSON-LD */}
@@ -168,9 +179,9 @@ function ArtistV2Page({ a }: { a: ArtistV2 }) {
   const latest = a.releases.find((r) => r.albumId);
   const ogImg = a.photo ?? coverUrl(latest?.albumId ?? null, "xl") ?? `${SITE}/og-image.jpg`;
   const name = displayName(a.name);
-  const bioLine = a.bio ? a.bio.replace(/\s+/g, " ").slice(0, 150).replace(/\s\S*$/, "") : null;
+  const bioLine = a.bio ? firstSentences(a.bio, 150) : null;
   const desc = bioLine
-    ? `${bioLine}. Releases, shows and story on Cats Can Dance.`
+    ? `${bioLine} Shows, releases and booking on Cats Can Dance.`
     : `${name}${a.line ? `, ${a.line.toLowerCase()}` : ""}. Releases, shows and moments with sources, and 30 second previews, on Cats Can Dance.`;
   // Structured data so search engines and AI assistants can tell releases, shows and links apart.
   const id = `${url}#artist`;
@@ -219,7 +230,7 @@ function ArtistV2Page({ a }: { a: ArtistV2 }) {
   return (
     <>
       <Head>
-        <title>{`${name}: releases, shows and story | Cats Can Dance`}</title>
+        <title>{`${name}: shows, music and booking | Cats Can Dance`}</title>
         <meta name="description" content={desc} />
         <link rel="canonical" href={url} />
         <meta property="og:title" content={`${name} on Cats Can Dance`} />

@@ -79,7 +79,7 @@ const Videos = () => {
           <div className="space-y-6">
             <div className="aspect-video border-4 border-ink chunk-shadow bg-ink overflow-hidden">
               <iframe
-                title="Cats Can Dance — Channel Uploads"
+                title="Cats Can Dance channel uploads"
                 src="https://www.youtube.com/embed/videoseries?list=UUmtg0d8E2PXfs3vlQIcGwdQ"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

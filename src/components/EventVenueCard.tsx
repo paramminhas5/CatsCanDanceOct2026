@@ -42,7 +42,7 @@ const EventVenueCard = ({
           <div className="border-4 border-ink chunk-shadow overflow-hidden bg-ink min-h-[300px] aspect-video lg:aspect-auto">
             <iframe
               src={embedUrl}
-              title={`${venue} — map`}
+              title={`${venue} map`}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="w-full h-full min-h-[300px] border-0"

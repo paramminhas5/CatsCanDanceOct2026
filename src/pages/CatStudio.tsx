@@ -173,7 +173,7 @@ const CatStudio = () => {
   return (
     <main className="bg-background text-foreground">
       <SEO
-        title="Cat Studio — Create Your Own CCD Cat"
+        title="Cat Studio: make your own CCD cat | Cats Can Dance"
         description="Build your own dancing cat in the Cats Can Dance style. Mix bases, stickers and colors, or remix with AI. Download as PNG."
         path="/cat-studio"
         noindex

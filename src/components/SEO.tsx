@@ -61,7 +61,7 @@ const SEO = ({
             : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
         }
       />
-      <meta key="theme-color-light" name="theme-color" content="#ff2bd6" media="(prefers-color-scheme: light)" />
+      <meta key="theme-color-light" name="theme-color" content="#faf5e8" media="(prefers-color-scheme: light)" />
       <meta key="theme-color-dark" name="theme-color" content="#0E0E10" media="(prefers-color-scheme: dark)" />
       <link key="canonical" rel="canonical" href={url} />
       <link key="alternate-default" rel="alternate" hrefLang="x-default" href={url} />

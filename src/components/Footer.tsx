@@ -11,6 +11,7 @@ const groups = [
       { to: "/nights", label: "Our Episodes" },
       { to: "/whats-on", label: "What's on" },
       { to: "/promote", label: "Run your night on CCD" },
+      { to: "/gate", label: "Gate: the door app" },
       { to: "/me", label: "Your account" },
       { to: "/tickets", label: "Your tickets" },
     ],

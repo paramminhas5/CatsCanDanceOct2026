@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import Going from "@/components/going/Going";
 import RsvpDialog from "@/components/RsvpDialog";
+import OutsideTicket from "@/components/door/OutsideTicket";
 import { accentOf, promoterPath, type Accent } from "@/lib/promoters";
 import { directionsUrl, displayTime, todayIST } from "@/lib/nights";
 import { shareCard } from "@/lib/share";
@@ -101,6 +102,7 @@ export default function PromoterNight({ night: n, promoter: p, hasTiers }: Promo
               <div className="mt-3"><Going nightKey={n.slug} title={n.title} variant="card" /></div>
             </div>
           )}
+          {!past && !hasTiers && n.ticket_url && <OutsideTicket slug={n.slug} title={n.title} />}
           <div className="border-4 border-ink bg-white p-4">
             <p className="text-sm text-ink/70">This night is run by</p>
             <Link href={promoterPath(p.slug)} className="font-display text-2xl leading-tight hover:underline">{p.name}</Link>

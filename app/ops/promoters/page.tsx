@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { rpc, fmtDate, select } from "@/lib/ccd-db";
+import { emailPromoterReview } from "@/lib/mailer";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Ops: promoters", robots: { index: false } };
@@ -14,17 +15,31 @@ const T = () => process.env.OPS_TOKEN;
 
 async function reviewPromoter(formData: FormData) {
   "use server";
-  await rpc("ops_review_promoter", { p_token: T(), p_id: String(formData.get("id")), p_approve: formData.get("to") === "approve", p_note: String(formData.get("note") ?? "").trim() || null });
+  const id = String(formData.get("id")); const approved = formData.get("to") === "approve";
+  await rpc("ops_review_promoter", { p_token: T(), p_id: id, p_approve: approved, p_note: String(formData.get("note") ?? "").trim() || null });
+  await emailPromoterReview({ promoter: id, approved }).catch(() => null);
   revalidatePath("/ops/promoters");
   redirect("/ops/promoters");
 }
 async function reviewNight(formData: FormData) {
   "use server";
   const slug = String(formData.get("slug"));
-  await rpc("ops_review_night", { p_token: T(), p_slug: slug, p_approve: formData.get("to") === "approve", p_note: String(formData.get("note") ?? "").trim() || null });
+  const approved = formData.get("to") === "approve";
+  await rpc("ops_review_night", { p_token: T(), p_slug: slug, p_approve: approved, p_note: String(formData.get("note") ?? "").trim() || null });
+  if (formData.get("silent") !== "1") await emailPromoterReview({ night: slug, approved }).catch(() => null);
   revalidatePath("/ops/promoters"); revalidatePath(`/nights/${slug}`); revalidatePath("/whats-on");
   redirect("/ops/promoters");
 }
+
+async function setPlan(formData: FormData) {
+  "use server";
+  const until = String(formData.get("until") ?? "").trim();
+  await rpc("ops_set_gate_plan", { p_token: T(), p_promoter: String(formData.get("id")), p_plan: String(formData.get("plan")), p_until: until || null, p_note: String(formData.get("note") ?? "").trim() || null });
+  revalidatePath("/ops/promoters");
+  redirect("/ops/promoters");
+}
+
+type PlanRow = { id: string; slug: string; name: string; plan: "free" | "pro"; pro_until: string | null; note: string | null; nights: number; outside: number };
 
 const css = `
 .pr{font:14px/1.45 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:28px 16px 80px;color:#111}
@@ -41,6 +56,7 @@ export default async function OpsPromoters() {
   let q: { promoters: PendingPromoter[]; nights: PendingNight[] } = { promoters: [], nights: [] };
   let err = "";
   try { q = (await rpc<typeof q>("ops_promoter_queue", { p_token: T() })) ?? q; } catch (e) { err = String(e); }
+  const plans = (await rpc<{ billing: boolean; promoters: PlanRow[] }>("ops_gate_plans", { p_token: T() }).catch(() => null)) ?? { billing: false, promoters: [] };
   const live = await select<any>("events?promoter_id=not.is.null&published=is.true&select=slug,title,event_date,venue,series_label&order=event_date.desc&limit=30", 0).catch(() => []);
   return (
     <main className="pr">
@@ -83,11 +99,23 @@ export default async function OpsPromoters() {
         </div>
       ))}
 
+      <h3>Gate plans</h3>
+      <p className="muted">Billing is {plans.billing ? "on: Free promoters can import 100 outside guests a night, Pro has no limit." : "off (flag gate_billing): everyone gets Pro. Set plans now so they are right when billing starts."}</p>
+      {plans.promoters.length === 0 ? <p className="muted">No approved promoters yet.</p> : (
+        <table><tbody>{plans.promoters.map((p) => (
+          <tr key={p.id}><td><a href={`/promoters/${p.slug}`}>{p.name}</a></td><td>{p.plan === "pro" ? <b>Pro</b> : "Free"}{p.pro_until ? ` until ${fmtDate(p.pro_until)}` : ""}</td>
+            <td className="muted">{p.nights} nights · {p.outside} outside guests</td>
+            <td><form action={setPlan} className="row"><input type="hidden" name="id" value={p.id} /><input type="hidden" name="plan" value={p.plan === "pro" ? "free" : "pro"} />
+              {p.plan !== "pro" && <input name="until" type="date" style={{ minWidth: 0 }} title="Pro until (leave empty for no end)" />}
+              <button className="btn">{p.plan === "pro" ? "Move to Free" : "Make Pro"}</button></form></td></tr>
+        ))}</tbody></table>
+      )}
+
       <h3>Live promoter nights</h3>
       {live.length === 0 ? <p className="muted">None yet.</p> : (
         <table><tbody>{live.map((e: any) => (
           <tr key={e.slug}><td>{e.event_date ? fmtDate(e.event_date) : ""}</td><td><a href={`/nights/${e.slug}`}>{e.title}</a></td><td>{e.series_label}</td><td className="muted">{e.venue}</td>
-            <td><form action={reviewNight}><input type="hidden" name="slug" value={e.slug} /><input type="hidden" name="note" value="Taken down by CCD" /><button className="btn red" name="to" value="reject">Take down</button></form></td></tr>
+            <td><form action={reviewNight}><input type="hidden" name="slug" value={e.slug} /><input type="hidden" name="note" value="Taken down by CCD" /><input type="hidden" name="silent" value="1" /><button className="btn red" name="to" value="reject">Take down</button></form></td></tr>
         ))}</tbody></table>
       )}
     </main>

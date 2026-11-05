@@ -13,7 +13,15 @@ export type DRsvp = { id: string; name: string; party: number; in_count: number;
 export type DWalk = { id: string; name: string; party: number; amount: number; method: string; at: string };
 export type DNight = { slug: string; title: string; event_date: string | null; date: string | null; start_time: string | null; venue: string | null; city: string | null; capacity: number | null };
 export type DSettings = { age_check: boolean; note: string | null; upi_vpa: string | null; upi_name: string | null; lead: boolean };
-export type DoorData = { night: DNight; settings: DSettings; tickets: DTicket[]; rsvps: DRsvp[]; walkins: DWalk[]; server_time: string };
+/** A guest holding a ticket from another platform (imported list or added by the guest), migration 060. */
+export type DGuest = { id: string; code: string | null; name: string | null; source: string; party: number; in_count: number; in_at: string | null; uploaded: boolean; proof: string | null };
+export type GateLimits = { plan: "free" | "pro"; billing: boolean; import_cap: number; plan_if_billing: "free" | "pro" };
+export type DoorData = { night: DNight; settings: DSettings; tickets: DTicket[]; rsvps: DRsvp[]; walkins: DWalk[]; guests?: DGuest[]; limits?: GateLimits; server_time: string };
+
+export const SOURCES: Record<string, string> = { district: "District", bookmyshow: "BookMyShow", skillbox: "Skillbox", insider: "Insider", highape: "HighApe", ra: "RA", other: "Outside ticket" };
+export const sourceLabel = (s: string) => SOURCES[s] ?? "Outside ticket";
+/** Booking codes are compared on letters and digits only (same as gate_code in the database). */
+export const gateCode = (s: string | null | undefined) => (s ?? "").toUpperCase().replace(/[^A-Z0-9]/g, "");
 export type NightRow = DNight & { expected: number; inside: number; lead?: boolean };
 
 export type Op =
@@ -22,10 +30,11 @@ export type Op =
   | { id: string; kind: "passout"; at: string; code: string }
   | { id: string; kind: "rsvp"; at: string; rsvp: string; count: number }
   | { id: string; kind: "walkin"; at: string; walk: DWalk & { phone?: string } }
-  | { id: string; kind: "void_walkin"; at: string; walk: string };
+  | { id: string; kind: "void_walkin"; at: string; walk: string }
+  | { id: string; kind: "guest"; at: string; guest: string; count: number };
 
 export type ScanResult =
-  | { kind: "admit"; name: string; tier: string | null; code: string }
+  | { kind: "admit"; name: string; tier: string | null; code: string; party?: number }
   | { kind: "already"; name: string; tier: string | null; at: string; code: string }
   | { kind: "back"; name: string; tier: string | null; code: string }
   | { kind: "out"; name: string; code: string }
@@ -71,11 +80,15 @@ export async function fetchNights(): Promise<{ ok: boolean; error?: string; nigh
 }
 
 export async function fetchList(slug: string): Promise<{ ok: boolean; error?: string; data?: DoorData }> {
-  const r = await memberRpc<DoorData>("door_list", { p_slug: slug });
+  const [r, g] = await Promise.all([
+    memberRpc<DoorData>("door_list", { p_slug: slug }),
+    memberRpc<{ guests: DGuest[]; limits: GateLimits }>("door_guests_list", { p_slug: slug }),
+  ]);
   if (!r.ok) return { ok: false, error: r.error };
   const d = r.data as any;
+  const gd = g.ok ? (g.data as any) : null;
   const settings: DSettings = { age_check: false, note: null, upi_vpa: null, upi_name: null, lead: false, ...(d.settings ?? {}) };
-  return { ok: true, data: { night: d.night, settings, tickets: d.tickets ?? [], rsvps: d.rsvps ?? [], walkins: d.walkins ?? [], server_time: d.server_time } };
+  return { ok: true, data: { night: d.night, settings, tickets: d.tickets ?? [], rsvps: d.rsvps ?? [], walkins: d.walkins ?? [], guests: gd?.guests ?? [], limits: gd?.limits, server_time: d.server_time } };
 }
 
 /** Apply one action to the local copy. Pure: returns a new object. */
@@ -94,6 +107,8 @@ export function applyLocal(d: DoorData, op: Op): DoorData {
       return d.walkins.some((w) => w.id === op.walk.id) ? d : { ...d, walkins: [op.walk, ...d.walkins] };
     case "void_walkin":
       return { ...d, walkins: d.walkins.filter((w) => w.id !== op.walk) };
+    case "guest":
+      return { ...d, guests: (d.guests ?? []).map((g) => (g.id === op.guest ? { ...g, in_count: Math.max(0, Math.min(g.party, op.count)), in_at: op.count > 0 ? g.in_at ?? op.at : null } : g)) };
   }
 }
 
@@ -109,6 +124,29 @@ export function localCheck(d: DoorData, code: string): ScanResult {
   if (t.in_at && t.out_at) return { kind: "back", name, tier: t.tier, code };
   if (t.in_at) return { kind: "already", name, tier: t.tier, at: t.in_at, code };
   return { kind: "admit", name, tier: t.tier, code };
+}
+
+/** An outside ticket on this phone's list. Matches the code exactly, or a known code of 6+ characters inside a longer QR (a link). */
+export function localGuest(d: DoorData, raw: string): DGuest | null {
+  const full = gateCode(raw);
+  if (!full) return null;
+  const list = (d.guests ?? []).filter((g) => g.code);
+  return list.find((g) => g.code === full) ?? list.filter((g) => (g.code as string).length >= 6 && full.includes(g.code as string))
+    .sort((a, b) => (b.code as string).length - (a.code as string).length)[0] ?? null;
+}
+
+/** Ask the server about an outside code this phone doesn't know. */
+export async function serverGuestCheck(slug: string, raw: string, device: string): Promise<ScanResult | null> {
+  const r = await memberRpc<any>("door_check_guest", { p_slug: slug, p_code: raw, p_device: device, p_client_at: new Date().toISOString() });
+  if (!r.ok) return null;
+  const x = r.data as any; const code = gateCode(raw);
+  const tier = x.tier ? `${sourceLabel(x.tier)}${x.party > 1 ? ` · party of ${x.party}` : ""}` : null;
+  switch (x.result) {
+    case "admit": return { kind: "admit", name: x.name || "Guest", tier, code, party: x.party };
+    case "already": return { kind: "already", name: x.name || "Guest", tier, at: x.at, code };
+    case "wrong_night": return { kind: "wrong_night", name: "Outside ticket", event: x.event, code };
+    default: return null;
+  }
 }
 
 /** Scanning people out for a pass-out. */
@@ -136,6 +174,7 @@ export async function sendOp(slug: string, op: Op, device: string): Promise<{ ok
       p_phone: op.walk.phone || null, p_device: device, p_client_at: op.at,
     });
     case "void_walkin": return memberRpc("door_void_walkin", { p_slug: slug, p_id: op.walk, p_device: device });
+    case "guest": return memberRpc("door_guest_set", { p_slug: slug, p_id: op.guest, p_count: op.count, p_device: device, p_client_at: op.at });
   }
 }
 
@@ -155,7 +194,7 @@ export async function serverCheck(slug: string, code: string, device: string): P
   }
 }
 
-export type Counts = { inside: number; expected: number; ticketsIn: number; tickets: number; listIn: number; list: number; walkins: number; takings: Record<string, number>; out: number };
+export type Counts = { inside: number; expected: number; ticketsIn: number; tickets: number; listIn: number; list: number; walkins: number; takings: Record<string, number>; out: number; outside: number; outsideIn: number };
 export function counts(d: DoorData): Counts {
   const live = d.tickets.filter((t) => !t.void);
   const ticketsIn = live.filter((t) => t.in_at).length;
@@ -163,9 +202,11 @@ export function counts(d: DoorData): Counts {
   const list = d.rsvps.reduce((s, r) => s + r.party, 0);
   const listIn = d.rsvps.reduce((s, r) => s + r.in_count, 0);
   const walkins = d.walkins.reduce((s, w) => s + w.party, 0);
+  const outside = (d.guests ?? []).reduce((s, g) => s + g.party, 0);
+  const outsideIn = (d.guests ?? []).reduce((s, g) => s + g.in_count, 0);
   const takings: Record<string, number> = {};
   for (const w of d.walkins) if (w.amount > 0) takings[w.method] = (takings[w.method] ?? 0) + w.amount;
-  return { inside: ticketsIn - out + listIn + walkins, expected: live.length + list, ticketsIn, tickets: live.length, listIn, list, walkins, takings, out };
+  return { inside: ticketsIn - out + listIn + walkins + outsideIn, expected: live.length + list + outside, ticketsIn, tickets: live.length, listIn, list, walkins, takings, out, outside, outsideIn };
 }
 
 /** Arrivals per 15 minutes, for the Count tab. */
@@ -174,6 +215,7 @@ export function arrivals(d: DoorData): { t: number; n: number }[] {
   for (const t of d.tickets) if (t.in_at && !t.void) times.push(Date.parse(t.in_at));
   for (const r of d.rsvps) if (r.in_at) for (let i = 0; i < r.in_count; i++) times.push(Date.parse(r.in_at));
   for (const w of d.walkins) for (let i = 0; i < w.party; i++) times.push(Date.parse(w.at));
+  for (const g of d.guests ?? []) if (g.in_at) for (let i = 0; i < g.in_count; i++) times.push(Date.parse(g.in_at));
   if (!times.length) return [];
   const slot = 15 * 60 * 1000;
   const start = Math.floor(Math.min(...times) / slot) * slot;
@@ -203,3 +245,9 @@ export const setTeam = (slug: string, email: string, role: "door" | "lead", name
   memberRpc("door_team_set", { p_slug: slug, p_email: email, p_role: role, p_name: name || null, p_remove: remove });
 export const liveLink = (slug: string, reset = false) => memberRpc<{ key: string }>("door_live_link", { p_slug: slug, p_reset: reset });
 export const fetchReport = (slug: string) => memberRpc<any>("door_report", { p_slug: slug });
+
+/** Outside guest lists (migration 060): import from a platform's attendee export, list imports, undo one. */
+export const importGuests = (slug: string, source: string, rows: { code?: string; name?: string; email?: string; party?: number }[]) =>
+  memberRpc<{ batch: string; added: number; updated: number; skipped: number; cap: number; plan: string }>("door_import_guests", { p_slug: slug, p_source: source, p_rows: rows });
+export const fetchGuests = (slug: string) => memberRpc<{ guests: DGuest[]; limits: GateLimits; imports: { batch: string; source: string; rows: number; at: string }[] }>("door_guests_list", { p_slug: slug });
+export const voidImport = (slug: string, batch: string) => memberRpc<{ removed: number }>("door_void_import", { p_slug: slug, p_batch: batch });

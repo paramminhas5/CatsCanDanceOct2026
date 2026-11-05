@@ -1,6 +1,6 @@
 /**
  * /door/<night>/setup: the door lead's page. Door rules (ID check, a note every door phone shows),
- * UPI for door payments, the door team by email, and the venue's live count link.
+ * UPI for door payments, the door team by email, outside guest lists (District, BookMyShow, any CSV) and the venue's live count link.
  * Staff, the owner, or a lead on this night's team (door_can_lead).
  */
 import { useCallback, useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import DoorGate from "@/components/door/DoorGate";
+import ImportGuests from "@/components/door/ImportGuests";
 import { fetchSetup, liveLink, saveSettings, setTeam, type Setup } from "@/lib/door";
 
 const inp = "w-full bg-cream text-ink border-4 border-cream p-3";
@@ -98,6 +99,8 @@ function SetupBody({ slug }: { slug: string }) {
           <button type="button" className="mt-2 text-sm underline" onClick={() => copy(invite, "Invite copied. Paste it in WhatsApp.")}>Copy invite</button>
         </div>
       </section>
+
+      <ImportGuests slug={slug} flash={flash} />
 
       <section>
         <h2 className="font-display text-2xl">Live count for the venue</h2>
