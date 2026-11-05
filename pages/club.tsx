@@ -450,6 +450,8 @@ function ArtistEditor() {
   const [msg, setMsg] = useState("");
   const [mm, setMm] = useState({ kind: "mix", url: "", caption: "" });
   const [busy, setBusy] = useState(false);
+  const [rights, setRights] = useState<"" | "own" | "permission">("");
+  const [credit, setCredit] = useState("");
   const load = useCallback(async () => {
     const { data } = await supabase.rpc("my_artist");
     if (!data) return;
@@ -464,6 +466,7 @@ function ArtistEditor() {
   const set = (k: string) => (e: React.ChangeEvent<any>) => setF({ ...f, [k]: e.target.value });
 
   async function upload(file: File, asProfile: boolean) {
+    if (!rights) { setMsg("Under Photos, mixes and videos, choose whether the photo is yours or you have the photographer's permission, then pick the file again."); return; }
     if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) { setMsg("Use a JPG, PNG or WebP image."); return; }
     if (file.size > 8 * 1024 * 1024) { setMsg("Image is over 8 MB."); return; }
     setBusy(true); setMsg("");
@@ -474,9 +477,10 @@ function ArtistEditor() {
     const url = supabase.storage.from("artist-media").getPublicUrl(path).data.publicUrl;
     if (asProfile) {
       const r = await memberRpc("update_my_artist", { p_bio: null, p_city: null, p_genres: null, p_instagram: null, p_soundcloud: null, p_website: null, p_mix_url: null, p_photo_url: url });
+      if (r.ok) await memberRpc("add_my_photo", { p_url: url, p_caption: null, p_credit: credit, p_rights: rights });
       setMsg(r.ok ? "Profile photo updated." : r.error ?? "Could not save.");
     } else {
-      const r = await memberRpc("add_my_media", { p_kind: "photo", p_url: url, p_caption: null });
+      const r = await memberRpc("add_my_photo", { p_url: url, p_caption: null, p_credit: credit, p_rights: rights });
       setMsg(r.ok ? "Photo added." : r.error ?? "Could not save.");
     }
     setBusy(false); load();
@@ -506,7 +510,15 @@ function ArtistEditor() {
 
       <div className={`${box} space-y-2`}>
         <h2 className="font-display text-2xl">Photos, mixes and videos</h2>
-        <p className="text-sm">Only upload photos you own or have the photographer's OK to use. Up to 30 items.</p>
+        <p className="text-sm">Up to 30 items. Before you add a photo, tell us where the right to use it comes from. This is saved with the photo.</p>
+        <div className="grid gap-2 sm:grid-cols-2">
+          <select className={inp} value={rights} onChange={(e) => setRights(e.target.value as "" | "own" | "permission")}>
+            <option value="">Photo rights (required)</option>
+            <option value="own">I took it or own it</option>
+            <option value="permission">I have the photographer's permission</option>
+          </select>
+          <input className={inp} placeholder="Photo credit, e.g. Photo by Name" value={credit} onChange={(e) => setCredit(e.target.value)} />
+        </div>
         {media.length > 0 && (
           <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3">
             {media.map((m) => (
