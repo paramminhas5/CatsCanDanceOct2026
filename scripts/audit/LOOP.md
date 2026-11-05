@@ -30,6 +30,7 @@ Param asked for this on 5 Nov 2026: run the improvement check, build fixes, sugg
 Each round takes one or two pages and reads every visible line out loud. A line stays only if a person looking for a night, an artist or School learns something from it.
 - Cut: filler and hype ("culture brand", "wearable culture", "expanding moats", "the secret heart", "more than just", "curated" used as praise), lines that say what the page is instead of being it, FAQ blocks written for search engines, and triplets of adjectives.
 - Cut or flag any claim nobody can back: firsts, "India's most/leading", who played where, numbers. Do not rewrite a claim into a new claim. If a fact needs Param (for example the journal posts in `src/content/posts.ts` and the scene guides in `src/content/scenes.ts`), list the line in the log under "Param to check" and leave it.
+- Journal posts and scene/genre guides (Param, 5 Nov): cut to facts only. Keep the pages, strip each one down to what the data or a public source backs (dates, venues, lineups, release facts). Drop SEO FAQ blocks and opinion written as fact. Every line you were unsure about goes in the log under "Param to check".
 - Write like Param talking to a friend at the bar: short, concrete, first person plural, real names and real numbers from the data. Say the thing, then stop.
 - Never invent copy to fill a gap. An empty block hides; a missing fact goes in the log.
 - Log each rewritten line as before and after.

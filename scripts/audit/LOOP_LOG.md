@@ -74,3 +74,4 @@ Third scheduled round, same branch and PR #20.
   - Artist page on phones: the fixed mini player covers the Start here and Follow buttons on first view. Lift the buttons above the fold or start the player collapsed. Design change, canvas first.
 
 - 5 Nov 2026, after round 3: Param said AI and filler copy matters more than em dashes. LOOP.md now has a Copy pass section; rounds 4 and 5 put copy ahead of polish. Claims nobody can back (journal posts, scene guides) go to "Param to check", not into new rewrites.
+- Param chose "cut to facts only" for the journal posts and scene/genre guides.
