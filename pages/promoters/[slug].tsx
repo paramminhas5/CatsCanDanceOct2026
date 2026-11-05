@@ -7,14 +7,15 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import { select } from "@/lib/ccd-db";
+import { rpc } from "@/lib/ccd-db";
 import { accentOf, nightPath, type Accent } from "@/lib/promoters";
 import { todayIST } from "@/lib/nights";
 
 type P = { id: string; slug: string; name: string; city: string | null; genres: string[] | null; blurb: string | null; tagline: string | null;
   instagram: string | null; website: string | null; accent: Accent; logo_url: string | null; cover_url: string | null };
 type N = { slug: string; title: string; date: string | null; event_date: string | null; venue: string | null; city: string | null; poster_url: string | null; lineup: string[] | null };
-type Props = { p: P; nights: N[] };
+type S = { id: string; title: string; event_date: string | null; venue: string | null; city: string | null; url: string | null };
+type Props = { p: P; nights: N[]; scene: S[] };
 
 const link = (s: string | null, kind: "ig" | "web") => {
   if (!s) return null;
@@ -22,7 +23,7 @@ const link = (s: string | null, kind: "ig" | "web") => {
   return /^https?:\/\//.test(s) ? s : `https://${s}`;
 };
 
-export default function PromoterPage({ p, nights }: Props) {
+export default function PromoterPage({ p, nights, scene }: Props) {
   const a = accentOf(p.accent);
   const today = todayIST();
   const upcoming = nights.filter((n) => (n.event_date ?? "") >= today).sort((x, y) => (x.event_date ?? "").localeCompare(y.event_date ?? ""));
@@ -65,8 +66,25 @@ export default function PromoterPage({ p, nights }: Props) {
       <section className="container max-w-5xl py-12 space-y-12">
         <div>
           <h2 className="font-display text-3xl leading-none">Coming up</h2>
-          {upcoming.length ? <ul className="mt-4 grid gap-4 grid-cols-2 md:grid-cols-3">{upcoming.map(card)}</ul> : <p className="mt-3 text-ink/70">Nothing on CCD right now.</p>}
+          {upcoming.length ? <ul className="mt-4 grid gap-4 grid-cols-2 md:grid-cols-3">{upcoming.map(card)}</ul> : <p className="mt-3 text-ink/70">Nothing on CCD right now.{scene.length ? " Their other nights are below." : ""}</p>}
         </div>
+        {scene.length > 0 && (
+          <div>
+            <h2 className="font-display text-3xl leading-none">Also on What&apos;s on</h2>
+            <p className="text-ink/70 mt-1">Their nights elsewhere that we list.</p>
+            <ul className="mt-4 border-t-4 border-ink">
+              {scene.map((e) => (
+                <li key={e.id} className="border-b-2 border-ink/20">
+                  <a href={e.url ?? "/whats-on"} target="_blank" rel="noopener noreferrer" className="flex flex-wrap items-baseline gap-x-4 gap-y-1 py-3 hover:text-electric-blue">
+                    <span className="font-bold tabular-nums w-28 shrink-0">{e.event_date}</span>
+                    <span className="font-display text-lg leading-tight flex-1 min-w-[200px]">{e.title}</span>
+                    <span className="text-sm text-ink/70">{[e.venue, e.city].filter(Boolean).join(", ")}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         {(p.blurb || (p.genres ?? []).length > 0) && (
           <div className="max-w-2xl">
             <h2 className="font-display text-3xl leading-none">About</h2>
@@ -92,8 +110,8 @@ export const getStaticPaths: GetStaticPaths = async () => ({ paths: [], fallback
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const slug = String(params?.slug ?? "");
   if (!/^[a-z0-9-]{1,80}$/.test(slug)) return { notFound: true };
-  const [p] = await select<P>(`promoters?slug=eq.${slug}&status=eq.approved&select=id,slug,name,city,genres,blurb,tagline,instagram,website,accent,logo_url,cover_url&limit=1`, 60).catch(() => [] as P[]);
-  if (!p) return { notFound: true, revalidate: 60 };
-  const nights = await select<N>(`events?promoter_id=eq.${p.id}&published=is.true&select=slug,title,date,event_date,venue,city,poster_url,lineup&order=event_date.desc`, 60).catch(() => [] as N[]);
-  return { props: { p, nights }, revalidate: 60 };
+  // promoter_page (migration 057) only answers for promoters that qualify for a page.
+  const r = await rpc<any>("promoter_page", { p_slug: slug }).catch(() => null);
+  if (!r?.ok) return { notFound: true, revalidate: 60 };
+  return { props: { p: r.promoter as P, nights: (r.nights ?? []) as N[], scene: (r.scene ?? []) as S[] }, revalidate: 60 };
 };

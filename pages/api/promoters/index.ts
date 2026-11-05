@@ -5,7 +5,8 @@
  * GET ?user_id=xxx — promoter claimed by this Clerk user
  */
 import type { NextApiRequest, NextApiResponse } from "next";
-import { get, pq, eqf, ord } from "@/lib/api-helpers";
+import { get, pq, eqf } from "@/lib/api-helpers";
+import { rpc } from "@/lib/ccd-db";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -20,6 +21,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.json(rows[0] ?? null);
   }
 
-  const rows = await get("promoters", pq(ord("name")));
-  return res.json(rows ?? []);
+  // Only promoters that qualify for a page (migration 057, promoters_public): approved via /promote,
+  // or older listings that throw nights and are credible or have a night on What's on.
+  const rows = await rpc<any[]>("promoters_public", {});
+  res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
+  return res.json((rows ?? []).map((p) => ({ ...p, trusted: true })));
 }

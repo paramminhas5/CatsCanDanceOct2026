@@ -124,15 +124,15 @@ const PromotersPage = () => {
   return (
     <div className="min-h-screen bg-cream">
       <SEO
-        title="Promoters — India's Trusted Electronic Music Organisers | Cats Can Dance"
-        description="A directory of the promoters, labels and venues we trust to put on real underground electronic events across India."
+        title="Promoters in India: electronic music nights | Cats Can Dance"
+        description="Promoters and collectives putting on electronic music nights in India, with their nights on Cats Can Dance and What's on."
         path="/promoters"
         keywords="India electronic music promoters, techno house promoters India, underground party organisers"
       />
       <Nav />
       <PageHero eyebrow="Promoters" title="The People Behind The Parties">
         <p className="text-cream/90 max-w-2xl">
-          Every event we feature comes from one of these promoters, labels or venues — vetted, trusted, and consistently delivering real electronic music.
+          Promoters and collectives behind nights we list. Each one is approved by CCD. Run your own nights? <Link href="/promote" className="underline font-bold">Run them on CCD</Link>.
         </p>
       </PageHero>
 
@@ -156,10 +156,6 @@ const PromotersPage = () => {
               {kinds.map((k) => <option key={k} value={k}>{k.replace("_", " ")}</option>)}
             </select>
           </div>
-          <label className="inline-flex items-center gap-2 font-display text-sm text-ink">
-            <input type="checkbox" checked={trustedOnly} onChange={(e) => setTrustedOnly(e.target.checked)} className="w-4 h-4 accent-magenta" />
-            Trusted only
-          </label>
         </div>
 
         <p className="font-display text-sm text-ink/60 mb-4">
