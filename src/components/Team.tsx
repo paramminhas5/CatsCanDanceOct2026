@@ -14,7 +14,7 @@ const founders = [
 const roles = [
   { name: "Music", desc: "Lineups, guest bookings, playlists.", bg: "bg-lime", text: "text-ink", img: catHeadphones },
   { name: "Design", desc: "Posters, merch, the site.", bg: "bg-orange", text: "text-ink", img: catLeft },
-  { name: "Door and ops", desc: "Guest list, door, the venue on the night.", bg: "bg-electric-blue", text: "text-cream", img: catRight },
+  { name: "Door and ops", desc: "Guest list, QR check-in at the door, the venue on the night.", bg: "bg-electric-blue", text: "text-cream", img: catRight },
   { name: "Photo and video", desc: "Shoot the nights, cut the recaps.", bg: "bg-cream", text: "text-ink", img: catDancer },
 ];
 

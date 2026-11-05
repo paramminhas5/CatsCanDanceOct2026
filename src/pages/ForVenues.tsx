@@ -7,17 +7,17 @@ import PartnerContactDialog from "@/components/PartnerContactDialog";
 
 const bullets = [
   "We book the lineup: our residents plus guests",
-  "We promote the night and run the list",
+  "We promote the night and run the guest list",
+  "We can run the door: every guest has a QR ticket or a name on our list, checked in at entry",
   "We shoot photos and clips you can use",
-  "You run the bar and the door",
-  "Split and any minimum agreed per night",
+  "You run the bar. Split and any minimum agreed per night",
 ];
 
 const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "Does the venue handle bar and entry, or does Cats Can Dance?", acceptedAnswer: { "@type": "Answer", text: "The venue runs its own bar and entry. We bring the lineup, the crowd, the promotion and the photos and clips afterwards. The split and any minimum are agreed per Episode." } },
+    { "@type": "Question", name: "Who runs the bar and the door?", acceptedAnswer: { "@type": "Answer", text: "The venue runs the bar. We bring the lineup, the crowd, the promotion and the photos and clips afterwards, and we can run the door with our own QR tickets and guest list. The split and any minimum are agreed per Episode." } },
     { "@type": "Question", name: "How do I propose my venue?", acceptedAnswer: { "@type": "Answer", text: "Use the Partner With Us form on this page or email hello@catscandance.com with venue capacity, sound system details, and a few photos." } },
   ],
 };
@@ -26,7 +26,7 @@ const ForVenues = () => (
   <main className="bg-background text-foreground">
     <SEO
       title="For venues · Cats Can Dance"
-      description="Host a Cats Can Dance Episode in Bengaluru. We book the lineup, bring the crowd and promote the night; you run the bar and the door. Tell us about your room."
+      description="Host a Cats Can Dance Episode in Bengaluru. We book the lineup, bring the crowd, promote the night and can run the door with QR tickets and a guest list. You run the bar. Tell us about your room."
       path="/for-venues"
       jsonLd={[faqLd]}
     />
