@@ -7,6 +7,8 @@
  * stay stable so nothing else moves.
  *
  * Names marked `working: true` are working names. Param picks the final ones.
+ * 9 Nov 2026: Headliner is now Artists, Ustad is now School, and Gate shows as Host
+ * (the `gate` id, folder, env and URL stay, so nothing else moves).
  */
 
 export type ProductId = "ccd" | "artists" | "gate" | "school";
@@ -15,6 +17,8 @@ export type Product = {
   id: ProductId;
   /** Display name used in UI, titles and the banner. */
   name: string;
+  /** Short label in the suite nav and footer (the ccd product shows as Nights there). */
+  navLabel: string;
   /** True while the name is a working name. */
   working: boolean;
   /** One line that says what the product does. Function first. */
@@ -34,6 +38,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
   ccd: {
     id: "ccd",
     name: "Cats Can Dance",
+    navLabel: "Nights",
     working: false,
     promise: "Find a night, find your crew, come to ours.",
     verb: "Go out",
@@ -44,10 +49,11 @@ export const PRODUCTS: Record<ProductId, Product> = {
   },
   artists: {
     id: "artists",
-    name: "Headliner",
+    name: "Artists",
+    navLabel: "Artists",
     working: true,
-    promise: "Your page, your bookings, your tour. Kept up to date for you.",
-    verb: "Book",
+    promise: "Every artist, and everything they put out. Follow, buy, go to the show, or book them.",
+    verb: "Find and book",
     nicknames: { cat: "top cat", music: "the bill" },
     colour: "#b6ef36",
     urlEnv: "NEXT_PUBLIC_ARTISTS_URL",
@@ -55,9 +61,10 @@ export const PRODUCTS: Record<ProductId, Product> = {
   },
   gate: {
     id: "gate",
-    name: "Gate",
-    working: false,
-    promise: "Run your night: tickets, lists and a door that never queues.",
+    name: "Host",
+    navLabel: "Host",
+    working: true,
+    promise: "Throw a party and run it from one app: the page, artists, gear, tickets, the door, the money.",
     verb: "Host",
     nicknames: { cat: "the cat flap", music: "doors" },
     colour: "#ffe600",
@@ -66,8 +73,9 @@ export const PRODUCTS: Record<ProductId, Product> = {
   },
   school: {
     id: "school",
-    name: "Ustad",
-    working: true,
+    name: "School",
+    navLabel: "School",
+    working: false,
     promise: "Learn production and DJing by making real music on a real instrument.",
     verb: "Learn",
     nicknames: { cat: "big cat", music: "riyaz" },

@@ -120,6 +120,43 @@ export const tokens = {
     engrave: "0 1px 0 rgba(255,255,255,.08), 0 -1px 0 rgba(0,0,0,.6)",
   },
 
+  /**
+   * The suite system (final preview, 9 Nov 2026): one dark look for every app, the product
+   * colour as the accent. Source of truth for `@ccd/ui/kit.css`; keep the two in step.
+   * Boards: canvas "CCD Products: Identities", page "Final preview".
+   */
+  suite: {
+    colours: {
+      base: "#0a0a0b",
+      raised: "#141416",
+      text: "#f2f0eb",
+      /** Muted text stays at 64% / 56% so it passes AA on base. */
+      text2: "rgba(242,240,235,.64)",
+      text3: "rgba(242,240,235,.56)",
+      hair: "rgba(255,255,255,.08)",
+      hair2: "rgba(255,255,255,.14)",
+      surface: "rgba(255,255,255,.04)",
+      ink: "#0a0a0c",
+      paper: "#f2efe7",
+      example: "#ffb020",
+    },
+    product: { ccd: "#2563eb", artists: "#b6ef36", gate: "#ffe600", school: "#ff4d8d" },
+    fonts: {
+      display: "'Bricolage Grotesque', system-ui, sans-serif",
+      ui: "Outfit, system-ui, sans-serif",
+      /** Data labels only: dates, counts, codes. */
+      mono: "'JetBrains Mono', ui-monospace, monospace",
+    },
+    type: { title: "34px", section: "20px", row: "16px", body: "15px", meta: "13px", label: "11px" },
+    space: {
+      phone: { inset: "20px", section: "28px", group: "12px", row: "56px", topBar: "60px", bottomBar: "88px", dock: "64px", dockGap: "18px" },
+      web: { inset: "64px", section: "130px", grid: 12 },
+    },
+    radius: { sm: "12px", md: "20px", lg: "28px", pill: "999px" },
+    button: { l: "56px", m: "52px", s: "40px", minTap: "44px" },
+    motion: { beat: "469ms", pressIn: "90ms", pressOut: "160ms", sheet: "340ms", crossfade: "600ms", toast: "220ms", record: "1.8s" },
+  },
+
   /** The banner that sits above every product. Neutral ink, the product dot in colour. */
   banner: {
     bg: "#0a0a0c",
