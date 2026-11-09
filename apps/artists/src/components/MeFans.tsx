@@ -9,7 +9,7 @@ type Fans = { ok: boolean; error?: string; total?: number; cities?: { city: stri
 export default function MeFans() {
   const [f, setF] = useState<Fans | null>(null);
   useEffect(() => {
-    supabaseBrowser().rpc("my_fans").then(({ data, error }) => setF(error ? { ok: false, error: error.message } : (data as Fans)));
+    supabaseBrowser().rpc("my_fans").then(({ data, error }: { data: unknown; error: { message: string } | null }) => setF(error ? { ok: false, error: error.message } : (data as Fans)));
   }, []);
   if (!f) return <p className="k-b" aria-busy="true">Counting your fans</p>;
   if (!f.ok) return <div className="k-surface rounded-[22px] p-6"><b>{f.error ?? "Could not load your fans."}</b><p className="k-b m-0 mt-1 text-sm">Fans show here once your page is linked to this account.</p></div>;

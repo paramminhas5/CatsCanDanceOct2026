@@ -13,6 +13,8 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ScrollToTop from "@/components/ScrollToTop";
 import "@/index.css";
 import "@/pages/ccd.css";
+// The suite look (@ccd/ui): only k- prefixed classes and --k- variables, so live-look pages are untouched.
+import "@ccd/ui/kit.css";
 import React from "react";
 import { logOpenFromRef } from "@/lib/share";
 

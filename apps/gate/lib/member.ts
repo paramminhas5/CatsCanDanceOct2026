@@ -43,7 +43,7 @@ export function useMember() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- loads the session once on mount
     load();
-    const { data: sub } = supabase().auth.onAuthStateChange((ev) => {
+    const { data: sub } = supabase().auth.onAuthStateChange((ev: string) => {
       if (ev === "SIGNED_IN" || ev === "SIGNED_OUT" || ev === "TOKEN_REFRESHED" || ev === "USER_UPDATED") load();
     });
     return () => sub.subscription.unsubscribe();

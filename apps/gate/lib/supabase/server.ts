@@ -1,7 +1,7 @@
 import "server-only";
 import { cookies, headers } from "next/headers";
 import { sharedCookieOptions } from "@ccd/auth";
-import { supabaseEnv, type Database } from "@ccd/db";
+import { supabaseEnv } from "@ccd/db";
 import { createServerClient } from "@supabase/ssr";
 
 /**
@@ -12,7 +12,7 @@ import { createServerClient } from "@supabase/ssr";
 export async function supabaseServer() {
   const [store, h] = await Promise.all([cookies(), headers()]);
   const { url, key } = supabaseEnv();
-  return createServerClient<Database>(url, key, {
+  return createServerClient(url, key, {
     cookieOptions: sharedCookieOptions(h.get("host") ?? undefined),
     cookies: {
       getAll: () => store.getAll(),

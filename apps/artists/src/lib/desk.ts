@@ -56,6 +56,8 @@ export type DeskArtist = {
   rank: number | null;
   next_date: string | null;  // next known gig or tour date, for the card
   next_label: string | null;
+  /** The lowest fee on the artist row (artists.fee_min_inr), used when they have not set per-format rates. */
+  fee_min?: number | null;
 };
 
 export type MiniArtist = {
@@ -115,10 +117,10 @@ export function soundLine(genres: string[], n = 3) {
   return g.map((x, i) => (i === 0 ? x : x.toLowerCase())).join(", ");
 }
 
-export function rateFrom(a: Pick<DeskArtist, "settings">, act?: ActType | ""): number | null {
+export function rateFrom(a: Pick<DeskArtist, "settings"> & { fee_min?: number | null }, act?: ActType | ""): number | null {
   const fs = (a.settings?.formats ?? []).filter((f) => !act || f.kind === act || (act === "live" && f.kind === "producer_live"));
   const rates = fs.map((f) => Number(f.rate_from_inr)).filter((n) => Number.isFinite(n) && n > 0);
-  return rates.length ? Math.min(...rates) : null;
+  return rates.length ? Math.min(...rates) : a.fee_min ?? null;
 }
 
 export function formatLine(f: Format): string {

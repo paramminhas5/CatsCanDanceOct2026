@@ -1,6 +1,6 @@
 /**
  * Server-side data for the artists index and the booking panels. Runs with the anon key.
- * Reads only public data: approved artists (no fee or contact columns), approved tour windows,
+ * Reads only public data: approved artists (the public fee floor, never contact columns), approved tour windows,
  * verified gigs, published scene events, and the 041 public RPCs when they exist.
  * Ported from apps/ccd/src/lib/booking-desk-server.ts.
  */
@@ -11,7 +11,7 @@ type Row = {
   slug: string; name: string; based_city: string | null; from_city: string | null; bio: string | null; genres: string[] | null;
   photo_url: string | null; open_to_bookings: boolean | null; played_ccd: boolean | null; owner_member: string | null; claimed_at: string | null;
   mix_url: string | null; members: string | null; rank: number | null; lane: string | null; instagram: string | null; soundcloud: string | null;
-  spotify: string | null; website: string | null; updated_at: string | null;
+  spotify: string | null; website: string | null; updated_at: string | null; fee_min_inr: number | string | null;
 };
 
 export type DeskData = { artists: DeskArtist[]; live: boolean; updated: string };
@@ -20,7 +20,7 @@ export async function getDeskArtists(): Promise<DeskData> {
   const today = todayIST();
   const until = addDays(today, 365);
   const [rows, windows, gigs, scene, settings, avail, stats] = await Promise.all([
-    select<Row>("artists?status=eq.approved&select=slug,name,based_city,from_city,bio,genres,photo_url,open_to_bookings,played_ccd,owner_member,claimed_at,mix_url,members,rank,lane,instagram,soundcloud,spotify,website,updated_at&order=rank.asc.nullslast,name.asc", REVALIDATE, ["artists"]),
+    select<Row>("artists?status=eq.approved&select=slug,name,based_city,from_city,bio,genres,photo_url,open_to_bookings,played_ccd,owner_member,claimed_at,mix_url,members,rank,lane,instagram,soundcloud,spotify,website,updated_at,fee_min_inr&order=rank.asc.nullslast,name.asc", REVALIDATE, ["artists"]),
     select<{ artist_slug: string; city: string; from_date: string; to_date: string }>(`artist_dates?status=eq.approved&to_date=gte.${today}&select=artist_slug,city,from_date,to_date`, REVALIDATE, ["tour"]),
     select<{ artist_slug: string; event_date: string; city: string | null; event_name: string | null }>(`artist_gigs?verified=is.true&event_date=gte.${today}&select=artist_slug,event_date,city,event_name`, REVALIDATE, ["artists"]),
     getSceneEvents(),
@@ -85,6 +85,7 @@ export async function getDeskArtists(): Promise<DeskData> {
         rank: r.rank,
         next_date: nextDate,
         next_label: nextLabel ? normCity(nextLabel) ?? nextLabel : null,
+        fee_min: r.open_to_bookings && Number(r.fee_min_inr) > 0 ? Number(r.fee_min_inr) : null,
       };
     });
   return { artists, live: settings !== null, updated: today };

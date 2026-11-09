@@ -20,7 +20,6 @@ const nextConfig: NextConfig = {
       // Old site paths. /artists/<slug> becomes /<slug>; the index stays at /artists.
       { source: "/artists/:slug([a-z0-9-]+)", destination: "/:slug", permanent: true },
       { source: "/artists/:slug([a-z0-9-]+)/epk", destination: "/:slug/epk", permanent: true },
-      { source: "/book", destination: "/artists", permanent: true },
       { source: "/club/artist", destination: "/bookings", permanent: true },
       { source: "/for-artists", destination: "/claim", permanent: false },
     ];

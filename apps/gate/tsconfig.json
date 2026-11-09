@@ -2,7 +2,7 @@
   "extends": "../../packages/config/tsconfig.base.json",
   "compilerOptions": {
     "plugins": [{ "name": "next" }],
-    "paths": { "@/*": ["./*"] },
+    "paths": { "@/*": ["./*"], "react": ["./node_modules/@types/react"], "react/*": ["./node_modules/@types/react/*"] },
     "allowJs": true,
     "noEmit": true,
     "types": ["node"]

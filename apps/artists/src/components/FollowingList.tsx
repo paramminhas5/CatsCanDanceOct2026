@@ -19,7 +19,7 @@ export default function FollowingList() {
       if (!slugs.length) { setList([]); return; }
       const { data: a } = await sb.from("artists").select("slug,name,photo_url,based_city,genres").in("slug", slugs).eq("status", "approved");
       const by = new Map((a ?? []).map((x: A) => [x.slug, x]));
-      setList(slugs.map((s) => by.get(s)).filter(Boolean) as A[]);
+      setList(slugs.map((s: string) => by.get(s)).filter(Boolean) as A[]);
     })().catch(() => setList([]));
   }, []);
   if (!list) return <p className="k-b" aria-busy="true">Loading who you follow</p>;

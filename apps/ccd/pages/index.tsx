@@ -1,10 +1,10 @@
 import type { GetStaticProps } from "next";
-import Index from "@/pages/Index";
+import HomeSuite from "@/suite/HomeSuite";
 import { getHomeData, type HomeData } from "@/lib/home";
 
-export default Index;
+// The home on the suite look (board W39-Home). The live-look home stays in src/pages/Index.tsx as the later theme.
+export default HomeSuite;
 
-// The home ships with real data in the HTML: next Episode, this week's nights, the roster, the tour.
 export const getStaticProps: GetStaticProps<HomeData> = async () => {
   const data = await getHomeData();
   return { props: data, revalidate: 600 };

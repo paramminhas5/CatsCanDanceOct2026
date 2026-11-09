@@ -47,7 +47,7 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
             <h1 className="k-d text-[52px] md:text-[72px]">All artists</h1>
             <p className="k-b mt-3 text-[17px] md:text-[18px]">
               {book
-                ? brief.date ? `${free} free on ${dayShort(brief.date)}${brief.city ? ` around ${brief.city}` : ""}. Tick up to three and send one ask.` : "Pick a date to see who is free. Tick up to three and send one ask."
+                ? brief.date ? (free ? `${free} free on ${dayShort(brief.date)}${brief.city ? ` around ${brief.city}` : ""}. Tick up to three and send one ask.` : `No one has marked ${dayShort(brief.date)} free yet. Everyone not greyed out has nothing listed that night. Tick up to three and ask.`) : "Pick a date to see who is free. Tick up to three and send one ask."
                 : `${artists.length} DJs, live acts, VJs and photographers. Follow them, or switch to booking to see who is free on your date.`}
             </p>
           </div>

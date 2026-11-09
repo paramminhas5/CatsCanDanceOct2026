@@ -13,8 +13,8 @@ export default function ClaimInvite({ token }: { token: string }) {
   const [err, setErr] = useState<string | null>(null);
   useEffect(() => {
     const sb = supabaseBrowser();
-    sb.rpc("claim_invite_info", { p_token: token }).then(({ data }) => setInfo((data as Info) ?? { ok: false }));
-    sb.auth.getUser().then(({ data }) => setSignedIn(!!data.user));
+    sb.rpc("claim_invite_info", { p_token: token }).then(({ data }: { data: unknown }) => setInfo((data as Info) ?? { ok: false }));
+    sb.auth.getUser().then(({ data }: { data: { user: unknown } }) => setSignedIn(!!data.user));
   }, [token]);
   const claim = async () => {
     const { data, error } = await supabaseBrowser().rpc("claim_with_invite", { p_token: token });

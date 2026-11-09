@@ -1,3 +1,6 @@
+import { createRequire } from "node:module";
+import { dirname } from "node:path";
+const require = createRequire(import.meta.url);
 // Cats Can Dance, apps/ccd in the platform monorepo (docs/platform-split.md).
 // The other products live at their own URLs. Each one reads an env override so Vercel
 // previews can point at previews, and falls back to the production URL. The same values
@@ -18,7 +21,7 @@ const nextConfig = {
   // Enable gzip/brotli compression and reduce JS payload
   compress: true,
   // Workspace packages ship TypeScript source; Next compiles them with the app.
-  transpilePackages: ["@ccd/brand", "@ccd/banner", "@ccd/db", "@ccd/auth"],
+  transpilePackages: ["@ccd/brand", "@ccd/banner", "@ccd/db", "@ccd/auth", "@ccd/ui"],
   // Tree-shake barrel imports from large packages (experimental in Next 14)
   experimental: {
     optimizePackageImports: [
@@ -56,6 +59,12 @@ const nextConfig = {
   // Produce smaller output by enabling SWC minification (default in Next 14+)
   swcMinify: true,
   webpack(config) {
+    // Shared packages (@ccd/ui) are compiled here; make them use this app's React 18, not the React 19 the other apps use.
+    // Scoped to files inside packages/ui so the App Router (/ops), which runs Next's own React, is untouched.
+    config.module.rules.push({
+      test: /[\\/]packages[\\/]ui[\\/]/,
+      resolve: { alias: { react: dirname(require.resolve("react/package.json")), "react-dom": dirname(require.resolve("react-dom/package.json")) } },
+    });
     return config;
   },
   // Suite names serve the existing page files (no duplicate code).
@@ -71,6 +80,8 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Gear is booked inside Host (board F38-Gear): reachable, not front and centre.
+      { source: "/gear", destination: `${GATE_URL}/gear`, permanent: false },
       // Old names for pages that still live here.
       { source: "/events", destination: "/nights", permanent: true },
       { source: "/events/:slug", destination: "/nights/:slug", permanent: true },

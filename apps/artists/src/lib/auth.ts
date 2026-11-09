@@ -5,7 +5,7 @@
 import { cookies, headers } from "next/headers";
 import { cache } from "react";
 import { createServerClient } from "@supabase/ssr";
-import { supabaseEnv, type Database } from "@ccd/db";
+import { supabaseEnv } from "@ccd/db";
 import { sharedCookieOptions } from "@ccd/auth";
 
 export type Member = {
@@ -21,7 +21,7 @@ export async function supabaseForRequest() {
   const store = await cookies();
   const host = (await headers()).get("host") ?? undefined;
   const { url, key } = supabaseEnv();
-  return createServerClient<Database>(url, key, {
+  return createServerClient(url, key, {
     cookieOptions: sharedCookieOptions(host),
     cookies: {
       getAll: () => store.getAll(),

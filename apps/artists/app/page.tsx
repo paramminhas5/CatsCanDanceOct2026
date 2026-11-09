@@ -84,7 +84,7 @@ function FanSections({ f }: { f: Awaited<ReturnType<typeof getFront>> }) {
                   <span className="k-m !text-[var(--k-tx)]">{d.day}</span>
                   <span className="text-[19px] font-semibold">{n.artists.map((a, i) => <span key={a.slug}>{i > 0 && ", "}<Link href={`/${a.slug}`}>{a.name}</Link></span>)}</span>
                   <span className="k-b truncate">{[n.venue, n.city].filter(Boolean).join(", ")}</span>
-                  <a href={n.url} target="_blank" rel="noopener" className="text-[15px] font-semibold md:text-right">Tickets <Icon name="chev" size={13} stroke={2.2} /></a>
+                  <a href={n.url} target="_blank" rel="noopener" className="inline-flex items-center gap-1 whitespace-nowrap text-[15px] font-semibold md:justify-end">Tickets <Icon name="chev" size={13} stroke={2.2} /></a>
                 </li>
               );
             })}

@@ -2,9 +2,8 @@
 
 import { createBrowserClient } from "@supabase/ssr";
 import { sharedCookieOptions } from "@ccd/auth";
-import type { Database } from "@ccd/db";
 
-type Client = ReturnType<typeof createBrowserClient<Database>>;
+type Client = ReturnType<typeof createBrowserClient>;
 let client: Client | null = null;
 
 /**
@@ -16,7 +15,7 @@ export function supabase(): Client {
   if (client) return client;
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://not-configured.invalid";
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "placeholder";
-  client = createBrowserClient<Database>(url, key, {
+  client = createBrowserClient(url, key, {
     cookieOptions: sharedCookieOptions(typeof window === "undefined" ? undefined : window.location.hostname),
   });
   return client;
