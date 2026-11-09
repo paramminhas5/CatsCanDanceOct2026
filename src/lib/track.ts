@@ -1,5 +1,5 @@
 /**
- * Product analytics: Vercel Web Analytics custom events. Eight events that say whether each loop works.
+ * Product analytics: Vercel Web Analytics custom events. Ten events that say whether each loop works.
  * Names are fixed here so dashboards stay stable. No personal data in properties.
  */
 import { track as vtrack } from "@vercel/analytics";
@@ -12,7 +12,9 @@ export type Event =
   | "book_request"    // sent a booking request
   | "claim"           // claimed an artist page
   | "share"           // shared a card
-  | "open_school";
+  | "open_school"
+  | "points_redeem"   // spent points on a perk
+  | "invite_join";    // a new member joined with a friend's invite link
 
 export function track(e: Event, props?: Record<string, string | number | boolean | null>) {
   try { vtrack(e, props ?? {}); } catch {}

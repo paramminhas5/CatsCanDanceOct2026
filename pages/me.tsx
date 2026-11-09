@@ -29,6 +29,7 @@ import { fetchNights, type NightRow } from "@/lib/door";
 import { accentOf, myPromoters, type MyPromoter } from "@/lib/promoters";
 import TicketPass from "@/components/tickets/TicketPass";
 import { shareCard } from "@/lib/share";
+import PointsCard from "@/components/points/PointsCard";
 import { disablePush, enablePush, pushSupported, VAPID } from "@/lib/push";
 
 const CITIES = ["Bengaluru", "Mumbai", "Delhi NCR", "Goa", "Pune", "Hyderabad", "Chennai", "Kolkata"];
@@ -182,6 +183,8 @@ function YourNights({ memberId, name }: { memberId: string; name: string }) {
   return (
     <div className="grid gap-12">
       <p className="text-lg">Hi{name ? ` ${name.split(" ")[0]}` : ""}. {nights.length === 0 ? "No nights yet." : ""}</p>
+
+      <PointsCard />
 
       {groups.tonight.length > 0 && (
         <section aria-labelledby="tonight" className="grid gap-6">

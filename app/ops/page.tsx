@@ -422,6 +422,7 @@ export default async function Ops() {
       <p style={{ margin: "0 0 16px" }}><a href="/door"><b>Door</b></a> <span className="muted">: scan tickets, the free list and walk-ins on the night, set the door team and rules, share a live count with the venue, and the report after. Opens with your member sign-in, not this password.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/ops/curation"><b>Artist curation</b></a> <span className="muted">: filter by fit, commercial and photo, edit scores, bulk publish or hide.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/ops/photos"><b>Photo rights</b></a> <span className="muted">: every artist photo, whether its rights are recorded, and where to ask for better ones.</span></p>
+      <p style={{ margin: "0 0 16px" }}><a href="/ops/points"><b>Points</b></a> <span className="muted">: who has points, perks used, grants and voids.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/ops/flags"><b>Switches</b></a> <span className="muted">: turn the new artist page and the paid or AI features on and off.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/ops/bookings"><b>Bookings pipeline</b></a> <span className="muted">: every booking request by stage, and the 48 hour no-reply nudge list.</span></p>
       <p style={{ margin: "0 0 16px" }}><a href="/ops/tour"><b>Tour posts</b></a> <span className="muted">: review tour dates artists post on /tour (Touring India, Away from home) before they go up.</span></p>
