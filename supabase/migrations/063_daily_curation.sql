@@ -14,7 +14,9 @@
 -- 3. discover_lineup_artists() adds names from the lineups of good nights (published, or credible and pending)
 --    as pending artists, for the daily review to verify and approve or hide.
 -- 4. Flag credible_auto_publish goes on (Param asked for daily approval).
--- Additive: two columns, three functions, one helper, one cron job, rows in curation_trust, one flag switched.
+-- Additive: two columns, five functions, one helper, one cron job, rows in curation_trust, one flag switched.
+-- Applied 9 Nov 2026 in three pieces: 063a_daily_curation_functions, 063b_twins_and_festival_hold, 063c_schedule_and_autopublish_on.
+-- First run (9 Nov): 1 published, 75 blocked, 10 duplicates, 2 festivals held, 364 no credible name, 120 still checking; 35 lineup artists added as pending.
 
 alter table public.scraped_events
   add column if not exists curation text,
