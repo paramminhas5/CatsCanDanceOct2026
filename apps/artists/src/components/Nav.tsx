@@ -26,7 +26,7 @@ export default function Nav({ member }: { member: Member | null }) {
             );
           })}
         </nav>
-        <Link href={member ? "/bookings" : "/sign-in"} className="k-btn k-btn--ghost k-btn--s">
+        <Link href={member ? "/me" : "/sign-in"} className="k-btn k-btn--ghost k-btn--s">
           {member ? member.display_name?.split(" ")[0] || "Your desk" : "Sign in"}
         </Link>
         <ButtonLink variant="key" size="s" href="/artists" className="hidden sm:inline-flex">Book for a date</ButtonLink>

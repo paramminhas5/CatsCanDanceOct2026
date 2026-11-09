@@ -8,7 +8,7 @@ export const metadata: Metadata = { title: "Sign in", robots: { index: false } }
 
 export default async function SignIn({ searchParams }: { searchParams: Promise<{ next?: string; error?: string }> }) {
   const sp = await searchParams;
-  const next = sp.next && sp.next.startsWith("/") && !sp.next.startsWith("//") ? sp.next : "/bookings";
+  const next = sp.next && sp.next.startsWith("/") && !sp.next.startsWith("//") ? sp.next : "/me";
   const member = await getMember();
   if (member) redirect(next);
   return (

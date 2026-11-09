@@ -4,6 +4,7 @@
  * when something is wrong, and on success saves the thread keys on this device so the asks show
  * under Bookings without an account.
  */
+import Link from "next/link";
 import { useActionState, useEffect } from "react";
 import { sendAsk, type AskState } from "../../app/book/actions";
 import { saveKeys } from "@/lib/booking-desk";
@@ -27,10 +28,10 @@ export default function AskForm({ picks, date, city, budget, today, names }: { p
         <p className="k-b m-0">Each artist replies on their own, usually within a day. You get an email when they do. Open a thread to follow it:</p>
         <ul className="m-0 grid list-none gap-2 p-0">
           {state.done.map((d) => (
-            <li key={d.id}><a className="k-btn k-btn--ghost" href={`/bookings/${d.id}?k=${encodeURIComponent(d.key)}`}>{names[d.artist_slug] ?? d.artist_slug}</a></li>
+            <li key={d.id}><Link className="k-btn k-btn--ghost" href={`/bookings/${d.id}?k=${encodeURIComponent(d.key)}`}>{names[d.artist_slug] ?? d.artist_slug}</Link></li>
           ))}
         </ul>
-        <a href="/bookings" className="text-[15px] font-semibold">All your bookings</a>
+        <Link href="/bookings" className="text-[15px] font-semibold">All your bookings</Link>
       </div>
     );
   }
