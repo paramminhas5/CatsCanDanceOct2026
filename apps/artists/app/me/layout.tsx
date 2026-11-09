@@ -1,11 +1,11 @@
 /**
- * The artist side of the app (boards F38-A-Today, Tour, Bookings, Contract, Fans, Page). Same app,
- * artist mode: an Artist tag and a lime ring. Signed-out visitors get one clear way in.
+ * The artist side of the app (boards F38-A-Today, Shows, Bookings, Contract, Fans, Page), one phone-width
+ * app with the five-tab dock. Signed-out visitors get one clear way in.
  */
 import type { Metadata } from "next";
-import { ButtonLink, Cat, Tag } from "@ccd/ui";
+import Link from "next/link";
 import { getMember, firstName } from "@/lib/auth";
-import MeTabs from "@/components/MeTabs";
+import ArtistApp from "@/components/app/ArtistApp";
 
 export const metadata: Metadata = { title: "Your page", robots: { index: false, follow: false } };
 
@@ -13,27 +13,18 @@ export default async function MeLayout({ children }: { children: React.ReactNode
   const member = await getMember();
   if (!member) {
     return (
-      <main className="k-root">
-        <section className="k-wrap grid max-w-[760px] justify-items-start gap-5 py-20">
-          <Cat name="lime" height={96} />
-          <h1 className="k-d text-[48px] md:text-[64px]">Run your career from here.</h1>
-          <p className="k-b text-[18px]">Sign in with the email on your page to answer bookings, post a tour and see your fans. No page yet? Claim it first.</p>
-          <div className="flex flex-wrap gap-3"><ButtonLink variant="key" size="l" href="/sign-in?next=/me">Sign in</ButtonLink><ButtonLink size="l" href="/claim">Claim your page</ButtonLink></div>
-        </section>
-      </main>
+      <ArtistApp dock={false}>
+        <div className="rise" style={{ marginTop: 6, borderRadius: 22, background: "var(--pc)", color: "var(--pi)", padding: "24px 18px", position: "relative", overflow: "hidden" }}>
+          <img src="/cats/lime.webp" alt="" style={{ position: "absolute", right: -6, bottom: -10, height: 130, animation: "bob 3.2s ease-in-out infinite" }} />
+          <h1 className="d" style={{ fontSize: 36, color: "var(--pi)", maxWidth: 250, margin: 0 }}>Run your career from here.</h1>
+          <div style={{ fontSize: 14, opacity: 0.75, marginTop: 8, maxWidth: 230 }}>Sign in with the email on your page to answer bookings, post a tour and see your fans.</div>
+          <div className="row" style={{ gap: 8, marginTop: 16 }}>
+            <Link href="/sign-in?next=/me" className="pill lg" style={{ background: "#0A0A0A", color: "var(--pc)", boxShadow: "none" }}>Sign in</Link>
+            <Link href="/claim" className="pill lg" style={{ background: "rgba(0,0,0,.12)", color: "#0A0A0A", boxShadow: "none" }}>Claim your page</Link>
+          </div>
+        </div>
+      </ArtistApp>
     );
   }
-  return (
-    <main className="k-root">
-      <section className="k-wrap pt-8">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="grid h-11 w-11 place-items-center rounded-full font-bold text-[#0a0a0b] ring" style={{ background: "var(--k-pc)", boxShadow: "0 0 0 2.5px #0a0a0b, 0 0 0 5px var(--k-pc)" }} aria-hidden="true">{(firstName(member) ?? "?").charAt(0).toUpperCase()}</span>
-          <span className="text-[15px] font-semibold">{firstName(member)}</span>
-          <Tag>Artist</Tag>
-        </div>
-        <div className="mt-6"><MeTabs /></div>
-      </section>
-      <section className="k-wrap pb-10 pt-8">{children}</section>
-    </main>
-  );
+  return <ArtistApp initial={(firstName(member) ?? "?").charAt(0).toUpperCase()}>{children}</ArtistApp>;
 }

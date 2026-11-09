@@ -1,20 +1,19 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import BookingsList from "@/components/BookingsList";
-import { getMember } from "@/lib/auth";
+import { getMember, firstName } from "@/lib/auth";
+import ArtistApp from "@/components/app/ArtistApp";
 
 export const metadata: Metadata = { title: "Bookings", robots: { index: false } };
 
 export default async function Bookings() {
   const member = await getMember();
   return (
-    <main className="k-root">
-      <section className="k-wrap max-w-[900px] py-12">
-        <h1 className="k-d text-[48px] md:text-[64px]">Bookings</h1>
-        <p className="k-b mt-3 mb-8 text-[17px]">Every ask, and where it is on the way to the gig. A lit dot means it is your turn.</p>
-        <BookingsList signedIn={!!member} />
-        {!member && <p className="k-b mt-8 text-sm"><Link href="/sign-in?next=/bookings">Sign in</Link> to see your asks on any device.</p>}
-      </section>
-    </main>
+    <ArtistApp initial={member ? (firstName(member) ?? "?").charAt(0).toUpperCase() : null}>
+      <h1 className="d" style={{ fontSize: 40, margin: 0 }}>Bookings</h1>
+      <div className="b" style={{ marginBottom: 18 }}>Every ask, and where it is on the way to the gig. A lit dot means it is your turn.</div>
+      <BookingsList signedIn={!!member} />
+      {!member && <p className="b" style={{ fontSize: 13, marginTop: 20 }}><Link href="/sign-in?next=/bookings">Sign in</Link> to see your asks on any device.</p>}
+    </ArtistApp>
   );
 }

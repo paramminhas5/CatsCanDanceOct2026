@@ -46,7 +46,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .host-app .host-body.has-dock { padding-bottom: 110px; }
 .v4.app.host-app .dock { width: calc(min(100%, 480px) - 32px); z-index: 30; }
 .host-app .dock a { text-decoration: none; }
-.host-app a { color: inherit; }
+.host-app a:not(.key):not(.pill) { color: inherit; }
 .host-app .rw { text-decoration: none; }
 .host-tick { width: 24px; height: 24px; border-radius: 12px; flex: none; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 1.5px var(--hair2); }
 .host-tick.on { background: var(--pc); color: var(--pi); box-shadow: none; animation: host-pop .5s cubic-bezier(.2, 1.6, .4, 1) both; }

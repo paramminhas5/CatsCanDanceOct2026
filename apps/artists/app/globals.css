@@ -283,3 +283,23 @@
 .aa-askbar[data-on="true"] { box-shadow: inset 0 0 0 1.5px var(--k-pc), 0 30px 60px -10px #000; }
 .aa-av { width: 34px; height: 34px; border-radius: 17px; display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 14px; box-shadow: 0 0 0 2.5px #161618; animation: host-pop .4s cubic-bezier(.2,1.6,.4,1) both; }
 @keyframes host-pop { from { transform: scale(.4); } }
+
+/* ---------- The artist app column (F38-A phone boards) ---------- */
+#main:has(.art-stage) + footer, .k-root:has(.art-stage) footer.k-footer { display: none; }
+.art-stage { min-height: calc(100dvh - 64px); background: radial-gradient(60% 50% at 50% 0%, rgba(182,239,54,.09), transparent 70%), #050505; }
+.art-app { overflow: clip; max-width: 560px; }
+.art-app .art-amb { position: absolute; inset: 0 0 auto; height: 420px; pointer-events: none; z-index: 0; background: radial-gradient(90% 60% at 50% 0%, rgba(182,239,54,.16), transparent 70%); }
+.art-app .art-body { position: relative; z-index: 1; display: flex; flex-direction: column; flex: 1; padding: 0 20px 28px; }
+.art-app .art-body.has-dock { padding-bottom: 116px; }
+.v4.app.art-app .dock5 { width: calc(min(100%, 560px) - 24px); z-index: 30; }
+.art-app a:not(.key):not(.pill) { color: inherit; }
+.art-app .rw { text-decoration: none; }
+.art-app .rise { animation: ax-in .5s cubic-bezier(.2,.8,.2,1) both; }
+.art-app .rise:nth-child(2) { animation-delay: .05s; } .art-app .rise:nth-child(3) { animation-delay: .1s; } .art-app .rise:nth-child(4) { animation-delay: .15s; }
+.art-app .k-wrap { padding-left: 0; padding-right: 0; }
+.art-app .md\:grid-cols-\[1fr_420px\], .art-app .md\:grid-cols-\[1fr_380px\], .art-app .md\:grid-cols-2, .art-app .md\:grid-cols-3 { grid-template-columns: 1fr !important; }
+.art-app .k-d.text-\[44px\], .art-app .k-d.md\:text-\[56px\], .art-app .k-d.md\:text-\[64px\] { font-size: 38px !important; }
+.art-bar { display: flex; gap: 3px; height: 14px; }
+.art-bar i { flex: 1; border-radius: 2px; background: rgba(255,255,255,.1); }
+.art-bar i.on { background: var(--pc); animation: host-pop .4s cubic-bezier(.2,1.6,.4,1) both; }
+.art-stamp { position: absolute; right: 16px; top: 16px; padding: 4px 10px; border: 2px solid #1a7f37; border-radius: 6px; color: #1a7f37; font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transform: rotate(6deg); animation: ax-stamp .6s cubic-bezier(.2,1.4,.4,1) both; }
