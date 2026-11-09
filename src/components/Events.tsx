@@ -8,6 +8,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { canOptimize } from "@/lib/image-hosts";
 import { Link } from "@/lib/compat-router";
 import { supabase } from "@/lib/supabase";
 import type { EventRow } from "@/types/events";
@@ -83,6 +84,7 @@ const Events = () => {
                       <div className="relative aspect-[3/4] bg-ink border-4 border-ink overflow-hidden chunk-shadow group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none transition-transform">
                         <Image
                           src={featuredPoster}
+                          unoptimized={!canOptimize(featuredPoster)}
                           alt={`${nextUp.title} poster`}
                           fill
                           priority
@@ -205,6 +207,7 @@ function EventCard({ event, isPast = false }: { event: EventRow; isPast?: boolea
         {src ? (
           <Image
             src={src}
+            unoptimized={!canOptimize(src)}
             alt={`${event.title} poster`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

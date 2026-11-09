@@ -98,22 +98,27 @@ const RsvpDialog = ({ open, onOpenChange, eventSlug, eventTitle, eventDate, even
     }
     setBusy(true);
     try {
-      const { error } = await supabase
-        .from("event_rsvps")
-        .insert({
-          name: parsed.data.name,
-          email: parsed.data.email,
-          plus_ones: parsed.data.plus_ones,
-          event_slug: eventSlug,
-        });
-
+      // Through rsvp(): it checks the night is published, RSVPs are open, capacity and a per-email throttle.
+      const { data, error } = await supabase.rpc("rsvp", {
+        p_event_slug: eventSlug,
+        p_name: parsed.data.name,
+        p_email: parsed.data.email,
+        p_plus_ones: parsed.data.plus_ones,
+      });
       if (error) {
-        if (error.code === "23505") {
-          toast("You're already on the list. See you on the floor. 🐾");
-          setTimeout(() => onOpenChange(false), 800);
-          return;
-        }
-        throw error;
+        toast.error(error.message || "Something went wrong. Try again?");
+        return;
+      }
+      const r = (data ?? {}) as { already?: boolean; waitlist?: boolean };
+      if (r.already) {
+        toast("You're already on the list. See you on the floor. 🐾");
+        setTimeout(() => onOpenChange(false), 800);
+        return;
+      }
+      if (r.waitlist) {
+        toast("This night is full. You're on the waitlist and we'll tell you if a spot opens.");
+        setTimeout(() => onOpenChange(false), 800);
+        return;
       }
 
       toast.success(`RSVP confirmed for ${eventTitle}! See you there.`);

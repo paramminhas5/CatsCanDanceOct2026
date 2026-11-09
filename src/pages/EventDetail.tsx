@@ -12,6 +12,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "@/lib/compat-router";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { canOptimize } from "@/lib/image-hosts";
 
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -165,7 +166,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
               <div className="order-2 lg:order-1 w-full max-w-sm lg:max-w-none">
                 {poster && !posterError ? (
                   <div className="relative aspect-[3/4] border-4 border-ink chunk-shadow-lg overflow-hidden bg-ink">
-                    <Image src={poster} alt={`${event.title} poster`} fill priority sizes="(max-width: 1024px) 90vw, 320px" className="object-cover" onError={() => setPosterError(true)} />
+                    <Image src={poster} unoptimized={!canOptimize(poster)} alt={`${event.title} poster`} fill priority sizes="(max-width: 1024px) 90vw, 320px" className="object-cover" onError={() => setPosterError(true)} />
                   </div>
                 ) : (
                   <EventPosterPlaceholder title={event.title} date={displayDate(event)} city={event.city || "Bengaluru"} eyebrow={event.series_label ?? undefined} lineup={(event.lineup ?? []).join(" · ")} />

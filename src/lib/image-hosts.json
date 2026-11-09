@@ -1,0 +1,16 @@
+{
+  "_why": "Hosts the Next image optimizer will fetch from. Never add a wildcard for every host: that makes the optimizer a free image proxy on our bill. Images from other hosts still show, unoptimized (src/lib/image-hosts.ts).",
+  "hosts": [
+    "*.supabase.co",
+    "catscandance.com",
+    "www.catscandance.com",
+    "cdn.shopify.com",
+    "*.myshopify.com",
+    "img.youtube.com",
+    "i.ytimg.com",
+    "res.cloudinary.com",
+    "pictures.behold.so",
+    "*.behold.so",
+    "img.evbuc.com"
+  ]
+}

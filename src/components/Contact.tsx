@@ -47,12 +47,14 @@ const Contact = () => {
     setBusy(true);
     try {
       const composed = `[${parsed.data.reason}] ${parsed.data.message}`;
-      const { error } = await supabase.from("contact_messages").insert({
-        name: parsed.data.name,
-        email: parsed.data.email,
-        message: composed,
+      // Through submit_contact(): throttled and length-checked in the database.
+      const { data, error } = await supabase.rpc("submit_contact", {
+        p_name: parsed.data.name,
+        p_email: parsed.data.email,
+        p_message: composed,
       });
-      if (error) throw new Error(error.message);
+      const r = (data ?? {}) as { ok?: boolean; error?: string };
+      if (error || !r.ok) throw new Error(r.error || error?.message || "failed");
       toast.success("Message sent! We'll be in touch.");
       setSent(true);
       setForm({ name: "", email: "", message: "", reason: REASONS[0] });
