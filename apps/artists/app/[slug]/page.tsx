@@ -1,20 +1,23 @@
 /**
- * The public artist page. Boards: W40-Artist (web) and A40-Artist, A40-ArtistMusic, A40-ArtistShows
+ * The public artist page. It opens on the library and the eras (Param, 10 Nov; plan ccd/v2-plan.md 5.3),
+ * then the full record list, shows, the fan wall, watch, book and the circle. Boards: W40-Artist and A40-Artist
  * (phone) on the canvas page "Final preview". Real data only; every block hides when it has nothing.
  */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import {
-  ButtonLink, Pill, Tag, SectionHead, Keycap, Led, Readout, Record, Sleeve, Plinth, Arm,
-  Passport, Knob, Sticker, Marquee, Cat, Icon, type StampData,
+  ButtonLink, Pill, Tag, SectionHead, Keycap, Led, Plinth,
+  Passport, Knob, Marquee, Icon, type StampData,
 } from "@ccd/ui";
-import { coverUrl } from "@/lib/artist-v2";
 import { getArtistPage, inrShort, dayParts } from "@/lib/artist-page";
 import { isSlug, todayIST } from "@/lib/db";
 import { RESERVED, siteUrl } from "@/lib/site";
 import FollowButton from "@/components/FollowButton";
 import ArtistTabs from "@/components/ArtistTabs";
 import ArtistExplorer from "@/components/ArtistExplorer";
+import ShareProfile from "@/components/ShareProfile";
+import FanWall from "@/components/FanWall";
 
 export const revalidate = 300;
 
@@ -34,7 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: p.name,
     description: `${p.name}${what ? ` (${what})` : ""}: ${p.counts.records} releases, ${p.counts.shows} shows. Listen, see where they play next, or book them.`,
     alternates: { canonical: `${siteUrl()}/${slug}` },
-    openGraph: { title: p.name, images: p.a.photo ? [{ url: p.a.photo }] : undefined },
+    openGraph: { title: p.name, images: [{ url: `${siteUrl()}/api/card/profile/${slug}?size=link`, width: 1200, height: 630 }] },
+    twitter: { card: "summary_large_image", images: [`${siteUrl()}/api/card/profile/${slug}?size=link`] },
   };
 }
 
@@ -50,44 +54,48 @@ export default async function ArtistPage({ params }: Props) {
   const kinds = [p.kind ? cap(p.kind) : null, a.genres[0] ?? null, a.city?.split(",")[0] ?? null].filter(Boolean) as string[];
   const today = todayIST();
   const playable = a.popular.length > 0 || a.releases.some((r) => r.trackId);
-  const listenHref = latest?.links[0]?.url ?? a.spotify ?? a.soundcloud ?? null;
   const ig = a.links.find((l) => /instagram/i.test(l.url));
   const stamps: StampData[] = p.stamps.slice(0, 9).map((s, i) => ({ city: s.city, count: s.count, colour: INKS[i % INKS.length], shape: SHAPES[i % SHAPES.length] }));
-  const top = a.popular[0];
-  const topTrack = top?.t ?? latest?.track ?? null;
-  const topCover = top ? coverUrl(top.albumId, "medium") : latest ? coverUrl(latest.albumId, "medium") : null;
-  const topSub = top ? [top.album, top.y ? Math.floor(top.y) : null].filter(Boolean).join(" · ") : latest ? latest.t : "";
   const up = a.upcoming[0];
   const next = up ? { day: dayParts(up.event_date).day, title: up.title, where: [up.venue, up.city].filter(Boolean).join(", "), href: up.ticket_url ?? up.url ?? "#shows", ext: !!(up.ticket_url ?? up.url) } : null;
+  const since = a.releases.filter((r) => !r.undated).map((r) => Math.floor(r.y)).sort((x, y) => x - y)[0] ?? null;
+  const about = [
+    ...a.releases.filter((r) => !r.undated).slice(0, 6).map((r) => ({ kind: "release" as const, id: r.id, label: r.t.slice(0, 80) })),
+    ...a.moments.filter((m) => m.kind === "show").slice(-6).reverse().map((m) => ({ kind: "show" as const, id: m.id, label: [m.city ?? m.t, m.date].filter(Boolean).join(", ").slice(0, 80) })),
+  ];
   const billNames = new Set(a.playedWith.map((c) => c.name.toLowerCase()));
   const similar = a.alsoLike.filter((x) => !billNames.has(x.n.toLowerCase()));
 
   return (
     <main className="k-root">
-      {/* ── Hero: the wow first. Play it, see the next show, follow or book (plan ccd/v2-plan.md 5.3). ── */}
-      <section className="ap-hero">
-        {a.photo && <div className="ap-bg" style={{ backgroundImage: `url(${JSON.stringify(a.photo).slice(1, -1)})` }} aria-hidden="true" />}
-        <div className="k-wrap ap-grid">
-          <div className="ap-portrait k-rvs">
-            {a.photo ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={a.photo} alt={p.name} fetchPriority="high" />
-            ) : <div className="grid h-full place-items-center"><Cat name="lime" height={180} /></div>}
-            {latest && isRecent(latest.y) && <Sticker style={{ right: 18, top: 18 }}>New<br />{latest.type === "ep" ? "EP" : typeName(latest.type).toLowerCase()}</Sticker>}
-            {a.bookable && <span className="ap-open"><Led>Open to bookings</Led></span>}
-          </div>
-          <div className="ap-copy">
-            {kinds.length > 0 && <div className="flex flex-wrap gap-2">{kinds.map((k) => <Pill key={k}>{k}</Pill>)}</div>}
-            <h1 className="k-d ap-name">{p.name}</h1>
-            <p className="ap-facts">{[counts.records && `${counts.records} records`, counts.shows && `${counts.shows} shows`, counts.cities && `${counts.cities} cities`, counts.labels && `${counts.labels} labels`].filter(Boolean).join("  ·  ")}{ig ? <>{"  ·  "}<a href={ig.url} rel="noopener" target="_blank">{ig.label}</a></> : null}</p>
-            {a.bio && <p className="k-b ap-bio">{firstSentence(a.bio)}</p>}
-            {playable && (
-              <a href="#play" className="ap-now" aria-label={`Play ${topTrack ?? "their best known track"}`}>
-                <span className="ap-rec" aria-hidden="true">{topCover && <img src={topCover} alt="" />}<i /></span>
-                <span className="min-w-0 flex-1"><span className="k-m">Play a preview</span><b>{topTrack ?? "Their best known track"}</b><span>{topSub}</span></span>
-                <span className="ap-play" aria-hidden="true"><Icon name="play" size={20} /></span>
-              </a>
-            )}
+      {/* ── The first screen is the library and the eras (Param, 10 Nov; plan ccd/v2-plan.md 5.3). The explorer draws
+             the shelf and the era rail under this head; the photo is a small avatar, not the hero. ── */}
+      <ArtistExplorer
+        a={a}
+        name={p.name}
+        today={today}
+        rate={fee ? inrShort(fee.min) : null}
+        head={
+          <div className="ap-head">
+            <div className="ap-id">
+              <span className="ap-av">
+                {a.photo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={a.photo} alt="" fetchPriority="high" />
+                ) : <span aria-hidden="true">{initials(p.name)}</span>}
+              </span>
+              <div className="min-w-0">
+                {kinds.length > 0 && <div className="flex flex-wrap gap-2">{kinds.map((k) => <Pill key={k}>{k}</Pill>)}{a.bookable && <Pill><Led>Open to bookings</Led></Pill>}</div>}
+                <h1 className="k-d ap-name">{p.name}</h1>
+                <p className="ap-facts">{[since && `Since ${since}`, counts.records && `${counts.records} records`, counts.shows && `${counts.shows} shows`, counts.cities && `${counts.cities} cities`].filter(Boolean).join("  ·  ")}{ig ? <>{"  ·  "}<a href={ig.url} rel="noopener" target="_blank">{ig.label}</a></> : null}</p>
+              </div>
+            </div>
+            <div className="ap-acts">
+              {playable && <ButtonLink variant="key" size="l" href="#play"><Icon name="play" size={17} />Play</ButtonLink>}
+              <FollowButton slug={slug} name={p.name} />
+              <ShareProfile slug={slug} name={p.name} />
+              {(fee || a.bookable) && <ButtonLink size="l" href="#ask" aria-label={`Book ${p.name}`}><Icon name="inbox" size={17} /><span className="sp-lbl">Book</span></ButtonLink>}
+            </div>
             <div className="ap-row">
               {next ? (
                 <a className="ap-chip" href={next.href} target={next.ext ? "_blank" : undefined} rel="noopener"><span className="k-m">Next show · {next.day}</span><b>{next.title}</b><span>{next.where}</span></a>
@@ -97,46 +105,16 @@ export default async function ArtistPage({ params }: Props) {
               {latest && (
                 <a className="ap-chip" href={latest.trackId ? `#open=${encodeURIComponent(latest.id)}` : latest.links[0]?.url ?? "#music"}><span className="k-m">Latest · {latest.date}</span><b>{latest.t}</b><span>{[typeName(latest.type), latest.label].filter(Boolean).join(" on ")}</span></a>
               )}
-            </div>
-            <div className="mt-7 flex flex-wrap items-center gap-3">
-              <FollowButton slug={slug} name={p.name} />
-              {(fee || a.bookable) && <ButtonLink size="l" href="#ask"><Icon name="inbox" size={17} />Book {p.name.split(" ")[0]}</ButtonLink>}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="k-wrap pt-12"><ArtistTabs slug={slug} current="overview" music={counts.records} shows={counts.shows} /></div>
-
-      {/* ── Latest release on the turntable ── */}
-      {latest && (
-        <section className="k-wrap k-section">
-          <Plinth className="k-rvs grid gap-8 overflow-hidden p-6 md:grid-cols-[400px_1fr] md:gap-16 md:p-14">
-            <div className="relative mx-auto w-full max-w-[400px] md:pr-24">
-              <Sleeve title={latest.t} label={latest.label} cover={coverUrl(latest.albumId, "xl")} out fontSize={56} />
-              <Arm style={{ right: 20, top: 10, height: "70%" }} />
-            </div>
-            <div className="self-center">
-              <span className="k-m" style={{ color: "var(--k-pc)" }}>Out {latest.date}</span>
-              <h2 className="k-d mt-3 text-[48px] md:text-[88px]">{latest.t}</h2>
-              <p className="k-b mt-3 text-[17px]">{[typeName(latest.type), latest.label && `on ${latest.label}`].filter(Boolean).join(" ")}.</p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                {latest.trackId ? <ButtonLink variant="key" size="l" href={`#open=${encodeURIComponent(latest.id)}`}><Icon name="play" />Play it here</ButtonLink> : listenHref && <ButtonLink variant="key" size="l" href={listenHref} target="_blank" rel="noopener"><Icon name="play" />Listen</ButtonLink>}
-                {latest.links.slice(1, 3).map((l) => <ButtonLink key={l.url} size="l" href={l.url} target="_blank" rel="noopener">{l.label}</ButtonLink>)}
-              </div>
-              {p.alsoOut && (
-                <div className="mt-8 flex items-center gap-4 border-t border-[var(--k-hair)] pt-5">
-                  <Sleeve title={p.alsoOut.t} cover={coverUrl(p.alsoOut.albumId, "small")} size={56} small />
-                  <span><b className="block text-[15px] font-semibold">Also out: {p.alsoOut.t}</b><span className="k-b text-sm">{[typeName(p.alsoOut.type), p.alsoOut.label].filter(Boolean).join(" on ")}</span></span>
-                </div>
+              {!a.claimed && (
+                <Link className="ap-chip ap-claim" href="/claim"><span className="k-m">Is this you?</span><b>Claim your page</b><span>Pin fan notes, add dates, take bookings</span></Link>
               )}
             </div>
-          </Plinth>
-        </section>
-      )}
+          </div>
+        }
+        wall={<FanWall slug={slug} name={p.name} about={about} />}
+      />
 
-      {/* ── Eras, music, where they played, watch, press, circle: one explorer with the drawer and the player ── */}
-      <ArtistExplorer a={a} name={p.name} today={today} rate={fee ? inrShort(fee.min) : null} />
+      <div className="k-wrap pt-12"><ArtistTabs slug={slug} current="overview" music={counts.records} shows={counts.shows} /></div>
 
       {p.labels.length > 2 && (
         <section className="pt-20" aria-label="Released on">
@@ -240,17 +218,6 @@ export default async function ArtistPage({ params }: Props) {
         </section>
       )}
 
-      {/* ── Claim ── */}
-      {!a.claimed && (
-        <section className="k-wrap pt-24">
-          <div className="k-surface flex flex-wrap items-center gap-4 rounded-[22px] py-4 pl-4 pr-5">
-            <Cat name="dance" height={52} move="sway" />
-            <p className="m-0 flex-1 text-[16px]"><b className="font-semibold">Is this you?</b> <span className="k-b">Claim this page to set your rates, your dates and your shop.</span></p>
-            <ButtonLink size="s" href="/claim">Claim this page</ButtonLink>
-          </div>
-        </section>
-      )}
-
       {/* Phone: the one action that matters stays in reach. */}
       {fee && (
         <div className="k-bbar md:!hidden">
@@ -262,6 +229,8 @@ export default async function ArtistPage({ params }: Props) {
     </main>
   );
 }
+
+const initials = (n: string) => n.split(/\s+/).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
 
 function Avatar({ name, img }: { name: string; img: string | null }) {
   if (img) {
@@ -275,9 +244,3 @@ function Avatar({ name, img }: { name: string; img: string | null }) {
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const TYPES: Record<string, string> = { album: "Album", ep: "EP", single: "Single", remix: "Remix", compilation: "Compilation", mix: "Mix" };
 const typeName = (t: string) => TYPES[t] ?? "Release";
-const isRecent = (y: number) => y > 0 && new Date().getFullYear() + new Date().getMonth() / 12 - y < 0.25;
-function firstSentence(t: string) {
-  const s = t.replace(/\s+/g, " ").trim();
-  const m = /^(.{20,220}?[.!?])(\s|$)/.exec(s);
-  return m ? m[1] : s.slice(0, 220);
-}

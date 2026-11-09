@@ -11,7 +11,7 @@ export default async function ClaimToken({ params }: { params: Promise<{ token: 
   if (!isUuid(token)) notFound();
   return (
     <main className="k-root">
-      <section className="k-wrap max-w-[720px] py-16"><ClaimInvite token={token} /></section>
+      <section className="k-wrap py-12 md:py-16"><ClaimInvite token={token} /></section>
     </main>
   );
 }

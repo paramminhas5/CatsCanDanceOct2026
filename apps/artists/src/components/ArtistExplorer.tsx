@@ -30,7 +30,7 @@ const noteless = (t: string) => t.replace(/\s*\((?=[^)]*\b(?:tracklist|no date|o
 const STOP = new Set(["festival", "presents", "present", "feat", "featuring", "with", "live", "the", "and", "night", "party", "tour", "event", "edition", "special", "music", "debut", "india", "from", "this", "that", "review", "album", "new"]);
 const toks = (s: string) => s.toLowerCase().replace(/[^a-z0-9 ]+/g, " ").split(/\s+/).filter((w) => w.length >= 4 && !STOP.has(w) && !/^(19|20)\d{2}$/.test(w));
 
-export default function ArtistExplorer({ a, name, today, rate }: { a: ArtistV2; name: string; today: string; rate: string | null }) {
+export default function ArtistExplorer({ a, name, today, rate, head, wall }: { a: ArtistV2; name: string; today: string; rate: string | null; head?: ReactNode; wall?: ReactNode }) {
   const eras = useMemo(() => (a.eraReal && a.eras.length >= 2 ? a.eras : []), [a.eraReal, a.eras]);
   const hasEras = eras.length >= 2;
   const nowY = Number(today.slice(0, 4));
@@ -245,6 +245,10 @@ export default function ArtistExplorer({ a, name, today, rate }: { a: ArtistV2; 
   const shows = a.moments.filter((m) => m.kind === "show" && isPast(m) && inEra(m.y)).slice().reverse();
   const miles = a.moments.filter((m) => m.kind === "mile" && inEra(m.y)).slice().reverse();
   const relEra = a.releases.filter((r) => (r.undated ? !era : inEra(r.y)));
+  // The shelf: the start of the library. Albums and EPs first, then singles and remixes, newest first in each,
+  // records with art before the rest.
+  const big = (r: Release) => (["album", "ep", "compilation"].includes(r.type) ? 1 : 0);
+  const shelf = [...relEra].sort((x, y) => Number(!!y.albumId) - Number(!!x.albumId) || big(y) - big(x)).slice(0, 10);
   const ofType = (r: Release, t: string) => t === "all" || (t === "single" ? !["album", "ep", "remix"].includes(r.type) : r.type === t);
   const types = ["album", "ep", "single", "remix"].map((t) => ({ t, n: relEra.filter((r) => ofType(r, t)).length })).filter((x) => x.n > 0);
   const rels = relEra.filter((r) => ofType(r, type));
@@ -265,7 +269,6 @@ export default function ArtistExplorer({ a, name, today, rate }: { a: ArtistV2; 
   const eraCovers = (e: Era) => a.releases.filter((r) => r.albumId && !r.undated && Math.floor(r.y) >= e.from && Math.floor(r.y) <= (e.to ?? 9999)).sort((x, y) => Number(["album", "ep"].includes(y.type)) - Number(["album", "ep"].includes(x.type))).slice(0, 3).map((r) => coverUrl(r.albumId, "medium")!);
   const eraCount = (e: Era) => a.releases.filter((r) => !r.undated && Math.floor(r.y) >= e.from && Math.floor(r.y) <= (e.to ?? 9999)).length + a.moments.filter((m) => m.kind === "show" && Math.floor(m.y) >= e.from && Math.floor(m.y) <= (e.to ?? 9999)).length;
 
-  const scope = era ? { k: `${era.label}, ${short(era)}`, t: era.sound ?? "" } : { k: `Every era · ${eras[0]?.from ?? ""} to now`, t: `${eras.length} eras. The dot on each record shows which.` };
 
   const mf = focus?.kind === "media" ? focus : null;
   const mediaPanel = mf ? (() => {
@@ -337,39 +340,66 @@ export default function ArtistExplorer({ a, name, today, rate }: { a: ArtistV2; 
     <div className="ax" style={{ ["--ax" as string]: accent } as CSSProperties}>
       <audio ref={audio} preload="none" onTimeUpdate={(e) => setProg(e.currentTarget.duration ? e.currentTarget.currentTime / e.currentTarget.duration : 0)} onEnded={() => (queueRef.current ? next() : setPlaying(false))} onPause={() => setPlaying(false)} onPlay={() => setPlaying(true)} />
 
-      {/* ── Eras ── */}
-      {hasEras && (
-        <section className="k-wrap k-section" aria-labelledby="eras" id="eras">
-          <div className="k-h2">
-            <div><h2 className="k-d" id="eras">Eras</h2><p className="k-b">{scope.k}.{scope.t ? ` ${scope.t}` : ""}</p></div>
-            {tour.length > 1 && <button type="button" className="k-btn k-btn--key" onClick={startHere}><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>Start here, one track an era</button>}
-          </div>
-          <div className="ax-rail" role="tablist" aria-label="Eras">
-            <button type="button" role="tab" aria-selected={!era} className={`ax-era${!era ? " on" : ""}`} onClick={() => pickEra("all")} style={{ ["--ea" as string]: "var(--k-pc)" } as CSSProperties}>
-              <span className="k-m">{eras[0].from} to now</span>
-              <b className="k-d">Every era</b>
-              <span className="k-b">{a.releases.length} records, {a.moments.filter((m) => m.kind === "show").length} shows</span>
-              <span className="ax-bar" style={{ background: `linear-gradient(90deg, ${eras.map((e) => e.accent).join(", ")})` }} />
-            </button>
-            {eras.map((e) => (
-              <button key={e.id} type="button" role="tab" aria-selected={era?.id === e.id} className={`ax-era${era?.id === e.id ? " on" : ""}`} onClick={() => pickEra(e.id)} style={{ ["--ea" as string]: e.accent } as CSSProperties}>
-                <span className="ax-covers" aria-hidden="true">{eraCovers(e).map((c, i) => <img key={c} src={c} alt="" loading="lazy" style={{ ["--i" as string]: i } as CSSProperties} />)}</span>
-                <span className="k-m">{short(e)}</span>
-                <b className="k-d">{e.label}</b>
-                {e.sound && <span className="k-b ax-sound">{e.sound}</span>}
-                <span className="k-b" style={{ fontSize: 12 }}>{eraCount(e)} things</span>
-                <span className="ax-bar" style={{ background: e.accent }} />
-              </button>
-            ))}
-          </div>
-        </section>
-      )}
+      {/* ── The first screen: who they are, the start of the library, and the eras (plan 5.3, revised 10 Nov) ── */}
+      <section className="ax-hero" id="eras" aria-label={name}>
+        <div className="ax-glow" aria-hidden="true" />
+        <div className="k-wrap ax-hero-in">
+          {head}
+          {shelf.length > 0 && (
+            <div className="ax-shelf" role="list" aria-label={era ? `Records from ${era.label}` : "Their records, newest first"}>
+              {shelf.map((r, i) => {
+                const t = relTrack(r);
+                const on = !!t && playing && track?.trackId === t.trackId;
+                return (
+                  <div key={r.id} className={`ax-slot${on ? " on" : ""}`} role="listitem" style={{ ["--i" as string]: i } as CSSProperties}>
+                    <button type="button" className="ax-rec" onClick={() => (t ? toggle(t) : open("rel", r.id, r.undated ? null : r.y))} aria-label={`${t ? (on ? "Pause" : "Play") : "Open"} ${r.t}`}>
+                      <Sleeve title={r.t} label={r.label} cover={coverUrl(r.albumId, "xl")} fontSize={28} out={on} />
+                      {t && <span className={`ax-play${on ? " on" : ""}`} aria-hidden="true">{on ? <Eq /> : <svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>}</span>}
+                    </button>
+                    <button type="button" className="ax-cap" onClick={() => open("rel", r.id, r.undated ? null : r.y)}>
+                      <b><Dot c={dotOf(r.undated ? null : r.y)} /><span className="truncate">{r.t}</span></b>
+                      <span className="k-b">{[r.undated ? null : Math.floor(r.y), TYPE[r.type] ?? "Release"].filter(Boolean).join(" · ")}</span>
+                    </button>
+                  </div>
+                );
+              })}
+              {relEra.length > shelf.length && <a href="#music" className="ax-slot ax-more" role="listitem"><b className="k-d">{relEra.length}</b><span className="k-b">records in all</span></a>}
+            </div>
+          )}
+          {hasEras && (
+            <div className="ax-hero-eras">
+              <div className="ax-eras-top">
+                <span className="k-m">{eras.length} eras · {eras[0].from} to now{era?.sound ? ` · ${era.sound}` : ""}</span>
+                {tour.length > 1 && <button type="button" className="k-btn k-btn--key k-btn--s" onClick={startHere}><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>Start here, one track an era</button>}
+              </div>
+              <div className="ax-rail" role="tablist" aria-label="Eras">
+                <button type="button" role="tab" aria-selected={!era} className={`ax-era${!era ? " on" : ""}`} onClick={() => pickEra("all")} style={{ ["--ea" as string]: "var(--k-pc)" } as CSSProperties}>
+                  <span className="k-m">{eras[0].from} to now</span>
+                  <b className="k-d">Every era</b>
+                  <span className="k-b">{a.releases.length} records, {a.moments.filter((m) => m.kind === "show").length} shows</span>
+                  <span className="ax-bar" style={{ background: `linear-gradient(90deg, ${eras.map((e) => e.accent).join(", ")})` }} />
+                </button>
+                {eras.map((e) => (
+                  <button key={e.id} type="button" role="tab" aria-selected={era?.id === e.id} className={`ax-era${era?.id === e.id ? " on" : ""}`} onClick={() => pickEra(e.id)} style={{ ["--ea" as string]: e.accent } as CSSProperties}>
+                    <span className="ax-covers" aria-hidden="true">{eraCovers(e).map((c, i) => <img key={c} src={c} alt="" loading="lazy" style={{ ["--i" as string]: i } as CSSProperties} />)}</span>
+                    <span className="k-m">{short(e)}</span>
+                    <b className="k-d">{e.label}</b>
+                    {e.sound && <span className="k-b ax-sound">{e.sound}</span>}
+                    <span className="k-b" style={{ fontSize: 12 }}>{eraCount(e)} things</span>
+                    <span className="ax-bar" style={{ background: e.accent }} />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
 
       {/* ── Music ── */}
       {a.releases.length > 0 && (
         <section className="k-wrap k-section" aria-labelledby="music" id="music">
           <div className="k-h2">
-            <div><h2 className="k-d" id="music">Music</h2><p className="k-b">{era ? `${rels.length} from ${era.label.toLowerCase()}. ` : ""}Click a record to play it and see the tracklist.</p></div>
+            <div><h2 className="k-d" id="music">Every record</h2><p className="k-b">{era ? `${rels.length} from ${era.label.toLowerCase()}. ` : ""}Click a record to play it and see the tracklist.</p></div>
           </div>
           {types.length > 1 && (
             <div className="mt-6 flex flex-wrap gap-2" role="group" aria-label="Kind of release">
@@ -434,6 +464,8 @@ export default function ArtistExplorer({ a, name, today, rate }: { a: ArtistV2; 
           </div>
         </section>
       )}
+
+      {wall}
 
       {/* ── Watch and listen ── */}
       {watch.length > 0 && (

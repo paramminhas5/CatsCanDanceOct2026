@@ -7,7 +7,7 @@
 import { supabaseBrowser } from "@ccd/db/browser";
 import { track } from "@/lib/track";
 
-export type ShareKind = "artist" | "tour" | "booked";
+export type ShareKind = "artist" | "tour" | "booked" | "profile";
 const site = () => (typeof window !== "undefined" ? window.location.origin : process.env.NEXT_PUBLIC_SITE_URL ?? "https://artists.catscandance.com");
 
 /** A short id for this browser so shares and opens can be joined without identifying anyone. */

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabaseBrowser } from "@ccd/db/browser";
+import MeNotes from "@/components/MeNotes";
 
 type Fans = { ok: boolean; error?: string; total?: number; cities?: { city: string; n: number }[] };
 const SEG = 24;
@@ -35,6 +36,7 @@ export default function MeFans() {
           })}
         </>
       ))}
+      <MeNotes />
       <div className="b" style={{ fontSize: 13, marginTop: 22 }}>Messaging a city switches on with WhatsApp updates. Until then, post the date and followers there are told.</div>
       <div className="brow" style={{ marginTop: 18 }}>
         <Link className="key" href="/me/tour" style={{ flex: 1 }}>Post a date</Link>
