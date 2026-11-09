@@ -129,7 +129,8 @@ export async function fetchList(slug: string): Promise<{ ok: boolean; error?: st
   if (!r.ok || !r.data) return { ok: false, error: r.error ?? "Could not load the list." };
   const d = r.data;
   const gd = g.ok ? g.data : null;
-  const settings: DSettings = { age_check: false, note: null, upi_vpa: null, upi_name: null, lead: false, ...(d.settings ?? {}) };
+  const DEFAULTS: DSettings = { age_check: false, note: null, upi_vpa: null, upi_name: null, lead: false };
+  const settings: DSettings = { ...DEFAULTS, ...((d.settings ?? {}) as Partial<DSettings>) };
   return { ok: true, data: { night: d.night, settings, tickets: d.tickets ?? [], rsvps: d.rsvps ?? [], walkins: d.walkins ?? [], guests: gd?.guests ?? [], limits: gd?.limits, server_time: d.server_time } };
 }
 

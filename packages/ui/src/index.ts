@@ -6,3 +6,4 @@
 export * from "./components/controls";
 export * from "./components/materials";
 export * from "./components/icons";
+export * from "./components/suite";

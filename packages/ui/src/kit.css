@@ -170,6 +170,31 @@ textarea.k-field { padding: 14px 18px; border-radius: 18px; min-height: 120px; r
 .k-marquee span::after { content: ""; width: 10px; height: 10px; border-radius: 5px; background: var(--k-pc); }
 .k-marquee:hover > div { animation-play-state: paused; }
 
+
+/* ---------- suite nav and footer ---------- */
+.k-nav { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--k-hair); background: rgba(10, 10, 11, 0.86); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+.k-nav__row { display: flex; align-items: center; gap: 24px; height: 68px; }
+@media (min-width: 900px) { .k-nav__row { height: 76px; } }
+.k-nav__brand { flex: 1; font-family: var(--k-display); font-weight: 700; font-size: 17px; text-transform: uppercase; letter-spacing: -0.01em; color: var(--k-tx); text-decoration: none; }
+.k-nav__products { display: none; align-items: center; gap: 28px; }
+@media (min-width: 900px) { .k-nav__products { display: flex; } }
+.k-nav__products a { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; color: var(--k-t2); text-decoration: none; }
+.k-nav__products a[aria-current="true"] { color: var(--k-tx); }
+.k-nav__products i { width: 8px; height: 8px; border-radius: 50%; }
+.k-nav__cta { display: none; }
+@media (min-width: 640px) { .k-nav__cta { display: inline-flex; } }
+.k-footer { margin-top: 128px; border-top: 1px solid var(--k-hair); }
+.k-footer__grid { display: grid; gap: 32px; padding-top: 48px; padding-bottom: 48px; }
+@media (min-width: 640px) { .k-footer__grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .k-footer__grid { grid-template-columns: 1.3fr repeat(4, 1fr); } }
+.k-footer__brand { font-size: 20px; text-transform: uppercase; }
+.k-footer p, .k-footer a.k-b { display: block; margin: 10px 0 0; font-size: 14px; text-decoration: none; }
+.k-footer__head { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.k-footer__head i { width: 8px; height: 8px; border-radius: 50%; }
+.k-footer .k-m { margin-top: 6px; text-transform: none; letter-spacing: 0; }
+.k-footer ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 9px; }
+.k-footer ul a { font-size: 14px; color: var(--k-t2); text-decoration: none; }
+
 /* ---------- scroll reveals ----------
  * Movement only, never opacity: content is always visible, whether or not the browser supports
  * scroll timelines, the page is printed, or a crawler reads it (CLAUDE.md: nothing starts hidden).

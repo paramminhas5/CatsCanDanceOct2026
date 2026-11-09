@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["@ccd/brand", "@ccd/banner", "@ccd/db", "@ccd/auth"],
+  transpilePackages: ["@ccd/brand", "@ccd/banner", "@ccd/db", "@ccd/auth", "@ccd/ui"],
   images: {
     remotePatterns: [{ protocol: "https", hostname: "jybloszaucgqlbkzquqw.supabase.co" }],
   },
@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
       },
       {
         // The door, the dashboards and the admin are tools, not pages to index.
-        source: "/(door|promote|admin|live|sign-in|auth)(.*)",
+        source: "/(door|promote|admin|live|sign-in|auth|parties|make|i)(.*)",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
     ];
