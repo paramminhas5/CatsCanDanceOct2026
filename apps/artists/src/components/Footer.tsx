@@ -1,34 +1,38 @@
-import Link from "next/link";
-import { Mark } from "@/components/Mark";
-import { NAME, ccd, gate, CONTACT_EMAIL } from "@/lib/site";
+import { PRODUCTS, PRODUCT_ORDER, productUrl, type ProductId } from "@ccd/brand";
+import { CONTACT_EMAIL } from "@/lib/site";
+
+/** Each product's footer links. Only routes that exist today; Gear joins Host when it is built. */
+const LINKS: Record<ProductId, [string, string][]> = {
+  ccd: [["This week", "/nights"], ["What's on", "/whats-on"], ["Your tickets", "/me"]],
+  artists: [["All artists", "/artists"], ["On tour", "/tour"], ["Book for a date", "/artists"], ["Claim your page", "/claim"]],
+  gate: [["Host a night", "/promote"], ["Run the door", "/door"]],
+  school: [["Lesson 1", "/learn"], ["Production", "/learn"], ["DJing", "/learn"]],
+};
 
 export default function Footer() {
   return (
-    <footer className="mt-20 border-t border-line bg-bone">
-      <div className="wrap grid gap-8 py-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div className="grid gap-3 content-start">
-          <span className="inline-flex items-center gap-2"><Mark size={22} /><span className="wordmark text-[15px]">{NAME}</span></span>
-          <p className="max-w-[36ch] text-sm text-graphite">Sourced pages for South Asian electronic artists, kept up to date, with booking built in. A Cats Can Dance product.</p>
+    <footer className="mt-32 border-t border-[var(--k-hair)]">
+      <div className="k-wrap grid gap-8 py-12 sm:grid-cols-2 md:grid-cols-[1.3fr_repeat(4,1fr)]">
+        <div>
+          <span className="k-d text-[20px] uppercase">Cats Can Dance</span>
+          <p className="k-b mt-2.5 text-sm">One sign-in for all four.</p>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="k-b mt-4 block text-sm">{CONTACT_EMAIL}</a>
         </div>
-        <nav aria-label="Pages" className="grid content-start gap-2 text-sm">
-          <span className="kicker">Pages</span>
-          <Link href="/artists" className="hover:underline">All artists</Link>
-          <Link href="/tour" className="hover:underline">On tour</Link>
-          <Link href="/bookings" className="hover:underline">Your bookings</Link>
-          <Link href="/claim" className="hover:underline">Claim your page</Link>
-        </nav>
-        <nav aria-label="Cats Can Dance" className="grid content-start gap-2 text-sm">
-          <span className="kicker">Cats Can Dance</span>
-          <a href={ccd.home()} className="hover:underline">Nights</a>
-          <a href={ccd.whatsOn()} className="hover:underline">What&apos;s on</a>
-          <a href={gate.home()} className="hover:underline">Host a night</a>
-        </nav>
-        <div className="grid content-start gap-2 text-sm">
-          <span className="kicker">Talk to us</span>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="hover:underline">{CONTACT_EMAIL}</a>
-          <a href="/llms.txt" className="hover:underline">Data for assistants</a>
-          <p className="text-mute">Every fact on an artist page links to its source. Previews from Deezer.</p>
-        </div>
+        {PRODUCT_ORDER.map((id) => {
+          const p = PRODUCTS[id];
+          const base = id === "artists" ? "" : productUrl(id);
+          return (
+            <nav key={id} aria-label={p.navLabel}>
+              <div className="flex items-center gap-2"><i aria-hidden="true" className="h-2 w-2 rounded-full" style={{ background: p.colour }} /><span className="font-semibold">{p.navLabel}</span></div>
+              <div className="k-m mt-1.5 normal-case tracking-normal">{new URL(p.url).host}</div>
+              <ul className="mt-3.5 grid list-none gap-2 p-0">
+                {LINKS[id].map(([label, path]) => (
+                  <li key={label}><a href={`${base}${path}`} className="text-sm no-underline" style={{ color: "var(--k-t2)" }}>{label}</a></li>
+                ))}
+              </ul>
+            </nav>
+          );
+        })}
       </div>
     </footer>
   );

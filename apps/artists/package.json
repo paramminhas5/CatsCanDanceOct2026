@@ -2,7 +2,7 @@
   "name": "@ccd/artists",
   "version": "0.1.0",
   "private": true,
-  "description": "Artists (working name Headliner): sourced artist pages, discovery, the booking desk, On tour and claims. Next 16 App Router.",
+  "description": "Artists: artist pages, discovery, booking, On tour and claims. Next 16 App Router, on the suite look (@ccd/ui).",
   "scripts": {
     "dev": "next dev -p 3101",
     "build": "next build",
@@ -16,6 +16,7 @@
     "@ccd/banner": "workspace:*",
     "@ccd/brand": "workspace:*",
     "@ccd/db": "workspace:*",
+    "@ccd/ui": "workspace:*",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.119.0",
     "lucide-react": "^1.69.0",

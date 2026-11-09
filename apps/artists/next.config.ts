@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  transpilePackages: ["@ccd/brand", "@ccd/banner", "@ccd/db", "@ccd/auth"],
+  transpilePackages: ["@ccd/brand", "@ccd/banner", "@ccd/db", "@ccd/auth", "@ccd/ui"],
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "**.supabase.co" },
