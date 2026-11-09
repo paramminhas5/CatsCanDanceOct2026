@@ -23,6 +23,11 @@ Scope: Indian and South Asian artists, diaspora included. Artists with no South 
 6. **Check** `gaps.py` again: the counts should move. Spot-check two or three quotes against their pages.
 7. **Claims** (`gaps.md` field `claims`): bios with press-kit claims (most booked, shared stages with, championed by, firsts, support lists). Run a claim check with `../claims/BRIEF.md`: every claim gets a source or comes out. Param's rule (3 Nov): no unverified claims from artists, including bios sent in through the forms.
 
+## Fetch access for the scheduled run
+The weekly task has nobody present to approve fetch prompts, so approve these domains in the task's permission settings (Param did this on 9 Nov 2026): thewildcity.com, mixmag.net, mixmag.asia, ra.co, *.bandcamp.com, homegrown.co.in, rollingstoneindia.com, djmag.com, refugeworldwide.com, magneticfields.in, platform-mag.com.
+Policy blocks stay blocked: SoundCloud pages (robots), and anything the fetch tool refuses. Never work around them. Use open APIs (MusicBrainz, Deezer, Wikidata, Discogs with a token) and oEmbed (SoundCloud, YouTube, Mixcloud) instead, and artist claim links (`/claim/<token>`) for facts only the artist has.
+Agents that still hit a block name the page in `notes`, so the next round can retry or ask the artist.
+
 ## Rules that do not change
 - Identity first. Shared names are common (Komorebi, Kibo, Jatayu, Violet). If a page cannot be tied to the artist through
   city, label, releases or a link we already store, it is left out.
