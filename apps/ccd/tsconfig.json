@@ -17,6 +17,6 @@
     "baseUrl": ".",
     "paths": { "@/*": ["./src/*"], "react": ["./node_modules/@types/react"], "react/*": ["./node_modules/@types/react/*"] }
   },
-  "include": ["next-env.d.ts", "app/**/*.ts", "app/**/*.tsx", "pages/**/*.ts", "pages/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", "middleware.ts", "tailwind.config.ts", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "react-experimental.d.ts", "app/**/*.ts", "app/**/*.tsx", "pages/**/*.ts", "pages/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", "middleware.ts", "tailwind.config.ts", ".next/types/**/*.ts"],
   "exclude": ["node_modules", "scripts", ".next"]
 }
