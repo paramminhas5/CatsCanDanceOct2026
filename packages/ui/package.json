@@ -9,7 +9,10 @@
   "exports": {
     ".": "./src/index.ts",
     "./kit.css": "./src/kit.css",
-    "./assets/*": "./assets/*"
+    "./assets/*": "./assets/*",
+    "./board.css": "./src/board.css",
+    "./FitWidth": "./src/FitWidth.tsx",
+    "./boards/*": "./src/boards/*.ts"
   },
   "files": [
     "src",

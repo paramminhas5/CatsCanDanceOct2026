@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "@ccd/brand/css/artists.css";
 @import "@ccd/ui/kit.css";
+@import "@ccd/ui/board.css";
 
 /*
  * The Tailwind theme is built from the brand variables in @ccd/brand/css/artists.css, so the
