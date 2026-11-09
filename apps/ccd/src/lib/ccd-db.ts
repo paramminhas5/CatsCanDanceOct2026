@@ -56,6 +56,8 @@ export type SceneBoardEvent = {
   id: string; title: string; url: string; ticket_url: string | null; source: string;
   city: string | null; venue: string | null; event_date: string | null; event_time: string | null;
   genres: string[] | null; lineup: string[] | null; kind: "club" | "concert" | "festival"; featured: boolean;
+  /** The promoter's cover poster from the source page (migration 064), when there is one. */
+  image_url?: string | null;
 };
 
 export type SceneEvent = {
@@ -203,10 +205,10 @@ export const getScene = async (kind: string, slug: string) =>
 export const getCcdGigs = (artistSlug: string) =>
   select<CcdGig>(`ccd_gigs?artist_slug=eq.${encodeURIComponent(artistSlug)}&order=event_date.desc`, 300);
 
-/** Published scene events through the scene_events RPC (the table itself is closed to the public). */
+/** Published scene events through the scene_events_v2 RPC, with cover images (the table itself is closed to the public). */
 export async function getSceneEvents(): Promise<SceneBoardEvent[]> {
   try {
-    const r = await rpc<SceneBoardEvent[]>("scene_events", { p_kind: null });
+    const r = await rpc<SceneBoardEvent[]>("scene_events_v2", { p_kind: null }).catch(() => rpc<SceneBoardEvent[]>("scene_events", { p_kind: null }));
     return Array.isArray(r) ? r : [];
   } catch {
     return [];
