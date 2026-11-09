@@ -1,22 +1,25 @@
 /**
- * All artists (boards W39-All, W39-AllBook, A39-All, A39-AllBook). One page, two modes:
- * discover (follow, next shows) and book for a date (who is free, their rate, add up to three to one ask).
- * Filters are a plain GET form, so the page works without JavaScript and every view has a URL.
+ * All artists (boards W39-All and W39-AllBook). One page, two modes: discover (follow, next shows) and
+ * book for a date (who is free, their rate, add up to three to one ask). The filter rail on the left is
+ * plain links and a GET form, so every view has a URL and works without JavaScript.
  */
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ButtonLink, Led, Tag, Icon } from "@ccd/ui";
-import { ArtistTile, Empty, Segmented } from "@/components/bits";
+import { ButtonLink } from "@ccd/ui";
+import { Empty } from "@/components/bits";
+import FollowButton from "@/components/FollowButton";
+import AskBar from "@/components/AskBar";
 import { getDeskArtists } from "@/lib/booking-desk-server";
-import { ACT_FILTERS, BUDGETS, DESK_CITIES, rankArtists, inrShort, dayShort, isIsoDay, actLine, soundLine, type Ranked } from "@/lib/desk";
+import { ACT_FILTERS, BUDGETS, DESK_CITIES, rankArtists, inrShort, dayShort, isIsoDay, actLine, soundLine, normCity, type Ranked } from "@/lib/desk";
 import { displayName } from "@/lib/artist-v2";
 import { todayIST } from "@/lib/db";
 
 export const revalidate = 300;
 export const metadata: Metadata = { title: "All artists", description: "South Asian electronic artists: DJs, live acts, VJs and photographers. Follow them, or see who is free on your date and book." };
 
-type SP = { mode?: string; date?: string; city?: string; budget?: string; act?: string; q?: string; sound?: string };
+type SP = { mode?: string; date?: string; city?: string; budget?: string; act?: string; q?: string; sound?: string; sort?: string; free?: string };
 const PAGE = 48;
+const SOUNDS = ["House", "Techno", "Disco", "Hip-hop", "Electronic", "Ambient", "Bass", "Indie"];
 
 export default async function AllArtists({ searchParams }: { searchParams: Promise<SP> }) {
   const sp = await searchParams;
@@ -30,14 +33,33 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
     sound: (sp.sound ?? "").slice(0, 40),
     q: (sp.q ?? "").slice(0, 60),
   };
+  const sort = sp.sort === "name" ? "name" : "soon";
+  const onlyFree = book && sp.free === "1";
   const { artists } = await getDeskArtists();
-  const ranked = rankArtists(artists, brief, today);
+  let ranked = rankArtists(artists, brief, today);
+  if (onlyFree) ranked = ranked.filter((r) => r.group !== "busy");
+  // Faces first: artists with a photo lead within the order the desk gives.
+  const withPhoto = (r: Ranked) => (r.a.photo_url ? 0 : 1);
+  const G = { free: 0, clear: 1, all: 2, busy: 3 } as const;
+  ranked = sort === "name" ? [...ranked].sort((x, y) => x.a.name.localeCompare(y.a.name))
+    : [...ranked].sort((x, y) => (book ? G[x.group] - G[y.group] : 0) || withPhoto(x) - withPhoto(y) || (book ? 0 : Number(!x.a.next_date) - Number(!y.a.next_date)));
   const shown = ranked.slice(0, PAGE);
   const free = ranked.filter((r) => r.group === "free").length;
+
+  const keep = { mode: book ? "book" : "", ...brief, sort: sort === "name" ? "name" : "", free: onlyFree ? "1" : "" };
   const qs = (extra: Record<string, string>) => {
-    const p = new URLSearchParams(Object.entries({ ...brief, ...extra }).filter(([, v]) => v) as [string, string][]);
+    const p = new URLSearchParams(Object.entries({ ...keep, ...extra }).filter(([, v]) => v) as [string, string][]);
     return `/artists${p.size ? `?${p}` : ""}`;
   };
+  const count = (f: (a: (typeof artists)[number]) => boolean) => artists.filter(f).length;
+  const groups: { title: string; key: keyof typeof brief; items: { v: string; label: string; n: number }[] }[] = [
+    { title: "What", key: "act", items: ACT_FILTERS.filter((a) => a.key).map((a) => ({ v: a.key, label: a.label, n: count((x) => x.acts.includes(a.key as never) || (a.key === "live" && x.acts.includes("producer_live"))) })) },
+    { title: "Sound", key: "sound", items: SOUNDS.map((s) => ({ v: s.toLowerCase(), label: s, n: count((x) => x.genres.some((g) => g.toLowerCase().includes(s.toLowerCase().replace("-", "")) || g.toLowerCase().includes(s.toLowerCase()))) })).filter((x) => x.n > 0) },
+    { title: "City", key: "city", items: DESK_CITIES.map((c) => ({ v: c, label: c, n: count((x) => normCity(x.city) === c) })).filter((x) => x.n > 0).slice(0, 8) },
+  ];
+  const lead = book
+    ? brief.date ? (free ? `${free} free on ${dayShort(brief.date)}${brief.city ? ` in ${brief.city}` : ""}${brief.budget ? ", inside your budget" : ""}. Add the ones you want to one ask.` : `Nobody has marked ${dayShort(brief.date)} free yet. Anyone not greyed out has nothing listed that night.`) : "Pick your night on the left to see who is free. Add up to three to one ask."
+    : `${artists.length} DJs, live acts, VJs and photographers. Follow them, or switch to booking to see who is free on your date.`;
 
   return (
     <main className="k-root">
@@ -45,75 +67,91 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
         <div className="flex flex-wrap items-end gap-6">
           <div className="min-w-[280px] flex-1">
             <h1 className="k-d text-[52px] md:text-[72px]">All artists</h1>
-            <p className="k-b mt-3 text-[17px] md:text-[18px]">
-              {book
-                ? brief.date ? (free ? `${free} free on ${dayShort(brief.date)}${brief.city ? ` around ${brief.city}` : ""}. Tick up to three and send one ask.` : `No one has marked ${dayShort(brief.date)} free yet. Everyone not greyed out has nothing listed that night. Tick up to three and ask.`) : "Pick a date to see who is free. Tick up to three and send one ask."
-                : `${artists.length} DJs, live acts, VJs and photographers. Follow them, or switch to booking to see who is free on your date.`}
-            </p>
+            <p className="k-b mt-3 text-[17px]">{lead}</p>
           </div>
-          <Segmented label="Mode" items={[{ href: qs({ mode: "" }), label: "Discover", on: !book }, { href: qs({ mode: "book" }), label: "Book for a date", on: book }]} />
+          <div className="aa-seg" role="tablist" aria-label="Mode">
+            <Link href={qs({ mode: "" })} className={!book ? "on" : ""} aria-current={!book ? "page" : undefined}>Discover</Link>
+            <Link href={qs({ mode: "book" })} className={book ? "on" : ""} aria-current={book ? "page" : undefined}>Book for a date</Link>
+          </div>
         </div>
-
-        <form method="get" action="/artists" className="mt-7 grid gap-3 md:grid-cols-[1.4fr_repeat(4,1fr)_auto]">
-          {book && <input type="hidden" name="mode" value="book" />}
-          <label className="sr-only" htmlFor="q">Search</label>
-          <input id="q" name="q" defaultValue={brief.q} placeholder="Search an artist, a sound or a city" className="k-field" />
-          {book ? (
-            <>
-              <label className="sr-only" htmlFor="date">Date</label>
-              <input id="date" name="date" type="date" min={today} defaultValue={brief.date} className="k-field" />
-            </>
-          ) : (
-            <>
-              <label className="sr-only" htmlFor="sound">Sound</label>
-              <input id="sound" name="sound" defaultValue={brief.sound} placeholder="Sound, e.g. house" className="k-field" />
-            </>
-          )}
-          <label className="sr-only" htmlFor="city">City</label>
-          <select id="city" name="city" defaultValue={brief.city} className="k-field">
-            <option value="">Any city</option>
-            {DESK_CITIES.map((c) => <option key={c}>{c}</option>)}
+        <form method="get" action="/artists" className="mt-7 flex gap-3">
+          {Object.entries(keep).filter(([k, v]) => v && k !== "q" && k !== "sort").map(([k, v]) => <input key={k} type="hidden" name={k} value={v} />)}
+          <label className="aa-search flex-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="M20 20l-4-4" /></svg><input name="q" defaultValue={brief.q} placeholder="Search an artist, a sound or a venue" aria-label="Search" /></label>
+          <select name="sort" defaultValue={sort === "name" ? "name" : ""} className="k-field !w-auto" aria-label="Sort">
+            <option value="">{book ? "Free first" : "Playing soon first"}</option>
+            <option value="name">A to Z</option>
           </select>
-          <label className="sr-only" htmlFor="act">Act</label>
-          <select id="act" name="act" defaultValue={brief.act} className="k-field">
-            {ACT_FILTERS.map((a) => <option key={a.key} value={a.key}>{a.label}</option>)}
-          </select>
-          <label className="sr-only" htmlFor="budget">Budget</label>
-          <select id="budget" name="budget" defaultValue={brief.budget} className="k-field">
-            {BUDGETS.map((b) => <option key={b.key} value={b.key}>{b.label}</option>)}
-          </select>
-          <button className="k-btn k-btn--ghost" type="submit">Show</button>
+          <button className="k-btn" type="submit">Search</button>
         </form>
       </section>
 
-      <section className="k-wrap pt-10">
-        {shown.length === 0 ? (
-          <Empty title="No one matches that yet" line="Try another city, a wider budget or a different date." action={<ButtonLink href={book ? "/artists?mode=book" : "/artists"}>Clear the filters</ButtonLink>} />
-        ) : book ? (
-          <form method="get" action="/book">
-            {brief.date && <input type="hidden" name="date" value={brief.date} />}
-            {brief.city && <input type="hidden" name="city" value={brief.city} />}
-            {brief.budget && <input type="hidden" name="budget" value={brief.budget} />}
-            <ul className="grid list-none grid-cols-2 gap-x-5 gap-y-8 p-0 md:grid-cols-4">
-              {shown.map((r) => <BookCard key={r.a.slug} r={r} dated={!!brief.date} />)}
-            </ul>
-            <div className="sticky bottom-4 z-20 mx-auto mt-10 flex max-w-[760px] items-center gap-4 rounded-[32px] p-3 pl-6" style={{ background: "#161618", boxShadow: "inset 0 0 0 1px var(--k-hair2), 0 30px 60px -10px #000" }}>
-              <span className="flex-1"><b className="block text-[16px] font-semibold">Your ask{brief.date ? ` for ${dayShort(brief.date)}` : ""}</b><span className="k-b text-[13px]">Tick up to three. Each replies on their own.</span></span>
-              <button type="submit" className="k-btn k-btn--key">Write the ask</button>
+      <section className="k-wrap grid gap-10 pt-8 md:grid-cols-[230px_1fr]">
+        <aside className="aa-rail" aria-label="Filters">
+          {book && (
+            <form method="get" action="/artists" className="aa-night">
+              <input type="hidden" name="mode" value="book" />
+              {brief.act && <input type="hidden" name="act" value={brief.act} />}
+              {brief.sound && <input type="hidden" name="sound" value={brief.sound} />}
+              <span className="k-m">Your night</span>
+              <input type="date" name="date" min={today} defaultValue={brief.date} className="k-field mt-2" aria-label="Date" />
+              <select name="city" defaultValue={brief.city} className="k-field mt-2" aria-label="City"><option value="">Any city</option>{DESK_CITIES.map((c) => <option key={c}>{c}</option>)}</select>
+              <span className="k-m mt-4 block">Budget</span>
+              <select name="budget" defaultValue={brief.budget} className="k-field mt-2" aria-label="Budget">{BUDGETS.map((b) => <option key={b.key} value={b.key}>{b.label}</option>)}</select>
+              <label className="mt-3 flex cursor-pointer items-center gap-2.5 text-[13px]"><input type="checkbox" name="free" value="1" defaultChecked={onlyFree} className="aa-tg" />Only free that night</label>
+              <button className="k-btn k-btn--key k-btn--s mt-4 w-full" type="submit">Show who is free</button>
+            </form>
+          )}
+          {groups.map((g) => g.items.length > 0 && (
+            <div key={g.title} className="aa-group">
+              <span className="k-m">{g.title}</span>
+              <ul>
+                {g.items.map((it) => {
+                  const on = (brief[g.key] ?? "").toLowerCase() === it.v.toLowerCase();
+                  return <li key={it.v}><Link href={qs({ [g.key]: on ? "" : it.v })} className={on ? "on" : ""} aria-current={on ? "true" : undefined} scroll={false}><i aria-hidden="true" />{it.label}<span className="k-m">{it.n}</span></Link></li>;
+                })}
+              </ul>
             </div>
-          </form>
-        ) : (
-          <div className="grid grid-cols-2 gap-x-5 gap-y-9 md:grid-cols-4">
-            {shown.map((r) => (
-              <ArtistTile key={r.a.slug} slug={r.a.slug} name={displayName(r.a.name)} photo={r.a.photo_url}
-                line={[r.a.acts.length ? actLine(r.a.acts.slice(0, 1)) : null, soundLine(r.a.genres, 1), r.a.city].filter(Boolean).join(", ")}
-                foot={r.a.next_label ? <span className="mt-1.5 block text-[13px]" style={{ color: "var(--k-pc)" }}>{r.a.next_label}</span> : null} />
-            ))}
-          </div>
-        )}
-        {ranked.length > PAGE && <p className="k-b mt-10">Showing the first {PAGE} of {ranked.length}. Search or filter to find someone.</p>}
-        <p className="k-b mt-6 text-sm">Missing someone? <Link href="/claim">Add an artist</Link>.</p>
+          ))}
+        </aside>
+
+        <div>
+          {shown.length === 0 ? (
+            <Empty title="No one matches that yet" line="Try another city, a wider budget or a different date." action={<ButtonLink href={book ? "/artists?mode=book" : "/artists"}>Clear the filters</ButtonLink>} />
+          ) : book ? (
+            <form id="ask-form" method="get" action="/book">
+              {brief.date && <input type="hidden" name="date" value={brief.date} />}
+              {brief.city && <input type="hidden" name="city" value={brief.city} />}
+              {brief.budget && <input type="hidden" name="budget" value={brief.budget} />}
+              <ul className="grid list-none grid-cols-2 gap-x-5 gap-y-9 p-0 lg:grid-cols-4">{shown.map((r) => <BookCard key={r.a.slug} r={r} dated={!!brief.date} />)}</ul>
+              <AskBar formId="ask-form" date={brief.date ? dayShort(brief.date) : ""} />
+            </form>
+          ) : (
+            <ul className="grid list-none grid-cols-2 gap-x-5 gap-y-9 p-0 lg:grid-cols-4">
+              {shown.map((r) => {
+                const a = r.a;
+                const name = displayName(a.name);
+                return (
+                  <li key={a.slug} className="aa-card">
+                    <Link href={`/${a.slug}`} className="aa-ph">
+                      {a.photo_url ? <img src={a.photo_url} alt="" loading="lazy" /> : <img src="/cats/lime.webp" alt="" className="aa-cat" />}
+                      {a.acts[0] && <span className="aa-chip">{actLine(a.acts.slice(0, 1))}</span>}
+                    </Link>
+                    <Link href={`/${a.slug}`} className="mt-3 block truncate text-[17px] font-semibold no-underline">{name}</Link>
+                    <span className="k-b block truncate text-[13px]">{[a.acts[0] ? actLine(a.acts.slice(0, 1)) : null, soundLine(a.genres, 1).toLowerCase(), a.city].filter(Boolean).join(", ")}</span>
+                    <span className="mt-2 flex items-center gap-2">
+                      <span className="min-w-0 flex-1 truncate text-[13px] font-semibold" style={{ color: a.next_label ? "var(--k-pc)" : "var(--k-t3)" }}>{a.next_label ?? (brief.city ? `No ${brief.city} date yet` : "No date listed")}</span>
+                      <FollowButton slug={a.slug} name={name} size="s" />
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+          {ranked.length > PAGE && <p className="k-b mt-10">Showing the first {PAGE} of {ranked.length}. Search or filter to find someone.</p>}
+          <p className="k-b mt-6 text-sm">Missing someone? <Link href="/claim">Add an artist</Link>.</p>
+        </div>
       </section>
+      <div className="h-24" />
     </main>
   );
 }
@@ -123,25 +161,25 @@ function BookCard({ r, dated }: { r: Ranked; dated: boolean }) {
   const dim = r.group === "busy";
   const good = r.reasons.find((x) => x.tone === "good");
   const bad = r.reasons.find((x) => x.tone === "bad");
+  const name = displayName(a.name);
   return (
-    <li className={dim ? "opacity-50" : undefined}>
+    <li className={`aa-card${dim ? " dim" : ""}`}>
       <label className="block cursor-pointer">
-        <div className="relative aspect-square overflow-hidden rounded-[18px] bg-[#16161a]">
-          {a.photo_url && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={a.photo_url} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-          )}
-          {a.acts[0] && <span className="absolute left-3 top-3"><Tag>{actLine(a.acts.slice(0, 1))}</Tag></span>}
-          <input type="checkbox" name="a" value={a.slug} disabled={dim} className="absolute right-3 top-3 h-6 w-6 accent-[var(--k-pc)]" aria-label={`Add ${displayName(a.name)} to the ask`} />
-        </div>
-        <b className="mt-3 block truncate text-[17px] font-semibold">{displayName(a.name)}</b>
+        <span className="aa-ph">
+          {a.photo_url ? <img src={a.photo_url} alt="" loading="lazy" /> : <img src="/cats/lime.webp" alt="" className="aa-cat" />}
+          {a.acts[0] && <span className="aa-chip">{actLine(a.acts.slice(0, 1))}</span>}
+        </span>
+        <b className="mt-3 block truncate text-[17px] font-semibold">{name}</b>
         <span className="k-b block truncate text-[13px]">{[soundLine(a.genres, 2), a.city].filter(Boolean).join(", ")}</span>
-        <span className="mt-2 flex items-center justify-between gap-2 text-[13px]">
-          <span className="font-semibold">{r.rate ? `From ${inrShort(r.rate)}` : "Rate on request"}</span>
-          {dated && (bad ? <Led state="off">{bad.label}</Led> : good ? <Led>{good.label}</Led> : null)}
+        <span className="mt-2 flex items-center gap-2">
+          <span className="min-w-0 flex-1">
+            <b className="block text-[13px]">{r.rate ? `From ${inrShort(r.rate)}` : "Rate on request"}</b>
+            <span className="block truncate text-[12px]" style={{ color: bad ? "var(--k-t3)" : "var(--k-pc)" }}>{dated ? (bad?.label ?? good?.label ?? "Nothing listed that night") : "Ask for dates"}</span>
+          </span>
+          <input type="checkbox" name="a" value={a.slug} data-name={name} data-busy={dim ? "1" : "0"} disabled={dim} className="aa-add" aria-label={`Add ${name} to the ask`} />
         </span>
       </label>
-      <Link href={`/${a.slug}`} className="mt-1 inline-flex items-center gap-1 text-[13px]" style={{ color: "var(--k-t2)" }}>See page <Icon name="chev" size={12} /></Link>
+      <Link href={`/${a.slug}`} className="mt-1 inline-block text-[12px]" style={{ color: "var(--k-t2)" }}>See page</Link>
     </li>
   );
 }
