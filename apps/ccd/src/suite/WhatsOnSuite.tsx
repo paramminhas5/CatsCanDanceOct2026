@@ -4,7 +4,7 @@
  */
 import { useMemo } from "react";
 import { useRouter } from "next/router";
-import { Pill, SectionHead, Tag, Cat, ButtonLink } from "@ccd/ui";
+import { Pill, SectionHead, Cat, ButtonLink, posterSvg } from "@ccd/ui";
 import type { FindProps } from "@/pages/Discover";
 import Shell from "@/suite/Shell";
 import { dayLabel, city } from "@/suite/bits";
@@ -37,6 +37,7 @@ export default function WhatsOnSuite({ events, ours, updated }: FindProps) {
   };
   return (
     <Shell title="What's on: the nights worth going to | Cats Can Dance" description="Every night we would go to in India this week, by day. Tickets and guest lists with each night.">
+      <style dangerouslySetInnerHTML={{ __html: WO_CSS }} />
       <section className="k-wrap pt-10">
         <SectionHead title="What's on" sub={`${events.length} nights we would go to. Picked by people who go out.`} right={ours ? <ButtonLink variant="key" size="s" href={`/nights/${ours.slug}`}>Our next: {ours.title}</ButtonLink> : undefined} />
         <div className="mt-6 flex flex-wrap gap-2">{WHEN.map(([k, l]) => <Pill key={k} href={href({ when: k })} on={k === when}>{l}</Pill>)}</div>
@@ -51,21 +52,27 @@ export default function WhatsOnSuite({ events, ours, updated }: FindProps) {
         ) : (
           [...byDay.entries()].map(([d, rows]) => (
             <div key={d} className="mt-10 first:mt-0">
-              <h2 className="k-m !text-[var(--k-tx)]">{d === updated ? "Tonight" : dayLabel(d)}</h2>
-              <ul className="mt-2 list-none p-0">
-                {rows.map((e) => (
-                  <li key={e.id}>
-                    <a className="k-li" href={e.night_key ? `/nights/${e.night_key}` : e.ticket_url ?? e.url} target={e.night_key ? undefined : "_blank"} rel="noopener">
-                      <span className="min-w-0 flex-1">
+              <h2 className="wo-day">{d === updated ? "Tonight" : dayLabel(d)}<span>{rows.length} {rows.length === 1 ? "night" : "nights"}</span></h2>
+              <ul className="wo-grid">
+                {rows.map((e) => {
+                  const lineup = (e.lineup ?? []).filter(Boolean);
+                  const names = lineup.length ? lineup : e.artists.map((x) => x.name);
+                  const href = e.night_key ? `/nights/${e.night_key}` : e.ticket_url ?? e.url;
+                  return (
+                    <li key={e.id} className="wo-card">
+                      <a href={href} target={e.night_key ? undefined : "_blank"} rel="noopener">
+                        <span className="wo-poster">
+                          {e.image_url ? <img src={e.image_url} alt="" loading="lazy" /> : <span className="wo-made" dangerouslySetInnerHTML={{ __html: posterSvg({ title: e.title, lineup: names, venue: e.venue, city: city(e.city), date: e.event_date, time: e.event_time }) }} />}
+                          {(e.featured || e.presenter) && <span className="wo-tag">{e.presenter ? `By ${e.presenter}` : "Our pick"}</span>}
+                          <span className="wo-go">{e.night_key ? "Get in" : "Tickets"}</span>
+                        </span>
                         <b>{e.title}</b>
-                        <small>{[e.event_time?.slice(0, 5), e.venue, city(e.city), e.presenter ? `by ${e.presenter}` : null].filter(Boolean).join(" · ")}</small>
-                        {e.artists.length > 0 && <small style={{ color: "var(--k-tx)" }}>{e.artists.map((a) => a.name).join(", ")}</small>}
-                      </span>
-                      {e.featured && <Tag>Our pick</Tag>}
-                      <span className="text-sm font-semibold" style={{ color: "var(--k-pc)" }}>{e.night_key ? "Get in" : "Tickets"}</span>
-                    </a>
-                  </li>
-                ))}
+                        {names.length > 0 && <span className="wo-line">{names.slice(0, 4).join(", ")}</span>}
+                        <span className="wo-meta">{[e.event_time?.slice(0, 5), e.venue, city(e.city)].filter(Boolean).join(" · ")}</span>
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))
@@ -74,3 +81,23 @@ export default function WhatsOnSuite({ events, ours, updated }: FindProps) {
     </Shell>
   );
 }
+
+const WO_CSS = `
+.wo-day{display:flex;align-items:baseline;gap:12px;font-family:var(--font-bricolage),sans-serif;font-size:clamp(28px,3vw,40px);letter-spacing:-.03em;margin:0}
+.wo-day span{font-family:var(--font-mono),monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--k-t3)}
+.wo-grid{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 22px}
+@media (max-width:1100px){.wo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.wo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}}
+.wo-card a{display:block;color:inherit;text-decoration:none}
+.wo-poster{position:relative;display:block;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#16161a;box-shadow:0 24px 40px -24px #000,inset 0 0 0 1px rgba(255,255,255,.06);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.wo-card a:hover .wo-poster{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 34px 50px -24px #000,0 0 0 2px var(--k-pc)}
+.wo-poster img,.wo-made svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.wo-poster::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.14),transparent 30%);pointer-events:none}
+.wo-tag{position:absolute;left:10px;top:10px;height:26px;padding:0 10px;display:inline-flex;align-items:center;border-radius:13px;background:rgba(10,10,11,.6);backdrop-filter:blur(8px);font-size:12px;font-weight:700;color:#fff}
+.wo-go{position:absolute;right:10px;bottom:10px;height:34px;padding:0 14px;display:inline-flex;align-items:center;border-radius:17px;background:var(--k-pc);color:#fff;font-size:13px;font-weight:700;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s}
+.wo-card a:hover .wo-go,.wo-card a:focus-visible .wo-go{opacity:1;transform:none}
+@media (hover:none){.wo-go{opacity:1;transform:none}}
+.wo-card b{display:block;margin-top:12px;font-size:17px;font-weight:600;line-height:1.2}
+.wo-line{display:block;margin-top:4px;font-size:14px;color:var(--k-tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wo-meta{display:block;margin-top:2px;font-size:13px;color:var(--k-t2)}
+`;
