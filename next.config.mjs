@@ -1,6 +1,24 @@
-// CCD.SCHOOL lives in its own app (repo: paramminhas5/Ableton-Final-Next).
-// Switch this to https://learn.catscandance.com once that DNS record is live.
-const SCHOOL_URL = process.env.NEXT_PUBLIC_SCHOOL_URL || "https://ableton-final-next-ccd-school.vercel.app";
+import { readFileSync } from "node:fs";
+const CSP = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://checkout.razorpay.com https://va.vercel-scripts.com https://vercel.live",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  "img-src 'self' data: blob: https:",
+  "media-src 'self' blob: https:",
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.razorpay.com https://lumberjack.razorpay.com https://vitals.vercel-insights.com https://va.vercel-scripts.com",
+  "frame-src 'self' https://api.razorpay.com https://checkout.razorpay.com https://www.youtube.com https://www.youtube-nocookie.com https://bandcamp.com https://open.spotify.com https://w.soundcloud.com https://widget.deezer.com https://www.mixcloud.com",
+  "worker-src 'self' blob:",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+  "report-uri /api/csp-report",
+].join("; ");
+const IMAGE_HOSTS = JSON.parse(readFileSync(new URL("./src/lib/image-hosts.json", import.meta.url), "utf8")).hosts;
+// CCD.SCHOOL lives in its own app (repo: paramminhas5/Ableton-Final-Next), served at school.catscandance.com.
+// (The old default pointed at the retired July build on ableton-final-next-ccd-school.vercel.app.)
+const SCHOOL_URL = process.env.NEXT_PUBLIC_SCHOOL_URL || "https://school.catscandance.com";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -33,19 +51,8 @@ const nextConfig = {
     // Serve modern formats (avif/webp) for faster image loading
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 86400,
-    remotePatterns: [
-      { protocol: "https", hostname: "**.supabase.co" },
-      { protocol: "https", hostname: "cdn.shopify.com" },
-      { protocol: "https", hostname: "**.myshopify.com" },
-      { protocol: "https", hostname: "img.youtube.com" },
-      { protocol: "https", hostname: "catscandance.com" },
-      { protocol: "https", hostname: "res.cloudinary.com" },
-      // Behold.so CDN — Instagram feed images
-      { protocol: "https", hostname: "pictures.behold.so" },
-      { protocol: "https", hostname: "**.behold.so" },
-      // Catch-all for any other HTTPS image sources
-      { protocol: "https", hostname: "**" },
-    ],
+    // Real hosts only (src/lib/image-hosts.json). A wildcard for every host made the optimizer an open proxy.
+    remotePatterns: IMAGE_HOSTS.map((hostname) => ({ protocol: "https", hostname: hostname.startsWith("*.") ? `**${hostname.slice(1)}` : hostname })),
   },
   // Produce smaller output by enabling SWC minification (default in Next 14+)
   swcMinify: true,
@@ -99,6 +106,9 @@ const nextConfig = {
         { key: "X-Frame-Options", value: "SAMEORIGIN" },
         { key: "Permissions-Policy", value: "camera=(self), microphone=(), geolocation=(), payment=(self \"https://checkout.razorpay.com\"), interest-cohort=()" },
         { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
+        // Report-only for now: nothing is blocked, violations are logged by /api/csp-report (Vercel logs).
+        // Once the logs are clean for a couple of weeks, rename the key to Content-Security-Policy to enforce.
+        { key: "Content-Security-Policy-Report-Only", value: CSP },
       ],
     };
     if (process.env.NODE_ENV === "production") {

@@ -14,6 +14,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { canOptimize } from "@/lib/image-hosts";
 import { Link } from "@/lib/compat-router";
 import { parseEventDate } from "@/lib/parse-date";
 import { supabase } from "@/lib/supabase";
@@ -244,6 +245,7 @@ const Events = () => {
                     <div className="relative aspect-[3/4] md:aspect-auto md:min-h-[460px] bg-ink border-b-4 md:border-b-0 md:border-r-4 border-ink overflow-hidden">
                       <Image
                         src={poster}
+                        unoptimized={!canOptimize(poster)}
                         alt={`${nextEvent.title} poster`}
                         fill
                         priority
@@ -382,6 +384,7 @@ const Events = () => {
                           {src ? (
                             <Image
                               src={src}
+                              unoptimized={!canOptimize(src)}
                               alt={`${e.title} poster`}
                               fill
                               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

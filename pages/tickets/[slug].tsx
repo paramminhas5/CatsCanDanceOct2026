@@ -5,6 +5,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { canOptimize } from "@/lib/image-hosts";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -56,7 +57,7 @@ export default function Tickets() {
                 <div className="flex gap-5 items-end">
                   {poster && (
                     <div className="relative w-28 sm:w-36 aspect-[3/4] shrink-0 border-4 border-ink chunk-shadow overflow-hidden bg-ink hidden sm:block">
-                      <Image src={poster} alt="" fill sizes="144px" className="object-cover" />
+                      <Image src={poster} unoptimized={!canOptimize(poster)} alt="" fill sizes="144px" className="object-cover" />
                     </div>
                   )}
                   <div className="min-w-0">

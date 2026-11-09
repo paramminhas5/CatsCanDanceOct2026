@@ -53,12 +53,9 @@ const Footer = () => {
     if (!email || state === "busy" || state === "done") return;
     setState("busy");
     try {
-      const { error } = await supabase.from("early_access_signups").insert({
-        email: email.toLowerCase().trim(),
-        source: "footer",
-      });
-      // Duplicate is fine — user is already signed up
-      if (error && error.code !== "23505") throw error;
+      // Through signup(): throttled and idempotent, so a repeat is fine.
+      const { error } = await supabase.rpc("signup", { p_email: email.toLowerCase().trim(), p_source: "footer" });
+      if (error) throw error;
       setState("done");
     } catch {
       setState("error");

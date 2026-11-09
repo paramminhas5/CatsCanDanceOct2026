@@ -38,18 +38,10 @@ const EarlyAccess = () => {
     }
     setBusy(true);
     try {
-      const { error } = await supabase.from("early_access_signups").insert({
-        email: parsed.data,
-        source: "home",
-      });
-      // Duplicate email (unique constraint) is not an error for the user
-      if (error && error.code === "23505") {
-        toast("You're already on the list. See you soon. 🐾");
-      } else if (error) {
-        throw new Error(error.message);
-      } else {
-        toast.success("You're in! Welcome to the litter. Check your inbox.");
-      }
+      // Through signup(): throttled and idempotent, so signing up twice is not an error.
+      const { error } = await supabase.rpc("signup", { p_email: parsed.data, p_source: "home" });
+      if (error) throw new Error(error.message);
+      toast.success("You're in! Welcome to the litter. Check your inbox.");
       setEmail("");
       setBurst(false);
       requestAnimationFrame(() => setBurst(true));
