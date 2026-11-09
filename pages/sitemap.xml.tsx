@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import { CITY_SCENES, GLOBAL_SCENES, GENRE_PAGES } from "@/content/scenes";
+import { getAllPosts } from "@/content/posts";
 
 const BASE = "https://catscandance.com";
 
@@ -62,6 +63,12 @@ function buildSitemap(artistSlugs: string[], promoterSlugs: string[] = [], night
     url(`/artists/${slug}`, "0.8", "monthly", today)
   );
 
+  // Journal posts (src/content/posts.ts). Dates read like "JAN 14, 2026".
+  const postUrls = getAllPosts().map((p) => {
+    const d = new Date(p.date);
+    return url(`/journal/${p.slug}`, "0.7", "monthly", isNaN(d.getTime()) ? undefined : d.toISOString().slice(0, 10));
+  });
+
   const promoterUrls = promoterSlugs.map((slug) => url(`/promoters/${slug}`, "0.7", "weekly", today));
   const nightUrls = nights.map((n) => url(`/nights/${n.slug}`, "0.8", "weekly", (n.updated_at ?? today).slice(0, 10)));
 
@@ -71,6 +78,7 @@ function buildSitemap(artistSlugs: string[], promoterSlugs: string[] = [], night
     ...genreUrls,
     ...sceneUrls,
     ...artistUrls,
+    ...postUrls,
     ...promoterUrls,
     ...nightUrls,
   ];
