@@ -11,7 +11,9 @@ import {
 import { coverUrl } from "@/lib/artist-v2";
 import { getArtistPage, inrShort, dayParts } from "@/lib/artist-page";
 import { isSlug } from "@/lib/db";
-import { RESERVED, ccd, siteUrl } from "@/lib/site";
+import { RESERVED, siteUrl } from "@/lib/site";
+import FollowButton from "@/components/FollowButton";
+import ArtistTabs from "@/components/ArtistTabs";
 
 export const revalidate = 300;
 
@@ -45,9 +47,7 @@ export default async function ArtistPage({ params }: Props) {
   if (!p) notFound();
   const { a, counts, fee, latest } = p;
   const kinds = [p.kind ? cap(p.kind) : null, a.genres[0] ?? null, a.city?.split(",")[0] ?? null].filter(Boolean) as string[];
-  // Booking and follow run on the live site until Artists has its own (phase 3 of build-plan-final40).
-  const bookHref = `${ccd.home()}/artists/${slug}#book`;
-  const followHref = `${ccd.home()}/artists/${slug}#follow`;
+  const bookHref = `/book?a=${slug}`;
   const listenHref = latest?.links[0]?.url ?? a.spotify ?? a.soundcloud ?? null;
   const ig = a.links.find((l) => /instagram/i.test(l.url));
   const stamps: StampData[] = p.stamps.slice(0, 9).map((s, i) => ({ city: s.city, count: s.count, colour: INKS[i % INKS.length], shape: SHAPES[i % SHAPES.length] }));
@@ -88,7 +88,7 @@ export default async function ArtistPage({ params }: Props) {
               ]} />
             </div>
             <div className="mt-7 flex flex-wrap items-center gap-3">
-              <ButtonLink variant="key" size="l" href={followHref}><Icon name="plus" stroke={2.4} />Follow</ButtonLink>
+              <FollowButton slug={slug} name={p.name} />
               {fee && <ButtonLink size="l" href={bookHref}><Icon name="inbox" size={17} />Book from {inrShort(fee.min)}</ButtonLink>}
               <span className="flex-1" />
               <span className="hidden md:inline"><Cat name="lime" height={64} /></span>
@@ -96,6 +96,8 @@ export default async function ArtistPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      <div className="k-wrap pt-12"><ArtistTabs slug={slug} current="overview" music={counts.records} shows={counts.shows} /></div>
 
       {/* ── Latest release on the turntable ── */}
       {latest && (
@@ -145,6 +147,7 @@ export default async function ArtistPage({ params }: Props) {
               </li>
             ))}
           </ul>
+          {counts.records > music.length && <div className="mt-10"><ButtonLink href={`/${slug}/music`}>All {counts.records} releases <Icon name="chev" size={14} stroke={2.2} /></ButtonLink></div>}
         </section>
       )}
       {p.labels.length > 2 && (
@@ -179,7 +182,7 @@ export default async function ArtistPage({ params }: Props) {
                 <div className="k-surface mt-7 flex items-center gap-4 rounded-[20px] px-5 py-4">
                   <Led state="off"><span className="k-sr">No date</span></Led>
                   <span className="flex-1"><b className="block text-[17px] font-semibold">No {p.nextNear.city} date yet</b><span className="k-b text-sm">Their next show near you lands here.</span></span>
-                  <ButtonLink variant="key" size="s" href={followHref}><Icon name="bell" size={14} stroke={2.2} />Tell me</ButtonLink>
+                  <FollowButton slug={slug} name={p.name} size="s" />
                 </div>
               ) : null}
               {p.past.length > 0 && (
@@ -276,7 +279,7 @@ export default async function ArtistPage({ params }: Props) {
       {/* Phone: the one action that matters stays in reach. */}
       {fee && (
         <div className="k-bbar md:!hidden">
-          <ButtonLink icon size="m" href={followHref} aria-label={`Follow ${p.name}`}><Icon name="plus" size={18} stroke={2.2} /></ButtonLink>
+          <FollowButton slug={slug} name={p.name} size="m" icon />
           <ButtonLink variant="key" href={bookHref} className="flex-1">Book from {inrShort(fee.min)}</ButtonLink>
         </div>
       )}

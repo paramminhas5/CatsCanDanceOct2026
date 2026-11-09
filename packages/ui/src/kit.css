@@ -66,6 +66,17 @@
 .k-tag { display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border-radius: 12px; font-size: 12px; font-weight: 600; background: var(--k-pc-soft); color: color-mix(in srgb, var(--k-pc) 80%, #fff); }
 .k-ex { font-family: var(--k-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--k-example); }
 
+/* ---------- fields ---------- */
+.k-field { width: 100%; min-height: 52px; box-sizing: border-box; padding: 0 18px; border-radius: 26px; border: 0; background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1px var(--k-hair2); color: var(--k-tx); font: 500 15px/1.2 var(--k-ui); color-scheme: dark; }
+textarea.k-field { padding: 14px 18px; border-radius: 18px; min-height: 120px; resize: vertical; line-height: 1.5; }
+.k-field::placeholder { color: var(--k-t3); }
+.k-field:focus { outline: none; box-shadow: inset 0 0 0 2px var(--k-pc); }
+.k-field[aria-invalid="true"] { box-shadow: inset 0 0 0 2px #ff5a3d; }
+.k-label { display: grid; gap: 8px; font-size: 14px; font-weight: 600; }
+.k-label small { font-weight: 400; color: var(--k-t3); font-size: 13px; }
+.k-note { border-radius: 18px; padding: 14px 18px; font-size: 14px; background: var(--k-pc-soft); color: var(--k-tx); }
+.k-note--warn { background: rgba(255, 176, 32, 0.12); }
+
 /* ---------- tabs and bars ---------- */
 .k-tabs { display: flex; gap: 22px; border-bottom: 1px solid var(--k-hair); overflow-x: auto; scrollbar-width: none; }
 .k-tabs a { padding: 12px 0; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 5px; font-size: 15px; font-weight: 600; color: var(--k-t3); text-decoration: none; margin-bottom: -1px; white-space: nowrap; }
