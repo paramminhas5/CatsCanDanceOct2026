@@ -54,7 +54,8 @@ const css = `
 .tour .warn{border:2px solid #dc2626;padding:10px 12px;background:#fff5f5}
 `;
 
-export default async function OpsTour({ searchParams }: { searchParams: { status?: string } }) {
+export default async function OpsTour(props: { searchParams: Promise<{ status?: string }> }) {
+  const searchParams = await props.searchParams;
   const status = STATUSES.includes((searchParams?.status ?? "pending") as any) ? (searchParams?.status ?? "pending") : "pending";
   let posts: Post[] = [];
   let missing = false;

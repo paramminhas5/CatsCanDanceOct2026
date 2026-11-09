@@ -301,7 +301,7 @@ export default function TicketBox({ slug, title, when, venue, past, rsvpOpen, on
 }
 
 /** Sold out, or not on sale yet: a waiting list that gets first dibs. */
-function WaitBox({ slug, shell, soon }: { slug: string; shell: (b: React.ReactNode, f?: React.ReactNode) => JSX.Element; soon?: boolean }) {
+function WaitBox({ slug, shell, soon }: { slug: string; shell: (b: React.ReactNode, f?: React.ReactNode) => React.JSX.Element; soon?: boolean }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [state, setState] = useState<{ ok?: boolean; msg?: string; busy?: boolean }>({});

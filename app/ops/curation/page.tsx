@@ -67,7 +67,8 @@ const css = `
 .cur .edit .r{display:flex;gap:4px}
 `;
 
-export default async function Curation({ searchParams }: { searchParams: Search }) {
+export default async function Curation(props: { searchParams: Promise<Search> }) {
+  const searchParams = await props.searchParams;
   const q = searchParams ?? {};
   const status = q.status ?? "";
   const commercial = q.commercial ?? "";

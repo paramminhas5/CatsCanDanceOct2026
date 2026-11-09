@@ -29,7 +29,7 @@ function useCountdown(ms: number | null) {
 }
 
 /** Drift a scroller slowly to the right, loop back at the end, stop while the visitor is using it. */
-function useDrift(ref: React.RefObject<HTMLDivElement>, on: boolean) {
+function useDrift(ref: React.RefObject<HTMLDivElement | null>, on: boolean) {
   useEffect(() => {
     const el = ref.current;
     if (!el || !on) return;

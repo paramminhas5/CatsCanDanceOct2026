@@ -1,6 +1,6 @@
 # Cats Can Dance (catscandance.com)
 
-Lean Next.js 14 site. The public site is Pages Router (ported from the live catscandance.com design); /ops is App Router behind basic auth middleware. Data lives in Supabase project `jybloszaucgqlbkzquqw` (CATSCANDANCE.COM). Deployed on Vercel from `main`.
+Lean Next.js 15 site (React 19). The public site is Pages Router (ported from the live catscandance.com design); /ops is App Router behind basic auth middleware. Data lives in Supabase project `jybloszaucgqlbkzquqw` (CATSCANDANCE.COM). Deployed on Vercel from `main`.
 
 ## Rules
 - Keep it lean but match the live design: Tailwind, framer-motion, lenis, Radix pieces and the Supabase JS client are allowed because the live site uses them. No ORM, no extra UI kits. New data access goes through `src/lib/ccd-db.ts` (PostgREST fetch) or RPCs.

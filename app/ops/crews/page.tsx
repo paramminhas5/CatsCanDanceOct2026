@@ -80,7 +80,8 @@ const css = `
 .crw .grid{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
 `;
 
-export default async function CrewsOps({ searchParams }: { searchParams: { n?: string } }) {
+export default async function CrewsOps(props: { searchParams: Promise<{ n?: string }> }) {
+  const searchParams = await props.searchParams;
   const key = searchParams.n ?? "";
   let missing = false;
   const [nights, partners, entry, times] = await Promise.all([
