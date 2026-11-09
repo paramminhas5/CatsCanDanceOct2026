@@ -303,3 +303,28 @@
 .art-bar i { flex: 1; border-radius: 2px; background: rgba(255,255,255,.1); }
 .art-bar i.on { background: var(--pc); animation: host-pop .4s cubic-bezier(.2,1.6,.4,1) both; }
 .art-stamp { position: absolute; right: 16px; top: 16px; padding: 4px 10px; border: 2px solid #1a7f37; border-radius: 6px; color: #1a7f37; font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transform: rotate(6deg); animation: ax-stamp .6s cubic-bezier(.2,1.4,.4,1) both; }
+
+/* ---------- Artist page hero: the wow first ---------- */
+.ap-hero { position: relative; overflow: hidden; padding: 28px 0 56px; }
+.ap-bg { position: absolute; inset: -40px; background-size: cover; background-position: center; filter: blur(60px) saturate(1.5); opacity: .32; transform: scale(1.1); }
+.ap-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,11,.2), #0a0a0b 92%); pointer-events: none; }
+.ap-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 480px) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+.ap-portrait { position: relative; aspect-ratio: 4/5; border-radius: 28px; overflow: hidden; background: #16161a; box-shadow: 0 40px 80px -30px #000; }
+.ap-portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ap-open { position: absolute; left: 18px; bottom: 18px; border-radius: 999px; background: rgba(0,0,0,.6); padding: 10px 16px; backdrop-filter: blur(10px); }
+.ap-name { font-size: clamp(56px, 8.4vw, 132px); line-height: .86; margin-top: 18px; }
+.ap-facts { margin: 16px 0 0; font-family: var(--font-mono), monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--k-t3, rgba(242,240,235,.45)); white-space: pre-wrap; }
+.ap-facts a { color: inherit; }
+.ap-bio { margin: 16px 0 0; max-width: 560px; font-size: clamp(16px, 1.3vw, 19px); }
+.ap-now { margin-top: 24px; display: flex; align-items: center; gap: 16px; max-width: 560px; padding: 12px 14px 12px 12px; border-radius: 24px; text-decoration: none; color: inherit; background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); transition: background .3s, transform .3s; }
+.ap-now:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+.ap-now .k-m { display: block; } .ap-now b { display: block; font-size: 19px; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .ap-now span span:last-child { display: block; font-size: 13px; color: var(--k-t2, rgba(242,240,235,.64)); }
+.ap-rec { position: relative; width: 72px; height: 72px; flex: none; }
+.ap-rec img { position: relative; z-index: 2; width: 72px; height: 72px; border-radius: 10px; object-fit: cover; box-shadow: 0 10px 20px -8px #000; }
+.ap-rec i { position: absolute; z-index: 1; top: 4px; left: 24px; width: 64px; height: 64px; border-radius: 50%; background: repeating-radial-gradient(circle, #111 0 2px, #1d1d1d 2px 3px); box-shadow: inset 0 0 0 22px #0c0c0c; animation: spin 2.4s linear infinite; }
+.ap-now:hover .ap-rec i { left: 34px; transition: left .4s; }
+.ap-play { width: 56px; height: 56px; border-radius: 28px; flex: none; display: grid; place-items: center; background: var(--k-pc, #B6EF36); color: #0a0a0b; box-shadow: 0 12px 24px -8px rgba(182,239,54,.5); }
+.ap-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 14px; max-width: 560px; }
+.ap-chip { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border-radius: 18px; text-decoration: none; color: inherit; background: rgba(255,255,255,.04); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); min-width: 0; }
+.ap-chip b { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .ap-chip span:last-child { font-size: 13px; color: var(--k-t2, rgba(242,240,235,.64)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 860px) { .ap-grid { grid-template-columns: 1fr; } .ap-portrait { aspect-ratio: 1; } }

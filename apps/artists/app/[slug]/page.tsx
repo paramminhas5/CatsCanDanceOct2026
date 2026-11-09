@@ -53,47 +53,54 @@ export default async function ArtistPage({ params }: Props) {
   const listenHref = latest?.links[0]?.url ?? a.spotify ?? a.soundcloud ?? null;
   const ig = a.links.find((l) => /instagram/i.test(l.url));
   const stamps: StampData[] = p.stamps.slice(0, 9).map((s, i) => ({ city: s.city, count: s.count, colour: INKS[i % INKS.length], shape: SHAPES[i % SHAPES.length] }));
+  const top = a.popular[0];
+  const topTrack = top?.t ?? latest?.track ?? null;
+  const topCover = top ? coverUrl(top.albumId, "medium") : latest ? coverUrl(latest.albumId, "medium") : null;
+  const topSub = top ? [top.album, top.y ? Math.floor(top.y) : null].filter(Boolean).join(" · ") : latest ? latest.t : "";
+  const up = a.upcoming[0];
+  const next = up ? { day: dayParts(up.event_date).day, title: up.title, where: [up.venue, up.city].filter(Boolean).join(", "), href: up.ticket_url ?? up.url ?? "#shows", ext: !!(up.ticket_url ?? up.url) } : null;
   const billNames = new Set(a.playedWith.map((c) => c.name.toLowerCase()));
   const similar = a.alsoLike.filter((x) => !billNames.has(x.n.toLowerCase()));
 
   return (
     <main className="k-root">
-      {/* ── Hero ── */}
-      <section className="k-wrap pt-6 md:pt-10">
-        <div className="grid items-end gap-8 md:grid-cols-[minmax(0,560px)_1fr] md:gap-16">
-          <div className="k-rvs relative aspect-[4/5] overflow-hidden rounded-[28px] bg-[#16161a] md:aspect-auto md:h-[640px]">
+      {/* ── Hero: the wow first. Play it, see the next show, follow or book (plan ccd/v2-plan.md 5.3). ── */}
+      <section className="ap-hero">
+        {a.photo && <div className="ap-bg" style={{ backgroundImage: `url(${JSON.stringify(a.photo).slice(1, -1)})` }} aria-hidden="true" />}
+        <div className="k-wrap ap-grid">
+          <div className="ap-portrait k-rvs">
             {a.photo ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={a.photo} alt={`${p.name}`} className="absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
-            ) : (
-              <div className="absolute inset-0 grid place-items-center"><Cat name="lime" height={180} /></div>
-            )}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80" />
-            {latest && isRecent(latest.y) && <Sticker style={{ right: 22, top: 22 }}>New<br />{latest.type === "ep" ? "EP" : typeName(latest.type).toLowerCase()}</Sticker>}
-            <div className="absolute inset-x-5 bottom-5 flex items-center gap-3">
-              {a.bookable && <span className="rounded-full bg-black/60 px-4 py-2.5 backdrop-blur"><Led>Open to bookings</Led></span>}
-              <span className="flex-1" />
-              {ig && <a href={ig.url} className="k-m !text-[rgba(242,240,235,.75)]" rel="noopener" target="_blank">{ig.label}</a>}
-            </div>
+              <img src={a.photo} alt={p.name} fetchPriority="high" />
+            ) : <div className="grid h-full place-items-center"><Cat name="lime" height={180} /></div>}
+            {latest && isRecent(latest.y) && <Sticker style={{ right: 18, top: 18 }}>New<br />{latest.type === "ep" ? "EP" : typeName(latest.type).toLowerCase()}</Sticker>}
+            {a.bookable && <span className="ap-open"><Led>Open to bookings</Led></span>}
           </div>
-          <div className="k-rv pb-2">
+          <div className="ap-copy">
             {kinds.length > 0 && <div className="flex flex-wrap gap-2">{kinds.map((k) => <Pill key={k}>{k}</Pill>)}</div>}
-            <h1 className="k-d mt-6 text-[64px] md:text-[clamp(88px,9vw,132px)]" style={{ lineHeight: 0.86 }}>{p.name}</h1>
-            {a.bio && <p className="k-b mt-6 max-w-[560px] text-[17px] md:text-[19px]">{firstSentence(a.bio)}</p>}
-            <div className="mt-7 max-w-[620px]">
-              <Readout label="At a glance" cells={[
-                { value: counts.records, label: "Records" },
-                { value: counts.shows, label: "Shows" },
-                { value: counts.cities, label: "Cities" },
-                { value: counts.labels, label: "Labels" },
-              ]} />
+            <h1 className="k-d ap-name">{p.name}</h1>
+            <p className="ap-facts">{[counts.records && `${counts.records} records`, counts.shows && `${counts.shows} shows`, counts.cities && `${counts.cities} cities`, counts.labels && `${counts.labels} labels`].filter(Boolean).join("  ·  ")}{ig ? <>{"  ·  "}<a href={ig.url} rel="noopener" target="_blank">{ig.label}</a></> : null}</p>
+            {a.bio && <p className="k-b ap-bio">{firstSentence(a.bio)}</p>}
+            {playable && (
+              <a href="#play" className="ap-now" aria-label={`Play ${topTrack ?? "their best known track"}`}>
+                <span className="ap-rec" aria-hidden="true">{topCover && <img src={topCover} alt="" />}<i /></span>
+                <span className="min-w-0 flex-1"><span className="k-m">Play a preview</span><b>{topTrack ?? "Their best known track"}</b><span>{topSub}</span></span>
+                <span className="ap-play" aria-hidden="true"><Icon name="play" size={20} /></span>
+              </a>
+            )}
+            <div className="ap-row">
+              {next ? (
+                <a className="ap-chip" href={next.href} target={next.ext ? "_blank" : undefined} rel="noopener"><span className="k-m">Next show · {next.day}</span><b>{next.title}</b><span>{next.where}</span></a>
+              ) : (
+                <span className="ap-chip"><span className="k-m">Next show</span><b>No date near you yet</b><span>Follow to hear first</span></span>
+              )}
+              {latest && (
+                <a className="ap-chip" href={latest.trackId ? `#open=${encodeURIComponent(latest.id)}` : latest.links[0]?.url ?? "#music"}><span className="k-m">Latest · {latest.date}</span><b>{latest.t}</b><span>{[typeName(latest.type), latest.label].filter(Boolean).join(" on ")}</span></a>
+              )}
             </div>
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <FollowButton slug={slug} name={p.name} />
-              {(fee || a.bookable) && <ButtonLink size="l" href="#ask"><Icon name="inbox" size={17} />{fee ? `Book from ${inrShort(fee.min)}` : "Book"}</ButtonLink>}
-              {playable && <ButtonLink size="l" href="#play"><Icon name="play" size={15} />Play</ButtonLink>}
-              <span className="flex-1" />
-              <span className="hidden md:inline"><Cat name="lime" height={64} /></span>
+              {(fee || a.bookable) && <ButtonLink size="l" href="#ask"><Icon name="inbox" size={17} />Book {p.name.split(" ")[0]}</ButtonLink>}
             </div>
           </div>
         </div>
