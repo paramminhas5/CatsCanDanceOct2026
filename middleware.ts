@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { safeEqual } from "@/lib/safe-equal";
 
 // /ops is behind basic auth. Any username, password = OPS_PASSWORD.
 export function middleware(req: NextRequest) {
@@ -7,8 +8,14 @@ export function middleware(req: NextRequest) {
   const auth = req.headers.get("authorization") ?? "";
   const [scheme, encoded] = auth.split(" ");
   if (scheme === "Basic" && encoded) {
-    const decoded = atob(encoded);
-    if (decoded.slice(decoded.indexOf(":") + 1) === pass) return NextResponse.next();
+    let decoded = "";
+    try { decoded = atob(encoded); } catch { /* malformed header */ }
+    if (safeEqual(decoded.slice(decoded.indexOf(":") + 1), pass)) {
+      const res = NextResponse.next();
+      res.headers.set("Cache-Control", "no-store");
+      res.headers.set("X-Robots-Tag", "noindex, nofollow");
+      return res;
+    }
   }
   return new NextResponse("Auth required", {
     status: 401,

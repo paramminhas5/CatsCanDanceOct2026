@@ -19,7 +19,8 @@
 
 const SB  = process.env.NEXT_PUBLIC_SUPABASE_URL  ?? "";
 // Public site: reads use the anon key under RLS. The service key is never configured in this app.
-const SK  = process.env.SUPABASE_SERVICE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+// Anon key only: never a service key in the app (see src/lib/api-helpers.ts).
+const SK  = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 
 if (!SB && process.env.NODE_ENV !== "test") {
   console.warn("[supabase] NEXT_PUBLIC_SUPABASE_URL is not set");
@@ -50,7 +51,7 @@ async function sbFetch<T = any>(
   body?:          unknown,
   preferOverride?: string,
 ): Promise<SbResult<T>> {
-  if (!SK) return { ok: false, status: 503, data: null, error: "SUPABASE_SERVICE_KEY not set" };
+  if (!SK) return { ok: false, status: 503, data: null, error: "NEXT_PUBLIC_SUPABASE_ANON_KEY not set" };
 
   try {
     const r = await fetch(`${SB}/rest/v1/${table}${qs}`, {

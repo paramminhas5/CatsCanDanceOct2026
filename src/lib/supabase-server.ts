@@ -1,21 +1,9 @@
 /**
- * Supabase server client — uses the service role key.
- * ONLY import in:
- * - pages/api/* (API routes)
- * - getStaticProps / getServerSideProps
- * 
- * This bypasses RLS — use for admin operations and SSG data fetching.
+ * Kept for old imports. The app never uses the service role key (CLAUDE.md: "Never put the service key
+ * in the app"), so this always returns null and callers fall back to the anon client with RLS.
  */
-import { createClient } from "@supabase/supabase-js";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY ?? "";
-
-export function getSupabaseAdmin() {
-  if (!supabaseUrl || !supabaseServiceKey) {
-    return null;
-  }
-  return createClient(supabaseUrl, supabaseServiceKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
+export function getSupabaseAdmin(): SupabaseClient | null {
+  return null;
 }

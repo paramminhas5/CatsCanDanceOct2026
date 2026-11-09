@@ -6,12 +6,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import webpush from "web-push";
 import { rpc } from "@/lib/api-rpc";
+import { safeEqual } from "@/lib/safe-equal";
 
 export const config = { maxDuration: 60 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const secret = process.env.CRON_SECRET;
-  const allowed = secret ? req.headers.authorization === `Bearer ${secret}` : String(req.headers["user-agent"] ?? "").startsWith("vercel-cron");
+  const allowed = !!secret && safeEqual(req.headers.authorization ?? "", `Bearer ${secret}`);
   if (!allowed) return res.status(401).json({ error: "unauthorized" });
   const token = process.env.OPS_TOKEN, pub = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY, priv = process.env.VAPID_PRIVATE_KEY;
   if (!token || !pub || !priv) return res.status(200).json({ ok: true, skipped: "push keys not set" });
