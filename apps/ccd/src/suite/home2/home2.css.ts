@@ -157,7 +157,7 @@ export const CSS = `
 /* work */
 .h2-work{padding-bottom:clamp(72px,10vw,140px)!important}
 .h2-work h2{font-size:clamp(40px,5.4vw,72px)}
-.h2-doors{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.h2-doors{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}
 .h2-doors a{display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:20px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--hair);min-height:150px;transition:background .3s}
 .h2-doors a:hover{background:rgba(255,255,255,.08)}
 .h2-doors b{font-family:var(--font-bricolage),sans-serif;font-size:26px;letter-spacing:-.03em}

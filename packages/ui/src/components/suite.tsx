@@ -37,6 +37,10 @@ export function SuiteFooter({ current, links, email = "hello@catscandance.com" }
           <span className="k-d k-footer__brand">Cats Can Dance</span>
           <p className="k-b">One sign-in for all four.</p>
           <a href={`mailto:${email}`} className="k-b">{email}</a>
+          <div className="k-footer__head" style={{ marginTop: 22 }}>Work with us</div>
+          <ul>
+            {WORK_WITH_US.map(([label, path]) => <li key={label}><a href={`${current === "ccd" ? "" : productUrl("ccd")}${path}`}>{label}</a></li>)}
+          </ul>
         </div>
         {PRODUCT_ORDER.map((id) => {
           const p = PRODUCTS[id];
@@ -55,6 +59,9 @@ export function SuiteFooter({ current, links, email = "hello@catscandance.com" }
     </footer>
   );
 }
+
+/** The pages for people who work with us, on catscandance.com. */
+export const WORK_WITH_US: [string, string][] = [["For artists", "/for-artists"], ["For venues", "/for-venues"], ["For promoters", "/for-promoters"], ["For brands", "/for-brands"], ["For gear owners", "/for-gear"]];
 
 /** Footer links per product. Only routes that exist. */
 export const SUITE_LINKS: Record<ProductId, [string, string][]> = {

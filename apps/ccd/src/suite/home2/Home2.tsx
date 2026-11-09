@@ -203,8 +203,9 @@ export default function Home2(d: HomeData) {
           <div className="h2-doors">
             <a href="/for-artists"><b>For artists</b><span>Your page is already here. Claim it, take bookings, post your tour.</span></a>
             <a href="/for-venues"><b>For venues</b><span>Run the door on Host and list your nights on Nights.</span></a>
-            <a href={productLink("gate", "/promote")}><b>For promoters</b><span>Your nights under your name, with tickets, crews and the door.</span></a>
-            <a href="mailto:hello@catscandance.com?subject=Brand%20partnership"><b>For brands</b><span>Partner on an Episode and the content around it.</span></a>
+            <a href="/for-promoters"><b>For promoters</b><span>Your nights under your name, with tickets, crews and the door.</span></a>
+            <a href="/for-brands"><b>For brands</b><span>Partner on an Episode and the content around it.</span></a>
+            <a href="/for-gear"><b>For gear owners</b><span>Your decks, sound and lights at more parties.</span></a>
           </div>
         </section>
       </div>

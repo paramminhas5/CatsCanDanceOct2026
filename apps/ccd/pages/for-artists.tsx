@@ -1,8 +1,6 @@
-import { getStory } from "@/lib/home";
+import ForPage from "@/suite/for/ForPage";
+import { FOR_ARTISTS } from "@/suite/for/configs";
 
-export { default } from "@/pages/ForArtists";
-
-export async function getStaticProps() {
-  const story = await getStory().catch(() => null);
-  return { props: { story }, revalidate: 600 };
+export default function ForArtists() {
+  return <ForPage c={FOR_ARTISTS()} />;
 }
