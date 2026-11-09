@@ -3,15 +3,17 @@ import { supabase } from "@/lib/supabase";
 import ccdLogo from "@/assets/ccd-logo.png";
 import { imgUrl } from "@/lib/img";
 import { useState } from "react";
+import { LINKS, PRODUCTS, productLink, productUrl } from "@ccd/brand";
 
-const groups = [
+// Links into the other products are absolute (@ccd/brand), so they work when this app runs alone.
+const groups: { title: string; links: { to: string; label: string; external?: boolean }[] }[] = [
   {
     title: "NIGHTS",
     links: [
       { to: "/nights", label: "Our Episodes" },
       { to: "/whats-on", label: "What's on" },
-      { to: "/promote", label: "Run your night on CCD" },
-      { to: "/gate", label: "Gate: the door app" },
+      { to: productLink("gate", LINKS.gate.promote), label: "Run your night with Gate", external: true },
+      { to: productLink("gate", LINKS.gate.home), label: "Gate: the door app", external: true },
       { to: "/me", label: "Your account" },
       { to: "/tickets", label: "Your tickets" },
     ],
@@ -19,8 +21,8 @@ const groups = [
   {
     title: "ARTISTS",
     links: [
-      { to: "/artists", label: "The roster" },
-      { to: "/tour", label: "On tour" },
+      { to: productLink("artists", LINKS.artists.index), label: "The roster", external: true },
+      { to: productLink("artists", LINKS.artists.tour), label: "On tour", external: true },
       { to: "/for-artists", label: "Claim your page" },
       { to: "/for-venues", label: "For venues" },
     ],
@@ -28,7 +30,7 @@ const groups = [
   {
     title: "SCHOOL",
     links: [
-      { to: "/school", label: "CCD.SCHOOL" },
+      { to: productUrl("school"), label: PRODUCTS.school.name, external: true },
     ],
   },
   {
@@ -105,7 +107,9 @@ const Footer = () => {
               <ul className="space-y-2">
                 {g.links.map((l) => (
                   <li key={l.to}>
-                    <Link to={l.to} className="inline-block py-1.5 text-sm text-cream/80 hover:text-acid-yellow transition-colors">{l.label}</Link>
+                    {l.external
+                      ? <a href={l.to} className="inline-block py-1.5 text-sm text-cream/80 hover:text-acid-yellow transition-colors">{l.label}</a>
+                      : <Link to={l.to} className="inline-block py-1.5 text-sm text-cream/80 hover:text-acid-yellow transition-colors">{l.label}</Link>}
                   </li>
                 ))}
               </ul>

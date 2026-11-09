@@ -20,7 +20,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import Marquee from "@/components/Marquee";
 import RsvpDialog from "@/components/RsvpDialog";
 import Going from "@/components/going/Going";
-import OutsideTicket from "@/components/door/OutsideTicket";
+import OutsideTicket from "@/components/tickets/OutsideTicket";
 import { type Crowd, loadCrowd } from "@/lib/plans";
 import EventLineupCard from "@/components/EventLineupCard";
 import EventPosterPlaceholder from "@/components/EventPosterPlaceholder";

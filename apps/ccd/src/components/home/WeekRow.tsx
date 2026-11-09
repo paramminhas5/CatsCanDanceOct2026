@@ -7,6 +7,7 @@ import Link from "next/link";
 import catLeft from "@/assets/cat-left.svg";
 import { imgUrl } from "@/lib/img";
 import type { HomeNight } from "@/lib/home";
+import { LINKS, productLink } from "@ccd/brand";
 import { dayStamp, kindLabel, tidyTitle } from "@/lib/find";
 import { displayTime } from "@/lib/nights";
 import Going from "@/components/going/Going";
@@ -32,7 +33,7 @@ function Card({ e, c, today, onChange }: { e: HomeNight; c?: Crowd; today: strin
         {e.artists.length > 0 && (
           <p className="text-sm truncate">
             {e.artists.slice(0, 2).map((a, i) => (
-              <span key={a.slug}>{i > 0 ? ", " : ""}<Link href={`/artists/${a.slug}`} className="underline decoration-2 underline-offset-2 decoration-acid-yellow">{a.name}</Link></span>
+              <span key={a.slug}>{i > 0 ? ", " : ""}<a href={productLink("artists", LINKS.artists.artist(a.slug))} className="underline decoration-2 underline-offset-2 decoration-acid-yellow">{a.name}</a></span>
             ))}
           </p>
         )}
