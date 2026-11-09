@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { createHmac, timingSafeEqual } from "crypto";
 import { rpc } from "@/lib/api-rpc";
 import { emailTicketOrder } from "@/lib/mailer";
+import { sendCapi } from "@/lib/capi";
 
 // Confirms a payment by checking Razorpay's signature, then issues tickets or marks the shop order paid.
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -16,5 +17,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const r = await rpc(kind === "ticket" ? "ops_mark_order_paid" : "ops_shop_mark_paid", { p_token: token, p_rzp_order: razorpay_order_id, p_payment: razorpay_payment_id });
   if (!r.ok || !r.data?.ok) return res.status(500).json({ error: "Payment taken but the order could not be updated. Contact us with your payment id." });
   if (kind === "ticket") await emailTicketOrder(String(r.data.order_id)).catch(() => {});
+  // Server copy of the browser Purchase event (same event id, so Meta counts it once). Amount is for reporting only.
+  const paise = Number(req.body?.amount);
+  if (kind === "ticket") await sendCapi(req, { name: "Purchase", eventId: `ccd_purchase_${r.data.order_id}`, value: Number.isFinite(paise) && paise > 0 ? paise / 100 : undefined, currency: "INR" });
   return res.status(200).json({ ok: true, order_id: r.data.order_id });
 }

@@ -3,6 +3,9 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { supabase } from "@/lib/supabase";
+import HeardFrom, { heardOk } from "@/components/HeardFrom";
+import { logLeadSignal } from "@/lib/attribution";
+import { convert } from "@/lib/pixel";
 
 export type PartnerKind = "venues" | "artists" | "investors" | "press" | "team" | "submit-event" | "general" | "sponsors";
 
@@ -107,6 +110,8 @@ const PartnerContactDialog = ({ kind, trigger, defaultReason, defaultMessage, op
     reason: defaultReason ?? cfg.reasons[0],
     message: defaultMessage ?? "",
   });
+  const [heard, setHeard] = useState("");
+  const [heardTouched, setHeardTouched] = useState(false);
   const [website, setWebsite] = useState("");
   const [busy, setBusy] = useState(false);
   const [sent, setSent] = useState(false);
@@ -125,6 +130,11 @@ const PartnerContactDialog = ({ kind, trigger, defaultReason, defaultMessage, op
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (busy) return;
+    if (!heardOk(heard)) {
+      setHeardTouched(true);
+      toast.error("Tell us how you heard about us");
+      return;
+    }
     const parsed = Schema.safeParse(form);
     if (!parsed.success) {
       toast.error("Please fill all required fields with valid info.");
@@ -150,6 +160,10 @@ const PartnerContactDialog = ({ kind, trigger, defaultReason, defaultMessage, op
         p_message: composed,
       });
       if (error || (data && (data as { ok?: boolean }).ok === false)) throw new Error("send failed");
+      logLeadSignal({ form: "contact", ref: form.reason, email: parsed.data.email, heardFrom: heard, whatsapp: form.phone });
+      convert({ kind: "contact", reason: form.reason });
+      setHeard("");
+      setHeardTouched(false);
       toast.success("Sent! We'll be in touch soon.");
       setSent(true);
       setForm({ name: "", email: "", phone: "", reason: cfg.reasons[0], message: "" });
@@ -244,6 +258,16 @@ const PartnerContactDialog = ({ kind, trigger, defaultReason, defaultMessage, op
                 </select>
               </div>
             </div>
+
+            <HeardFrom
+              id="pcd-heard"
+              value={heard}
+              onChange={setHeard}
+              invalid={heardTouched && !heardOk(heard)}
+              label="HOW DID YOU HEAR ABOUT US? *"
+              labelClassName="block font-display text-xs text-ink uppercase tracking-wide"
+              inputClassName="w-full bg-cream text-ink border-4 border-ink px-3 py-2.5 font-medium placeholder:text-ink/60 focus:outline-none focus:bg-acid-yellow"
+            />
 
             <div>
               <label htmlFor="pcd-message" className="block font-display text-xs text-ink mb-1.5 uppercase tracking-wide">Message *</label>

@@ -11,6 +11,9 @@ import {
 } from "@/components/ui/dialog";
 import { supabase } from "@/lib/supabase";
 import Confetti from "@/components/Confetti";
+import HeardFrom, { heardOk } from "@/components/HeardFrom";
+import { logLeadSignal } from "@/lib/attribution";
+import { convert } from "@/lib/pixel";
 
 const Schema = z.object({
   name: z.string().trim().min(1, "Tell us your name").max(120),
@@ -73,6 +76,8 @@ const RsvpDialog = ({ open, onOpenChange, eventSlug, eventTitle, eventDate, even
   const [whatsapp, setWhatsapp] = useState(""); // optional WhatsApp
   const [website, setWebsite] = useState(""); // honeypot
   const [busy, setBusy] = useState(false);
+  const [heard, setHeard] = useState("");
+  const [heardTouched, setHeardTouched] = useState(false);
   const [burst, setBurst] = useState(false);
   const [done, setDone] = useState(false);
   const lastSubmit = useRef(0);
@@ -82,6 +87,8 @@ const RsvpDialog = ({ open, onOpenChange, eventSlug, eventTitle, eventDate, even
     setEmail("");
     setPlusOnes(0);
     setWhatsapp("");
+    setHeard("");
+    setHeardTouched(false);
   };
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -91,6 +98,11 @@ const RsvpDialog = ({ open, onOpenChange, eventSlug, eventTitle, eventDate, even
     if (now - lastSubmit.current < 2000) return;
     lastSubmit.current = now;
 
+    if (!heardOk(heard)) {
+      setHeardTouched(true);
+      toast.error("Tell us how you heard about us");
+      return;
+    }
     const parsed = Schema.safeParse({ name, email, plus_ones: plusOnes });
     if (!parsed.success) {
       toast.error(parsed.error.issues[0]?.message ?? "Check the form");
@@ -116,6 +128,9 @@ const RsvpDialog = ({ open, onOpenChange, eventSlug, eventTitle, eventDate, even
         throw error;
       }
 
+      // WhatsApp used to be asked for and then dropped; it now travels with the signal.
+      logLeadSignal({ form: "rsvp", ref: eventSlug, email: parsed.data.email, heardFrom: heard, whatsapp });
+      convert({ kind: "rsvp", slug: eventSlug });
       toast.success(`RSVP confirmed for ${eventTitle}! See you there.`);
       setBurst(true);
       setTimeout(() => setBurst(false), 1300);
@@ -221,6 +236,15 @@ const RsvpDialog = ({ open, onOpenChange, eventSlug, eventTitle, eventDate, even
                   className="w-full bg-cream text-ink border-4 border-ink px-4 py-3 font-medium focus:outline-none focus:bg-acid-yellow"
                 />
               </div>
+              <HeardFrom
+                id="rsvp-heard"
+                value={heard}
+                onChange={setHeard}
+                invalid={heardTouched && !heardOk(heard)}
+                label="HOW DID YOU HEAR ABOUT US? *"
+                labelClassName="font-display text-sm text-ink"
+                inputClassName="w-full bg-cream text-ink border-4 border-ink px-4 py-3 font-medium focus:outline-none focus:bg-acid-yellow placeholder:text-ink/40"
+              />
               {/* WhatsApp opt-in — optional, for day-of reminders */}
               <div>
                 <label htmlFor="rsvp-wa" className="font-display text-sm text-ink mb-1 block">

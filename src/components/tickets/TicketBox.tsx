@@ -14,6 +14,9 @@ import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { payOrder } from "@/lib/razorpay-client";
 import { checkPromo, joinWaitlist, loadTiers, placeOrder, type Tier } from "@/lib/booking";
+import HeardFrom, { heardOk as heardValid } from "@/components/HeardFrom";
+import { logLeadSignal } from "@/lib/attribution";
+import { convert } from "@/lib/pixel";
 import { inr } from "@/lib/nights";
 
 type Props = {
@@ -42,6 +45,7 @@ export default function TicketBox({ slug, title, when, venue, past, rsvpOpen, on
   const [qty, setQty] = useState<Record<string, number>>({});
   const [step, setStep] = useState<Step>("pick");
   const [f, setF] = useState({ name: "", email: "", phone: "" });
+  const [heard, setHeard] = useState("");
   const [touched, setTouched] = useState(false);
   const [codeOpen, setCodeOpen] = useState(false);
   const [code, setCode] = useState("");
@@ -108,7 +112,7 @@ export default function TicketBox({ slug, title, when, venue, past, rsvpOpen, on
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setTouched(true);
-    if (!nameOk || !emailOk || !phoneOk) return;
+    if (!nameOk || !emailOk || !phoneOk || !heardValid(heard)) return;
     setBusy(true); setErr("");
     try {
       try { localStorage.setItem(REMEMBER, JSON.stringify(f)); } catch {}
@@ -117,8 +121,15 @@ export default function TicketBox({ slug, title, when, venue, past, rsvpOpen, on
         items: lines.map((l) => ({ tier: l.t.id, qty: l.n })),
         promo: promo?.code ?? (code.trim() || null),
       });
-      if (!order.free) await payOrder("ticket", order.order_id, f, `${title} tickets`);
-      else fetch("/api/email/ticket", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ order_id: order.order_id }) }).catch(() => {});
+      logLeadSignal({ form: "ticket", ref: slug, email: f.email.trim(), heardFrom: heard });
+      if (!order.free) {
+        convert({ kind: "ticket_checkout", slug, value: order.amount_inr });
+        await payOrder("ticket", order.order_id, f, `${title} tickets`);
+        convert({ kind: "purchase", slug, orderId: order.order_id, value: order.amount_inr });
+      } else {
+        convert({ kind: "ticket_free", slug, orderId: order.order_id });
+      }
+      if (order.free) fetch("/api/email/ticket", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ order_id: order.order_id }) }).catch(() => {});
       router.push(`/tickets/order?o=${order.order_id}&e=${encodeURIComponent(f.email.trim())}&new=1`);
     } catch (x: any) {
       setErr(x?.message ?? "Something went wrong. Try again.");
@@ -258,6 +269,7 @@ export default function TicketBox({ slug, title, when, venue, past, rsvpOpen, on
           aria-invalid={touched && !phoneOk} />
         {touched && !phoneOk && <span className="text-sm font-bold text-magenta">That number looks short. Leave it empty if you like.</span>}
       </label>
+      <HeardFrom id={`${slug}-heard`} value={heard} onChange={setHeard} invalid={touched && !heardValid(heard)} inputClassName={field} />
 
       {subtotal > 0 && (
         codeOpen ? (

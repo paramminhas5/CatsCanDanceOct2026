@@ -35,8 +35,16 @@ const Cookies = () => {
 
           <h2>Analytics (anonymous)</h2>
           <p>
-            We use a privacy-friendly analytics tool (Plausible) that does not use cookies and does not collect
-            personal data. If we ever switch providers we'll update this page.
+            We use Vercel Web Analytics, which does not use cookies and does not collect personal data. It counts
+            page views and a few actions (like saying you're going) in aggregate.
+          </p>
+
+          <h2>Advertising measurement</h2>
+          <p>
+            When we run ads on Instagram or Facebook, the site loads the Meta pixel. It sets the <code>_fbp</code>{" "}
+            cookie (and <code>_fbc</code> if you came from an ad) so we can see which ads lead to RSVPs, tickets and
+            signups, and show fewer ads to people who already came. We don't send Meta your name, email or phone.
+            You can block it with any ad blocker or by clearing cookies.
           </p>
 
           <h2>Embeds</h2>

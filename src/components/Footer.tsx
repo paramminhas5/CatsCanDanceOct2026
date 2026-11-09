@@ -1,5 +1,7 @@
 import { Link } from "@/lib/compat-router";
 import { supabase } from "@/lib/supabase";
+import { logLeadSignal } from "@/lib/attribution";
+import { convert } from "@/lib/pixel";
 import ccdLogo from "@/assets/ccd-logo.png";
 import { imgUrl } from "@/lib/img";
 import { useState } from "react";
@@ -59,6 +61,8 @@ const Footer = () => {
       });
       // Duplicate is fine — user is already signed up
       if (error && error.code !== "23505") throw error;
+      logLeadSignal({ form: "signup", ref: "footer", email });
+      convert({ kind: "signup", source: "footer" });
       setState("done");
     } catch {
       setState("error");

@@ -15,6 +15,8 @@ import "@/index.css";
 import "@/pages/ccd.css";
 import React from "react";
 import { logOpenFromRef } from "@/lib/share";
+import { captureLanding } from "@/lib/attribution";
+import MetaPixel from "@/components/MetaPixel";
 
 function makeQueryClient() {
   return new QueryClient({
@@ -79,7 +81,7 @@ function PageTransition() {
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   // A visit from a shared card counts as an open for that card (src/lib/share.ts).
-  useEffect(() => { logOpenFromRef(); }, []);
+  useEffect(() => { logOpenFromRef(); captureLanding(); }, []);
   const queryClient = getQueryClient();
 
   return (
@@ -98,6 +100,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <ScrollToTop />
                 <Component {...pageProps} />
                 <Analytics />
+                <MetaPixel />
                 <ThemeSwitcher />
               </SmoothScroll>
             )}
