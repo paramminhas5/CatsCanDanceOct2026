@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { fetchList, fetchNights, todayIST, sourceLabel, type DoorData, type NightRow } from "@/lib/door";
 import { Avatar, Gls, Icon, SignInCard, Top } from "./ui";
+import { GuestsDemo } from "./Demo";
 
 type Person = { key: string; name: string; sub: string; tag: string; lit: boolean };
 
@@ -34,7 +35,7 @@ export default function Guests({ night, signedIn }: { night: string; signedIn: b
     return () => { live = false; };
   }, [slug]);
 
-  if (!signedIn) return <><Top back="/parties" /><SignInCard next="/guests" title="Who's coming" line="Sign in to see who said they are coming to your party." /></>;
+  if (!signedIn) return <GuestsDemo />;
   if (nights && !slug) return <><Top back="/parties" /><SignInCard next="/make" title="No party yet" line="Make a party and the people who say they are coming show up here." /></>;
 
   const cur = d && d.night.slug === slug ? d : null;

@@ -95,3 +95,19 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .door-card { width: min(100%, 488px); box-sizing: border-box; border-radius: 28px; padding: 20px 20px 18px; animation: door-in .28s cubic-bezier(.2, 1.3, .4, 1) both; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .7); }
 @keyframes door-in { from { transform: translateY(40px) scale(.96); opacity: .3; } }
 @media (prefers-reduced-motion: reduce) { .door-laser, .door-count, .door-card { animation: none !important; } }
+
+/* ── Try it first: example screens on the Host tabs when signed out (components/app/Demo.tsx) ── */
+.demo-bar { display: flex; align-items: center; gap: 10px; padding: 10px 10px 10px 12px; border-radius: 18px; background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px var(--hair2); }
+.demo-tag { flex: none; font-family: var(--font-mono, 'JetBrains Mono'), monospace; font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 4px 8px; border-radius: 8px; background: var(--pc); color: var(--pi); }
+.door-demo { position: relative; margin-top: 12px; padding: 16px; border-radius: 24px; overflow: hidden; background: radial-gradient(120% 80% at 50% 0%, #1a1b1f, #0b0b0d); box-shadow: inset 0 0 0 1px var(--hair2), 0 0 0 0 var(--hit); transition: box-shadow .3s; }
+.door-flash { position: absolute; inset: 0; background: var(--hit); opacity: 0; pointer-events: none; }
+.door-frame { position: relative; width: 150px; height: 110px; margin: 14px auto 0; }
+.door-frame i { position: absolute; width: 26px; height: 26px; border: 3px solid rgba(255,255,255,.8); }
+.door-frame i:nth-child(1) { left: 0; top: 0; border-right: 0; border-bottom: 0; border-radius: 8px 0 0 0; }
+.door-frame i:nth-child(2) { right: 0; top: 0; border-left: 0; border-bottom: 0; border-radius: 0 8px 0 0; }
+.door-frame i:nth-child(3) { left: 0; bottom: 0; border-right: 0; border-top: 0; border-radius: 0 0 0 8px; }
+.door-frame i:nth-child(4) { right: 0; bottom: 0; border-left: 0; border-top: 0; border-radius: 0 0 8px 0; }
+.door-frame b { position: absolute; left: 12px; right: 12px; top: 50%; height: 2px; background: var(--pc); box-shadow: 0 0 10px var(--pc); animation: door-scan 2.2s ease-in-out infinite alternate; }
+@keyframes door-scan { from { transform: translateY(-40px); } to { transform: translateY(40px); } }
+.door-res { display: flex; align-items: center; gap: 12px; margin-top: 14px; padding: 14px 16px; border-radius: 18px; color: #fff; }
+@media (prefers-reduced-motion: reduce) { .door-frame b { animation: none; } }
