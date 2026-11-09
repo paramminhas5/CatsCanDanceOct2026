@@ -1,0 +1,203 @@
+[
+ {
+  "slug": "agent-bugs",
+  "identity": "Not confirmed. No stored link, label or release to match against.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searched the name with Bengaluru and CCD terms on the web. Nothing public ties to this artist. Empty lists returned."
+ },
+ {
+  "slug": "bullzeye",
+  "identity": "Confirmed. The stored SoundCloud (soundcloud.com/bullzeyepower) is linked from the DGTL artist page, and the stored Instagram handle bullzeyepower is linked from the ADE artist page (amsterdam-dance-event.nl/en/artists-speakers/dj-bullzeye/2740563/). Those pages and Mixmag all say he started DJing in 1999 and founded Rage Entertainment (ADE, DGTL). The Wild City profile (13346) gives the same 1999 start and Mumbai clubs but lists no links, so it is matched on the 1999 start and genres only.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Top 25 DJs who defined the year 2023",
+    "publication": "Mixmag",
+    "url": "https://mixmag.net/feature/top-25-djs-who-defined-the-year-2023",
+    "date_published": null
+   },
+   {
+    "title": "Bullzeye (artist profile)",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/artists/13346-Bullzeye",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "City: record says India. Mixmag (top-25-djs-who-defined-the-year-2023) calls Mumbai his hometown and Wild City says he played Fire, ICE and Mikanos in Mumbai. Suggest city Mumbai, Param to decide. Mixmag entry is ranked #1 in that list. No RA DJ page, Bandcamp, Discogs or Beatport page found, and no releases found. Mixmag publish date not shown in the fetched text. Already has eras, so none added. Mixmag quote is from the page text as returned by the fetch tool."
+ },
+ {
+  "slug": "dj-ravator",
+  "identity": "Partly confirmed. A Delhi DJ-producer Ravator (Harsh Singh) exists, and the stored press URL (Bollywood Hungama, T-Series signing, 23 Mar 2023) is about him, as is Rolling Stone India (14 Jan 2025). The stored Instagram 'saprasap' appears on no page I opened, and 'DGTL circuit' and genre Bass are not backed by any page.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Ravator announces debut album Sajna (tracklist, features)",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/ravator-sajna-new-album-tracklist-vilen-aditya-rikhari/amp",
+    "date_published": "2025-01-14"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {
+    "title": "Adhoore Hum",
+    "year": 2023,
+    "release_type": "single",
+    "label": "T-Series",
+    "url": "https://www.bollywoodhungama.com/news/features/t-series-ropes-indian-youth-sensation-dj-ravator",
+    "date": null
+   }
+  ],
+  "ids": {},
+  "notes": "Ravator is described as a New Delhi-origin DJ-producer and 'Short Sharaba' hitmaker (Rolling Stone India), working in Punjabi pop and EDM, with the album Sajna on Vyrl Punjabi (release date not announced as of Jan 2025). Viberate lists genres as Hip Hop, Trap, Indie Rock (India, New Delhi), which does not match 'Bass'. The Rolling Stone India DGTL lineup page does not mention Ravator, so the stored 'DGTL circuit' bio is unsupported. Param should check whether the stored bio and Instagram belong to this Ravator. No eras added because no source describes his sound in plain terms. The Adhoore Hum year comes from the signing announcement date, not a release date."
+ },
+ {
+  "slug": "dwell",
+  "identity": "Not confirmed. No stored link, label or release.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing public found tied to a Bengaluru DJ Dwell or CCD Episode 4. A tribe.best page for 'djdwellofficial' came up in search but I did not open it and nothing links it to our record. Empty lists returned."
+ },
+ {
+  "slug": "groovier",
+  "identity": "Not confirmed. No stored link, label or release.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing public found tied to this artist. Empty lists returned."
+ },
+ {
+  "slug": "hedz",
+  "identity": "Not confirmed. Only stored city (Bengaluru) and genres (jungle, drum and bass).",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searched Hedz with Bengaluru jungle and drum and bass. Results were other artists (The Untitled One, Hunnit D, Kampai) and an unrelated act (HEDEX). Nothing ties to this artist. Empty lists returned."
+ },
+ {
+  "slug": "merman",
+  "identity": "Not confirmed. Stored Instagram handle 'merman' could not be tied to any page.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searched with Bengaluru, garage, jungle, VJ and CCD terms. Nothing public ties to this artist. Empty lists returned."
+ },
+ {
+  "slug": "sartdawg",
+  "identity": "Not confirmed. Stored Instagram 'startdawg' and the name 'Sartdawg' both returned nothing relevant.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searched both spellings with Bengaluru, house and disco. No result mentions either. Cannot say whether 'startdawg' is a typo. Empty lists returned."
+ },
+ {
+  "slug": "kibo",
+  "identity": "Confirmed on city and description only. Magnetic Fields artist page (magneticfields.in/artists/kibo) says 'Mumbai-based KIBO', genre-fluid and rooted in house with 'jazzy undertones, deep grooves, and experimental textures', which matches our stored city, genres and tags. No stored link exists to tie it further.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "A technoairlines.com event page lists Kibo (IN) on Disco Diwali Day 1 at JUNA, Goa (6 Nov 2026) and on the DGTL Mumbai lineup (13 Nov 2026); it gives no bio. The DGTL artist page for Kibo has no bio. The Magnetic Fields page is the same source as the stored tags, so no new sound tags or eras. Still refused or not fetched: warehouse.g5a.org/calendar/after-dark-kibo/ (permission request timed out), so the PORT Mumbai 27 Feb 2026 date could not be re-checked. No SoundCloud, RA, Bandcamp or mix found."
+ },
+ {
+  "slug": "mc-soopy",
+  "identity": "Confirmed. Wild City profile (thewildcity.com/artists/7654-MC Soopy) names Siddhant Roop Rai as the real name, a New Delhi native, with improvised grime-influenced rapping as MC and hip hop, soul, trap, house, disco, italo and techno as DJ. This matches our stored bio, city and genres.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "MC Soopy (artist profile)",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/artists/7654-MC Soopy",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Only Wild City and a Facebook link (facebook.com/MCSoopy) found. No press, releases, Bandcamp or RA page found. A search for him returned only UK grime results about other artists. Already has eras and mixes."
+ },
+ {
+  "slug": "kandy-kuri",
+  "identity": "Confirmed. Wild City #229 (stored mix page) links Instagram kandy.kuri, which matches our stored handle, and says she has supported Yung Singh and Lady Shaka and played Bass Camp and Magnetic Fields, matching our bio. Mix dated 25 Oct 2023.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Wild City page does not state her city. Our bio says she played Boiler Room Bengaluru on 7 June 2024. The Boiler Room Bengaluru page I opened (boilerroom.tv/session/boiler-room-bengaluru) is the 26 May 2022 show and does not list her, so the 2024 claim is not verified by it; it may be a different Boiler Room show. An explocity listing for 'Kandi Kuri' at Koramagala Social came up in search but was not opened. No Bandcamp, Discogs, RA or release page found, so no releases or ids. Already has eras and mixes."
+ }
+]

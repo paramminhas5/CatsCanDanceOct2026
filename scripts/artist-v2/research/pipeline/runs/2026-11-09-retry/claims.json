@@ -1,0 +1,114 @@
+[
+  {
+    "slug": "anish-sood",
+    "claim": "born in Goa in 1989",
+    "verdict": "supported",
+    "source_url": "https://en.wikipedia.org/wiki/Anish_Sood",
+    "quote": "Anish Sood was born and brought up in Goa, India.",
+    "notes": "Wikipedia infobox gives 22 November 1989 (not quoted verbatim). Wikipedia is not on the brief's source list. The Wild City Rasiya article (thewildcity.com/news/18613) and Mixmag Asia article (mixmag.asia/read/above-beyond-anyasa-anjunadeep-ep-india-local) were opened and say nothing about birthplace or year. Mixmag.net feature calls him a 'Goa native' but gives no year: https://mixmag.net/feature/anyasa-anjunadeep-anjunabeats-goa-india-traditional-interview. Birth year rests on Wikipedia alone."
+  },
+  {
+    "slug": "anish-sood",
+    "claim": "first Indian artist signed to Anjunadeep",
+    "verdict": "supported",
+    "source_url": "https://mixmag.asia/read/above-beyond-anyasa-anjunadeep-ep-india-local",
+    "quote": "making him the first Indian artist to do so on the label",
+    "notes": "Wild City also supports it: https://www.thewildcity.com/news/18613-anish-sood-debuts-as-anyasa-on-anjunadeep-with-new-single-rasiya quote 'becoming the first Indian artist to be signed to the label.' The Mixmag.net feature only implies it (first Indian release on the Anjuna labels) and does not state it."
+  },
+  {
+    "slug": "suchi",
+    "claim": "Boiler Room Bengaluru 2022-05-26 lineup",
+    "verdict": "supported",
+    "source_url": "https://www.thewildcity.com/news/19679-boiler-room-announces-nikki-nair-parris-suchi-more-for-bangalore-mumbai-hyderabad-shows",
+    "quote": "SUCHI will play at the Bangalore show on May 26",
+    "notes": "Wild City, 17 May 2022. Quote is a paraphrase of the fetch summary, not verified word for word; check before publishing. Page lists Parris, Nikki Nair, Rishi Sippy, Unnayanaa and SUCHI for Bangalore. This is an announcement, not a post-event report. Boiler Room's own session page (boilerroom.tv/session/boiler-room-bengaluru) shows 26 May 2022 but no artists. RA bio only says 'India with Boiler Room', no date."
+  },
+  {
+    "slug": "suchi",
+    "claim": "Chunky Mole release date (RA says July 2025, our record says 2026)",
+    "verdict": "not found",
+    "source_url": "https://ra.co/dj/suchi/biography",
+    "quote": "Her latest EP Chunky Mole is out on Ikke Sant in July 2025.",
+    "notes": "RA contradicts itself: the biography says July 2025, the discography on the same page lists 'Chunky Mole EP [Ikke Sant] (2026)'. DJ Mag review (https://djmag.com/reviews/suchi-chunky-mole-ep) shows no date or label. No Bandcamp, Beatport or label page with an exact date was opened. Cannot decide between 2025 and 2026. Note the RA bio line may be forward-looking text written before release."
+  },
+  {
+    "slug": "indo-warehouse",
+    "claim": "Middle East",
+    "verdict": "supported",
+    "source_url": "https://homegrown.co.in/amp/story/homegrown-creators/indo-warehouses-coachella-set-is-a-watershed-moment-for-south-asian-electronic-music",
+    "quote": "from Europe to Asia and the Middle East",
+    "notes": "Homegrown, 17 Apr 2025. A specific Middle East date: Indowarehouse live in Doha, 5 December 2025, Black Orchid (https://blog.q-tickets.com/?p=9509, quote 'Black Orchid, Doha, Qatar'). Exact bio wording of the claim was not available (no anon key in env), so the match is to the phrase as given in the task."
+  },
+  {
+    "slug": "indo-warehouse",
+    "claim": "the 2025 claim",
+    "verdict": "supported",
+    "source_url": "https://homegrown.co.in/amp/story/homegrown-creators/indo-warehouses-coachella-set-is-a-watershed-moment-for-south-asian-electronic-music",
+    "quote": "second weekend performance at Coachella 2025",
+    "notes": "The stored text of the 2025 claim was not available. Supported: Coachella 2025 (same page says first South Asian electronic music collective to play Coachella) and a 2025 Doha date. Founding is stated as 2022 ('Founded by Armaan Kahani Gupta and Kunal Merchant in 2022'), not 2025. If the bio's 2025 claim is about something else, it is unchecked."
+  },
+  {
+    "slug": "prismer",
+    "claim": "Warehouse Project India",
+    "verdict": "supported",
+    "source_url": "https://www.thewildcity.com/news/21302-joy-orbison-logic1000-jyoty-more-arrive-in-india-for-the-warehouse-project",
+    "quote": "besides Anisha, Prismer and a B2B set between Film and Prismer",
+    "notes": "Wild City: Mumbai, Dome, 26 October (announcement; year not shown in the fetched summary, edition is the India debut, likely 2025). Rolling Stone India lineup piece and RA biography do not mention Prismer at WP India. RA bio does list Magnetic Fields Festival, Bass Camp, Levi's Music Week, Grasslands (NP) and Bira91 Festival for Prismer (https://ra.co/dj/prismer/biography)."
+  },
+  {
+    "slug": "kibo",
+    "claim": "DGTL Mumbai",
+    "verdict": "supported",
+    "source_url": "https://ra.co/events/1945210",
+    "quote": "| Jimi Jules | Kibo | Kiss Nuka (live) |",
+    "notes": "RA: DGTL Mumbai 2024, Nesco Center, 8-9 Nov 2024. Also RA DGTL Mumbai 2025, 4-5 Oct 2025, lists 'Kibo (IN)' (https://ra.co/events/2144191). Ticketfairy names Kibo, Mumbai-based, on DGTL India 2026 (Mumbai and Bengaluru, 13-14 Nov 2026): https://www.ticketfairy.com/word/2026/08/13/dgtl-india-2026-line-up-nina-kraviz-stephan-bodzin-and-more (quote 'accompanied by the Goa-based techno act Sitara, Mumbai-based DJ KIBO'). RA event pages are lineups, not post-event proof."
+  },
+  {
+    "slug": "kibo",
+    "claim": "Magnetic Fields",
+    "verdict": "not found",
+    "source_url": "https://magneticfields.in/artists/kibo",
+    "quote": "",
+    "notes": "The Magnetic Fields artist page opened but, per the fetch, did not mention Magnetic Fields or a year (it listed Gin Explorers Club, Coast Life, India Cocktail Week, Kerala Dust tour and a DGTL slot). RA bio for Kibo does not mention Magnetic Fields. Not confirmed."
+  },
+  {
+    "slug": "kibo",
+    "claim": "PORT Mumbai 27 Feb 2026 played",
+    "verdict": "not found",
+    "source_url": "https://g5afoundation.org/calendar/after-dark-kibo/",
+    "quote": "",
+    "notes": "BLOCKED: the page redirected to warehouse.g5a.org/calendar/after-dark-kibo/ and that fetch was not approved in time, so it was not opened. Same for warehouse.g5a.org/tag/port/ (redirect, not fetched). Search results list 'After Dark | KIBO' on the G5A calendar, but date and venue were not read, so nothing is cited. Also, even a calendar listing shows scheduled, not played. Unrelated: technoairlines shows Kibo at JUNA, Goa, 6 Nov 2026 (not PORT)."
+  },
+  {
+    "slug": "kaleekarma",
+    "claim": "Magnetic Fields",
+    "verdict": "supported",
+    "source_url": "https://www.thewildcity.com/news/18356-magnetic-fields-nomads-announce-jatin-mallick-peter-cat-recording-co-kaleekarma-gauley-bhai-vitality-hours-more-for-inaugural-edition",
+    "quote": "Sindhi Curry, Kaleekarma and Girls Night Out soundtrack the transformation from dusk till dark.",
+    "notes": "Qualified: this is Magnetic Fields Nomads (the festival's inaugural Nomads edition, 19-21 March, article dated 25 Feb 2021), not the main Magnetic Fields festival at Alsisar. Wild City's artist page for Kaleekarma only carries the Nomads headline. Announcement, not a report. The bio should say Nomads if it says Magnetic Fields."
+  },
+  {
+    "slug": "kaleekarma",
+    "claim": "Boiler Room Bengaluru 7 Jun 2024",
+    "verdict": "not found",
+    "source_url": "https://www.thewildcity.com/news/20647-boiler-room-announces-bengaluru-gurugram-dates-as-part-of-its-world-tour",
+    "quote": "The artists for the upcoming India dates are yet to be announced.",
+    "notes": "Wild City confirms the Bengaluru date as June 7 but names no artists, and does not mention Kaleekarma. Boiler Room session page shows no artist list. The After EOD Substack review (https://aftereod.substack.com/p/boiler-room-bengaluru-a-tale-of-two) names Raka Ashok, Kandy Kuri, DJ ADHD, Kohra, AK Sports, Anetha; Kaleekarma is not in it."
+  },
+  {
+    "slug": "kandy-kuri",
+    "claim": "Magnetic Fields",
+    "verdict": "not found",
+    "source_url": "",
+    "quote": "",
+    "notes": "One web search returned nothing relevant. The Wild City Magnetic Fields 10th edition (2024) article was opened and did not name Kandy Kuri. Not checked further."
+  },
+  {
+    "slug": "kandy-kuri",
+    "claim": "Boiler Room Bengaluru 7 Jun 2024",
+    "verdict": "supported",
+    "source_url": "https://aftereod.substack.com/p/boiler-room-bengaluru-a-tale-of-two",
+    "quote": "The first three sets — Raka Ashok, Kandy Kuri and DJ ADHD were literal and fast",
+    "notes": "Substack review confirms Kandy Kuri played a Boiler Room Bengaluru (called the 'fourth edition') but shows no date in the fetched text. Date 7 Jun 2024 is from Wild City (thewildcity.com/news/20647), which names no artists. The two are linked by inference only; the 2024 date is therefore unconfirmed for Kandy Kuri. Wild City's Raka page and the internettattoo 2024 sets post do not mention Kandy Kuri. Quote has an em dash from the source; strip it if reused."
+  }
+]

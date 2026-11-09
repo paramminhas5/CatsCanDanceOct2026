@@ -1,0 +1,811 @@
+[
+ {
+  "slug": "djazz",
+  "identity": "Bandcamp account allthatdjazz.bandcamp.com is titled All That DJazz India and every release title on the page matches the four on record (Her Mom's a Gypsy, The Wolf Among Dogs, Pale Criminal, Shaastriya Sangeet Vol. I with Unmesh Banerjee). The page does not state a city.",
+  "releases": [
+   {
+    "title": "Her Mom's a Gypsy",
+    "year": 2026,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://allthatdjazz.bandcamp.com/album/her-moms-a-gypsy",
+    "date": "2026-04-03",
+    "bandcamp_id": "1745180764",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "Date fills the record's year-only entry. 3 tracks."
+   },
+   {
+    "title": "The Wolf Among Dogs",
+    "year": 2025,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://allthatdjazz.bandcamp.com/album/the-wolf-among-dogs",
+    "date": "2025-02-28",
+    "bandcamp_id": "2786356622",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "2 tracks. Record lists label All That DJazz; page names no label (All That DJazz is the Bandcamp account)."
+   },
+   {
+    "title": "Pale Criminal",
+    "year": 2025,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://allthatdjazz.bandcamp.com/album/pale-criminal",
+    "date": "2025-04-18",
+    "bandcamp_id": "2298696105",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "3 tracks. Record lists label All That DJazz; page names no label."
+   },
+   {
+    "title": "Shaastriya Sangeet Vol. I",
+    "year": 2025,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://allthatdjazz.bandcamp.com/album/shaastriya-sangeet-vol-i",
+    "date": "2025-10-10",
+    "bandcamp_id": "3486358027",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "With Unmesh Banerjee. 4 tracks."
+   },
+   {
+    "title": "Tantric Acid Vol. I",
+    "year": 2025,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://allthatdjazz.bandcamp.com/album/tantric-acid-vol-i",
+    "date": "2025-06-13",
+    "bandcamp_id": "706666645",
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Tantric Acid, Vol. II and Opening Tracks for Floating Points (Extra Crunch Mixes Only)",
+    "year": 2025,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://allthatdjazz.bandcamp.com/album/tantric-acid-vol-ii-and-opening-tracks-for-floating-points-extra-crunch-mixes-only",
+    "date": "2025-12-20",
+    "bandcamp_id": "1229943734",
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "7AM In Bangkok",
+    "year": 2026,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://allthatdjazz.bandcamp.com/album/7am-in-bangkok",
+    "date": "2026-02-18",
+    "bandcamp_id": "2867312301",
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "The Girl Who Spoke Jazz",
+    "year": 2026,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://allthatdjazz.bandcamp.com/album/the-girl-who-spoke-jazz",
+    "date": "2026-05-29",
+    "bandcamp_id": "2392713529",
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Shaastriya Sangeet Vol. II: Religion of Eternity",
+    "year": 2026,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://allthatdjazz.bandcamp.com/album/shaastriya-sangeet-vol-ii-religion-of-eternity",
+    "date": "2026-08-29",
+    "bandcamp_id": "3670834147",
+    "bandcamp_type": "album",
+    "note": "With Unmesh Banerjee."
+   },
+   {
+    "title": "Tantric Acid Vol. III: For Her Majesty",
+    "year": 2026,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://allthatdjazz.bandcamp.com/album/tantric-acid-vol-iii-for-her-majesty",
+    "date": "2026-10-24",
+    "bandcamp_id": "3609686866",
+    "bandcamp_type": "album",
+    "note": "Includes Princesa De Angola ft. Atharva Deshpande."
+   },
+   {
+    "title": "Janbaaz / Kalyanji-Anandji - Pyar Do Pyar Lo (DJazz Edit)",
+    "year": 2026,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://allthatdjazz.bandcamp.com/track/janbaaz-kalyanji-anandji-pyar-do-pyar-lo-djazz-edit",
+    "date": "2026-11-07",
+    "bandcamp_id": "1135517883",
+    "bandcamp_type": "track"
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://allthatdjazz.bandcamp.com/"
+  },
+  "notes": "Her Mom's a Gypsy is dated 2026-04-03 on its Bandcamp page. Bandcamp names no label for any release, so the record's label All That DJazz is the account name, not a confirmed label. Release types are inferred from track counts (2 to 4 tracks marked ep). allthatdjazz.bandcamp.com/music itself was refused (permission request timed out); the list comes from the Wolf Among Dogs and Pale Criminal pages' release lists plus each page.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": []
+ },
+ {
+  "slug": "jael",
+  "identity": "Identity is the Dutch Moluccan artist, not JAEL_DUB. rcarecords.co.uk/artists/jael (opened) names JAEL (Giovanni Jano), a Moluccan artist from the Netherlands, debut album Half As Much (2021), Soulection member. knownasjael.bandcamp.com lists Amsterdam, Netherlands, bio 'DJ, producer and singer from the Netherlands', and carries Motion Sickness (2025) which is on record. Bandcamp does not say Moluccan or RCA; the link between the two rests on the Dutch origin and the Motion Sickness match.",
+  "releases": [
+   {
+    "title": "Motion Sickness",
+    "year": 2025,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://knownasjael.bandcamp.com/album/motion-sickness",
+    "date": "2025-01-31",
+    "bandcamp_id": "2871151206",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "4 tracks, mastered by Killing Skills. Record says label Mena Muria Records; Bandcamp page names no label."
+   },
+   {
+    "title": "Rude Boy",
+    "year": 2025,
+    "release_type": "single",
+    "label": null,
+    "url": "https://knownasjael.bandcamp.com/track/rude-boy",
+    "date": "2025-01-31",
+    "bandcamp_id": "2608962477",
+    "bandcamp_type": "track",
+    "note": "Also track 3 of Motion Sickness."
+   },
+   {
+    "title": "Short Covers VOL. 1",
+    "year": 2024,
+    "release_type": "album",
+    "label": null,
+    "url": "https://knownasjael.bandcamp.com/album/short-covers-vol-1",
+    "date": "2024-06-16",
+    "bandcamp_id": "4047648342",
+    "bandcamp_type": "album",
+    "note": "12 tracks, mostly 1 to 3 minutes."
+   },
+   {
+    "title": "Jaël - Remixes & Club Edits",
+    "year": 2017,
+    "release_type": "compilation",
+    "label": null,
+    "url": "https://knownasjael.bandcamp.com/album/ja-l-remixes-club-edits",
+    "date": "2017-09-15",
+    "bandcamp_id": "694241643",
+    "bandcamp_type": "album",
+    "note": "15 tracks, remixes, edits and originals."
+   },
+   {
+    "title": "Jaël - Remixes & Club Edits VOL. 2",
+    "year": 2018,
+    "release_type": "compilation",
+    "label": null,
+    "url": "https://knownasjael.bandcamp.com/album/ja-l-remixes-club-edits-vol-2",
+    "date": "2018-09-05",
+    "bandcamp_id": "1214831926",
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "FIX YOUR MIND (Radio Edit)",
+    "year": 2026,
+    "release_type": "single",
+    "label": null,
+    "url": "https://knownasjael.bandcamp.com/track/fix-your-mind-radio-edit",
+    "date": "2026-03-27",
+    "bandcamp_id": "884915448",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Robin S - Show Me Love (JAEL Remix)",
+    "year": 2026,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://knownasjael.bandcamp.com/track/robin-s-show-me-love-jael-remix",
+    "date": "2026-08-07",
+    "bandcamp_id": "945143141",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Big Energy",
+    "year": 2026,
+    "release_type": "single",
+    "label": null,
+    "url": "https://knownasjael.bandcamp.com/track/big-energy",
+    "date": "2026-08-21",
+    "bandcamp_id": "501540909",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Vicious (with Jengi)",
+    "year": 2026,
+    "release_type": "single",
+    "label": null,
+    "url": "https://knownasjael.bandcamp.com/album/vicious",
+    "date": "2026-10-09",
+    "bandcamp_id": "2160937125",
+    "bandcamp_type": "album",
+    "note": "Radio Edit and Extended; credited JAEL & Jengi."
+   },
+   {
+    "title": "SWING THEORY VOL. I",
+    "year": 2025,
+    "release_type": "compilation",
+    "label": null,
+    "url": "https://knownasjael.bandcamp.com/album/swing-theory-vol-i",
+    "date": "2025-11-19",
+    "bandcamp_id": "1056410190",
+    "bandcamp_type": "album",
+    "note": "3 remixes."
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://knownasjael.bandcamp.com/"
+  },
+  "notes": "Half As Much (2021) is on record but I found no primary page for it (Bandcamp music page was not readable and RCA page gives only the year). RCA page also says a second album was expected end 2023 or early 2024; not confirmed released. Bandcamp names no label anywhere; the record's Mena Muria Records for Motion Sickness is not confirmed by the page. knownasjael.bandcamp.com/music returned no usable list; releases come from search results and the Rude Boy page's linked list. Release types guessed from track counts. The Robin S remix and Big Energy etc. are 2026 and fall after the RCA page's content.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": []
+ },
+ {
+  "slug": "dotdat",
+  "identity": "RA (ra.co/dj/dotdat, opened) says producer and DJ based in Goa, lists labels Truncate, Knowledge Imprint, K S R, Symbolism Ltd, Observant. Bandcamp dotdat.bandcamp.com shows Goa, India. HYD (Truncate), Subtrap (KSR) and In Circles (Symbolism) match the record.",
+  "releases": [
+   {
+    "title": "HYD (with Truncate)",
+    "year": 2021,
+    "release_type": "ep",
+    "label": "Truncate",
+    "url": "https://truncate.bandcamp.com/album/hyd",
+    "date": "2021-03-05",
+    "bandcamp_id": "3358052186",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "Artists credited Truncate & Dotdat. Page does not name a label separately from the Truncate account."
+   },
+   {
+    "title": "Subtrap",
+    "year": 2020,
+    "release_type": "ep",
+    "label": "KSR",
+    "url": "https://kaiserksr.bandcamp.com/album/subtrap",
+    "date": "2020-07-17",
+    "bandcamp_id": "2016900209",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "4 tracks. Hosted on the Kaiser (kaiserksr) Bandcamp; page does not name the label itself. KSR label comes from the record and RA's label list."
+   },
+   {
+    "title": "In Circles (on Synchronicity Part Two)",
+    "year": 2021,
+    "release_type": "compilation",
+    "label": "Symbolism",
+    "url": "https://bensims.bandcamp.com/track/in-circles",
+    "date": "2021-10-29",
+    "bandcamp_id": "1242478437",
+    "bandcamp_type": "track",
+    "already_on_record": true,
+    "note": "Track page; album is Synchronicity. Part Two (SYMBOLISM), Various Artists. Wild City dates the Vol. 2 article 1 Nov 2021."
+   },
+   {
+    "title": "Steady Faith",
+    "year": 2024,
+    "release_type": "single",
+    "label": null,
+    "url": "https://dotdat.bandcamp.com/album/steady-faith",
+    "date": "2024-12-06",
+    "bandcamp_id": "2405438807",
+    "bandcamp_type": "album",
+    "note": "2 tracks (Slope, Steady Faith). Own Bandcamp page, location Goa."
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://dotdat.bandcamp.com/",
+   "ra": "https://ra.co/dj/dotdat"
+  },
+  "notes": "Beatport page (opened, no release list) says Pune, India; RA and Bandcamp say Goa. Subtrap is on the kaiserksr Bandcamp (listed Trani, Italy for that account), the page names no label, so KSR rests on the record and RA. truncate.bandcamp.com/music does not list HYD. Not confirmed: Observant Bury The Hatchet (Wild City mentions it, no date, no Bandcamp page opened), Knowledge Imprint release (knowledgeimprint.bandcamp.com surfaced in search, not opened), other labels RA lists (Symbolism, Spazio Magnetico, Room Trax). dotdatin.bandcamp.com is not this artist (redirects to signup, unclaimed). Wild City dates the Synchronicity Vol. 2 article 1 Nov 2021.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": []
+ },
+ {
+  "slug": "spiralynk",
+  "identity": "spiralynk.bandcamp.com is listed as Kolkata, India and holds Obfuscate, Static Variable and Sinetific Noise, all on record. Antariksh Records page credits Spiralynk (Ankit Malik) on Liminal Rift EP; Social Isolation page carries Asthir.",
+  "releases": [
+   {
+    "title": "Liminal Rift EP",
+    "year": 2025,
+    "release_type": "ep",
+    "label": "Antariksh Records",
+    "url": "https://antarikshrecords.bandcamp.com/album/liminal-rift-ep",
+    "date": "2025-05-18",
+    "bandcamp_id": "251425028",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "Page credits Spiralynk (Ankit Malik)."
+   },
+   {
+    "title": "infract[ion] (on Algorave India Compilation One)",
+    "year": 2025,
+    "release_type": "compilation",
+    "label": "Antariksh Records",
+    "url": "https://antarikshrecords.bandcamp.com/album/algorave-india-compilation-one",
+    "date": "2025-09-26",
+    "bandcamp_id": "1585200381",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "Track 6 of the Various Artists album. The id is the compilation id. Label inferred from the Antariksh Records Bandcamp account."
+   },
+   {
+    "title": "Obfuscate",
+    "year": 2020,
+    "release_type": "single",
+    "label": null,
+    "url": "https://spiralynk.bandcamp.com/track/obfuscate",
+    "date": "2020-04-21",
+    "bandcamp_id": "82144171",
+    "bandcamp_type": "track",
+    "already_on_record": true
+   },
+   {
+    "title": "Static Variable",
+    "year": 2020,
+    "release_type": "single",
+    "label": null,
+    "url": "https://spiralynk.bandcamp.com/track/static-variable",
+    "date": "2020-04-21",
+    "bandcamp_id": "1074230668",
+    "bandcamp_type": "track",
+    "already_on_record": true
+   },
+   {
+    "title": "Sinetific Noise",
+    "year": 2020,
+    "release_type": "single",
+    "label": null,
+    "url": "https://spiralynk.bandcamp.com/track/sinetific-noise",
+    "date": "2020-04-21",
+    "bandcamp_id": "2891230829",
+    "bandcamp_type": "track",
+    "already_on_record": true
+   },
+   {
+    "title": "Asthir (on Social Isolation II)",
+    "year": 2020,
+    "release_type": "compilation",
+    "label": "Social Isolation",
+    "url": "https://socialisolation.bandcamp.com/track/spiralynk-asthir",
+    "date": "2020-04-20",
+    "bandcamp_id": "3461935551",
+    "bandcamp_type": "track",
+    "already_on_record": true,
+    "note": "Track page; album is Social Isolation II, Various Artists. Id is the track id."
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://spiralynk.bandcamp.com/"
+  },
+  "notes": "Location conflict to check: the artist Bandcamp says Kolkata, the Liminal Rift EP page says Delhi but that is a description of the label. Asthir (Social Isolation II) is dated 2020-04-20 on its page; the record says 'Asthir (on Social Isolation, second edition)'. Everything here is already on record, so this adds dates, ids and label sources only. Bandcamp album ids for the compilations are the compilation ids (Asthir uses its track id). Algorave India Compilation One was released 2025-09-26 per its Bandcamp page.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": []
+ },
+ {
+  "slug": "hamza-rahimtula",
+  "identity": "Origins page on solselectas.bandcamp.com credits Hamza Rahimtula and Rajasthan Folkstars; Mixmag Asia article on the same album, and Dynamite Disco Club track Dancing feat. Loopy Juice credits Hamza Rahimtula with Farhan Rehman and Stalvart John.",
+  "releases": [
+   {
+    "title": "Dancing feat. Loopy Juice (with Farhan Rehman and Stalvart John)",
+    "year": 2022,
+    "release_type": "single",
+    "label": "Dynamite Disco Club",
+    "url": "https://dynamitediscoclub.bandcamp.com/track/dancing-feat-loopy-juice",
+    "date": "2022-11-04",
+    "bandcamp_id": "3449594669",
+    "bandcamp_type": "track",
+    "note": "Artists credited Farhan Rehman, Hamza Rahimtula, Stalvart John."
+   }
+  ],
+  "ids": {},
+  "notes": "Origins: the Bandcamp page (opened) shows release date 10 July 2025 and every track is titled '(Extended Mix)', so that page looks like an extended edition. Mixmag Asia's article (opened) is dated 30 April 2025, describes a 10-track album and gives no release date, no label, and does not mention an extended edition. Wild City feature (opened) is dated 15 May 2025 and gives no release date either. So the album was out or announced before 10 July 2025; the 10 Jul 2025 date should be treated as the extended release, and the original date is not confirmed by any page I opened. The Bandcamp page (item_id 865972465, album) is the extended edition id. solselectas.bandcamp.com shows only one Origins listing. RA label page for Sol Selectas does not list it.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": []
+ },
+ {
+  "slug": "shantam",
+  "identity": "shantammusic.bandcamp.com lists New Delhi, India; Wild City artist page 13829-Shantam (opened) links Iridescent (Shantones EP 2), bleep, Telekinetik (Social Isolation), Yaar-Dost vol. 2 and an OCL Records release. bleep, Patturbed and Gambol match the record.",
+  "releases": [
+   {
+    "title": "Yaar-Dost vol. 2 (various artists)",
+    "year": 2026,
+    "release_type": "compilation",
+    "label": "Padmini Records",
+    "url": "https://www.thewildcity.com/news/21593-padmini-records-includes-monophonik-shantam-chhabb-more-on-yaar-dost-vol-2",
+    "date": "2026-03-18",
+    "bandcamp_id": null,
+    "bandcamp_type": null,
+    "note": "Wild City article dated 18 March 2026 says the label has just put out the second edition; Shantam track is Speedy. Date is the article date, not a confirmed release date. No Bandcamp page opened."
+   },
+   {
+    "title": "Swarm Intel Vol.1 (OCL Records debut compilation)",
+    "year": 2022,
+    "release_type": "compilation",
+    "label": "OCL Records",
+    "url": "https://www.thewildcity.com/news/19646-pulpy-shilpy-nigel-perera-shantam-himay-feature-on-ocl-records-debut-release",
+    "date": "2022-05-10",
+    "bandcamp_id": null,
+    "bandcamp_type": null,
+    "note": "Wild City article dated 10 May 2022; 4-track compilation, Shantam track is funmusic, with Pulpy Shilpy, Nigel Perera, Himay. Date is the article date. Article embeds a Bandcamp player for album 1216146016 (bandcamp.com/EmbeddedPlayer, not opened, so id not recorded)."
+   },
+   {
+    "title": "bleep",
+    "year": 2023,
+    "release_type": "ep",
+    "label": "Noosphere Network",
+    "url": "https://shantammusic.bandcamp.com/album/bleep",
+    "date": "2023-11-17",
+    "bandcamp_id": "2478790780",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "Page says Released worldwide by Noosphere, India."
+   },
+   {
+    "title": "Patturbed EP",
+    "year": 2023,
+    "release_type": "ep",
+    "label": "Soupherb Records",
+    "url": "https://soupherbrecords.bandcamp.com/album/sh170-shantam-patturbed-ep",
+    "date": "2023-09-29",
+    "bandcamp_id": "376347213",
+    "bandcamp_type": "album",
+    "already_on_record": true
+   },
+   {
+    "title": "Gambol",
+    "year": 2019,
+    "release_type": "ep",
+    "label": "Noosphere Network",
+    "url": "https://shantammusic.bandcamp.com/album/gambol",
+    "date": "2019-07-08",
+    "bandcamp_id": "4003444010",
+    "bandcamp_type": "album",
+    "already_on_record": true
+   },
+   {
+    "title": "Iridescent",
+    "year": 2026,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://shantammusic.bandcamp.com/album/iridescent",
+    "date": "2026-08-13",
+    "bandcamp_id": "789532966",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "Shantones series EP 2 per Wild City."
+   },
+   {
+    "title": "Out The House",
+    "year": 2024,
+    "release_type": "ep",
+    "label": "Krunk Kulture",
+    "url": "https://shantammusic.bandcamp.com/album/out-the-house",
+    "date": "2024-05-17",
+    "bandcamp_id": "4131963446",
+    "bandcamp_type": "album",
+    "note": "Record lists Nuevo Groove (2023, Krunk Kulture) as a separate item; not opened."
+   },
+   {
+    "title": "FreaQ",
+    "year": 2025,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://shantammusic.bandcamp.com/album/freaq",
+    "date": "2025-08-09",
+    "bandcamp_id": "473567686",
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "FLiPS",
+    "year": 2025,
+    "release_type": "album",
+    "label": null,
+    "url": "https://shantammusic.bandcamp.com/album/flips",
+    "date": "2025-08-21",
+    "bandcamp_id": "1155424230",
+    "bandcamp_type": "album",
+    "note": "7 tracks."
+   },
+   {
+    "title": "BAGGAGE",
+    "year": 2026,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://shantammusic.bandcamp.com/album/baggage",
+    "date": "2026-01-12",
+    "bandcamp_id": "3178582011",
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Millefluous",
+    "year": 2026,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://shantammusic.bandcamp.com/album/millefluous",
+    "date": "2026-04-10",
+    "bandcamp_id": "1650671019",
+    "bandcamp_type": "album"
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://shantammusic.bandcamp.com/",
+   "wildcity": "https://www.thewildcity.com/artists/13829-Shantam"
+  },
+  "notes": "Years from primary pages: Padmini Records Yaar-Dost vol. 2 = 2026 (Wild City article 18 March 2026; no separate release date); OCL Records debut release 'Swarm Intel Vol.1' = 2022 (Wild City article 10 May 2022, Shantam track funmusic). The Wild City page does not give years, I opened the two news articles. No label or Bandcamp page for either was opened. Telekinetik (Social Isolation, record says 2021) was not confirmed; the Wild City article gave no year. Record's 'Nuevo Groove (2023, Krunk Kulture)' not confirmed; the Bandcamp page Out The House (Krunk Kulture, 2024-05-17) is a different title. 3fer-disco (Ceramic) not checked. Iridescent: page date 2026-08-13 versus the record's 2026 only.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": []
+ },
+ {
+  "slug": "stalvart-john",
+  "identity": "RA (opened) bio: DJ, producer, radio host, founder of Dynamite Disco Club, Bangalore since 2014, labels include Get Physical Music and Wind Horse Records. Wild City artist page and Bandcamp pages for Dynamite Disco Club and Wind Horse Records match.",
+  "releases": [
+   {
+    "title": "Dancing feat. Loopy Juice (with Farhan Rehman and Hamza Rahimtula)",
+    "year": 2022,
+    "release_type": "single",
+    "label": "Dynamite Disco Club",
+    "url": "https://dynamitediscoclub.bandcamp.com/track/dancing-feat-loopy-juice",
+    "date": "2022-11-04",
+    "bandcamp_id": "3449594669",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Baliando Al Trompas (Original Mix)",
+    "year": 2025,
+    "release_type": "single",
+    "label": "Wind Horse Records",
+    "url": "https://windhorserecords.bandcamp.com/album/stalvart-john-baliando-al-trompas-original-mix",
+    "date": "2025-06-13",
+    "bandcamp_id": "2128829252",
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Dynamite Cuts, Vol. 1 (various artists)",
+    "year": 2025,
+    "release_type": "compilation",
+    "label": "Dynamite Disco Club",
+    "url": "https://dynamitediscoclub.bandcamp.com/album/dynamite-cuts-vol-1-2",
+    "date": "2025-08-01",
+    "bandcamp_id": "2898182449",
+    "bandcamp_type": "album",
+    "note": "Stalvart John track is Cradle of Life (Original Mix and Radio Edit). Label's 50th release per Wild City (22 Jul 2025)."
+   },
+   {
+    "title": "Cradle of Life (Radio Edit)",
+    "year": 2025,
+    "release_type": "single",
+    "label": "Dynamite Disco Club",
+    "url": "https://dynamitediscoclub.bandcamp.com/track/cradle-of-life-radio-edit",
+    "date": "2025-08-01",
+    "bandcamp_id": "2809267530",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "So Much To Say feat. Ramona Arena (Stalvart John Remix), Calm Chor and InternalEye",
+    "year": 2018,
+    "release_type": "remix",
+    "label": "Wind Horse Records",
+    "url": "https://windhorserecords.bandcamp.com/track/calm-chor-internaleye-so-much-to-say-feat-ramona-arena-stalvart-john-remix",
+    "date": "2018-12-03",
+    "bandcamp_id": "1116613186",
+    "bandcamp_type": "track"
+   }
+  ],
+  "ids": {
+   "ra": "https://ra.co/dj/stalvartjohn",
+   "bandcamp": "https://stalvart.bandcamp.com/"
+  },
+  "notes": "Record's Enkiama (2024, Dynamite Disco Club), Naja remix (2019, Get Physical Music) and Thar remix (2015, Wind Horse Records) were not re-confirmed. Traxsource artist page (traxsource.com/artist/238670/stalvart-john) returned only dates with no titles. RA page lists no releases. stalvart.bandcamp.com/album/intro-to-doom-island has no date or id on the page, so it is left out. Wild City 28 May 2020 article lists a Dynamite Disco Edits series (edits of Breakbot, New Order and others) and an earlier Weekend Disco EP on SoundCloud; no Bandcamp or dated release page opened, so not added. ra.co/dj/stalvartjohn (direct) was refused (permission request timed out); it opened after a search listing. Wild City dates the Dynamite Cuts article 22 July 2025; the Bandcamp page says 1 August 2025.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": []
+ },
+ {
+  "slug": "spryk",
+  "identity": "spryk.bandcamp.com lists Mumbai, India; evl.one page (opened) says Mumbai based artist Tejas Nair and Skip-A-Beat is the artist's own imprint; Afterglow, Apex and Strange Movements are on record.",
+  "releases": [
+   {
+    "title": "Afterglow",
+    "year": 2024,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://spryk.bandcamp.com/album/afterglow",
+    "date": "2024-10-25",
+    "bandcamp_id": "3146041947",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "6 tracks. No label on page."
+   },
+   {
+    "title": "Apex",
+    "year": 2020,
+    "release_type": "album",
+    "label": "Skip-A-Beat",
+    "url": "https://spryk.bandcamp.com/album/apex",
+    "date": "2020-12-11",
+    "bandcamp_id": "2659845036",
+    "bandcamp_type": "album",
+    "already_on_record": true,
+    "note": "7 tracks. Label Skip-A-Beat is on record and evl.one (opened) calls it the artist's own imprint; Bandcamp page itself names none."
+   },
+   {
+    "title": "Besharam Behaya (Spryk & Gunda)",
+    "year": 2026,
+    "release_type": "single",
+    "label": "Azadi Records and Skip-A-Beat",
+    "url": "https://spryk.bandcamp.com/track/besharam-behaya",
+    "date": "2026-08-26",
+    "bandcamp_id": "3459945032",
+    "bandcamp_type": "track",
+    "already_on_record": true,
+    "note": "Page text: first joint release under Azadi Records and Skip-a-Beat. Fills the record's missing date."
+   },
+   {
+    "title": "ANGRYWALK",
+    "year": 2025,
+    "release_type": "single",
+    "label": null,
+    "url": "https://spryk.bandcamp.com/track/angrywalk",
+    "date": "2025-08-20",
+    "bandcamp_id": "2591369415",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Bhaag w/ Bharg",
+    "year": 2025,
+    "release_type": "single",
+    "label": null,
+    "url": "https://spryk.bandcamp.com/track/bhaag-w-bharg",
+    "date": "2025-06-13",
+    "bandcamp_id": "1862468993",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Jiv Ekach Aahe ft BamBoy",
+    "year": 2025,
+    "release_type": "single",
+    "label": "Skip-A-Beat",
+    "url": "https://spryk.bandcamp.com/track/jiv-ekach-aahe-ft-bamboy",
+    "date": "2025-05-02",
+    "bandcamp_id": "3917651368",
+    "bandcamp_type": "track",
+    "note": "Label from the page's copyright line, Skip-A-Beat 2025."
+   },
+   {
+    "title": "Neuroswish",
+    "year": 2017,
+    "release_type": "single",
+    "label": null,
+    "url": "https://spryk.bandcamp.com/track/spryk-neuroswish",
+    "date": "2017-03-12",
+    "bandcamp_id": "2786825428",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Thinking About (ft. Hayley Couper)",
+    "year": 2016,
+    "release_type": "single",
+    "label": null,
+    "url": "https://spryk.bandcamp.com/track/spryk-ft-hayley-couper-thinking-about",
+    "date": "2016-10-07",
+    "bandcamp_id": "448605297",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Meta",
+    "year": 2016,
+    "release_type": "single",
+    "label": "Skip-A-Beat",
+    "url": "https://spryk.bandcamp.com/track/meta",
+    "date": "2016-09-19",
+    "bandcamp_id": null,
+    "bandcamp_type": "track",
+    "note": "Page listed under the Skip-A-Beat collection; item id not shown in what was read."
+   },
+   {
+    "title": "Flow",
+    "year": 2015,
+    "release_type": "single",
+    "label": null,
+    "url": "https://spryk.bandcamp.com/track/spryk-flow",
+    "date": "2015-12-06",
+    "bandcamp_id": "3541280650",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Fresh",
+    "year": 2015,
+    "release_type": "single",
+    "label": null,
+    "url": "https://spryk.bandcamp.com/track/fresh",
+    "date": "2015-08-09",
+    "bandcamp_id": "1907117088",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Emergence",
+    "year": 2014,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://spryk.bandcamp.com/album/emergence",
+    "date": "2014-06-12",
+    "bandcamp_id": "1430566836",
+    "bandcamp_type": "album",
+    "note": "5 tracks, with OfRo and Elle Shimada."
+   },
+   {
+    "title": "Parallax Barrier",
+    "year": 2014,
+    "release_type": "single",
+    "label": null,
+    "url": "https://spryk.bandcamp.com/track/parallax-barrier",
+    "date": "2014-09-14",
+    "bandcamp_id": "3783021176",
+    "bandcamp_type": "track"
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://spryk.bandcamp.com/"
+  },
+  "notes": "Apex is dated 2020-12-11 on Bandcamp and 'December 2020' on evl.one. Strange Movements (strange-movements-3, on record as 2018) page gave no date or id in what I read. Record items still without a source: Grimalkin (Spryk Remix), 10 Million (Spryk Remix) of Ofro ft. Keya, Chamshen (Spryk Remix), Slow Fast (High Chai Recordings). The 'Besharam Behaya' date (2026-08-26) fills the record's blank. Meta lacks a visible item id. Types guessed from track counts (Afterglow 6 tracks marked ep, Emergence 5 tracks marked ep, Apex 7 tracks marked album).",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": []
+ }
+]

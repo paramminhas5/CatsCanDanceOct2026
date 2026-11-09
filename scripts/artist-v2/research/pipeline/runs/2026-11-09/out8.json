@@ -1,0 +1,30 @@
+[
+ {
+  "slug": "weird-sounding-dude",
+  "identity": "Electronic Groove (electronicgroove.com/weird-sounding-dude-drops-new-eg-mix/, 2024-04-10) and Magnetic Mag (2024-08-30) both place the artist in Bangalore; the EG SoundCloud mix description links soundcloud.com/weirdsoundingdude, which matches our stored SoundCloud.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Bangalore's Brightest: Weird Sounding Dude's Latest Remix On Where The Heart Is Makes Waves On A Global Scale",
+    "publication": "Magnetic Mag",
+    "url": "https://magneticmag.com/2024/08/bangalores-brightest-weird-sounding-dudes-latest-remix-on-where-the-heart-is-makes-waves-on-a-global-scale/",
+    "date_published": "2024-08-30"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "EG SPOTLIGHT.274 Weird Sounding Dude (posted by EG)",
+    "url": "https://api.soundcloud.com/tracks/1791606241",
+    "year": 2024
+   }
+  ],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Batch gap was photo only; no photo was fetched or added (not in output schema). Eras already exist on record. 68 releases on record, so no releases returned. Mix URL is the SoundCloud API track id taken from the EG page embed; oEmbed confirms title 'EG SPOTLIGHT.274 Weird Sounding Dude by EG'; permalink not seen. The EG spotlight page is already stored as press. Not checked: RA, Wild City and Beatport pages were found in search but not opened."
+ }
+]

@@ -1,0 +1,443 @@
+{
+"eras": [],
+"tags": [
+{
+"s": "ak-sports",
+"tag": "new-world-rave under the techno umbrella",
+"u": "https://brokemagazine.co.uk/ak-sports-b2b-broke-magazine"
+},
+{
+"s": "ak-sports",
+"tag": "hard, fast, fun techno sets and productions",
+"u": "https://grayarea.co/magazine/ones-to-watch-ak-sports"
+},
+{
+"s": "audio-units",
+"tag": "heart-pounding techno with some dub features",
+"u": "https://dirty-epic.com/2023/04/10/audio-units-the-gateway-experience-anaoh-records-april-3rd-2023/"
+},
+{
+"s": "audio-units",
+"tag": "4/4 rhythms with glitchy digital bleeps and swirling textures",
+"u": "https://mixmag.asia/read/mama-snake-audio-units-and-kollision-in-the-lab-mumbai-local"
+},
+{
+"s": "kaleekarma",
+"tag": "Shifting soundscapes and states of mind",
+"u": "https://mixmag.net/read/kaleekarma-in-the-lab-goa-dj-lab-dj-lab"
+},
+{
+"s": "long-distances",
+"tag": "Indie band at the intersections of post-punk, shoegaze, dreampop and synthpop",
+"u": "https://www.platform-mag.com/music/how-the-mighty-will-fall.html"
+},
+{
+"s": "lush-lata",
+"tag": "Achingly cool, unbothered, and fluid, wrapped in a detached mystique",
+"u": "https://refugeworldwide.com/artists/lush-lata"
+},
+{
+"s": "sijya",
+"tag": "textural abstractions of her inner monologue",
+"u": "https://www.cafeoto.co.uk/artists/sijya"
+},
+{
+"s": "sijya",
+"tag": "a lyrical concoction of art-pop, downtempo and ambient",
+"u": "https://www.thewildcity.com/artists/19290-Sijya"
+},
+{
+"s": "suchi",
+"tag": "wafty house and nostalgic rave records",
+"u": "https://mixmag.net/feature/top-dance-music-rap-artists-watch-check-out-2022"
+}
+],
+"aliases": [
+{
+"s": "stalvart-john",
+"a": "Dynamite Disco Club (his radio show, night and label)",
+"k": "also_known_as",
+"u": "https://mixmag.asia/read/dynamite-disco-club-indias-first-disco-house-music-imprint-local"
+},
+{
+"s": "sunju-hargun",
+"a": "Moodwax",
+"k": "also_known_as",
+"u": "https://mixmag.asia/feature/asia-artist-focus-sunju-hargun"
+}
+],
+"press": [
+{
+"s": "ak-sports",
+"t": "Ones to Watch: AK SPORTS",
+"p": "Gray Area",
+"u": "https://grayarea.co/magazine/ones-to-watch-ak-sports",
+"d": "2026-02-19"
+},
+{
+"s": "ak-sports",
+"t": "AK SPORTS B2B Broke Magazine: Starting Points, Past Selves & Top Shelf Bianco Tequila",
+"p": "Broke Magazine",
+"u": "https://brokemagazine.co.uk/ak-sports-b2b-broke-magazine",
+"d": null
+},
+{
+"s": "audio-units",
+"t": "Audio Units: The Gateway Experience (ANAØH Records)",
+"p": "Dirty Epic",
+"u": "https://dirty-epic.com/2023/04/10/audio-units-the-gateway-experience-anaoh-records-april-3rd-2023/",
+"d": "2023-04-10"
+},
+{
+"s": "audio-units",
+"t": "Bangalore based brotherly duo Ashwin and Ashrith Baburao combine as Audio Units on a potent new EP for Lady Tazz's Mind Medizin",
+"p": "Find Your Sounds",
+"u": "https://findyoursounds.com/bangalore-based-brotherly-duo-ashwin-and-ashrith-baburao-combine-as-audio-units-on-a-potent-new-ep-for-lady-tazzs-mind-medizin-featuring-remixes-from-ben-sims-and-temudo/",
+"d": "2023-11-03"
+},
+{
+"s": "discokid",
+"t": "Goa-based musician 'Discokid' to perform at Serendipity Arts Festival 2023",
+"p": "Gogoa Now",
+"u": "https://gogoanow.com/goa-based-musician-discokid-perform-serendipity-arts-festival-2023/",
+"d": null
+},
+{
+"s": "djazz",
+"t": "Sunrise Frequencies: DJazz Channels Southeast Asia on \"7AM In Bangkok\"",
+"p": "UFO Network",
+"u": "https://ufo-network.com/?p=168240",
+"d": "2026-02-18"
+},
+{
+"s": "djazz",
+"t": "DJazz, Her Mom's A Gypsy EP",
+"p": "Electronic Groove",
+"u": "https://electronicgroove.com/?p=187335",
+"d": null
+},
+{
+"s": "hamza-rahimtula",
+"t": "House meets heritage: Hamza Rahimtula and Rajasthan Folkstars release Origins",
+"p": "Mixmag Asia",
+"u": "https://mixmag.asia/read/house-meets-heritage-hamza-rahimtula-rajasthan-folkstars-origins-album-new-releases",
+"d": "2025-04-30"
+},
+{
+"s": "hamza-rahimtula",
+"t": "Hamza Rahimtula's Origins",
+"p": "Platform",
+"u": "https://www.platform-mag.com/music/hamza-rahimtulas-origins.html",
+"d": "2025-05-26"
+},
+{
+"s": "indo-warehouse",
+"t": "Indo Warehouse on taking South Asian house music global (From Coachella to Sunburn)",
+"p": "Hollywood Reporter India",
+"u": "https://www.hollywoodreporterindia.com/features/interviews/indo-warehouse-on-taking-south-asian-house-music-global",
+"d": null
+},
+{
+"s": "indo-warehouse",
+"t": "How New York-based South Asian musicians Indo Warehouse are rewriting the rules of music",
+"p": "Cosmopolitan India",
+"u": "https://www.cosmopolitan.in/life/features/story/how-new-york-based-south-asian-musicians-indo-warehouse-are-rewriting-the-rules-of-music-1172314-2025-02-18",
+"d": "2025-02-18"
+},
+{
+"s": "indo-warehouse",
+"t": "New York record label Indo Warehouse announces Africa tour",
+"p": "Mixmag",
+"u": "https://mixmag.net/read/new-york-record-label-indo-warehouse-africa-tour-news",
+"d": "2024-09-03"
+},
+{
+"s": "kaleekarma",
+"t": "From Delhi To Derry: An Interview With Musicians Kaleekarma And The Fully Automatic Machine",
+"p": "Outlook Traveller",
+"u": "https://www.outlooktraveller.com/explore/culture/from-delhi-to-derry-an-interview-with-musicians-kaleekarma-and-the-fully-automatic-machine",
+"d": "2022-12-13"
+},
+{
+"s": "long-distances",
+"t": "How the Mighty Will Fall",
+"p": "Platform",
+"u": "https://www.platform-mag.com/music/how-the-mighty-will-fall.html",
+"d": "2024-06-26"
+},
+{
+"s": "long-distances",
+"t": "Long Distances Reflects Life's Complexities Through Debut EP How The Mighty Will Fall",
+"p": "The Indian Music Diaries",
+"u": "https://theindianmusicdiaries.com/long-distances-reflects-lifes-complexities-through-debut-ep-how-the-mighty-will-fall",
+"d": "2024-03-01"
+},
+{
+"s": "murthovic",
+"t": "Now Streaming: Antariksha Sanchar Is a Phenomenal Cocktail Of Carnatic & Electronic Fusion Music",
+"p": "Homegrown",
+"u": "https://homegrown.co.in/amp/story/homegrown-explore/now-streaming-antariksha-sanchar-is-a-phenomenal-cocktail-of-carnatic-electronic-fusion-music",
+"d": "2021-06-08"
+},
+{
+"s": "natasha-diggs",
+"t": "Brooklyn DJ Natasha Diggs Wants To Lift You Up",
+"p": "Bustle",
+"u": "https://www.bustle.com/style/brooklyn-dj-natasha-diggs-wants-to-lift-you-up",
+"d": "2020-11-25"
+},
+{
+"s": "natasha-diggs",
+"t": "Natasha Diggs announces debut London headline show with Soul in the Horn",
+"p": "DJ Mag",
+"u": "https://djmag.com/news/natasha-diggs-announces-debut-london-headline-show-soul-horn",
+"d": "2022-05-17"
+},
+{
+"s": "natasha-diggs",
+"t": "Natasha Diggs & Mr. Len \"Soul Box 45s\" Interview",
+"p": "Rap Is Outta Control",
+"u": "https://rapisouttacontrol.com/interviews/natasha-diggs-mr-len-soul-box-45s-interview/",
+"d": "2015-12-09"
+},
+{
+"s": "pulpy-shilpy",
+"t": "Gowri Jayakumar is at her Feminist Fiercest on 'Kaadal Mannan'",
+"p": "Rolling Stone India",
+"u": "https://rollingstoneindia.com/gowri-jayakumar-is-at-her-feminist-fiercest-on-kaadal-mannan/",
+"d": "2017-07-10"
+},
+{
+"s": "reble",
+"t": "INTERVIEW | Meghalaya Rapper Reble's Dystopian Dreams, Punk Fury And The Making Of A South Asian Classic-In-Progress",
+"p": "ETV Bharat",
+"u": "https://www.etvbharat.com/en/lifestyle/interview-reble-meghalaya-hip-hop-music-enn25111402262",
+"d": "2025-11-14"
+},
+{
+"s": "reble",
+"t": "In Conversation With Reble",
+"p": "The Indian Music Diaries",
+"u": "https://theindianmusicdiaries.com/i-will-always-do-justice-to-its-sound-the-rest-destiny-will-figure-out-for-itself-in-conversation-with-reble/",
+"d": "2024-01-27"
+},
+{
+"s": "reble",
+"t": "Reble: India's rising rap voice from Meghalaya to the mainstream",
+"p": "Global Indian",
+"u": "https://www.globalindian.com/youth/reble-from-the-hills-of-meghalaya-to-bollywood-spotlight/",
+"d": "2026-02-16"
+},
+{
+"s": "sickflip",
+"t": "Interview with Sarvesh Srivastava of Sickflip",
+"p": "What's The Scene",
+"u": "https://whatsthescene.com/?p=10079",
+"d": "2012-08-14"
+},
+{
+"s": "sickflip",
+"t": "Brands Are Finally Seeing The Merit In India's Electronic Music Scene - SickFlip",
+"p": "Loudest",
+"u": "https://loudest.in/interviews/brands-are-finally-seeing-the-merit-in-indias-electronic-music-scene-sickflip-17734.html",
+"d": "2024-11-13"
+},
+{
+"s": "sid-vashi",
+"t": "The computer has become an instrument today: Sid Vashi",
+"p": "DNA India",
+"u": "https://www.dnaindia.com/lifestyle/report-the-computer-has-become-an-instrument-today-sid-vashi-2026975",
+"d": "2014-10-18"
+},
+{
+"s": "sijya",
+"t": "Sijya on Leather & Brass (interview)",
+"p": "Rolling Stone India",
+"u": "https://rollingstoneindia.com/sijya-leather-brass-ep-interview",
+"d": "2025-09-25"
+},
+{
+"s": "spryk",
+"t": "SPRYK's Curation Is A Fresh Mix Of Electronic Music, Indie Sounds & Homegrown Artists",
+"p": "Homegrown",
+"u": "https://homegrown.co.in/article/804635/spryks-curation-is-a-fresh-mix-of-electronic-music-indie-sounds-homegrown-artists",
+"d": "2021-06-08"
+},
+{
+"s": "stalvart-john",
+"t": "Dynamite Disco Club: India's first disco house music imprint",
+"p": "Mixmag Asia",
+"u": "https://mixmag.asia/read/dynamite-disco-club-indias-first-disco-house-music-imprint-local",
+"d": "2021-08-09"
+},
+{
+"s": "suchi",
+"t": "SUCHI launches label Ikke Sant with Sub Cut EP",
+"p": "DJ Mag",
+"u": "https://djmag.com/news/suchi-launches-label-ikke-sant-sub-cut-ep",
+"d": "2025-09-26"
+},
+{
+"s": "suchi",
+"t": "The top 25 artists to check out in 2022",
+"p": "Mixmag",
+"u": "https://mixmag.net/feature/top-dance-music-rap-artists-watch-check-out-2022",
+"d": "2022-01-06"
+},
+{
+"s": "weird-sounding-dude",
+"t": "Bangalore's Brightest: Weird Sounding Dude's Latest Remix On Where The Heart Is Makes Waves On A Global Scale",
+"p": "Magnetic Mag",
+"u": "https://magneticmag.com/2024/08/bangalores-brightest-weird-sounding-dudes-latest-remix-on-where-the-heart-is-makes-waves-on-a-global-scale/",
+"d": "2024-08-30"
+}
+],
+"mixes": [
+{
+"s": "abhi-meer",
+"t": "Wild City #178: Abhi Meer (published 2019)",
+"u": "https://soundcloud.com/thewildcity/wild-city-mix-178-abhi-meer"
+},
+{
+"s": "dreamstates",
+"t": "Mixmag Asia Radio 102: dreamstates (published 2022)",
+"u": "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-102-dreamstates-india/"
+},
+{
+"s": "dreamstates",
+"t": "Zokhuma B2B Dreamstates | Mixmag Lab Goa",
+"u": "https://www.youtube.com/watch?v=r-1GDbUJ8nM"
+},
+{
+"s": "jael",
+"t": "Mixtape: JAEL (KALTBLUT Magazine) (published 2024)",
+"u": "https://www.kaltblut-magazine.com/mixtape-jael/"
+},
+{
+"s": "kaleekarma",
+"t": "Kaleekarma | Mixmag Lab Goa (published 2022)",
+"u": "https://www.youtube.com/watch?v=N82rR5GsMUo"
+},
+{
+"s": "lush-lata",
+"t": "Magnetic Fields 2024 | Lush Lata (Refuge Worldwide) (published 2025)",
+"u": "https://refugeworldwide.com/radio/magnetic-fields-2024-lush-lata-09-feb-2025"
+},
+{
+"s": "suchi",
+"t": "Ikke Sant with SUCHI - 11 December 2025 (Rinse FM) (published 2025)",
+"u": "https://soundcloud.com/rinsefm/suchi111225"
+},
+{
+"s": "suchi",
+"t": "SUCHI 21st May 2022 (NTS) (published 2022)",
+"u": "https://www.nts.live/shows/guests/episodes/suchi-21st-may-2022"
+},
+{
+"s": "weird-sounding-dude",
+"t": "EG SPOTLIGHT.274 Weird Sounding Dude (posted by EG) (published 2024)",
+"u": "https://api.soundcloud.com/tracks/1791606241"
+}
+],
+"spotify": [],
+"bio": [],
+"releases": [
+{
+"s": "audio-units",
+"ti": "The Gateway Experience",
+"ty": "ep",
+"y": 2023,
+"d": "2023-04-03",
+"l": "ANAØH Records",
+"u": "https://dirty-epic.com/2023/04/10/audio-units-the-gateway-experience-anaoh-records-april-3rd-2023/"
+},
+{
+"s": "djazz",
+"ti": "7AM In Bangkok",
+"ty": "ep",
+"y": 2026,
+"d": "2026-02-18",
+"l": "All That DJazz",
+"u": "https://ufo-network.com/?p=168240"
+},
+{
+"s": "dotdat",
+"ti": "Steady Faith",
+"ty": "album",
+"y": 2024,
+"d": "2024-12-06",
+"l": null,
+"u": "https://dotdat.bandcamp.com/album/steady-faith"
+},
+{
+"s": "jael",
+"ti": "Them Changes (Jaël Remix)",
+"ty": "remix",
+"y": 2018,
+"d": "2018-09-05",
+"l": null,
+"u": "https://knownasjael.bandcamp.com/track/thundercat-them-changes-ja-l-remix"
+},
+{
+"s": "okedo",
+"ti": "Impulse",
+"ty": "single",
+"y": 2020,
+"d": null,
+"l": "Skip-A-Beat",
+"u": "https://www.thewildcity.com/news/17589-okedo-amp-up-their-individual-voices-danceability-on-new-single-impulse"
+},
+{
+"s": "spryk",
+"ti": "Emergence",
+"ty": "ep",
+"y": 2014,
+"d": "2014-06-12",
+"l": null,
+"u": "https://spryk.bandcamp.com/album/emergence"
+},
+{
+"s": "spryk",
+"ti": "Parallax Barrier",
+"ty": "single",
+"y": 2014,
+"d": "2014-09-14",
+"l": null,
+"u": "https://spryk.bandcamp.com/track/parallax-barrier"
+}
+],
+"ids": [
+{
+"s": "dotdat",
+"k": "bandcamp",
+"v": "https://dotdat.bandcamp.com",
+"u": "https://dotdat.bandcamp.com"
+}
+],
+"bc": [
+{
+"s": "dotdat",
+"t": "Steady Faith",
+"ty": "album",
+"id": 2405438807
+},
+{
+"s": "jael",
+"t": "Them Changes (Jaël Remix)",
+"ty": "track",
+"id": 2526160432
+},
+{
+"s": "spryk",
+"t": "Emergence",
+"ty": "album",
+"id": 1430566836
+},
+{
+"s": "spryk",
+"t": "Parallax Barrier",
+"ty": "track",
+"id": 3783021176
+}
+]
+}

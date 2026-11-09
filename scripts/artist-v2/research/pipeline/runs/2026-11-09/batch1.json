@@ -1,0 +1,415 @@
+[
+ {
+  "slug": "aayna",
+  "name": "AAYNA",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/user-519313833",
+  "instagram": "aayna",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=EQyBRFmjHLY",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Aayna is a DJ and producer whose sets are shaped by the Roland TB-303 and 1980s and 1990s acid house. She has played Magnetic Fields, DGTL, Echoes of Earth and Grasslands Festival in Nepal, and played for the UK community Keep Hush.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "the rawness of acid",
+   "disco, electro, breaks, UKG, IDM and further leftfield sounds",
+   "heavily influenced by Roland TB 303 and acid house greats of the 80s and 90s"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=EQyBRFmjHLY",
+   "https://www.youtube.com/watch?v=9cz27-Ks8UM",
+   "https://www.youtube.com/watch?v=eyS5yFogzFY",
+   "https://www.youtube.com/watch?v=D2u55RHex8g",
+   "https://www.youtube.com/watch?v=wW6c6HCwk3A"
+  ],
+  "ids_already_stored": {
+   "youtube": "https://www.youtube.com/@aaynamusic",
+   "ra": "aayna",
+   "musicbrainz": "8bd1a13f-0e21-40ae-9796-6be2c2f13503"
+  },
+  "has_eras": true,
+  "mbid": "8bd1a13f-0e21-40ae-9796-6be2c2f13503",
+  "gaps": [
+   "releases",
+   "press",
+   "city"
+  ]
+ },
+ {
+  "slug": "abhi-meer",
+  "name": "ABHI MEER",
+  "kind": "musician",
+  "based_city": "Mumbai, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/abhimeer",
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=g04C3QNMAJQ",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Abhi Meer is a Mumbai DJ, producer, synthesist and radio host who works with modular synths and drones. He represented Resident Advisor at Magnetic Fields, played New Delhi's first Boiler Room, hosts shows on boxout.fm, and released the EP Omerta.",
+  "releases_on_record": 5,
+  "release_years": [
+   2019,
+   2022
+  ],
+  "sample_releases": [
+   "Screen Dream (2022)",
+   "Emotionally Unavailable (2021)",
+   "Omerta (2020)",
+   "Penfield Mood Organelle (2020)",
+   "Castalian Spring (2019)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/14390-listen-castalian-spring-by-abhi-meer",
+   "https://www.thewildcity.com/news/17786-abhi-meer-offers-live-streamed-installation-performance-with-isoxia",
+   "https://www.thewildcity.com/news/16902-listen-penfield-mood-organelle-by-abhi-meer",
+   "https://mixmag.asia/read/abhi-meer-screen-dream-modular-synthesizer-recordings-new-releases",
+   "https://ra.co/reviews/33739"
+  ],
+  "sound_tags_already_stored": [
+   "bursts of staccato bleeps, claps, acid and electro",
+   "melodic drone with gentle acid undertones"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "ids"
+  ]
+ },
+ {
+  "slug": "agent-bugs",
+  "name": "AGENT BUGS",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Played CCD Episode 2 at Indiranagar Social.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "ak-sports",
+  "name": "AK SPORTS",
+  "kind": "musician",
+  "based_city": "Los Angeles, USA",
+  "from_city": "Sydney, Australia",
+  "genres": [
+   "Hard Techno",
+   "Hardstyle",
+   "Trance"
+  ],
+  "spotify": "https://open.spotify.com/artist/7qiOBa5jCbTeyLY2Chw9ju",
+  "soundcloud": "https://soundcloud.com/aksportsdj",
+  "instagram": "aksportsdj",
+  "website": null,
+  "mix_url": "https://soundcloud.com/platform/ak-sports-bengaluru",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "AK Sports is a Sydney-born radio host, DJ and producer based between London and Los Angeles. The show on Rinse FM and the sets run through hard techno, hardstyle and trance. AK Sports played Boiler Room Bengaluru on 7 June 2024.",
+  "releases_on_record": 7,
+  "release_years": [
+   2020,
+   2024
+  ],
+  "sample_releases": [
+   "You Forget (Remixes) (2024, Sweat It Out!)",
+   "Ride Or Die (2024, HARD Recs)",
+   "Displaced (2022, Lobster Theremin)",
+   "Lost In The Sauce EP (2022, Shall Not Fade)",
+   "Gurl EP (AK Sports remix) (2021, Dansu Discs)",
+   "Queens of Club (2020, Raiders Records)",
+   "Polarize (2020, Gallery Recordings)"
+  ],
+  "press_urls_already_stored": [
+   "https://mixmag.net/read/ak-sports-shares-debut-v-a-on-club-madhouse-imprint-news",
+   "https://djmag.com/features/fresh-kicks-199-ak-sports"
+  ],
+  "sound_tags_already_stored": [
+   "High NRG Techno, Breakcore, and experimental 4x4",
+   "oddball beat structures with layer upon layer of dancefloor reference points"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.rinse.fm/episodes/ak-sports-25-01-2024-0100",
+   "https://djmag.com/features/fresh-kicks-199-ak-sports"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://aksports.bandcamp.com",
+   "beatport": "https://beatport.com/artist/ak-sports/835442",
+   "discogs": "https://www.discogs.com/artist/8251322",
+   "deezer": "88991832",
+   "ra": "https://ra.co/dj/sports",
+   "musicbrainz": "1f33306e-ddc2-4917-8e1e-68c2a5e349e9"
+  },
+  "has_eras": true,
+  "mbid": "1f33306e-ddc2-4917-8e1e-68c2a5e349e9",
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "anish-sood",
+  "name": "ANISH SOOD",
+  "kind": "musician",
+  "based_city": "Goa",
+  "from_city": "India",
+  "genres": [
+   "Progressive",
+   "Deep House"
+  ],
+  "spotify": "https://open.spotify.com/artist/7qjp4poDA0EDaiCEKuH1ZQ",
+  "soundcloud": null,
+  "instagram": "anyasamusic",
+  "website": "https://anyasa.com",
+  "mix_url": "https://www.youtube.com/watch?v=YPS38_c3RHw",
+  "labels": "Anjunadeep (UK)",
+  "members": "ANYASA",
+  "bio_excerpt": "Anish Sood records as Anyasa and was born in Goa in 1989. He debuted on Anjunadeep in July 2021 with the single Rasiya, reported as the first Indian artist signed to the label. He also runs the label Class Action.",
+  "releases_on_record": 10,
+  "release_years": [
+   2011,
+   2020
+  ],
+  "sample_releases": [
+   "Say My Name (2020, Class Action)",
+   "Running Back to You (2020, Class Action)",
+   "Mountain of a Man (2018, Class Action)",
+   "Castles (2018, Class Action)",
+   "Starry Night (2017, Class Action)",
+   "Going Under (2017, Class Action)",
+   "Don't Stop (2017, Class Action)",
+   "Superfly (2015)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/18613-anish-sood-debuts-as-anyasa-on-anjunadeep-with-new-single-rasiya",
+   "https://rollingstoneindia.com/anish-sood-transitions-into-anyasa-releases-new-single-rasiya/",
+   "https://mixmag.net/feature/anyasa-anjunadeep-anjunabeats-goa-india-traditional-interview",
+   "https://anjunadeep.com/news/top-10-most-epic-livestreams",
+   "https://rollingstoneindia.com/anyasa-flectere-ep-north-america-tour",
+   "https://homegrown.co.in/homegrown-creators/indian-producer-anyasa-is-taking-his-new-ep-on-a-north-american-tour",
+   "https://mixmag.asia/read/above-beyond-anyasa-anjunadeep-ep-india-local",
+   "https://mixmag.net/read/anyasa-in-the-lab-goa-dj-lab"
+  ],
+  "sound_tags_already_stored": [
+   "a dreamy, cross-cultural melange"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=GsLRpF6hrUU",
+   "https://www.youtube.com/watch?v=YPS38_c3RHw",
+   "https://www.youtube.com/watch?v=wiV3ONkzzJ8",
+   "https://www.youtube.com/watch?v=XrCSQ5vuLbw",
+   "https://www.youtube.com/watch?v=7ueAKLgf7co"
+  ],
+  "ids_already_stored": {
+   "discogs": "2871210",
+   "wikidata": "Q4765311",
+   "musicbrainz": "78361be1-bcb4-4758-8281-5b8e17286231",
+   "deezer": "4943579",
+   "beatport": "https://www.beatport.com/artist/anish-sood/207812"
+  },
+  "has_eras": true,
+  "mbid": "78361be1-bcb4-4758-8281-5b8e17286231",
+  "gaps": [
+   "claims"
+  ]
+ },
+ {
+  "slug": "anushka",
+  "name": "ANUSHKA",
+  "kind": "musician",
+  "based_city": "Goa, India",
+  "from_city": "India",
+  "genres": [
+   "Breaks",
+   "Disco",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://soundcloud.com/thewildcity/wild-city-235-anushka",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Anushka Menon is a Goa-based DJ and former fashion and beauty photographer. She is one half of the duo Anushka + Agent with Smita Singh, a co-founder of Magnetic Fields. Her Wild City #235 mix, recorded at JUNA, was released on 28 May 2024.",
+  "releases_on_record": 3,
+  "release_years": [
+   2019,
+   2025
+  ],
+  "sample_releases": [
+   "Cruise Control (OX7GEN feat. Anushka) (2025, Fresh Air Records)",
+   "Take (2020)",
+   "Falling (2019)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/21071-ox7gen-launches-new-label-fresh-air-records-with-single-cruise-control-feat-anushka",
+   "https://rollingstoneindia.com/anushka-sid-vashi-take-video",
+   "https://www.kaltblut-magazine.com/machine-love-an-interview-with-anushka-agent/",
+   "https://grayarea.co/magazine/anushka-menon-dichotomy-the-vogue-anarchist-and-rave-alchemist"
+  ],
+  "sound_tags_already_stored": [
+   "Drum and bass meets disco shimmer",
+   "Electro jolts and restless grooves"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/9394-wild-city-154-anu-hka"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "audio-units",
+  "name": "AUDIO UNITS",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Techno"
+  ],
+  "spotify": "https://open.spotify.com/artist/2WzS5ZDxPqo32zdVI3hHk9",
+  "soundcloud": "https://soundcloud.com/audiounits",
+  "instagram": "audio_units",
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/3128-wild-city-109-audio-units",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Audio Units is a brother duo making hardware-driven techno inspired by art, science fiction and technology. They have released on Molecular, Newrhythmic, Dynamic Reflection and Illegal Alien, and played DGTL.",
+  "releases_on_record": 41,
+  "release_years": [
+   2011,
+   2025
+  ],
+  "sample_releases": [
+   "GSTDVA002 (2025, Genom Sequence)",
+   "Magnum Opus (2025, Molecular Recordings)",
+   "Best Of PRX Vol.2 (2024, PRX Records)",
+   "Macro Data Refinement (2024, Devotion Records)",
+   "Chapter Two/No Sleep (2024, Balders Audio)",
+   "Atraxia (2024, Illegal Alien Records)",
+   "Halcyon (2024, Qilla Records)",
+   "Aristotelian Tradition EP (2023, Mind Medizin Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://mixmag.asia/read/mama-snake-audio-units-and-kollision-in-the-lab-mumbai-local",
+   "https://djmag.com/listen/premiere-audio-units-aristotelian-tradition-ben-sims-remix"
+  ],
+  "sound_tags_already_stored": [
+   "forward moving, body rolling",
+   "a detailed, modern interpretation of techno"
+  ],
+  "mix_urls_already_stored": [
+   "https://soundcloud.com/platform/audio-units-hyderabad"
+  ],
+  "ids_already_stored": {
+   "discogs": "2635049",
+   "musicbrainz": "0b00f1fa-be3e-4d33-8727-70a7a56ffcc2",
+   "deezer": "1511447",
+   "ra": "https://ra.co/dj/audiounits",
+   "beatport": "https://www.beatport.com/artist/audio-units/205092"
+  },
+  "has_eras": true,
+  "mbid": "0b00f1fa-be3e-4d33-8727-70a7a56ffcc2",
+  "gaps": [
+   "photo",
+   "city"
+  ]
+ },
+ {
+  "slug": "bawra",
+  "name": "BAAWRA",
+  "kind": "musician",
+  "based_city": "Pune, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/baawra",
+  "instagram": "baawra",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=WGpxE82dKkc",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Baawra is Hiten Mutreja, a Pune DJ and a core member of the MAUSHI collective. His sets lean on understated, hypnotic minimal techno. He played DGTL India in 2025 and recorded Wild City #264 in 2026.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/21835-wild-city-264-baawra"
+  ],
+  "sound_tags_already_stored": [
+   "atmospheric electronic sound",
+   "percussive and subtle techno"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=y7QAhccE0DI",
+   "https://www.youtube.com/watch?v=WGpxE82dKkc",
+   "https://www.youtube.com/watch?v=iLVq7WR2-Xw",
+   "https://www.youtube.com/watch?v=u3F4BNRnY3E",
+   "https://soundcloud.com/thewildcity/wild-city-264-baawra"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ }
+]

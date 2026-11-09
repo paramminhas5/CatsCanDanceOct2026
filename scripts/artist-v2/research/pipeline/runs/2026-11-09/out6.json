@@ -1,0 +1,148 @@
+[
+ {
+  "slug": "rohan-rakhit",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing new confirmed this pass. Gaps were photo and releases; no release pages (Bandcamp, Discogs, label) were found in searches, only Worldwide FM episode pages already covered by stored mixes. No MusicBrainz match. Not guessed."
+ },
+ {
+  "slug": "sartdawg",
+  "identity": "Not confirmed. No page found for a Bengaluru house/disco DJ by this name.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searches for the name returned only Stalvart John pages (a different Bengaluru disco DJ). Nothing public found. Our stored Instagram handle is 'startdawg' while the name is SARTDAWG; worth checking for a typo. Empty lists returned."
+ },
+ {
+  "slug": "shama-anwar",
+  "identity": "Wild City artist page (thewildcity.com/artists/11608-shama-anwar) gives East London, British-born Bangladeshi DJ, same as our bio; mix Wild City #167 matches our stored mix_url.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing new beyond what is stored. Wild City adds: started parties at the Ace Hotel London in early 2013, later worked with Nick Hook, Eclair Fifi and Bok Bok (source: that Wild City page). Our bio says 'Bangladesh-raised'; Wild City says 'British-born, Bangladeshi'. Param may want to check the 'raised' claim. City gap: source says East London, matching from_city. No releases, press or ids found."
+ },
+ {
+  "slug": "shantam",
+  "identity": "MusicBrainz id stored. Wild City artist page (thewildcity.com/artists/13829-Shantam) lists Noida, Telekinetik (Social Isolation) and Shantones EP, matching stored releases.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Wild City page says he is Noida-rooted, and one news item there calls him Goa-based; our record says Noida. It also mentions a compilation on Padmini Records (Yaar-Dost vol. 2) and OCL Records' debut release, but no year or confirming primary page was opened, so not added. He plays keys in the band FOPCHU (not added as alias). Started producing in 2007 after trance, per Wild City. No photo source found."
+ },
+ {
+  "slug": "sheral",
+  "identity": "Wild City artist page (thewildcity.com/artists/21133-Sheral) matches: DJ and graphic designer, house, bass, breaks, techno, Magnetic Fields and Boiler Room Gurgaon, Wild City #248.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing new. Page says 'from the capital' without naming the city, consistent with Delhi. No releases or new press found."
+ },
+ {
+  "slug": "shireen",
+  "identity": "Wild City artist page (thewildcity.com/artists/12022-shireen) matches: Delhi DJ, member of Coven Code, UK garage and breakbeat; Wild City #168 matches stored mix_url.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing new to add. ThePrint piece on Coven Code (2018-10-07, Priyamvada Grover) does not mention Shireen, so not used as her press. A Gulf Times result about a 'Rockstar DJ Shireen' in Doha appeared in search and was not opened; likely a namesake, do not link. No releases or ids found."
+ },
+ {
+  "slug": "sickflip",
+  "identity": "Interview (whatsthescene.com, 2012-08-14) says Mumbai producer, best known for Mental Martians; matches Wild City press already stored on our record. MusicBrainz id stored.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [
+   {
+    "name": "Mental Martians",
+    "note": "best known for this project; Sickflip began as a solo project",
+    "source_url": "https://whatsthescene.com/?p=10079"
+   }
+  ],
+  "press": [
+   {
+    "title": "Interview with Sarvesh Srivastava of Sickflip",
+    "publication": "What's The Scene",
+    "url": "https://whatsthescene.com/?p=10079",
+    "date_published": "2012-08-14"
+   },
+   {
+    "title": "Brands Are Finally Seeing The Merit In India's Electronic Music Scene - SickFlip",
+    "publication": "Loudest",
+    "url": "https://loudest.in/interviews/brands-are-finally-seeing-the-merit-in-indias-electronic-music-scene-sickflip-17734.html",
+    "date_published": "2024-11-13"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "City gap: two sources (whatsthescene 2012, loudest.in 2024) say Mumbai; our record says India. Loudest.in spells the name Sarvesh Shrivastava, whatsthescene writes Srivastava; not changed. Loudest lists labels High Chai Records, Rub A Duck Recordings, Plain Dope Records and Sony Music India, without release titles, so no releases added."
+ },
+ {
+  "slug": "sid-vashi",
+  "identity": "DNA India article (2014-10-18, Lisa Antao): Mumbai-based, from Detroit, saxophone since age 11, LP Motherland Tourism released September 2013; matches our stored release and jazz/electronic genres.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "The computer has become an instrument today: Sid Vashi",
+    "publication": "DNA India",
+    "url": "https://www.dnaindia.com/lifestyle/report-the-computer-has-become-an-instrument-today-sid-vashi-2026975",
+    "date_published": "2014-10-18"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Conflict for Param: the Magnetic Fields page magneticfields.in/artists/sid-vashi-live says the artist is based in Melbourne and produced parts of Heems' 2024 album Veena. I could not tell whether that is the same person or a stale or different page, so nothing from it was used. Our record says Mumbai; the 2014 DNA piece says he had just moved to Mumbai. The DNA article also says Detroit; ours says Michigan (not a conflict). Motherland Tourism date: September 2013. No ids confirmed; Sofar Sounds page returned no readable content."
+ }
+]
