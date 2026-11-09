@@ -296,7 +296,7 @@ const mergeGenres = (a: string[] | null | undefined, b: string[]) => {
 
 // Details pass (mode=backfill, its own pg_cron job ccd-scrape-details at 02:20 IST, before the 02:45 curate pass).
 // Reads the event page of upcoming allevents and District rows not read yet (newest first), one at a time with a pause,
-// and stops for the night if the site says too many requests. Writes go through PATCH, so the credibility,
+// and stops for the night if the site says too many requests or keeps serving pages with no event data. Writes go through PATCH, so the credibility,
 // scoring and artist-link triggers run again. Every row read gets detail_checked_at so it is never read twice.
 async function backfill(names: Names, cap: number) {
   const today = new Date().toISOString().slice(0, 10);
@@ -304,29 +304,37 @@ async function backfill(names: Names, cap: number) {
     `&source=in.(allevents,district)&detail_checked_at=is.null&lineup=is.null` +
     `&or=(status.eq.pending,curation.eq.%22no%20credible%20name%20found%22)&order=created_at.desc&limit=${cap}`;
   const rows = await (await sb(q)).json();
-  let n = 0, changed = 0, stopped = false;
+  // A page with no event data is usually a holding page served when the site is busy: it is left unread
+  // (no mark), and three in a row end the pass for the night.
+  let n = 0, changed = 0, stopped = "", misses = 0;
   for (const r of rows) {
-    if (r.lineup?.length) continue;
     let f: Facts | null = null;
     try { f = await detailFacts(r.url, names); }
     catch (e) {
       note(`${r.source}-page`, e);
-      if (String(e).includes("-> 429")) { stopped = true; break; }
+      if (String(e).includes("-> 429")) { stopped = "429"; break; }
+      // A dead page (404, timeout): mark it read so it is not tried again.
+      await sb(`scraped_events?id=eq.${r.id}`, { method: "PATCH", body: JSON.stringify({ detail_checked_at: new Date().toISOString() }) });
+      continue;
     }
+    if (!f) {
+      if (++misses >= 3) { stopped = "no event data on 3 pages in a row"; break; }
+      await sleep(1500);
+      continue;
+    }
+    misses = 0;
     n++;
     const patch: Record<string, unknown> = { detail_checked_at: new Date().toISOString() };
-    if (f) {
-      if (f.lineup.length) patch.lineup = f.lineup;
-      const g = mergeGenres(r.genres, f.genres);
-      if (g && JSON.stringify(g) !== JSON.stringify(r.genres ?? [])) patch.genres = g;
-      if (f.promoters.length && !r.description) patch.description = `Promoter: ${f.promoters.join(", ")}`;
-    }
+    if (f.lineup.length) patch.lineup = f.lineup;
+    const g = mergeGenres(r.genres, f.genres);
+    if (g && JSON.stringify(g) !== JSON.stringify(r.genres ?? [])) patch.genres = g;
+    if (f.promoters.length && !r.description) patch.description = `Promoter: ${f.promoters.join(", ")}`;
     const res = await sb(`scraped_events?id=eq.${r.id}`, { method: "PATCH", body: JSON.stringify(patch) });
     if (!res.ok) note("backfill", `${res.status} ${r.id}`);
     else if (Object.keys(patch).length > 1) changed++;
     await sleep(1500);
   }
-  return { read: n, changed, stopped_on_429: stopped };
+  return { read: n, changed, stopped: stopped || null };
 }
 
 // ---- main ------------------------------------------------------------------
