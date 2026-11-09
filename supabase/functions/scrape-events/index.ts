@@ -132,10 +132,12 @@ function fromLd(it: Record<string, any>, source: string, fallbackUrl: string, fa
 // Not covered: Insider and Skillbox (single-page apps with no data in the HTML), BookMyShow and Resident Advisor (both block us).
 // Promoters on those sites send their nights through /submit-event instead.
 // allevents paginates 15 at a time, so the first three pages of music and parties are read per city.
-const AE_CITIES = ["bangalore", "mumbai", "delhi", "goa", "pune", "hyderabad", "chennai", "kolkata"];
+// allevents moved Pune to /pune-in (the old /pune pages 404 since early Nov 2026).
+const AE_CITIES = ["bangalore", "mumbai", "delhi", "goa", "pune-in", "hyderabad", "chennai", "kolkata"];
 const PAGES: [string, string, string | null][] = [
   ["https://www.district.in/events/", "district", null],
-  ...["bangalore", "mumbai", "delhi", "goa", "pune", "hyderabad"].map((c): [string, string, string | null] => [`https://www.highape.com/${c}`, "highape", city(c)]),
+  // HighApe no longer lists Delhi or Pune events (both pages came back empty every night), so they are left out.
+  ...["bangalore", "mumbai", "goa", "hyderabad"].map((c): [string, string, string | null] => [`https://www.highape.com/${c}`, "highape", city(c)]),
   ...AE_CITIES.flatMap((c) =>
     ["music", "parties"].flatMap((cat) =>
       [1, 2, 3].map((pg): [string, string, string | null] => [`https://allevents.in/${c}/${cat}${pg > 1 ? `?page=${pg}` : ""}`, "allevents", city(c)]))),
@@ -214,6 +216,119 @@ async function gigscalendar(): Promise<Raw[]> {
   return out;
 }
 
+
+// ---- detail pages (9 Nov 2026) ---------------------------------------------
+// Listing pages from allevents and District carry no lineup. Each event's own page has the
+// organiser's write-up in its Event JSON-LD. We read it once, keep only facts and never store the text:
+//   genres   sound words found in it (so blocks like hard techno, psy trance and Bollywood can act)
+//   lineup   performers it lists, plus acts on our credible list that it mentions
+//   description  "Promoter: <name>" when a promoter on our list is named in it
+const GENRE_WORDS: [RegExp, string][] = [
+  [/\bhard[\s-]?techno\b|\bschranz\b|\bhard[\s-]?groove\b|\bindustrial techno\b/i, "hard techno"],
+  [/\bpsy[\s-]?trance\b|\bgoa trance\b|\bforest psy\b|\bdark psy\b/i, "psy trance"],
+  [/\bmelodic (techno|house)\b/i, "melodic"],
+  [/\bafro[\s-]?house\b/i, "afro house"],
+  [/\btech[\s-]?house\b/i, "tech house"],
+  [/\bdeep house\b/i, "deep house"],
+  [/\b(nu[\s-]?)?disco\b/i, "disco"],
+  [/\buk garage\b|\bukg\b|\b2[\s-]?step\b/i, "garage"],
+  [/\bbreakbeat\b|\bbreaks\b/i, "breaks"],
+  [/\bdrum (?:and|&|n'?) ?bass\b|\bdnb\b|\bjungle music\b/i, "drum and bass"],
+  [/\bdub techno\b/i, "dub techno"],
+  [/\btechno\b/i, "techno"],
+  [/\bhouse music\b/i, "house"],
+  [/\bbollywood\b|\bbollytech\b/i, "bollywood"],
+  [/\bpunjabi\b/i, "punjabi"],
+  [/\bhip[\s-]?hop\b/i, "hip-hop"],
+  [/\bjazz\b/i, "jazz"],
+];
+// Roster names are not matched in free text: many are ordinary words or common names ("Girls Night Out",
+// "Green Park", "Anushka", "Stain"). Roster artists still match through real lineups in Postgres.
+type Names = { acts: string[]; promoters: string[] };
+async function loadNames(): Promise<Names> {
+  const out: Names = { acts: [], promoters: [] };
+  try {
+    const t = await (await sb("curation_trust?select=kind,pattern&kind=in.(act,promoter)")).json();
+    for (const r of t) (r.kind === "act" ? out.acts : out.promoters).push(String(r.pattern));
+  } catch (e) { note("names", e); }
+  return out;
+}
+
+const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+// Finds a name in the text as a whole word and returns it as written there.
+function found(text: string, name: string): string | null {
+  const m = text.match(new RegExp(`(?<![\\p{L}\\p{N}])${esc(name)}(?![\\p{L}\\p{N}])`, "iu"));
+  return m ? m[0] : null;
+}
+
+type Facts = { genres: string[]; lineup: string[]; promoters: string[] };
+function factsFrom(text: string, perf: string[], names: Names): Facts {
+  const genres = GENRE_WORDS.filter(([re]) => re.test(text)).map(([, g]) => g);
+  if (genres.includes("hard techno") || genres.includes("melodic") || genres.includes("dub techno")) {
+    const i = genres.indexOf("techno"); if (i >= 0) genres.splice(i, 1);
+  }
+  const lineup = [...perf];
+  const have = (n: string) => lineup.some((x) => x.toLowerCase() === n.toLowerCase());
+  for (const a of names.acts) { const f = found(text, a); if (f && !have(f)) lineup.push(f); }
+  const promoters: string[] = [];
+  for (const p of names.promoters) { const f = found(text, p); if (f && !promoters.some((x) => x.toLowerCase() === f.toLowerCase())) promoters.push(f); }
+  return { genres, lineup: lineup.slice(0, 30), promoters };
+}
+
+async function detailFacts(url: string, names: Names): Promise<Facts | null> {
+  const html = await get(url, 8000);
+  for (const it of jsonLdEvents(html)) {
+    const text = it.description ? decode(String(it.description)) : "";
+    const perf = (Array.isArray(it.performer) ? it.performer : it.performer ? [it.performer] : [])
+      .map((x: any) => decode(String(x?.name ?? ""))).filter(Boolean);
+    const org = (Array.isArray(it.organizer) ? it.organizer : it.organizer ? [it.organizer] : [])
+      .map((x: any) => decode(String(x?.name ?? ""))).filter(Boolean).join(" ");
+    return factsFrom(`${text} ${org}`, perf, names);
+  }
+  return null;
+}
+
+const mergeGenres = (a: string[] | null | undefined, b: string[]) => {
+  const out = [...(a ?? [])];
+  for (const g of b) if (!out.some((x) => x.toLowerCase() === g)) out.push(g);
+  return out.length ? out.slice(0, 10) : null;
+};
+
+// Details pass (mode=backfill, its own pg_cron job ccd-scrape-details at 02:20 IST, before the 02:45 curate pass).
+// Reads the event page of upcoming allevents and District rows not read yet (newest first), one at a time with a pause,
+// and stops for the night if the site says too many requests. Writes go through PATCH, so the credibility,
+// scoring and artist-link triggers run again. Every row read gets detail_checked_at so it is never read twice.
+async function backfill(names: Names, cap: number) {
+  const today = new Date().toISOString().slice(0, 10);
+  const q = `scraped_events?select=id,url,source,genres,lineup,description&event_date=gte.${today}` +
+    `&source=in.(allevents,district)&detail_checked_at=is.null&lineup=is.null` +
+    `&or=(status.eq.pending,curation.eq.%22no%20credible%20name%20found%22)&order=created_at.desc&limit=${cap}`;
+  const rows = await (await sb(q)).json();
+  let n = 0, changed = 0, stopped = false;
+  for (const r of rows) {
+    if (r.lineup?.length) continue;
+    let f: Facts | null = null;
+    try { f = await detailFacts(r.url, names); }
+    catch (e) {
+      note(`${r.source}-page`, e);
+      if (String(e).includes("-> 429")) { stopped = true; break; }
+    }
+    n++;
+    const patch: Record<string, unknown> = { detail_checked_at: new Date().toISOString() };
+    if (f) {
+      if (f.lineup.length) patch.lineup = f.lineup;
+      const g = mergeGenres(r.genres, f.genres);
+      if (g && JSON.stringify(g) !== JSON.stringify(r.genres ?? [])) patch.genres = g;
+      if (f.promoters.length && !r.description) patch.description = `Promoter: ${f.promoters.join(", ")}`;
+    }
+    const res = await sb(`scraped_events?id=eq.${r.id}`, { method: "PATCH", body: JSON.stringify(patch) });
+    if (!res.ok) note("backfill", `${res.status} ${r.id}`);
+    else if (Object.keys(patch).length > 1) changed++;
+    await sleep(1500);
+  }
+  return { read: n, changed, stopped_on_429: stopped };
+}
+
 // ---- main ------------------------------------------------------------------
 
 Deno.serve(async (req) => {
@@ -221,6 +336,15 @@ Deno.serve(async (req) => {
   const token = req.headers.get("x-cron-token") ?? "";
   const cfg = await (await sb("ops_config?id=eq.1&select=token")).json();
   if (!token || token !== cfg?.[0]?.token) return new Response("unauthorized", { status: 401 });
+
+  const names = await loadNames();
+  const mode = new URL(req.url).searchParams.get("mode");
+  if (mode === "backfill") {
+    const cap = Math.min(Number(new URL(req.url).searchParams.get("limit") ?? 50), 60);
+    const b = await backfill(names, cap);
+    await sb("cron_runs", { method: "POST", body: JSON.stringify({ job: "scrape-backfill", finished_at: new Date().toISOString(), ok: true, stats: { ...b, errors: errs } }) });
+    return Response.json({ ...b, errors: errs });
+  }
 
   const run = await (await sb("cron_runs", {
     method: "POST",
