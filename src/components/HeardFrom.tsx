@@ -30,7 +30,7 @@ export default function HeardFrom({
         maxLength={300}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="A friend, a DJ, Instagram, a crew, ChatGPT..."
+        placeholder="A friend, a DJ, Instagram..."
         aria-invalid={invalid || undefined}
         className={inputClassName}
       />
