@@ -21,7 +21,7 @@ const nextConfig = {
   // Enable gzip/brotli compression and reduce JS payload
   compress: true,
   // Workspace packages ship TypeScript source; Next compiles them with the app.
-  transpilePackages: ["@ccd/brand", "@ccd/banner", "@ccd/db", "@ccd/auth", "@ccd/ui"],
+  transpilePackages: ["@ccd/brand", "@ccd/banner", "@ccd/db", "@ccd/auth", "@ccd/ui", "@ccd/mail"],
   // Tree-shake barrel imports from large packages (experimental in Next 14)
   experimental: {
     optimizePackageImports: [

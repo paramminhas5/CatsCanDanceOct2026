@@ -89,6 +89,8 @@ export default function MakeParty({ signedIn }: { signedIn: boolean }) {
     const slug = (r.data as { slug?: string } | undefined)?.slug;
     if (!r.ok || !slug) { setErr(r.error ?? "Could not make the party."); return; }
     try { localStorage.removeItem(DRAFT); } catch { /* nothing to clean */ }
+    // The "your party is live" email with the share link; fire and forget.
+    fetch("/api/mail/party-live", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ slug }) }).catch(() => {});
     setDone({ slug, review: who === "listed" });
   }
 

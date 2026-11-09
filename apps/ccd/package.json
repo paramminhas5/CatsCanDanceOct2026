@@ -12,6 +12,7 @@
   "dependencies": {
     "@ccd/banner": "workspace:*",
     "@ccd/brand": "workspace:*",
+    "@ccd/mail": "workspace:*",
     "@ccd/ui": "workspace:*",
     "@clerk/react": "^6.6.4",
     "@clerk/themes": "^2.4.57",

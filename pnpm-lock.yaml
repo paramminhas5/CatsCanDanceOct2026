@@ -29,6 +29,9 @@ importers:
       '@ccd/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@ccd/mail':
+        specifier: workspace:*
+        version: link:../../packages/mail
       '@ccd/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -71,7 +74,7 @@ importers:
         version: 9.39.5(jiti@2.7.0)
       eslint-config-next:
         specifier: 16.4.5
-        version: 16.4.5(@typescript-eslint/parser@8.72.2(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
+        version: 16.4.5(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
       tailwindcss:
         specifier: 4.3.4
         version: 4.3.4
@@ -87,6 +90,9 @@ importers:
       '@ccd/brand':
         specifier: workspace:*
         version: link:../../packages/brand
+      '@ccd/mail':
+        specifier: workspace:*
+        version: link:../../packages/mail
       '@ccd/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -337,6 +343,9 @@ importers:
       '@ccd/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@ccd/mail':
+        specifier: workspace:*
+        version: link:../../packages/mail
       '@ccd/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -391,7 +400,7 @@ importers:
         version: 9.39.5(jiti@2.7.0)
       eslint-config-next:
         specifier: 16.4.5
-        version: 16.4.5(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
+        version: 16.4.5(@typescript-eslint/parser@8.72.2(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
       playwright:
         specifier: ^1.65.0
         version: 1.65.0
@@ -431,6 +440,8 @@ importers:
       next:
         specifier: '>=14'
         version: 16.4.5(@types/node@22.10.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+
+  packages/mail: {}
 
   packages/ui:
     dependencies:

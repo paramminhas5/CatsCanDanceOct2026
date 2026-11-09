@@ -16,6 +16,7 @@
     "@ccd/banner": "workspace:*",
     "@ccd/brand": "workspace:*",
     "@ccd/db": "workspace:*",
+    "@ccd/mail": "workspace:*",
     "@ccd/ui": "workspace:*",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.119.0",

@@ -25,9 +25,15 @@ export default function DoorSetup({ slug }: { slug: string }) {
   };
   const add = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const r = await setTeam(slug, String(fd.get("email") ?? ""), fd.get("role") === "lead" ? "lead" : "door", String(fd.get("name") ?? ""));
-    if (r.ok) { e.currentTarget.reset(); load(); } else setMsg(r.error ?? "Could not add");
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const email = String(fd.get("email") ?? "");
+    const r = await setTeam(slug, email, fd.get("role") === "lead" ? "lead" : "door", String(fd.get("name") ?? ""));
+    if (r.ok) {
+      form.reset(); load();
+      // Tell them they are on the door (plan section 9); fire and forget.
+      fetch("/api/mail/door-team", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ slug, email }) }).catch(() => {});
+    } else setMsg(r.error ?? "Could not add");
   };
   const live = async (reset = false) => { const r = await liveLink(slug, reset); if (r.ok) load(); };
   const liveUrl = s.settings.live_key ? `${typeof window !== "undefined" ? window.location.origin : ""}/live/${s.settings.live_key}` : "";
