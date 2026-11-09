@@ -97,32 +97,30 @@ export default function Scanner({ onCode, paused }: Props) {
   };
 
   return (
-    <div className="relative bg-ink border-4 border-cream aspect-[4/3] w-full overflow-hidden">
-      <video ref={video} muted playsInline className={`absolute inset-0 w-full h-full object-cover ${state === "on" ? "" : "hidden"}`} />
-      {state === "on" && (
-        <>
-          <div aria-hidden className="absolute inset-[14%] border-4 border-acid-yellow pointer-events-none" />
-          {torch !== null && (
-            <button type="button" onClick={flip} className={`absolute top-3 right-3 font-display text-sm px-3 py-2 border-4 border-ink ${torch ? "bg-acid-yellow text-ink" : "bg-cream text-ink"}`}>
-              {torch ? "Light off" : "Light"}
-            </button>
-          )}
-          {paused && <div className="absolute inset-0 bg-ink/60" />}
-        </>
-      )}
-      {state !== "on" && (
-        <div className="absolute inset-0 grid place-items-center p-6 text-center">
-          {state === "denied" ? (
-            <p className="text-cream">The camera is blocked. Allow it for this site in your browser settings, then reload. You can still type codes or search by name.</p>
-          ) : state === "none" ? (
-            <p className="text-cream">No camera here. Type the code below or search by name.</p>
-          ) : (
-            <button type="button" onClick={start} disabled={state === "starting"}
-              className="font-display text-2xl px-8 py-5 bg-acid-yellow text-ink border-4 border-ink shadow-[6px_6px_0_0_hsl(var(--cream))]">
-              {state === "starting" ? "Starting…" : "Start scanning"}
-            </button>
-          )}
-        </div>
+    <div className="door-frame">
+      <div className="door-view">
+        <video ref={video} muted playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: state === "on" ? "block" : "none" }} />
+        {state === "on" && paused && <div style={{ position: "absolute", inset: 0, background: "rgba(5,5,5,.55)" }} />}
+        {state !== "on" && (
+          <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", padding: 18, textAlign: "center" }}>
+            {state === "denied" ? (
+              <p style={{ fontSize: 14, margin: 0 }}>The camera is blocked. Allow it for this site in your browser settings, then reload. You can still type codes or search by name.</p>
+            ) : state === "none" ? (
+              <p style={{ fontSize: 14, margin: 0 }}>No camera here. Type the code below or search by name.</p>
+            ) : (
+              <button type="button" onClick={start} disabled={state === "starting"} className="key" style={{ border: 0, cursor: "pointer", font: "inherit", fontWeight: 600, padding: "0 22px" }}>
+                {state === "starting" ? "Starting" : "Start scanning"}
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+      <i className="c tl" /><i className="c tr" /><i className="c bl" /><i className="c br" />
+      {state === "on" && !paused && <div className="door-laser" aria-hidden="true" />}
+      {state === "on" && torch !== null && (
+        <button type="button" onClick={flip} className="pill" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", bottom: -46, border: 0, cursor: "pointer", ...(torch ? { background: "var(--pc)", color: "var(--pi)", boxShadow: "none" } : {}) }}>
+          {torch ? "Light off" : "Light"}
+        </button>
       )}
     </div>
   );

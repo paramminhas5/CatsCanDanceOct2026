@@ -23,11 +23,14 @@ import {
 } from "@/lib/door";
 import { supabase } from "@/lib/supabase/browser";
 import QRCode from "qrcode";
+import { boardVars } from "@ccd/ui";
 
 type Tab = "scan" | "guests" | "walkin" | "count";
 
 const good = (r: ScanResult) => r.kind === "admit" || r.kind === "back" || r.kind === "out";
-const tone = (r: ScanResult) => (r.kind === "out" ? "bg-electric-blue text-cream" : good(r) ? "bg-acid-yellow text-ink" : r.kind === "already" || r.kind === "void" ? "bg-magenta text-cream" : "bg-orange text-ink");
+/** Door status colours: green let in, blue pass-out, red stop, orange check their name. */
+const TONE = { in: { bg: "#2BD47D", ink: "#062B16" }, out: { bg: "#3B82F6", ink: "#FFFFFF" }, no: { bg: "#FF5A5F", ink: "#2B0607" }, warn: { bg: "#FFB020", ink: "#2B1A00" } } as const;
+const toneOf = (r: ScanResult): keyof typeof TONE => (r.kind === "out" ? "out" : good(r) ? "in" : r.kind === "already" || r.kind === "void" ? "no" : "warn");
 const HEAD: Record<ScanResult["kind"], string> = {
   admit: "Let them in", back: "Welcome back", out: "Pass-out", already: "Already in", void: "Refunded", wrong_night: "Wrong night",
   not_found: "Not a ticket", check_name: "Not on this list", already_out: "Already out", not_in: "Not checked in",
@@ -197,54 +200,57 @@ export default function DoorApp({ slug }: { slug: string }) {
     return () => clearTimeout(t);
   }, [toast]);
 
-  if (!data) {
-    return (
-      <div className="min-h-[100dvh] bg-ink text-cream grid place-items-center p-6 text-center">
-        <div>
-          <p className="font-display text-3xl">{err ? "Can't open the door" : "Loading the list…"}</p>
-          {err && <p className="mt-3 text-cream/80">{err}</p>}
-          <Link href="/door" className="inline-block mt-6 underline">All nights</Link>
-        </div>
+  const shell = (children: React.ReactNode) => (
+    <div className="dk">
+      <div className="v4 app door-app" style={{ ...boardVars("#FFE600", "#0A0A0A"), ["--amb" as string]: result ? TONE[toneOf(result)].bg : "#FFE600" } as React.CSSProperties}>
+        <div className="door-amb" aria-hidden="true" />
+        {children}
       </div>
+    </div>
+  );
+
+  if (!data) {
+    return shell(
+      <div style={{ minHeight: "100dvh", display: "grid", placeItems: "center", padding: 24, textAlign: "center", position: "relative" }}>
+        <div>
+          <img src="/cats/yellow.webp" alt="" style={{ height: 110, animation: "bob 3s ease-in-out infinite" }} />
+          <div className="d" style={{ fontSize: 30, marginTop: 12 }}>{err ? "Can't open the door" : "Loading the list"}</div>
+          {err && <p className="b" style={{ marginTop: 10 }}>{err}</p>}
+          <Link href="/door" className="pill lg" style={{ marginTop: 18, display: "inline-flex" }}>All nights</Link>
+        </div>
+      </div>,
     );
   }
 
   const c = counts(data);
   const cap = data.night.capacity ?? null;
   const pct = cap ? Math.min(100, Math.round((c.inside / cap) * 100)) : null;
+  const undoable = result?.kind === "admit" && data.tickets.some((t) => t.code === result.code);
 
-  return (
-    <div className="min-h-[100dvh] bg-ink text-cream flex flex-col">
-      {/* Header: the number that matters, and whether this phone is in sync */}
-      <header className="sticky top-0 z-20 bg-ink border-b-4 border-cream px-4 pt-3 pb-2">
-        <div className="flex items-center justify-between gap-3">
-          <Link href="/door" className="min-w-0">
-            <p className="text-xs text-cream/60 truncate">{device} · {data.night.venue ?? ""}</p>
-            <p className="font-display text-lg leading-tight truncate">{data.night.title}</p>
-          </Link>
-          <div className="flex items-center gap-2 shrink-0">
-            <SyncPill online={online} waiting={queue.length} lastSync={lastSync} />
-            <Link href={`/door/${slug}/${data.settings.lead ? "setup" : "report"}`} aria-label={data.settings.lead ? "Night setup" : "Door report"}
-              className="text-xs font-bold px-2 py-1 border-2 border-cream">{data.settings.lead ? "Setup" : "Report"}</Link>
-          </div>
-        </div>
-        <div className="mt-2 flex items-end gap-3">
-          <p className="font-display text-5xl leading-none tabular-nums">{c.inside}</p>
-          <p className="text-cream/70 pb-1">in{c.expected ? ` · ${c.expected} on the list` : ""}{cap ? ` · cap ${cap}` : ""}</p>
-        </div>
-        {(data.settings.age_check || data.settings.note) && (
-          <p className="mt-2 text-sm font-bold text-acid-yellow">{[data.settings.age_check ? "Check ID for everyone" : null, data.settings.note].filter(Boolean).join(" · ")}</p>
-        )}
-        {pct !== null && (
-          <div className="mt-2 h-2 bg-cream/15" aria-hidden>
-            <div className={`h-2 ${pct >= 95 ? "bg-magenta" : pct >= 80 ? "bg-orange" : "bg-acid-yellow"}`} style={{ width: `${pct}%` }} />
-          </div>
-        )}
-      </header>
+  return shell(
+    <>
+      <div className="top4" style={{ position: "sticky", top: 0, zIndex: 20 }}>
+        <Link className="ic40" href="/door" aria-label="All nights"><Ico d="M6 6l12 12M18 6L6 18" /></Link>
+        <span style={{ flex: 1 }} />
+        <SyncPill online={online} waiting={queue.length} lastSync={lastSync} />
+        <Link className="ic40" href={`/door/${slug}/${data.settings.lead ? "setup" : "report"}`} aria-label={data.settings.lead ? "Night setup" : "Door report"}>
+          {data.settings.lead ? <Ico d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z" /> : <Ico d="M4 20V10M10 20V4M16 20v-7M22 20H2" />}
+        </Link>
+      </div>
 
-      <main className="flex-1 px-4 py-4 pb-28">
+      {tab === "scan" && (
+        <div style={{ position: "relative", padding: "6px 20px 0", textAlign: "center", flex: "none" }}>
+          <div className="m" style={{ color: "rgba(255,255,255,.75)" }}>{data.night.title}</div>
+          <div className="d door-count" style={{ fontSize: 96, marginTop: 6, lineHeight: 0.95 }} key={c.inside}>{c.inside}</div>
+          <div className="b" style={{ color: "rgba(255,255,255,.7)" }}>{c.expected ? `of ${c.expected} expected` : "in tonight"}{cap ? `, room for ${cap}` : ""}</div>
+          {pct !== null && <div style={{ margin: "12px auto 0", width: 180, height: 4, borderRadius: 2, background: "rgba(255,255,255,.12)", overflow: "hidden" }} aria-hidden><i style={{ display: "block", height: 4, width: `${pct}%`, background: pct >= 95 ? "#FF5A5F" : pct >= 80 ? "#FFB020" : "var(--pc)", transition: "width .6s" }} /></div>}
+          {(data.settings.age_check || data.settings.note) && <div className="pill" style={{ marginTop: 12, background: "var(--pc)", color: "var(--pi)", boxShadow: "none" }}>{[data.settings.age_check ? "Check ID for everyone" : null, data.settings.note].filter(Boolean).join(". ")}</div>}
+        </div>
+      )}
+
+      <main style={{ position: "relative", flex: 1, padding: "16px 20px 120px" }}>
         {/* The scanner stays mounted so the camera keeps running between tabs; it only reads codes on the Scan tab. */}
-        <div className={tab === "scan" ? "" : "hidden"}><ScanTab onScan={onScan} onCode={onCode} paused={!!result || tab !== "scan"} mode={mode} setMode={setMode} /></div>
+        <div style={{ display: tab === "scan" ? "block" : "none" }}><ScanTab onScan={onScan} onCode={onCode} paused={!!result || tab !== "scan"} mode={mode} setMode={setMode} /></div>
         {tab === "guests" && <GuestsTab data={data} onTicket={admitTicket} onRsvp={(id, n) => act({ id: uid(), kind: "rsvp", at: now(), rsvp: id, count: n })}
           onGuest={(id, n) => act({ id: uid(), kind: "guest", at: now(), guest: id, count: n })}
           onUndo={(code) => act({ id: uid(), kind: "undo_ticket", at: now(), code })}
@@ -254,71 +260,83 @@ export default function DoorApp({ slug }: { slug: string }) {
         {tab === "count" && <CountTab data={data} />}
       </main>
 
-      {/* Scan result: the whole screen, readable from arm's length */}
+      {/* Scan result: the screen takes the colour and the card says it, readable from arm's length. Tap to scan the next one. */}
       {result && (
-        <button type="button" onClick={() => setResult(null)} className={`fixed inset-0 z-40 ${tone(result)} flex flex-col items-center justify-center p-6 text-center`}>
-          <p className="font-display text-5xl sm:text-7xl leading-none">{headline(result)}</p>
-          {"name" in result && <p className="font-display text-3xl sm:text-5xl mt-6 break-words max-w-full">{result.name}</p>}
-          {"tier" in result && result.tier && <p className="text-xl mt-2 opacity-80">{result.tier}</p>}
-          {(result.kind === "admit" || result.kind === "back") && data.settings.age_check && <p className="mt-5 font-display text-2xl px-4 py-2 border-4 border-ink bg-cream">Check ID</p>}
-          {result.kind === "out" && <p className="text-xl mt-4">They keep their place. Scan them again on the way back in.</p>}
-          {result.kind === "back" && <p className="text-xl mt-4">Back from a pass-out.</p>}
-          {result.kind === "already_out" && <p className="text-xl mt-4">Already on a pass-out. Switch to In to let them back.</p>}
-          {result.kind === "not_in" && <p className="text-xl mt-4">This ticket was never checked in. Switch to In.</p>}
-          {result.kind === "already" && <p className="text-xl mt-4">Checked in at {timeIST(result.at)}. Ask for another ticket or check by name.</p>}
-          {result.kind === "void" && <p className="text-xl mt-4">This ticket was refunded or cancelled.</p>}
-          {result.kind === "wrong_night" && <p className="text-xl mt-4">This ticket is for {result.event}.</p>}
-          {result.kind === "check_name" && <p className="text-xl mt-4">{online ? "No ticket with this code." : "Offline, and this code is not on the saved list."} Search their name in Guests.</p>}
-          {result.kind === "not_found" && <p className="text-xl mt-4">No ticket with this code. Search their name in Guests.</p>}
-          <p className="mt-8 font-mono text-sm opacity-60">{result.code}</p>
-          <p className="mt-2 text-sm opacity-60">Tap to scan the next one</p>
-        </button>
-      )}
-
-      {toast && (
-        <div className="fixed left-3 right-3 bottom-24 z-30 bg-cream text-ink border-4 border-ink shadow-[4px_4px_0_0_hsl(var(--acid-yellow))] p-3 flex items-center gap-3">
-          <p className="flex-1 text-sm font-bold">{toast.text}</p>
-          {toast.undo && <button type="button" className="font-display px-3 py-2 border-4 border-ink bg-acid-yellow" onClick={() => { toast.undo?.(); setToast(null); }}>Undo</button>}
+        <div className="door-result" role="alert" onClick={() => setResult(null)} style={{ background: `color-mix(in srgb, ${TONE[toneOf(result)].bg} 34%, rgba(5,5,5,.86))` }}>
+          <div className="door-card" style={{ background: TONE[toneOf(result)].bg, color: TONE[toneOf(result)].ink }}>
+            <div className="row" style={{ gap: 14 }}>
+              <span style={{ width: 52, height: 52, borderRadius: 26, background: "rgba(255,255,255,.22)", display: "flex", alignItems: "center", justifyContent: "center", flex: "none" }}>
+                <Ico d={good(result) ? "M5 12.5l4.5 4.5L19 7.5" : "M12 8v5M12 16.5v.5"} w={3} />
+              </span>
+              <span style={{ flex: 1, minWidth: 0 }}>
+                <span style={{ display: "block", fontSize: 30, fontWeight: 700, letterSpacing: "-.02em", lineHeight: 1.05 }}>{headline(result)}</span>
+                <span style={{ display: "block", fontSize: 17, opacity: 0.85, marginTop: 4, wordBreak: "break-word" }}>{["name" in result ? result.name : null, "tier" in result ? result.tier : null].filter(Boolean).join(", ")}</span>
+              </span>
+              {undoable && <button type="button" className="m" style={{ background: "none", border: 0, color: "inherit", opacity: 0.85, cursor: "pointer", padding: 8 }} onClick={(e) => { e.stopPropagation(); act({ id: uid(), kind: "undo_ticket", at: now(), code: result.code }); setResult(null); setToast({ text: "Undone. They are not in." }); }}>Undo</button>}
+            </div>
+            {(result.kind === "admit" || result.kind === "back") && data.settings.age_check && <div style={{ marginTop: 14, fontSize: 20, fontWeight: 700, padding: "8px 14px", borderRadius: 14, background: "rgba(0,0,0,.18)", display: "inline-block" }}>Check ID</div>}
+            <div style={{ fontSize: 15, marginTop: 10, opacity: 0.9 }}>
+              {result.kind === "out" && "They keep their place. Scan them again on the way back in."}
+              {result.kind === "back" && "Back from a pass-out."}
+              {result.kind === "already_out" && "Already on a pass-out. Switch to In to let them back."}
+              {result.kind === "not_in" && "This ticket was never checked in. Switch to In."}
+              {result.kind === "already" && `Checked in at ${timeIST(result.at)}. Ask for another ticket or check by name.`}
+              {result.kind === "void" && "This ticket was refunded or cancelled."}
+              {result.kind === "wrong_night" && `This ticket is for ${result.event}.`}
+              {result.kind === "check_name" && `${online ? "No ticket with this code." : "Offline, and this code is not on the saved list."} Search their name in Guests.`}
+              {result.kind === "not_found" && "No ticket with this code. Search their name in Guests."}
+            </div>
+            <div className="m" style={{ marginTop: 12, color: "inherit", opacity: 0.6 }}>{result.code}</div>
+          </div>
         </div>
       )}
 
-      <nav className="fixed bottom-0 inset-x-0 z-30 bg-ink border-t-4 border-cream grid grid-cols-4" aria-label="Door">
-        {([["scan", "Scan"], ["guests", "Guests"], ["walkin", "Walk-in"], ["count", "Count"]] as [Tab, string][]).map(([k, label]) => (
-          <button key={k} type="button" onClick={() => setTab(k)} aria-current={tab === k ? "page" : undefined}
-            className={`font-display py-4 text-base border-r-4 last:border-r-0 border-cream ${tab === k ? "bg-acid-yellow text-ink" : "text-cream"}`}>
-            {label}
+      {toast && (
+        <div className="sf rise" style={{ position: "fixed", left: "50%", transform: "translateX(-50%)", bottom: 98, width: "calc(min(100%, 480px) - 32px)", zIndex: 35, padding: "12px 14px", borderRadius: 18, display: "flex", alignItems: "center", gap: 12, background: "rgba(26,26,29,.95)" }}>
+          <span style={{ flex: 1, fontSize: 14, fontWeight: 600 }}>{toast.text}</span>
+          {toast.undo && <button type="button" className="pill" style={{ background: "var(--pc)", color: "var(--pi)", boxShadow: "none", border: 0, cursor: "pointer" }} onClick={() => { toast.undo?.(); setToast(null); }}>Undo</button>}
+        </div>
+      )}
+
+      <nav className="dock" aria-label="Door">
+        {([["scan", "Scan", "M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16"], ["guests", "Guests", "M9 12.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zM3.5 19c.9-2.8 3-4.3 5.5-4.3s4.6 1.5 5.5 4.3M16.5 10.6a2.6 2.6 0 1 0 0-5.2M16 13.3c2.2.1 3.9 1.4 4.6 3.9"], ["walkin", "Walk-in", "M12 5v14M5 12h14"], ["count", "Count", "M4 20V10M10 20V4M16 20v-7M22 20H2"]] as [Tab, string, string][]).map(([k, label, d]) => (
+          <button key={k} type="button" onClick={() => setTab(k)} aria-current={tab === k ? "page" : undefined} className={tab === k ? "on" : ""} style={{ border: 0, background: tab === k ? undefined : "none", fontFamily: "inherit", cursor: "pointer" }}>
+            <Ico d={d} s={20} w={1.8} />{label}
           </button>
         ))}
       </nav>
-    </div>
+    </>,
   );
+}
+
+function Ico({ d, s = 18, w = 2 }: { d: string; s?: number; w?: number }) {
+  return <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>;
 }
 
 function SyncPill({ online, waiting, lastSync }: { online: boolean; waiting: number; lastSync: number }) {
   const [, tick] = useState(0);
   useEffect(() => { const t = setInterval(() => tick((n) => n + 1), 15000); return () => clearInterval(t); }, []);
   const ago = lastSync ? Math.round((Date.now() - lastSync) / 60000) : null;
-  const label = !online ? `Offline${waiting ? ` · ${waiting} to send` : ""}` : waiting ? `Sending ${waiting}` : ago === null ? "Connecting" : ago < 1 ? "Up to date" : `Synced ${ago}m ago`;
-  const cls = !online ? "bg-magenta text-cream" : waiting ? "bg-orange text-ink" : "bg-cream text-ink";
-  return <span className={`shrink-0 text-xs font-bold px-2 py-1 border-2 border-cream ${cls}`} role="status">{label}</span>;
+  const label = !online ? `No signal${waiting ? `, ${waiting} to sync` : ""}` : waiting ? `Sending ${waiting}` : ago === null ? "Connecting" : ago < 1 ? "Up to date" : `Synced ${ago}m ago`;
+  const dot = !online ? "#FF5A5F" : waiting ? "#FFB020" : ago === null ? "rgba(255,255,255,.4)" : "#2BD47D";
+  return <span className="pill" style={{ background: "rgba(10,10,11,.6)" }} role="status"><i style={{ width: 8, height: 8, borderRadius: 4, background: dot, boxShadow: `0 0 8px ${dot}` }} />{label}</span>;
 }
 
 function ScanTab({ onScan, onCode, paused, mode, setMode }: { onScan: (c: string) => void; onCode: (c: string) => void; paused: boolean; mode: "in" | "out"; setMode: (m: "in" | "out") => void }) {
   const [code, setCode] = useState("");
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 border-4 border-cream" role="group" aria-label="Scan mode">
-        <button type="button" onClick={() => setMode("in")} aria-pressed={mode === "in"} className={`font-display py-3 ${mode === "in" ? "bg-acid-yellow text-ink" : ""}`}>In</button>
-        <button type="button" onClick={() => setMode("out")} aria-pressed={mode === "out"} className={`font-display py-3 border-l-4 border-cream ${mode === "out" ? "bg-electric-blue text-cream" : ""}`}>Out (pass-out)</button>
-      </div>
+    <div>
       <Scanner onCode={onScan} paused={paused} />
-      <form className="flex gap-2" onSubmit={(e) => { e.preventDefault(); if (code.trim()) { onCode(code); setCode(""); } }}>
-        <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="Ticket code"
-          autoCapitalize="characters" autoCorrect="off" spellCheck={false} inputMode="text"
-          className="flex-1 min-w-0 bg-cream text-ink border-4 border-cream p-3 font-mono uppercase text-lg" />
-        <button className="font-display px-5 bg-acid-yellow text-ink border-4 border-cream">Check</button>
+      <div className="row" style={{ gap: 6, justifyContent: "center", marginTop: 18 }} role="group" aria-label="Scan mode">
+        <button type="button" onClick={() => setMode("in")} aria-pressed={mode === "in"} className={`pill lg${mode === "in" ? " on" : ""}`}>In</button>
+        <button type="button" onClick={() => setMode("out")} aria-pressed={mode === "out"} className="pill lg" style={mode === "out" ? { background: "#3B82F6", color: "#fff", boxShadow: "none" } : undefined}>Out, pass-out</button>
+      </div>
+      <form className="row" style={{ gap: 8, marginTop: 16 }} onSubmit={(e) => { e.preventDefault(); if (code.trim()) { onCode(code); setCode(""); } }}>
+        <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="Or type the ticket code" aria-label="Ticket code"
+          autoCapitalize="characters" autoCorrect="off" spellCheck={false} inputMode="text" className="fld" style={{ marginTop: 0, flex: 1, minWidth: 0, fontFamily: "var(--font-mono), monospace", textTransform: "uppercase" }} />
+        <button className="pill lg" style={{ height: 50, background: "var(--pc)", color: "var(--pi)", boxShadow: "none" }}>Check</button>
       </form>
-      <p className="text-sm text-cream/60">{mode === "in" ? "Green: let them in. Red: already in or refunded. Orange: wrong night or not on the list, so check their name." : "Scanning people out. They keep their place and come back in with one scan on In."}</p>
+      <p className="b" style={{ fontSize: 13, marginTop: 12, textAlign: "center" }}>{mode === "in" ? "Green: let them in. Red: already in or refunded. Orange: check their name." : "Scanning people out. They keep their place and come back in with one scan on In."}</p>
     </div>
   );
 }
@@ -336,15 +354,16 @@ async function openProof(path: string) {
   if (data?.signedUrl && w) w.location.href = data.signedUrl; else w?.close();
 }
 
+const inBtn = { background: "var(--pc)", color: "var(--pi)", boxShadow: "none", border: 0, cursor: "pointer", height: 36, padding: "0 16px", fontWeight: 600 } as React.CSSProperties;
+const linkBtn = { background: "none", border: 0, color: "var(--t2)", cursor: "pointer", fontSize: 13, padding: "8px 6px", font: "inherit" } as React.CSSProperties;
+
 function Counter({ label, n, of, set }: { label: string; n: number; of: number; set: (n: number) => void }) {
   return (
-    <div className="shrink-0 flex items-center gap-1">
-      <button type="button" aria-label={`One fewer for ${label}`} onClick={() => set(n - 1)} disabled={n === 0}
-        className="w-11 h-11 border-4 border-cream font-display text-xl disabled:opacity-30">−</button>
-      <span className="w-12 text-center font-display tabular-nums">{n}/{of}</span>
-      <button type="button" aria-label={`One more for ${label}`} onClick={() => set(n + 1)} disabled={n >= of}
-        className="w-11 h-11 border-4 border-ink bg-acid-yellow text-ink font-display text-xl disabled:opacity-30">+</button>
-      {of > 1 && n < of && <button type="button" onClick={() => set(of)} className="ml-1 text-sm underline min-h-[44px] px-1">All</button>}
+    <div className="row" style={{ gap: 6, flex: "none" }}>
+      <button type="button" className="ic40" aria-label={`One fewer for ${label}`} onClick={() => set(n - 1)} disabled={n === 0} style={{ width: 34, height: 34, border: 0, color: "inherit", cursor: "pointer", opacity: n === 0 ? 0.3 : 1 }}><Ico d="M5 12h14" s={14} /></button>
+      <span style={{ width: 40, textAlign: "center", fontWeight: 700, fontVariantNumeric: "tabular-nums" }}>{n}/{of}</span>
+      <button type="button" className="ic40" aria-label={`One more for ${label}`} onClick={() => set(n + 1)} disabled={n >= of} style={{ width: 34, height: 34, border: 0, cursor: "pointer", background: "var(--pc)", color: "var(--pi)", opacity: n >= of ? 0.3 : 1 }}><Ico d="M12 5v14M5 12h14" s={14} /></button>
+      {of > 1 && n < of && <button type="button" onClick={() => set(of)} style={linkBtn}>All</button>}
     </div>
   );
 }
@@ -358,7 +377,7 @@ function GuestsTab({ data, onTicket, onRsvp, onGuest, onUndo, onPass }: { data: 
       if (t.void) continue;
       out.push({ k: "ticket", key: t.code, name: t.name || "Guest", sub: `${t.tier ?? "Ticket"} · ${t.code}${t.in_at ? ` · in ${timeIST(t.in_at)}` : ""}${t.out_at ? ` · out since ${timeIST(t.out_at)}` : ""}`, done: !!t.in_at, t });
     }
-    for (const r of data.rsvps) out.push({ k: "rsvp", key: r.id, name: r.name, sub: `List${r.party > 1 ? ` · party of ${r.party}` : ""}${r.in_count ? ` · ${r.in_count} in` : ""}`, done: r.in_count >= r.party, id: r.id, party: r.party, inCount: r.in_count });
+    for (const r of data.rsvps) out.push({ k: "rsvp", key: r.id, name: r.name, sub: `Guest list${r.party > 1 ? ` · party of ${r.party}` : ""}${r.in_count ? ` · ${r.in_count} in` : ""}`, done: r.in_count >= r.party, id: r.id, party: r.party, inCount: r.in_count });
     for (const w of data.walkins) out.push({ k: "walk", key: w.id, name: w.name, sub: `Walk-in${w.party > 1 ? ` · party of ${w.party}` : ""} · ${timeIST(w.at)}`, done: true });
     for (const g of data.guests ?? []) out.push({ k: "guest", key: g.code || g.id, name: g.name || "Guest", done: g.in_count >= g.party, g,
       sub: [sourceLabel(g.source), g.code, g.party > 1 ? `party of ${g.party}` : null, g.uploaded ? "added by the guest, check their ticket" : null, g.in_count ? `${g.in_count} in` : null].filter(Boolean).join(" · ") });
@@ -370,41 +389,42 @@ function GuestsTab({ data, onTicket, onRsvp, onGuest, onUndo, onPass }: { data: 
   }, [data, q, show]);
 
   return (
-    <div className="space-y-3">
-      <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search a name or code" type="search" autoComplete="off"
-        className="w-full bg-cream text-ink border-4 border-cream p-3 text-lg" />
-      <div className="flex gap-2">
+    <div>
+      <h2 className="d" style={{ fontSize: 34, margin: 0 }}>Guests</h2>
+      <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search a name or code" type="search" autoComplete="off" className="fld" style={{ marginTop: 12 }} aria-label="Search a name or code" />
+      <div className="row" style={{ gap: 6, marginTop: 12 }}>
         {([["waiting", "Not in yet"], ["in", "In"], ["all", "Everyone"]] as const).map(([k, label]) => (
-          <button key={k} type="button" onClick={() => setShow(k)} className={`font-display text-sm px-3 py-2 border-4 border-cream ${show === k ? "bg-acid-yellow text-ink" : ""}`}>{label}</button>
+          <button key={k} type="button" onClick={() => setShow(k)} className={`pill lg${show === k ? " on" : ""}`}>{label}</button>
         ))}
+        <span style={{ flex: 1 }} /><span className="m">{rows.length}</span>
       </div>
-      <p className="text-sm text-cream/60">{rows.length} {rows.length === 1 ? "person" : "people"}</p>
-      <ul className="space-y-2">
+      <div style={{ marginTop: 8 }}>
         {rows.slice(0, 200).map((r) => (
-          <li key={r.key} className={`border-4 ${r.done ? "border-cream/30 text-cream/60" : "border-cream"} p-3 flex items-center gap-3`}>
-            <div className="min-w-0 flex-1">
-              <p className="font-display text-lg leading-tight break-words">{r.name}</p>
-              <p className="text-xs text-cream/60 mt-0.5 break-all">{r.sub}</p>
-            </div>
+          <div key={r.key} className="rw" style={{ padding: "11px 0", opacity: r.done ? 0.55 : 1 }}>
+            <span style={{ flex: 1, minWidth: 0 }}>
+              <span style={{ display: "block", fontSize: 16, fontWeight: 600, wordBreak: "break-word" }}>{r.name}</span>
+              <span className="b" style={{ display: "block", fontSize: 12, wordBreak: "break-all" }}>{r.sub}</span>
+            </span>
             {r.k === "ticket" && (r.done ? (
-              <div className="shrink-0 flex items-center gap-1">
-                <button type="button" onClick={() => onPass(r.t)} className={`font-display text-sm px-3 py-2 border-4 ${r.t.out_at ? "border-ink bg-acid-yellow text-ink" : "border-cream text-cream"}`}>{r.t.out_at ? "Back in" : "Out"}</button>
-                <button type="button" onClick={() => onUndo(r.t.code)} className="text-sm underline min-h-[44px] px-2">Undo</button>
-              </div>
-            ) : <button type="button" onClick={() => onTicket(r.t)} className="shrink-0 font-display px-4 py-3 bg-acid-yellow text-ink border-4 border-ink">In</button>)}
+              <span className="row" style={{ gap: 4, flex: "none" }}>
+                <button type="button" onClick={() => onPass(r.t)} className="pill" style={r.t.out_at ? inBtn : { border: 0, cursor: "pointer", height: 36 }}>{r.t.out_at ? "Back in" : "Out"}</button>
+                <button type="button" onClick={() => onUndo(r.t.code)} style={linkBtn}>Undo</button>
+              </span>
+            ) : <button type="button" onClick={() => onTicket(r.t)} className="pill" style={inBtn}>Let in</button>)}
             {r.k === "rsvp" && <Counter label={r.name} n={r.inCount} of={r.party} set={(n) => onRsvp(r.id, n)} />}
             {r.k === "guest" && (
-              <div className="shrink-0 flex items-center gap-1">
-                {r.g.proof && <button type="button" onClick={() => openProof(r.g.proof as string)} className="text-sm underline min-h-[44px] px-1">Ticket</button>}
+              <span className="row" style={{ gap: 4, flex: "none" }}>
+                {r.g.proof && <button type="button" onClick={() => openProof(r.g.proof as string)} style={linkBtn}>Ticket</button>}
                 {r.g.party > 1 ? <Counter label={r.name} n={r.g.in_count} of={r.g.party} set={(n) => onGuest(r.g.id, n)} />
-                  : r.done ? <button type="button" onClick={() => onGuest(r.g.id, 0)} className="text-sm underline min-h-[44px] px-2">Undo</button>
-                  : <button type="button" onClick={() => onGuest(r.g.id, 1)} className="font-display px-4 py-3 bg-acid-yellow text-ink border-4 border-ink">In</button>}
-              </div>
+                  : r.done ? <button type="button" onClick={() => onGuest(r.g.id, 0)} style={linkBtn}>Undo</button>
+                  : <button type="button" onClick={() => onGuest(r.g.id, 1)} className="pill" style={inBtn}>Let in</button>}
+              </span>
             )}
-          </li>
+          </div>
         ))}
-      </ul>
-      {rows.length === 0 && <p className="text-cream/70">{q ? "Nobody by that name. Add them as a walk-in if you're letting them in." : "Nobody here."}</p>}
+        {rows.length > 0 && <div className="hl" />}
+      </div>
+      {rows.length === 0 && <p className="b" style={{ marginTop: 14 }}>{q ? "Nobody by that name. Add them as a walk-in if you're letting them in." : "Nobody here."}</p>}
     </div>
   );
 }
@@ -428,49 +448,47 @@ function WalkinTab({ data, slug, onAdd, onVoid }: { data: DoorData; slug: string
     setName(""); setPhone(""); setParty(1); setAmount("");
   };
   return (
-    <div className="space-y-5">
-      <form onSubmit={submit} className="space-y-3">
-        <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required autoComplete="off" className="w-full bg-cream text-ink border-4 border-cream p-3 text-lg" />
-        <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone (optional)" inputMode="tel" autoComplete="off" className="w-full bg-cream text-ink border-4 border-cream p-3" />
-        <div className="flex items-center gap-3">
-          <span className="text-sm text-cream/70 w-16">People</span>
-          <button type="button" onClick={() => setParty(Math.max(1, party - 1))} className="w-12 h-12 border-4 border-cream font-display text-xl" aria-label="One fewer">−</button>
-          <span className="font-display text-2xl w-8 text-center tabular-nums">{party}</span>
-          <button type="button" onClick={() => setParty(Math.min(20, party + 1))} className="w-12 h-12 border-4 border-ink bg-acid-yellow text-ink font-display text-xl" aria-label="One more">+</button>
+    <div>
+      <h2 className="d" style={{ fontSize: 34, margin: 0 }}>Walk-in</h2>
+      <form onSubmit={submit}>
+        <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required autoComplete="off" className="fld" style={{ marginTop: 12 }} aria-label="Name" />
+        <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone, if they want updates" inputMode="tel" autoComplete="off" className="fld" style={{ marginTop: 10 }} aria-label="Phone" />
+        <div className="rw" style={{ padding: "12px 0", marginTop: 6, borderTop: 0 }}>
+          <span style={{ flex: 1, fontSize: 15 }}>People</span>
+          <button type="button" className="ic40" onClick={() => setParty(Math.max(1, party - 1))} aria-label="One fewer" style={{ width: 40, height: 40, border: 0, color: "inherit", cursor: "pointer" }}><Ico d="M5 12h14" /></button>
+          <span className="d" style={{ fontSize: 26, width: 36, textAlign: "center" }}>{party}</span>
+          <button type="button" className="ic40" onClick={() => setParty(Math.min(20, party + 1))} aria-label="One more" style={{ width: 40, height: 40, border: 0, cursor: "pointer", background: "var(--pc)", color: "var(--pi)" }}><Ico d="M12 5v14M5 12h14" /></button>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 }}>
           {[["upi", "UPI"], ["cash", "Cash"], ["card", "Card"], ["comp", "Comp"]].map(([k, label]) => (
-            <button key={k} type="button" onClick={() => setMethod(k)} className={`font-display px-4 py-3 border-4 border-cream ${method === k ? "bg-acid-yellow text-ink" : ""}`}>{label}</button>
+            <button key={k} type="button" onClick={() => setMethod(k)} className={`kp${method === k ? " lit" : ""}`} style={{ height: 46, ["--c" as string]: "var(--pc)", border: 0, background: "none", cursor: "pointer", font: "inherit" }}>
+              <span className="cp" style={{ alignItems: "center", justifyContent: "center" }}><span className="l" style={{ fontSize: 13 }}>{label}</span></span>
+            </button>
           ))}
         </div>
-        {method !== "comp" && (
-          <input value={amount} onChange={(e) => setAmount(e.target.value.replace(/\D/g, ""))} placeholder="Amount paid, ₹ (total)" inputMode="numeric" className="w-full bg-cream text-ink border-4 border-cream p-3 text-lg" />
-        )}
+        {method !== "comp" && <input value={amount} onChange={(e) => setAmount(e.target.value.replace(/\D/g, ""))} placeholder="Amount paid, ₹ in total" inputMode="numeric" className="fld" style={{ marginTop: 16 }} aria-label="Amount paid" />}
         {method === "upi" && amt > 0 && (qr ? (
-          <div className="bg-cream text-ink border-4 border-cream p-3 flex items-center gap-3">
-            <img src={qr} alt={`UPI QR for ₹${amt}`} className="w-36 h-36 shrink-0" />
-            <p className="text-sm">Ask them to scan this with any UPI app. It pays <b>₹{amt.toLocaleString("en-IN")}</b> to {vpa}. Add them once you see it paid.</p>
+          <div className="sf" style={{ marginTop: 12, padding: 12, borderRadius: 18, display: "flex", gap: 12, alignItems: "center" }}>
+            <img src={qr} alt={`UPI QR for ₹${amt}`} style={{ width: 132, height: 132, borderRadius: 10, flex: "none", background: "#fff" }} />
+            <p style={{ fontSize: 14, margin: 0 }}>Ask them to scan this with any UPI app. It pays <b>₹{amt.toLocaleString("en-IN")}</b> to {vpa}. Add them once you see it paid.</p>
           </div>
         ) : !vpa ? (
-          <p className="text-xs text-cream/60">No UPI id set for this night, so there is no pay QR. {data.settings.lead ? <Link href={`/door/${slug}/setup`} className="underline">Add one in setup.</Link> : "The door lead can add one."}</p>
+          <p className="b" style={{ fontSize: 13, marginTop: 10 }}>No UPI id set for this night, so there is no pay QR. {data.settings.lead ? <Link href={`/door/${slug}/setup`} style={{ textDecoration: "underline" }}>Add one in setup.</Link> : "The door lead can add one."}</p>
         ) : null)}
-        <button className="w-full font-display text-xl py-4 bg-acid-yellow text-ink border-4 border-ink">Add {party > 1 ? `${party} people` : "walk-in"}</button>
+        <button className="key" style={{ width: "100%", marginTop: 18, border: 0, cursor: "pointer", font: "inherit", fontWeight: 600 }}>Add {party > 1 ? `${party} people` : "walk-in"}</button>
       </form>
 
-      <div>
-        <p className="font-display text-lg">Door tonight</p>
-        <p className="text-cream/70 text-sm">{c.walkins} walk-in{c.walkins === 1 ? "" : "s"}{Object.keys(c.takings).length ? ` · ${Object.entries(c.takings).map(([m, v]) => `${m.toUpperCase()} ₹${v.toLocaleString("en-IN")}`).join(" · ")}` : ""}</p>
-        <ul className="mt-2 space-y-2">
-          {data.walkins.slice(0, 50).map((w) => (
-            <li key={w.id} className="border-4 border-cream/40 p-3 flex items-center gap-3">
-              <div className="flex-1 min-w-0">
-                <p className="font-bold break-words">{w.name}{w.party > 1 ? ` +${w.party - 1}` : ""}</p>
-                <p className="text-xs text-cream/60">{timeIST(w.at)} · {w.method === "comp" ? "Comp" : `${w.method.toUpperCase()} ₹${w.amount.toLocaleString("en-IN")}`}</p>
-              </div>
-              <button type="button" onClick={() => onVoid(w.id)} className="text-sm underline min-h-[44px] px-2">Remove</button>
-            </li>
-          ))}
-        </ul>
+      <div style={{ marginTop: 26 }}>
+        <div className="row"><span className="m" style={{ flex: 1 }}>Door tonight</span><span className="m">{c.walkins} walk-in{c.walkins === 1 ? "" : "s"}{Object.keys(c.takings).length ? `, ${Object.entries(c.takings).map(([m, v]) => `${m.toUpperCase()} ₹${v.toLocaleString("en-IN")}`).join(", ")}` : ""}</span></div>
+        {data.walkins.slice(0, 50).map((w) => (
+          <div key={w.id} className="rw" style={{ padding: "11px 0" }}>
+            <span style={{ flex: 1, minWidth: 0 }}>
+              <span style={{ display: "block", fontSize: 15, fontWeight: 600, wordBreak: "break-word" }}>{w.name}{w.party > 1 ? ` +${w.party - 1}` : ""}</span>
+              <span className="b" style={{ display: "block", fontSize: 12 }}>{timeIST(w.at)} · {w.method === "comp" ? "Comp" : `${w.method.toUpperCase()} ₹${w.amount.toLocaleString("en-IN")}`}</span>
+            </span>
+            <button type="button" onClick={() => onVoid(w.id)} style={linkBtn}>Remove</button>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -481,43 +499,37 @@ function CountTab({ data }: { data: DoorData }) {
   const a = arrivals(data);
   const max = Math.max(1, ...a.map((x) => x.n));
   const cap = data.night.capacity;
-  const stat = (label: string, v: string | number, sub?: string) => (
-    <div className="border-4 border-cream p-3">
-      <p className="text-xs text-cream/60 uppercase tracking-wide">{label}</p>
-      <p className="font-display text-3xl tabular-nums leading-tight">{v}</p>
-      {sub && <p className="text-xs text-cream/60">{sub}</p>}
-    </div>
-  );
   const takings = Object.values(c.takings).reduce((s, v) => s + v, 0);
+  const rows: [string, string | number, string?][] = [
+    ["Tickets", `${c.ticketsIn} of ${c.tickets}`],
+    ["Guest list", `${c.listIn} of ${c.list}`],
+    ...(c.outside > 0 ? [["Outside tickets", `${c.outsideIn} of ${c.outside}`] as [string, string]] : []),
+    ["Walk-ins", c.walkins],
+    ...(c.out > 0 ? [["On a pass-out", c.out, "not counted inside"] as [string, number, string]] : []),
+    ["Door takings", `₹${takings.toLocaleString("en-IN")}`],
+  ];
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-3">
-        {stat("Inside", c.inside, cap ? `${Math.max(0, cap - c.inside)} spaces left` : undefined)}
-        {stat("Not in yet", Math.max(0, c.expected - c.ticketsIn - c.listIn - c.outsideIn), `of ${c.expected} on the list`)}
-        {stat("Tickets", `${c.ticketsIn}/${c.tickets}`)}
-        {stat("Free list", `${c.listIn}/${c.list}`)}
-        {c.outside > 0 && stat("Outside tickets", `${c.outsideIn}/${c.outside}`, "District, BookMyShow and other lists")}
-        {stat("Walk-ins", c.walkins)}
-        {c.out > 0 && stat("On a pass-out", c.out, "not counted inside")}
-        {stat("Door takings", `₹${takings.toLocaleString("en-IN")}`)}
+    <div>
+      <h2 className="d" style={{ fontSize: 34, margin: 0 }}>Count</h2>
+      <div style={{ marginTop: 14 }}>
+        <div className="gls">
+          <div><div className="m">Inside</div><div className="v">{c.inside}</div></div>
+          <div><div className="m">Not in yet</div><div className="v">{Math.max(0, c.expected - c.ticketsIn - c.listIn - c.outsideIn)}</div></div>
+          <div><div className="m">Room left</div><div className="v">{cap ? Math.max(0, cap - c.inside) : "Open"}</div></div>
+        </div>
       </div>
-      <div>
-        <p className="font-display text-lg">Arrivals every 15 minutes</p>
-        {a.length === 0 ? <p className="text-cream/70 text-sm">Nobody in yet.</p> : (
-          <div className="mt-2 flex items-end gap-1 h-32 border-b-4 border-cream" role="img" aria-label={`Arrivals per 15 minutes, peak ${max}`}>
-            {a.map((x) => (
-              <div key={x.t} className="flex-1 h-full flex flex-col items-center justify-end min-w-0" title={`${timeIST(new Date(x.t).toISOString())}: ${x.n}`}>
-                <div className="w-full bg-acid-yellow" style={{ height: `${(x.n / max) * 100}%` }} />
-              </div>
-            ))}
+      <div className="row" style={{ marginTop: 22 }}><span className="m" style={{ flex: 1 }}>Arrivals every 15 minutes</span>{a.length > 0 && <span className="m">Peak {max}</span>}</div>
+      {a.length === 0 ? <p className="b" style={{ marginTop: 10 }}>Nobody in yet.</p> : (
+        <>
+          <div className="row" style={{ alignItems: "flex-end", gap: 4, height: 120, marginTop: 14 }} role="img" aria-label={`Arrivals per 15 minutes, peak ${max}`}>
+            {a.map((x) => <div key={x.t} title={`${timeIST(new Date(x.t).toISOString())}: ${x.n}`} style={{ flex: 1, minWidth: 0, height: `${Math.max(4, (x.n / max) * 100)}%`, borderRadius: 4, background: x.n === max ? "var(--pc)" : "rgba(255,255,255,.16)" }} />)}
           </div>
-        )}
-        {a.length > 0 && (
-          <div className="flex justify-between text-xs text-cream/60 mt-1">
-            <span>{timeIST(new Date(a[0].t).toISOString())}</span>
-            <span>{timeIST(new Date(a[a.length - 1].t).toISOString())}</span>
-          </div>
-        )}
+          <div className="row" style={{ justifyContent: "space-between", marginTop: 6 }}><span className="m">{timeIST(new Date(a[0].t).toISOString())}</span><span className="m">{timeIST(new Date(a[a.length - 1].t).toISOString())}</span></div>
+        </>
+      )}
+      <div style={{ marginTop: 18 }}>
+        {rows.map(([l, v, s]) => <div key={l} className="rw" style={{ padding: "12px 0" }}><span style={{ flex: 1, fontSize: 15 }}>{l}{s && <span className="b" style={{ display: "block", fontSize: 12 }}>{s}</span>}</span><span style={{ fontSize: 15, fontWeight: 600 }}>{v}</span></div>)}
+        <div className="hl" />
       </div>
     </div>
   );

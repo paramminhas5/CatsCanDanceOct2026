@@ -54,8 +54,8 @@ export function guessCols(header: string[]): Cols {
   return c;
 }
 
-const inp = "w-full bg-cream text-ink border-4 border-cream p-3";
-const btn = "font-display px-4 py-3 bg-acid-yellow text-ink border-4 border-ink disabled:opacity-40";
+const inp = "fld";
+const btn = "pill lg on";
 
 export default function ImportGuests({ slug, flash }: { slug: string; flash: (m: string) => void }) {
   const [source, setSource] = useState("district");
@@ -109,8 +109,8 @@ export default function ImportGuests({ slug, flash }: { slug: string; flash: (m:
 
   const pick = (k: keyof Cols, label: string) => (
     <label className="block">
-      <span className="text-sm text-cream/70">{label}</span>
-      <select value={cols[k]} onChange={(e) => setCols({ ...cols, [k]: Number(e.target.value) })} className="mt-1 w-full bg-cream text-ink border-4 border-cream p-2">
+      <span className="b" style={{ fontSize: 13 }}>{label}</span>
+      <select value={cols[k]} onChange={(e) => setCols({ ...cols, [k]: Number(e.target.value) })} className="fld">
         <option value={-1}>Not in this file</option>
         {(hasHeader ? header : header.map((_, i) => `Column ${i + 1}`)).map((h, i) => <option key={i} value={i}>{h || `Column ${i + 1}`}</option>)}
       </select>
@@ -119,28 +119,28 @@ export default function ImportGuests({ slug, flash }: { slug: string; flash: (m:
 
   return (
     <section>
-      <h2 className="font-display text-2xl">Tickets sold elsewhere</h2>
-      <p className="text-sm text-cream/70 mt-1">
+      <h2 className="d" style={{ fontSize: 24 }}>Tickets sold elsewhere</h2>
+      <p className="b" style={{ fontSize: 13, marginTop: 4 }}>
         Selling on District, BookMyShow, Skillbox or Insider too? Download their attendee or booking list as CSV and import it here.
         Their QR codes and booking IDs then scan at this door, and every name shows in Guests. One door, one count.
       </p>
       {limits?.billing && limits.plan === "free" && (
-        <p className="mt-2 text-sm font-bold text-acid-yellow">Free plan: up to {limits.import_cap} imported guests a night. Pro has no limit.</p>
+        <p className="b" style={{ marginTop: 8, color: "var(--pc)", fontWeight: 600 }}>Free plan: up to {limits.import_cap} imported guests a night. Pro has no limit.</p>
       )}
 
       <div className="mt-3 flex flex-wrap gap-2">
         {Object.keys(SOURCES).map((k) => (
-          <button key={k} type="button" onClick={() => setSource(k)} className={`font-display text-sm px-3 py-2 border-4 border-cream ${source === k ? "bg-acid-yellow text-ink" : ""}`}>{k === "other" ? "Other" : SOURCES[k]}</button>
+          <button key={k} type="button" onClick={() => setSource(k)} className={`pill lg${source === k ? " on" : ""}`} style={{ border: 0, cursor: "pointer" }}>{k === "other" ? "Other" : SOURCES[k]}</button>
         ))}
       </div>
 
       <div className="mt-3 space-y-3">
-        <label className="block border-4 border-dashed border-cream p-4 text-center cursor-pointer">
-          <span className="font-display">Choose the CSV file</span>
-          <span className="block text-sm text-cream/70">or paste the rows below</span>
+        <label className="block" style={{ border: "1.5px dashed var(--hair2)", borderRadius: 18, padding: 18, textAlign: "center", cursor: "pointer" }}>
+          <span style={{ fontWeight: 600 }}>Choose the CSV file</span>
+          <span className="m" style={{ display: "block" }}>or paste the rows below</span>
           <input type="file" accept=".csv,text/csv,text/plain,.xls,.xlsx" className="sr-only" onChange={(e) => readFile(e.target.files?.[0])} />
         </label>
-        <textarea className={`${inp} font-mono text-sm`} rows={4} value={text} onChange={(e) => setText(e.target.value)}
+        <textarea className={inp} style={{ height: "auto", minHeight: 120, padding: 12, fontFamily: "var(--font-mono), monospace", fontSize: 13 }} rows={4} value={text} onChange={(e) => setText(e.target.value)}
           placeholder={"Booking ID, Name, Email, Quantity\nDST12345, Asha Rao, asha@example.com, 2"} spellCheck={false} />
       </div>
 
@@ -152,13 +152,13 @@ export default function ImportGuests({ slug, flash }: { slug: string; flash: (m:
             {pick("email", "Email")}
             {pick("party", "How many people")}
           </div>
-          {cols.code < 0 && <p className="text-sm text-acid-yellow font-bold">No code column: guests can still be found by name, but their QR will not scan.</p>}
-          <div className="border-4 border-cream/40 p-3 text-sm overflow-x-auto">
-            <p className="text-cream/70 mb-2">First rows as they will import ({mapped.length} in all):</p>
+          {cols.code < 0 && <p className="b" style={{ color: "var(--pc)", fontWeight: 600 }}>No code column: guests can still be found by name, but their QR will not scan.</p>}
+          <div className="sf" style={{ padding: 12, borderRadius: 16, fontSize: 13, overflowX: "auto" }}>
+            <p className="b" style={{ marginBottom: 8 }}>First rows as they will import ({mapped.length} in all):</p>
             <table className="w-full">
               <tbody>
                 {mapped.slice(0, 5).map((r, i) => (
-                  <tr key={i} className="border-t border-cream/20"><td className="py-1 pr-3 font-mono break-all">{r.code ?? "–"}</td><td className="py-1 pr-3">{r.name ?? "–"}</td><td className="py-1 tabular-nums">{r.party}</td></tr>
+                  <tr key={i} style={{ borderTop: "1px solid var(--hair)" }}><td className="py-1 pr-3 font-mono break-all">{r.code ?? "–"}</td><td className="py-1 pr-3">{r.name ?? "–"}</td><td className="py-1 tabular-nums">{r.party}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -169,12 +169,12 @@ export default function ImportGuests({ slug, flash }: { slug: string; flash: (m:
 
       {imports.length > 0 && (
         <div className="mt-5">
-          <p className="font-display text-lg">On the door now: {total} outside {total === 1 ? "guest" : "guests"}</p>
+          <p className="d" style={{ fontSize: 18 }}>On the door now: {total} outside {total === 1 ? "guest" : "guests"}</p>
           <ul className="mt-2 space-y-2">
             {imports.map((b) => (
-              <li key={b.batch} className="border-4 border-cream/40 p-3 flex items-center gap-3">
+              <li key={b.batch} className="rw" style={{ padding: "11px 0" }}>
                 <p className="flex-1 text-sm"><b>{sourceLabel(b.source)}</b> · {b.rows} {b.rows === 1 ? "row" : "rows"} · {new Date(b.at).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}</p>
-                <button type="button" className="text-sm underline min-h-[44px] px-2" onClick={async () => {
+                <button type="button" className="pill" style={{ border: 0, cursor: "pointer" }} onClick={async () => {
                   if (!confirm("Remove this import? Guests already checked in stay counted.")) return;
                   const r = await voidImport(slug, b.batch); flash(r.ok ? `Removed ${(r.data as any).removed}.` : r.error ?? "Could not remove."); load();
                 }}>Undo</button>
@@ -183,7 +183,7 @@ export default function ImportGuests({ slug, flash }: { slug: string; flash: (m:
           </ul>
         </div>
       )}
-      <p className="mt-3 text-xs text-cream/60">Guests can also add a ticket they bought elsewhere on the night's page before they come. Those show in Guests as "added by the guest", with their screenshot.</p>
+      <p className="b" style={{ fontSize: 12, marginTop: 12 }}>Guests can also add a ticket they bought elsewhere on the night's page before they come. Those show in Guests as "added by the guest", with their screenshot.</p>
     </section>
   );
 }

@@ -36,3 +36,61 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .font-display { font-family: var(--k-display); font-weight: 700; letter-spacing: -0.03em; }
 .tabular { font-variant-numeric: tabular-nums; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
+
+/* ---------- The Host app column (H39 phone boards) ---------- */
+#main:has(.host-stage) + footer { display: none; }
+.host-stage { min-height: calc(100dvh - 64px); background: radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, #FFE600 10%, transparent), transparent 70%), #050505; }
+.host-app { overflow: clip; }
+.host-app .host-amb { position: absolute; inset: 0 0 auto; height: 420px; pointer-events: none; z-index: 0; background: radial-gradient(90% 60% at 50% 0%, color-mix(in srgb, var(--amb) 22%, transparent), transparent 70%); }
+.host-app .host-body { position: relative; z-index: 1; display: flex; flex-direction: column; flex: 1; padding-bottom: 24px; }
+.host-app .host-body.has-dock { padding-bottom: 110px; }
+.v4.app.host-app .dock { width: calc(min(100%, 480px) - 32px); z-index: 30; }
+.host-app .dock a { text-decoration: none; }
+.host-app a { color: inherit; }
+.host-app .rw { text-decoration: none; }
+.host-tick { width: 24px; height: 24px; border-radius: 12px; flex: none; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 1.5px var(--hair2); }
+.host-tick.on { background: var(--pc); color: var(--pi); box-shadow: none; animation: host-pop .5s cubic-bezier(.2, 1.6, .4, 1) both; }
+@keyframes host-pop { from { transform: scale(.4); } to { transform: none; } }
+.host-app .fld { margin-top: 6px; width: 100%; box-sizing: border-box; height: 50px; border-radius: 14px; padding: 0 14px; display: flex; align-items: center; background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px var(--hair2); font: inherit; font-size: 16px; color: var(--tx, #F4F3F0); border: 0; outline: none; color-scheme: dark; }
+.host-app textarea.fld { height: 96px; padding: 12px 14px; resize: vertical; }
+.host-app .fld:focus { box-shadow: inset 0 0 0 1.5px var(--pc); }
+.host-app .fld::placeholder { color: rgba(244, 243, 240, .35); }
+.host-app button.kp, .host-app button.key, .host-app button.btn, .host-app button.pill { border: 0; font: inherit; cursor: pointer; background-color: transparent; }
+.host-app button.key { background: radial-gradient(80% 140% at 50% 0%, color-mix(in srgb, var(--pc) 70%, #fff) 0%, var(--pc) 55%); }
+.host-app .key:active { transform: translateY(3px); }
+.host-app .btn { background: rgba(255, 255, 255, .08); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), inset 0 0 0 1px rgba(255, 255, 255, .06); }
+.host-app button.pill.on, .host-app .pill.on { background: #F2F0EB; color: #0A0A0B; }
+.host-app .err { margin: 12px 0 0; font-size: 14px; color: #FF8A8A; }
+.host-app .rise { animation: host-rise .5s cubic-bezier(.2, .8, .2, 1) both; }
+.host-app .rise:nth-child(2) { animation-delay: .04s; } .host-app .rise:nth-child(3) { animation-delay: .08s; } .host-app .rise:nth-child(4) { animation-delay: .12s; } .host-app .rise:nth-child(5) { animation-delay: .16s; } .host-app .rise:nth-child(6) { animation-delay: .2s; } .host-app .rise:nth-child(7) { animation-delay: .24s; } .host-app .rise:nth-child(8) { animation-delay: .28s; }
+@keyframes host-rise { from { opacity: .2; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.host-sheet { position: fixed; inset: 0; z-index: 50; display: flex; align-items: flex-end; justify-content: center; background: rgba(0, 0, 0, .55); animation: host-fade .2s both; }
+.host-sheet > div { width: min(100%, 480px); box-sizing: border-box; border-radius: 28px 28px 0 0; padding: 22px 20px 28px; background: #141418; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08); animation: host-up .35s cubic-bezier(.2, .9, .2, 1) both; }
+@keyframes host-fade { from { opacity: 0; } }
+@keyframes host-up { from { transform: translateY(100%); } }
+.host-bar { transition: height .8s cubic-bezier(.2, .8, .2, 1); }
+.host-progress i { animation: host-grow .6s cubic-bezier(.2, .8, .2, 1) both; transform-origin: left; }
+@keyframes host-grow { from { transform: scaleX(0); } }
+@media (prefers-reduced-motion: reduce) { .host-app *, .host-sheet * { animation: none !important; transition: none !important; } }
+@keyframes host-grow-y { from { transform: scaleY(0); } }
+
+/* ---------- The door (board H39-Door) ---------- */
+.door-app { max-width: 520px; }
+.door-app .door-amb { position: fixed; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(70% 45% at 50% 18%, color-mix(in srgb, var(--amb) 22%, transparent), transparent 70%), #050505; transition: background .3s; }
+.door-app > * { position: relative; z-index: 1; }
+.door-app .dock { width: calc(min(100%, 520px) - 32px); z-index: 30; }
+.door-count { animation: door-tick .45s cubic-bezier(.2, 1.5, .4, 1); }
+@keyframes door-tick { from { transform: scale(1.12); color: var(--pc); } }
+.door-frame { position: relative; margin: 8px auto 0; width: min(260px, 72vw); aspect-ratio: 1; }
+.door-frame .door-view { position: absolute; inset: 10px; border-radius: 16px; overflow: hidden; background: rgba(255, 255, 255, .04); }
+.door-frame .c { position: absolute; width: 42px; height: 42px; border: 0 solid #fff; }
+.door-frame .tl { top: 0; left: 0; border-top-width: 4px; border-left-width: 4px; border-top-left-radius: 22px; }
+.door-frame .tr { top: 0; right: 0; border-top-width: 4px; border-right-width: 4px; border-top-right-radius: 22px; }
+.door-frame .bl { bottom: 0; left: 0; border-bottom-width: 4px; border-left-width: 4px; border-bottom-left-radius: 22px; }
+.door-frame .br { bottom: 0; right: 0; border-bottom-width: 4px; border-right-width: 4px; border-bottom-right-radius: 22px; }
+.door-laser { position: absolute; left: 22px; right: 22px; top: 50%; height: 2px; background: var(--pc); box-shadow: 0 0 16px var(--pc); animation: door-laser 2.2s ease-in-out infinite alternate; }
+@keyframes door-laser { from { top: 18%; } to { top: 82%; } }
+.door-result { position: fixed; inset: 0; z-index: 40; display: flex; align-items: flex-end; justify-content: center; padding: 0 16px 104px; animation: host-fade .15s both; cursor: pointer; }
+.door-card { width: min(100%, 488px); box-sizing: border-box; border-radius: 28px; padding: 20px 20px 18px; animation: door-in .28s cubic-bezier(.2, 1.3, .4, 1) both; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .7); }
+@keyframes door-in { from { transform: translateY(40px) scale(.96); opacity: .3; } }
+@media (prefers-reduced-motion: reduce) { .door-laser, .door-count, .door-card { animation: none !important; } }
