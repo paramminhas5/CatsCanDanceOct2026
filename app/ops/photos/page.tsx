@@ -56,7 +56,8 @@ const css = `
 .ph .ph1{display:inline-block;vertical-align:top;margin:0 8px 8px 0;max-width:130px}
 `;
 
-export default async function Photos({ searchParams }: { searchParams: Search }) {
+export default async function Photos(props: { searchParams: Promise<Search> }) {
+  const searchParams = await props.searchParams;
   const show = searchParams?.show ?? "all";
   let artists: Artist[] = [], media: Media[] = [], err = "";
   try {

@@ -47,7 +47,8 @@ const css = `
 .gl .tag.published,.gl .tag.confirmed{background:#b6ef36}.gl .tag.pending,.gl .tag.proposed{background:#fde68a}.gl .tag.rejected,.gl .tag.expired{background:#eee}
 `;
 
-export default async function GigLinks({ searchParams }: { searchParams: Search }) {
+export default async function GigLinks(props: { searchParams: Promise<Search> }) {
+  const searchParams = await props.searchParams;
   const status = searchParams?.status ?? "confirmed";
   const all = searchParams?.all === "1";
   let rows: Row[] = [];

@@ -33,45 +33,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.json(artists);
   }
 
-  // ── POST — public artist submission ────────────────────────────────────────
-  if (req.method === "POST") {
-    const body = req.body ?? {};
-    const {
-      name, submitter_email, submitter_role, bio, from_city, based_city,
-      genres, festivals, instagram, soundcloud, bandcamp, spotify, website,
-      booking_email, manager_email, labels, members, photo_url, notes,
-    } = body;
+  // POST (artist submission) removed 9 Nov 2026: submissions go through submit_artist() with throttle.
 
-    if (!name?.trim()) return res.status(400).json({ error: "name is required" });
-
-    const { ok } = await sbInsert("artist_submissions", {
-      ...(name              && { name }),
-      ...(submitter_email   && { submitter_email }),
-      ...(submitter_role    && { submitter_role }),
-      ...(bio               && { bio }),
-      ...(from_city         && { from_city }),
-      ...(based_city        && { based_city }),
-      ...(genres !== undefined  && { genres }),
-      ...(festivals !== undefined && { festivals }),
-      ...(instagram         && { instagram }),
-      ...(soundcloud        && { soundcloud }),
-      ...(bandcamp          && { bandcamp }),
-      ...(spotify           && { spotify }),
-      ...(website           && { website }),
-      ...(booking_email     && { booking_email }),
-      ...(manager_email     && { manager_email }),
-      ...(labels            && { labels }),
-      ...(members           && { members }),
-      ...(photo_url         && { photo_url }),
-      ...(notes             && { notes }),
-      status:     "pending",
-      created_at: new Date().toISOString(),
-    });
-
-    return ok
-      ? res.json({ ok: true, message: "Submission received. We'll review it within 48h." })
-      : res.status(500).json({ error: "Failed to save submission. Please try again." });
-  }
 
   return res.status(405).json({ error: "Method not allowed" });
 }

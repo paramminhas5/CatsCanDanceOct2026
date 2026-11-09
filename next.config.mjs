@@ -54,8 +54,6 @@ const nextConfig = {
     // Real hosts only (src/lib/image-hosts.json). A wildcard for every host made the optimizer an open proxy.
     remotePatterns: IMAGE_HOSTS.map((hostname) => ({ protocol: "https", hostname: hostname.startsWith("*.") ? `**${hostname.slice(1)}` : hostname })),
   },
-  // Produce smaller output by enabling SWC minification (default in Next 14+)
-  swcMinify: true,
   webpack(config) {
     return config;
   },
