@@ -2,10 +2,11 @@
  * Weekly release check (Vercel cron, see vercel.json). No AI.
  * For every artist with a high-confidence Deezer id, reads their Deezer albums and sends the ones released in
  * the last 18 months to ops_add_releases, which adds only what we don't have (migration 049).
- * Auth: Vercel sends "Authorization: Bearer $CRON_SECRET" when CRON_SECRET is set. Without it, only Vercel's cron agent runs it.
+ * Auth: Vercel sends "Authorization: Bearer $CRON_SECRET" when CRON_SECRET is set. Without it the route refuses every call (a user agent can be faked).
  */
 import type { NextApiRequest, NextApiResponse } from "next";
 import { rpc } from "@/lib/api-rpc";
+import { safeEqual } from "@/lib/safe-equal";
 
 export const config = { maxDuration: 60 };
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -13,7 +14,7 @@ const TYPES: Record<string, string> = { album: "album", ep: "ep", single: "singl
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const secret = process.env.CRON_SECRET;
-  const ok = secret ? req.headers.authorization === `Bearer ${secret}` : String(req.headers["user-agent"] ?? "").startsWith("vercel-cron");
+  const ok = !!secret && safeEqual(req.headers.authorization ?? "", `Bearer ${secret}`);
   if (!ok) return res.status(401).json({ error: "unauthorized" });
   const token = process.env.OPS_TOKEN;
   if (!token) return res.status(200).json({ ok: false, reason: "OPS_TOKEN not set" });

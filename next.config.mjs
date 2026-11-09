@@ -87,9 +87,23 @@ const nextConfig = {
       { source: "/school/:path*", destination: `${SCHOOL_URL}/:path*`, permanent: false },
     ];
   },
+  poweredByHeader: false,
   async headers() {
+    // Baseline security headers on every page (9 Nov 2026 audit). Camera stays allowed for the door scanner.
+    const security = {
+      source: "/(.*)",
+      headers: [
+        { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+        { key: "X-Content-Type-Options", value: "nosniff" },
+        { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        { key: "X-Frame-Options", value: "SAMEORIGIN" },
+        { key: "Permissions-Policy", value: "camera=(self), microphone=(), geolocation=(), payment=(self \"https://checkout.razorpay.com\"), interest-cohort=()" },
+        { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
+      ],
+    };
     if (process.env.NODE_ENV === "production") {
       return [
+        security,
         {
           // Cache static assets aggressively
           source: "/_next/static/(.*)",

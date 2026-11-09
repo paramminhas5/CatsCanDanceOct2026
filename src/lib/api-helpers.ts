@@ -11,7 +11,10 @@
 import type { NextApiRequest } from "next";
 
 export const SB       = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
-export const SK       = process.env.SUPABASE_SERVICE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+// The app only ever uses the anon key: RLS and SECURITY DEFINER RPCs decide what it may do (CLAUDE.md).
+// Never read a service key here. These legacy routes take ids from the request body, so a service key
+// would turn them into open admin endpoints.
+export const SK       = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 export const ADMIN_PW = process.env.ADMIN_PASSWORD ?? "";
 
 export const H = () => ({
