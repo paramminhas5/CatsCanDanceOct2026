@@ -49,18 +49,19 @@ revoke all on schema marketing from public, anon, authenticated;
 
 create or replace view marketing.leads_feed as
 with conv as (
+  -- acked_at: the confirmation went out; responded_at: a person handled it. The engine uses them for speed-to-lead.
   select 'order_' || o.id::text as id, o.created_at, 'ticket_' || o.status as source,
          o.buyer_name as name, o.buyer_email as email, o.buyer_phone as phone, null::text as message,
-         o.event_slug as ref, o.amount_inr as value_inr
+         o.event_slug as ref, o.amount_inr as value_inr, o.emailed_at as acked_at, null::timestamptz as responded_at
   from public.ticket_orders o
   union all
-  select 'rsvp_' || r.id::text, r.created_at, 'rsvp', r.name, r.email, null, null, r.event_slug, 0
+  select 'rsvp_' || r.id::text, r.created_at, 'rsvp', r.name, r.email, null, null, r.event_slug, 0, null, null
   from public.event_rsvps r
   union all
-  select 'signup_' || s.id::text, s.created_at, 'signup:' || coalesce(s.source, 'site'), null, s.email, null, null, null, 0
+  select 'signup_' || s.id::text, s.created_at, 'signup:' || coalesce(s.source, 'site'), null, s.email, null, null, null, 0, null, null
   from public.early_access_signups s
   union all
-  select 'contact_' || c.id::text, c.created_at, 'contact', c.name, c.email, null, c.message, null, 0
+  select 'contact_' || c.id::text, c.created_at, 'contact', c.name, c.email, null, c.message, null, 0, null, c.handled_at
   from public.contact_messages c
 )
 select conv.*, sig.heard_from, sig.whatsapp, coalesce(sig.utm, '{}'::jsonb) as utm, sig.page
