@@ -1,0 +1,210 @@
+[
+ {
+  "slug": "indo-warehouse",
+  "identity": "Confirmed by name, New York base, founders Kahani (Armaan Gupta) and Kunal Merchant, and the Indo Warehouse label, in Gray Area, Mixmag and Hollywood Reporter India pages.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Indo Warehouse on taking South Asian house music global (From Coachella to Sunburn)",
+    "publication": "Hollywood Reporter India",
+    "url": "https://www.hollywoodreporterindia.com/features/interviews/indo-warehouse-on-taking-south-asian-house-music-global",
+    "date_published": null
+   },
+   {
+    "title": "How New York-based South Asian musicians Indo Warehouse are rewriting the rules of music",
+    "publication": "Cosmopolitan India",
+    "url": "https://www.cosmopolitan.in/life/features/story/how-new-york-based-south-asian-musicians-indo-warehouse-are-rewriting-the-rules-of-music-1172314-2025-02-18",
+    "date_published": "2025-02-18"
+   },
+   {
+    "title": "New York record label Indo Warehouse announces Africa tour",
+    "publication": "Mixmag",
+    "url": "https://mixmag.net/read/new-york-record-label-indo-warehouse-africa-tour-news",
+    "date_published": "2024-09-03"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Claims check on our bio. SUPPORTED: founded 2022 by Kunal Merchant and Kahani, label and series launched February 2022 (Gray Area, https://grayarea.co/magazine/indo-warehouse-bring-their-south-asian-roots-to-the-rave); first event was 26 February 2022 and 200 people bought tickets (Kahani in Cosmopolitan India, https://www.cosmopolitan.in/life/features/story/how-new-york-based-south-asian-musicians-indo-warehouse-are-rewriting-the-rules-of-music-1172314-2025-02-18); debuted at Hï Ibiza (Hollywood Reporter India, https://www.hollywoodreporterindia.com/features/interviews/indo-warehouse-on-taking-south-asian-house-music-global); Mixmag (3 Sep 2024) cites success in Europe and India and an Africa tour. NOT SUPPORTED: 'Lower East Side' (Cosmopolitan India says 'a small but very unique jazz club in New York City'); 'coined the term Indo House' (Hollywood Reporter India says they 'set out to build Indo House as a genre' and that this music 'was never given a name'; no page says they coined it, suggest 'named their sound Indo House'); 'Middle East' (no opened page; Dubai ticket listings exist in search results but I did not open them); the 2025 claim was cut off in our excerpt so not checked, though Beatport Hype Label of the Month October 2025 (Beatportal, 30 Oct 2025) is confirmed. Wild City directory says 46 tracks from over 25 artists, undated. Hollywood Reporter India page shows only an 'Updated 24 Dec 2025' date. Releases: not added, Wild City page lists none with dates."
+ },
+ {
+  "slug": "jael",
+  "identity": "Confirmed through RCA Records artist page and KALTBLUT mixtape page: Giovanni Jano, Moluccan producer, DJ and vocalist from the Netherlands, Soulection member, debut album Half As Much 2021. Both match our bio.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Mixtape: JAEL (KALTBLUT Magazine)",
+    "url": "https://www.kaltblut-magazine.com/mixtape-jael/",
+    "year": 2024
+   }
+  ],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {
+    "title": "Them Changes (Jaël Remix)",
+    "year": 2018,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://knownasjael.bandcamp.com/track/thundercat-them-changes-ja-l-remix",
+    "date": "2018-09-05",
+    "bandcamp_id": 2526160432,
+    "bandcamp_type": "track"
+   }
+  ],
+  "ids": {},
+  "notes": "WARNING: the first MusicBrainz hit for 'JAEL' (mbid 7211d420-419f-4f95-be76-89777c5deae9, with Discogs 7561982, jaeldub.bandcamp.com, Spotify 4uSiUFmHAA3iUt7oRxd7ra, soundcloud.com/jaeldub) is JAEL_DUB, a different artist. I did not use those ids. No Discogs, Beatport, Spotify or MusicBrainz id confirmed for the Dutch JAEL. Our stored soundcloud.com/ja-el is the account named in the KALTBLUT mix description, so it matches. RCA page says city is 'the Netherlands' and does not mention Amsterdam. Our record has from_city India while every source says Netherlands/Moluccan; Param may want to check from_city. One blocked fetch: knownasjael.bandcamp.com (permission not granted), so the Bandcamp discography beyond one track was not read. RCA page also says Rinse FM monthly show CAROUSEL JAEL began in 2022 and he played Boiler Room Amsterdam, Brooklyn Mirage and O2 Brixton in 2022 (source https://rcarecords.co.uk/artists/jael)."
+ },
+ {
+  "slug": "kaleekarma",
+  "identity": "Confirmed: Mixmag profile (30 Aug 2018) and Mixmag Lab Goa page describe a Bombay-based artist who made Now And Then with Agent and Daulat, matching our Arcane Circle 2018 release.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Shifting soundscapes and states of mind",
+    "source_url": "https://mixmag.net/read/kaleekarma-in-the-lab-goa-dj-lab-dj-lab"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "From Delhi To Derry: An Interview With Musicians Kaleekarma And The Fully Automatic Machine",
+    "publication": "Outlook Traveller",
+    "url": "https://www.outlooktraveller.com/explore/culture/from-delhi-to-derry-an-interview-with-musicians-kaleekarma-and-the-fully-automatic-machine",
+    "date_published": "2022-12-13"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Kaleekarma | Mixmag Lab Goa",
+    "url": "https://www.youtube.com/watch?v=N82rR5GsMUo",
+    "year": 2022
+   }
+  ],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Our bio is only 'Magnetic Fields regular.' I could not open a Magnetic Fields page for her (nomads page returned 'Artist not found'), so that claim is unverified. Suggested sourced bio for Param to approve: 'Kaleekarma is a Bombay-based artist who moved to the city in 2010. Her sets and productions move across house, trip hop, minimal, electronica, techno and downtempo.' Sources: Mixmag profile https://mixmag.net/read/kaleekarma-is-the-bombay-based-artist-with-an-eclectic-output-you-need-to-hear-artist-profiles (30 Aug 2018, Harrison Williams). Outlook Traveller (13 Dec 2022) names her as Harshita Kalee, so only use if Param is fine with that. No Bandcamp, Discogs or RA id found. Mixmag Lab Goa video confirmed by YouTube oembed (title 'Kaleekarma | Mixmag Lab Goa', posted by Mixmag), page dated 28 March 2022."
+ },
+ {
+  "slug": "kandy-kuri",
+  "identity": "Confirmed via Wild City mix page #229 (25 Oct 2023): breaks, garage and house with brief techno, supported Yung Singh and Lady Shaka, Bass Camp and Magnetic Fields, Instagram kandy.kuri. Matches our record.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing new found. No releases, Bandcamp, Discogs or RA id found. Wild City page does not state a city, so Bengaluru is unconfirmed by it. Our bio says she played Boiler Room Bengaluru on 7 June 2024; I could not confirm this. The boilerroom.tv Bengaluru session page I opened shows 26 May 2022 and no lineup (different or placeholder event). Wild City news 20647 (Boiler Room Bengaluru and Gurugram dates) came up in search but I did not open it. All stored mixes already cover SoundCloud, Mixcloud and Rinse."
+ },
+ {
+  "slug": "kibo",
+  "identity": "Partly confirmed: Magnetic Fields artist page describes KIBO as a Mumbai-based DJ and producer, genre-fluid sets rooted in house with jazzy undertones, deep grooves and experimental textures, matching our sound tags. No page shows her links.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Eras: none returned, no dated source for her sound. Not confirmed from pages I opened: 'played DGTL Mumbai' (Magnetic Fields page says she 'recently joined the lineup at DGTL', which is a booking, not a played set; a Time Out headline says DGTL India 2026 moved its Mumbai edition to Goa); 'played Magnetic Fields' (page is her artist profile, no years); 'PORT Mumbai on 27 February 2026' (not found). New dated fact: Disco Diwali Day 1 at JUNA, Goa, 6 November 2026, Kibo (IN) headline, per https://www.technoairlines.com/event/disco-diwali-day-1-kibo-hooligan-achhra-rohan-rakhit-juna-2026-11-06 (page says 'This night has passed', treat as listing). Beware namesakes: soundcloud.com/julienkibo is a different person. No mix, release, press or id found."
+ },
+ {
+  "slug": "long-distances",
+  "identity": "Confirmed: Rolling Stone India (12 Feb 2024) calls them 'Mumbai-bred'; Wild City lists members Aarifah Rebello, Apurv Agrawal, Zubin Pastakia and the same Bandcamp and SoundCloud we store.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Indie band at the intersections of post-punk, shoegaze, dreampop and synthpop",
+    "source_url": "https://www.platform-mag.com/music/how-the-mighty-will-fall.html"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "How the Mighty Will Fall",
+    "publication": "Platform",
+    "url": "https://www.platform-mag.com/music/how-the-mighty-will-fall.html",
+    "date_published": "2024-06-26"
+   },
+   {
+    "title": "Long Distances Reflects Life's Complexities Through Debut EP How The Mighty Will Fall",
+    "publication": "The Indian Music Diaries",
+    "url": "https://theindianmusicdiaries.com/long-distances-reflects-lifes-complexities-through-debut-ep-how-the-mighty-will-fall",
+    "date_published": "2024-03-01"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Our bio is thin ('Mumbai post-punk and shoegaze band'). Sourced facts for a draft Param can approve: Mumbai-bred indie band (Rolling Stone India https://rollingstoneindia.com/long-distances-keep-indie-rock-alive-with-debut-ep, 12 Feb 2024); EP How the Mighty Will Fall came out in January 2024 (same article, 'last month'), six tracks, songs written 2019 to 2022 (Platform, 26 Jun 2024); members per Platform: Aarifah (vocals), Adil (bass), Apurv (guitar, synth, mix), Gouri (harmonies, synths), Karun (drums), Zubin (guitar, production, songwriting), while Wild City lists a trio. Platform quote: 'we feel like we are an indie band that exists at the intersections of genres such as post-punk.' No label found. Release years on record look right; no new releases confirmed on a primary page. Bandcamp id not read."
+ },
+ {
+  "slug": "lush-lata",
+  "identity": "Confirmed: CTM Festival and Refuge Worldwide profiles say New Delhi-based DJ and producer, played Berghain Panorama Bar for CTM; Mixmag Asia (13 Mar 2024) confirms Lush Lata Selects on boxout.fm Recordings. Matches our record.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Achingly cool, unbothered, and fluid, wrapped in a detached mystique",
+    "source_url": "https://refugeworldwide.com/artists/lush-lata"
+   }
+  ],
+  "aliases": [
+   {
+    "alias": "Coven Code (collective member)",
+    "source_url": "https://www.thewildcity.com/artists/15695-Lush Lata"
+   }
+  ],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Magnetic Fields 2024 | Lush Lata (Refuge Worldwide)",
+    "url": "https://refugeworldwide.com/radio/magnetic-fields-2024-lush-lata-09-feb-2025",
+    "year": 2025
+   }
+  ],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Our bio is only 'Magnetic Fields regular.' Refuge Worldwide has a show titled 'Magnetic Fields 2024 | Lush Lata' (aired 9 Feb 2025), which supports Magnetic Fields 2024. Suggested sourced bio for Param to approve: 'Lush Lata is a New Delhi DJ and producer who plays club nights across India and played CTM Festival at Berghain Panorama Bar. Her sets run through hip-hop, trap, afrobeat, tribal house and drum and bass with heavy low end.' Sources: https://www.ctm-festival.de/festival-2023/programme/artists/l/lush-lata and https://refugeworldwide.com/artists/lush-lata. Wild City also says she is a member of Coven Code (India all-female collective). Lush Lata Selects (boxout.fm Recordings, 2024) has seven tracks by MadStarBase, Zealotantrik, Insowmya, PAV4N x Sukh Knight, Captain Fuse x MUKT, Kalbaisakhi and ABHINAV (Mixmag Asia, 13 Mar 2024), already on record. No Bandcamp or Discogs id found."
+ },
+ {
+  "slug": "mc-soopy",
+  "identity": "Confirmed via Wild City artist page 7654: Siddhant Roop Rai, DJ and MC from New Delhi, improvised grime-influenced rapping, plays hip hop, soul, trap, house, disco, italo and techno. Matches our bio.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing new found. No releases, press, ids, or further mixes found in search (results were unrelated). Wild City page lists only Facebook facebook.com/MCSoopy. Stored mixes already cover YouTube."
+ }
+]

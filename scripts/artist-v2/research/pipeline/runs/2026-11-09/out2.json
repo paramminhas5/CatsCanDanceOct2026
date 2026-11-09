@@ -1,0 +1,214 @@
+[
+ {
+  "slug": "bombie",
+  "identity": "Wild City artist page and Magnetic Fields artist page both describe a DJ named Bombie with the same genre mix (electro, breaks, jungle, UK garage) and link soundcloud.com/bombiezip and instagram bombie.zip, matching our stored links.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "CONFLICT for Param: Wild City artist page (thewildcity.com/artists/21737-Bombie) says Bangalore, India; Magnetic Fields artist page (magneticfields.in/artists/bombie) says New Delhi, India. Our record says Bengaluru. Not changed. No releases, ids or new mixes found on pages I could open. SoundCloud is blocked to the fetch tool."
+ },
+ {
+  "slug": "bullzeye",
+  "identity": "Not confirmed. Wild City (artists/13346-Bullzeye) describes a Mumbai techno and house DJ active since 1999, and ADE lists an Indian DJ Bullzeye active since 1999 who owns Rage Entertainment, but neither page links our stored SoundCloud (bullzeyepower), Mixcloud mixes or Instagram, so I cannot tie them to our record.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Left empty on purpose. Possible same person (techno, house, India) but identity is unproven. Stored city is only 'India'; Wild City implies Mumbai but does not say so outright. No sourced releases, ids or press tied to our links."
+ },
+ {
+  "slug": "discokid",
+  "identity": "Mixmag Lab Goa article (stored press) and District artist page describe Discokid in Goa; District says she founded Paradise Disco, matching our bio. gogoanow article names Goa-based Discokid at Serendipity Arts Festival 2023.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Goa-based musician 'Discokid' to perform at Serendipity Arts Festival 2023",
+    "publication": "Gogoa Now",
+    "url": "https://gogoanow.com/goa-based-musician-discokid-perform-serendipity-arts-festival-2023/",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "City: District (district.in/events/discokid_2026/artist) says Goa, India; gogoanow also says Goa-based. Could fill based_city = Goa. NAME CONFLICT: gogoanow spells the real name 'Fatima Hakeen'; our bio says 'Fatema Hakim'. Not changed, please verify. gogoanow article date inferred from its URL and archive listing, so date_published is null. No releases or ids found."
+ },
+ {
+  "slug": "dj-pants",
+  "identity": "Magnetic Fields artist page and Wild City artist page both say DJ Pants is the alias of Aditya Mehta, a multidisciplinary artist and live sound engineer, matching our bio.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "No city is given on either page, so nothing to fill for city. No releases, ids, press or new mixes found beyond what is stored (Extra Style, Wild City #242, Boxout mixes). Sources list influences as Balearic beat, R&B, street soul, new jack swing, disco, boogie, house and kwaito (Magnetic Fields)."
+ },
+ {
+  "slug": "dj-ravator",
+  "identity": "Not confirmed. Bollywood Hungama (stored press), Rolling Stone India and mid-day describe a Delhi-origin DJ-producer called Ravator (T-Series single Adhoore Hum, March 2023; debut album Sajna on Vyrl Punjabi announced 14 Jan 2025), but no page links our stored Instagram (saprasap) or mentions DGTL.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Left empty on purpose. Genre mismatch: our record says Bass and DGTL circuit; sources show Hindi and Punjabi pop production for T-Series and Vyrl Punjabi. Param should check whether this is the same Ravator before any of this is used. Facts seen if confirmed: Rolling Stone India (rollingstoneindia.com/ravator-sajna-new-album-tracklist-vilen-aditya-rikhari) calls him a New Delhi-origin DJ-producer, Sajna 12 tracks announced 14 Jan 2025; Bollywood Hungama dated 2023-03-23 says he started DJing in Delhi, real name Harsh Singh."
+ },
+ {
+  "slug": "djazz",
+  "identity": "Wild City (artists/14920-diversion-ahead) says DJazz is the new name of Aditya Malve, formerly DIVERSION AHEAD, imprint All That DJazz, matching our bio. Mixmag Asia, electronicgroove and UFO Network all cover DJazz releases on All That DJazz.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "text": "sub-bass-forward and produced to sound tight, powerful, and immersive on bass-heavy systems",
+    "source_url": "https://electronicgroove.com/?p=187335"
+   },
+   {
+    "text": "Rooted in house, atmospheric electronica, electro, and acid house",
+    "source_url": "https://ufo-network.com/?p=168240"
+   }
+  ],
+  "aliases": [
+   {
+    "name": "DIVERSION AHEAD",
+    "note": "former name",
+    "source_url": "https://www.thewildcity.com/artists/14920-diversion-ahead"
+   }
+  ],
+  "press": [
+   {
+    "title": "Sunrise Frequencies: DJazz Channels Southeast Asia on \"7AM In Bangkok\"",
+    "publication": "UFO Network",
+    "url": "https://ufo-network.com/?p=168240",
+    "date_published": "2026-02-18"
+   },
+   {
+    "title": "DJazz, Her Mom's A Gypsy EP",
+    "publication": "Electronic Groove",
+    "url": "https://electronicgroove.com/?p=187335",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {
+    "title": "7AM In Bangkok",
+    "year": 2026,
+    "release_type": "ep",
+    "label": "All That DJazz",
+    "url": "https://ufo-network.com/?p=168240",
+    "date": "2026-02-18"
+   }
+  ],
+  "ids": {},
+  "notes": "7AM In Bangkok date comes from UFO Network (published 2026-02-18); electronicgroove gives Her Mom's A Gypsy as DJazz's seventh EP, released 2026-04-03 (already in our records, date not stored). Bandcamp page allthatdjazz.bandcamp.com was blocked to the fetch tool, so no bandcamp ids or Bandcamp URL are returned. No DJazz mix found."
+ },
+ {
+  "slug": "dotdat",
+  "identity": "RA biography (ra.co/dj/dotdat) says Goa-based producer with releases on Truncate and Symbolism; Truncate Bandcamp lists HYD by Truncate & Dotdat; our stored ra and beatport ids match.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "text": "his own groovy style of techno infused with a heavy dose of Sci-Fi sound design",
+    "source_url": "https://es-mx.ra.co/dj/dotdat/biography"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {
+    "title": "Steady Faith",
+    "year": 2024,
+    "release_type": "album",
+    "label": null,
+    "url": "https://dotdat.bandcamp.com/album/steady-faith",
+    "date": "2024-12-06",
+    "bandcamp_id": 2405438807,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "HYD",
+    "year": 2021,
+    "release_type": "ep",
+    "label": "Truncate",
+    "url": "https://truncate.bandcamp.com/album/hyd",
+    "date": "2021-03-05",
+    "bandcamp_id": 3358052186,
+    "bandcamp_type": "album"
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://dotdat.bandcamp.com"
+  },
+  "notes": "Bandcamp artist page dotdat.bandcamp.com lists only Steady Faith (2 tracks, shown as an album, 2024-12-06, no label shown). Beatport page loaded without a release list, so no more releases confirmed. HYD release date 2021-03-05 (Truncate Bandcamp, item 3358052186 album) is already in our records without a date. RA bio also names labels Symbolism (Ben Sims), Truncate and BLACKAXON, and says he joined Observant as A&R in 2020; Beatport mentions KSR, Knowledge Imprint, Observant: no individual releases confirmed for those. SoundCloud blocked."
+ },
+ {
+  "slug": "dreamstates",
+  "identity": "Wild City, DGTL and Mixmag Asia all describe a Mumbai DJ called dreamstates playing house, techno and breaks; Mixcloud profile dreamstates (Bombay) is the stored mix account; Mixmag Asia piece and Cosmic Claps (Boxout.fm) match our bio.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "text": "Cosmic, deep, emotional, trippy, crusty",
+    "source_url": "https://mixmag.asia/read/mixmag-asia-radio-dreamstates-conjures-realm-genre-defiance-india-exclusive-mixes"
+   },
+   {
+    "text": "undaunted by the limitations of genre",
+    "source_url": "https://dgtl-festival.com/en/artists/dreamstates/"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Mixmag Asia Radio 102: dreamstates",
+    "url": "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-102-dreamstates-india/",
+    "year": 2022
+   },
+   {
+    "title": "Zokhuma B2B Dreamstates | Mixmag Lab Goa",
+    "url": "https://www.youtube.com/watch?v=r-1GDbUJ8nM",
+    "year": null
+   }
+  ],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "No releases or ids found (Wild City lists none). Mixmag Asia article dated 2022-09-14 quotes him describing his sets in five words. DGTL bio says he started as a bass player in thrash and punk bands (could feed an era, not added since eras exist). Pronoun: Wild City uses 'their', Mixmag uses 'he'."
+ }
+]

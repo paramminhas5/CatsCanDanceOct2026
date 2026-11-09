@@ -1,0 +1,387 @@
+[
+ {
+  "slug": "indo-warehouse",
+  "name": "INDO WAREHOUSE",
+  "kind": "musician",
+  "based_city": "New York, USA",
+  "from_city": "India",
+  "genres": [
+   "Indo House",
+   "Melodic Techno",
+   "Deep House",
+   "South Asian Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/indowarehouse",
+  "instagram": "indo.warehouse",
+  "website": "https://indowarehouse.com",
+  "mix_url": null,
+  "labels": "Indo Warehouse Records",
+  "members": "Kahani + Kunal Merchant",
+  "bio_excerpt": "Indo Warehouse is a record label and event series founded in 2022 by Kunal Merchant and Kahani (Armaan Gupta). They coined the term Indo House for their mix of South Asian elements with house and techno. Their first party was a 200-person night on New York's Lower East Side in February 2022, and they have since played across Europe, Asia and the Middle East, including Hï Ibiza. In 2025 they were t",
+  "releases_on_record": 3,
+  "release_years": [
+   2022,
+   2026
+  ],
+  "sample_releases": [
+   "Chor (with Rashmeet Kaur) (2026, Indo Warehouse)",
+   "GARBA SZN (2022, Indo Warehouse)",
+   "Indo Warehouse: Year One (2022, Indo Warehouse)"
+  ],
+  "press_urls_already_stored": [
+   "https://grayarea.co/magazine/indo-warehouse-bring-their-south-asian-roots-to-the-rave",
+   "https://mixmagde.com/read/new-york-citys-indo-warehouse-announces-india-debut-with-10-city-tour-events",
+   "https://mixmag.asia/read/garba-szn-indo-warehouse-debut-ep-navratri-traditional-sounds-new-releases",
+   "https://www.beatportal.com/articles/1132412-hype-label-of-the-month-indo-warehouse",
+   "https://ca.billboard.com/music/indo-warehouse-interview"
+  ],
+  "sound_tags_already_stored": [
+   "Fusing house, techno, and South Asian tradition",
+   "electronic music that pulls from percussion, vocals and instruments across South Asia"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "musicbrainz": "71268c8b-f2c9-4b9f-8ea6-761f7322b7af"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "claims"
+  ]
+ },
+ {
+  "slug": "jael",
+  "name": "JAEL",
+  "kind": "musician",
+  "based_city": "Amsterdam, Netherlands",
+  "from_city": "India",
+  "genres": [
+   "Bass",
+   "UK Garage",
+   "Jungle",
+   "Future Beats"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/ja-el",
+  "instagram": "knownasjael",
+  "website": null,
+  "mix_url": "https://soundcloud.com/soulection/soulection-radio-show-591-jael-takeover",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Giovanni Jaël Jano, known as JAEL, is a Moluccan DJ, producer and vocalist from the Netherlands, based in Amsterdam. He is a long-time member of the Soulection collective. He released the EP Motion Sickness in 2025 and played Magnetic Fields in India in 2019.",
+  "releases_on_record": 2,
+  "release_years": [
+   2021,
+   2025
+  ],
+  "sample_releases": [
+   "Motion Sickness (2025, Mena Muria Records)",
+   "Half As Much (2021)"
+  ],
+  "press_urls_already_stored": [
+   "https://dancewax.net/2025/09/30/jaels-garage-appreciation-mixtape/",
+   "https://www.voicemag.uk/review/9190/jael-half-as-much-album-review",
+   "https://www.scoope.nl/?p=21469",
+   "https://www.khaleejtimes.com/entertainment/jael-drops-new-ep-motion-sickness"
+  ],
+  "sound_tags_already_stored": [
+   "Bold, emotive and dancefloor-ready",
+   "Skippy, sub-heavy UKG beats"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.rinse.fm/episodes/jael-22-07-2026-1900",
+   "https://www.rinse.fm/episodes/jael-23-10-2025-1600"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://knownasjael.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "ids"
+  ]
+ },
+ {
+  "slug": "kaleekarma",
+  "name": "KALEEKARMA",
+  "kind": "musician",
+  "based_city": "Mumbai, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/kaleekarma",
+  "instagram": "kaleekarma",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=CyWQIaY0LVs",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Magnetic Fields regular.",
+  "releases_on_record": 1,
+  "release_years": [
+   2018,
+   2018
+  ],
+  "sample_releases": [
+   "Now And Then (Daulat, Kaleekarma & Agent) (2018, Arcane Circle)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/10154-listen-now-and-then-by-kaleekarma-agent-daulat",
+   "https://currentmoodmag.com/2019/01/on-the-rise-kaleekarma",
+   "https://mixmag.net/read/kaleekarma-is-the-bombay-based-artist-with-an-eclectic-output-you-need-to-hear-artist-profiles"
+  ],
+  "sound_tags_already_stored": [
+   "fusing her passion for rhythm and melody"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/3144-wild-city-125-kaleekarma"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "ids"
+  ]
+ },
+ {
+  "slug": "kandy-kuri",
+  "name": "KANDY KURI",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": "India",
+  "genres": [
+   "Breaks",
+   "Garage",
+   "House",
+   "Techno"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "kandy.kuri",
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/20455-wild-city-229-kandy-kuri",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Kandy Kuri is a Bengaluru DJ playing breaks, garage and house with some techno. She has supported Yung Singh and Lady Shaka and played Bass Camp and Magnetic Fields. She played Boiler Room Bengaluru on 7 June 2024.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/20455-wild-city-229-kandy-kuri"
+  ],
+  "sound_tags_already_stored": [
+   "textures evoked by the percussion",
+   "atmospheric club selections, spanning across techno, breaks, bass"
+  ],
+  "mix_urls_already_stored": [
+   "https://soundcloud.com/platform/kandy-kuri-bengaluru",
+   "https://soundcloud.com/kandykuri/vibecheck_radiostudent",
+   "https://soundcloud.com/kandykuri/cloudcore-nectar-15-x-kandy-kuri",
+   "https://www.mixcloud.com/FOUNDATION_FM/foundationfm-friday-takeover-filth-inc-w-kandy-kuri/",
+   "https://soundcloud.com/rinsefm/krunk-with-kohra-kandy-kuri-06-february-2024",
+   "https://soundcloud.com/thewildcity/wild-city-229-kandy-kuri"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "kibo",
+  "name": "KIBO",
+  "kind": "musician",
+  "based_city": "Mumbai, India",
+  "from_city": null,
+  "genres": [
+   "House",
+   "Deep House"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Kibo is a Mumbai DJ whose sets are rooted in house with jazzy undertones and deep grooves. She has played DGTL Mumbai and Magnetic Fields, and performed at PORT Mumbai on 27 February 2026.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "high-energy, genre-fluid sets rooted in house",
+   "jazzy undertones, deep grooves, and experimental textures"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "ids"
+  ]
+ },
+ {
+  "slug": "long-distances",
+  "name": "LONG DISTANCES",
+  "kind": "musician",
+  "based_city": "Mumbai",
+  "from_city": "Mumbai",
+  "genres": [
+   "Post-Punk",
+   "Shoegaze"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/longdistances",
+  "instagram": "longdistances",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Mumbai post-punk and shoegaze band.",
+  "releases_on_record": 3,
+  "release_years": [
+   2022,
+   2024
+  ],
+  "sample_releases": [
+   "How the Mighty Will Fall (2024)",
+   "Delicate Surrender (2023)",
+   "Empire (2022)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/20094-aarifah-rebello-apurv-agrawal-zubin-pastakia-band-together-as-long-distances-release-lovesong-for-an-apocalypse",
+   "https://www.ticketfairy.com/word/2024/01/22/long-distances-shares-new-ep-how-the-mighty-will-fall",
+   "https://rollingstoneindia.com/exclusive-premiere-mumbai-indie-rock-long-distances-debut-song-empire",
+   "https://rollingstoneindia.com/long-distances-keep-indie-rock-alive-with-debut-ep"
+  ],
+  "sound_tags_already_stored": [
+   "new wave, goth, and post-punk music",
+   "uptempo snare-driven backbeats",
+   "shimmering walls of shoegaze guitars combining with chillwave synths"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "bandcamp": "https://longdistances.bandcamp.com/"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "ids"
+  ]
+ },
+ {
+  "slug": "lush-lata",
+  "name": "LUSH LATA",
+  "kind": "musician",
+  "based_city": "New Delhi, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "lushlata",
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/20112-wild-city-222-lush-lata",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Magnetic Fields regular.",
+  "releases_on_record": 2,
+  "release_years": [
+   2022,
+   2024
+  ],
+  "sample_releases": [
+   "Lush Lata Selects (2024, boxout.fm Recordings)",
+   "Lag Jaa Gale (Jersey Club Remix) - Kalbaisakhi X Lush Lata (2022)"
+  ],
+  "press_urls_already_stored": [
+   "https://rollingstoneindia.com/dj-producer-lush-lata-first-indian-woman-at-ctm-festival-2023-germany",
+   "https://mixmag.asia/read/lush-lata-curates-boxoutfm-recordings-selects-compilation-new-releases",
+   "https://mixmag.asia/read/ctm-festival-berlin-welcomes-lush-lata-to-its-line-up-local",
+   "https://www.mixcloud.com/blog/2024/06/21/world-music-day-2024-12-homegrown-artists-you-need-to-check-out/",
+   "https://www.thewildcity.com/news/20603-boxout-fm-recordings-2nd-v-a-compilation-sees-lush-lata-handpick-dancefloor-stompers"
+  ],
+  "sound_tags_already_stored": [
+   "dirty baselines and mood-swings",
+   "contemporary hip-hop, alluring bass lines, trap, afrobeat, tribal house"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.rinse.fm/episodes/lush-lata-11-10-2023-1700",
+   "https://www.nts.live/shows/diesel-tracks/episodes/diesel-tracks-lush-lata-4th-july-2023",
+   "https://www.mixcloud.com/lushlata/boxout-weekender-2019-summer-house-rooftop-day-11-lush-lata/",
+   "https://www.youtube.com/watch?v=m5GiVCK9Y_E",
+   "https://www.youtube.com/watch?v=wSotgZrD7Kc",
+   "https://www.youtube.com/watch?v=CPjAcF-dPRM",
+   "https://www.youtube.com/watch?v=oTumrMgxlJg"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/lushlata"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "bio"
+  ]
+ },
+ {
+  "slug": "mc-soopy",
+  "name": "MC SOOPY",
+  "kind": "musician",
+  "based_city": "New Delhi, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "MC"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=qaR0z0xGras",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "MC Soopy is Siddhant Roop Rai, an MC and DJ from New Delhi. As an MC he does improvised, grime-infused rapping and hypes the room. As a DJ he plays anything from hip-hop and soul to Italo and techno.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "break neck energy"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=zH6tp8DvOo0",
+   "https://www.youtube.com/watch?v=qaR0z0xGras"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "releases",
+   "press",
+   "ids"
+  ]
+ }
+]

@@ -1,0 +1,181 @@
+[
+ {
+  "slug": "aayna",
+  "identity": "Magnetic Fields and DGTL artist pages describe the same acid house DJ (TB-303 influence, Echoes of Earth, Grasslands Nepal, Keep Hush), matching our bio.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "No press found that names Aayna (Homegrown 2025 women DJs list and Rolling Stone India hit did not mention her). No releases or ids confirmed. City: Magnetic Fields and DGTL pages name no home city. District artist page (https://www.district.in/aayna/artist) says 'Beginning her career in Kolkata and later making her mark across the country.' Our record says only India; Param to decide whether Kolkata is worth adding. District is a ticketing site, not a publication."
+ },
+ {
+  "slug": "abhi-meer",
+  "identity": "Wild City artist page (https://www.thewildcity.com/artists/4526-Abhi Meer) describes Mumbai DJ, radio host, RA at Magnetic Fields, New Delhi's first Boiler Room, Omerta EP: matches our bio.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Wild City #178: Abhi Meer",
+    "url": "https://soundcloud.com/thewildcity/wild-city-mix-178-abhi-meer",
+    "year": 2019
+   }
+  ],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "No Bandcamp, Discogs or MusicBrainz page found for him. Refuge Worldwide show page (https://refugeworldwide.com/radio/spicetape-asmi-shetty-and-abhi-meer-13-jul-2023, 13 Jul 2023) calls him 'Bombay-born composer, synthesist, and DJ' but has no embedded player, so not added as a mix."
+ },
+ {
+  "slug": "agent-bugs",
+  "identity": "Cannot confirm. Searches for 'Agent Bugs' Bengaluru DJ and the CCD Episode 2 lineup returned nothing about this artist.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing public found. No guesses made."
+ },
+ {
+  "slug": "ak-sports",
+  "identity": "Gray Area and Broke Magazine pieces describe the same hard techno, hardstyle and trance DJ with Sydney roots, now LA-based, matching our record.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "new-world-rave under the techno umbrella",
+    "source_url": "https://brokemagazine.co.uk/ak-sports-b2b-broke-magazine"
+   },
+   {
+    "tag": "hard, fast, fun techno sets and productions",
+    "source_url": "https://grayarea.co/magazine/ones-to-watch-ak-sports"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Ones to Watch: AK SPORTS",
+    "publication": "Gray Area",
+    "url": "https://grayarea.co/magazine/ones-to-watch-ak-sports",
+    "date_published": "2026-02-19"
+   },
+   {
+    "title": "AK SPORTS B2B Broke Magazine: Starting Points, Past Selves & Top Shelf Bianco Tequila",
+    "publication": "Broke Magazine",
+    "url": "https://brokemagazine.co.uk/ak-sports-b2b-broke-magazine",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Gray Area (19 Feb 2026) calls AK Sports LA-based, consistent with our record. Broke Magazine calls Sydney their 'homeland' and says they started 'throwing parties in Bondi Beach Australia'; it does not state a birthplace, so our bio claim 'Sydney-born' is only partly supported by what I opened. Photo gap not researched. Boiler Room Bengaluru SoundCloud already stored as mix_url."
+ },
+ {
+  "slug": "anish-sood",
+  "identity": "Identity already established by stored MBID and press.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Gap 'claims' not checked: Wild City (18613) and Mixmag (anyasa interview) pages that could back 'born in Goa in 1989' and 'first Indian artist signed to Anjunadeep' were BLOCKED (permission timed out), so I did not verify either claim. Needs a manual check."
+ },
+ {
+  "slug": "anushka",
+  "identity": "Wild City #235 page and Gray Area profile (Anushka Nadia Menon, 'Now based in Goa') match our record: Goa DJ, Wild City mix recorded at JUNA, 28 May 2024.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "City history: Kaltblut (7 Sep 2016) calls her 'a New-Delhi based fashion photographer'; Gray Area (6 May 2025) says 'Now based in Goa'. Consistent with our Goa record, just a move. Kaltblut quote on sound in 2016: 'Our sound is more trap and bass right now' (duo with Agent, Smita Singh). No ids or new releases confirmed. Wild City #154 and #235 already stored."
+ },
+ {
+  "slug": "audio-units",
+  "identity": "Mixmag Asia, Dirty Epic and Find Your Sounds all describe the Bangalore brother duo making techno, matching our bio (Mind Medizin, ANAØH, Boiler Room Hyderabad).",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "heart-pounding techno with some dub features",
+    "source_url": "https://dirty-epic.com/2023/04/10/audio-units-the-gateway-experience-anaoh-records-april-3rd-2023/"
+   },
+   {
+    "tag": "4/4 rhythms with glitchy digital bleeps and swirling textures",
+    "source_url": "https://mixmag.asia/read/mama-snake-audio-units-and-kollision-in-the-lab-mumbai-local"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Audio Units: The Gateway Experience (ANAØH Records)",
+    "publication": "Dirty Epic",
+    "url": "https://dirty-epic.com/2023/04/10/audio-units-the-gateway-experience-anaoh-records-april-3rd-2023/",
+    "date_published": "2023-04-10"
+   },
+   {
+    "title": "Bangalore based brotherly duo Ashwin and Ashrith Baburao combine as Audio Units on a potent new EP for Lady Tazz's Mind Medizin",
+    "publication": "Find Your Sounds",
+    "url": "https://findyoursounds.com/bangalore-based-brotherly-duo-ashwin-and-ashrith-baburao-combine-as-audio-units-on-a-potent-new-ep-for-lady-tazzs-mind-medizin-featuring-remixes-from-ben-sims-and-temudo/",
+    "date_published": "2023-11-03"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {
+    "title": "The Gateway Experience",
+    "year": 2023,
+    "release_type": "ep",
+    "label": "ANAØH Records",
+    "url": "https://dirty-epic.com/2023/04/10/audio-units-the-gateway-experience-anaoh-records-april-3rd-2023/",
+    "date": "2023-04-03"
+   }
+  ],
+  "ids": {},
+  "notes": "CITY: three sources say Bangalore. Mixmag Asia: 'a duo consisting of two brothers from Bangalore'; Dirty Epic (10 Apr 2023): 'Bangalore, India's dynamic brother duo'; Find Your Sounds (3 Nov 2023): 'pioneers in their native Bangalore, India'. Our record says India only, so Bengaluru can be added. Find Your Sounds names members Ashwin and Ashrith Baburao in its URL slug (not in text I read in full), so not stored as a fact. Dirty Epic: ANAØH Records release The Gateway Experience, 3 Apr 2023, 5 tracks."
+ },
+ {
+  "slug": "bawra",
+  "identity": "Wild City #264 page (via set79) says Baawra is a Pune-based DJ and Maushi resident; SoundCloud oEmbed names Hiten Mutreja aka Baawra, MAUSHI member. Matches our record.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Pune confirmed by Wild City mix page. DGTL page names no city. Nothing found on releases, ids or press (Mixmag Asia Maushi festival article does not mention him; an unrelated Rolling Stone India piece on producer Hiten is a different person). Wild City #264 already stored. Slug is 'bawra' but name is BAAWRA; left as is."
+ }
+]
