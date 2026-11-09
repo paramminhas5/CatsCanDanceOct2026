@@ -10,10 +10,11 @@ import {
 } from "@ccd/ui";
 import { coverUrl } from "@/lib/artist-v2";
 import { getArtistPage, inrShort, dayParts } from "@/lib/artist-page";
-import { isSlug } from "@/lib/db";
+import { isSlug, todayIST } from "@/lib/db";
 import { RESERVED, siteUrl } from "@/lib/site";
 import FollowButton from "@/components/FollowButton";
 import ArtistTabs from "@/components/ArtistTabs";
+import ArtistExplorer from "@/components/ArtistExplorer";
 
 export const revalidate = 300;
 
@@ -47,11 +48,11 @@ export default async function ArtistPage({ params }: Props) {
   if (!p) notFound();
   const { a, counts, fee, latest } = p;
   const kinds = [p.kind ? cap(p.kind) : null, a.genres[0] ?? null, a.city?.split(",")[0] ?? null].filter(Boolean) as string[];
-  const bookHref = `/book?a=${slug}`;
+  const today = todayIST();
+  const playable = a.popular.length > 0 || a.releases.some((r) => r.trackId);
   const listenHref = latest?.links[0]?.url ?? a.spotify ?? a.soundcloud ?? null;
   const ig = a.links.find((l) => /instagram/i.test(l.url));
   const stamps: StampData[] = p.stamps.slice(0, 9).map((s, i) => ({ city: s.city, count: s.count, colour: INKS[i % INKS.length], shape: SHAPES[i % SHAPES.length] }));
-  const music = p.releases.slice(0, 8);
   const billNames = new Set(a.playedWith.map((c) => c.name.toLowerCase()));
   const similar = a.alsoLike.filter((x) => !billNames.has(x.n.toLowerCase()));
 
@@ -89,7 +90,8 @@ export default async function ArtistPage({ params }: Props) {
             </div>
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <FollowButton slug={slug} name={p.name} />
-              {fee && <ButtonLink size="l" href={bookHref}><Icon name="inbox" size={17} />Book from {inrShort(fee.min)}</ButtonLink>}
+              {(fee || a.bookable) && <ButtonLink size="l" href="#ask"><Icon name="inbox" size={17} />{fee ? `Book from ${inrShort(fee.min)}` : "Book"}</ButtonLink>}
+              {playable && <ButtonLink size="l" href="#play"><Icon name="play" size={15} />Play</ButtonLink>}
               <span className="flex-1" />
               <span className="hidden md:inline"><Cat name="lime" height={64} /></span>
             </div>
@@ -112,7 +114,7 @@ export default async function ArtistPage({ params }: Props) {
               <h2 className="k-d mt-3 text-[48px] md:text-[88px]">{latest.t}</h2>
               <p className="k-b mt-3 text-[17px]">{[typeName(latest.type), latest.label && `on ${latest.label}`].filter(Boolean).join(" ")}.</p>
               <div className="mt-7 flex flex-wrap gap-3">
-                {listenHref && <ButtonLink variant="key" size="l" href={listenHref} target="_blank" rel="noopener"><Icon name="play" />Listen</ButtonLink>}
+                {latest.trackId ? <ButtonLink variant="key" size="l" href={`#open=${encodeURIComponent(latest.id)}`}><Icon name="play" />Play it here</ButtonLink> : listenHref && <ButtonLink variant="key" size="l" href={listenHref} target="_blank" rel="noopener"><Icon name="play" />Listen</ButtonLink>}
                 {latest.links.slice(1, 3).map((l) => <ButtonLink key={l.url} size="l" href={l.url} target="_blank" rel="noopener">{l.label}</ButtonLink>)}
               </div>
               {p.alsoOut && (
@@ -126,30 +128,9 @@ export default async function ArtistPage({ params }: Props) {
         </section>
       )}
 
-      {/* ── Music ── */}
-      {music.length > 1 && (
-        <section className="k-wrap k-section" aria-labelledby="music">
-          <SectionHead id="music" title="Music" sub={`${counts.records} releases${counts.labels ? ` on ${counts.labels} ${counts.labels === 1 ? "label" : "labels"}` : ""}.`} />
-          <div className="mt-6 flex flex-wrap gap-2">
-            <Pill on>All {counts.records}</Pill>
-            {counts.albums > 0 && <Pill>Albums {counts.albums}</Pill>}
-            {counts.eps > 0 && <Pill>EPs {counts.eps}</Pill>}
-            {counts.singles > 0 && <Pill>Singles {counts.singles}</Pill>}
-          </div>
-          <ul className="mt-8 grid list-none grid-cols-2 gap-x-6 gap-y-9 p-0 pr-6 md:grid-cols-4 md:gap-x-10 md:gap-y-11">
-            {music.map((r) => (
-              <li key={r.id} className="k-rvs">
-                <a href={r.links[0]?.url ?? "#"} className="block no-underline" target={r.links[0] ? "_blank" : undefined} rel="noopener">
-                  <Sleeve title={r.t} label={r.label} cover={coverUrl(r.albumId, "big")} fontSize={34} />
-                  <b className="mt-4 block truncate text-[16px] font-semibold">{r.t}</b>
-                  <span className="k-b block truncate text-[13px]">{[typeName(r.type), r.date, r.label].filter(Boolean).join(" · ")}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-          {counts.records > music.length && <div className="mt-10"><ButtonLink href={`/${slug}/music`}>All {counts.records} releases <Icon name="chev" size={14} stroke={2.2} /></ButtonLink></div>}
-        </section>
-      )}
+      {/* ── Eras, music, where they played, watch, press, circle: one explorer with the drawer and the player ── */}
+      <ArtistExplorer a={a} name={p.name} today={today} rate={fee ? inrShort(fee.min) : null} />
+
       {p.labels.length > 2 && (
         <section className="pt-20" aria-label="Released on">
           <p className="k-m k-wrap mb-4">Released on</p>
@@ -158,11 +139,11 @@ export default async function ArtistPage({ params }: Props) {
       )}
 
       {/* ── Shows ── */}
-      {(p.past.length > 0 || a.upcoming.length > 0) && (
+      {(a.upcoming.length > 0 || stamps.length > 1 || p.nextNear) && (
         <section className="k-wrap k-section" aria-labelledby="shows">
           <div className="grid items-start gap-12 md:grid-cols-[1fr_minmax(0,600px)] md:gap-16">
             <div>
-              <SectionHead id="shows" title="Shows" sub="Follow and you hear first when they play your city. Tickets open in Nights." />
+              <SectionHead id="shows" title="Next shows" sub="Follow and you hear first when they play your city. Tickets open in Nights." />
               {a.upcoming.length > 0 ? (
                 <ul className="mt-7 list-none p-0">
                   {a.upcoming.slice(0, 4).map((u) => {
@@ -185,19 +166,6 @@ export default async function ArtistPage({ params }: Props) {
                   <FollowButton slug={slug} name={p.name} size="s" />
                 </div>
               ) : null}
-              {p.past.length > 0 && (
-                <ul className="mt-5 list-none p-0">
-                  {p.past.slice(0, 6).map((g) => {
-                    const d = dayParts(g.day);
-                    return (
-                      <li key={`${g.day}-${g.title}`} className="k-li">
-                        <span className="k-m w-[72px] flex-none !text-[var(--k-tx)]">{d.day}<span className="block !text-[var(--k-t3)]">{d.year}</span></span>
-                        <span className="min-w-0 flex-1"><b>{g.title}</b><small>{[g.venue, g.city].filter(Boolean).join(", ")}</small></span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
             </div>
             {stamps.length > 1 && <div className="k-rvs md:mt-10"><Passport stamps={stamps} summary={`${counts.cities} cities`} /></div>}
           </div>
@@ -217,7 +185,7 @@ export default async function ArtistPage({ params }: Props) {
                 ))}
               </ul>
               <div className="mt-7 flex flex-wrap gap-3">
-                <ButtonLink variant="key" size="l" href={bookHref}>Send an ask</ButtonLink>
+                <ButtonLink variant="key" size="l" href="#ask">Send an ask</ButtonLink>
               </div>
             </div>
             <Plinth className="p-6" style={{ borderRadius: 26 }}>
@@ -228,9 +196,9 @@ export default async function ArtistPage({ params }: Props) {
                 <span className="k-m absolute bottom-0 right-6">{inrShort(fee.max)}</span>
               </div>
               <div className="mt-4 grid grid-cols-3 gap-2.5">
-                <Keycap href={bookHref} sub="set">Club</Keycap>
-                <Keycap href={bookHref} sub="set">Festival</Keycap>
-                <Keycap href={bookHref} sub="party">Private</Keycap>
+                <Keycap href="#ask" sub="set">Club</Keycap>
+                <Keycap href="#ask" sub="set">Festival</Keycap>
+                <Keycap href="#ask" sub="party">Private</Keycap>
               </div>
             </Plinth>
           </div>
@@ -280,7 +248,7 @@ export default async function ArtistPage({ params }: Props) {
       {fee && (
         <div className="k-bbar md:!hidden">
           <FollowButton slug={slug} name={p.name} size="m" icon />
-          <ButtonLink variant="key" href={bookHref} className="flex-1">Book from {inrShort(fee.min)}</ButtonLink>
+          <ButtonLink variant="key" href="#ask" className="flex-1">Book from {inrShort(fee.min)}</ButtonLink>
         </div>
       )}
       <div className="h-28 md:h-0" />

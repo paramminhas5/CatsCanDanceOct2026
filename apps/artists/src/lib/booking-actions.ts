@@ -87,3 +87,33 @@ export async function notifyBookings() {
   const out = await emailBookingOutbox().catch(() => ({ sent: 0 }));
   return { ok: true, sent: list.length, mailed: out.sent };
 }
+
+/** "I was there" on a show (migration 043). Signed-in members only; visitors keep it on the device. */
+export async function setWasThere(slug: string, moment: string, on: boolean): Promise<{ ok: boolean; error?: string }> {
+  if (!/^[a-z0-9-]{1,80}$/.test(slug) || !moment || moment.length > 200) return { ok: false, error: "Bad input" };
+  try {
+    const sb = await supabaseForRequest();
+    const { data: user } = await sb.auth.getUser();
+    if (!user.user) return { ok: false, error: "Sign in to keep it on your profile." };
+    const { error } = await sb.rpc("set_i_was_there", { p_slug: slug, p_moment: moment, p_on: on });
+    return error ? { ok: false, error: error.message } : { ok: true };
+  } catch {
+    return { ok: false, error: "Network error." };
+  }
+}
+
+/** Which shows this member said they were at, and the counts for everyone. */
+export async function wasThereState(slug: string): Promise<{ mine: string[]; counts: Record<string, number> }> {
+  if (!/^[a-z0-9-]{1,80}$/.test(slug)) return { mine: [], counts: {} };
+  try {
+    const sb = await supabaseForRequest();
+    const [{ data: c }, { data: user }] = await Promise.all([sb.rpc("i_was_there_counts", { p_slug: slug }), sb.auth.getUser()]);
+    const counts = Object.fromEntries(((c as { moment_id: string; count: number }[] | null) ?? []).map((r) => [r.moment_id, Number(r.count)]));
+    if (!user.user) return { mine: [], counts };
+    const { data: m } = await sb.rpc("my_i_was_there", { p_slug: slug });
+    const mine = ((m as unknown[] | null) ?? []).map((x) => (typeof x === "string" ? x : (x as { my_i_was_there?: string }).my_i_was_there ?? "")).filter(Boolean);
+    return { mine, counts };
+  } catch {
+    return { mine: [], counts: {} };
+  }
+}

@@ -190,3 +190,63 @@
   .ccd-banner, .no-print { display: none !important; }
   body { background: #fff; }
 }
+
+/* ---------- Artist page: eras, the drawer and the player (ArtistExplorer) ---------- */
+.ax-rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(230px, 1fr); gap: 14px; margin-top: 26px; overflow-x: auto; padding: 4px 4px 18px; scroll-snap-type: x mandatory; }
+.ax-era { position: relative; text-align: left; display: flex; flex-direction: column; gap: 6px; min-height: 196px; padding: 18px 18px 22px; border-radius: 22px; border: 0; cursor: pointer; color: var(--k-tx); scroll-snap-align: start; overflow: hidden;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ea) 10%, #141416), #0e0e10); box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); transition: transform .35s cubic-bezier(.2,.9,.2,1), box-shadow .3s; }
+.ax-era:hover { transform: translateY(-4px); }
+.ax-era.on { box-shadow: inset 0 0 0 2px var(--ea), 0 18px 40px -18px var(--ea); transform: translateY(-6px); }
+.ax-era .k-d { font-size: 28px; line-height: .95; margin-top: auto; }
+.ax-era .ax-sound { font-size: 13px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.ax-era .ax-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 5px; }
+.ax-covers { position: absolute; right: 14px; top: 14px; display: flex; }
+.ax-covers img { width: 54px; height: 54px; border-radius: 8px; object-fit: cover; margin-left: -26px; box-shadow: 0 8px 18px -8px #000; transform: rotate(calc((var(--i) - 1) * 7deg)); transition: transform .4s; }
+.ax-era:hover .ax-covers img, .ax-era.on .ax-covers img { transform: rotate(calc((var(--i) - 1) * 12deg)) translateY(-3px); }
+.ax-rec { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; color: inherit; }
+.ax-play { position: absolute; right: 12px; bottom: 12px; z-index: 3; width: 48px; height: 48px; border-radius: 24px; display: grid; place-items: center; background: var(--k-pc); color: #0a0a0b; box-shadow: 0 10px 24px -8px rgba(0,0,0,.7); opacity: 0; transform: translateY(8px) scale(.9); transition: opacity .25s, transform .25s; cursor: pointer; }
+.ax-rec:hover .ax-play, .ax-rec:focus-visible .ax-play, .ax-play.on { opacity: 1; transform: none; }
+@media (hover: none) { .ax-play { opacity: 1; transform: none; } }
+.ax-row { width: 100%; border: 0; background: none; color: inherit; cursor: pointer; font: inherit; }
+.ax-time { border-left: 2px solid var(--k-hair, rgba(255,255,255,.1)); padding-left: 18px !important; }
+.ax-time li button { position: relative; display: block; width: 100%; text-align: left; border: 0; background: none; color: inherit; cursor: pointer; padding: 10px 0 14px; font: inherit; }
+.ax-time li button::before { content: ""; position: absolute; left: -25px; top: 15px; width: 10px; height: 10px; border-radius: 5px; background: var(--ax); box-shadow: 0 0 10px var(--ax); }
+.ax-time b { display: block; font-size: 17px; margin-top: 4px; } .ax-time small { display: block; font-size: 13px; }
+.ax-watch { display: block; width: 100%; border: 0; background: none; color: inherit; cursor: pointer; padding: 0; font: inherit; }
+.ax-thumb { position: relative; display: grid; place-items: center; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; background: #141416; border: 0; padding: 0; cursor: pointer; width: 100%; }
+.ax-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.ax-watch:hover .ax-thumb img { transform: scale(1.05); }
+.ax-pl { position: relative; width: 54px; height: 54px; border-radius: 27px; display: grid; place-items: center; background: rgba(10,10,11,.7); color: #fff; backdrop-filter: blur(8px); }
+.ax-photos { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(240px, 320px); gap: 16px; overflow-x: auto; padding-bottom: 12px; }
+.ax-photos figure { margin: 0; } .ax-photos img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 18px; display: block; }
+.ax-photos figcaption { font-size: 12px; margin-top: 8px; }
+.ax-in { animation: ax-in .5s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes ax-in { from { opacity: .25; transform: translateY(12px); } }
+.ax-scrim { position: fixed; inset: 0; z-index: 80; background: rgba(0,0,0,.55); backdrop-filter: blur(4px); display: flex; justify-content: flex-end; animation: ax-fade .2s both; }
+.ax-drawer { position: relative; width: min(560px, 100%); height: 100%; overflow-y: auto; box-sizing: border-box; padding: 64px 32px 120px; background: linear-gradient(180deg, color-mix(in srgb, var(--ax) 12%, #111113), #0c0c0e 40%); box-shadow: -30px 0 60px -30px #000, inset 1px 0 0 rgba(255,255,255,.06); animation: ax-slide .38s cubic-bezier(.2,.9,.2,1) both; }
+@media (max-width: 640px) { .ax-scrim { align-items: flex-end; } .ax-drawer { height: 92dvh; border-radius: 26px 26px 0 0; padding: 56px 20px 120px; animation-name: ax-up; } }
+@keyframes ax-fade { from { opacity: 0; } } @keyframes ax-slide { from { transform: translateX(100%); } } @keyframes ax-up { from { transform: translateY(100%); } }
+.ax-x { position: absolute; right: 18px; top: 16px; width: 42px; height: 42px; border-radius: 21px; border: 0; cursor: pointer; display: grid; place-items: center; color: inherit; background: rgba(255,255,255,.08); }
+.ax-cover { width: min(320px, 78%); }
+.ax-wide { aspect-ratio: 16/9; }
+.ax-tracks { list-style: none; margin: 22px 0 0; padding: 12px 0 0; border-top: 1px solid var(--k-hair, rgba(255,255,255,.1)); }
+.ax-tracks button { width: 100%; display: flex; gap: 14px; align-items: center; padding: 9px 4px; border: 0; background: none; color: inherit; cursor: pointer; text-align: left; font: inherit; border-radius: 10px; }
+.ax-tracks button:hover { background: rgba(255,255,255,.05); }
+.ax-tracks .k-m:first-child { width: 22px; text-align: right; } .ax-tracks b { flex: 1; font-size: 15px; font-weight: 600; }
+.ax-ticket { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 22px 24px; border-radius: 18px; background: color-mix(in srgb, var(--ea) 85%, #000); color: #0a0a0b; transform: rotate(-1.5deg); box-shadow: 0 20px 40px -20px #000; animation: ax-stamp .6s cubic-bezier(.2,1.4,.4,1) both; }
+.ax-ticket .k-m { color: rgba(10,10,11,.7); } .ax-ticket .k-d { font-size: 54px; line-height: .9; }
+.ax-ticket::before, .ax-ticket::after { content: ""; position: absolute; top: 50%; width: 22px; height: 22px; margin-top: -11px; border-radius: 11px; background: #0f0f11; }
+.ax-ticket::before { left: -11px; } .ax-ticket::after { right: -11px; }
+@keyframes ax-stamp { from { transform: rotate(-8deg) scale(1.2); opacity: .2; } }
+.ax-player { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 70; width: min(720px, calc(100% - 24px)); box-sizing: border-box; display: flex; align-items: center; gap: 14px; padding: 10px 12px 10px 10px; border-radius: 22px; overflow: hidden;
+  background: rgba(22,22,26,.92); backdrop-filter: blur(22px); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 24px 50px -20px #000; animation: ax-up .35s cubic-bezier(.2,.9,.2,1) both; }
+@media (max-width: 767px) { .ax-player { bottom: 86px; } }
+.ax-pc { position: relative; width: 48px; height: 48px; flex: none; }
+.ax-pc img { position: relative; z-index: 2; width: 48px; height: 48px; border-radius: 8px; object-fit: cover; }
+.ax-pc i { position: absolute; z-index: 1; top: 3px; left: 14px; width: 42px; height: 42px; border-radius: 50%; background: repeating-radial-gradient(circle, #111 0 2px, #1c1c1c 2px 3px); box-shadow: inset 0 0 0 14px #0c0c0c; }
+.ax-pc i.spin { animation: spin 2.2s linear infinite; left: 22px; transition: left .4s; }
+.ax-pp { width: 44px; height: 44px; border-radius: 22px; border: 0; cursor: pointer; display: grid; place-items: center; background: var(--k-pc); color: #0a0a0b; flex: none; }
+.ax-close { width: 34px; height: 34px; border-radius: 17px; border: 0; cursor: pointer; display: grid; place-items: center; background: none; color: rgba(242,240,235,.6); flex: none; }
+.ax-prog { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--ax); transform-origin: left; transition: transform .25s linear; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ax *, .ax-drawer, .ax-player { animation: none !important; transition: none !important; } }
