@@ -9,3 +9,4 @@ export * from "./components/icons";
 export * from "./components/suite";
 export * from "./board";
 export * from "./poster";
+export * from "./Landing";

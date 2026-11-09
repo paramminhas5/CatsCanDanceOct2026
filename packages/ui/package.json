@@ -12,7 +12,8 @@
     "./assets/*": "./assets/*",
     "./board.css": "./src/board.css",
     "./FitWidth": "./src/FitWidth.tsx",
-    "./boards/*": "./src/boards/*.ts"
+    "./boards/*": "./src/boards/*.ts",
+    "./w35.css": "./src/w35.css"
   },
   "files": [
     "src",

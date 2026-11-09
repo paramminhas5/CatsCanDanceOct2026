@@ -5,6 +5,7 @@
 @import "tailwindcss";
 @import "@ccd/ui/kit.css";
 @import "@ccd/ui/board.css";
+@import "@ccd/ui/w35.css";
 
 @theme inline {
   /* Suite colours */
