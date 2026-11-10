@@ -10,6 +10,7 @@ import {
   ButtonLink, Pill, Led, Icon,
 } from "@ccd/ui";
 import { getArtistPage, inrShort, dayParts } from "@/lib/artist-page";
+import { coverUrl, sourceName, type ArtistV2 } from "@/lib/artist-v2";
 import { isSlug, todayIST } from "@/lib/db";
 import { RESERVED, siteUrl } from "@/lib/site";
 import FollowButton from "@/components/FollowButton";
@@ -58,6 +59,8 @@ export default async function ArtistPage({ params }: Props) {
     ...a.releases.filter((r) => !r.undated).slice(0, 6).map((r) => ({ kind: "release" as const, id: r.id, label: r.t.slice(0, 80) })),
     ...a.moments.filter((m) => m.kind === "show").slice(-6).reverse().map((m) => ({ kind: "show" as const, id: m.id, label: [m.city ?? m.t, m.date].filter(Boolean).join(", ").slice(0, 80) })),
   ];
+  const nextDay = up ? fanDay(up.event_date) : null;
+  const look = lookOut(a, latest?.id ?? null);
   const billNames = new Set(a.playedWith.map((c) => c.name.toLowerCase()));
   const similar = a.alsoLike.filter((x) => !billNames.has(x.n.toLowerCase()));
 
@@ -91,17 +94,36 @@ export default async function ArtistPage({ params }: Props) {
               <ShareProfile slug={slug} name={p.name} />
               {(fee || a.bookable) && <ButtonLink size="l" href="#ask" aria-label={`Book ${p.name}`}><Icon name="inbox" size={17} /><span className="sp-lbl">Book</span></ButtonLink>}
             </div>
-            <div className="ap-row">
-              {next ? (
-                <a className="ap-chip" href={next.href} target={next.ext ? "_blank" : undefined} rel="noopener"><span className="k-m">Next show · {next.day}</span><b>{next.title}</b><span>{next.where}</span></a>
-              ) : (
-                <span className="ap-chip"><span className="k-m">Next show</span><b>No date near you yet</b><span>Follow to hear first</span></span>
-              )}
+            {/* ── For fans: the three things a fan wants first (Param, 10 Nov 2026: "latest release, where she's playing next, what to look out for") ── */}
+            <div className="ap-fan">
               {latest && (
-                <a className="ap-chip" href={latest.trackId ? `#open=${encodeURIComponent(latest.id)}` : latest.links[0]?.url ?? "#music"}><span className="k-m">Latest · {latest.date}</span><b>{latest.t}</b><span>{[typeName(latest.type), latest.label].filter(Boolean).join(" on ")}</span></a>
+                <a className="ap-fc ap-fc--rel" href={latest.trackId ? `#open=${encodeURIComponent(latest.id)}` : latest.links[0]?.url ?? "#music"}>
+                  <span className="ap-fc-art">
+                    {coverUrl(latest.albumId, "big") ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={coverUrl(latest.albumId, "big")!} alt="" />
+                    ) : <span className="ap-fc-blank" style={{ background: latest.fill, color: latest.ink }}>{latest.t.slice(0, 1)}</span>}
+                    {latest.trackId && <i aria-hidden="true"><Icon name="play" size={18} /></i>}
+                  </span>
+                  <span className="ap-fc-t"><span className="k-m">Latest release</span><b>{latest.t}</b><span>{[typeName(latest.type), latest.date].filter(Boolean).join(" · ")}</span></span>
+                </a>
               )}
-              {!a.claimed && (
-                <Link className="ap-chip ap-claim" href="/claim"><span className="k-m">Is this you?</span><b>Claim your page</b><span>Pin fan notes, add dates, take bookings</span></Link>
+              {next ? (
+                <a className="ap-fc ap-fc--next" href={next.href} target={next.ext ? "_blank" : undefined} rel="noopener">
+                  <span className="ap-fc-date"><b>{nextDay?.d}</b><span>{nextDay?.m}</span></span>
+                  <span className="ap-fc-t"><span className="k-m">Playing next</span><b>{next.title}</b><span>{next.where}</span><em>{next.ext ? "Tickets" : "Details"} →</em></span>
+                </a>
+              ) : (
+                <div className="ap-fc ap-fc--next">
+                  <span className="ap-fc-date ap-fc-date--none"><b>?</b><span>No date</span></span>
+                  <span className="ap-fc-t"><span className="k-m">Playing next</span><b>No date announced yet</b><span>Follow and you hear the day they post one.</span></span>
+                </div>
+              )}
+              {look && (
+                <a className="ap-fc ap-fc--look" href={look.href} target={look.ext ? "_blank" : undefined} rel="noopener">
+                  <span className="ap-fc-ico" aria-hidden="true">{look.icon}</span>
+                  <span className="ap-fc-t"><span className="k-m">Look out for</span><b>{look.t}</b><span>{look.sub}</span></span>
+                </a>
               )}
             </div>
           </div>
@@ -113,16 +135,7 @@ export default async function ArtistPage({ params }: Props) {
               <span className="k-m">Their card</span>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={`/api/card/profile/${slug}?size=story`} alt={`${p.name}: eras, records and shows, as one card`} loading="lazy" />
-              <b className="k-d" style={{ fontSize: 22 }}>Their whole story, made for a story.</b>
               <ShareProfile slug={slug} name={p.name} />
-            </div>
-            <div className="apr-card">
-              <span className="k-m">Upcoming</span>
-              {a.upcoming.length > 0 ? a.upcoming.slice(0, 3).map((u) => (
-                <a key={u.id} href={u.ticket_url ?? u.url ?? "#"} className="k-li" style={{ padding: "8px 0" }}><span className="k-m w-[64px] flex-none !text-[var(--k-tx)]">{dayParts(u.event_date).day}</span><span className="min-w-0 flex-1"><b>{u.title}</b><small>{[u.venue, u.city].filter(Boolean).join(", ")}</small></span></a>
-              )) : (
-                <><b>No dates near you yet.</b><p>Follow and you hear the moment they announce one.</p><FollowButton slug={slug} name={p.name} size="s" /></>
-              )}
             </div>
             {(fee || a.bookable) && (
               <div className="apr-card apr-book" id="book">
@@ -191,3 +204,26 @@ function Avatar({ name, img }: { name: string; img: string | null }) {
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const TYPES: Record<string, string> = { album: "Album", ep: "EP", single: "Single", remix: "Remix", compilation: "Compilation", mix: "Mix" };
 const typeName = (t: string) => TYPES[t] ?? "Release";
+
+const fanDay = (iso: string) => {
+  const d = new Date(`${iso.slice(0, 10)}T00:00:00Z`);
+  return { d: String(d.getUTCDate()), m: d.toLocaleDateString("en-GB", { month: "short", weekday: "short", timeZone: "UTC" }) };
+};
+
+/** What a fan should look out for: a tour, then the newest thing written, filmed or done. Real rows only. */
+function lookOut(a: ArtistV2, latestId: string | null): { t: string; sub: string; href: string; ext: boolean; icon: string } | null {
+  if (a.touring.length) {
+    const cities = [...new Set(a.touring.map((t) => t.city))].slice(0, 3).join(", ");
+    return { t: `On tour: ${cities}`, sub: a.touring[0].note ?? "Dates posted on On tour", href: "/tour", ext: false, icon: "✈" };
+  }
+  const night = a.ccdNights.find((n) => n.upcoming);
+  if (night) return { t: night.title, sub: "Playing a Cats Can Dance night", href: night.url, ext: true, icon: "★" };
+  type C = { y: number; t: string; sub: string; href: string; icon: string };
+  const c: C[] = [
+    ...a.press.filter((x) => x.y != null).map((x) => ({ y: x.y as number, t: x.title, sub: `Written up in ${x.publication}`, href: x.url, icon: "✎" })),
+    ...a.videos.filter((x) => x.y != null).map((x) => ({ y: x.y as number, t: x.title, sub: `New to watch${sourceName(x.url) ? ` on ${sourceName(x.url)}` : ""}`, href: x.url, icon: "▶" })),
+    ...a.moments.filter((m) => m.kind === "mile" && m.id !== latestId).map((m) => ({ y: m.y, t: m.t, sub: [m.date, m.sub].filter(Boolean).join(" · "), href: m.src ?? "#past", icon: "◆" })),
+  ].sort((x, y) => y.y - x.y);
+  const top = c[0];
+  return top ? { t: top.t.slice(0, 90), sub: top.sub.slice(0, 90), href: top.href, ext: top.href.startsWith("http"), icon: top.icon } : null;
+}

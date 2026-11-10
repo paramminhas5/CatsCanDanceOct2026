@@ -42,6 +42,8 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
   const [allRels, setAllRels] = useState(false);
   const [allShows, setAllShows] = useState(false);
   const [tab, setTab] = useState("");
+  const [panel, setPanel] = useState("music");
+  const tabsRef = useRef<HTMLDivElement | null>(null);
   const [albums, setAlbums] = useState<Record<string, AlbumTrack[] | "loading" | "none">>({});
   const [cur, setCur] = useState<Track | null>(null);
   const [playing, setPlaying] = useState(false);
@@ -55,6 +57,16 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
   const loaded = useRef<string | null>(null);
   const queueRef = useRef(queue);
   useEffect(() => { queueRef.current = queue; }, [queue]);
+  // The section tabs stick right under the suite nav, whatever its height.
+  useEffect(() => {
+    const nav = document.querySelector<HTMLElement>(".k-nav");
+    if (!nav) return;
+    const set = () => document.documentElement.style.setProperty("--ax-top", `${nav.offsetHeight}px`);
+    set();
+    const ro = new ResizeObserver(set);
+    ro.observe(nav);
+    return () => ro.disconnect();
+  }, []);
 
   /* ── Eras ── */
   const eraOfY = useCallback((y: number | null | undefined): Era | null => {
@@ -138,6 +150,8 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
   useEffect(() => {
     const onHash = () => {
       const h = window.location.hash;
+      const sec = ({ "#music": "music", "#past": "shows", "#shows": "shows", "#watch": "watch", "#press": "press", "#fans": "fans" } as Record<string, string>)[h];
+      if (sec) { setPanel(sec); setTimeout(() => tabsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 60); }
       if (h === "#ask") { setFocus({ kind: "ask" }); history.replaceState(null, "", window.location.pathname + window.location.search); }
       if (h === "#play" && firstTrack) { void play(firstTrack); history.replaceState(null, "", window.location.pathname + window.location.search); }
       if (h.startsWith("#open=")) {
@@ -265,6 +279,21 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
     { id: "fests", label: "Festivals", n: a.festivals.length },
   ].filter((t) => t.n > 0);
   const tabId = tabs.some((t) => t.id === tab) ? tab : tabs[0]?.id ?? "";
+  // One section at a time, picked from a row of tabs (Param, 10 Nov 2026: "I have to scroll down for sections, make that easier").
+  const panels = [
+    { id: "music", label: "Music", n: relEra.length || a.popular.length },
+    { id: "shows", label: "Shows", n: shows.length + miles.length },
+    { id: "watch", label: "Watch", n: watch.length },
+    { id: "press", label: "Press", n: press.length },
+    { id: "conn", label: "Connections", n: tabs.reduce((x, t) => x + t.n, 0) },
+  ].filter((x) => x.n > 0);
+  const allPanels = wall ? [...panels, { id: "fans", label: "Fans", n: 0 }] : panels;
+  const pid = allPanels.some((x) => x.id === panel) ? panel : allPanels[0]?.id ?? "";
+  const pickPanel = (id: string) => {
+    setPanel(id);
+    const el = tabsRef.current;
+    if (el && el.getBoundingClientRect().top < 0) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
   const eraCovers = (e: Era) => a.releases.filter((r) => r.albumId && !r.undated && Math.floor(r.y) >= e.from && Math.floor(r.y) <= (e.to ?? 9999)).sort((x, y) => Number(["album", "ep"].includes(y.type)) - Number(["album", "ep"].includes(x.type))).slice(0, 3).map((r) => coverUrl(r.albumId, "medium")!);
   const eraItems = (e: Era) => {
     const inside = (y: number) => Math.floor(y) >= e.from && Math.floor(y) <= (e.to ?? 9999);
@@ -401,9 +430,18 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
               {era?.sound ? <p className="k-b">{era.sound}</p> : !era ? <p className="k-b">Pick an era to hear how the sound changed. Or press Start here.</p> : null}
             </div>
           )}
+          {allPanels.length > 1 && (
+            <div className="ax-tabs" role="tablist" aria-label="Sections" ref={tabsRef}>
+              {allPanels.map((x) => (
+                <button key={x.id} type="button" role="tab" aria-selected={pid === x.id} className={pid === x.id ? "on" : undefined} onClick={() => pickPanel(x.id)}>
+                  {x.label}{x.n > 0 && <span>{x.n}</span>}
+                </button>
+              ))}
+            </div>
+          )}
 
       {/* ── Popular ── */}
-      {a.popular.length > 0 && (
+      {pid === "music" && a.popular.length > 0 && (
         <section className="ax-sec" aria-labelledby="popular">
           <div className="k-h2"><div><h3 className="k-d ax-h3" id="popular">Popular</h3><p className="k-b">Most played. Tap to play.</p></div></div>
           <ol className="ax-pop">
@@ -423,7 +461,7 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
       )}
 
       {/* ── Music ── */}
-      {a.releases.length > 0 && (
+      {pid === "music" && a.releases.length > 0 && (
         <section className="ax-sec" aria-labelledby="music" id="music">
           <div className="k-h2">
             <div><h3 className="k-d ax-h3" id="music">{era ? `The records, ${short(era)}` : "Every record"}</h3><p className="k-b">{rels.length} {rels.length === 1 ? "record" : "records"}. Tap one to play it and see the tracklist.</p></div>
@@ -457,7 +495,7 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
       )}
 
       {/* ── Shows and moments ── */}
-      {(shows.length > 0 || miles.length > 0) && (
+      {pid === "shows" && (shows.length > 0 || miles.length > 0) && (
         <section className="ax-sec" aria-labelledby="past" id="past">
           <div className="grid items-start gap-10">
             {shows.length > 0 && (
@@ -493,11 +531,11 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
       )}
 
       {/* ── Watch and listen ── */}
-      {watch.length > 0 && (
+      {pid === "watch" && watch.length > 0 && (
         <section className="ax-sec" aria-labelledby="watch">
           <div className="k-h2"><div><h3 className="k-d ax-h3" id="watch">Watch and listen</h3><p className="k-b">Sets, mixes and videos{era ? ` from ${era.label.toLowerCase()}` : ""}.</p></div></div>
           <ul className="mt-6 grid list-none gap-5 p-0 md:grid-cols-3">
-            {watch.slice(0, 6).map((w) => (
+            {watch.slice(0, 12).map((w) => (
               <li key={w.key} className="ax-in">
                 <button type="button" className="ax-watch" onClick={() => (embedFor(w.url) ? setFocus({ kind: "media", url: w.url, title: w.title }) : window.open(w.url, "_blank", "noopener"))}>
                   <span className="ax-thumb">{w.img ? <img src={w.img} alt="" loading="lazy" /> : <span className="k-m">{w.kind}</span>}<span className="ax-pl"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg></span></span>
@@ -511,11 +549,11 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
       )}
 
       {/* ── Press ── */}
-      {press.length > 0 && (
+      {pid === "press" && press.length > 0 && (
         <section className="ax-sec" aria-labelledby="press">
           <div className="k-h2"><div><h3 className="k-d ax-h3" id="press">Press</h3><p className="k-b">What was written{era ? ` in ${era.label.toLowerCase()}` : ""}.</p></div></div>
           <ul className="mt-6 grid list-none gap-x-12 p-0 md:grid-cols-2">
-            {press.slice(0, 6).map((x) => (
+            {press.slice(0, 12).map((x) => (
               <li key={x.url}><a className="k-li" href={x.url} target="_blank" rel="noopener"><span className="k-m w-[110px] flex-none">{x.publication}</span><span className="min-w-0 flex-1"><b>{x.title}</b>{x.excerpt && <small>{x.excerpt.slice(0, 140)}</small>}</span></a></li>
             ))}
           </ul>
@@ -523,7 +561,7 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
       )}
 
       {/* ── Connections ── */}
-      {tabs.length > 0 && (
+      {pid === "conn" && tabs.length > 0 && (
         <section className="ax-sec" aria-labelledby="circle">
           <div className="k-h2"><div><h3 className="k-d ax-h3" id="circle">Connections</h3><p className="k-b">Labels, crews, the people they made things with, festivals.</p></div></div>
           <div className="mt-6 flex flex-wrap gap-2" role="tablist">
@@ -539,7 +577,7 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
         </section>
       )}
 
-      {wall}
+      {pid === "fans" && wall}
         </div>
         {side && <aside className="ax-right" aria-label={`About ${name}`}>{side}</aside>}
       </div>

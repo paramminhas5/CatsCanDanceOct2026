@@ -537,3 +537,41 @@ a.ap-chip:hover { background: rgba(255,255,255,.08); transform: translateY(-2px)
 .apr-share:hover img { transform: rotate(0) scale(1.02); }
 .apr-book { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--k-pc) 45%, transparent); }
 .ax-side > *, .ax-right > * { flex-shrink: 0; }
+
+/* ── Round 3 (Param, 10 Nov 2026): a fan strip up top, one section at a time ── */
+.ap-fan { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.ap-fc { position: relative; display: flex; align-items: center; gap: 16px; min-width: 0; padding: 14px; border-radius: 22px; background: rgba(255,255,255,.05); box-shadow: inset 0 0 0 1px rgba(255,255,255,.09); color: inherit; text-decoration: none; transition: transform .25s var(--k-ease), background .25s; }
+a.ap-fc:hover { transform: translateY(-3px); background: rgba(255,255,255,.09); }
+.ap-fc-t { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; align-items: flex-start; }
+.ap-fc-t .k-m { color: var(--ax, var(--k-pc)); }
+.ap-fc-t b { font-family: var(--k-display); font-size: 20px; line-height: 1.1; letter-spacing: -.01em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.ap-fc-t > span:not(.k-m) { font-size: 13px; color: var(--k-t2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.ap-fc-t em { font-style: normal; font-weight: 700; font-size: 13px; color: var(--ax, var(--k-pc)); margin-top: 2px; }
+.ap-fc-art { position: relative; flex: none; width: 92px; height: 92px; border-radius: 14px; overflow: hidden; box-shadow: 0 16px 30px -14px rgba(0,0,0,.7); }
+.ap-fc-art img, .ap-fc-art > span { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ap-fc-art i { position: absolute; right: 6px; bottom: 6px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--k-pc); color: #0a0a0c; transition: transform .25s; }
+a.ap-fc:hover .ap-fc-art i { transform: scale(1.12); }
+.ap-fc-date { flex: none; width: 92px; height: 92px; border-radius: 14px; background: var(--ax, var(--k-pc)); color: #0a0a0c; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.ap-fc-date b { font-family: var(--k-display); font-size: 40px; line-height: .9; }
+.ap-fc-date span { font: 600 11px var(--k-mono); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+.ap-fc-date--none { background: rgba(255,255,255,.08); color: var(--k-tx); }
+.ap-fc-ico { flex: none; width: 92px; height: 92px; border-radius: 14px; display: grid; place-items: center; font-size: 34px; background: rgba(255,255,255,.08); color: var(--ax, var(--k-pc)); }
+@media (max-width: 1000px) { .ap-fan { grid-template-columns: 1fr; } .ap-fc-art, .ap-fc-date, .ap-fc-ico { width: 72px; height: 72px; } .ap-fc-date b { font-size: 30px; } .ap-fc-ico { font-size: 26px; } }
+
+.ax-tabs { position: sticky; top: var(--ax-top, 0px); z-index: 20; display: flex; gap: 6px; padding: 10px 0; margin: -24px 0 -28px; background: linear-gradient(var(--k-bg, #0a0a0c) 80%, transparent); overflow-x: auto; scrollbar-width: none; scroll-margin-top: calc(var(--ax-top, 0px) + 8px); }
+.ax-tabs::-webkit-scrollbar { display: none; }
+.ax-tabs button { appearance: none; border: 0; cursor: pointer; flex: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px; background: var(--k-raised); color: var(--k-t2); font: 600 15px var(--k-ui); transition: background .2s, color .2s; }
+.ax-tabs button:hover { color: var(--k-tx); }
+.ax-tabs button span { font: 500 11px var(--k-mono); opacity: .7; }
+.ax-tabs button.on { background: var(--ax, var(--k-pc)); color: #0a0a0c; }
+.ax-right .apr-share img { max-height: 340px; width: auto; align-self: center; }
+.ap-fc-blank { display: grid !important; place-items: center; font-family: var(--k-display); font-size: 44px; }
+.ax-eh { gap: 6px; }
+.ax-eh h2 { font-size: clamp(32px, 3.6vw, 48px); }
+.ax-eh p { font-size: 16px; }
+@media (max-width: 760px) {
+  .ax-main { overflow-x: clip; }
+  .ap-fan { display: flex; overflow-x: auto; scrollbar-width: none; margin: 8px calc(-1 * var(--k-inset, 16px)) 0; padding: 0 var(--k-inset, 16px); scroll-snap-type: x mandatory; }
+  .ap-fan::-webkit-scrollbar { display: none; }
+  .ap-fan .ap-fc { flex: none; width: 82vw; scroll-snap-align: start; }
+}

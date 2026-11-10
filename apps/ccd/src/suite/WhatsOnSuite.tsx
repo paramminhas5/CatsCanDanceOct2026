@@ -119,7 +119,7 @@ export default function WhatsOnSuite({ events, ours, updated }: FindProps) {
         )}
       </section>
       <section className="k-wrap wo-moments" aria-label="Going out with Cats Can Dance">
-        <h2>The bit after you tap Get in.</h2>
+        <h2>Going out, made easier.</h2>
         <div className="wo-mgrid">
           <div className="wo-m">
             <div className="wo-crewbox" aria-hidden="true">
@@ -131,12 +131,12 @@ export default function WhatsOnSuite({ events, ours, updated }: FindProps) {
               </div>
             </div>
             <b>Going solo? Not for long.</b>
-            <span>Tap “I'm going alone” and we put you in a crew of 3 to 6 going to the same night. You meet first and walk in together.</span>
+            <span>Say you're going alone and meet a crew of 3 to 6 before the night.</span>
           </div>
           <div className="wo-m">
             <div className="wo-door" aria-hidden="true"><div className="wo-qr"><i /><span><svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#0a0a0c" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5L20 7" /></svg></span></div></div>
-            <b>Green and you're in.</b>
-            <span>One code for every ticket, even the one you bought on District. It scans in a basement with no signal.</span>
+            <b>Every ticket in one place.</b>
+            <span>Bought on District or BookMyShow? Add it here. Plans change? Pass it on at face value.</span>
           </div>
           <div className="wo-m">
             <div className="wo-stubs" aria-hidden="true">
@@ -147,7 +147,7 @@ export default function WhatsOnSuite({ events, ours, updated }: FindProps) {
               ))}
             </div>
             <b>Every night, kept.</b>
-            <span>The morning after, the stub lands on your page with the lineup and your crew.</span>
+            <span>The stub lands on your page the morning after.</span>
           </div>
         </div>
       </section>
