@@ -1,0 +1,411 @@
+[
+ {
+  "slug": "musicklunatic",
+  "identity": "Not confirmed. The NDCR #023 set page could not be read (YouTube fetch blocked), so there is no handle to anchor on.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "unknown",
+   "source_url": null
+  },
+  "profile": {},
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Likely candidate, name match only: a London DJ MUSICKLUNATIC (ra.co/dj/musicklunatic, RA lists the UK, most-played club Aaja Basement; played Village Underground, Carpet Shop, Venue M.O.T per https://ra.co/events/2507493 and https://ra.co/events/2481032) and SoundCloud soundcloud.com/musicklunatic ('groove & booty shakinnn'). Nothing ties these to the NDCR set, so nothing was used. Param or a reader of the NDCR video description (https://www.youtube.com/watch?v=FmzLJys3XXg) could confirm. No page shows a South Asian link."
+ },
+ {
+  "slug": "mizuyo",
+  "identity": "Not confirmed. The NDCR #021 set page could not be read (YouTube fetch blocked).",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "unknown",
+   "source_url": null
+  },
+  "profile": {},
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Possible candidate, not confirmed: a Japanese DJ Mizuyo (Yokohama/Tokyo, world music and black music culture, DJing since 1999) at https://nightlifetokyo.com/en/tokyo/djs/mizuyo. The NDCR set genres (funk, disco, reggae, Latin) would fit, and NDCR hosts Japanese guests, but no page ties them together. soundcloud.com/mizuyo exists with no description. Nothing used. South Asian unknown (would be 'no' if the Japanese DJ is confirmed)."
+ },
+ {
+  "slug": "gauriwho",
+  "identity": "Confirmed through the NDCR #020 YouTube description (handle @gauri.who, matching instagram_from_video_description). No other page found before the search budget ran out.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "NDCR describes her as part of South Asia's underground circuit, starting with a debut at Boiler Room Chandigarh.",
+   "source_url": "https://www.youtube.com/watch?v=5kF17gl7of0"
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": "gauri.who",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "instagram": "https://www.youtube.com/watch?v=5kF17gl7of0",
+    "kind": "https://www.youtube.com/watch?v=5kF17gl7of0"
+   }
+  },
+  "eras": [
+   {
+    "from_year": 2025,
+    "to_year": null,
+    "sound": "Genre-fluid 4x4 sets across house, breaks and garage",
+    "tags": [
+     "house",
+     "deep house",
+     "breaks",
+     "UK garage"
+    ],
+    "source_url": "https://www.youtube.com/watch?v=5kF17gl7of0",
+    "source_name": "New Delhi Community Radio (YouTube)",
+    "quote": "genre-fluid DJ with a distinct affinity for the 4x4 sound"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Emotional depth and global percussion",
+    "source_url": "https://www.youtube.com/watch?v=5kF17gl7of0"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "GAURIWHO is a DJ whose sets move between house, deep house, breaks and UK garage. She started with a debut at Boiler Room Chandigarh and has played NH7 Weekender and Grasslands Festival.",
+  "bio_sources": [
+   "https://www.youtube.com/watch?v=5kF17gl7of0"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "All facts come from the NDCR video description only (it also mentions showcases for Armani and Canali). City not stated. Web search budget ran out before Boiler Room or festival lineup pages could be checked."
+ },
+ {
+  "slug": "khxdeej",
+  "identity": "Confirmed through the NDCR #019 YouTube description, which names KHXDEEJ and gives Instagram @khxdeej.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "NDCR description says KHXDEEJ was born in Surat and draws on Indian and Pakistani heritage.",
+   "source_url": "https://www.youtube.com/watch?v=WtfsKLLGIKM"
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": "Surat",
+   "instagram": "khxdeej",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "from_city": "https://www.youtube.com/watch?v=WtfsKLLGIKM",
+    "instagram": "https://www.youtube.com/watch?v=WtfsKLLGIKM",
+    "kind": "https://www.youtube.com/watch?v=WtfsKLLGIKM"
+   }
+  },
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Low-end, dubby textures and experimental rhythms",
+    "source_url": "https://www.youtube.com/watch?v=WtfsKLLGIKM"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "KHXDEEJ is a DJ born in Surat who draws on Indian and Pakistani heritage. Their club sets lean on low-end, dubby textures and experimental rhythms.",
+  "bio_sources": [
+   "https://www.youtube.com/watch?v=WtfsKLLGIKM"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Only source is the NDCR video description (read through a summarising fetch, so the sound tag is close wording, not a verified exact quote; no era added for that reason). No other web presence found for 'khxdeej'; soundcloud.com/khxdeej does not resolve."
+ },
+ {
+  "slug": "zokhuma",
+  "identity": "Confirmed: NDCR #017 description gives Instagram 'zokhuma'; Zokhuma is the Mumbai project of Arman Menzies (former Goddess Gagged guitarist) per Wild City, Homegrown, Mixmag Asia and his Bandcamp (Mumbai). The NDCR set genres (progressive, techno, house) match the club sound described by Mixmag.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Wild City: 'Mumbai based Zokhuma'; Bandcamp lists Mumbai, India.",
+   "source_url": "https://www.thewildcity.com/news/1404-listen-zokhuma-i-choose-myself"
+  },
+  "profile": {
+   "based_city": "Mumbai",
+   "from_city": null,
+   "instagram": "zokhuma",
+   "soundcloud": "https://soundcloud.com/zokhuma",
+   "mixcloud": null,
+   "website": null,
+   "kind": "producer",
+   "sources": {
+    "based_city": "https://zokhuma.bandcamp.com/music",
+    "instagram": "https://www.youtube.com/watch?v=a72bjHNVCiA",
+    "soundcloud": "https://homegrown.co.in/homegrown-explore/hgsessions-001-zokhuma",
+    "kind": "https://www.thewildcity.com/businesses/9108-terra-mayaa"
+   }
+  },
+  "eras": [
+   {
+    "from_year": 2014,
+    "to_year": 2018,
+    "sound": "Smooth, melodic downtempo electronica with ambient leanings",
+    "tags": [
+     "downtempo",
+     "ambient",
+     "melodic electronica"
+    ],
+    "source_url": "https://www.thewildcity.com/news/1404-listen-zokhuma-i-choose-myself",
+    "source_name": "Wild City",
+    "quote": "carries you through a carefully constructed and very sophisticated sound with smooth melodies"
+   },
+   {
+    "from_year": 2019,
+    "to_year": null,
+    "sound": "Leftfield club electronica with IDM and 90s breaks",
+    "tags": [
+     "leftfield",
+     "IDM",
+     "breaks",
+     "house"
+    ],
+    "source_url": "https://www.thewildcity.com/businesses/9108-terra-mayaa",
+    "source_name": "Wild City",
+    "quote": "more leftfield electronica with IDM and breakcore influences"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Choppy, afro-influenced percussion",
+    "source_url": "https://mixmag.net/read/dreamstates-b2b-zokhuma-in-the-lab-goa-dj-lab"
+   },
+   {
+    "tag": "Experimental electronica, breakbeats and disco",
+    "source_url": "https://mixmag.asia/read/mixmag-asia-radio-zohkuma-exclusive-mixes"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Listen: Zokhuma 'I Choose Myself'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/1404-listen-zokhuma-i-choose-myself",
+    "date_published": "2014-02-13"
+   },
+   {
+    "title": "Listen: 'Code' By Zokhuma",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/businesses/9108-terra-mayaa",
+    "date_published": "2019-04-10"
+   },
+   {
+    "title": "The future is now for Arman Menzies aka Zokhuma",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/mixmag-asia-radio-zohkuma-exclusive-mixes",
+    "date_published": "2021-05-19"
+   },
+   {
+    "title": "Dreamstates B2B Zokhuma in The Lab Goa",
+    "publication": "Mixmag",
+    "url": "https://mixmag.net/read/dreamstates-b2b-zokhuma-in-the-lab-goa-dj-lab",
+    "date_published": "2022-05-17"
+   },
+   {
+    "title": "#HGSessions || Zokhuma",
+    "publication": "Homegrown",
+    "url": "https://homegrown.co.in/homegrown-explore/hgsessions-001-zokhuma",
+    "date_published": null
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Mixmag Asia Radio 063: Zokhuma",
+    "url": "https://soundcloud.com/mixmagasia/mixmag-asia-radio-063-zokhuma",
+    "year": 2021
+   },
+   {
+    "title": "Zokhuma B2B Dreamstates | Mixmag Lab Goa",
+    "url": "https://www.youtube.com/watch?v=r-1GDbUJ8nM",
+    "year": 2022
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Zokhuma is the Mumbai-based electronic project of Arman Menzies, formerly the guitarist of progressive metal band Goddess Gagged. He began with melodic downtempo tracks in 2014 and moved toward leftfield club music with IDM and breaks on the 2019 EP Code. He has recorded a Mixmag Asia Radio mix and played The Lab Goa back to back with Dreamstates.",
+  "bio_sources": [
+   "https://www.thewildcity.com/news/1404-listen-zokhuma-i-choose-myself",
+   "https://homegrown.co.in/homegrown-explore/hgsessions-001-zokhuma",
+   "https://www.thewildcity.com/businesses/9108-terra-mayaa",
+   "https://mixmag.asia/read/mixmag-asia-radio-zohkuma-exclusive-mixes",
+   "https://mixmag.net/read/dreamstates-b2b-zokhuma-in-the-lab-goa-dj-lab"
+  ],
+  "releases": [
+   {
+    "title": "I Choose Myself",
+    "year": 2014,
+    "release_type": "single",
+    "label": null,
+    "url": "https://www.thewildcity.com/news/1404-listen-zokhuma-i-choose-myself",
+    "date": null
+   },
+   {
+    "title": "Tomorrow Will Be Better",
+    "year": 2014,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://zokhuma.bandcamp.com/album/tomorrow-will-be-better",
+    "date": "2014-09-25",
+    "bandcamp_id": 285584530,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Hearts + Fields.",
+    "year": 2018,
+    "release_type": "single",
+    "label": null,
+    "url": "https://zokhuma.bandcamp.com/album/hearts-fields",
+    "date": "2018-02-06",
+    "bandcamp_id": 509981307,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Code",
+    "year": 2019,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://zokhuma.bandcamp.com/album/code",
+    "date": "2019-04-04",
+    "bandcamp_id": 1156231475,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "TRICE",
+    "year": 2020,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://zokhuma.bandcamp.com/album/trice",
+    "date": "2020-02-12",
+    "bandcamp_id": 4103646532,
+    "bandcamp_type": "album"
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://zokhuma.bandcamp.com"
+  },
+  "notes": "Former band (not an alias): Goddess Gagged, guitar. Homegrown pages show 8 June 2021 dates but describe him as 21 and fresh from the band split, so they look like 2014 pieces re-dated in a site migration; dates left null. The Wild City 'Code' article sits at an odd URL (/businesses/9108-terra-mayaa) but the page text is the Code EP piece; check it renders before linking. Mixmag Asia's URL slug spells 'zohkuma'. Rolling Stone India ran 'Zokhuma: Former Goddess Gagged guitarist launches solo project' (29 Mar 2014) but the tag page gave no URL. Hearts + Fields. is 2 tracks (labelled album on Bandcamp), TRICE is 3 tracks, Tomorrow Will Be Better 5 tracks. Bookings via Interbeing agency per SoundCloud profile. Mixmag Lab says he studied music production in the UK."
+ },
+ {
+  "slug": "jordan-k-joseph",
+  "identity": "Not confirmed. The NDCR #016 set page could not be read (YouTube fetch blocked).",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "unknown",
+   "source_url": null
+  },
+  "profile": {},
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Likely candidate, name match only: soundcloud.com/jordankjoseph, 'a London-based selector', resident on Voices Radio, runs the party Super Fruits and collective Tussle, formerly worked at Eastern Bloc records in Manchester (from the SoundCloud profile via oEmbed). House/techno would fit the NDCR set, but nothing links the two, so nothing was used. No page shows a South Asian link; if confirmed this is likely a 'no' or unknown."
+ },
+ {
+  "slug": "bytz",
+  "identity": "Not confirmed. The NDCR #015 set (BYTZ B2B FILM) page could not be read (YouTube fetch failed).",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "unknown",
+   "source_url": null
+  },
+  "profile": {},
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Possible candidate: Bytz, a Brooklyn producer and promoter (Secret Guests collective, founded 2014; co-founded Bushwick A/V; now focused on Asia: RE:FIX Festival Bangkok, deepcover Koh Phangan, UMT.radio; has played Bombay), per soundcloud.com/bytz profile via oEmbed. His techno/dub/bass range would fit 'Dubby Techno, Breaks, Deep House', but no page ties him to NDCR or to FILM. Nothing used. If confirmed, south_asian would be 'no' (New York based, no stated South Asian link). Web search budget ran out before a Delhi link could be checked."
+ },
+ {
+  "slug": "norbu",
+  "identity": "NDCR #013 description gives Norbu's Instagram as norbu.noises. The SoundCloud account soundcloud.com/norbu-noises (same handle) describes a Chandigarh producer working in leftfield bass, dubstep, UKG, DnB and IDM, matching the '140, Breaks, Jungle' B2B with UKato. Probable match, see notes.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "SoundCloud profile: producer, sound designer and DJ from Chandigarh, India; NDCR calls him one of the voices of the South Asian underground.",
+   "source_url": "https://soundcloud.com/norbu-noises"
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": "Chandigarh",
+   "instagram": "norbu.noises",
+   "soundcloud": "https://soundcloud.com/norbu-noises",
+   "mixcloud": null,
+   "website": null,
+   "kind": "producer",
+   "sources": {
+    "from_city": "https://soundcloud.com/norbu-noises",
+    "instagram": "https://www.youtube.com/watch?v=Zn5n7KHQHVQ",
+    "soundcloud": "https://soundcloud.com/norbu-noises",
+    "kind": "https://soundcloud.com/norbu-noises"
+   }
+  },
+  "eras": [
+   {
+    "from_year": 2021,
+    "to_year": null,
+    "sound": "Leftfield bass, dubstep, garage, DnB and IDM",
+    "tags": [
+     "leftfield bass",
+     "dubstep",
+     "UK garage",
+     "DnB",
+     "IDM"
+    ],
+    "source_url": "https://soundcloud.com/norbu-noises",
+    "source_name": "Norbu (SoundCloud profile)",
+    "quote": "His music sits between leftfield bass, dubstep, UK garage, DnB and IDM"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Intricate sound design and detailed drum programming",
+    "source_url": "https://soundcloud.com/norbu-noises"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Norbu is an electronic music producer, sound designer and DJ from Chandigarh, active in the underground scene since 2021. His music sits between leftfield bass, dubstep, UK garage, DnB and IDM, with releases on Deep Tempo Records, OneFortyAsia, Sec13 Records and Screech Collective.",
+  "bio_sources": [
+   "https://soundcloud.com/norbu-noises"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "The SoundCloud URL was found by trying the Instagram handle, not via a link on a page, so confirm it before publishing (the handle and sound match). The profile also claims support from Rinse FM, NTS, Keep Hush and Subtle Radio (not verified). norbumusic.bandcamp.com is a namesake (Ben Norbu Bultrini, Mexico City): do not use. Rolling Stone India's Carolina Norbu is also a different artist. Releases on the labels named could not be found before the search budget ran out."
+ }
+]

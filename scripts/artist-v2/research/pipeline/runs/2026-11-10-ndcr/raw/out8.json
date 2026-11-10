@@ -1,0 +1,786 @@
+[
+ {
+  "slug": "baalti",
+  "identity": "Duo of Mihir Chauhan and Jaiveer Singh. NDCR set title (Global Club, South Asian Club, UK Bass) matches DJ Mag's description of them blending UK bass with West Bengal and Delhi traditions; EBITDA's Wild City page also notes a 2025 B2B with Baalti. Bandcamp, Earth Agency, Rinse and RA all describe the same duo.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "DJ Mag: Mihir Chauhan and Jaiveer Singh are best friends born in India; Electric Mode calls them Indian-born, Brooklyn-based.",
+   "source_url": "https://djmag.com/features/dj-mags-artists-watch-2026"
+  },
+  "profile": {
+   "based_city": "New York",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/baalti.mp3/",
+   "soundcloud": "https://soundcloud.com/baalti",
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://ra.co/reviews/35925",
+    "instagram": "https://earth-agency.com/artist/baalti/",
+    "soundcloud": "https://earth-agency.com/artist/baalti/",
+    "kind": "https://www.rinse.fm/shows/baalti"
+   }
+  },
+  "eras": [
+   {
+    "from_year": 2021,
+    "to_year": 2022,
+    "sound": "Disco-house beats with lo-fi Indian record samples",
+    "tags": [
+     "disco-house",
+     "lo-fi hip-hop",
+     "samples",
+     "tabla"
+    ],
+    "source_url": "https://www.thewildcity.com/news/18730-baalti-sample-rupa-biswas-ustad-zakir-hussain-more-on-eponymous-debut-ep",
+    "source_name": "Wild City",
+    "quote": "between disco-house and lo-fi hip-hop"
+   },
+   {
+    "from_year": 2023,
+    "to_year": 2024,
+    "sound": "South Asian samples over breakbeats and club music",
+    "tags": [
+     "breakbeats",
+     "samples",
+     "leftfield club"
+    ],
+    "source_url": "https://forcedexposure.com/Catalog/AMT.032EP.html",
+    "source_name": "Forced Exposure",
+    "quote": "stays true to their signature sampling of nostalgic South Asian flavors"
+   },
+   {
+    "from_year": 2025,
+    "to_year": null,
+    "sound": "Dek bass rhythms, Indian percussion and techno-garage",
+    "tags": [
+     "dek bass",
+     "Indian percussion",
+     "techno",
+     "garage"
+    ],
+    "source_url": "https://ra.co/reviews/35925",
+    "source_name": "Resident Advisor",
+    "quote": "the stunning frame of Indian percussion and hybridised techno-garage"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "UK bass with West Bengal and Delhi traditions",
+    "source_url": "https://djmag.com/features/dj-mags-artists-watch-2026",
+    "quote": "blend UK bass pressure with the musical traditions of West Bengal and Delhi"
+   },
+   {
+    "tag": "Lots of percussion, kinda wonky",
+    "source_url": "https://mixmag.asia/read/mixmag-asia-radio-baalti-are-besties-making-club-beats-exclusive-mixes",
+    "quote": "Lots of percussion, kinda wonky"
+   },
+   {
+    "tag": "West Bengal soundsystem culture",
+    "source_url": "https://mixmag.asia/read/baalti-mela-ep-inspired-by-soundsystem-culture-west-bengal-steel-city-dance-discs-new-releases",
+    "quote": "draws heavy influence from the vibrant, DIY soundsystem culture of West Bengal and Maharashtra"
+   }
+  ],
+  "aliases": [
+   {
+    "name": "Stunt Doubles",
+    "note": "Shared project with Anish Kumar (Stunt Doubles Pt. 1 and Pt. 2 are credited to Anish Kumar, Baalti, Stunt Doubles)",
+    "source_url": "https://baalti.bandcamp.com/album/stunt-doubles-pt-1"
+   }
+  ],
+  "press": [
+   {
+    "title": "Baalti Sample Rupa Biswas, Ustad Zakir Hussain & More On Eponymous Debut EP",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/18730-baalti-sample-rupa-biswas-ustad-zakir-hussain-more-on-eponymous-debut-ep",
+    "date_published": "2021-08-27"
+   },
+   {
+    "title": "Baalti Mela EP inspired by soundsystem culture of West Bengal",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/baalti-mela-ep-inspired-by-soundsystem-culture-west-bengal-steel-city-dance-discs-new-releases",
+    "date_published": "2025-01-24"
+   },
+   {
+    "title": "Baalti: Mela (review)",
+    "publication": "Resident Advisor",
+    "url": "https://ra.co/reviews/35925",
+    "date_published": "2025-02-20"
+   },
+   {
+    "title": "Selections: Baalti",
+    "publication": "DJ Mag",
+    "url": "https://djmag.com/features/selections-baalti",
+    "date_published": null
+   },
+   {
+    "title": "DJ Mag's Artists To Watch 2026",
+    "publication": "DJ Mag",
+    "url": "https://djmag.com/features/dj-mags-artists-watch-2026",
+    "date_published": null
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Mixmag Asia Radio 114: Baalti",
+    "url": "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-114-baalti-indiausa/",
+    "year": 2023
+   },
+   {
+    "title": "all my thoughts Label Tour Takeover | Baalti, mauv & Tom VR",
+    "url": "https://refugeworldwide.com/radio/all-my-thoughts-label-tour-takeover-baalti-mauv-and-tom-vr-01-feb-2024",
+    "year": 2024
+   },
+   {
+    "title": "Baalti Rinse HQ118",
+    "url": "https://www.rinse.fm/episodes/baalti-09-05-2025-1900",
+    "year": 2025
+   },
+   {
+    "title": "Baalti: A Musical Response to Somnath Bhatt's Republic of Shadows",
+    "url": "https://www.rinse.fm/episodes/baalti-09-02-2026-0100",
+    "year": 2026
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Baalti is a DJ and production duo of Mihir Chauhan and Jaiveer Singh, both born in India, who started in the San Francisco Bay Area in 2020 and are now based in New York. Their music blends UK bass and club styles with the soundsystem traditions of West Bengal and Delhi, with releases on Krunk Kulture, All My Thoughts and Steel City Dance Discs. They host a monthly show on Rinse FM.",
+  "bio_sources": [
+   {
+    "fact": "duo, members, born in India, started in Bay Area 2020, now New York",
+    "url": "https://djmag.com/features/dj-mags-artists-watch-2026"
+   },
+   {
+    "fact": "UK bass with West Bengal and Delhi traditions",
+    "url": "https://djmag.com/features/dj-mags-artists-watch-2026"
+   },
+   {
+    "fact": "Krunk Kulture debut EP",
+    "url": "https://www.thewildcity.com/news/18730-baalti-sample-rupa-biswas-ustad-zakir-hussain-more-on-eponymous-debut-ep"
+   },
+   {
+    "fact": "All My Thoughts",
+    "url": "https://forcedexposure.com/Catalog/AMT.032EP.html"
+   },
+   {
+    "fact": "Steel City Dance Discs",
+    "url": "https://ra.co/reviews/35925"
+   },
+   {
+    "fact": "Rinse FM show",
+    "url": "https://www.rinse.fm/shows/baalti"
+   }
+  ],
+  "releases": [
+   {
+    "title": "Baalti",
+    "year": 2021,
+    "release_type": "ep",
+    "label": "Krunk Kulture",
+    "url": "https://www.thewildcity.com/news/18730-baalti-sample-rupa-biswas-ustad-zakir-hussain-more-on-eponymous-debut-ep",
+    "date": null
+   },
+   {
+    "title": "Better Together",
+    "year": 2023,
+    "release_type": "ep",
+    "label": "All My Thoughts",
+    "url": "https://forcedexposure.com/Catalog/AMT.032EP.html",
+    "date": "2023-07-21"
+   },
+   {
+    "title": "Mela",
+    "year": 2025,
+    "release_type": "ep",
+    "label": "Steel City Dance Discs",
+    "url": "https://ra.co/reviews/35925",
+    "date": null
+   },
+   {
+    "title": "Stunt Doubles (Pt. 1)",
+    "year": 2025,
+    "release_type": "single",
+    "label": null,
+    "url": "https://baalti.bandcamp.com/album/stunt-doubles-pt-1",
+    "date": "2025-06-20",
+    "bandcamp_id": 2932980181,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Stunt Doubles (Pt. 2)",
+    "year": 2025,
+    "release_type": "single",
+    "label": null,
+    "url": "https://baalti.bandcamp.com/album/stunt-doubles-pt-2-2",
+    "date": "2025-08-29",
+    "bandcamp_id": 129959172,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "123",
+    "year": 2025,
+    "release_type": "single",
+    "label": null,
+    "url": "https://baalti.bandcamp.com/track/123",
+    "date": "2025-12-04"
+   },
+   {
+    "title": "Threads (with Lapgan)",
+    "year": 2026,
+    "release_type": "album",
+    "label": "Azal Records",
+    "url": "https://baalti.bandcamp.com/album/threads-2",
+    "date": "2026-04-03",
+    "bandcamp_id": 3565336355,
+    "bandcamp_type": "album"
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://baalti.bandcamp.com"
+  },
+  "notes": "Strong identity. City: older sources (Wild City 2021, Forced Exposure 2023, Refuge) say San Francisco; RA (2025), Bandcamp and DJ Mag (2026) say New York/Brooklyn, so use New York. Mela release date: DJ Mag says out 20 February (year implied 2025); RA review dated 2025-02-20, so date left null. Better Together label is All My Thoughts (Seb Wildblood), cat AMT 032EP. Mixcloud oEmbed returned nothing from the shell, so the Mixmag Asia Mixcloud URL is taken from the embed feed on the Mixmag Asia page. Rinse and Refuge links are outlet pages, not SoundCloud/YouTube. A FADER mix with Lapgan (June 2026) exists but was not opened. Web search budget ran out before checking Discogs/Beatport ids."
+ },
+ {
+  "slug": "kizzi",
+  "identity": "Probable, not confirmed. The NDCR title (Techno, Global Club, House) closely matches SceneNoise's description of London DJ Kizzi ('techno, club funk and house, often imbued with her own South Asian spice', BBC Asian Network host). No page ties her directly to NDCR or Delhi.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Strand Magazine profile on her South Asian heritage: Hounslow-raised, Punjabi music and dhol from childhood (applies only if this is the same Kizzi).",
+   "source_url": "https://www.strandmagazine.co.uk/single-post/dj-kizzi-on-south-asian-heritage-community-and-no-phones-at-her-set-please"
+  },
+  "profile": {
+   "based_city": "London",
+   "from_city": "London",
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://scenenow.com/Noise/Select-349-Mixed-Kizzi",
+    "from_city": "https://www.strandmagazine.co.uk/single-post/dj-kizzi-on-south-asian-heritage-community-and-no-phones-at-her-set-please"
+   }
+  },
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Techno, club funk and house with South Asian influence",
+    "source_url": "https://scenenow.com/Noise/Select-349-Mixed-Kizzi",
+    "quote": "known for her distinctive blend techno, club funk and house, often imbued with her own South Asian spice"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "DJ Kizzi on South Asian heritage, community and no phones at her set please",
+    "publication": "Strand Magazine",
+    "url": "https://www.strandmagazine.co.uk/single-post/dj-kizzi-on-south-asian-heritage-community-and-no-phones-at-her-set-please",
+    "date_published": "2026-07-07"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Select 349: Mixed by Kizzi",
+    "url": "https://soundcloud.com/scenenoise/select-349-mixed-by-kizzi",
+    "year": 2025
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Kizzi is a London DJ raised in Hounslow, West London, who hosts a Saturday show on BBC Asian Network. Her sets blend techno, club funk and house with South Asian influences.",
+  "bio_sources": [
+   {
+    "fact": "London, Hounslow",
+    "url": "https://www.strandmagazine.co.uk/single-post/dj-kizzi-on-south-asian-heritage-community-and-no-phones-at-her-set-please"
+   },
+   {
+    "fact": "BBC Asian Network Saturday show",
+    "url": "https://sternbergclarke.co.uk/our-acts/dj-kizzi/"
+   },
+   {
+    "fact": "techno, club funk, house, South Asian",
+    "url": "https://scenenow.com/Noise/Select-349-Mixed-Kizzi"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "HOLD until Param confirms this is the NDCR guest. Name is generic. The London DJ Kizzi (BBC Asian Network, Westside Radio Desi Rap Show, Kizzi & Friends) matches on genre and South Asian focus, but no page links her to NDCR. Search budget ran out before checking her Instagram against NDCR. SoundCloud mix confirmed via oEmbed (posted by SceneNoise)."
+ },
+ {
+  "slug": "ebitda",
+  "identity": "Indian DJ (Yash Mundhra) per Ticket Fairy; Wild City calls him Kolkata-rooted. NDCR title (Leftfield, Techno, Raw Club) matches RA's 'Raw, wonky, and twisted' and Wild City's 'relentless leftfield selection'. Name explained as Electro, Breaks, IDM, Techno, Drum and Bass, Acid.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Ticket Fairy: Indian DJ who started in Delhi (2017) and Bangalore (2019); Wild City: Kolkata-rooted.",
+   "source_url": "https://www.ticketfairy.com/word/2026/01/14/trusting-the-process-featuring-ebitda"
+  },
+  "profile": {
+   "based_city": "Oxford",
+   "from_city": "Kolkata",
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": "https://linktr.ee/ebitda.dj",
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://ra.co/dj/ebitda/biography",
+    "from_city": "https://www.thewildcity.com/mixes/21478-wild-city-256-ebitda",
+    "website": "https://ra.co/dj/ebitda/biography"
+   }
+  },
+  "eras": [
+   {
+    "from_year": 2025,
+    "to_year": null,
+    "sound": "Raw, wonky leftfield club across shifting rhythms",
+    "tags": [
+     "leftfield",
+     "techno",
+     "bass",
+     "club"
+    ],
+    "source_url": "https://ra.co/dj/ebitda/biography",
+    "source_name": "Resident Advisor",
+    "quote": "Raw, wonky, and twisted"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Relentless leftfield selection",
+    "source_url": "https://www.thewildcity.com/mixes/21478-wild-city-256-ebitda",
+    "quote": "relentless leftfield selection"
+   },
+   {
+    "tag": "Forward-thinking club music",
+    "source_url": "https://www.ticketfairy.com/word/2026/01/14/trusting-the-process-featuring-ebitda",
+    "quote": "forward-thinking club music"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Trusting the process featuring EBITDA",
+    "publication": "Ticket Fairy",
+    "url": "https://www.ticketfairy.com/word/2026/01/14/trusting-the-process-featuring-ebitda",
+    "date_published": "2026-01-14"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Wild City #256 - EBITDA",
+    "url": "https://soundcloud.com/thewildcity/wild-city-256-ebitda",
+    "year": 2025
+   },
+   {
+    "title": "MSSNLDN LIVE: EBITDA | May 8",
+    "url": "https://www.youtube.com/watch?v=Ex4BB2Ixu1A",
+    "year": 2025
+   },
+   {
+    "title": "EBITDA - 5th January 2025 (Bangkok Community Radio)",
+    "url": "https://www.youtube.com/watch?v=6EZk2CDA7gQ",
+    "year": 2025
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "EBITDA is an Indian DJ, rooted in Kolkata, who played clubs in Delhi and Bangalore before moving to the UK, where he is resident at Simple in Oxford. His sets cover electro, breaks, IDM, techno, drum and bass and acid, and he has closed for Joy Orbison.",
+  "bio_sources": [
+   {
+    "fact": "Kolkata-rooted",
+    "url": "https://www.thewildcity.com/mixes/21478-wild-city-256-ebitda"
+   },
+   {
+    "fact": "Delhi 2017, Bangalore 2019, moved to UK",
+    "url": "https://www.ticketfairy.com/word/2026/01/14/trusting-the-process-featuring-ebitda"
+   },
+   {
+    "fact": "Simple Oxford residency, closed for Joy Orbison",
+    "url": "https://ra.co/dj/ebitda/biography"
+   },
+   {
+    "fact": "name meaning",
+    "url": "https://www.ticketfairy.com/word/2026/01/14/trusting-the-process-featuring-ebitda"
+   }
+  ],
+  "releases": [],
+  "ids": {
+   "ra": "https://ra.co/dj/ebitda"
+  },
+  "notes": "No original releases found. Wild City lists him as Kolkata-rooted; Ticket Fairy says he started DJing in Delhi then Bangalore. Current base likely Oxford/UK (RA). Also has a Subtle Radio show 'Bangers Galore' and GroFM residency. YouTube titles confirmed by oEmbed (MISSION LONDON and Bangkok Community Radio channels)."
+ },
+ {
+  "slug": "works-of-intent",
+  "identity": "UK techno producer Roshan Chauhan, formerly R.O.S.H., project manager for the South Asian collective DAYTIMERS (ADE, Mixmag). NDCR title (Techno, Club, UK Underground) matches his big room techno and UK breaks output.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Mixmag 2021: his name-change essay examines British colonialism and the South Asian diaspora through his family's history.",
+   "source_url": "https://mixmag.net/read/techno-producer-r-o-s-h-has-changed-his-artist-name-news"
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": "https://worksofintent.bandcamp.com",
+   "kind": "producer",
+   "sources": {
+    "kind": "https://worksofintent.bandcamp.com/album/richer-sound",
+    "website": "https://worksofintent.bandcamp.com/album/richer-sound"
+   }
+  },
+  "eras": [
+   {
+    "from_year": 2023,
+    "to_year": null,
+    "sound": "Emotive big room techno with UK breaks",
+    "tags": [
+     "big room techno",
+     "breakbeat",
+     "UK breaks",
+     "dubstep"
+    ],
+    "source_url": "https://worksofintent.bandcamp.com/album/greener-view",
+    "source_name": "Bandcamp",
+    "quote": "Balancing between Chart-topping UK Breaks and the colossal resonance of European 'Big Room' techno"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Big tunes for big hearts",
+    "source_url": "https://mixmag.net/read/works-of-intent-shares-debut-album-richer-sound-news",
+    "quote": "big tunes for big hearts"
+   },
+   {
+    "tag": "Melancholia turned up loud",
+    "source_url": "https://mixmag.net/read/works-of-intent-shares-debut-album-richer-sound-news",
+    "quote": "melancholia turned up so loud you can't ignore it"
+   },
+   {
+    "tag": "Dance music that hurts",
+    "source_url": "https://www.whenwedip.com/2025/02/prima-lux-works-of-intent",
+    "quote": "dance music that hurts"
+   }
+  ],
+  "aliases": [
+   {
+    "name": "R.O.S.H.",
+    "note": "former artist name, changed November 2021",
+    "source_url": "https://mixmag.net/read/techno-producer-r-o-s-h-has-changed-his-artist-name-news"
+   }
+  ],
+  "press": [
+   {
+    "title": "Techno producer R.O.S.H. has changed his artist name to Works Of Intent",
+    "publication": "Mixmag",
+    "url": "https://mixmag.net/read/techno-producer-r-o-s-h-has-changed-his-artist-name-news",
+    "date_published": "2021-11-16"
+   },
+   {
+    "title": "MyRecordBag: Works of Intent's top South Asian electronica cuts",
+    "publication": "909originals",
+    "url": "https://909originals.com/2023/10/25/myrecordbag-works-of-intents-top-south-asian-electronica-cuts/",
+    "date_published": "2023-10-25"
+   },
+   {
+    "title": "Works Of Intent shares debut album, 'Richer Sound'",
+    "publication": "Mixmag",
+    "url": "https://mixmag.net/read/works-of-intent-shares-debut-album-richer-sound-news",
+    "date_published": "2023-10-29"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Prima Lux mixed by Works Of Intent",
+    "url": "https://www.whenwedip.com/2025/02/prima-lux-works-of-intent",
+    "year": 2025
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Works Of Intent is the UK techno producer Roshan Chauhan, who released as R.O.S.H. on Rekids, Turbo and Monkeytown before changing his name in 2021. His debut album Richer Sound (2023) reworks big room techno with UK breaks, and he is project manager for the South Asian collective DAYTIMERS.",
+  "bio_sources": [
+   {
+    "fact": "Roshan Chauhan, R.O.S.H., name change 2021",
+    "url": "https://mixmag.net/read/techno-producer-r-o-s-h-has-changed-his-artist-name-news"
+   },
+   {
+    "fact": "Rekids, Turbo, Monkeytown, DAYTIMERS",
+    "url": "https://www.amsterdam-dance-event.nl/en/artists-speakers/roshan-chauhan/2601731/"
+   },
+   {
+    "fact": "Richer Sound 2023, big room techno, UK",
+    "url": "https://worksofintent.bandcamp.com/album/richer-sound"
+   }
+  ],
+  "releases": [
+   {
+    "title": "Talk Down (Works Of Intent 'Static' Remix)",
+    "year": 2021,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://worksofintent.bandcamp.com/track/talk-down-works-of-intent-static-remix",
+    "date": null
+   },
+   {
+    "title": "Richer Sound",
+    "year": 2023,
+    "release_type": "album",
+    "label": null,
+    "url": "https://worksofintent.bandcamp.com/album/richer-sound",
+    "date": "2023-10-27",
+    "bandcamp_id": 3197326984,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Creek",
+    "year": 2023,
+    "release_type": "single",
+    "label": null,
+    "url": "https://worksofintent.bandcamp.com/track/creek",
+    "date": null
+   },
+   {
+    "title": "Greener View (with K. Monday)",
+    "year": 2024,
+    "release_type": "single",
+    "label": "Emotional Weaponry",
+    "url": "https://worksofintent.bandcamp.com/album/greener-view",
+    "date": "2024-01-26",
+    "bandcamp_id": 3807603931,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "The Body Remembers",
+    "year": 2024,
+    "release_type": "single",
+    "label": null,
+    "url": "https://worksofintent.bandcamp.com/track/the-body-remembers",
+    "date": null
+   },
+   {
+    "title": "Mother's Genes",
+    "year": 2024,
+    "release_type": "single",
+    "label": null,
+    "url": "https://worksofintent.bandcamp.com/track/mothers-genes",
+    "date": null
+   },
+   {
+    "title": "Measure Of A Man",
+    "year": 2025,
+    "release_type": "single",
+    "label": null,
+    "url": "https://worksofintent.bandcamp.com/track/measure-of-a-man",
+    "date": null
+   },
+   {
+    "title": "Gotta Get That Money (with Gray)",
+    "year": 2025,
+    "release_type": "single",
+    "label": null,
+    "url": "https://worksofintent.bandcamp.com/album/gotta-get-that-money",
+    "date": "2025-10-10",
+    "bandcamp_id": 85208774,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Atah",
+    "year": 2025,
+    "release_type": "single",
+    "label": "Emotional Weaponry",
+    "url": "https://worksofintent.bandcamp.com/track/atah",
+    "date": "2025-11-17"
+   },
+   {
+    "title": "And More",
+    "year": 2026,
+    "release_type": "single",
+    "label": null,
+    "url": "https://worksofintent.bandcamp.com/track/and-more",
+    "date": null
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://worksofintent.bandcamp.com"
+  },
+  "notes": "Base city not stated on any page opened (ADE tags GB; DAYTIMERS runs nights in London). Richer Sound includes six tracks first released on COD3 QR (Laurent Garnier and Scan X); label of the album itself not stated on Bandcamp. Years for Creek, Body Remembers, Mother's Genes, Measure Of A Man, And More are from the Bandcamp discography list (month and year shown). Earlier R.O.S.H. releases on Rekids/Turbo/Monkeytown not itemised. Prima Lux link is a When We Dip podcast page."
+ },
+ {
+  "slug": "anisha",
+  "identity": "Not confirmed.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "",
+   "source_url": null
+  },
+  "profile": {},
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Could not tie the NDCR guest (Ambient, Breaks, IDM, 11 Dec 2025) to a page. Candidates seen: Anisha, a Bombay DJ on Magnetic Fields 2023 (instagram anishaaparwani; disco, breaks, club) at https://2023.magneticfields.in/artists/anisha, which only partly matches the genres; Anisha AOD is a Delhi folk-pop singer, not a match. Web search budget ran out before checking further."
+ },
+ {
+  "slug": "sgamo",
+  "identity": "Probable: Alessandro 'Sgamo' Nuzzo, Milan-based Italian DJ playing global bass, dubstep and garage, who tours Asia including India (Mixmag Asia 2023). NDCR title (Bass, 140, Global Sounds) fits. No page ties him to NDCR directly.",
+  "south_asian": {
+   "value": "no",
+   "evidence": "Mixmag Asia: Milan-based, Italian rooted; Blaq Lyte: raised in Bari, Southern Italy.",
+   "source_url": "https://mixmag.asia/read/sgamo-embarks-on-seven-week-tour-across-asia-australia-tours"
+  },
+  "profile": {
+   "based_city": "Milan",
+   "from_city": "Bari",
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://mixmag.asia/read/sgamo-embarks-on-seven-week-tour-across-asia-australia-tours",
+    "from_city": "https://blaqlyte.com/2024/12/23/sgamo-italian-dj-bangkok-performance/"
+   }
+  },
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Sgamo embarks on seven-week tour across Asia and Australia",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/sgamo-embarks-on-seven-week-tour-across-asia-australia-tours",
+    "date_published": "2023-12-04"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Sgamo is a Milan-based DJ and curator raised in Bari, Italy, who plays global bass, rap, garage and dubstep. He runs wegoing.sound and has toured across Asia, starting in India.",
+  "bio_sources": [
+   {
+    "fact": "Milan-based, global bass, wegoing.sound, tour starting in India",
+    "url": "https://mixmag.asia/read/sgamo-embarks-on-seven-week-tour-across-asia-australia-tours"
+   },
+   {
+    "fact": "raised in Bari",
+    "url": "https://blaqlyte.com/2024/12/23/sgamo-italian-dj-bangkok-performance/"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "No South Asian link: Italian. Per scope rules he would be hidden. Sound tag left out: the Mixmag Asia page describes global bass with hip-hop influences, but an exact quote was not captured. Search budget ran out before confirming a 2025 India visit around the NDCR date (4 Dec 2025)."
+ },
+ {
+  "slug": "eshie",
+  "identity": "Probable: Eshie, DJ with Punjabi and London roots raised in Southern California, playing percussive, hypnotic club music (RA event bio, RA profile). NDCR title (Dub Techno, Percussive House, 140, UK Club) fits; no page links her to NDCR directly.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "RA event bio (Dubmerge, Grow Hackney): Punjabi and London roots, grew up in Southern California.",
+   "source_url": "https://ra.co/events/2408461"
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": "https://www.instagram.com/eshie.d",
+   "soundcloud": "https://www.soundcloud.com/eshied",
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "instagram": "https://ra.co/dj/eshie",
+    "soundcloud": "https://ra.co/dj/eshie"
+   }
+  },
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Percussive and hypnotic club music",
+    "source_url": "https://ra.co/dj/eshie",
+    "quote": "a journey of percussive and hypnotic club music"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Eshie is a DJ with Punjabi and London roots who grew up in Southern California. She plays percussive, hypnotic club music, has played We Out Here and holds a Voices Radio residency.",
+  "bio_sources": [
+   {
+    "fact": "Punjabi and London roots, Southern California, We Out Here, Voices Radio",
+    "url": "https://ra.co/events/2408461"
+   },
+   {
+    "fact": "percussive and hypnotic club music",
+    "url": "https://ra.co/dj/eshie"
+   }
+  ],
+  "releases": [],
+  "ids": {
+   "ra": "https://ra.co/dj/eshie"
+  },
+  "notes": "HOLD for Param to confirm the NDCR guest is this Eshie (instagram eshie.d). Base unclear: RA profile country is USA with recent events in New York, London and DC; the Grow event calls her a regular on the London club circuit. Search budget ran out before finding mixes or press."
+ },
+ {
+  "slug": "peach-blok",
+  "identity": "Bangalore DJ and producer Rishii Rohra aka Peach Blok (Wild City #238, instagram @peachblok). NDCR title (House, Breakbeats, Garage) matches the Wild City mix description (house grooves, breakbeat rhythms).",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Wild City: Bangalore's Rishii Rohra aka Peach Blok.",
+   "source_url": "https://www.thewildcity.com/mixes/20801-wild-city-238-peach-blok"
+  },
+  "profile": {
+   "based_city": "Bengaluru",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/peachblok/",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.thewildcity.com/mixes/20801-wild-city-238-peach-blok",
+    "instagram": "https://www.thewildcity.com/mixes/20801-wild-city-238-peach-blok"
+   }
+  },
+  "eras": [
+   {
+    "from_year": 2024,
+    "to_year": null,
+    "sound": "House grooves, acid, trance moods and breakbeats",
+    "tags": [
+     "house",
+     "acid",
+     "trance",
+     "breakbeat"
+    ],
+    "source_url": "https://www.thewildcity.com/mixes/20801-wild-city-238-peach-blok",
+    "source_name": "Wild City",
+    "quote": "This mix weaves together housey grooves, acid undertones, trance atmospheres, and breakbeat rhythms."
+   }
+  ],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Wild City #238: Peach Blok",
+    "url": "https://soundcloud.com/thewildcity/wild-city-238-peach-blok",
+    "year": 2024
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Peach Blok is the Bengaluru DJ and producer Rishii Rohra. His productions lean laid-back, while his club sets move through house, acid, trance and breakbeats, as heard on his 2024 Wild City mix.",
+  "bio_sources": [
+   {
+    "fact": "Bengaluru, Rishii Rohra, laid-back productions, house/acid/trance/breakbeat",
+    "url": "https://www.thewildcity.com/mixes/20801-wild-city-238-peach-blok"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Only one source found (Wild City, 22 July 2024). Search budget ran out before looking for releases, SoundCloud or press. SoundCloud mix confirmed via oEmbed."
+ }
+]

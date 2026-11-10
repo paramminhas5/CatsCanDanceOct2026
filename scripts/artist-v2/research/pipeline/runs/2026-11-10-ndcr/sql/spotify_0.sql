@@ -1,0 +1,1 @@
+with up as (update public.artists a set spotify=x.u from json_to_recordset('[{"s":"kalbaisakhi","u":"https://open.spotify.com/artist/0GpnIJfvw6GV1WMlQXTSA5"}]'::json) as x(s text,u text) where a.slug=x.s and (a.spotify is null or a.spotify='') returning 1) select count(*) from up;

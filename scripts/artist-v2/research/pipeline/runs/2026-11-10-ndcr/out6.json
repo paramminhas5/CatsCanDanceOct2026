@@ -1,0 +1,317 @@
+[
+ {
+  "slug": "bindas",
+  "identity": "NDCR #067 video description (youtube.com/watch?v=zx8ahHvjukI, read via WebFetch) names Bindas, London-based DJ and curator, Instagram bindas.wav, host of the Silky Road Tour show on Brixton Radio. No other page found that matches.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "NDCR description says she is London-based and explores diasporic sounds and Afro Desi edits, but does not state South Asian heritage.",
+   "source_url": "https://www.youtube.com/watch?v=zx8ahHvjukI"
+  },
+  "profile": {
+   "based_city": "London",
+   "from_city": null,
+   "instagram": "bindas.wav",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.youtube.com/watch?v=zx8ahHvjukI",
+    "instagram": "https://www.youtube.com/watch?v=zx8ahHvjukI",
+    "kind": "https://www.youtube.com/watch?v=zx8ahHvjukI"
+   }
+  },
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Bindas is a London-based DJ and curator who plays diasporic and global club music, from Afro Desi edits and Batida to UK Funky, UK Garage, Baile and Jersey Club. She hosts the Silky Road Tour show on Brixton Radio and opened Lady Shaka's show at Phonox in London.",
+  "bio_sources": [
+   "https://www.youtube.com/watch?v=zx8ahHvjukI"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Only source is the NDCR video description (WebFetch gave a summary, not exact text, so no eras or quotes). Searches for the Brixton Radio show and the Phonox date found nothing. South Asian heritage not stated anywhere; check before publishing (scope rule)."
+ },
+ {
+  "slug": "big-m",
+  "identity": "NDCR #047 and #066 descriptions name BIG M as Mrunal Shah, Mumbai-based DJ and curator, founder of Q Radio (Instagram big_m.prproj). Refuge Worldwide artist page for Big M gives the same name, Mumbai, and Q-Radio launched in 2020, so it is the same person.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Refuge Worldwide and the NDCR description say he is a Mumbai-based DJ and curator.",
+   "source_url": "https://refugeworldwide.com/artists/big-m"
+  },
+  "profile": {
+   "based_city": "Mumbai",
+   "from_city": null,
+   "instagram": "big_m.prproj",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://refugeworldwide.com/artists/big-m",
+    "instagram": "https://www.youtube.com/watch?v=50DfXDHKaQ0",
+    "kind": "https://refugeworldwide.com/artists/big-m"
+   }
+  },
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Monsoon Mixtapes | Big M (Refuge Worldwide)",
+    "url": "https://refugeworldwide.com/radio/monsoon-mixtapes-big-m-06-aug-2024",
+    "year": 2024
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Big M (Mrunal Shah) is a Mumbai-based DJ and curator whose sets centre on house, with UKG, jungle, hip-hop and disco in the mix. In 2020 he started Q-Radio, an online radio platform begun during lockdown that now gives emerging DJs a place to play, and he runs it with Vansh. He has played a Monsoon Mixtapes show on Refuge Worldwide in Berlin.",
+  "bio_sources": [
+   "https://refugeworldwide.com/artists/big-m",
+   "https://www.youtube.com/watch?v=J9XpjqntraE",
+   "https://www.youtube.com/watch?v=50DfXDHKaQ0",
+   "https://refugeworldwide.com/radio/monsoon-mixtapes-big-m-06-aug-2024"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Refuge Worldwide artist page: https://refugeworldwide.com/artists/big-m (could be stored as a link). The Refuge show page does not link a SoundCloud or Mixcloud upload of the show. Q Radio Instagram per NDCR: qradio.wav. NDCR #066 was recorded live at EK SAAL, the NDCR one-year party, 3 April 2026. Real name given by both sources; not used as an alias."
+ },
+ {
+  "slug": "vansh",
+  "identity": "NDCR #066 description (Big M B2B Vansh) names Vansh as co-founder of Mumbai platform Q Radio with Big M, Instagram vanshpanjabi. No other page found.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "NDCR description says Q Radio is a Mumbai-based platform founded by DJs and selectors Big M and Vansh.",
+   "source_url": "https://www.youtube.com/watch?v=50DfXDHKaQ0"
+  },
+  "profile": {
+   "based_city": "Mumbai",
+   "from_city": null,
+   "instagram": "vanshpanjabi",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "selector",
+   "sources": {
+    "based_city": "https://www.youtube.com/watch?v=50DfXDHKaQ0",
+    "instagram": "https://www.youtube.com/watch?v=50DfXDHKaQ0",
+    "kind": "https://www.youtube.com/watch?v=50DfXDHKaQ0"
+   }
+  },
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Vansh is a Mumbai DJ and selector who co-founded Q Radio with Big M, a platform for long-form mixes, broadcasts and events that supports emerging artists. He played a house, minimal and deep house B2B with Big M for New Delhi Community Radio's one-year party in April 2026.",
+  "bio_sources": [
+   "https://www.youtube.com/watch?v=50DfXDHKaQ0"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Based city is inferred from Q Radio being Mumbai-based; the description does not say where Vansh himself lives. Kind could be dj or selector (the description says DJs and selectors). Searches for vanshpanjabi found nothing else. Generic name: do not link other 'Vansh' or 'DJ Vanshi' pages."
+ },
+ {
+  "slug": "sourog",
+  "identity": "NDCR #065 description names SourOG, born and raised in Delhi, nearly ten years in Toronto's underground scene, member of NotABBQ, co-producer of NOTALIVESTREAM, Instagram xsourogx.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "NDCR description says she was born and raised in Delhi.",
+   "source_url": "https://www.youtube.com/watch?v=Ytef-9BSAuU"
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": "Delhi",
+   "instagram": "xsourogx",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "from_city": "https://www.youtube.com/watch?v=Ytef-9BSAuU",
+    "instagram": "https://www.youtube.com/watch?v=Ytef-9BSAuU",
+    "kind": "https://www.youtube.com/watch?v=Ytef-9BSAuU"
+   }
+  },
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "SourOG is a bass music DJ who was born and raised in Delhi and spent almost ten years in Toronto's underground scene, and her sets link the two cities. She is part of the NotABBQ crew and co-produces NOTALIVESTREAM.",
+  "bio_sources": [
+   "https://www.youtube.com/watch?v=Ytef-9BSAuU"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Possible Mixcloud account: mixcloud.com/lauthikade (display name SourOG, country India, one upload 'SourOG <3 Poochki Session #1 May 30th, 2026', tagged House, Jungle, Reggae). Name and sound fit but nothing ties it to xsourogx, so it is left out; Param can check. Current base (Delhi or Toronto) is not stated. Searches for NotABBQ and NOTALIVESTREAM found nothing."
+ },
+ {
+  "slug": "fushi",
+  "identity": "NDCR #064 description names FUSHI, South Asian DJ, 4NC\u00a5 collective member, Instagram fushiup, Mixcloud series Resistance Tape. Mixcloud user Fushiup (same as the Instagram handle) posted 'Resistance Tape 001 - Change - FUSHI at H\u00d6R', so that account is the same artist. District artist page describes a South Asian garage, bass and breaks DJ who has played Bangalore, Goa, Delhi, Chennai and Pondicherry, matching the NDCR list.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "NDCR description and District artist page both describe FUSHI as a South Asian DJ playing across Indian cities.",
+   "source_url": "https://www.district.in/events/fushi-fushi/artist"
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": "fushiup",
+   "soundcloud": null,
+   "mixcloud": "https://www.mixcloud.com/Fushiup/",
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "instagram": "https://www.youtube.com/watch?v=WMWnlAGR4io",
+    "mixcloud": "https://www.mixcloud.com/Fushiup/grrave-tape-001-for-change-fushi-at-h%C3%B6r/",
+    "kind": "https://www.district.in/events/fushi-fushi/artist"
+   }
+  },
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Resistance Tape 001 - Change - FUSHI at H\u00d6R",
+    "url": "https://www.mixcloud.com/Fushiup/grrave-tape-001-for-change-fushi-at-h%C3%B6r/",
+    "year": 2024
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "FUSHI is a South Asian DJ who mixes bass music with leftfield club sounds, and has been part of the 4NC\u00a5 collective since it started. FUSHI has played Bangalore, Goa, Kochi, Delhi, Chennai and Pondicherry, including Bangalore Massive and Dance OK Please, and has done mixes for Durian Radio, Subtle Radio, 8ball Radio and Wavlngth.",
+  "bio_sources": [
+   "https://www.youtube.com/watch?v=WMWnlAGR4io",
+   "https://www.district.in/events/fushi-fushi/artist"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Home city not stated anywhere. Wild City lists a 4NC\u00a5 label based in New Delhi (https://www.thewildcity.com/directory/17866-4nc) but does not name FUSHI, so I have not linked them. The Resistance Tape 001 was recorded at H\u00d6R (Berlin). Could not find the 4NC\u00a5 Radio mix 'Mallipu' or the Durian, Subtle or 8ball mixes."
+ },
+ {
+  "slug": "bb-nabi",
+  "identity": "Not confirmed. The NDCR #063 video page was blocked when fetched, so no handle or bio was read.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "No page about the artist could be read.",
+   "source_url": "https://www.youtube.com/watch?v=HrPDNtVU3u8"
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {}
+  },
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "WebFetch of https://www.youtube.com/watch?v=HrPDNtVU3u8 was refused (site blocked); did not work around it. Searches for 'BB NABI' only returned namesakes (BBY NABE, Nabi on Beatport, mrnabi on Bandcamp); none tied to NDCR. Retry the video description later to get the handle."
+ },
+ {
+  "slug": "tnz",
+  "identity": "NDCR #062 description: TNZ, Bangkok-based DJ, producer and community builder, co-founder of Hypnotic TH and Vortexxx TH, alias TNZO. Mixcloud user ttnzmusic (display name TNZ, Bangkok, Thailand, techno and tech house mixes, IG ttnzmusic, lady DJ contest 2016) matches city, gender and sound, so treated as the same artist.",
+  "south_asian": {
+   "value": "no",
+   "evidence": "NDCR description and her Mixcloud profile place her in Bangkok, Thailand; no page mentions a South Asian link.",
+   "source_url": "https://www.mixcloud.com/ttnzmusic/"
+  },
+  "profile": {
+   "based_city": "Bangkok",
+   "from_city": null,
+   "instagram": "ttnzmusic",
+   "soundcloud": null,
+   "mixcloud": "https://www.mixcloud.com/ttnzmusic/",
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.youtube.com/watch?v=nsNGgXAtlP8",
+    "instagram": "https://www.mixcloud.com/ttnzmusic/",
+    "mixcloud": "https://www.mixcloud.com/ttnzmusic/",
+    "kind": "https://www.youtube.com/watch?v=nsNGgXAtlP8"
+   }
+  },
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [
+   {
+    "name": "TNZO",
+    "source_url": "https://www.youtube.com/watch?v=nsNGgXAtlP8"
+   }
+  ],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "TNZ LIVE IN INAKOMA (AMNESIA BKK) 29.03.2024",
+    "url": "https://www.mixcloud.com/ttnzmusic/tnz-live-in-inakomaamnesia-bkk-29032024/",
+    "year": 2024
+   },
+   {
+    "title": "TNZ - SOUND OF JOURNEY (TECH HOUSE)",
+    "url": "https://www.mixcloud.com/ttnzmusic/tnz-groovy-beatz-tech-house/",
+    "year": 2023
+   },
+   {
+    "title": "Dark Room 001 (Deep Tech/Minimal Sounds)",
+    "url": "https://www.mixcloud.com/ttnzmusic/dark-room-001/",
+    "year": 2019
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "TNZ is a Bangkok-based DJ and producer who co-founded the Hypnotic TH and Vortexxx TH crews and has played in Thailand for close to ten years. Her sets run from house and tech house to melodic techno, techno and hard techno, and she plays more melodic house as TNZO.",
+  "bio_sources": [
+   "https://www.youtube.com/watch?v=nsNGgXAtlP8",
+   "https://www.mixcloud.com/ttnzmusic/"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Thai, Bangkok-based guest for NDCR's Pride Month special; outside the South Asian scope, so likely hidden. Her Mixcloud also posts mixes as TNZWOLVE (e.g. 'TNZWOLVE - UMT.radio Promo Mix', 2021), possibly an older name; not added as an alias without a page saying so. Mixcloud bio has a booking email and phone number, not copied. A different 'DJ TNz' (Lampang, EDM) exists on Mixcloud; not her."
+ },
+ {
+  "slug": "prog-rescue",
+  "identity": "Not confirmed. The NDCR #060 video page was blocked when fetched, so no handle or bio was read.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "No page about the artist could be read.",
+   "source_url": "https://www.youtube.com/watch?v=cyFP8-polys"
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {}
+  },
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "WebFetch of https://www.youtube.com/watch?v=cyFP8-polys was refused (site blocked); did not work around it. Web and Mixcloud searches for 'Prog Rescue' found nothing matching. Retry the video description later to get the handle."
+ }
+]

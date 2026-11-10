@@ -1,0 +1,591 @@
+[
+ {
+  "slug": "mowgli",
+  "identity": "Not confirmed. No page found for a MOWGLI playing UKG, grime and baile funk in the Indian scene. Namesakes found and rejected: DJ Mowgli in Cincinnati (Mixcloud mistamowgli, drum and bass, 90s rave), Mowgli in Australia (Club 77, Amar Singh), Mowgli (Deadfish) on RA.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing public tied to the NDCR set. The YouTube video description could not be read (youtube.com fetch blocked). Search budget ran out before more queries.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "No page found that ties this NDCR guest to a place.",
+   "source_url": null
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {}
+  }
+ },
+ {
+  "slug": "alienata",
+  "identity": "Not confirmed. The best candidate is Alienata, a Spanish-born, Berlin-based electro and techno DJ who runs Discos Atonicos (RA). RA describes her sound as raw electro, acid and industrial textures, which matches the NDCR title, but no page ties her to NDCR or India, and I could not read the video description.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "If the NDCR guest is the Berlin DJ (RA bio, SoundCloud alienata 'Running @DiscosAtonicos'), she is not South Asian and the page should be hidden. Param could check the NDCR video description or Instagram to confirm. Left lists empty.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "Likely candidate (Berlin DJ Alienata) is Spanish-born; identity with the NDCR guest not confirmed.",
+   "source_url": "https://ja.ra.co/dj/alienata/biography"
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {}
+  }
+ },
+ {
+  "slug": "sublime-sound-live",
+  "identity": "Sublime Sound is the solo project of New Delhi producer and DJ Anhad Khanna (RA, Magnetic Fields, Wild City). The NDCR set title (Live, Experimental, Breakbeat & Electronica) matches his RA bio (left-field club music: breakbeat, house, techno; debut experimental electronica EP) and Magnetic Fields billed a 'Sublime Sound Live' debut. Same Delhi act; 'Live' is his live format.",
+  "eras": [
+   {
+    "from_year": 2020,
+    "to_year": 2021,
+    "sound": "Adventurous, experimental electronica, technically precise",
+    "tags": [
+     "experimental",
+     "electronica",
+     "leftfield"
+    ],
+    "source_url": "https://www.thewildcity.com/mixes/18219-wild-city-201-sublime-sound",
+    "source_name": "Wild City",
+    "quote": "more adventurous explorations of electronic music"
+   },
+   {
+    "from_year": 2022,
+    "to_year": null,
+    "sound": "Groove-led house and UK-influenced breakbeat",
+    "tags": [
+     "house",
+     "breakbeat",
+     "UK"
+    ],
+    "source_url": "https://mixmag.asia/read/sublime-sound-sophomore-ep-hammers-remmah-records-new-releases",
+    "source_name": "Mixmag Asia",
+    "quote": "groove-enthused house and UK-influenced breakbeat"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "House, breaks and UK-inspired sounds",
+    "source_url": "https://www.beatportal.com/articles/1643844-eight-new-delhi-artists-shaping-the-sound-of-indian-electronic-music"
+   },
+   {
+    "tag": "Euphoric vibes over chopped breaks",
+    "source_url": "https://mixmag.asia/read/sublime-sound-sophomore-ep-hammers-remmah-records-new-releases"
+   }
+  ],
+  "aliases": [
+   {
+    "name": "Anhad + Tanner",
+    "note": "Indo-American duo he is one half of (side project)",
+    "source_url": "https://es-mx.ra.co/dj/sublimesound/biography"
+   }
+  ],
+  "press": [
+   {
+    "title": "Sublime Sound's sophomore EP 'That Love Affair' on Hammer's Remmah Records",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/sublime-sound-sophomore-ep-hammers-remmah-records-new-releases",
+    "date_published": "2022-05-20"
+   },
+   {
+    "title": "Sublime Sound's emotionally driven summer track 'Love Light' on Nervous Records",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/sublime-sound-anhad-khanna-emotionally-driven-summer-track-love-light-nervous-records-new-releases",
+    "date_published": "2024-07-23"
+   },
+   {
+    "title": "Exclusive First Listen: 'Colour' By Sublime Sound & Kavya",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/18381-exclusive-first-listen-colour-by-sublime-sound-kavya",
+    "date_published": "2021-03-15"
+   },
+   {
+    "title": "Sublime Sound announces 'Runaway Dream' EP + Shares First Track",
+    "publication": "Dubiks",
+    "url": "https://dubiks.com/2024/08/22/sublime-sound-announces-runaway-dream-ep-shares-first-track",
+    "date_published": "2024-08-22"
+   },
+   {
+    "title": "Eight Delhi Artists Shaping The Sound of Indian Electronic Music",
+    "publication": "Beatportal",
+    "url": "https://www.beatportal.com/articles/1643844-eight-new-delhi-artists-shaping-the-sound-of-indian-electronic-music",
+    "date_published": "2026-09-29"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Wild City #201: Sublime Sound",
+    "url": "https://soundcloud.com/thewildcity/wild-city-201-sublime-sound",
+    "year": 2020
+   },
+   {
+    "title": "Wild City #201: Sublime Sound",
+    "url": "https://www.mixcloud.com/WildCity/wild-city-201-sublime-sound/",
+    "year": 2020
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Sublime Sound is the solo project of New Delhi producer and DJ Anhad Khanna, who mixes breakbeat, house and techno into left-field club music. He debuted in 2020 with the Final Call EP and has released on Remmah and Nervous Records. He is also one half of the Indo-American duo Anhad + Tanner.",
+  "bio_sources": [
+   {
+    "fact": "Solo project of New Delhi-based Anhad Khanna; breakbeat, house, techno; left-field",
+    "url": "https://es-mx.ra.co/dj/sublimesound/biography"
+   },
+   {
+    "fact": "Debut Final Call EP, 2020",
+    "url": "https://sublimesoundmusic.bandcamp.com/album/final-call-ep"
+   },
+   {
+    "fact": "Released on Remmah",
+    "url": "https://mixmag.asia/read/sublime-sound-sophomore-ep-hammers-remmah-records-new-releases"
+   },
+   {
+    "fact": "Released on Nervous Records",
+    "url": "https://mixmag.asia/read/sublime-sound-anhad-khanna-emotionally-driven-summer-track-love-light-nervous-records-new-releases"
+   },
+   {
+    "fact": "One half of Anhad + Tanner",
+    "url": "https://es-mx.ra.co/dj/sublimesound/biography"
+   }
+  ],
+  "releases": [
+   {
+    "title": "Final Call [EP]",
+    "year": 2020,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://sublimesoundmusic.bandcamp.com/album/final-call-ep",
+    "date": "2020-11-27",
+    "bandcamp_id": 2934378762,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Colour (with Kavya)",
+    "year": 2021,
+    "release_type": "single",
+    "label": "4NC¥",
+    "url": "https://sublimesoundmusic.bandcamp.com/track/colour",
+    "date": "2021-03-15",
+    "bandcamp_id": 3199488614,
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "That Love Affair",
+    "year": 2022,
+    "release_type": "ep",
+    "label": "Remmah",
+    "url": "https://mixmag.asia/read/sublime-sound-sophomore-ep-hammers-remmah-records-new-releases",
+    "date": null
+   },
+   {
+    "title": "Love Light",
+    "year": 2024,
+    "release_type": "single",
+    "label": "Nervous Records",
+    "url": "https://mixmag.asia/read/sublime-sound-anhad-khanna-emotionally-driven-summer-track-love-light-nervous-records-new-releases",
+    "date": "2024-07-26"
+   },
+   {
+    "title": "Runaway Dream",
+    "year": 2024,
+    "release_type": "ep",
+    "label": "Remmah",
+    "url": "https://dubiks.com/2024/08/22/sublime-sound-announces-runaway-dream-ep-shares-first-track",
+    "date": "2024-09-06"
+   },
+   {
+    "title": "Closer / Wooly",
+    "year": null,
+    "release_type": "single",
+    "label": "Loose Fit",
+    "url": "https://www.traxsource.com/title/1923001/closer",
+    "date": null
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://sublimesoundmusic.bandcamp.com/",
+   "ra": "https://ra.co/dj/sublimesound"
+  },
+  "notes": "Our name is 'Sublime Sound Live'; the act is Sublime Sound and 'Live' is the live format (Magnetic Fields page slug sublime-sound-live-debut). Param may want the page named Sublime Sound. Magnetic Fields page gives no year, but mentions an August 2024 release and a July 2024 Sub Club debut. Search budget ran out before I could look for his own SoundCloud, Spotify, Discogs and Beatport pages. The Instagram on Wild City is anhadkhanna (personal name account). 'Closer' (with 'Wooly') on Loose Fit has no year on the pages I opened.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "RA: solo project of New Delhi-based musician Anhad Khanna.",
+   "source_url": "https://es-mx.ra.co/dj/sublimesound/biography"
+  },
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/anhadkhanna/",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": "https://sublimesoundmusic.bandcamp.com/",
+   "kind": "producer",
+   "sources": {
+    "based_city": "https://es-mx.ra.co/dj/sublimesound/biography",
+    "instagram": "https://www.thewildcity.com/artists/18188-anhad-khanna-sublime-sounds",
+    "website": "https://sublimesoundmusic.bandcamp.com/album/final-call-ep",
+    "kind": "https://es-mx.ra.co/dj/sublimesound/biography"
+   }
+  }
+ },
+ {
+  "slug": "mr-disco-kid",
+  "identity": "Probable: Mr. Disco Kid, a Tokyo DJ and record dealer playing disco, soul and rare groove on vinyl (Ella Records). The NDCR tags (Vinyl, Disco, House & Global Grooves) fit, the name is distinctive, and NDCR hosts Japanese guests. No page names the NDCR set, so treat as likely, not certain.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "After Hours Session: Mr. Disco Kid",
+    "publication": "Ella Records",
+    "url": "https://ellarecords.jp/en/blogs/after-hours-session/mr-disco-kid",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Mr. Disco Kid is a Japanese DJ and record dealer who plays disco, soul and rare groove from vinyl. He lives in Tokyo, where he holds a residency at DJ BAR Bridge in Shinjuku, and he has contributed mixes to NTS Radio.",
+  "bio_sources": [
+   {
+    "fact": "All facts in bio",
+    "url": "https://ellarecords.jp/en/blogs/after-hours-session/mr-disco-kid"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "If this is the Tokyo DJ, he is not South Asian and the page would be hidden. I found no page tying him to India; the soulofsydney and humanitix pages show 2026 dates abroad (not opened). Instagram and SoundCloud below come from the Ella Records page; the SoundCloud oEmbed for kouki-shinada returned nothing, so that link is unverified.",
+  "south_asian": {
+   "value": "no",
+   "evidence": "Ella Records: Japanese DJ and record dealer, lives in Tokyo (if same person).",
+   "source_url": "https://ellarecords.jp/en/blogs/after-hours-session/mr-disco-kid"
+  },
+  "profile": {
+   "based_city": "Tokyo",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/mr_disco_kid",
+   "soundcloud": "https://soundcloud.com/kouki-shinada",
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://ellarecords.jp/en/blogs/after-hours-session/mr-disco-kid",
+    "instagram": "https://ellarecords.jp/en/blogs/after-hours-session/mr-disco-kid",
+    "soundcloud": "https://ellarecords.jp/en/blogs/after-hours-session/mr-disco-kid",
+    "kind": "https://ellarecords.jp/en/blogs/after-hours-session/mr-disco-kid"
+   }
+  }
+ },
+ {
+  "slug": "aesh",
+  "identity": "Partly confirmed: the NDCR set title tags @aeshhhhmusic, and SoundCloud oEmbed for soundcloud.com/aeshhhhmusic returns 'AESH', 'DJ / Selector'. Nothing else found.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Only the SoundCloud profile matches the handle. No city, press or releases found. The platform of the @aeshhhhmusic handle in the video title is not stated (likely Instagram).",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "No page found that ties this NDCR guest to a place.",
+   "source_url": null
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": "https://soundcloud.com/aeshhhhmusic",
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "soundcloud": "https://soundcloud.com/oembed?format=json&url=https://soundcloud.com/aeshhhhmusic",
+    "kind": "https://soundcloud.com/oembed?format=json&url=https://soundcloud.com/aeshhhhmusic"
+   }
+  }
+ },
+ {
+  "slug": "maggie-tra",
+  "identity": "Maggie Tra: Australian-born DJ and producer of Vietnamese and Cambodian heritage, based in Hanoi, founder of Ha Noi Community Radio (Boell 2021, Refuge Worldwide). Name is distinctive; the NDCR tags (Leftfield, Bass, Club, Experimental) fit her; NDCR runs exchanges with Vietnamese community stations (Homegrown on Da Nang Community Radio). Strong match, though no page names the NDCR set itself.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Melodic electronic music with Asian influences",
+    "source_url": "https://refugeworldwide.com/artists/maggie-tra"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Paving the Way for Women DJs in Vietnam's Music Industry",
+    "publication": "Heinrich Boell Stiftung",
+    "url": "https://th.boell.org/en/2021/12/08/maggie-tra",
+    "date_published": "2021-12-08"
+   },
+   {
+    "title": "Airtime: Ha Noi Community Radio",
+    "publication": "Refuge Worldwide",
+    "url": "https://refugeworldwide.com/news/airtime-ha-noi-community-radio",
+    "date_published": "2025-04-04"
+   },
+   {
+    "title": "Premiere: Maggie Tra 'Don't Go'",
+    "publication": "DJ Mag",
+    "url": "https://djmag.com/listen/premiere-maggie-tra-dont-go",
+    "date_published": "2023-12-18"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Guest Show | Maggie Tra (Refuge Worldwide)",
+    "url": "https://refugeworldwide.com/radio/guest-show-maggie-tra-18-jun-2025",
+    "year": 2025
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Maggie Tra is a DJ and producer born in Sydney to Vietnamese and Cambodian parents and based in Hanoi. She founded Ha Noi Community Radio and the SYS Sister Sounds community and label, which runs DJ workshops for women and non-binary people.",
+  "bio_sources": [
+   {
+    "fact": "Born in Sydney, Vietnamese father, Cambodian mother, based in Hanoi; SYS Sister Sounds",
+    "url": "https://th.boell.org/en/2021/12/08/maggie-tra"
+   },
+   {
+    "fact": "Founded Ha Noi Community Radio",
+    "url": "https://refugeworldwide.com/news/airtime-ha-noi-community-radio"
+   },
+   {
+    "fact": "SYS Sister Sounds is her imprint",
+    "url": "https://djmag.com/listen/premiere-maggie-tra-dont-go"
+   }
+  ],
+  "releases": [
+   {
+    "title": "Don't Go",
+    "year": 2023,
+    "release_type": "single",
+    "label": "SYS Sister Sounds",
+    "url": "https://djmag.com/listen/premiere-maggie-tra-dont-go",
+    "date": null
+   }
+  ],
+  "ids": {},
+  "notes": "Not South Asian (Vietnamese/Cambodian heritage, Australia and Hanoi), so the page would be hidden under the scope rule. Kept light. Sources differ on when Ha Noi Community Radio started (Boell: launched April 2021; Refuge: founded 2020).",
+  "south_asian": {
+   "value": "no",
+   "evidence": "Born and raised in Sydney to a Vietnamese father and Cambodian mother; based in Hanoi.",
+   "source_url": "https://th.boell.org/en/2021/12/08/maggie-tra"
+  },
+  "profile": {
+   "based_city": "Hanoi",
+   "from_city": "Sydney",
+   "instagram": null,
+   "soundcloud": "https://soundcloud.com/maggie-tra",
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://th.boell.org/en/2021/12/08/maggie-tra",
+    "from_city": "https://th.boell.org/en/2021/12/08/maggie-tra",
+    "soundcloud": "https://soundcloud.com/oembed?format=json&url=https://soundcloud.com/maggie-tra",
+    "kind": "https://refugeworldwide.com/artists/maggie-tra"
+   }
+  }
+ },
+ {
+  "slug": "idah",
+  "identity": "Not confirmed. No page found for an IDAH DJ playing global club and bass. soundcloud.com/idah belongs to 'Idah- Siti Shahidah', a Singapore-born singer; NDCR has hosted Singapore guests, but nothing ties her to this DJ set.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Possible Singapore link only; not used. Search budget ran out before more queries.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "No page found that ties this NDCR guest to a place.",
+   "source_url": null
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {}
+  }
+ },
+ {
+  "slug": "blu-attic",
+  "identity": "Blu Attic is New Delhi producer, DJ and live act Aniket Jain (Anjunadeep, District, Rolling Stone India). The NDCR set tags (Deep House, Melodic Techno, Progressive) match his described sound (progressive and melodic house); SoundCloud oEmbed for soundcloud.com/bluattic shows 'Anjunadeep/Indo Warehouse/Sekora/Independent'. Same artist.",
+  "eras": [
+   {
+    "from_year": 2025,
+    "to_year": null,
+    "sound": "Textured, emotional melodic house with Indian classical roots",
+    "tags": [
+     "melodic house",
+     "progressive house",
+     "hardgroove",
+     "Indian classical"
+    ],
+    "source_url": "https://www.musicis4lovers.com/?p=123600",
+    "source_name": "Music Is 4 Lovers",
+    "quote": "a deeply textured, emotionally resonant take on modern Melodic House"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "House juxtaposed with Indian classical vocals",
+    "source_url": "https://rollingstoneindia.com/fresh-indie-fridays-59/amp"
+   },
+   {
+    "tag": "Upbeat, groovy and always danceable",
+    "source_url": "https://anjunabeats.com/products/554322-traces-ep"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Blu Attic's Khoya / Raahon Channels Indian Classical Roots and Club-Driven House via Indo Warehouse",
+    "publication": "Mixmag Netherlands",
+    "url": "https://mixmagnl.com/read/blu-attics-khoya-raahon-channels-indian-classical-roots-and-club-driven-house-via-indo-warehouse-music",
+    "date_published": "2025-06-30"
+   },
+   {
+    "title": "Blu Attic: Khoya / Raahon (Indo Warehouse)",
+    "publication": "Music Is 4 Lovers",
+    "url": "https://www.musicis4lovers.com/?p=123600",
+    "date_published": null
+   },
+   {
+    "title": "Fresh Indie Fridays",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/fresh-indie-fridays-59/",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Blu Attic is the project of New Delhi producer and DJ Aniket Jain, who makes melodic and progressive house with Indian influences, drawing on classical and jazz piano. He has released on Anjunadeep Explorations and Indo Warehouse since 2021.",
+  "bio_sources": [
+   {
+    "fact": "Aniket Jain, New Delhi-based producer, DJ and live act; melodic and progressive house with Indian influences",
+    "url": "https://www.district.in/events/avera-deep-end-the-white-affair-oct24-2026-buy-tickets"
+   },
+   {
+    "fact": "Background in classical and jazz piano",
+    "url": "https://www.musicis4lovers.com/?p=123600"
+   },
+   {
+    "fact": "Anjunadeep Explorations releases; started releasing in 2021",
+    "url": "https://anjunadeep.com/products/593887-without-you-eternal"
+   },
+   {
+    "fact": "Indo Warehouse release",
+    "url": "https://mixmagnl.com/read/blu-attics-khoya-raahon-channels-indian-classical-roots-and-club-driven-house-via-indo-warehouse-music"
+   }
+  ],
+  "releases": [
+   {
+    "title": "Till I Lose Myself",
+    "year": 2025,
+    "release_type": "single",
+    "label": "Anjunadeep Explorations",
+    "url": "https://anjunabeats.com/products/510440-till-i-lose-myself",
+    "date": "2025-06-11"
+   },
+   {
+    "title": "Khoya / Raahon",
+    "year": 2025,
+    "release_type": "ep",
+    "label": "Indo Warehouse",
+    "url": "https://www.musicis4lovers.com/?p=123600",
+    "date": "2025-06-27"
+   },
+   {
+    "title": "Traces EP",
+    "year": 2025,
+    "release_type": "ep",
+    "label": "Anjunadeep Explorations",
+    "url": "https://anjunabeats.com/products/554322-traces-ep",
+    "date": "2025-11-26"
+   },
+   {
+    "title": "Without You / Eternal",
+    "year": 2026,
+    "release_type": "single",
+    "label": "Anjunadeep Explorations",
+    "url": "https://anjunadeep.com/products/593887-without-you-eternal",
+    "date": "2026-06-03"
+   },
+   {
+    "title": "Resurface",
+    "year": null,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://rollingstoneindia.com/fresh-indie-fridays-59/",
+    "date": null
+   }
+  ],
+  "ids": {},
+  "notes": "Rolling Stone India's Resurface EP mention has no date on the page. Anjunadeep says he started releasing in 2021. District lists a Tomorrowland appearance and BBC Radio 1 support (not used in bio). No standalone mixes found before the search budget ran out; Spotify not checked for the same reason.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "District and Mixmag NL: New Delhi-based producer; Anjunadeep calls him an Indian producer.",
+   "source_url": "https://www.district.in/events/avera-deep-end-the-white-affair-oct24-2026-buy-tickets"
+  },
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/bluatticmusic/",
+   "soundcloud": "https://soundcloud.com/bluattic",
+   "mixcloud": null,
+   "website": null,
+   "kind": "producer",
+   "sources": {
+    "based_city": "https://www.district.in/events/avera-deep-end-the-white-affair-oct24-2026-buy-tickets",
+    "instagram": "https://www.musicis4lovers.com/?p=123600",
+    "soundcloud": "https://soundcloud.com/oembed?format=json&url=https://soundcloud.com/bluattic",
+    "kind": "https://www.district.in/events/avera-deep-end-the-white-affair-oct24-2026-buy-tickets"
+   }
+  }
+ }
+]

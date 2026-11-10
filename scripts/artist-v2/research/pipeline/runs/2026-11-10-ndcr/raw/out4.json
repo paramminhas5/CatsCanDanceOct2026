@@ -1,0 +1,197 @@
+[
+ {
+  "slug": "nac-n-cheeze",
+  "identity": "Not confirmed. Only anchor is the NDCR #082 set (Electro Funk, UK Garage and Bassline, 22 Oct 2026). Searches found no page for this name; no SoundCloud account at soundcloud.com/nacncheeze.",
+  "south_asian": {"value": "unknown", "evidence": "No page found about this artist.", "source_url": null},
+  "profile": {"based_city": null, "from_city": null, "instagram": null, "soundcloud": null, "mixcloud": null, "website": null, "kind": null, "sources": {}},
+  "eras": [], "sound_tags": [], "aliases": [], "press": [], "mix_links": [],
+  "spotify": null, "bio_draft": null, "bio_sources": [], "releases": [], "ids": {},
+  "notes": "Nothing public found under this name. Shared web search budget ran out before a second pass; worth retrying with the NDCR video description or Instagram tag."
+ },
+ {
+  "slug": "didar",
+  "identity": "Not confirmed. Only anchor is the NDCR #083 set (House, Hard Groove, Electro and Hyperpop, 22 Oct 2026). Didar is a common given name; no page tied to NDCR or this sound was found.",
+  "south_asian": {"value": "unknown", "evidence": "No page found about this artist.", "source_url": null},
+  "profile": {"based_city": null, "from_city": null, "instagram": null, "soundcloud": null, "mixcloud": null, "website": null, "kind": null, "sources": {}},
+  "eras": [], "sound_tags": [], "aliases": [], "press": [], "mix_links": [],
+  "spotify": null, "bio_draft": null, "bio_sources": [], "releases": [], "ids": {},
+  "notes": "A SoundCloud account soundcloud.com/didar exists (oEmbed shows display name 'didar', no bio), but nothing ties it to the NDCR guest. Not used."
+ },
+ {
+  "slug": "radiostar",
+  "identity": "Not confirmed. Only anchor is the NDCR #080 set (House, Breaks, UK Garage and Disco, 8 Oct 2026). Searches returned unrelated uses of the name (radiostar.club, Radio City).",
+  "south_asian": {"value": "unknown", "evidence": "No page found about this artist.", "source_url": null},
+  "profile": {"based_city": null, "from_city": null, "instagram": null, "soundcloud": null, "mixcloud": null, "website": null, "kind": null, "sources": {}},
+  "eras": [], "sound_tags": [], "aliases": [], "press": [], "mix_links": [],
+  "spotify": null, "bio_draft": null, "bio_sources": [], "releases": [], "ids": {},
+  "notes": "SoundCloud account soundcloud.com/radiostar exists (display name 'RADIOSTAR', no bio); no link to NDCR or India shown. Not used."
+ },
+ {
+  "slug": "jaag",
+  "identity": "Probable, not certain. A September 2026 San Francisco event listing (Public Works, 3 Sep 2026) describes 'Neha aka jaag', an SF-based Bay Area native whose sets blend 'breaks, electro, leftfield bass, trance, acid', which matches the NDCR #078 title (Breaks, Electro, Acid and Trance, 24 Sep 2026) genre for genre, and NDCR hosts US guests. No page names NDCR directly.",
+  "south_asian": {"value": "unknown", "evidence": "Listing says she was raised on 'the genre-bending South Asian producers of the 90s' and cites Carnatic vocalists as an influence, but does not state heritage.", "source_url": "https://missionlocal.org/event/public-works-function-500-w-jaag-broke-leg/"},
+  "profile": {
+   "based_city": "San Francisco",
+   "from_city": "San Francisco Bay Area",
+   "instagram": "____jaag____",
+   "soundcloud": null, "mixcloud": null, "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://ra.co/events/2516104",
+    "from_city": "https://missionlocal.org/event/public-works-function-500-w-jaag-broke-leg/",
+    "instagram": "https://missionlocal.org/event/public-works-function-500-w-jaag-broke-leg/",
+    "kind": "https://ra.co/events/2516104"
+   }
+  },
+  "eras": [
+   {
+    "from_year": 2026, "to_year": null,
+    "sound": "Breaks, electro, leftfield bass, trance and acid",
+    "tags": ["breaks", "electro", "leftfield bass", "trance", "acid"],
+    "source_url": "https://missionlocal.org/event/public-works-function-500-w-jaag-broke-leg/",
+    "source_name": "Mission Local (event listing)",
+    "quote": "jaag blends breaks, electro, leftfield bass, trance, acid, and a plethora of global percussive genres"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "Global percussive genres", "source_url": "https://missionlocal.org/event/public-works-function-500-w-jaag-broke-leg/"}
+  ],
+  "aliases": [
+   {"name": "JEHA B2B 4EVR", "type": "duo project with BROKE LEG", "source_url": "https://missionlocal.org/event/public-works-function-500-w-jaag-broke-leg/"}
+  ],
+  "press": [], "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Jaag is a DJ based in San Francisco and a native of the Bay Area. Her sets blend breaks, electro, leftfield bass, trance, acid and global percussive styles. She co-runs Maja Blast, a party series with SF DJ nofi.",
+  "bio_sources": [
+   "https://missionlocal.org/event/public-works-function-500-w-jaag-broke-leg/",
+   "https://ra.co/events/2516104"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Identity rests on the genre match plus NDCR's habit of US guests; Param may want to confirm via the NDCR video description or her Instagram before publishing. Do NOT use ra.co/dj/jaag: that RA profile is a French industrial techno producer (Emulation Seine, Paris; links jaag.jaag, jaag-music, jaagtechno.bandcamp.com) with the SF jaag's events merged into it. soundcloud.com/jaag exists but nothing ties it to her. Listing also mentions a Holi party (RANG BARSE, Dallas, Mar 2026) on the merged RA page, not used."
+ },
+ {
+  "slug": "avantika",
+  "identity": "Confirmed with good confidence: Indian DJ, producer and singer Avantika (SoundCloud soundcloud.com/avantikabakshi, display name 'AVANTIKA' in capitals as in the NDCR #077 title). Her sound (Indian vocal training, Indo-Afro house, global house) matches the NDCR title (House, Indian Electronic, Afro House and Organic). RA lists her as India-based with Indian and South Asian gigs.",
+  "south_asian": {"value": "yes", "evidence": "IMS speaker bio calls her an 'Indian-born evolutionary artist'; RA lists her location as India.", "source_url": "https://www.internationalmusicsummit.com/ims-speakers/avantika"},
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": null,
+   "instagram": "avantikabakshi",
+   "soundcloud": "https://soundcloud.com/avantikabakshi",
+   "mixcloud": null,
+   "website": "https://avantikabakshi.com",
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.viberate.com/artist/avantika-bakshi",
+    "instagram": "https://ra.co/dj/avantika",
+    "soundcloud": "https://ra.co/dj/avantika",
+    "website": "https://ra.co/dj/avantika",
+    "kind": "https://ra.co/dj/avantika"
+   }
+  },
+  "eras": [
+   {
+    "from_year": 2025, "to_year": null,
+    "sound": "Indian vocals and traditional influences over club house",
+    "tags": ["house", "Indian electronic", "Afro house", "live vocals"],
+    "source_url": "https://the-everyday-agency.prezly.com/avantika-debuts-on-get-physical-with-spellbinding-moody-koyal-ep",
+    "source_name": "The Everyday Agency (press release for Get Physical)",
+    "quote": "fuses traditional influences with modern club energy"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "Groove-driven global house", "source_url": "https://www.internationalmusicsummit.com/ims-speakers/avantika"},
+   {"tag": "Hybrid live DJ sets with vocals", "source_url": "https://the-everyday-agency.prezly.com/avantika-debuts-on-get-physical-with-spellbinding-moody-koyal-ep"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "Avantika debuts on Get Physical with spellbinding 'Moody Koyal' EP", "publication": "Mixmag Germany", "url": "https://mixmagde.com/read/avantika-debuts-on-get-physical-with-spellbinding-moody-koyal-ep-music", "date_published": "2025-07-14"},
+   {"title": "Avantika Debuts on Get Physical With 'Moody Koyal' EP", "publication": "House Nest", "url": "https://housenest.net/?p=23091", "date_published": "2025-08-20"}
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Avantika is an Indian-born DJ, producer and singer who plays house music with live vocals, drawing on classical Indian vocal training and rock. Her debut EP, Moody Koyal, came out on Berlin label Get Physical Music in June 2025. Press around the release called her the first Indian DJ to play EXIT Festival in Serbia.",
+  "bio_sources": [
+   "https://www.internationalmusicsummit.com/ims-speakers/avantika",
+   "https://the-everyday-agency.prezly.com/avantika-debuts-on-get-physical-with-spellbinding-moody-koyal-ep",
+   "https://housenest.net/?p=23091"
+  ],
+  "releases": [
+   {"title": "Moody Koyal", "year": 2025, "release_type": "ep", "label": "Get Physical Music", "url": "https://the-everyday-agency.prezly.com/avantika-debuts-on-get-physical-with-spellbinding-moody-koyal-ep", "date": "2025-06-25"}
+  ],
+  "ids": {"ra": "https://ra.co/dj/avantika"},
+  "notes": "Moody Koyal EP tracks: 'Maro Dum' (club take on 'Dum Maro Dum') and 'Moody Koyal'; catalogue GPM860. Her SoundCloud bio (oEmbed) also names a later release 'MAERI' with Eli Fola (Indo-Afro rhythms, Punjabi vocals); a Beatport page (beatport.com/it/release/maeri/6878498) showed in search but failed to load, so it is not listed in releases. New Delhi as base city comes only from Viberate (a data aggregator); press says only 'Indian'. RA past events include Mirage Bangalore (May 2026), Sri Lanka (SOLA Festival Feb 2025, NYE 2025) and Nepal (Jun 2026). The bandcamp.com/avantikabakshi page is a fan collection, not an artist page."
+ },
+ {
+  "slug": "full-motion-disaster",
+  "identity": "Confirmed: SoundCloud soundcloud.com/full-motion-disaster describes Full Motion Disaster (FMD) as a Mumbai-based DJ/producer playing electro, ghettotech, ghetto house, breakbeat and rave, matching the NDCR #076 title (Electro, Breakbeat, Ghetto House and Juke). His tracks on the Mumbai label Filth Inc. Bandcamp link back to the same SoundCloud.",
+  "south_asian": {"value": "yes", "evidence": "SoundCloud bio: 'Mumbai based DJ/Producer'; Filth Inc. Bandcamp lists the label as based in Mumbai.", "source_url": "https://soundcloud.com/full-motion-disaster"},
+  "profile": {
+   "based_city": "Mumbai",
+   "from_city": null,
+   "instagram": "fullmotiondisaster",
+   "soundcloud": "https://soundcloud.com/full-motion-disaster",
+   "mixcloud": null, "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://soundcloud.com/full-motion-disaster",
+    "instagram": "https://filth-inc.bandcamp.com/track/full-motion-disaster-ode-to-a-better-day",
+    "soundcloud": "https://filth-inc.bandcamp.com/track/full-motion-disaster-ode-to-a-better-day",
+    "kind": "https://soundcloud.com/full-motion-disaster"
+   }
+  },
+  "eras": [
+   {
+    "from_year": 2023, "to_year": null,
+    "sound": "Electro, ghettotech, ghetto house, breakbeat and rave",
+    "tags": ["electro", "ghettotech", "ghetto house", "breakbeat", "rave"],
+    "source_url": "https://soundcloud.com/full-motion-disaster",
+    "source_name": "SoundCloud (artist bio)",
+    "quote": "a preference for playing an eclectic blend of Electro, Ghettotech, Ghetto House, Breakbeat and Rave"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "Sets that climb from 130 to 160 bpm", "source_url": "https://soundcloud.com/full-motion-disaster"}
+  ],
+  "aliases": [
+   {"name": "FMD", "type": "short name", "source_url": "https://soundcloud.com/full-motion-disaster"}
+  ],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Full Motion Disaster, also known as FMD, is a Mumbai-based DJ and producer. He owns and runs Filth Inc., a Mumbai record label and promotional channel started in March 2019 that began with lo-fi house and moved into ghettotech, electro, breakbeat and rave. His sets mix electro, ghettotech, ghetto house, breakbeat and rave, usually rising from about 130 to 160 bpm.",
+  "bio_sources": [
+   "https://soundcloud.com/full-motion-disaster",
+   "https://filth-inc.bandcamp.com/"
+  ],
+  "releases": [
+   {"title": "Where There is a Will", "year": 2026, "release_type": "single", "label": "Filth Inc.", "url": "https://filth-inc.bandcamp.com/track/full-motion-disaster-where-there-is-a-will", "date": "2026-04-21", "bandcamp_id": 2853934162, "bandcamp_type": "track"},
+   {"title": "Rite of Passage", "year": 2025, "release_type": "single", "label": "Filth Inc.", "url": "https://filth-inc.bandcamp.com/track/full-motion-disaster-rite-of-passage", "date": "2025-10-31", "bandcamp_id": 1073261826, "bandcamp_type": "track"},
+   {"title": "Trials of Ascension", "year": 2025, "release_type": "single", "label": "Filth Inc.", "url": "https://filth-inc.bandcamp.com/track/full-motion-disaster-trials-of-ascension", "date": "2025-05-10", "bandcamp_id": 291049007, "bandcamp_type": "track"},
+   {"title": "Ode to a Better Day", "year": 2024, "release_type": "single", "label": "Filth Inc.", "url": "https://filth-inc.bandcamp.com/track/full-motion-disaster-ode-to-a-better-day", "date": "2024-10-22", "bandcamp_id": 699466393, "bandcamp_type": "track"},
+   {"title": "Happiness is This (with Noizy Wilson)", "year": 2024, "release_type": "single", "label": "Filth Inc.", "url": "https://filth-inc.bandcamp.com/track/full-motion-disaster-x-noizy-wilson-happiness-is-this", "date": "2024-03-21", "bandcamp_id": 1096634677, "bandcamp_type": "track"},
+   {"title": "Hope Canyon (with Belljack)", "year": 2023, "release_type": "single", "label": "Filth Inc.", "url": "https://filth-inc.bandcamp.com/track/full-motion-disaster-x-belljack-hope-canyon", "date": "2023-11-07", "bandcamp_id": 714892737, "bandcamp_type": "track"}
+  ],
+  "ids": {},
+  "notes": "Era source is his own SoundCloud bio (read via oEmbed; no press found). Era start year 2023 is his earliest release found on Filth Inc. Bandcamp; the label itself dates from March 2019. His bio says his mixes appeared on Moskalus, welofi, 4NCY, Nu Kvlture, Limited Liability, Q-Radio, Ocean Drive Radio and Bass Water Freak Out; none were opened, so mix_links is empty. He owns the label, so filth-inc.bandcamp.com is a label page, not an artist id. A second SoundCloud account soundcloud.com/fullmotiondisaster also exists (no bio); unclear if his. Bandcamp tags on his tracks also include trance, eurodance and bounce. Rolling Stone India (3 Sep 2021, Bandcamp Friday) mentions Filth Inc. but not him. His legal name is on SoundCloud; left out of aliases and bio."
+ },
+ {
+  "slug": "daku",
+  "identity": "Not confirmed. Only anchor is the NDCR #075 set (Baile Funk, Breaks, Bass and Global Club, 3 Sep 2026). DAKU is a common name.",
+  "south_asian": {"value": "unknown", "evidence": "No page tied to the NDCR guest found.", "source_url": null},
+  "profile": {"based_city": null, "from_city": null, "instagram": null, "soundcloud": null, "mixcloud": null, "website": null, "kind": null, "sources": {}},
+  "eras": [], "sound_tags": [], "aliases": [], "press": [], "mix_links": [],
+  "spotify": null, "bio_draft": null, "bio_sources": [], "releases": [], "ids": {},
+  "notes": "Candidate only: soundcloud.com/daku18 (display name 'DAKU', bio links Instagram d_ak_u). Nothing on it ties to NDCR, India or baile funk, so not used. Param could check whether the NDCR video tags @d_ak_u."
+ },
+ {
+  "slug": "viir",
+  "identity": "Not confirmed. Only anchor is the NDCR #074 set (Speed Garage, UKG, Bassline and House, 27 Aug 2026). Searches for VIIR returned only Sammy Virji and general UKG pages.",
+  "south_asian": {"value": "unknown", "evidence": "No page found about this artist.", "source_url": null},
+  "profile": {"based_city": null, "from_city": null, "instagram": null, "soundcloud": null, "mixcloud": null, "website": null, "kind": null, "sources": {}},
+  "eras": [], "sound_tags": [], "aliases": [], "press": [], "mix_links": [],
+  "spotify": null, "bio_draft": null, "bio_sources": [], "releases": [], "ids": {},
+  "notes": "soundcloud.com/viir (no bio) and soundcloud.com/viirmusic ('I'm Jake', a producer of various genres, apparently unrelated) exist; neither tied to NDCR. Not used."
+ }
+]

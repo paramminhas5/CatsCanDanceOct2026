@@ -1,0 +1,426 @@
+[
+ {
+  "slug": "maddeof",
+  "identity": "Not confirmed beyond the HouseCats and NDCR sets. No outlet, festival or label page found that names Maddeof or links the @maddeof handle.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "No page found stating where Maddeof is based or from.",
+   "source_url": null
+  },
+  "profile": {},
+  "notes": "Searches (name, handle, HouseCats, Off The Block) found nothing usable. A SoundCloud account soundcloud.com/maddeof exists (oEmbed title 'Maddeof', description 'I make sounds and stuff. Pronounced - \"Madd-eof\"'), but no page ties it to the HouseCats co-founder, so it is not added. Param may know if it is theirs. The AGENT_EXTRA note says Maddeof co-runs HouseCats with Parvati; no public page opened confirms that."
+ },
+ {
+  "slug": "parvati",
+  "identity": "Wild City review of the album 'Naksha' (23 Sep 2022) names Parvati as a New Delhi project and links instagram.com/parvatimusic, the same handle as the HouseCats video descriptions.",
+  "eras": [
+   {
+    "from_year": 2022,
+    "to_year": null,
+    "sound": "Organic house built from flute and Baul-style vocals",
+    "tags": [
+     "organic house",
+     "flute",
+     "Baul vocals",
+     "acoustic textures"
+    ],
+    "source_url": "https://www.thewildcity.com/news/19901-parvati-offers-thumping-organic-house-with-naksha",
+    "source_name": "Wild City",
+    "quote": "focus more on creating emotive uplifting textures than providing a dancefloor number"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Thumping organic house",
+    "source_url": "https://www.thewildcity.com/news/19901-parvati-offers-thumping-organic-house-with-naksha"
+   },
+   {
+    "tag": "Emotive uplifting textures",
+    "source_url": "https://www.thewildcity.com/news/19901-parvati-offers-thumping-organic-house-with-naksha"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Parvati Offers Thumping Organic House With 'Naksha'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/19901-parvati-offers-thumping-organic-house-with-naksha",
+    "date_published": "2022-09-23"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Parvati is a New Delhi electronic music project. The 2022 album 'Naksha' set pitched-down Baul-style vocals, flute and classical-style singing over organic house, moving into straight house on its closing tracks 'Shikaari' and 'Nikas'.",
+  "bio_sources": [
+   "https://www.thewildcity.com/news/19901-parvati-offers-thumping-organic-house-with-naksha"
+  ],
+  "releases": [
+   {
+    "title": "Naksha",
+    "year": 2022,
+    "release_type": "album",
+    "label": null,
+    "url": "https://www.thewildcity.com/news/19901-parvati-offers-thumping-organic-house-with-naksha",
+    "date": null
+   }
+  ],
+  "ids": {},
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Wild City describes the album as by New Delhi's Ishaan Chatterjee, recording as Parvati.",
+   "source_url": "https://www.thewildcity.com/news/19901-parvati-offers-thumping-organic-house-with-naksha"
+  },
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": null,
+   "instagram": "parvatimusic",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "producer",
+   "sources": {
+    "based_city": "https://www.thewildcity.com/news/19901-parvati-offers-thumping-organic-house-with-naksha",
+    "instagram": "https://www.thewildcity.com/news/19901-parvati-offers-thumping-organic-house-with-naksha",
+    "kind": "https://www.thewildcity.com/news/19901-parvati-offers-thumping-organic-house-with-naksha"
+   }
+  },
+  "notes": "Wild City gives the person behind Parvati as Ishaan Chatterjee (real name, not added as an alias). Naksha guests per the review: Ronojoy Sircar (R#onbus'), Rishabh Puri, Arjit Ghosh, Akshatha Kulkarni. The review embeds a Spotify album (open.spotify.com/album/6YCNjg2j04sObNfxFW0Ioa) but no artist URL, so spotify is null. Label not named. Not to be confused with Plastic Parvati (separate Wild City artist) or beatspace-parvati on Bandcamp. No mixes found outside HouseCats/NDCR."
+ },
+ {
+  "slug": "sage",
+  "identity": "Not confirmed. 'Sage' is a common DJ name; no page found linking the @harshitaasethi handle or the HouseCats set to any outlet or festival.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "No page found for this Sage.",
+   "source_url": null
+  },
+  "profile": {},
+  "notes": "Homegrown (5 Aug 2026) profiles 'Sage Spins', a Mumbai DJ playing house, afro-house and techno, but her Instagram is @sage.spins, not @harshitaasethi, so not used. Nothing else found."
+ },
+ {
+  "slug": "direct-drive",
+  "identity": "Probable. Magnetic Fields Nomads 2026 lists Direct Drive as 'a sonic entity from Delhi' playing house, techno and vinyl sets, matching the HouseCats set (House, Progressive, Minimal). Instagram handles differ slightly across pages: @directdrive___ (Magnetic Fields), @direc.drive (Beats Beyond Borders), @directdrive__ (HouseCats description).",
+  "eras": [
+   {
+    "from_year": 2025,
+    "to_year": null,
+    "sound": "Vinyl DJ sets across house, jazz and ambient",
+    "tags": [
+     "vinyl",
+     "house",
+     "jazz",
+     "ambient"
+    ],
+    "source_url": "https://refugeworldwide.com/artists/direct-drive",
+    "source_name": "Refuge Worldwide",
+    "quote": "Direct Drive is a musical scheme deployed for exploring the outcomes of vinyl DJing."
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Warm analog sound",
+    "source_url": "https://beatsbeyondborders.com/?p=4387"
+   },
+   {
+    "tag": "Majorly through vinyl DJing",
+    "source_url": "https://beatsbeyondborders.com/?p=4387"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "MIX 003 ft. Direct Drive (Wind Horse Records / Beats Beyond Borders)",
+    "url": "https://soundcloud.com/wind-horse-records/mix-003-ft-direct-drive",
+    "year": null
+   },
+   {
+    "title": "Singju | Jogita & Direct Drive (Refuge Worldwide)",
+    "url": "https://refugeworldwide.com/radio/singju-1",
+    "year": 2025
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Direct Drive is a Delhi DJ project built around vinyl and vinyl-heavy sets of house, techno, jazz, dub and global grooves. It has played in New Delhi, London, Hyderabad, Goa, Lyon, Amsterdam and Edinburgh, and was on the Magnetic Fields Nomads 2026 lineup.",
+  "bio_sources": [
+   "https://nomads.magneticfields.in/artists/direct-drive",
+   "https://refugeworldwide.com/artists/direct-drive"
+  ],
+  "releases": [],
+  "ids": {},
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Magnetic Fields Nomads: 'Direct Drive is a sonic entity from Delhi. India.'",
+   "source_url": "https://nomads.magneticfields.in/artists/direct-drive"
+  },
+  "profile": {
+   "based_city": "Delhi",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/directdrive___/",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://nomads.magneticfields.in/artists/direct-drive",
+    "instagram": "https://nomads.magneticfields.in/artists/direct-drive",
+    "kind": "https://refugeworldwide.com/artists/direct-drive"
+   }
+  },
+  "notes": "Handle mismatch noted in identity; likely the same project after a handle change, but Param should check. soundcloud.com/directdrive is a different (techno) account, not used. The Refuge show is shared with Jogita. Members not named on any page. Magnetic Fields page is undated beyond the 2026 edition banner."
+ },
+ {
+  "slug": "jay-drive",
+  "identity": "Confirmed. Magnetic Fields Nomads lists Jay Drive with instagram.com/jaydrive_, the handle in the HouseCats description; Wild City #254 (29 Oct 2025) names him a New Delhi electro and house selector.",
+  "eras": [
+   {
+    "from_year": 2025,
+    "to_year": null,
+    "sound": "Electro and house, leaning into acid grooves",
+    "tags": [
+     "electro",
+     "house",
+     "acid",
+     "minimal"
+    ],
+    "source_url": "https://soundcloud.com/thewildcity/wild-city-254-jay-drive",
+    "source_name": "Wild City",
+    "quote": "One of the steadily rising electro and house selectors of the country"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Acid and straight grooves",
+    "source_url": "https://www.thewildcity.com/mixes/21404-wild-city-254-jay-drive"
+   },
+   {
+    "tag": "Immersive and dynamic musical journeys",
+    "source_url": "https://nomads.magneticfields.in/artists/jay-drive"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Wild City #254: Jay Drive",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/mixes/21404-wild-city-254-jay-drive",
+    "date_published": "2025-10-29"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Wild City #254: Jay Drive",
+    "url": "https://soundcloud.com/thewildcity/wild-city-254-jay-drive",
+    "year": 2025
+   },
+   {
+    "title": "Wild City #254: Jay Drive (Mixcloud)",
+    "url": "https://www.mixcloud.com/WildCity/wild-city-254-jay-drive/",
+    "year": 2025
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Jay Drive is a New Delhi DJ who plays electro, house, minimal and techno, with over a decade behind the decks. He has been a resident and programmer at Auro and Summerhouse, opened for Helena Hauff in New Delhi in 2025, and played Magnetic Fields Nomads 2026.",
+  "bio_sources": [
+   "https://nomads.magneticfields.in/artists/jay-drive",
+   "https://www.thewildcity.com/mixes/21404-wild-city-254-jay-drive"
+  ],
+  "releases": [],
+  "ids": {},
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Wild City: New Delhi's Jaidev Kaushik aka Jay Drive.",
+   "source_url": "https://www.thewildcity.com/mixes/21404-wild-city-254-jay-drive"
+  },
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/jaydrive_/",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.thewildcity.com/mixes/21404-wild-city-254-jay-drive",
+    "instagram": "https://nomads.magneticfields.in/artists/jay-drive",
+    "kind": "https://nomads.magneticfields.in/artists/jay-drive"
+   }
+  },
+  "notes": "Real name Jaidev Kaushik per both pages (not added as alias). soundcloud.com/jaydrive exists (bookings jaydrivemusic@gmail.com) but no page links it, so not added. Mixcloud URL taken from the Wild City embed feed path; oEmbed returned nothing to confirm it, SoundCloud version confirmed."
+ },
+ {
+  "slug": "nash",
+  "identity": "Confirmed. Orange County EDM's NLV Records remix post links NASH to instagram.com/nashselector_ (the HouseCats handle) and soundcloud.com/nashjrofficial; RA and Mixmag Asia describe the same Delhi DJ playing Afro, house, garage and breaks, matching the NDCR #055 set.",
+  "eras": [
+   {
+    "from_year": 2010,
+    "to_year": 2018,
+    "sound": "Hip hop, trap, Miami bass and dancehall",
+    "tags": [
+     "hip hop",
+     "trap",
+     "Miami bass",
+     "dancehall"
+    ],
+    "source_url": "https://www.thewildcity.com/artists/11084-nash",
+    "source_name": "Wild City",
+    "quote": "In 2012, he joined Urbanatics group and started experimenting with genres like Trap/Twerk, Miami Bass, Dancehall etc."
+   },
+   {
+    "from_year": 2019,
+    "to_year": 2023,
+    "sound": "Bass-led breakbeat, techno and UK garage",
+    "tags": [
+     "breakbeat",
+     "techno",
+     "UK garage",
+     "bass"
+    ],
+    "source_url": "https://www.thewildcity.com/mixes/13729-wild-city-175-nash-jr",
+    "source_name": "Wild City",
+    "quote": "Diving deep into the unexplored sounds of breakbeat, techno and UK garage"
+   },
+   {
+    "from_year": 2024,
+    "to_year": null,
+    "sound": "Open-format Afro, house, UK funky, garage and breaks",
+    "tags": [
+     "afro",
+     "house",
+     "UK funky",
+     "garage",
+     "electro"
+    ],
+    "source_url": "https://mixmag.asia/read/nash-mother-dance-delhi-umami-shuffle-march-22-events",
+    "source_name": "Mixmag Asia",
+    "quote": "a vibrant blend of genres from Afro, house, disco, UK funky, garage, breaks, breakbeat, electro, and left-field techno"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "UKG and UK bass",
+    "source_url": "https://www.thewildcity.com/news/21675-nash-steps-into-a-producer-s-role-with-a-remix-for-nina-las-vegas"
+   },
+   {
+    "tag": "Open-format",
+    "source_url": "https://mixmag.asia/read/nash-mother-dance-delhi-umami-shuffle-march-22-events"
+   }
+  ],
+  "aliases": [
+   {
+    "name": "Nash JR",
+    "source_url": "https://www.thewildcity.com/artists/11084-nash"
+   }
+  ],
+  "press": [
+   {
+    "title": "Hong Kong welcomes Nash's open-format mastery on March 22",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/nash-mother-dance-delhi-umami-shuffle-march-22-events",
+    "date_published": "2024-03-11"
+   },
+   {
+    "title": "NASH Steps Into A Producer's Role With A Remix For Nina Las Vegas",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/21675-nash-steps-into-a-producer-s-role-with-a-remix-for-nina-las-vegas",
+    "date_published": "2026-05-13"
+   },
+   {
+    "title": "Wild City #175: Nash JR",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/mixes/13729-wild-city-175-nash-jr",
+    "date_published": "2019-06-28"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Wild City #175: Nash JR",
+    "url": "https://www.thewildcity.com/mixes/13729-wild-city-175-nash-jr",
+    "year": 2019
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Nash is a Delhi DJ and selector who plays Afro, house, disco, UK funky, garage, breaks, electro and left-field techno, and runs the Mother Dance community and events. He has played Magnetic Fields, India's Jazz Weekender, Celtronic in Ireland and a Keep Hush night in London. His first production, a remix of Nina Las Vegas and Swick's 'Shot Caller', came out on NLV Records in 2026.",
+  "bio_sources": [
+   "https://mixmag.asia/read/nash-mother-dance-delhi-umami-shuffle-march-22-events",
+   "https://ra.co/dj/nash.",
+   "https://www.thewildcity.com/news/21675-nash-steps-into-a-producer-s-role-with-a-remix-for-nina-las-vegas"
+  ],
+  "releases": [
+   {
+    "title": "Shot Caller (NASH Remix)",
+    "year": 2026,
+    "release_type": "remix",
+    "label": "NLV Records",
+    "url": "https://www.thewildcity.com/news/21675-nash-steps-into-a-producer-s-role-with-a-remix-for-nina-las-vegas",
+    "date": null
+   }
+  ],
+  "ids": {
+   "ra": "https://ra.co/dj/nash."
+  },
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Mixmag Asia and RA describe him as Delhi-based; Wild City says he emerged out of New Delhi.",
+   "source_url": "https://mixmag.asia/read/nash-mother-dance-delhi-umami-shuffle-march-22-events"
+  },
+  "profile": {
+   "based_city": "Delhi",
+   "from_city": "New Delhi",
+   "instagram": "https://www.instagram.com/nashselector_",
+   "soundcloud": "https://soundcloud.com/nashjrofficial",
+   "mixcloud": null,
+   "website": null,
+   "kind": "selector",
+   "sources": {
+    "based_city": "https://ra.co/dj/nash.",
+    "from_city": "https://www.thewildcity.com/news/21675-nash-steps-into-a-producer-s-role-with-a-remix-for-nina-las-vegas",
+    "instagram": "https://orangecountyedm.com/2026/05/23/nina-las-vegas-swick-shot-caller-ft-zanillya-shuga-nash-benedict-james-remixes/",
+    "soundcloud": "https://orangecountyedm.com/2026/05/23/nina-las-vegas-swick-shot-caller-ft-zanillya-shuga-nash-benedict-james-remixes/",
+    "kind": "https://ra.co/dj/nash."
+   }
+  },
+  "notes": "Older pages (Mixmag Asia 2024, RA) link Instagram @nashjrofficial; the 2026 NLV remix post links @nashselector_, so the handle has likely changed. RA gives real name Nishant Sahadev (not added). The Wild City #175 page has no SoundCloud/Mixcloud URL in its text (only a download link), so the outlet page is given as the mix link; Param may want to find the playable embed. The magneticfields Nomads 'nash' URL returned 'Artist not found'. Remix YouTube embed: https://www.youtube.com/embed/FiUmAyEcCSw (label upload, not checked by oEmbed)."
+ },
+ {
+  "slug": "neeka",
+  "identity": "Not confirmed. No page found linking the @neeka.music handle or the HouseCats set to an outlet, festival or label.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "No page found for this Neeka.",
+   "source_url": null
+  },
+  "profile": {},
+  "notes": "Search results for Neeka point to unrelated namesakes (a Qobuz/Deezer singer, a Charlotte US Mixcloud DJ 'DJKNEEKA', the 80plays artist). None match the handle or the Indian electro/breaks scene. Nothing added."
+ }
+]

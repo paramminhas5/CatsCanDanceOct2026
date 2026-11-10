@@ -1,0 +1,133 @@
+[
+ {
+  "slug": "kairavi",
+  "identity": "Likely match, not certain. Refuge Worldwide artist page describes a Kairavi who is a DJ originally from India, now based in Berlin, playing house, dub and techno, after dozens of shows across India. The NDCR #035 title gives the same genres (House, Dub, Techno, Global Grooves). The NDCR video description could not be read (YouTube page refused), so no handle ties the two directly.",
+  "south_asian": {"value": "yes", "evidence": "Refuge Worldwide: 'originally from India and now based in Berlin'.", "source_url": "https://refugeworldwide.com/artists/kairavi"},
+  "profile": {"based_city": "Berlin", "from_city": null, "instagram": null, "soundcloud": null, "mixcloud": null, "website": null, "kind": "dj", "sources": {"based_city": "https://refugeworldwide.com/artists/kairavi", "kind": "https://refugeworldwide.com/artists/kairavi"}},
+  "eras": [
+   {"from_year": 2025, "to_year": null, "sound": "Playful house, dub and techno, adapted to the moment", "tags": ["house", "dub", "techno"], "source_url": "https://refugeworldwide.com/artists/kairavi", "source_name": "Refuge Worldwide", "quote": "Her sound is playful & compelling and she adapts her sound to the moment, shifting between genres ranging from house, dub and techno"}
+  ],
+  "sound_tags": [
+   {"tag": "Playful and compelling", "source_url": "https://refugeworldwide.com/artists/kairavi"}
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {"title": "Sonic Juice | Kairavi, RDV & Emski (Refuge Worldwide, shared show)", "url": "https://refugeworldwide.com/radio/sonic-juice-rdv-emski-and-kairavi-17-apr-2025", "year": 2025}
+  ],
+  "spotify": null,
+  "bio_draft": "Kairavi is a DJ and composer originally from India and now based in Berlin. She plays house, dub and techno, and played dozens of shows across India before moving to Europe. In April 2025 she co-hosted the Sonic Juice show on Refuge Worldwide in Berlin.",
+  "bio_sources": ["https://refugeworldwide.com/artists/kairavi", "https://refugeworldwide.com/radio/sonic-juice-rdv-emski-and-kairavi-17-apr-2025"],
+  "releases": [],
+  "ids": {},
+  "notes": "Identity rests on name plus matching genres and an Indian origin; confirm with Kalbaisakhi/Nida or the NDCR video description (could not be read, YouTube watch page refused) before publishing. The Refuge show is shared with RDV and Emski and has no direct audio link on the page. Do not confuse with Kairavi Buch (actor, platinumlist). No Instagram or SoundCloud found."
+ },
+ {
+  "slug": "omdg",
+  "identity": "Not confirmed. Only the NDCR #033 set (Progressive, Electronica, UK Garage, Indie Dance) is known; the NDCR video description could not be read and searches found no page for an OMDG DJ.",
+  "south_asian": {"value": "unknown", "evidence": "No page found.", "source_url": null},
+  "profile": {"based_city": null, "from_city": null, "instagram": null, "soundcloud": null, "mixcloud": null, "website": null, "kind": null, "sources": {}},
+  "eras": [], "sound_tags": [], "aliases": [], "press": [], "mix_links": [], "spotify": null,
+  "bio_draft": null, "bio_sources": [], "releases": [], "ids": {},
+  "notes": "Nothing public found. YouTube watch page for 9YJPYw3xE1M was refused, so the Instagram handle in the description (if any) is unknown. Ask NDCR for the handle."
+ },
+ {
+  "slug": "rattyatty",
+  "identity": "Not confirmed. Only the NDCR #031 set (Bass, UKG, Grime, Jungle). NDCR video description could not be read; searches return only unrelated Rattys (DJ Ratty UK hardcore, Ratty The Sly, Mr Ratty).",
+  "south_asian": {"value": "unknown", "evidence": "No page found.", "source_url": null},
+  "profile": {"based_city": null, "from_city": null, "instagram": null, "soundcloud": null, "mixcloud": null, "website": null, "kind": null, "sources": {}},
+  "eras": [], "sound_tags": [], "aliases": [], "press": [], "mix_links": [], "spotify": null,
+  "bio_draft": null, "bio_sources": [], "releases": [], "ids": {},
+  "notes": "Nothing public found for RattyAtty. YouTube watch page FEYRCSG4NKU refused. Do not link to DJ Ratty (UK rave, Fantazia) or Ratty The Sly; no evidence they are the same person."
+ },
+ {
+  "slug": "su-real",
+  "identity": "Confirmed. NDCR #030 description gives Instagram @realsureal; the Bandcamp realsureal.bandcamp.com links the same Instagram (instagram.com/realsureal) and lists New Delhi; same desi club edit sound (Panjabi, Bollywood baile funk flips).",
+  "south_asian": {"value": "yes", "evidence": "Bandcamp and Mixcloud profiles list New Delhi, India; Rolling Stone India calls him a New Delhi trap artist.", "source_url": "https://realsureal.bandcamp.com"},
+  "profile": {"based_city": "New Delhi", "from_city": null, "instagram": "realsureal", "soundcloud": "https://soundcloud.com/dj-su-real", "mixcloud": "https://www.mixcloud.com/realsureal/", "website": "https://www.realsureal.in", "kind": "producer", "sources": {"based_city": "https://realsureal.bandcamp.com", "instagram": "https://realsureal.bandcamp.com", "soundcloud": "https://realsureal.bandcamp.com", "mixcloud": "https://www.mixcloud.com/realsureal/", "website": "https://realsureal.bandcamp.com", "kind": "https://norient.com/podcasts/su-real"}},
+  "eras": [
+   {"from_year": 2014, "to_year": 2023, "sound": "Trap with Indian percussion, field recordings and heavy bass", "tags": ["trap", "desi bass", "Indian percussion"], "source_url": "https://rollingstoneindia.com/su-real-trapistan", "source_name": "Rolling Stone India", "quote": "sounds of battlefields, traditional Indian percussions and heavy basslines"},
+   {"from_year": 2024, "to_year": null, "sound": "Desi club edits: Bollywood baile funk, Panjabi house flips", "tags": ["baile funk", "Miami bass", "Panjabi", "Bollywood edits", "house"], "source_url": "https://realsureal.bandcamp.com/album/rangeela-ep", "source_name": "Bandcamp (Su Real)", "quote": "4x Miami Bass / Baile Funk / Electro flips of Bollywood classics perfect for Holi sets."}
+  ],
+  "sound_tags": [
+   {"tag": "Desi bass", "source_url": "https://theindianmusicdiaries.com/dont-book-su-real-for-sundowners-its-all-turn-up-with-su-real-in-conversation-with-su-real/"},
+   {"tag": "Global bass nano-genres", "source_url": "https://www.thewildcity.com/artists/90-Su Real"},
+   {"tag": "Retro Bollywood vocals and folk instrumentation", "source_url": "https://homegrown.co.in/homegrown-explore/hgsessions-002-su-real-s-420-mix-tape"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "New Delhi Trap Artist Su Real Is Out With His Debut Album 'Trapistan'", "publication": "Rolling Stone India", "url": "https://rollingstoneindia.com/su-real-trapistan", "date_published": "2014-11-11"},
+   {"title": "Su Real, a Pioneer of Indian Trap", "publication": "Norient", "url": "https://norient.com/podcasts/su-real", "date_published": "2017-07-14"},
+   {"title": "Don't book Su Real for \"sundowners\", it's all \"Turn Up\" with Su Real! - In Conversation With Su Real", "publication": "The Indian Music Diaries", "url": "https://theindianmusicdiaries.com/dont-book-su-real-for-sundowners-its-all-turn-up-with-su-real-in-conversation-with-su-real/", "date_published": "2024-02-23"},
+   {"title": "#HGSessions || Su-Real's 420 Mix Tape", "publication": "Homegrown", "url": "https://homegrown.co.in/homegrown-explore/hgsessions-002-su-real-s-420-mix-tape", "date_published": null},
+   {"title": "Exclusive Album Launch: Twerkistan - Su Real", "publication": "Krunk", "url": "https://krunklive.com/exclusive-album-launch-twerkistan-su-real/", "date_published": null}
+  ],
+  "mix_links": [
+   {"title": "Su Real \"In The Mix\" for Nucleya on BBC Asian Network - 07/07/2018", "url": "https://www.mixcloud.com/realsureal/su-real-in-the-mix-for-nucleya-on-bbc-asian-network-07072018/", "year": 2018},
+   {"title": "Su Real's #GULLYHOOD Mixtape Pt. 9 on The Bobby Friction Show, BBC Asian Network - 14/03/2019", "url": "https://www.mixcloud.com/realsureal/su-reals-gullyhood-mixtape-pt-9-on-the-bobby-friction-show-bbc-asian-network-14032019/", "year": 2019},
+   {"title": "Su Real's #GULLYHOOD Mixtape Pt. 8 on The Bobby Friction Show, BBC Asian Network - 10/01/2019", "url": "https://www.mixcloud.com/realsureal/gullyhood-mixtape-pt-8-on-the-bobby-friction-show-bbc-asian-network-10012019/", "year": 2019},
+   {"title": "TRAP-O-WEEN KRUNKCAST (2014)", "url": "https://www.mixcloud.com/realsureal/trap-o-ween-krunkcast/", "year": 2014},
+   {"title": "Wild City 040: Su-Real (Halloween Mix)", "url": "https://www.thewildcity.com/mixes/3058-wild-city-040-su-real-halloween-mix", "year": null}
+  ],
+  "spotify": null,
+  "bio_draft": "Su Real (Suhrid Manchanda) is a producer and DJ based in New Delhi, who moved there from New York in 2008. He became a resident DJ at Delhi club Livingroom and, with Nucleya, was among the first to bring tropical bass, moombahton and trap to India. His debut album Trapistan came out in 2014, and his recent releases are desi club edits such as the Panjabi Party Poppers series.",
+  "bio_sources": ["https://norient.com/podcasts/su-real", "https://rollingstoneindia.com/su-real-trapistan", "https://realsureal.bandcamp.com"],
+  "releases": [
+   {"title": "The Grind", "year": 2013, "release_type": "ep", "label": null, "url": "https://rollingstoneindia.com/su-real-trapistan", "date": null},
+   {"title": "Trapistan", "year": 2014, "release_type": "album", "label": null, "url": "https://rollingstoneindia.com/su-real-trapistan", "date": null},
+   {"title": "PANJABI PARTY POPPERS 1", "year": 2024, "release_type": "ep", "label": null, "url": "https://realsureal.bandcamp.com/album/panjabi-party-poppers-1", "date": "2024-06-23", "bandcamp_id": 2690710854, "bandcamp_type": "album"},
+   {"title": "RANGEELA EP", "year": 2025, "release_type": "ep", "label": null, "url": "https://realsureal.bandcamp.com/album/rangeela-ep", "date": "2025-03-04", "bandcamp_id": 3064304998, "bandcamp_type": "album"},
+   {"title": "PANJABI PARTY POPPERS 2", "year": 2025, "release_type": "ep", "label": null, "url": "https://realsureal.bandcamp.com/album/panjabi-party-poppers-2", "date": "2025-07-30", "bandcamp_id": 3913888357, "bandcamp_type": "album"},
+   {"title": "SHAVA", "year": 2026, "release_type": "single", "label": null, "url": "https://realsureal.bandcamp.com/album/shava", "date": "2026-05-05", "bandcamp_id": 3468085998, "bandcamp_type": "album"},
+   {"title": "PANJABI PARTY POPPERS 3", "year": 2026, "release_type": "ep", "label": null, "url": "https://realsureal.bandcamp.com/album/panjabi-party-poppers-3", "date": "2026-10-07", "bandcamp_id": 4002088262, "bandcamp_type": "album"}
+  ],
+  "ids": {"bandcamp": "https://realsureal.bandcamp.com"},
+  "notes": "Real name Suhrid Manchanda (Norient, Rolling Stone India): do not show as an alias. Norient says he moved from New York to New Delhi in 2008; a CKUT (Montreal campus radio) oral history page also names him as a former funding coordinator, so from_city is unclear and left null. Second album Twerkistan is confirmed by Krunk and Wild City but no release year was confirmed (Krunk page date 2024-04-30 looks like a site migration date, so press date left null). Homegrown page shows 2021-06-08, likely a republish date, left null. Bandcamp also has many remix singles (Brown Rang, Tun Tunak, Humma, Boom Boom etc.) without visible years; not added. Mixcloud has 34 shows; only the first 10 were visible. Spotify not checked."
+ },
+ {
+  "slug": "odd",
+  "identity": "Confirmed only as the NDCR guest: the NDCR #029 YouTube description gives Instagram @oddmusica and a bio (techno, house, progressive with dubby, hypnotic and industrial edges; years of nightlife in Asia and Europe; shared stages with Dubfire, VRIL, Exos, Luigi Tozzi, Marcus Henriksson, Bloody Mary). No other page tied to @oddmusica found.",
+  "south_asian": {"value": "unknown", "evidence": "NDCR description mentions nightlife in Asia and Europe but no city or origin.", "source_url": "https://www.youtube.com/watch?v=8w3SPsPJ_gk"},
+  "profile": {"based_city": null, "from_city": null, "instagram": "oddmusica", "soundcloud": null, "mixcloud": null, "website": null, "kind": "dj", "sources": {"instagram": "https://www.youtube.com/watch?v=8w3SPsPJ_gk", "kind": "https://www.youtube.com/watch?v=8w3SPsPJ_gk"}},
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [], "mix_links": [], "spotify": null,
+  "bio_draft": "Odd is a DJ who mixes techno, house and progressive with dubby atmospheres, hypnotic grooves and industrial edges, shaped by years of nightlife in Asia and Europe. He has shared stages with Dubfire, VRIL, Exos and Luigi Tozzi, and played NDCR #029 in September 2025.",
+  "bio_sources": ["https://www.youtube.com/watch?v=8w3SPsPJ_gk"],
+  "releases": [], "ids": {},
+  "notes": "The only source is the NDCR video description (summarised by the fetch tool, so no exact quote for an era). Do not link to ra.co/dj/odd: that ODD is Daisuke PAK, a techno punk live project based in Japan (Berlin 2001 to 2017), and nothing ties him to @oddmusica. South Asian link unknown; under CCD scope rules this artist may need to stay hidden until a link is shown."
+ },
+ {
+  "slug": "tiffany-quinn",
+  "identity": "Confirmed as the NDCR guest: NDCR #027 description gives Instagram @tiffanyquinn_music and a London bio (Fabric, XOYO, The Jazz Cafe, Night Tales; resident on Voices Radio). EDM Dance Directory and Ents24 list a London DJ Tiffany Quinn at The Jazz Cafe and Night Tales, matching.",
+  "south_asian": {"value": "unknown", "evidence": "London-based per NDCR description; no page on origin or heritage.", "source_url": "https://www.youtube.com/watch?v=zlBtE4OkKxo"},
+  "profile": {"based_city": "London", "from_city": null, "instagram": "tiffanyquinn_music", "soundcloud": null, "mixcloud": null, "website": null, "kind": "dj", "sources": {"based_city": "https://www.youtube.com/watch?v=zlBtE4OkKxo", "instagram": "https://www.youtube.com/watch?v=zlBtE4OkKxo", "kind": "https://www.youtube.com/watch?v=zlBtE4OkKxo"}},
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [], "mix_links": [], "spotify": null,
+  "bio_draft": "Tiffany Quinn is a London-based DJ, producer and radio host who plays house, disco, UK garage and global sounds. She has played Fabric, XOYO, The Jazz Cafe and Night Tales in London, and is a resident on Voices Radio with guest shows on Rinse FM, Foundation FM and Netil Radio.",
+  "bio_sources": ["https://www.youtube.com/watch?v=zlBtE4OkKxo", "https://edmdancedirectory.com/djs/tiffany-quinn"],
+  "releases": [], "ids": {},
+  "notes": "No Voices Radio, Rinse or SoundCloud page for her came up in search, so no mixes added. No South Asian link found; under CCD scope rules she may need to stay hidden unless one is shown. Not D. Tiffany or Tiffany Calver."
+ },
+ {
+  "slug": "cocosova",
+  "identity": "Not confirmed. Only the NDCR #025 set (90s, House & Electronica). NDCR video description could not be read; searches found no Cocosova DJ page.",
+  "south_asian": {"value": "unknown", "evidence": "No page found.", "source_url": null},
+  "profile": {"based_city": null, "from_city": null, "instagram": null, "soundcloud": null, "mixcloud": null, "website": null, "kind": null, "sources": {}},
+  "eras": [], "sound_tags": [], "aliases": [], "press": [], "mix_links": [], "spotify": null,
+  "bio_draft": null, "bio_sources": [], "releases": [], "ids": {},
+  "notes": "Nothing public found. YouTube watch page IPuyu3DNO2w refused. Ask NDCR for the handle."
+ },
+ {
+  "slug": "despierte",
+  "identity": "Not confirmed. Only the NDCR #024 set (UKG, Breaks, Dubstep & Bass). NDCR video description could not be read; searches found no Despierte DJ page.",
+  "south_asian": {"value": "unknown", "evidence": "No page found.", "source_url": null},
+  "profile": {"based_city": null, "from_city": null, "instagram": null, "soundcloud": null, "mixcloud": null, "website": null, "kind": null, "sources": {}},
+  "eras": [], "sound_tags": [], "aliases": [], "press": [], "mix_links": [], "spotify": null,
+  "bio_draft": null, "bio_sources": [], "releases": [], "ids": {},
+  "notes": "Nothing public found. YouTube watch page Rqg0Pom8y_o refused. Ask NDCR for the handle."
+ }
+]

@@ -1,0 +1,479 @@
+[
+ {
+  "slug": "vani",
+  "identity": "Confirmed. The NDCR #011 video description names VANI as Vani Dewan, open-format DJ and neuroscientist based in California, with Instagram @vanidewan and SoundCloud vani-dewan. The RA biography (Vani Dewan (VANI), California, same support list: Jyoty, Zeemuffin, Flowdan, Mastane, KSHMR, DJ ADHD, recent India tour) and the Mixmag Asia interview match. SoundCloud oEmbed for vani-dewan reads 'Neuroscientist & DJ', ig vanidewan.",
+  "eras": [
+   {
+    "from_year": 2026,
+    "to_year": null,
+    "sound": "Open-format sets of afrobeats, baile funk and desi fusion",
+    "tags": [
+     "afrobeats",
+     "baile funk",
+     "desi fusion",
+     "bass house",
+     "hardgroove"
+    ],
+    "source_url": "https://mixmag.asia/feature/vani-dewan-neuroscientist-dj-brain-research-dancefloor-interview",
+    "source_name": "Mixmag Asia",
+    "quote": "an open-format DJ blending afrobeats, baile funk, desi fusion, arabi, bass house, and hardgroove"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Desi fusion",
+    "source_url": "https://mixmag.asia/feature/vani-dewan-neuroscientist-dj-brain-research-dancefloor-interview"
+   },
+   {
+    "tag": "Afrohouse and regional African electronic music",
+    "source_url": "https://www.youtube.com/watch?v=OMyAz1oDWKc"
+   },
+   {
+    "tag": "Baile funk",
+    "source_url": "https://de.ra.co/dj/vani/biography"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Vani Dewan is the neuroscientist-DJ explaining why your brain loves the dancefloor",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/feature/vani-dewan-neuroscientist-dj-brain-research-dancefloor-interview",
+    "date_published": "2026-09-03"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "VANI (Vani Dewan) is an open-format DJ based in California who grew up in Los Angeles and blends afrobeats, baile funk, desi fusion, bass house and hardgroove. She is also a doctoral researcher at USC's Brain and Creativity Institute, and has supported Jyoty, Zeemuffin, Flowdan, Mastane, KSHMR and DJ ADHD in the US and Asia, including an India tour.",
+  "bio_sources": [
+   {
+    "fact": "open-format DJ based in California",
+    "url": "https://de.ra.co/dj/vani/biography"
+   },
+   {
+    "fact": "grew up in Los Angeles; doctoral researcher at USC's Brain and Creativity Institute; genres",
+    "url": "https://mixmag.asia/feature/vani-dewan-neuroscientist-dj-brain-research-dancefloor-interview"
+   },
+   {
+    "fact": "support list and India tour",
+    "url": "https://de.ra.co/dj/vani/biography"
+   }
+  ],
+  "releases": [],
+  "ids": {
+   "ra": "https://ra.co/dj/vani"
+  },
+  "notes": "No releases found (she is a DJ). No other mixes found beyond the NDCR set; search budget ran out before a deeper look at her SoundCloud. The NDCR description also lists Priya Ragu among acts she opened for or played with; RA does not. Not to be confused with Vani Vachi (Prague/Whole festival) or 'Served by VaNi' (South Africa). Mixmag Asia says her debut HEAT MAP party was in LA on 12 Sep 2026.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Mixmag Asia quotes her: 'Everything I do is in reverence to my South Asian identity'; she grew up on Bollywood, classical and Sufi music.",
+   "source_url": "https://mixmag.asia/feature/vani-dewan-neuroscientist-dj-brain-research-dancefloor-interview"
+  },
+  "profile": {
+   "based_city": "California, USA (state only; she grew up in Los Angeles)",
+   "from_city": "Los Angeles",
+   "instagram": "vanidewan",
+   "soundcloud": "https://soundcloud.com/vani-dewan",
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://de.ra.co/dj/vani/biography",
+    "from_city": "https://mixmag.asia/feature/vani-dewan-neuroscientist-dj-brain-research-dancefloor-interview",
+    "instagram": "https://www.youtube.com/watch?v=OMyAz1oDWKc",
+    "soundcloud": "https://www.youtube.com/watch?v=OMyAz1oDWKc",
+    "kind": "https://de.ra.co/dj/vani/biography"
+   }
+  }
+ },
+ {
+  "slug": "rafiki",
+  "identity": "Probable, not proven. The NDCR #010 description could not be read (YouTube fetch blocked), so there is no handle. NDCR billed RAFIKI as 'Acid, Breaks, House, Techno', which is word for word how RA, Krunk and SoundCloud describe Rafiki (IN), the Mumbai alias of Sohail Arora (founder of Krunk), and he is an active Indian scene DJ who also plays across South Asia (Kathmandu, Galle). Param should confirm against the NDCR video description or Instagram before publishing.",
+  "eras": [
+   {
+    "from_year": 2017,
+    "to_year": null,
+    "sound": "House, techno and electro with broken beat influence",
+    "tags": [
+     "house",
+     "techno",
+     "electro",
+     "breaks",
+     "acid"
+    ],
+    "source_url": "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture",
+    "source_name": "Mixmag",
+    "quote": "Rafiki began in 2017 to explore house, techno and electro-heavy sounds"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Somewhere between a straight and broken beat",
+    "source_url": "https://es-mx.ra.co/dj/rafikiin/biography"
+   },
+   {
+    "tag": "Steely breakbeats and psychedelic effects",
+    "source_url": "https://ra.co/reviews/35687"
+   },
+   {
+    "tag": "Broken beat, jungle, breaks and house",
+    "source_url": "https://mixmag.asia/read/rafiki-squidworks-tribute-to-mumbai-suburb-bandra-good-luck-ep-new-releases"
+   }
+  ],
+  "aliases": [
+   {
+    "name": "EZ Riser",
+    "note": "earlier, more bass-centric alias",
+    "source_url": "https://mixmag.asia/read/premiere-rafiki-new-shifts-ep-walk-the-talk-single-premiere"
+   }
+  ],
+  "press": [
+   {
+    "title": "The Mix 019: Rafiki",
+    "publication": "Mixmag",
+    "url": "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture",
+    "date_published": "2024-06-26"
+   },
+   {
+    "title": "Rafiki - 5 AM Dub (single review)",
+    "publication": "Resident Advisor",
+    "url": "https://ra.co/reviews/35687",
+    "date_published": "2023-09-12"
+   },
+   {
+    "title": "Premiere: Rafiki, New Shifts EP, 'Walk the Talk'",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/premiere-rafiki-new-shifts-ep-walk-the-talk-single-premiere",
+    "date_published": "2023-07-31"
+   },
+   {
+    "title": "Rafiki and Squidworks pay tribute to Bandra on Good Luck EP",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/rafiki-squidworks-tribute-to-mumbai-suburb-bandra-good-luck-ep-new-releases",
+    "date_published": "2025-06-18"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Rafiki | Boiler Room x Ballantine's True Music Studios Mumbai: Krunk Presents",
+    "url": "https://soundcloud.com/platform/rafiki-krunk-presents-kiss",
+    "year": null
+   }
+  ],
+  "spotify": "https://open.spotify.com/artist/3ROQdOAplnJWKboYPuAbik",
+  "bio_draft": "Rafiki is the DJ and producer alias of Sohail Arora, founder of the Mumbai events and artist management company Krunk and its label Krunk Kulture. Based in Mumbai, he plays acid, breaks, house and techno, has played Magnetic Fields and NH7 Weekender, and has released on Welt Discos, Permanent Vacation and Krunk Kulture.",
+  "bio_sources": [
+   {
+    "fact": "alias of Sohail Arora, founder of Krunk; Mumbai; acid, breaks, house, techno; Magnetic Fields, NH7 Weekender; Welt Discos and Krunk Kulture",
+    "url": "https://es-mx.ra.co/dj/rafikiin/biography"
+   },
+   {
+    "fact": "Krunk Kulture is his imprint; Permanent Vacation release",
+    "url": "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture"
+   }
+  ],
+  "releases": [
+   {
+    "title": "The Source",
+    "year": 2023,
+    "release_type": "ep",
+    "label": "Welt Discos",
+    "url": "https://buttondown.com/joedelon/archive/welt-discos-rafiki-the-source-ep",
+    "date": null
+   },
+   {
+    "title": "New Shifts",
+    "year": 2023,
+    "release_type": "ep",
+    "label": "Krunk Kulture",
+    "url": "https://mixmag.asia/read/premiere-rafiki-new-shifts-ep-walk-the-talk-single-premiere",
+    "date": "2023-08-09"
+   },
+   {
+    "title": "5 AM Dub",
+    "year": 2023,
+    "release_type": "single",
+    "label": "Krunk Kulture",
+    "url": "https://ra.co/reviews/35687",
+    "date": null
+   },
+   {
+    "title": "Anand Mahal",
+    "year": 2024,
+    "release_type": "ep",
+    "label": "Permanent Vacation",
+    "url": "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture",
+    "date": null
+   },
+   {
+    "title": "Good Luck (with Squidworks)",
+    "year": 2025,
+    "release_type": "ep",
+    "label": "Krunk Kulture",
+    "url": "https://rafikisounds.bandcamp.com/album/good-luck",
+    "date": "2025-06-13",
+    "bandcamp_id": 2339875409,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Funky Acid Party (on Jaljeera, Flavours of the East)",
+    "year": 2021,
+    "release_type": "compilation",
+    "label": "Krunk Kulture",
+    "url": "https://krunklive.com/artist/rafiki/",
+    "date": "2021-11-12"
+   },
+   {
+    "title": "Point of View, Vol. 1 (An Acid Experiment)",
+    "year": 2021,
+    "release_type": "compilation",
+    "label": "Regenerate Music",
+    "url": "https://krunklive.com/artist/rafiki/",
+    "date": "2021-02-22"
+   }
+  ],
+  "ids": {
+   "ra": "https://ra.co/dj/rafikiin",
+   "beatport": "https://www.beatport.com/artist/rafiki-in/912625",
+   "bandcamp": "https://rafikisounds.bandcamp.com"
+  },
+  "notes": "Identity rests on the genre match and the Indian scene; the NDCR video description could not be read, so confirm before publishing. Mixmag also names Bay Beat Collective as his former bass crew (Megapolis EP, 2012, a group release, left out). Krunk artist page bio (older) says he was working on a first EP, so it predates 2023. Mix 019 on Mixmag has no embed. A Mixcloud upload 'Rafiki - Funny Bone' on the krunk2 account was not confirmed as a mix, left out.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "RA biography: Rafiki is the alter ego of Sohail Arora, 'Based out of Mumbai'.",
+   "source_url": "https://es-mx.ra.co/dj/rafikiin/biography"
+  },
+  "profile": {
+   "based_city": "Mumbai",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/rafikisounds/",
+   "soundcloud": "https://soundcloud.com/rafikisoundsindia",
+   "mixcloud": null,
+   "website": "https://krunklive.com/artist/rafiki/",
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://es-mx.ra.co/dj/rafikiin/biography",
+    "instagram": "https://krunklive.com/artist/rafiki/",
+    "soundcloud": "https://krunklive.com/artist/rafiki/",
+    "website": "https://krunklive.com/artist/rafiki/",
+    "kind": "https://es-mx.ra.co/dj/rafikiin/biography"
+   }
+  }
+ },
+ {
+  "slug": "dameer",
+  "identity": "Confirmed. The NDCR #006 description: 24-year-old DJ from Dhaka now in Montreal, former indie rock singer who moved from guitar to USB, runs Bengali raves, Instagram dameer.dk, SoundCloud dameerofficial. SceneNoise Select 263 calls Dameer a Montreal-based Bangladeshi singer, producer and DJ born in Dhaka; Wikipedia gives Dameer Khan, born 2000 in Dhaka, McGill graduate (Montreal); the Daily Star says he DJs as DJ Dameer. SoundCloud oEmbed of dameerofficial: 'DHAKA/MONTREAL. DESHI. AKA DAMEER'.",
+  "eras": [
+   {
+    "from_year": 2018,
+    "to_year": 2023,
+    "sound": "Synth-led indie pop singles in English and Bangla",
+    "tags": [
+     "indie pop",
+     "80s synth",
+     "singer-songwriter"
+    ],
+    "source_url": "https://diymag.com/feature/get-to-know-dameer",
+    "source_name": "DIY",
+    "quote": "smooth AF 80s-synth-infused indie bop"
+   },
+   {
+    "from_year": 2024,
+    "to_year": null,
+    "sound": "Techno sets with remixed Bengali classics",
+    "tags": [
+     "techno",
+     "Bengali classics",
+     "hip-hop",
+     "DJ"
+    ],
+    "source_url": "https://scenenoise.com/Sets/Select-263-Mixed-by-Dameer",
+    "source_name": "SceneNoise",
+    "quote": "a versatile full-throttle techno set ... featuring original remixes of 70s, 80s, and 90s Bengali classics, spanning rap, hip-hop and more"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Inspired by 80s and 90s Bangladeshi music",
+    "source_url": "https://scenenoise.com/Sets/Select-263-Mixed-by-Dameer"
+   },
+   {
+    "tag": "House, techno and Bangladeshi classic rock",
+    "source_url": "https://www.youtube.com/watch?v=nbsOOziPFYI"
+   }
+  ],
+  "aliases": [
+   {
+    "name": "Conscience Khan",
+    "note": "name on his SoundCloud profile (dameerofficial), which reads 'AKA DAMEER'",
+    "source_url": "https://soundcloud.com/dameerofficial"
+   },
+   {
+    "name": "DJ Dameer",
+    "note": "name he DJs under",
+    "source_url": "https://tds-images.thedailystar.net/entertainment/music/news/dameer-steps-out-his-khancha-3958206"
+   }
+  ],
+  "press": [
+   {
+    "title": "Get To Know... Dameer",
+    "publication": "DIY",
+    "url": "https://diymag.com/feature/get-to-know-dameer",
+    "date_published": "2021-01-15"
+   },
+   {
+    "title": "Angelphroot & Dameer are shaping a new wave of South Asian sounds",
+    "publication": "CanCulture",
+    "url": "https://canculturemag.com/music/angelphroot-dameer-are-shaping-a-new-wave-of-south-asian-sounds/",
+    "date_published": "2024-12-16"
+   },
+   {
+    "title": "Dameer steps out of his 'Khancha'",
+    "publication": "The Daily Star",
+    "url": "https://tds-images.thedailystar.net/entertainment/music/news/dameer-steps-out-his-khancha-3958206",
+    "date_published": null
+   },
+   {
+    "title": "Select 263: Mixed by Dameer",
+    "publication": "SceneNoise",
+    "url": "https://scenenoise.com/Sets/Select-263-Mixed-by-Dameer",
+    "date_published": "2024-07-18"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Select 263: Mixed by Dameer",
+    "url": "https://soundcloud.com/scenenoise/select-263-mixed-by-dameer",
+    "year": 2024
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Dameer (Dameer Khan) is a Bangladeshi singer, producer and DJ, born in Dhaka and now based in Montreal. He started as an indie singer-songwriter, signed to the German label Majestic Casual at 17, and now DJs house and techno sets that remix 70s to 90s Bengali classics and runs Bengali raves.",
+  "bio_sources": [
+   {
+    "fact": "Bangladeshi singer, producer and DJ, born in Dhaka, based in Montreal; techno sets remixing Bengali classics",
+    "url": "https://scenenoise.com/Sets/Select-263-Mixed-by-Dameer"
+   },
+   {
+    "fact": "signed to Majestic Casual at 17",
+    "url": "https://en.wikipedia.org/wiki/Dameer_(singer)"
+   },
+   {
+    "fact": "indie rock beginnings, house and techno, Bengali raves",
+    "url": "https://www.youtube.com/watch?v=nbsOOziPFYI"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Wikipedia says he is based in Toronto; NDCR and SceneNoise (2024) say Montreal. Wikipedia lists singles from 2018 (Easier) to 2025 (Kancha) and the 2021 EP For We Are Distant; not added as releases because I had no primary page (Bandcamp, label, Discogs) open for them; search budget ran out. CanCulture (Dec 2024) says his focus is hyperpop and a more futuristic sound. Homegrown (2024-09-24) names him among artists Bhai Bhai Soundsystem supported. Spotify not confirmed. ids left empty.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Born and raised in Dhaka, Bangladesh; now based in Montreal.",
+   "source_url": "https://scenenoise.com/Sets/Select-263-Mixed-by-Dameer"
+  },
+  "profile": {
+   "based_city": "Montreal",
+   "from_city": "Dhaka",
+   "instagram": "dameer.dk",
+   "soundcloud": "https://soundcloud.com/dameerofficial",
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://scenenoise.com/Sets/Select-263-Mixed-by-Dameer",
+    "from_city": "https://scenenoise.com/Sets/Select-263-Mixed-by-Dameer",
+    "instagram": "https://www.youtube.com/watch?v=nbsOOziPFYI",
+    "soundcloud": "https://www.youtube.com/watch?v=nbsOOziPFYI",
+    "kind": "https://tds-images.thedailystar.net/entertainment/music/news/dameer-steps-out-his-khancha-3958206"
+   }
+  }
+ },
+ {
+  "slug": "prav",
+  "identity": "Not confirmed. The NDCR #005 video description could not be read (YouTube fetch blocked), so there is no handle or city.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Candidate only, not used: P R A V (Mixcloud Pravyeezy), a Singapore turntablist who plays hip hop, R&B, trap and bass and co-curates the .Wav(y) hip hop night (https://www.mixcloud.com/Pravyeezy/). The genres fit NDCR's 'Hip-Hop, RnB, Future Beats' and NDCR hosts Singapore guests, but nothing ties him to the set. Esquire Singapore also ran 'Next Up... Prav' (not opened). Check the NDCR video description for the handle.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "",
+   "source_url": null
+  },
+  "profile": {}
+ },
+ {
+  "slug": "ritz",
+  "identity": "Partly confirmed from the NDCR #004 video description only: the guest is Ritzzz, a woman DJ who has played Echoes of Earth (Bangalore) and Circle of Love (Chennai). No handle in the description, and no other page about her found before the search budget ran out.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "House, electronica and deep disco shaped by 90s dance music",
+    "source_url": "https://www.youtube.com/watch?v=C-WCGvGvDto"
+   },
+   {
+    "tag": "Breaks and acid",
+    "source_url": "https://www.youtube.com/watch?v=C-WCGvGvDto"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Ritzzz is a DJ who plays house, electronica and deep disco shaped by 1990s dance music, with breaks and acid in her sets. She has played Echoes of Earth in Bangalore and Circle of Love in Chennai.",
+  "bio_sources": [
+   {
+    "fact": "sound, breaks and acid, Echoes of Earth and Circle of Love",
+    "url": "https://www.youtube.com/watch?v=C-WCGvGvDto"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "The NDCR description spells the name Ritzzz; our record says Ritz. Not to be confused with DJ Ritzzze (Bolly remixes, t2online) or Ritviz. Source for the bio is the station's own video description only.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "Plays Indian festivals (Bangalore, Chennai) per the NDCR description, but no page states where she is based or from.",
+   "source_url": "https://www.youtube.com/watch?v=C-WCGvGvDto"
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "kind": "https://www.youtube.com/watch?v=C-WCGvGvDto"
+   }
+  }
+ },
+ {
+  "slug": "shasha",
+  "identity": "Not confirmed. The NDCR #002 video description could not be read (YouTube fetch blocked); the batch's Instagram value 'new' is not a real handle.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Candidate only, not used: Magnetic Fields lists an artist Shasha from India, a DJ and producer with house grooves and 'a special touch of jazz and soul', playing deep house, underground house, afro, disco, breaks and electro (https://www.magneticfields.in/artists/shasha). Deep house overlaps with NDCR's 'House Music, Deep House, Tech House', but nothing ties the two. Confirm via the NDCR description or Instagram before using.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "",
+   "source_url": null
+  },
+  "profile": {}
+ }
+]

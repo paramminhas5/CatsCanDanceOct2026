@@ -1,0 +1,558 @@
+[
+ {
+  "slug": "phreshprince",
+  "identity": "Only anchor is the HouseCats Ep.020 video (uploaded 27 Oct 2025), whose description gives Instagram @the_phreshprince. No other page checked.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing beyond the HouseCats set. The description has no bio or city. The shared web search budget for this run ran out before this artist could be searched; only the HouseCats video description was read. Worth a follow-up pass.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "No page found stating where they are based or from.",
+   "source_url": null
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": "the_phreshprince",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {
+    "instagram": "https://www.youtube.com/watch?v=Fo5RIICmamc"
+   }
+  }
+ },
+ {
+  "slug": "baba",
+  "identity": "Only anchor is the HouseCats Ep.018 video (uploaded 18 Oct 2025), whose description gives Instagram @baba___music. No other page checked.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing beyond the HouseCats set. Generic name, so any future match must tie to @baba___music. The shared web search budget for this run ran out before this artist could be searched; only the HouseCats video description was read. Worth a follow-up pass.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "No page found stating where they are based or from.",
+   "source_url": null
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": "baba___music",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {
+    "instagram": "https://www.youtube.com/watch?v=wytIHU-iO9g"
+   }
+  }
+ },
+ {
+  "slug": "fringe-mechanics",
+  "identity": "Magnetic Fields Nomads 2026 artist page names Bhavya Singh as Fringe Mechanics, New Delhi, links Instagram fringe.mechanics (same handle as the HouseCats video); the NDCR #081 description also names Bhavya Singh, New Delhi.",
+  "eras": [
+   {
+    "from_year": 2026,
+    "to_year": null,
+    "sound": "Global sounds, psychedelic textures, organic basslines",
+    "tags": [
+     "balearic",
+     "psychedelic",
+     "global sounds"
+    ],
+    "source_url": "https://nomads.magneticfields.in/artists/fringe-mechanics",
+    "source_name": "Magnetic Fields Nomads",
+    "quote": "oriented towards an assortment of global sounds, psychedelic textures, and low-slung organic basslines"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Texture over genre",
+    "source_url": "https://nomads.magneticfields.in/artists/fringe-mechanics"
+   },
+   {
+    "tag": "Acid-laced grooves",
+    "source_url": "https://nomads.magneticfields.in/artists/fringe-mechanics"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Fringe Mechanics is the New Delhi selector Bhavya Singh. He was a regular at Delhi's Medium Rare (now No More Parties) gatherings and made his Magnetic Fields debut at Magnetic Fields Nomads in February 2026.",
+  "bio_sources": [
+   "https://nomads.magneticfields.in/artists/fringe-mechanics"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Era line describes his Magnetic Fields Nomads set specifically (Feb 2026); the NDCR #081 title lists house, new beat, EBM, post-punk and Balearic. No mixes outside HouseCats/NDCR, no releases, no press found. The shared search budget ran out before a second search for SoundCloud/Mixcloud.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Magnetic Fields describes him as New Delhi-based Bhavya Singh.",
+   "source_url": "https://nomads.magneticfields.in/artists/fringe-mechanics"
+  },
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/fringe.mechanics/",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "selector",
+   "sources": {
+    "based_city": "https://nomads.magneticfields.in/artists/fringe-mechanics",
+    "instagram": "https://nomads.magneticfields.in/artists/fringe-mechanics",
+    "kind": "https://nomads.magneticfields.in/artists/fringe-mechanics"
+   }
+  }
+ },
+ {
+  "slug": "ukato",
+  "identity": "Wild City artist page and news (Utkarsh Singh, New Delhi) link Instagram ukato.music, the same handle as the HouseCats and NDCR #013 descriptions; SoundCloud ukatomusic and Bandcamp ukato match. Drum and bass/breaks sound matches the set titles.",
+  "eras": [
+   {
+    "from_year": 2021,
+    "to_year": 2025,
+    "sound": "Techy, modern drum and bass with synth design",
+    "tags": [
+     "drum and bass",
+     "neurofunk",
+     "sound design"
+    ],
+    "source_url": "https://ukf.com/read/your-tribe-defines-your-vibe-in-conversation-with-ukato",
+    "source_name": "UKF",
+    "quote": "Forward-thinking, techy, and a true encapsulation of the modern drum and bass sound"
+   },
+   {
+    "from_year": 2026,
+    "to_year": null,
+    "sound": "Garage rhythms, chopped jungle breaks and IDM",
+    "tags": [
+     "garage",
+     "jungle",
+     "IDM",
+     "breakbeat"
+    ],
+    "source_url": "https://www.thewildcity.com/news/21585-ukato-breaks-into-garage-jungle-idm-on-new-ep-pay-attention",
+    "source_name": "Wild City",
+    "quote": "chopped up breakbeats of jungle"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Dark, heavyweight underground music",
+    "source_url": "https://1-more-thing.co.uk/audio/1-more-mix-043-ukato/"
+   },
+   {
+    "tag": "Dynamic drum work and deep, emotive atmospheres",
+    "source_url": "https://www.thewildcity.com/artists/21358-UKato"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "\"Your tribe defines your vibe\": In Conversation With UKato",
+    "publication": "UKF",
+    "url": "https://ukf.com/read/your-tribe-defines-your-vibe-in-conversation-with-ukato",
+    "date_published": "2022-01-14"
+   },
+   {
+    "title": "UKato Breaks Into Garage, Jungle & IDM On New EP 'Pay Attention'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/21585-ukato-breaks-into-garage-jungle-idm-on-new-ep-pay-attention",
+    "date_published": "2026-03-11"
+   },
+   {
+    "title": "1 More Mix 043: UKato",
+    "publication": "1 More Thing",
+    "url": "https://1-more-thing.co.uk/audio/1-more-mix-043-ukato/",
+    "date_published": "2023-03-28"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Wild City #253: UKato",
+    "url": "https://www.mixcloud.com/WildCity/wild-city-253-ukato/",
+    "year": 2025
+   },
+   {
+    "title": "Wild City #253: UKato",
+    "url": "https://soundcloud.com/thewildcity/wild-city-253-ukato",
+    "year": 2025
+   },
+   {
+    "title": "1 More Mix 043: UKato",
+    "url": "https://1-more-thing.co.uk/audio/1-more-mix-043-ukato/",
+    "year": 2023
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "UKato is Utkarsh Singh, a New Delhi producer and DJ working in breakbeat-led bass music and drum and bass. His Aether EP came out on RAM Records' sister label Program in 2021, and he appeared on the RAM Records Annual 2022. He co-runs the nightlife agency Backdoor Parade with Kreon.",
+  "bio_sources": [
+   "https://www.thewildcity.com/artists/21358-UKato",
+   "https://www.thewildcity.com/news/21585-ukato-breaks-into-garage-jungle-idm-on-new-ep-pay-attention",
+   "https://ukf.com/read/your-tribe-defines-your-vibe-in-conversation-with-ukato",
+   "https://1-more-thing.co.uk/audio/1-more-mix-043-ukato/"
+  ],
+  "releases": [
+   {
+    "title": "Aether",
+    "year": 2021,
+    "release_type": "ep",
+    "label": "Program (RAM Records)",
+    "url": "https://ukf.com/read/your-tribe-defines-your-vibe-in-conversation-with-ukato",
+    "date": null
+   },
+   {
+    "title": "Momentine",
+    "year": 2022,
+    "release_type": "compilation",
+    "label": "RAM Records",
+    "url": "https://ukf.com/read/your-tribe-defines-your-vibe-in-conversation-with-ukato",
+    "date": null
+   },
+   {
+    "title": "Premonition (with Three Oscillators)",
+    "year": 2023,
+    "release_type": "single",
+    "label": null,
+    "url": "https://ukato.bandcamp.com/track/ukato-three-oscillators-premonition",
+    "date": "2023-03-31",
+    "bandcamp_id": 1860736472,
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Hanumankind - On The Radar Freestyle (UKato Remix)",
+    "year": 2024,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://ukato.bandcamp.com/track/hanumankind-on-the-radar-freestyle-ukato-remix",
+    "date": "2024-11-04",
+    "bandcamp_id": 1881821852,
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Fred Again x Skepta x Plaqueboymax - Victory Lap (UKato x Norbu Rework)",
+    "year": 2025,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://ukato.bandcamp.com/track/fred-again-x-skepta-x-plaqueboymax-victory-lap-ukato-x-norbu-rework",
+    "date": "2025-06-22",
+    "bandcamp_id": 3820365099,
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Pay Attention",
+    "year": 2026,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://www.thewildcity.com/news/21585-ukato-breaks-into-garage-jungle-idm-on-new-ep-pay-attention",
+    "date": null,
+    "bandcamp_id": 128372228,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Reble - Praying Mantis (UKato & Three Oscillators Bootleg)",
+    "year": 2026,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://ukato.bandcamp.com/track/reble-praying-mantis-ukato-three-oscillators-bootleg",
+    "date": "2026-06-15",
+    "bandcamp_id": 2562913491,
+    "bandcamp_type": "track"
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://ukato.bandcamp.com/"
+  },
+  "notes": "Label for Aether differs: UKF and 1 More Thing say Program (RAM's sister label), Wild City news says RAM Records; 1 More Thing dates Delhi Shuffler (from Aether) to late 2021. Bandcamp location says Gurugram while Wild City and 1 More Thing say New Delhi/Delhi. Pay Attention bandcamp_id comes from the Wild City embed (album=128372228); its Bandcamp page URL was not opened. The Victory Lap rework and Praying Mantis bootleg are unofficial edits. SoundCloud bio lists Vision, RAM, Alpha Pup, Trap City, Disco Wax and 2-Dutch; Beatport/Discogs not checked (search budget ran out). Earlier styles per UKF: house/trap/EDM from 2014, bass house around 2017, no exact quote kept.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Wild City: 'Hailing from New Delhi, India'.",
+   "source_url": "https://www.thewildcity.com/artists/21358-UKato"
+  },
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": "New Delhi",
+   "instagram": "https://www.instagram.com/ukato.music/",
+   "soundcloud": "https://soundcloud.com/ukatomusic",
+   "mixcloud": null,
+   "website": null,
+   "kind": "producer",
+   "sources": {
+    "based_city": "https://www.thewildcity.com/artists/21358-UKato",
+    "from_city": "https://www.thewildcity.com/artists/21358-UKato",
+    "instagram": "https://www.thewildcity.com/artists/21358-UKato",
+    "soundcloud": "https://www.thewildcity.com/artists/21358-UKato",
+    "kind": "https://www.thewildcity.com/artists/21358-UKato"
+   }
+  }
+ },
+ {
+  "slug": "ashna",
+  "identity": "Only anchor is the HouseCats Ep.013 video (uploaded 14 Sep 2025), whose description gives Instagram @ashnamalik_music. No other page checked.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing beyond the HouseCats set (acid house, minimal house). Description has no bio or city. The shared web search budget for this run ran out before this artist could be searched; only the HouseCats video description was read. Worth a follow-up pass.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "No page found stating where they are based or from.",
+   "source_url": null
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": "ashnamalik_music",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {
+    "instagram": "https://www.youtube.com/watch?v=q7aC1Y21HXc"
+   }
+  }
+ },
+ {
+  "slug": "raj",
+  "identity": "Only anchor is the HouseCats Ep.012 video (uploaded 29 Aug 2025), whose description gives Instagram @Rajkanwarsodhi. No other page checked.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing beyond the HouseCats set. Possible same person as 'Sodhi' (HouseCats Ep.02, Afro grooves) given the Instagram handle Rajkanwarsodhi, not confirmed; check before merging. The shared web search budget for this run ran out before this artist could be searched; only the HouseCats video description was read. Worth a follow-up pass.",
+  "south_asian": {
+   "value": "unknown",
+   "evidence": "No page found stating where they are based or from.",
+   "source_url": null
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": "Rajkanwarsodhi",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {
+    "instagram": "https://www.youtube.com/watch?v=GdZLYuP7Z4A"
+   }
+  }
+ },
+ {
+  "slug": "kalbaisakhi",
+  "identity": "Rolling Stone India (2025) names Vibhu Singh as Kalbaisakhi and says he co-runs New Delhi Community Radio; NDCR #001 description gives Instagram kalbaisakhi and SoundCloud kalbaisakhimusic (oEmbed shows profile 'Kalbaisakhi', @kalbaisakhi). Platform, Savaal, High On Score and The Outsiders all name Vibhu Singh, Delhi.",
+  "eras": [
+   {
+    "from_year": 2020,
+    "to_year": 2022,
+    "sound": "Instrumental lo-fi, hip hop, soul and chillwave",
+    "tags": [
+     "lo-fi",
+     "hip hop",
+     "chillwave",
+     "instrumental"
+    ],
+    "source_url": "https://www.savaalmagazine.com/post/kalbaisakhi-artist-spotlight",
+    "source_name": "Savaal Magazine",
+    "quote": "Tunnels is a multi genre experience that takes you through genres like Hip-Hop, Soul, Lofi, Chillwave"
+   },
+   {
+    "from_year": 2023,
+    "to_year": null,
+    "sound": "Dusty samples and hard drums, house and garage",
+    "tags": [
+     "house",
+     "UK garage",
+     "bass",
+     "regional edits"
+    ],
+    "source_url": "https://www.platform-mag.com/music/kalbaisakhi.html",
+    "source_name": "Platform",
+    "quote": "Combining dusty samples with hard knocking drums"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "East-meets-West sound",
+    "source_url": "https://www.youtube.com/watch?v=cbCS6fNGKoM"
+   },
+   {
+    "tag": "Indian instruments and samples",
+    "source_url": "https://www.theoutsiders.in/kalbaisakhi"
+   },
+   {
+    "tag": "Chaotic sound",
+    "source_url": "https://rollingstoneindia.com/future-of-music-2025/kal-baisakhi"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Kalbaisakhi Was Never Meant to be Quiet",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/future-of-music-2025/kal-baisakhi",
+    "date_published": "2025-04-24"
+   },
+   {
+    "title": "Kalbaisakhi",
+    "publication": "Platform",
+    "url": "https://www.platform-mag.com/music/kalbaisakhi.html",
+    "date_published": "2023-01-11"
+   },
+   {
+    "title": "Drenched in Tunes",
+    "publication": "The Outsiders",
+    "url": "https://www.theoutsiders.in/kalbaisakhi",
+    "date_published": "2024-01-16"
+   },
+   {
+    "title": "Kalbaisakhi's EP Tunnels allows producer Vibhu Singh to flaunt his multi-genre instrumental prowess",
+    "publication": "High On Score",
+    "url": "https://highonscore.com/?p=13216",
+    "date_published": "2021-01-12"
+   },
+   {
+    "title": "Kalbaisakhi | Artist Spotlight",
+    "publication": "Savaal Magazine",
+    "url": "https://www.savaalmagazine.com/post/kalbaisakhi-artist-spotlight",
+    "date_published": "2021-01-13"
+   }
+  ],
+  "mix_links": [],
+  "spotify": "https://open.spotify.com/artist/0GpnIJfvw6GV1WMlQXTSA5",
+  "bio_draft": "Kalbaisakhi is the Delhi producer and DJ Vibhu Singh, who started with lo-fi and hip hop instrumentals on the 2020 EP Tunnels and later moved to house, UK garage and bass along with Bollywood and Punjabi edits. He spent time in London's rave scene and co-runs New Delhi Community Radio.",
+  "bio_sources": [
+   "https://rollingstoneindia.com/future-of-music-2025/kal-baisakhi",
+   "https://www.savaalmagazine.com/post/kalbaisakhi-artist-spotlight",
+   "https://www.theoutsiders.in/kalbaisakhi",
+   "https://www.platform-mag.com/music/kalbaisakhi.html"
+  ],
+  "releases": [
+   {
+    "title": "Tunnels",
+    "year": 2020,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://www.savaalmagazine.com/post/kalbaisakhi-artist-spotlight",
+    "date": "2020-12-25"
+   },
+   {
+    "title": "Ebb & Flow (feat. Shreya Gupta)",
+    "year": 2021,
+    "release_type": "single",
+    "label": null,
+    "url": "https://www.savaalmagazine.com/post/lend-your-ears-to-ebb-flow-by-kalbaisakhi",
+    "date": "2021-05-21"
+   }
+  ],
+  "ids": {},
+  "notes": "Savaal (Jan 2021) and High On Score describe Kalbaisakhi as a Delhi duo (Vibhu Singh and Vikramaditya) at the time of Tunnels, with Vibhu as producer; later sources treat it as his solo project. Spotify id comes from Music Metrics Vault (names Vibhu Singh, Delhi, and says based in London; that data is marked possibly outdated, and Rolling Stone India 2025 says he is back in India). Rolling Stone India also mentions a 'Yeh Mera Dil' rework with Lush Lata and work with Kimeraa, no dates. bandcamp.com/klbski is a fan account, not an artist page. No other mixes found before the search budget ran out.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "Rolling Stone India: Vibhu Singh, roots in Delhi, now back in India running a community radio show.",
+   "source_url": "https://rollingstoneindia.com/future-of-music-2025/kal-baisakhi"
+  },
+  "profile": {
+   "based_city": "Delhi",
+   "from_city": "Delhi",
+   "instagram": "kalbaisakhi",
+   "soundcloud": "https://soundcloud.com/kalbaisakhimusic",
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.youtube.com/watch?v=cbCS6fNGKoM",
+    "from_city": "https://rollingstoneindia.com/future-of-music-2025/kal-baisakhi",
+    "instagram": "https://www.youtube.com/watch?v=cbCS6fNGKoM",
+    "soundcloud": "https://www.youtube.com/watch?v=cbCS6fNGKoM",
+    "kind": "https://rollingstoneindia.com/future-of-music-2025/kal-baisakhi"
+   }
+  }
+ },
+ {
+  "slug": "tina-von-kugler",
+  "identity": "NDCR #084 description gives Instagram @tinavonkugler and describes an Italian DJ hosting KOX Radio on THF Radio; RA profile ra.co/dj/tinavonkugler links the same Instagram and SoundCloud tinavonkugler, and the SoundCloud oEmbed bio says Italian DJ based in Berlin.",
+  "eras": [
+   {
+    "from_year": 2023,
+    "to_year": null,
+    "sound": "Fast, groovy techno with ghetto-funk, acid and electro",
+    "tags": [
+     "techno",
+     "acid",
+     "electro",
+     "ghetto-funk"
+    ],
+    "source_url": "https://events.musicofourdesire.com/artist/tina-von-kugler",
+    "source_name": "Music of Our Desire",
+    "quote": "fast, groovy techno with ghetto-funk, acid, and electro influences"
+   }
+  ],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Tina von Kugler is an Italian DJ, radio host and curator based in Berlin, DJing since 2023. She co-founded the collective Klub Ostkreuz and hosts on THF Radio and Halfmoon Radio.",
+  "bio_sources": [
+   "https://events.musicofourdesire.com/artist/tina-von-kugler",
+   "https://www.youtube.com/watch?v=Q98Up8BRHFs",
+   "https://soundcloud.com/tinavonkugler"
+  ],
+  "releases": [],
+  "ids": {
+   "ra": "https://de.ra.co/dj/tinavonkugler"
+  },
+  "notes": "No South Asian link found: Italian, based in Berlin (she has played in India and Mumbai per her bios). Under the scope rule she would be hidden. Played AVA Club Berlin, 18 Jan 2025 (ra.co/events/2078445).",
+  "south_asian": {
+   "value": "no",
+   "evidence": "Music of Our Desire: 'Berlin-based Italian DJ'; RA lists Germany.",
+   "source_url": "https://events.musicofourdesire.com/artist/tina-von-kugler"
+  },
+  "profile": {
+   "based_city": "Berlin",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/tinavonkugler",
+   "soundcloud": "https://www.soundcloud.com/tinavonkugler",
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://events.musicofourdesire.com/artist/tina-von-kugler",
+    "instagram": "https://de.ra.co/dj/tinavonkugler",
+    "soundcloud": "https://de.ra.co/dj/tinavonkugler",
+    "kind": "https://events.musicofourdesire.com/artist/tina-von-kugler"
+   }
+  }
+ }
+]
