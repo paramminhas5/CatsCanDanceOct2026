@@ -23,7 +23,7 @@ export type Product = {
   working: boolean;
   /** One line that says what the product does. Function first. */
   promise: string;
-  /** Verb-first label for the banner (Param, 3 Nov 2026: nav leads with verbs). */
+  /** Verb-first label for the switch on top of every app (Param, 3 and 10 Nov 2026: nav leads with verbs). */
   verb: string;
   /** Colloquial nicknames, never in URLs or nav (Param, 3 Nov 2026). */
   nicknames: { cat: string; music: string };
@@ -53,7 +53,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     navLabel: "Artists",
     working: true,
     promise: "Every artist, and everything they put out. Follow, buy, go to the show, or book them.",
-    verb: "Find and book",
+    verb: "Book artists",
     nicknames: { cat: "top cat", music: "the bill" },
     colour: "#b6ef36",
     urlEnv: "NEXT_PUBLIC_ARTISTS_URL",
@@ -65,7 +65,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     navLabel: "Host",
     working: true,
     promise: "Throw a party and run it from one app: the page, artists, gear, tickets, the door, the money.",
-    verb: "Host",
+    verb: "Host a party",
     nicknames: { cat: "the cat flap", music: "doors" },
     colour: "#ffe600",
     urlEnv: "NEXT_PUBLIC_GATE_URL",

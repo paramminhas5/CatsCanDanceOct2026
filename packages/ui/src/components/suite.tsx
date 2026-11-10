@@ -4,28 +4,65 @@
  * Plain anchors so the package does not depend on a framework router.
  */
 import { PRODUCTS, PRODUCT_ORDER, productUrl, type ProductId } from "@ccd/brand";
+import { SuiteSub, type SubLink } from "./SuiteSub";
+export type { SubLink };
 
-export function SuiteNav({ current, account, cta }: { current: ProductId; account: { href: string; label: string }; cta?: { href: string; label: string } }) {
+/**
+ * The switch on top of every app (v3, canvas "The switch, in every app"; Param, 10 Nov 2026:
+ * "go out, learn and everything should be on top, everything below changes").
+ * Desktop: one pill row, the current app filled with its colour. Phone: one pill that opens a sheet
+ * (plain <details>, so it works with no JavaScript and in Server Components). `sub` is the app's own row.
+ */
+export function SuiteNav({ current, account, cta, sub }: { current: ProductId; account: { href: string; label: string }; cta?: { href: string; label: string }; sub?: SubLink[] }) {
+  const here = PRODUCTS[current];
+  const on = (id: ProductId) => (id === "ccd" ? "#fff" : "#0a0a0c");
   return (
     <header className="k-nav">
       <div className="k-wrap k-nav__row">
-        <a href={productUrl("ccd")} className="k-nav__brand">Cats Can Dance</a>
-        <nav aria-label="Cats Can Dance products" className="k-nav__products">
+        <a href={productUrl("ccd")} className="k-nav__brand"><CatGlyph />Cats Can Dance</a>
+        <nav aria-label="Cats Can Dance apps" className="k-switch">
           {PRODUCT_ORDER.map((id) => {
             const p = PRODUCTS[id];
-            const here = id === current;
+            const is = id === current;
             return (
-              <a key={id} href={here ? "/" : productUrl(id)} aria-current={here ? "true" : undefined}>
-                <i aria-hidden="true" style={{ background: p.colour }} />
-                {p.navLabel}
+              <a key={id} href={is ? "/" : productUrl(id)} aria-current={is ? "page" : undefined} style={{ ["--c" as string]: p.colour, ["--on" as string]: on(id) }}>
+                <i aria-hidden="true" />{p.verb}
               </a>
             );
           })}
         </nav>
+        <details className="k-switch-m">
+          <summary style={{ ["--c" as string]: here.colour, ["--on" as string]: on(current) }} aria-label={`${here.verb}. Switch app`}>
+            {here.verb}<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+          </summary>
+          <div className="k-switch-m__sheet">
+            {PRODUCT_ORDER.map((id) => {
+              const p = PRODUCTS[id];
+              const is = id === current;
+              return (
+                <a key={id} href={is ? "/" : productUrl(id)} aria-current={is ? "page" : undefined} style={{ ["--c" as string]: p.colour, ["--on" as string]: on(id) }}>
+                  <i aria-hidden="true" />{p.verb}<span>{p.navLabel}</span>
+                </a>
+              );
+            })}
+          </div>
+        </details>
         <a href={account.href} className="k-btn k-btn--ghost k-btn--s">{account.label}</a>
         {cta && <a href={cta.href} className="k-btn k-btn--key k-btn--s k-nav__cta">{cta.label}</a>}
       </div>
+      {sub && sub.length > 0 && <SuiteSub links={sub} label={here.navLabel} colour={here.colour} />}
     </header>
+  );
+}
+
+/** The white cat, reduced to a mark: ears, head, a wink. */
+function CatGlyph() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 16 16" aria-hidden="true" className="k-nav__cat">
+      <path fill="currentColor" d="M2 2.2 5 5h6l3-2.8V9.5A5.5 5.5 0 0 1 8.5 15h-1A5.5 5.5 0 0 1 2 9.5Z" />
+      <circle cx="5.6" cy="9" r="1" fill="#0a0a0c" />
+      <path d="M9.4 9h2" stroke="#0a0a0c" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
   );
 }
 

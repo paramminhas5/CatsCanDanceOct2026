@@ -1,9 +1,9 @@
 import type { GetStaticProps } from "next";
-import Home2 from "@/suite/home2/Home2";
+import Home3 from "@/suite/home3/Home3";
 import { getHomeData, type HomeData } from "@/lib/home";
 
-// The home (plan ccd/v2-plan.md, section 3). The live-look home stays in src/pages/Index.tsx as the later theme.
-export default Home2;
+// The home v3 (plan ccd/v3-redesign.md; canvas board Main). Home2 stays in src/suite/home2 for parts it shares.
+export default Home3;
 
 export const getStaticProps: GetStaticProps<HomeData> = async () => {
   const data = await getHomeData();

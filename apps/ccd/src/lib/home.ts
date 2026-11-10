@@ -31,6 +31,8 @@ export type HomeData = {
   featured: FeaturedArtist[];
   artistCount: number;
   story: ArtistStory | null;
+  /** Record covers for the Artists hero wall (Deezer album art), mixed across artists. */
+  covers: { title: string; artist: string; slug: string; img: string }[];
   today: string;
 };
 
@@ -44,12 +46,13 @@ export async function getHomeData(): Promise<HomeData> {
   const today = todayIST();
   const weekEnd = addDays(today, 7);
 
-  const [ours, scene, artistNames, featured, story] = await Promise.all([
+  const [ours, scene, artistNames, featured, story, discs] = await Promise.all([
     getCcdEvents(),
     getSceneEvents(),
     select<FindArtist>("artists?status=eq.approved&select=name,slug", 1800),
     getFeatured().catch(() => [] as FeaturedArtist[]),
     getStory().catch(() => null),
+    select<{ artist_slug: string; title: string; deezer_album_id: string }>("artist_discography?deezer_album_id=not.is.null&release_type=in.(album,ep)&select=artist_slug,title,deezer_album_id&order=year.desc.nullslast&limit=300", 1800),
   ]);
 
   const listed = ours.filter((e) => isListed(e as any));
@@ -92,6 +95,17 @@ export async function getHomeData(): Promise<HomeData> {
   const norm = (x: string) => x.toLowerCase().replace(/[^a-z0-9]/g, "");
   const nextLineup = (next?.lineup ?? []).map((name) => ({ name, slug: artistNames.find((a) => norm(a.name) === norm(name))?.slug ?? null }));
 
+  // Up to two records per approved artist, newest first, so the wall shows the range.
+  const nameOf = new Map(artistNames.map((a) => [a.slug, a.name]));
+  const perArtist = new Map<string, number>();
+  const covers: HomeData["covers"] = [];
+  for (const r of discs) {
+    if (!nameOf.has(r.artist_slug) || (perArtist.get(r.artist_slug) ?? 0) >= 2) continue;
+    perArtist.set(r.artist_slug, (perArtist.get(r.artist_slug) ?? 0) + 1);
+    covers.push({ title: r.title, artist: nameOf.get(r.artist_slug) as string, slug: r.artist_slug, img: `https://api.deezer.com/album/${r.deezer_album_id}/image?size=big` });
+    if (covers.length === 24) break;
+  }
+
   return {
     next,
     past,
@@ -104,6 +118,7 @@ export async function getHomeData(): Promise<HomeData> {
     featured,
     artistCount: artistNames.length,
     story,
+    covers,
     today,
   };
 }

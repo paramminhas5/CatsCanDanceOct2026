@@ -24,7 +24,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" className={`${bricolage.variable} ${outfit.variable} ${mono.variable}`} style={{ ["--k-pc" as string]: P.colour }}>
       <body className="k-root">
         <a href="#main" className="sr-only focus:not-sr-only">Skip to content</a>
-        <SuiteNav current="gate" account={member ? { href: "/parties", label: member.display_name?.split(" ")[0] || "Your parties" } : { href: "/sign-in", label: "Sign in" }} cta={{ href: "/make", label: "Make a party" }} />
+        <SuiteNav current="gate" account={member ? { href: "/parties", label: member.display_name?.split(" ")[0] || "Your parties" } : { href: "/sign-in", label: "Sign in" }} cta={{ href: "/make", label: "Make a party" }}
+          sub={[{ href: "/parties", label: "Your parties" }, { href: "/guests", label: "Guests" }, { href: "/door", label: "The door" }, { href: "/book", label: "Book artists" }, { href: "/gear", label: "Gear" }]} />
         <div id="main" className="min-h-[60vh]">{children}</div>
         <SuiteFooter current="gate" links={SUITE_LINKS} />
       </body>
