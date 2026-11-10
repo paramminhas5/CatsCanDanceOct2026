@@ -1,4 +1,3 @@
--- NOT APPLIED YET: waiting for Param to approve it in Supabase (10 Nov). Apply with apply_migration before using it.
 -- 067: booking contracts and deposits (plan ccd/v2-plan.md section 8). Additive only.
 -- Once the organiser has accepted the artist's terms, either side drafts the contract from the thread:
 -- parties, date, venue, set, fee with the deposit and balance split, rider, tech, travel and cancellation.
