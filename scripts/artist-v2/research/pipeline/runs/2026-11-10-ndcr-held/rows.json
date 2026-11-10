@@ -1,0 +1,198 @@
+{
+"eras": [
+{
+"s": "rafiki",
+"f": 2017,
+"t": null,
+"snd": "House, techno and electro with broken beat influence",
+"tags": [
+"house",
+"techno",
+"electro",
+"breaks",
+"acid"
+],
+"u": "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture",
+"n": "Mixmag",
+"p": "ink"
+}
+],
+"tags": [
+{
+"s": "rafiki",
+"tag": "Somewhere between a straight and broken beat",
+"u": "https://es-mx.ra.co/dj/rafikiin/biography"
+},
+{
+"s": "rafiki",
+"tag": "Steely breakbeats and psychedelic effects",
+"u": "https://ra.co/reviews/35687"
+},
+{
+"s": "rafiki",
+"tag": "Broken beat, jungle, breaks and house",
+"u": "https://mixmag.asia/read/rafiki-squidworks-tribute-to-mumbai-suburb-bandra-good-luck-ep-new-releases"
+}
+],
+"aliases": [],
+"press": [
+{
+"s": "rafiki",
+"t": "The Mix 019: Rafiki",
+"p": "Mixmag",
+"u": "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture",
+"d": "2024-06-26"
+},
+{
+"s": "rafiki",
+"t": "Rafiki - 5 AM Dub (single review)",
+"p": "Resident Advisor",
+"u": "https://ra.co/reviews/35687",
+"d": "2023-09-12"
+},
+{
+"s": "rafiki",
+"t": "Premiere: Rafiki, New Shifts EP, 'Walk the Talk'",
+"p": "Mixmag Asia",
+"u": "https://mixmag.asia/read/premiere-rafiki-new-shifts-ep-walk-the-talk-single-premiere",
+"d": "2023-07-31"
+},
+{
+"s": "rafiki",
+"t": "Rafiki and Squidworks pay tribute to Bandra on Good Luck EP",
+"p": "Mixmag Asia",
+"u": "https://mixmag.asia/read/rafiki-squidworks-tribute-to-mumbai-suburb-bandra-good-luck-ep-new-releases",
+"d": "2025-06-18"
+}
+],
+"mixes": [
+{
+"s": "rafiki",
+"t": "Rafiki | Boiler Room x Ballantine's True Music Studios Mumbai: Krunk Presents",
+"u": "https://soundcloud.com/platform/rafiki-krunk-presents-kiss"
+}
+],
+"spotify": [
+{
+"s": "rafiki",
+"u": "https://open.spotify.com/artist/3ROQdOAplnJWKboYPuAbik"
+}
+],
+"bio": [
+{
+"s": "rafiki",
+"b": "Rafiki is the DJ and producer alias of Sohail Arora, founder of the Mumbai events and artist management company Krunk and its label Krunk Kulture. Based in Mumbai, he plays acid, breaks, house and techno, has played Magnetic Fields and NH7 Weekender, and has released on Welt Discos, Permanent Vacation and Krunk Kulture.",
+"src": [
+{
+"fact": "alias of Sohail Arora, founder of Krunk; Mumbai; acid, breaks, house, techno; Magnetic Fields, NH7 Weekender; Welt Discos and Krunk Kulture",
+"url": "https://es-mx.ra.co/dj/rafikiin/biography"
+},
+{
+"fact": "Krunk Kulture is his imprint; Permanent Vacation release",
+"url": "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture"
+}
+]
+},
+{
+"s": "tapan-raj",
+"b": "Tapan Raj is a Delhi producer and one half of the electronic duo Midival Punditz with Gaurav Raina. He has been part of Delhi's underground electronic scene since 1997, playing across hip hop, house, breakbeats and garage.",
+"src": [
+"https://www.district.in/events/tapan_raj/artist",
+"https://punditz.com/bio"
+]
+}
+],
+"releases": [
+{
+"s": "rafiki",
+"ti": "The Source",
+"ty": "ep",
+"y": 2023,
+"d": null,
+"l": "Welt Discos",
+"u": "https://buttondown.com/joedelon/archive/welt-discos-rafiki-the-source-ep"
+},
+{
+"s": "rafiki",
+"ti": "New Shifts",
+"ty": "ep",
+"y": 2023,
+"d": "2023-08-09",
+"l": "Krunk Kulture",
+"u": "https://mixmag.asia/read/premiere-rafiki-new-shifts-ep-walk-the-talk-single-premiere"
+},
+{
+"s": "rafiki",
+"ti": "5 AM Dub",
+"ty": "single",
+"y": 2023,
+"d": null,
+"l": "Krunk Kulture",
+"u": "https://ra.co/reviews/35687"
+},
+{
+"s": "rafiki",
+"ti": "Anand Mahal",
+"ty": "ep",
+"y": 2024,
+"d": null,
+"l": "Permanent Vacation",
+"u": "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture"
+},
+{
+"s": "rafiki",
+"ti": "Good Luck (with Squidworks)",
+"ty": "ep",
+"y": 2025,
+"d": "2025-06-13",
+"l": "Krunk Kulture",
+"u": "https://rafikisounds.bandcamp.com/album/good-luck"
+},
+{
+"s": "rafiki",
+"ti": "Funky Acid Party (on Jaljeera, Flavours of the East)",
+"ty": "compilation",
+"y": 2021,
+"d": "2021-11-12",
+"l": "Krunk Kulture",
+"u": "https://krunklive.com/artist/rafiki/"
+},
+{
+"s": "rafiki",
+"ti": "Point of View, Vol. 1 (An Acid Experiment)",
+"ty": "compilation",
+"y": 2021,
+"d": "2021-02-22",
+"l": "Regenerate Music",
+"u": "https://krunklive.com/artist/rafiki/"
+}
+],
+"ids": [
+{
+"s": "rafiki",
+"k": "ra",
+"v": "https://ra.co/dj/rafikiin",
+"u": "https://ra.co/dj/rafikiin"
+},
+{
+"s": "rafiki",
+"k": "beatport",
+"v": "https://www.beatport.com/artist/rafiki-in/912625",
+"u": "https://www.beatport.com/artist/rafiki-in/912625"
+},
+{
+"s": "rafiki",
+"k": "bandcamp",
+"v": "https://rafikisounds.bandcamp.com",
+"u": "https://rafikisounds.bandcamp.com"
+}
+],
+"bc": [
+{
+"s": "rafiki",
+"t": "Good Luck (with Squidworks)",
+"ty": "album",
+"id": 2339875409
+}
+]
+}

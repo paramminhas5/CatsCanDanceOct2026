@@ -1,0 +1,218 @@
+[
+ {
+  "slug": "rafiki",
+  "identity": "Probable, not proven. The NDCR #010 description could not be read (YouTube fetch blocked), so there is no handle. NDCR billed RAFIKI as 'Acid, Breaks, House, Techno', which is word for word how RA, Krunk and SoundCloud describe Rafiki (IN), the Mumbai alias of Sohail Arora (founder of Krunk), and he is an active Indian scene DJ who also plays across South Asia (Kathmandu, Galle). Param should confirm against the NDCR video description or Instagram before publishing.",
+  "eras": [
+   {
+    "from_year": 2017,
+    "to_year": null,
+    "sound": "House, techno and electro with broken beat influence",
+    "tags": [
+     "house",
+     "techno",
+     "electro",
+     "breaks",
+     "acid"
+    ],
+    "source_url": "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture",
+    "source_name": "Mixmag",
+    "quote": "Rafiki began in 2017 to explore house, techno and electro-heavy sounds"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Somewhere between a straight and broken beat",
+    "source_url": "https://es-mx.ra.co/dj/rafikiin/biography"
+   },
+   {
+    "tag": "Steely breakbeats and psychedelic effects",
+    "source_url": "https://ra.co/reviews/35687"
+   },
+   {
+    "tag": "Broken beat, jungle, breaks and house",
+    "source_url": "https://mixmag.asia/read/rafiki-squidworks-tribute-to-mumbai-suburb-bandra-good-luck-ep-new-releases"
+   }
+  ],
+  "aliases": [
+   {
+    "name": "EZ Riser",
+    "note": "earlier, more bass-centric alias",
+    "source_url": "https://mixmag.asia/read/premiere-rafiki-new-shifts-ep-walk-the-talk-single-premiere"
+   }
+  ],
+  "press": [
+   {
+    "title": "The Mix 019: Rafiki",
+    "publication": "Mixmag",
+    "url": "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture",
+    "date_published": "2024-06-26"
+   },
+   {
+    "title": "Rafiki - 5 AM Dub (single review)",
+    "publication": "Resident Advisor",
+    "url": "https://ra.co/reviews/35687",
+    "date_published": "2023-09-12"
+   },
+   {
+    "title": "Premiere: Rafiki, New Shifts EP, 'Walk the Talk'",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/premiere-rafiki-new-shifts-ep-walk-the-talk-single-premiere",
+    "date_published": "2023-07-31"
+   },
+   {
+    "title": "Rafiki and Squidworks pay tribute to Bandra on Good Luck EP",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/rafiki-squidworks-tribute-to-mumbai-suburb-bandra-good-luck-ep-new-releases",
+    "date_published": "2025-06-18"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Rafiki | Boiler Room x Ballantine's True Music Studios Mumbai: Krunk Presents",
+    "url": "https://soundcloud.com/platform/rafiki-krunk-presents-kiss",
+    "year": null
+   }
+  ],
+  "spotify": "https://open.spotify.com/artist/3ROQdOAplnJWKboYPuAbik",
+  "bio_draft": "Rafiki is the DJ and producer alias of Sohail Arora, founder of the Mumbai events and artist management company Krunk and its label Krunk Kulture. Based in Mumbai, he plays acid, breaks, house and techno, has played Magnetic Fields and NH7 Weekender, and has released on Welt Discos, Permanent Vacation and Krunk Kulture.",
+  "bio_sources": [
+   {
+    "fact": "alias of Sohail Arora, founder of Krunk; Mumbai; acid, breaks, house, techno; Magnetic Fields, NH7 Weekender; Welt Discos and Krunk Kulture",
+    "url": "https://es-mx.ra.co/dj/rafikiin/biography"
+   },
+   {
+    "fact": "Krunk Kulture is his imprint; Permanent Vacation release",
+    "url": "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture"
+   }
+  ],
+  "releases": [
+   {
+    "title": "The Source",
+    "year": 2023,
+    "release_type": "ep",
+    "label": "Welt Discos",
+    "url": "https://buttondown.com/joedelon/archive/welt-discos-rafiki-the-source-ep",
+    "date": null
+   },
+   {
+    "title": "New Shifts",
+    "year": 2023,
+    "release_type": "ep",
+    "label": "Krunk Kulture",
+    "url": "https://mixmag.asia/read/premiere-rafiki-new-shifts-ep-walk-the-talk-single-premiere",
+    "date": "2023-08-09"
+   },
+   {
+    "title": "5 AM Dub",
+    "year": 2023,
+    "release_type": "single",
+    "label": "Krunk Kulture",
+    "url": "https://ra.co/reviews/35687",
+    "date": null
+   },
+   {
+    "title": "Anand Mahal",
+    "year": 2024,
+    "release_type": "ep",
+    "label": "Permanent Vacation",
+    "url": "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture",
+    "date": null
+   },
+   {
+    "title": "Good Luck (with Squidworks)",
+    "year": 2025,
+    "release_type": "ep",
+    "label": "Krunk Kulture",
+    "url": "https://rafikisounds.bandcamp.com/album/good-luck",
+    "date": "2025-06-13",
+    "bandcamp_id": 2339875409,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Funky Acid Party (on Jaljeera, Flavours of the East)",
+    "year": 2021,
+    "release_type": "compilation",
+    "label": "Krunk Kulture",
+    "url": "https://krunklive.com/artist/rafiki/",
+    "date": "2021-11-12"
+   },
+   {
+    "title": "Point of View, Vol. 1 (An Acid Experiment)",
+    "year": 2021,
+    "release_type": "compilation",
+    "label": "Regenerate Music",
+    "url": "https://krunklive.com/artist/rafiki/",
+    "date": "2021-02-22"
+   }
+  ],
+  "ids": {
+   "ra": "https://ra.co/dj/rafikiin",
+   "beatport": "https://www.beatport.com/artist/rafiki-in/912625",
+   "bandcamp": "https://rafikisounds.bandcamp.com"
+  },
+  "notes": "Identity rests on the genre match and the Indian scene; the NDCR video description could not be read, so confirm before publishing. Mixmag also names Bay Beat Collective as his former bass crew (Megapolis EP, 2012, a group release, left out). Krunk artist page bio (older) says he was working on a first EP, so it predates 2023. Mix 019 on Mixmag has no embed. A Mixcloud upload 'Rafiki - Funny Bone' on the krunk2 account was not confirmed as a mix, left out.",
+  "south_asian": {
+   "value": "yes",
+   "evidence": "RA biography: Rafiki is the alter ego of Sohail Arora, 'Based out of Mumbai'.",
+   "source_url": "https://es-mx.ra.co/dj/rafikiin/biography"
+  },
+  "profile": {
+   "based_city": "Mumbai",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/rafikisounds/",
+   "soundcloud": "https://soundcloud.com/rafikisoundsindia",
+   "mixcloud": null,
+   "website": "https://krunklive.com/artist/rafiki/",
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://es-mx.ra.co/dj/rafikiin/biography",
+    "instagram": "https://krunklive.com/artist/rafiki/",
+    "soundcloud": "https://krunklive.com/artist/rafiki/",
+    "website": "https://krunklive.com/artist/rafiki/",
+    "kind": "https://es-mx.ra.co/dj/rafikiin/biography"
+   }
+  }
+ },
+ {
+  "slug": "tapan-raj",
+  "identity": "Probable, not fully confirmed. District's artist page for Tapan Raj (Delhi, one half of Midival Punditz) lists hip hop, house and breakbeats, matching the HouseCats set (Electronica, Breaks, Hip Hop) and the Delhi scene. No page links the @_Tapanraj_ handle, so Param should confirm before publishing.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [
+   {
+    "name": "Midival Punditz",
+    "note": "duo with Gaurav Raina (group project, not a solo alias)",
+    "source_url": "https://punditz.com/bio"
+   }
+  ],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Tapan Raj is a Delhi producer and one half of the electronic duo Midival Punditz with Gaurav Raina. He has been part of Delhi's underground electronic scene since 1997, playing across hip hop, house, breakbeats and garage.",
+  "bio_sources": [
+   "https://www.district.in/events/tapan_raj/artist",
+   "https://punditz.com/bio"
+  ],
+  "releases": [],
+  "ids": {},
+  "south_asian": {
+   "value": "yes",
+   "evidence": "District lists Tapan Raj of Midival Punditz as Delhi-based (if the identity holds).",
+   "source_url": "https://www.district.in/events/tapan_raj/artist"
+  },
+  "profile": {
+   "based_city": "Delhi",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "producer",
+   "sources": {
+    "based_city": "https://www.district.in/events/tapan_raj/artist",
+    "kind": "https://www.district.in/events/tapan_raj/artist"
+   }
+  },
+  "notes": "Identity rests on name, city and genre match only; the @_Tapanraj_ handle could not be tied to any page (punditz.com lists only @midivalpunditz). If confirmed, Midival Punditz releases belong to the duo, not this solo page, so none were added. soundcloud.com/tapanraj exists but is empty (no description) and unconfirmed."
+ }
+]

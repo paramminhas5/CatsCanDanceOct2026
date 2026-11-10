@@ -1,0 +1,100 @@
+[
+ {
+  "slug": "rafiki",
+  "name": "RAFIKI",
+  "instagram_from_video_description": [],
+  "sets": [
+   {
+    "ch": "newdelhicommunityradio",
+    "url": "https://www.youtube.com/watch?v=P7EjmDotJwM",
+    "title": "NDCR #010: RAFIKI | Acid, Breaks, House, Techno | June 5, 2025"
+   }
+  ],
+  "city": null,
+  "genres": [],
+  "bio_excerpt": null,
+  "links": {},
+  "gaps": [
+   "bio",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city",
+   "south_asian"
+  ],
+  "kind": null,
+  "based_city": null,
+  "from_city": null,
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": [],
+  "members": [],
+  "releases_on_record": 0,
+  "release_years": [],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=P7EjmDotJwM"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null
+ },
+ {
+  "slug": "tapan-raj",
+  "name": "Tapan Raj",
+  "instagram_from_video_description": [
+   "_Tapanraj_"
+  ],
+  "sets": [
+   {
+    "ch": "HouseCatsAtHome",
+    "url": "https://www.youtube.com/watch?v=nl0NKz1DyOc",
+    "title": "Electronica | Breaks | Hip Hop | Daytime Mix | House Cats Ep.028 | Tapan Raj"
+   }
+  ],
+  "city": null,
+  "genres": [],
+  "bio_excerpt": null,
+  "links": {},
+  "gaps": [
+   "bio",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city",
+   "south_asian"
+  ],
+  "kind": null,
+  "based_city": null,
+  "from_city": null,
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": [],
+  "members": [],
+  "releases_on_record": 0,
+  "release_years": [],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=nl0NKz1DyOc"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null
+ }
+]

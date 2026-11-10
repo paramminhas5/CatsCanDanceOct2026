@@ -1,0 +1,2 @@
+update public.artists set based_city=coalesce(nullif(based_city,''),'Mumbai'), soundcloud=coalesce(nullif(soundcloud,''),'https://soundcloud.com/rafikisoundsindia'), website=coalesce(nullif(website,''),'https://krunklive.com/artist/rafiki/'), instagram=coalesce(nullif(instagram,''),'rafikisounds') where slug='rafiki';
+update public.artists set based_city=coalesce(nullif(based_city,''),'Delhi') where slug='tapan-raj';
