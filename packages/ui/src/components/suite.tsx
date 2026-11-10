@@ -10,7 +10,8 @@ export type { SubLink };
 /**
  * The switch on top of every app (v3, canvas "The switch, in every app"; Param, 10 Nov 2026:
  * "go out, learn and everything should be on top, everything below changes").
- * Desktop: one pill row, the current app filled with its colour. Phone: one pill that opens a sheet
+ * Desktop and tablet: four big tiles under the top bar, the current one filled with its colour (Param, 10 Nov:
+ * "the nav should be bolder"). Phone: one pill that opens a sheet
  * (plain <details>, so it works with no JavaScript and in Server Components). `sub` is the app's own row.
  */
 export function SuiteNav({ current, account, cta, sub }: { current: ProductId; account: { href: string; label: string }; cta?: { href: string; label: string }; sub?: SubLink[] }) {
@@ -20,17 +21,6 @@ export function SuiteNav({ current, account, cta, sub }: { current: ProductId; a
     <header className="k-nav">
       <div className="k-wrap k-nav__row">
         <a href={productUrl("ccd")} className="k-nav__brand"><CatGlyph />Cats Can Dance</a>
-        <nav aria-label="Cats Can Dance apps" className="k-switch">
-          {PRODUCT_ORDER.map((id) => {
-            const p = PRODUCTS[id];
-            const is = id === current;
-            return (
-              <a key={id} href={is ? "/" : productUrl(id)} aria-current={is ? "page" : undefined} style={{ ["--c" as string]: p.colour, ["--on" as string]: on(id) }}>
-                <i aria-hidden="true" />{p.verb}
-              </a>
-            );
-          })}
-        </nav>
         <details className="k-switch-m">
           <summary style={{ ["--c" as string]: here.colour, ["--on" as string]: on(current) }} aria-label={`${here.verb}. Switch app`}>
             {here.verb}<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
@@ -47,13 +37,33 @@ export function SuiteNav({ current, account, cta, sub }: { current: ProductId; a
             })}
           </div>
         </details>
+        <span className="k-nav__gap" />
         <a href={account.href} className="k-btn k-btn--ghost k-btn--s">{account.label}</a>
         {cta && <a href={cta.href} className="k-btn k-btn--key k-btn--s k-nav__cta">{cta.label}</a>}
       </div>
+      <nav aria-label="Cats Can Dance apps" className="k-wrap k-tiles">
+        {PRODUCT_ORDER.map((id) => {
+          const p = PRODUCTS[id];
+          const is = id === current;
+          return (
+            <a key={id} href={is ? "/" : productUrl(id)} aria-current={is ? "page" : undefined} className="k-tile" style={{ ["--c" as string]: p.colour, ["--on" as string]: on(id) }}>
+              <i aria-hidden="true" /><span><b>{p.verb}</b><small>{TILE_LINE[id]}</small></span>
+            </a>
+          );
+        })}
+      </nav>
       {sub && sub.length > 0 && <SuiteSub links={sub} label={here.navLabel} colour={here.colour} />}
     </header>
   );
 }
+
+/** The line under each app on the switch tiles. */
+export const TILE_LINE: Record<ProductId, string> = {
+  ccd: "Nights · what's on, crews, tickets",
+  artists: "Artists · every record, every era",
+  gate: "Host · page, tickets, door, report",
+  school: "School · make music on a real instrument",
+};
 
 /** The white cat, reduced to a mark: ears, head, a wink. */
 function CatGlyph() {

@@ -237,3 +237,18 @@ textarea.k-field { padding: 14px 18px; border-radius: 18px; min-height: 120px; r
 .k-nav__sub a { flex-shrink: 0; padding: 4px 0 6px; font-size: 14px; font-weight: 600; color: var(--k-t2); text-decoration: none; border-bottom: 2px solid transparent; }
 .k-nav__sub a:hover { color: var(--k-tx); }
 .k-nav__sub a[aria-current="page"] { color: var(--k-tx); border-bottom-color: var(--c); }
+
+/* ── v3.1: the switch as four bold tiles (canvas board Main v2) ── */
+.k-nav__gap { flex: 1; }
+.k-nav__row:has(.k-switch-m) { height: 64px; }
+.k-tiles { display: none; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding-bottom: 12px; }
+@media (min-width: 760px) { .k-tiles { display: grid; } .k-switch-m { display: none !important; } }
+.k-tile, button.k-tile { appearance: none; border: 0; cursor: pointer; text-align: left; font: inherit; display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 0 18px; border-radius: 18px; background: var(--k-raised); color: var(--k-tx); text-decoration: none; transition: transform .2s, background .25s, color .25s, box-shadow .25s; }
+.k-tile:hover { transform: translateY(-2px); background: #1c1c21; }
+.k-tile i { width: 12px; height: 12px; border-radius: 50%; background: var(--c); flex-shrink: 0; box-shadow: 0 0 0 5px color-mix(in srgb, var(--c) 18%, transparent); }
+.k-tile b { display: block; font-family: var(--k-display); font-weight: 800; font-size: 19px; letter-spacing: -.01em; line-height: 1.1; }
+.k-tile small { display: block; margin-top: 2px; font-size: 12px; opacity: .65; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.k-tile span { min-width: 0; }
+.k-tile[aria-current="page"], .k-tile[aria-pressed="true"] { background: var(--c); color: var(--on); box-shadow: 0 14px 40px -14px var(--c); }
+.k-tile[aria-current="page"] i, .k-tile[aria-pressed="true"] i { background: var(--on); box-shadow: none; }
+@media (max-width: 1100px) { .k-tile small { display: none; } .k-tile b { font-size: 17px; } .k-tile { min-height: 54px; padding: 0 14px; } }
