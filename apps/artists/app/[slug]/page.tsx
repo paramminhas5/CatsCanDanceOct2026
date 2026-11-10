@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
-  ButtonLink, Pill, Tag, SectionHead, Keycap, Led, Plinth,
+  ButtonLink, Pill, SectionHead, Keycap, Led, Plinth,
   Passport, Knob, Marquee, Icon, type StampData,
 } from "@ccd/ui";
 import { getArtistPage, inrShort, dayParts } from "@/lib/artist-page";
@@ -190,31 +190,29 @@ export default async function ArtistPage({ params }: Props) {
         </section>
       )}
 
-      {/* ── Around them ── */}
+      {/* ── Around them: two tight rows of chips, not two long lists (Param, 10 Nov 2026) ── */}
       {(a.playedWith.length > 0 || similar.length > 0) && (
-        <section className="k-wrap k-section">
-          <div className="grid gap-12 md:grid-cols-2 md:gap-16">
-            {a.playedWith.length > 0 && (
-              <div>
-                <h2 className="k-d text-[40px] md:text-[48px]">On the bill with</h2>
-                <ul className="mt-5 list-none p-0">
-                  {a.playedWith.slice(0, 5).map((c) => (
-                    <li key={c.slug}><a className="k-li" href={`/${c.slug}`}><Avatar name={c.name} img={c.img} /><span className="flex-1"><b>{c.name}</b><small>{c.why}</small></span></a></li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {similar.length > 0 && (
-              <div>
-                <h2 className="k-d text-[40px] md:text-[48px]">Similar artists</h2>
-                <ul className="mt-5 list-none p-0">
-                  {similar.slice(0, 5).map((s) => (
-                    <li key={s.n}><a className="k-li" href={s.u ?? "#"} target={s.internal ? undefined : "_blank"} rel="noopener"><Avatar name={s.n} img={s.img} /><span className="flex-1"><b>{s.n}</b><small>{s.why}</small></span>{s.internal && <Tag>On Artists</Tag>}</a></li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
+        <section className="k-wrap k-section ap-around">
+          {similar.length > 0 && (
+            <div>
+              <div className="ap-around-h"><h2 className="k-d">If you like {p.name}</h2><a href="/artists" className="k-b">All artists</a></div>
+              <ul className="ap-chips">
+                {similar.slice(0, 12).map((s) => (
+                  <li key={s.n}><a className="ap-chip" href={s.u ?? "#"} target={s.internal ? undefined : "_blank"} rel="noopener" title={s.why ?? undefined}><Avatar name={s.n} img={s.img} /><b>{s.n}</b></a></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {a.playedWith.length > 0 && (
+            <div>
+              <div className="ap-around-h"><h2 className="k-d">On the bill with</h2></div>
+              <ul className="ap-chips">
+                {a.playedWith.slice(0, 12).map((c) => (
+                  <li key={c.slug}><a className="ap-chip" href={`/${c.slug}`} title={c.why ?? undefined}><Avatar name={c.name} img={c.img} /><b>{c.name}</b></a></li>
+                ))}
+              </ul>
+            </div>
+          )}
         </section>
       )}
 
