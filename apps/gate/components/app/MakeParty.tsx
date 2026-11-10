@@ -1,6 +1,8 @@
 "use client";
 /**
- * Make a party (board H39-Make). host_party_make (migration 063) creates the night straight away, so the
+ * Make a party (v3 canvas board HostMake; earlier H39-Make): one visual screen, not a stack of text boxes.
+ * Name it on the card itself, tap a day, a time, a city, a look, how people get in and who sees it.
+ * host_party_make (migration 063) creates the night straight away, so the
  * invite, RSVPs, who's coming and the door work at once. "Listed on Nights" also sends it to CCD for review.
  * Approved promoters can make it under their promoter name instead (promoter_night_save, then review).
  */
@@ -13,18 +15,23 @@ import { Icon, LOOKS, Top } from "./ui";
 const CITIES = ["Bengaluru", "Mumbai", "Delhi NCR", "Goa", "Pune", "Hyderabad", "Chennai", "Kolkata"];
 const list = (v: string) => v.split(",").map((x) => x.trim()).filter(Boolean).slice(0, 12);
 const today = () => new Date(Date.now() + 5.5 * 36e5).toISOString().slice(0, 10);
+const addDays = (iso: string, n: number) => { const d = new Date(`${iso}T00:00:00Z`); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+const dayBits = (iso: string) => { const d = new Date(`${iso}T00:00:00Z`); return { w: d.toLocaleDateString("en-GB", { weekday: "short", timeZone: "UTC" }), n: d.getUTCDate() }; };
+const TIMES = ["20:00", "21:00", "22:00", "23:00"];
+const QUICK_CITIES = ["Bengaluru", "Mumbai", "Delhi NCR", "Goa"];
 
-function Keys<T extends string>({ value, set, opts }: { value: T; set: (v: T) => void; opts: [T, string][] }) {
+function Cards<T extends string>({ value, set, opts, label }: { value: T; set: (v: T) => void; opts: [T, string, string][]; label: string }) {
   return (
-    <div style={{ marginTop: 8, display: "grid", gridTemplateColumns: `repeat(${opts.length}, minmax(0, 1fr))`, gap: 8 }} role="radiogroup">
-      {opts.map(([k, l]) => (
-        <button key={k} type="button" role="radio" aria-checked={value === k} className={`kp${value === k ? " lit" : ""}`} style={{ height: 46, ["--c" as string]: "var(--pc)" }} onClick={() => set(k)}>
-          <span className="cp" style={{ alignItems: "center", justifyContent: "center" }}><span className="l" style={{ fontSize: 13 }}>{l}</span></span>
+    <div className="mk-cards" role="radiogroup" aria-label={label}>
+      {opts.map(([k, l, line]) => (
+        <button key={k} type="button" role="radio" aria-checked={value === k} className={`mk-card${value === k ? " on" : ""}`} onClick={() => set(k)}>
+          <b>{l}</b><span>{line}</span>
         </button>
       ))}
     </div>
   );
 }
+
 
 const DRAFT = "host_party_draft";
 type Draft = { v: Record<string, string>; look: string; entry: "rsvp" | "tickets"; who: "link" | "listed" };
@@ -48,13 +55,21 @@ export default function MakeParty({ signedIn }: { signedIn: boolean }) {
   const [date, setDate] = useState("");
   const [where, setWhere] = useState("");
   const [time, setTime] = useState("21:00");
+  const [city, setCity] = useState("Bengaluru");
+  const [otherDay, setOtherDay] = useState(false);
+  const [otherTime, setOtherTime] = useState(false);
+  const [otherCity, setOtherCity] = useState(false);
   useEffect(() => { if (signedIn) myPromoters().then((p) => setPromoters(p.filter((x) => x.status === "approved"))).catch(() => {}); }, [signedIn]);
 
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!name.trim()) { setErr("Give it a name. Tap the card."); return; }
+    if (!date) { setErr("Pick a day."); return; }
     const fd = new FormData(e.currentTarget);
     const vals: Record<string, string> = {};
     fd.forEach((val, k) => { vals[k] = String(val).trim(); });
+    if (!vals.city) { setErr("Which city?"); return; }
+    if (entry === "tickets" && !/^https?:\/\//.test(vals.tickets ?? "")) { setErr("Add the link where people buy tickets."); return; }
     if (!signedIn) {
       try { localStorage.setItem(DRAFT, JSON.stringify({ v: vals, look, entry, who } satisfies Draft)); } catch { /* the sign-in still works; the draft just won't come back */ }
       window.location.href = `/sign-in?next=${encodeURIComponent("/make?publish=1")}&why=publish`;
@@ -99,7 +114,7 @@ export default function MakeParty({ signedIn }: { signedIn: boolean }) {
     const d = readDraft();
     if (!d) return;
     queueMicrotask(() => {
-      setInitial(d.v); setFormKey((k) => k + 1); setName(d.v.title ?? ""); setDate(d.v.date ?? ""); setWhere(d.v.where ?? ""); setTime(d.v.time ?? "21:00");
+      setInitial(d.v); setFormKey((k) => k + 1); setName(d.v.title ?? ""); setDate(d.v.date ?? ""); setWhere(d.v.where ?? ""); setTime(d.v.time ?? "21:00"); setCity(d.v.city || "Bengaluru");
       setLook(d.look); setEntry(d.entry); setWho(d.who);
       if (d.v.lineup || d.v.about || d.v.capacity) setMore(true);
     });
@@ -143,40 +158,64 @@ export default function MakeParty({ signedIn }: { signedIn: boolean }) {
   }
 
   const first = (name.trim().split(/\s+/)[0] || "Party").slice(0, 8);
+  const t0 = today();
+  const days = Array.from({ length: 7 }, (_, i) => addDays(t0, i));
+  const L = as ? LOOKS.ink : LOOKS[look];
   return (
-    <form key={formKey} onSubmit={submit} style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-      <Top back="/parties" right="Takes 2 minutes" />
-      <div style={{ padding: "4px 20px 0" }}><h1 className="d" style={{ fontSize: 36, margin: 0 }}>Make a party</h1></div>
-      {!as && (
-        <div className="mp-preview" aria-label="Your invite, as guests will see it" style={{ margin: "14px 20px 0", borderRadius: 20, overflow: "hidden", background: LOOKS[look].bg, color: LOOKS[look].ink, padding: "16px 16px 14px", position: "relative", transition: "background .35s" }}>
-          <span className="pill" style={{ height: 24, fontSize: 11, background: "rgba(0,0,0,.12)", color: LOOKS[look].ink, boxShadow: "none" }}>You&rsquo;re invited</span>
-          <div className="d" style={{ fontSize: 30, marginTop: 10, color: LOOKS[look].ink, minHeight: 30 }}>{name || "Your party"}</div>
-          <div style={{ fontSize: 13, opacity: 0.75, marginTop: 6 }}>{[date ? new Date(`${date}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : "Pick a date", time, where].filter(Boolean).join(" · ")}</div>
-          <img src="/cats/dance.webp" alt="" style={{ position: "absolute", right: 6, bottom: -6, height: 70, opacity: 0.9 }} />
-        </div>
-      )}
+    <form key={formKey} onSubmit={submit} noValidate style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+      <Top back="/parties" right="Takes a minute" />
+      <input type="hidden" name="date" value={date} />
+      <input type="hidden" name="time" value={time} />
+      <input type="hidden" name="city" value={city} />
+      <div className="mp-preview mk-preview" aria-label="Your invite, as guests will see it" style={{ background: L.bg, color: L.ink }}>
+        <div className="mk-top"><span>{date ? new Date(`${date}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : "Pick a day"}{time ? ` · ${time}` : ""}{city ? ` · ${city}` : ""}</span><span>Preview</span></div>
+        <label className="mk-name">
+          <span className="mk-hint">{name ? "Your party" : "Tap to name it"}</span>
+          <input name="title" required maxLength={120} placeholder="Your party" value={name} onChange={(e) => setName(e.target.value)} style={{ color: L.ink }} autoComplete="off" />
+        </label>
+        <span className="mk-entry">{entry === "tickets" ? "Tickets" : "Free, on the list"}{where ? ` · ${where}` : ""}</span>
+        <img src="/cats/dance.webp" alt="" className="mk-cat" />
+      </div>
       <div style={{ padding: "0 20px" }}>
         {promoters.length > 0 && (
-          <div style={{ marginTop: 14 }}>
+          <div style={{ marginTop: 16 }}>
             <div className="m">Make it as</div>
             <div className="row" style={{ gap: 6, marginTop: 8, flexWrap: "wrap" }}>
               {[{ slug: "", name: "Me" }, ...promoters].map((p) => <button key={p.slug} type="button" className={`pill lg${as === p.slug ? " on" : ""}`} onClick={() => setAs(p.slug)}>{p.name}</button>)}
             </div>
           </div>
         )}
-        <label style={{ display: "block", marginTop: 14 }}><span className="m">Name</span><input className="fld" name="title" required maxLength={120} placeholder="Rooftop on Saturday" value={name} onChange={(e) => setName(e.target.value)} /></label>
-        <div className="row" style={{ gap: 10 }}>
-          <label style={{ display: "block", marginTop: 14, flex: 1 }}><span className="m">When</span><input className="fld" type="date" name="date" required min={today()} value={date} onChange={(e) => setDate(e.target.value)} /></label>
-          <label style={{ display: "block", marginTop: 14, width: 120 }}><span className="m">From</span><input className="fld" type="time" name="time" value={time} onChange={(e) => setTime(e.target.value)} /></label>
+
+        <div className="m" style={{ marginTop: 18 }}>When</div>
+        <div className="mk-row" role="radiogroup" aria-label="Day">
+          {days.map((d) => { const b = dayBits(d); return (
+            <button key={d} type="button" role="radio" aria-checked={date === d && !otherDay} className={`mk-day${date === d && !otherDay ? " on" : ""}`} onClick={() => { setDate(d); setOtherDay(false); }}>
+              <span>{d === t0 ? "Today" : b.w}</span><b>{b.n}</b>
+            </button>
+          ); })}
+          <button type="button" className={`mk-day${otherDay ? " on" : ""}`} onClick={() => setOtherDay(true)} aria-label="Another date">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3" /><path d="M3 10h18M8 3v4M16 3v4" /></svg>
+          </button>
         </div>
-        <div className="row" style={{ gap: 10 }}>
-          <label style={{ display: "block", marginTop: 14, flex: 1 }}><span className="m">Where</span><input className="fld" name="where" maxLength={120} placeholder="Indiranagar, or the venue" value={where} onChange={(e) => setWhere(e.target.value)} /></label>
-          <label style={{ display: "block", marginTop: 14, width: 140 }}><span className="m">City</span><input className="fld" name="city" required list="host-cities" maxLength={60} defaultValue={initial.city || "Bengaluru"} /><datalist id="host-cities">{CITIES.map((c) => <option key={c} value={c} />)}</datalist></label>
+        {otherDay && <label style={{ display: "block", marginTop: 10 }}><span className="m">The date</span><input className="fld" type="date" min={t0} value={date} onChange={(e) => setDate(e.target.value)} /></label>}
+
+        <div className="mk-row" role="radiogroup" aria-label="Doors open" style={{ marginTop: 10 }}>
+          {TIMES.map((t) => <button key={t} type="button" role="radio" aria-checked={time === t && !otherTime} className={`pill lg${time === t && !otherTime ? " on" : ""}`} onClick={() => { setTime(t); setOtherTime(false); }}>{t}</button>)}
+          <button type="button" className={`pill lg${otherTime ? " on" : ""}`} onClick={() => setOtherTime(true)}>Other</button>
         </div>
+        {otherTime && <label style={{ display: "block", marginTop: 10 }}><span className="m">Doors at</span><input className="fld" type="time" value={time} onChange={(e) => setTime(e.target.value)} /></label>}
+
+        <div className="m" style={{ marginTop: 18 }}>Where</div>
+        <div className="mk-row" role="radiogroup" aria-label="City">
+          {QUICK_CITIES.map((c) => <button key={c} type="button" role="radio" aria-checked={city === c && !otherCity} className={`pill lg${city === c && !otherCity ? " on" : ""}`} onClick={() => { setCity(c); setOtherCity(false); }}>{c}</button>)}
+          <button type="button" className={`pill lg${otherCity ? " on" : ""}`} onClick={() => { setOtherCity(true); if (QUICK_CITIES.includes(city)) setCity(""); }}>Other</button>
+        </div>
+        {otherCity && <label style={{ display: "block", marginTop: 10 }}><span className="m">City</span><input className="fld" list="host-cities" maxLength={60} value={city} onChange={(e) => setCity(e.target.value)} /><datalist id="host-cities">{CITIES.map((c) => <option key={c} value={c} />)}</datalist></label>}
+        <label style={{ display: "block", marginTop: 10 }}><span className="sr-only">The place</span><input className="fld" name="where" maxLength={120} placeholder="The venue, or the area" value={where} onChange={(e) => setWhere(e.target.value)} /></label>
 
         {!as && (
           <>
-            <div className="m" style={{ marginTop: 16 }}>Look</div>
+            <div className="m" style={{ marginTop: 18 }}>Your colours</div>
             <div className="row" style={{ gap: 10, marginTop: 8 }} role="radiogroup" aria-label="Look">
               {Object.entries(LOOKS).map(([k, l]) => (
                 <button key={k} type="button" role="radio" aria-checked={look === k} aria-label={l.label} onClick={() => setLook(k)}
@@ -188,14 +227,14 @@ export default function MakeParty({ signedIn }: { signedIn: boolean }) {
           </>
         )}
 
-        <div className="m" style={{ marginTop: 16 }}>Entry</div>
-        <Keys value={entry} set={setEntry} opts={[["rsvp", "Free, RSVP"], ["tickets", "Tickets"]]} />
+        <div className="m" style={{ marginTop: 18 }}>How people get in</div>
+        <Cards label="Entry" value={entry} set={setEntry} opts={[["rsvp", "Guest list", "Free. You say yes."], ["tickets", "Tickets", "Sold on your link."]]} />
         {entry === "tickets" && <label style={{ display: "block", marginTop: 12 }}><span className="m">Where people buy tickets</span><input className="fld" type="url" name="tickets" required maxLength={300} defaultValue={initial.tickets} placeholder="https://" /></label>}
 
         {!as && (
           <>
-            <div className="m" style={{ marginTop: 14 }}>Who sees it</div>
-            <Keys value={who} set={setWho} opts={[["link", "Link only"], ["listed", "Listed on Nights"]]} />
+            <div className="m" style={{ marginTop: 18 }}>Who sees it</div>
+            <Cards label="Who sees it" value={who} set={setWho} opts={[["link", "Link only", "Your people, your link."], ["listed", "On Nights too", "Everyone going out."]]} />
           </>
         )}
 
