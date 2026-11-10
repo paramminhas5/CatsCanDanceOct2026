@@ -7,8 +7,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { memberRpc, useMember } from "@/lib/member";
-import { sendSignInLink } from "@/lib/plans";
-import SignInCode from "@/components/SignInCode";
+import AuthBox from "@/components/AuthBox";
 
 /** Ticket platforms a guest can name. Same keys as Gate's import (door_guests.source). */
 const SOURCES: Record<string, string> = { district: "District", bookmyshow: "BookMyShow", skillbox: "Skillbox", insider: "Insider", highape: "HighApe", ra: "RA", other: "Outside ticket" };
@@ -24,7 +23,6 @@ export default function OutsideTicket({ slug, title, dark = false }: { slug: str
   const [file, setFile] = useState<File | null>(null);
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState("");
-  const [email, setEmail] = useState("");
 
   const load = () => memberRpc<Mine>("my_outside_ticket", { p_slug: slug }).then((r) => { if (r.ok) setMine((r.data as any) ?? null); });
   useEffect(() => { if (signedIn) load(); }, [signedIn, slug]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -67,14 +65,8 @@ export default function OutsideTicket({ slug, title, dark = false }: { slug: str
     <div className={box}>
       <p className="font-display text-xl leading-tight">Bought your ticket somewhere else?</p>
       <p className="text-sm mt-1">Add it before the night and your name is on the door list for {title}. Quicker at the door, and no "you're not on the list".</p>
-      {!signedIn && msg && msg !== "sent" && <p className="text-sm font-bold mt-2">{msg}</p>}
-      {!signedIn && msg === "sent" ? (
-        <div className="mt-3"><SignInCode email={email.trim()} next={typeof window !== "undefined" ? window.location.pathname : "/"} dark={dark} onDone={() => window.location.reload()} onBack={() => setMsg("")} /></div>
-      ) : !signedIn ? (
-        <form className="mt-3 flex gap-2" onSubmit={async (e) => { e.preventDefault(); const r = await sendSignInLink(email.trim(), window.location.pathname); setMsg(r.ok ? "sent" : r.error ?? "Could not send the code."); }}>
-          <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your email" className="flex-1 min-w-0 border-4 border-ink bg-white text-ink p-2" autoCapitalize="none" />
-          <button className="font-display px-3 border-4 border-ink bg-acid-yellow text-ink">Sign in</button>
-        </form>
+      {!signedIn ? (
+        <div className="mt-3"><AuthBox next={typeof window !== "undefined" ? window.location.pathname : "/"} dark={dark} onDone={() => window.location.reload()} /></div>
       ) : !open ? (
         <button type="button" onClick={() => setOpen(true)} className="mt-3 font-display px-4 py-2 border-4 border-ink bg-acid-yellow text-ink">Add my ticket</button>
       ) : (

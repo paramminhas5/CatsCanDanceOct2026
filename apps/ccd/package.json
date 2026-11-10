@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@ccd/auth": "workspace:*",
     "@ccd/banner": "workspace:*",
     "@ccd/brand": "workspace:*",
     "@ccd/mail": "workspace:*",

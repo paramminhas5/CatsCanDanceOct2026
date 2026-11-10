@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Outfit, JetBrains_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import SessionKeeper from "@/components/SessionKeeper";
 import OpenFromRef from "@/components/OpenFromRef";
 import { getMember } from "@/lib/auth";
 import { NAME, PRODUCT, siteUrl } from "@/lib/site";
@@ -33,6 +34,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Nav member={member} />
         <div id="main" className="min-h-[60vh]">{children}</div>
         <Footer />
+        <SessionKeeper />
         <OpenFromRef />
         <script defer src="/_vercel/insights/script.js" />
       </body>

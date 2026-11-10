@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Outfit, JetBrains_Mono } from "next/font/google";
 import { SuiteNav, SuiteFooter, SUITE_LINKS } from "@ccd/ui";
 import { PRODUCTS } from "@ccd/brand";
 import { getMember } from "@/lib/supabase/server";
+import SessionKeeper from "@/components/SessionKeeper";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({ subsets: ["latin"], axes: ["opsz"], variable: "--font-bricolage", display: "swap" });
@@ -28,6 +29,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           sub={[{ href: "/parties", label: "Your parties" }, { href: "/guests", label: "Guests" }, { href: "/door", label: "The door" }, { href: "/book", label: "Book artists" }, { href: "/gear", label: "Gear" }]} />
         <div id="main" className="min-h-[60vh]">{children}</div>
         <SuiteFooter current="gate" links={SUITE_LINKS} />
+        <SessionKeeper />
       </body>
     </html>
   );

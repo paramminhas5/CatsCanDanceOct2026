@@ -81,3 +81,4 @@ export async function verifyHandoff(token: string, secret: string, aud: HandoffC
   if (!claims.sub || !claims.email) throw new Error("missing subject");
   return claims;
 }
+export * from "./signin";

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import AuthBox from "@/components/AuthBox";
 import SEO from "@/components/SEO";
 import { supabase } from "@/lib/supabase";
 import { memberRpc, useMember } from "@/lib/member";
@@ -19,7 +20,7 @@ import { memberTickets, type PassTicket } from "@/lib/booking";
 import { directionsUrl, todayIST } from "@/lib/nights";
 import {
   applyPending, type CrewCard, isScene, joinCrew, leaveCrew, loadCrewCard, loadMyPlans, type Mate, type MyPlan,
-  refreshMe, sendSignInLink, setPlan,
+  refreshMe, setPlan,
 } from "@/lib/plans";
 import { LINKS, productLink, productUrl } from "@ccd/brand";
 import { loadMyBookings, type BookingRow } from "@/lib/account-bookings";
@@ -65,24 +66,11 @@ export default function Me() {
 
 function SignIn() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
-  const [err, setErr] = useState("");
-  useEffect(() => { try { const b = JSON.parse(localStorage.getItem("ccd:buyer") ?? "null"); if (b?.email) setEmail(b.email); } catch {} }, []);
-  if (sent) return <Box title="Check your email."><p>Open the link on this device to see your nights.</p></Box>;
+  const n = typeof router.query.n === "string" ? `?n=${encodeURIComponent(router.query.n)}` : "";
   return (
     <Box title="Sign in">
-      <form className="grid gap-3" onSubmit={async (e) => {
-        e.preventDefault(); setErr("");
-        const n = typeof router.query.n === "string" ? `?n=${encodeURIComponent(router.query.n)}` : "";
-        const r = await sendSignInLink(email, `/me${n}`);
-        if (r.ok) setSent(true); else setErr(r.error ?? "");
-      }}>
-        <input className={inp} type="email" required placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" />
-        <button className={`${btn} bg-acid-yellow`}>Email me a sign in link</button>
-        <p className="text-xs text-ink/65">Bought a ticket? Use the same email and your tickets show up here.</p>
-        {err && <p className="text-sm text-magenta font-bold">{err}</p>}
-      </form>
+      <AuthBox next={`/me${n}`} onDone={() => window.location.assign(`/me${n}`)} />
+      <p className="mt-3 text-xs text-ink/65">Bought a ticket? Your account is made. Tap Forgot it with the same email to set a password.</p>
     </Box>
   );
 }
