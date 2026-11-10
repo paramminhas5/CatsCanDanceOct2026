@@ -77,7 +77,16 @@ export async function sendSignInLink(email: string, next: string): Promise<{ ok:
     email,
     options: { emailRedirectTo: `${origin}/auth/callback?next=${encodeURIComponent(next || "/")}` },
   });
-  return error ? { ok: false, error: "Could not send the link. Try again in a minute." } : { ok: true };
+  return error ? { ok: false, error: "Could not send the code. Try again in a minute." } : { ok: true };
+}
+
+/** Sign in with the 6-digit code from the email (Param, 10 Nov 2026: no link every time). */
+export async function verifySignInCode(email: string, code: string): Promise<{ ok: boolean; error?: string }> {
+  const token = code.replace(/\D/g, "");
+  if (token.length < 6) return { ok: false, error: "The code is 6 digits." };
+  const { error } = await supabase().auth.verifyOtp({ email: email.trim().toLowerCase(), token, type: "email" });
+  if (error) return { ok: false, error: /expired/i.test(error.message) ? "That code has expired. Send a new one." : "That code did not work. Check it and try again." };
+  return { ok: true };
 }
 
 export async function signOut() {

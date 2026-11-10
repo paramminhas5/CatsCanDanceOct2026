@@ -6,6 +6,7 @@ import PageHero from "@/components/PageHero";
 import SEO from "@/components/SEO";
 import { supabase } from "@/lib/supabase";
 import { useMember, memberRpc } from "@/lib/member";
+import SignInCode from "@/components/SignInCode";
 
 const CITIES = ["Bengaluru", "Mumbai", "Delhi NCR", "Goa", "Pune", "Hyderabad", "Chennai", "Kolkata"];
 const GENRES = ["Techno", "House", "Disco", "Drum & Bass", "Jungle", "Garage", "Ambient", "Hip-Hop", "Experimental"];
@@ -29,7 +30,7 @@ export default function Join() {
     e.preventDefault();
     setMsg("");
     const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: `${window.location.origin}/join` } });
-    if (error) setMsg("Could not send the link. Try again in a minute."); else setSent(true);
+    if (error) setMsg("Could not send the code. Try again in a minute."); else setSent(true);
   }
 
   const [pw, setPw] = useState("");
@@ -93,11 +94,11 @@ export default function Join() {
               {msg && <p className="text-sm text-red-600">{msg}</p>}
             </form>
           ) : sent ? (
-            <p className="border-4 border-ink p-6 font-display uppercase">Check your email for the sign in link.</p>
+            <div className="border-4 border-ink p-6 bg-cream"><SignInCode email={email.trim()} next="/join" onDone={() => reload()} onBack={() => setSent(false)} /></div>
           ) : (
             <form onSubmit={sendLink} className="grid gap-4 border-4 border-ink p-6 bg-cream chunk-shadow">
               <input className={inp} type="email" required placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <button className="font-display uppercase px-5 py-3 border-4 border-ink bg-acid-yellow text-ink">Email me a sign in link</button>
+              <button className="font-display uppercase px-5 py-3 border-4 border-ink bg-acid-yellow text-ink">Email me a code</button>
               <p className="text-xs text-ink/60">No password. We only use your email to sign you in and to tell you about nights you asked for.</p>
               {msg && <p className="text-sm text-red-600">{msg}</p>}
               <details className="text-sm">

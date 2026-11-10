@@ -1,6 +1,6 @@
 /**
- * Your account: what one login holds across the three products, and the sign-in link form.
- * Signing in uses the same email magic link as the Going sheet. Signed-in visitors get a link to /me.
+ * Your account: what one login holds across the three products, and the sign-in form.
+ * Signing in emails a 6-digit code (SignInCode), the same as the Going sheet. Signed-in visitors get a link to /me.
  */
 import { useState } from "react";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { useRef } from "react";
 import catRight from "@/assets/cat-right.svg";
 import { imgUrl } from "@/lib/img";
 import { sendSignInLink, useMe } from "@/lib/plans";
+import SignInCode from "@/components/SignInCode";
 
 const GETS: { name: string; head: string; dot: string; items: string[] }[] = [
   { name: "Nights", head: "bg-electric-blue text-cream", dot: "bg-electric-blue", items: ["Tickets and QR codes for our Episodes", "Nights you are going to, saved and in your calendar", "Your crew for each night, with the meet point and chat"] },
@@ -33,7 +34,7 @@ export default function AccountBlock() {
     setState("busy");
     const r = await sendSignInLink(email.trim().toLowerCase(), "/me");
     if (r.ok) setState("sent");
-    else { setState("error"); setErr(r.error ?? "Could not send the link."); }
+    else { setState("error"); setErr(r.error ?? "Could not send the code."); }
   };
 
   return (
@@ -67,7 +68,7 @@ export default function AccountBlock() {
             <span className="text-sm text-cream/85">You're signed in.</span>
           </div>
         ) : state === "sent" ? (
-          <p className="ccd-pop inline-block bg-acid-yellow text-ink font-display px-5 py-3 border-4 border-ink">Check your email. The link signs you in.</p>
+          <div className="max-w-md border-4 border-ink bg-cream text-ink p-5"><SignInCode email={email.trim().toLowerCase()} next="/me" onBack={() => setState("idle")} /></div>
         ) : (
           <form onSubmit={submit} className="flex flex-col sm:flex-row sm:items-end gap-3 max-w-[760px]">
             <label className="flex-1 text-xs font-bold uppercase tracking-[0.12em]">
@@ -83,7 +84,7 @@ export default function AccountBlock() {
               />
             </label>
             <button type="submit" disabled={state === "busy"} className="bg-magenta text-cream font-display px-6 py-3.5 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform disabled:opacity-60">
-              {state === "busy" ? "Sending…" : "Email me a sign-in link"}
+              {state === "busy" ? "Sending…" : "Email me a code"}
             </button>
           </form>
         )}

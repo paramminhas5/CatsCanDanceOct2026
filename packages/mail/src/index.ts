@@ -92,11 +92,21 @@ const first = (n?: string | null) => (n ?? "").trim().split(/\s+/)[0] || "there"
 
 /* ───────────────────────── All ───────────────────────── */
 
-/** Sign-in link. Supabase sends this one; paste signInTemplate() into Auth, Email templates, Magic link. */
-export const signIn = (o: { link: string }) =>
-  mail("Your sign-in link", { product: "ccd", preheader: "Tap to sign in. The link works once.", title: "Tap to sign in", lines: ["This signs you in to Nights, Artists, Host and School. The link works once and runs out in an hour."], cta: { label: "Sign in", href: o.link }, after: ["Did not ask for this? Ignore it and nothing happens."] });
-/** The same email with Supabase's own placeholder, for the dashboard template. */
-export const signInTemplate = () => layout({ product: "ccd", preheader: "Tap to sign in. The link works once.", title: "Tap to sign in", lines: ["This signs you in to Nights, Artists, Host and School. The link works once and runs out in an hour."], cta: { label: "Sign in", href: "https://catscandance.com" }, after: ["Did not ask for this? Ignore it and nothing happens."] }).replace('href="https://catscandance.com" style="display:inline-block;padding:15px', 'href="{{ .ConfirmationURL }}" style="display:inline-block;padding:15px');
+/**
+ * Sign-in code. Supabase sends this one: paste signInTemplate() into Auth, Email templates, both
+ * "Magic link" and "Confirm signup" (new people get the second). The code is typed in the app; the
+ * button is for the same phone (Param, 10 Nov 2026: no link every time).
+ */
+const SIGN_IN = (code: string, link: string) => ({
+  product: "ccd" as const, preheader: `${code} is your sign-in code.`, eyebrow: "Sign in", title: "Your code",
+  lines: ["Type this in the app to sign in to Nights, Artists, Host and School. It works for an hour."],
+  code, cta: { label: "Or sign in on this phone", href: link },
+  after: ["Did not ask for this? Ignore it and nothing happens."],
+});
+export const signIn = (o: { code: string; link: string }) => mail(`${o.code} is your sign-in code`, SIGN_IN(o.code, o.link));
+/** The same email with Supabase's own placeholders, for the dashboard template. Subject: {{ .Token }} is your sign-in code */
+export const signInTemplate = () =>
+  layout(SIGN_IN("{{ .Token }}", "https://catscandance.com")).replace('href="https://catscandance.com" style="display:inline-block;padding:15px', 'href="{{ .ConfirmationURL }}" style="display:inline-block;padding:15px');
 
 /* ───────────────────────── Nights ───────────────────────── */
 
@@ -250,7 +260,7 @@ export const promoterReview = (o: { what: string; approved: boolean; note?: stri
 const S = "https://catscandance.com";
 /** Every email with sample data, for the /ops/emails preview. Sample data only; never sent to real people. */
 export const SAMPLES: { key: string; group: string; when: string; mail: () => Mail }[] = [
-  { key: "sign-in", group: "All", when: "Every sign-in (Supabase template)", mail: () => signIn({ link: `${S}/join` }) },
+  { key: "sign-in", group: "All", when: "Every sign-in (Supabase template)", mail: () => signIn({ code: "481072", link: `${S}/join` }) },
   { key: "tickets", group: "Nights", when: "After payment", mail: () => tickets({ name: "Aditi", night: "Episode 05", when: "Wed 25 Nov, 20:00", where: "The Humming Tree, Bengaluru", codes: ["CCD-4F7K", "CCD-9Q2M"], paid: true, link: `${S}/tickets/order` }) },
   { key: "crew", group: "Nights", when: "18:00 on the night", mail: () => crewReady({ name: "Aditi", night: "Episode 05", meet: "Third Wave, 12th Main", at: "21:15", people: ["Kiran", "Rohan", "Priya"], link: `${S}/me` }) },
   { key: "list-yes", group: "Nights", when: "When the host says yes", mail: () => listAnswer({ name: "Aditi", night: "DOMi & JD Beck", yes: true, when: "Fri 21 Nov", link: `${S}/me` }) },

@@ -12,6 +12,7 @@ import { memberRpc } from "@/lib/member";
 import {
   type Crowd, type PlanState, crowdLine, isScene, joinCrew, rememberPending, sendSignInLink, setPlan, useMe,
 } from "@/lib/plans";
+import SignInCode from "@/components/SignInCode";
 
 type Props = {
   nightKey: string;
@@ -71,12 +72,7 @@ function SignInStep({ nightKey, title }: { nightKey: string; title: string }) {
   const [sent, setSent] = useState(false);
   const [err, setErr] = useState("");
   useEffect(() => { try { const b = JSON.parse(localStorage.getItem("ccd:buyer") ?? "null"); if (b?.email) setEmail(b.email); } catch {} }, []);
-  if (sent) return (
-    <div className="grid gap-2">
-      <p className="font-display text-xl">Check your email.</p>
-      <p className="text-sm">Open the link on this phone. You'll land on Your nights, already on the list for this night.</p>
-    </div>
-  );
+  if (sent) return <SignInCode email={email.trim()} next={`/me?n=${encodeURIComponent(nightKey)}`} onBack={() => setSent(false)} />;
   return (
     <form className="grid gap-3" onSubmit={async (e) => {
       e.preventDefault(); setErr("");
@@ -88,7 +84,7 @@ function SignInStep({ nightKey, title }: { nightKey: string; title: string }) {
       <label className="grid gap-1 text-sm font-bold">Your email
         <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="border-4 border-ink bg-white p-3 font-normal" autoComplete="email" />
       </label>
-      <button className="font-display px-5 py-3 border-4 border-ink bg-ink text-cream">Email me a sign in link</button>
+      <button className="font-display px-5 py-3 border-4 border-ink bg-ink text-cream">Email me a code</button>
       <p className="text-xs text-ink/65">No password. Your name only shows on the guest list if you switch it on.</p>
       {err && <p className="text-sm text-magenta font-bold">{err}</p>}
     </form>
