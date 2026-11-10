@@ -1,0 +1,742 @@
+[
+ {
+  "slug": "priyam",
+  "identity": "Confirmed only as the DJ Priyam on boxout.fm: guest mix and several Boxout Wednesdays sets uploaded by boxout.fm's own Mixcloud (2018 to 2022), plus the Insider listing 'Boxout Wednesdays #187 with EZ Riser, Unfuckman and Priyam'. No page gives a surname, city or other links.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Floor thumping eclecticism",
+    "source_url": "https://www.mixcloud.com/boxoutfm/guest-mix-354-priyam-31-08-2019/"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Guest Mix 354 - Priyam [31-08-2019]",
+    "url": "https://www.mixcloud.com/boxoutfm/guest-mix-354-priyam-31-08-2019/",
+    "year": 2019
+   },
+   {
+    "title": "Boxout Wednesdays 187 - Priyam [25-05-2022]",
+    "url": "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-187-priyam-25-05-2022/",
+    "year": 2022
+   },
+   {
+    "title": "Boxout Wednesdays 193 - Priyam [06-07-2022]",
+    "url": "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-193-priyam-06-07-2022/",
+    "year": 2022
+   },
+   {
+    "title": "Dandelion Hour 006 - Guest Mix by Priyam [19-02-2021]",
+    "url": "https://www.mixcloud.com/boxoutfm/dandelion-hour-006-guest-mix-by-priyam-19-02-2021/",
+    "year": 2021
+   },
+   {
+    "title": "Boxout.fm X St+Art Sessions 012 - Priyam - Friction at Kona [02-03-2019]",
+    "url": "https://www.mixcloud.com/boxoutfm/boxoutfm-x-start-sessions-012-priyam-friction-at-kona-02-03-2019/",
+    "year": 2019
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Priyam is a DJ who has played Boxout Wednesdays, boxout.fm's weekly club night, and recorded guest mixes for the station between 2018 and 2022.",
+  "bio_sources": [
+   {
+    "fact": "Played Boxout Wednesdays",
+    "url": "https://www.mixcloud.com/BoxoutWednesdays/boxout-wednesdays-088-rooftop-sessions-priyam-05-12-2018/"
+   },
+   {
+    "fact": "Guest mix for boxout.fm",
+    "url": "https://www.mixcloud.com/boxoutfm/guest-mix-354-priyam-31-08-2019/"
+   },
+   {
+    "fact": "Boxout Wednesdays 2022",
+    "url": "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-187-priyam-25-05-2022/"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "kind": "https://www.mixcloud.com/boxoutfm/guest-mix-354-priyam-31-08-2019/"
+   }
+  },
+  "notes": "Thin public footprint: only boxout.fm uploads (Mixcloud tags on the guest mix: deep house, soulful house, disco, cumbia; on BW187: hip hop, beats, garage, house, dancehall). No city, Instagram or SoundCloud stated anywhere I opened; many other Priyams on Mixcloud are unrelated. Insider event page would not render. No eras: no dated source describes the sound beyond the one boxout.fm line."
+ },
+ {
+  "slug": "profound",
+  "identity": "Wild City artist page 493 (Profound) links the article 'Boxout.fm Turns One With Boxout Weekender', and boxout.fm/weekender/2018 lists 'Boxout.fm Recordings artist Profound' with a set uploaded to the Mixcloud account Profoundsounds (city Chandigarh). Wild City and Rolling Stone India describe the same Delhi based, Chandigarh raised hip-hop and electronic producer (KRUNK, Knowmad Records).",
+  "eras": [
+   {
+    "from_year": 2015,
+    "to_year": 2016,
+    "sound": "Lo-fi, hip-hop inflected electronic songs",
+    "tags": [
+     "lo-fi",
+     "hip-hop",
+     "electronic"
+    ],
+    "source_url": "https://www.thewildcity.com/news/1886-listen-profound-releases-debut-ep-returning-rituals",
+    "source_name": "Wild City",
+    "quote": "collection of 5 electronic and hip-hop inflected songs"
+   },
+   {
+    "from_year": 2017,
+    "to_year": null,
+    "sound": "Boom-bap beats over reworked vintage breaks",
+    "tags": [
+     "boom-bap",
+     "beat tape",
+     "lo-fi hip-hop",
+     "vaporwave"
+    ],
+    "source_url": "https://www.thewildcity.com/news/2177-listen-fre-h-by-profound",
+    "source_name": "Wild City",
+    "quote": "a tight, controlled and measured beat"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Multilayered with subliminal beats and lo-fi elements",
+    "source_url": "https://www.thewildcity.com/artists/493-profound"
+   },
+   {
+    "tag": "Heavy bass and beats",
+    "source_url": "https://boxout.fm/weekender/2018"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Profound: Riding the Vaporwave",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/profound-riding-the-vaporwave/",
+    "date_published": "2017-03-07"
+   },
+   {
+    "title": "Listen: 'fre$h' By Profound",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/2177-listen-fre-h-by-profound",
+    "date_published": "2017-02-20"
+   },
+   {
+    "title": "First Listen: 'slowdowngf' by Profound",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/2175-first-listen-slowdowngf-by-profound",
+    "date_published": "2017-02-17"
+   },
+   {
+    "title": "Listen: Profound Releases Debut EP 'Returning Rituals'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/1886-listen-profound-releases-debut-ep-returning-rituals",
+    "date_published": "2015-09-11"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Profound Live @ Boxout Weekender [06-04-2018]",
+    "url": "https://www.mixcloud.com/Profoundsounds/profound-live-boxout-weekender-06-04-2018/",
+    "year": 2018
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Profound is a hip-hop and electronic producer from Chandigarh, based in New Delhi. His debut EP Returning Rituals came out with KRUNK in 2015 and the beat tape fre$h on Knowmad Records in 2017. He played the first Boxout Weekender in 2018 as a Boxout.fm Recordings artist.",
+  "bio_sources": [
+   {
+    "fact": "From Chandigarh, based in New Delhi",
+    "url": "https://rollingstoneindia.com/profound-riding-the-vaporwave/"
+   },
+   {
+    "fact": "Returning Rituals, KRUNK, 2015",
+    "url": "https://www.thewildcity.com/news/1886-listen-profound-releases-debut-ep-returning-rituals"
+   },
+   {
+    "fact": "fre$h on Knowmad Records, 2017",
+    "url": "https://www.thewildcity.com/news/2177-listen-fre-h-by-profound"
+   },
+   {
+    "fact": "Boxout Weekender 2018, Boxout.fm Recordings artist",
+    "url": "https://boxout.fm/weekender/2018"
+   }
+  ],
+  "releases": [
+   {
+    "title": "Returning Rituals",
+    "year": 2015,
+    "release_type": "ep",
+    "label": "KRUNK",
+    "url": "https://www.thewildcity.com/news/1886-listen-profound-releases-debut-ep-returning-rituals",
+    "date": null
+   },
+   {
+    "title": "fre$h",
+    "year": 2017,
+    "release_type": "ep",
+    "label": "Knowmad Records",
+    "url": "https://www.thewildcity.com/news/2177-listen-fre-h-by-profound",
+    "date": "2017-02-20"
+   },
+   {
+    "title": "slowdowngf",
+    "year": 2017,
+    "release_type": "single",
+    "label": "Knowmad Records",
+    "url": "https://www.thewildcity.com/news/2175-first-listen-slowdowngf-by-profound",
+    "date": "2017-02-17"
+   }
+  ],
+  "ids": {},
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": "Chandigarh",
+   "instagram": null,
+   "soundcloud": "https://soundcloud.com/profoundsoundsofficial",
+   "mixcloud": "https://www.mixcloud.com/Profoundsounds/",
+   "website": null,
+   "kind": "producer",
+   "sources": {
+    "based_city": "https://rollingstoneindia.com/profound-riding-the-vaporwave/",
+    "from_city": "https://rollingstoneindia.com/profound-riding-the-vaporwave/",
+    "soundcloud": "https://www.thewildcity.com/news/1886-listen-profound-releases-debut-ep-returning-rituals",
+    "mixcloud": "https://boxout.fm/weekender/2018",
+    "kind": "https://rollingstoneindia.com/profound-riding-the-vaporwave/"
+   }
+  },
+  "notes": "City: 2015 Wild City says Chandigarh based; 2017 pieces say Delhi based with Chandigarh as hometown. Sources give a legal name (left out per brief). Facebook: facebook.com/profoundsoundsofficial (Wild City). fre$h was called an EP by Wild City and Rolling Stone India; the artist calls it a beat tape. Rolling Stone India also names earlier releases 'Faded' (no year, not added). The 2017 era quote is from Wild City; Rolling Stone India places fre$h in vaporwave and lo-fi hip-hop."
+ },
+ {
+  "slug": "rajah-betta",
+  "identity": "Wild City's Padmini Records piece (18 Mar 2026) lists Rajah Betta's 'But...' on Yaar-Dost vol. 2, matching this batch's Padmini context. Wild City #251 (29 Jul 2025) and the Offcuts news piece describe the same Bombay born, NYC honed DJ and producer; Newtown Radio (Brooklyn) show page and the rajahbetta Mixcloud ('Bombay x Brooklyn', IG rajahbetta) match.",
+  "eras": [
+   {
+    "from_year": 2025,
+    "to_year": null,
+    "sound": "Bombay-meets-Brooklyn club music with film samples",
+    "tags": [
+     "Bombay Club",
+     "club",
+     "house",
+     "breakbeat"
+    ],
+    "source_url": "https://www.thewildcity.com/mixes/21230-wild-city-251-rajah-betta",
+    "source_name": "Wild City",
+    "quote": "It creates a Bombay-meets-Brooklyn sound that Rajah Betta dubs as \"Bombay Club\""
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "House, obscure electronic, dnb, breakbeat, bollywood",
+    "source_url": "https://newtownradio.com/shows/betta-sounds/"
+   },
+   {
+    "tag": "Controlled chaos by way of Bombay Club",
+    "source_url": "https://www.thewildcity.com/mixes/21230-wild-city-251-rajah-betta"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Rajah Betta Flips Classic Ad Jingles & South Asian Cultural Memory For The Club On 'Offcuts'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/21658-rajah-betta-flips-classic-ad-jingles-south-asian-cultural-memory-for-the-club-on-offcuts",
+    "date_published": "2026-05-05"
+   },
+   {
+    "title": "Rajah Betta's Offcuts (SF021) imagines classic Indian tunes for the dance floor",
+    "publication": "The Indian Music Diaries",
+    "url": "https://theindianmusicdiaries.com/rajah-bettas-offcuts-sf021-imagines-classic-indian-tunes-for-the-dance-floor/",
+    "date_published": "2026-06-16"
+   },
+   {
+    "title": "Padmini Records Includes Monophonik, Shantam, Chhabb & More On 'Yaar-Dost | vol. 2'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/21593-padmini-records-includes-monophonik-shantam-chhabb-more-on-yaar-dost-vol-2",
+    "date_published": "2026-03-18"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Wild City #251: Rajah Betta",
+    "url": "https://soundcloud.com/thewildcity/wild-city-251-rajah-betta",
+    "year": 2025
+   },
+   {
+    "title": "Wild City #251: Rajah Betta (Mixcloud)",
+    "url": "https://www.mixcloud.com/WildCity/wild-city-251-rajah-betta/",
+    "year": 2025
+   },
+   {
+    "title": "Betta Sounds w/ Rajah Betta Ep. 1 feat. Choo Choo (Newtown Radio)",
+    "url": "https://www.mixcloud.com/newtownradiobk/betta-sounds-ep-1-feat-choo-choo-04152024/",
+    "year": 2024
+   },
+   {
+    "title": "Bombay bubs and dubs @Mansions Dec 13 2024",
+    "url": "https://www.mixcloud.com/rajahbetta/bombay-bubs-and-dubs-mansions-dec-13-2024/",
+    "year": 2024
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Rajah Betta is a DJ, producer and radio host born in Bombay who developed his sound in New York, where he hosted Betta Sounds on Brooklyn's Newtown Radio, before moving back to India in 2025. He calls his blend of club music and Bombay samples \"Bombay Club\". In 2026 he appeared on Padmini Records' Yaar-Dost vol. 2 and released the two-track EP Offcuts on Stereo Ferment.",
+  "bio_sources": [
+   {
+    "fact": "Bombay born, NYC honed DJ, producer, radio host; Bombay Club; moved back",
+    "url": "https://www.thewildcity.com/mixes/21230-wild-city-251-rajah-betta"
+   },
+   {
+    "fact": "Betta Sounds on Newtown Radio",
+    "url": "https://newtownradio.com/shows/betta-sounds/"
+   },
+   {
+    "fact": "Yaar-Dost vol. 2, Padmini Records",
+    "url": "https://www.thewildcity.com/news/21593-padmini-records-includes-monophonik-shantam-chhabb-more-on-yaar-dost-vol-2"
+   },
+   {
+    "fact": "Offcuts, 2-track EP, Stereo Ferment",
+    "url": "https://www.thewildcity.com/news/21658-rajah-betta-flips-classic-ad-jingles-south-asian-cultural-memory-for-the-club-on-offcuts"
+   }
+  ],
+  "releases": [
+   {
+    "title": "Offcuts",
+    "year": 2026,
+    "release_type": "ep",
+    "label": "Stereo Ferment",
+    "url": "https://www.thewildcity.com/news/21658-rajah-betta-flips-classic-ad-jingles-south-asian-cultural-memory-for-the-club-on-offcuts",
+    "date": null
+   },
+   {
+    "title": "But... (on Yaar-Dost vol. 2)",
+    "year": 2026,
+    "release_type": "compilation",
+    "label": "Padmini Records",
+    "url": "https://www.thewildcity.com/news/21593-padmini-records-includes-monophonik-shantam-chhabb-more-on-yaar-dost-vol-2",
+    "date": null
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://rajahbetta.bandcamp.com"
+  },
+  "profile": {
+   "based_city": "Mumbai",
+   "from_city": "Mumbai",
+   "instagram": "https://www.instagram.com/rajahbetta",
+   "soundcloud": null,
+   "mixcloud": "https://www.mixcloud.com/rajahbetta/",
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.thewildcity.com/mixes/21230-wild-city-251-rajah-betta",
+    "from_city": "https://www.thewildcity.com/mixes/21230-wild-city-251-rajah-betta",
+    "instagram": "https://newtownradio.com/shows/betta-sounds/",
+    "mixcloud": "https://www.mixcloud.com/rajahbetta/",
+    "kind": "https://www.thewildcity.com/mixes/21230-wild-city-251-rajah-betta"
+   }
+  },
+  "notes": "based_city Mumbai is from Wild City #251 (Jul 2025: relocated back to Mumbai); the 2026 Offcuts piece only says he moved back to India, and The Indian Music Diaries calls him Brooklyn-Mumbai. Sources give a first name (left out). Bandcamp URL rajahbetta.bandcamp.com/album/offcuts-sf021 comes from The Indian Music Diaries; the Bandcamp page itself was refused (permission timeout), so no bandcamp_id. Catalogue SF021 is likely Stereo Ferment's, not stated. Mixcloud oEmbed/API confirmed the mix titles and posters."
+ },
+ {
+  "slug": "reggae-rajahs",
+  "identity": "Wild City's boxout.fm guide lists the show 'Pressure Drop' presented by Reggae Rajahs; boxout.fm Mixcloud uploads Pressure Drop as Reggae Rajahs. Wikipedia, Caravan and Rolling Stone India describe the same New Delhi reggae sound system founded in 2009 by DJ MoCity, Diggy Dang and Mr Herbalist.",
+  "eras": [
+   {
+    "from_year": 2009,
+    "to_year": null,
+    "sound": "Dub, reggae and dancehall sound system",
+    "tags": [
+     "reggae",
+     "dub",
+     "dancehall",
+     "sound system"
+    ],
+    "source_url": "https://soundcloud.com/reggaerajahs",
+    "source_name": "SoundCloud (Reggae Rajahs)",
+    "quote": "dedicated themselves to spreading the sounds of dub, reggae and dancehall music across India"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "India's first reggae sound system",
+    "source_url": "https://caravanmagazine.in/reviews-and-essays/jamaica-new-delhi"
+   },
+   {
+    "tag": "Roots reggae, rock, ska and dancehall",
+    "source_url": "https://rollingstoneindia.com/reggae-rajahs-release-new-mix/amp"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Jamaica Via New Delhi",
+    "publication": "The Caravan",
+    "url": "https://caravanmagazine.in/reviews-and-essays/jamaica-new-delhi",
+    "date_published": "2012-03-01"
+   },
+   {
+    "title": "Inna Reggae Rajahs Style",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/inna-reggae-rajahs-style/",
+    "date_published": "2010-08-10"
+   },
+   {
+    "title": "Reggae Rajahs: 'Reggae Music is Not Commercially Accepted'",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/reggae-rajahs-reggae-music-is-not-commercially-accepted/",
+    "date_published": "2017-02-23"
+   },
+   {
+    "title": "Reggae Rajahs: Future Sound of India",
+    "publication": "LargeUp",
+    "url": "https://largeup.com/?p=3047",
+    "date_published": "2010-07-21"
+   },
+   {
+    "title": "Reggae Rajahs Unveil 10,000 Lions Soundsystem In Goa",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/1944-reggae-rajahs-unveil-10-000-lions-soundsystem-in-goa",
+    "date_published": "2016-01-04"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Pressure Drop 057 (Dennis Brown Special) - Reggae Rajahs",
+    "url": "https://www.mixcloud.com/boxoutfm/pressure-drop-057-dennis-brown-special-19-05-2017/",
+    "year": 2017
+   },
+   {
+    "title": "Reggae Rajahs Vol. 17: Reggae Got Soul (A Tribute to Toots)",
+    "url": "https://www.mixcloud.com/ReggaeRajahs/reggae-rajahs-vol-16-reggae-got-soul-a-tribute-to-toots/",
+    "year": 2020
+   },
+   {
+    "title": "Pressure Drop 192 - General Zooz | Reggae Rajahs",
+    "url": "https://www.mixcloud.com/ReggaeRajahs/pressure-drop-192-general-zooz-reggae-rajahs-25-09-2020/",
+    "year": 2020
+   },
+   {
+    "title": "Pressure Drop 199 - Diggy Dang | Reggae Rajahs",
+    "url": "https://www.mixcloud.com/ReggaeRajahs/pressure-drop-199-diggy-dang-reggae-rajahs-10-09-2022/",
+    "year": 2022
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Reggae Rajahs are a reggae sound system of DJs and MCs from New Delhi, formed in 2009 by DJ MoCity, Diggy Dang and Mr Herbalist, who play dub, reggae and dancehall. They ran the weekly show Pressure Drop, later on boxout.fm, started Goa Sunsplash in 2016 and have played Rototom Sunsplash, Sziget and Outlook in Europe.",
+  "bio_sources": [
+   {
+    "fact": "Sound system of DJs and MCs, New Delhi, 2009, dub reggae dancehall",
+    "url": "https://soundcloud.com/reggaerajahs"
+   },
+   {
+    "fact": "Founders DJ MoCity, Diggy Dang, Mr Herbalist",
+    "url": "https://rollingstoneindia.com/inna-reggae-rajahs-style/"
+   },
+   {
+    "fact": "Pressure Drop on boxout.fm; Goa Sunsplash 2016",
+    "url": "https://en.wikipedia.org/wiki/Reggae_Rajahs"
+   },
+   {
+    "fact": "European festivals 2013",
+    "url": "https://soundcloud.com/reggaerajahs"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": "New Delhi",
+   "instagram": null,
+   "soundcloud": "https://soundcloud.com/reggaerajahs",
+   "mixcloud": "https://www.mixcloud.com/ReggaeRajahs/",
+   "website": "https://reggaerajahs.com",
+   "kind": "collective",
+   "sources": {
+    "based_city": "https://soundcloud.com/reggaerajahs",
+    "from_city": "https://caravanmagazine.in/reviews-and-essays/jamaica-new-delhi",
+    "soundcloud": "https://largeup.com/?p=3047",
+    "mixcloud": "https://www.mixcloud.com/boxoutfm/pressure-drop-057-dennis-brown-special-19-05-2017/",
+    "website": "https://en.wikipedia.org/wiki/Reggae_Rajahs",
+    "kind": "https://soundcloud.com/reggaerajahs"
+   }
+  },
+  "notes": "Kind: a sound system crew; 'collective' is the closest option. Our genres (reggae, dub) match. Members per sources: DJ MoCity, Diggy Dang, Mr Herbalist (Zorawar Shukla), DJ Jun (2010), later General Zooz, Ziggy B, BeLights. Started at founding as 'Reggae India' (Caravan), renamed April 2009; not added as an alias since it was the pre-launch party name. Pressure Drop began on Radio79.com in 2013 before boxout.fm. Website reggaerajahs.com only from Wikipedia, not opened. No releases found."
+ },
+ {
+  "slug": "rohan-kalee",
+  "identity": "Wild City #148 (13 Apr 2018) and Wild City artist page 4749 describe Rohan Kalé as a New Delhi DJ and producer and boxout.fm's Radio Program Manager; his shows (Reflections, Chai and Chill) and Boxout Wednesdays sets are on boxout.fm's Mixcloud; his own Mixcloud RohanKale lists New Delhi and boxout.fm.",
+  "eras": [
+   {
+    "from_year": 2018,
+    "to_year": null,
+    "sound": "Drum and bass and jungle, leaning liquid",
+    "tags": [
+     "drum and bass",
+     "jungle",
+     "liquid"
+    ],
+    "source_url": "https://soundcloud.com/thewildcity/wild-city-148-rohan-kale/s-23H5b",
+    "source_name": "Wild City",
+    "quote": "Rohan Kalé is a New Delhi based producer and DJ who has a deep-rooted love for D&B and jungle."
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Jazzy outbursts (Reflections show)",
+    "source_url": "https://www.mixcloud.com/boxoutfm/reflections-010-rohan-kal%C3%A9-29-05-2018/"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Wild City #148: Rohan Kalé",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/mixes/6930-wild-city-148-rohan-kal",
+    "date_published": "2018-04-13"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Wild City #148 - Rohan Kalé",
+    "url": "https://soundcloud.com/thewildcity/wild-city-148-rohan-kale/s-23H5b",
+    "year": 2018
+   },
+   {
+    "title": "Boxout.fm x Boiler Room - Rohan Kalé [13-12-2017]",
+    "url": "https://www.mixcloud.com/boxoutfm/boxoutfm-x-boiler-room-rohan-kal%C3%A9-13-12-2017/",
+    "year": 2017
+   },
+   {
+    "title": "Rohan Kalé @ Adidas NMD Launch Party - New Delhi [29-07-2017]",
+    "url": "https://www.mixcloud.com/RohanKale/rohan-kal%C3%A9-adidas-nmd-launch-party-new-delhi-india-29-07-2017/",
+    "year": 2017
+   },
+   {
+    "title": "Reflections 010 - Rohan Kalé [29-05-2018]",
+    "url": "https://www.mixcloud.com/boxoutfm/reflections-010-rohan-kal%C3%A9-29-05-2018/",
+    "year": 2018
+   },
+   {
+    "title": "Chai and Chill 060 - Rohan Kalé [05-05-2019]",
+    "url": "https://www.mixcloud.com/boxoutfm/chai-and-chill-060-rohan-kal%C3%A9-05-05-2019/",
+    "year": 2019
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Rohan Kalé is a New Delhi DJ and producer with a love for drum and bass and jungle. He was Radio Program Manager at boxout.fm, where he hosted the shows Reflections and Chai and Chill, and played Boxout Wednesdays and the station's Boiler Room takeover.",
+  "bio_sources": [
+   {
+    "fact": "New Delhi DJ and producer, D&B and jungle, Radio Program Manager at boxout.fm",
+    "url": "https://www.thewildcity.com/mixes/6930-wild-city-148-rohan-kal"
+   },
+   {
+    "fact": "Reflections show",
+    "url": "https://www.mixcloud.com/boxoutfm/reflections-010-rohan-kal%C3%A9-29-05-2018/"
+   },
+   {
+    "fact": "Chai and Chill show",
+    "url": "https://www.mixcloud.com/boxoutfm/chai-and-chill-001-rohan-kal%C3%A9-18-04-2017/"
+   },
+   {
+    "fact": "Boxout.fm x Boiler Room",
+    "url": "https://www.mixcloud.com/boxoutfm/boxoutfm-x-boiler-room-rohan-kal%C3%A9-13-12-2017/"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": "https://www.mixcloud.com/RohanKale/",
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.thewildcity.com/mixes/6930-wild-city-148-rohan-kal",
+    "mixcloud": "https://www.thewildcity.com/mixes/6930-wild-city-148-rohan-kal",
+    "kind": "https://www.thewildcity.com/mixes/6930-wild-city-148-rohan-kal"
+   }
+  },
+  "notes": "Spelling: every source writes 'Rohan Kalé' (one accented e); our record has 'Rohan Kaleé'. Param may want to fix the name. Facebook facebook.com/rohankalemusic (Wild City). No releases found despite 'producer'. from_city not stated."
+ },
+ {
+  "slug": "rufy-ghazi",
+  "identity": "Wild City's boxout.fm guide lists the show 'Lady Ruffelins Escape' with 'Rufy Ghazi presenting her embodied music festival experience'; six episodes are on boxout.fm's Mixcloud (2017). Her own Mixcloud 'Lady Ruffelin' names Rufy Anam Ghazi aka Lady Ruffelin, Magnetic Fields and Bass Camp, now London based. ADE speaker page links the same Instagram.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Grimey 140s, Drum & Bass and UKG",
+    "source_url": "https://www.mixcloud.com/lady-ruffelin/"
+   },
+   {
+    "tag": "Thumping breakbeat and innovative leftfield",
+    "source_url": "https://www.mixcloud.com/lady-ruffelin/"
+   }
+  ],
+  "aliases": [
+   {
+    "alias": "Lady Ruffelin",
+    "source_url": "https://www.mixcloud.com/lady-ruffelin/"
+   }
+  ],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Lady Ruffelin's Escape 003 (Magnetic Fields Festival) - Rufy Ghazi",
+    "url": "https://www.mixcloud.com/boxoutfm/lady-ruffelins-escape-003-rufy-ghazi-10-07-2017/",
+    "year": 2017
+   },
+   {
+    "title": "Lady Ruffelin's Escape 001 (BASSCAMP Festival) - Rufy Ghazi",
+    "url": "https://www.mixcloud.com/boxoutfm/lady-ruffelins-escape-001-rufy-ghazi-20-05-2017/",
+    "year": 2017
+   },
+   {
+    "title": "Echoes of London 2024",
+    "url": "https://www.mixcloud.com/lady-ruffelin/echoes-of-london-2024/",
+    "year": 2024
+   },
+   {
+    "title": "DYNAMIX 001 - LADY RUFFELIN (DYNAMICS MUSIC UK)",
+    "url": "https://www.mixcloud.com/lady-ruffelin/dynamix-001-lady-ruffelin-dynamics-music-uk/",
+    "year": 2022
+   },
+   {
+    "title": "Q-Radio - Episode 117 - Lady Ruffelin",
+    "url": "https://www.mixcloud.com/lady-ruffelin/q-radio-episode-117-lady-ruffeliin/",
+    "year": 2022
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Rufy Ghazi, who DJs as Lady Ruffelin, is a London based DJ and music business professional who hosted Lady Ruffelin's Escape, a festival themed show, on boxout.fm in 2017. She has played Magnetic Fields, Mixmag LAB and Bass Camp, with sets across grime, drum and bass, UK garage, breakbeat and leftfield.",
+  "bio_sources": [
+   {
+    "fact": "Lady Ruffelins Escape on boxout.fm",
+    "url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"
+   },
+   {
+    "fact": "London based, Lady Ruffelin, Magnetic Fields, Mixmag LAB, Bass Camp, genres",
+    "url": "https://www.mixcloud.com/lady-ruffelin/"
+   },
+   {
+    "fact": "Music business professional",
+    "url": "https://www.amsterdam-dance-event.nl/en/artists-speakers/rufy-ghazi/2714696"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": "London",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/lady_ruffelin",
+   "soundcloud": null,
+   "mixcloud": "https://www.mixcloud.com/lady-ruffelin/",
+   "website": "https://rufyghazi.com/",
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.mixcloud.com/lady-ruffelin/",
+    "instagram": "https://www.amsterdam-dance-event.nl/en/artists-speakers/rufy-ghazi/2714696",
+    "mixcloud": "https://www.mixcloud.com/lady-ruffelin/",
+    "website": "https://www.mixcloud.com/lady-ruffelin/",
+    "kind": "https://www.mixcloud.com/lady-ruffelin/"
+   }
+  },
+  "notes": "No era: her sound description (Mixcloud bio) is undated. Now London based; no page I opened states her Indian home city, so from_city is null (her South Asian link here is her work in the Indian scene and boxout.fm). She also works in music research (ADE lists Head of Music Research at Audience Strategies). rufyghazi.com refused (permission timeout); sheisthemusic.org profile URL returned only the homepage."
+ },
+ {
+  "slug": "sanjith",
+  "identity": "Wild City's boxout.fm guide (2017) lists Sanjith as host of the boxout.fm shows Unequal (house and techno) and Groove Nuggets; boxout.fm's Mixcloud carries both series (2017 to 2018); boxout.fm/weekender/2018 lists Sanjith on the lineup with a short bio. Matches our genres (house, techno).",
+  "eras": [
+   {
+    "from_year": 2017,
+    "to_year": null,
+    "sound": "Deep house, breaks and electro for the dancefloor",
+    "tags": [
+     "deep house",
+     "breaks",
+     "electro",
+     "techno"
+    ],
+    "source_url": "https://boxout.fm/weekender/2018",
+    "source_name": "boxout.fm",
+    "quote": "a carefully curated mix of deep house, breaks and electro aimed directly at the dancefloor"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Tailor made house and techno selections",
+    "source_url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"
+   },
+   {
+    "tag": "Multi-cultural soulful and groovy cuts",
+    "source_url": "https://boxout.fm/weekender/2018"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Sanjith Live @ Boxout Weekender [07-04-2018]",
+    "url": "https://www.mixcloud.com/boxoutfm/sanjith-live-boxout-weekender-07-04-2018/",
+    "year": 2018
+   },
+   {
+    "title": "Unequal/Unequal 001 - Sanjith [06-10-2017]",
+    "url": "https://www.mixcloud.com/boxoutfm/unequalunequal-001-sanjith-06-10-2017/",
+    "year": 2017
+   },
+   {
+    "title": "Groove Nuggets 001 - Sanjith [11-11-2017]",
+    "url": "https://www.mixcloud.com/boxoutfm/groove-nuggets-001-sanjith-11-11-2017/",
+    "year": 2017
+   },
+   {
+    "title": "Unequal/Unequal 007 - Sanjith [13-04-2018]",
+    "url": "https://www.mixcloud.com/boxoutfm/unequalunequal-007-sanjith-13-04-2018/",
+    "year": 2018
+   },
+   {
+    "title": "Groove Nuggets 009 - Sanjith [20-04-2018]",
+    "url": "https://www.mixcloud.com/boxoutfm/groove-nuggets-009-sanjith-20-04-2017/",
+    "year": 2018
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Sanjith is a DJ who hosted two boxout.fm shows from 2017: Unequal, with house and techno selections, and Groove Nuggets, with soulful and funky cuts from around the world. He played a deep house, breaks and electro set at the first Boxout Weekender in April 2018.",
+  "bio_sources": [
+   {
+    "fact": "Hosted Unequal and Groove Nuggets",
+    "url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"
+   },
+   {
+    "fact": "Groove Nuggets description",
+    "url": "https://www.mixcloud.com/boxoutfm/groove-nuggets-001-sanjith-11-11-2017/"
+   },
+   {
+    "fact": "Boxout Weekender 2018 set",
+    "url": "https://boxout.fm/weekender/2018"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "kind": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"
+   }
+  },
+  "notes": "No city, surname or personal links stated on any page I opened (the boxout.fm context suggests Delhi but it is not stated). Unrelated Sanjiths exist on Mixcloud (Hyderabad, others); not used. No releases found."
+ }
+]

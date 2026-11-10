@@ -1,0 +1,316 @@
+[
+ {
+  "slug": "264-cru",
+  "identity": "Wild City's boxout.fm guide (6 Jun 2017) lists 264 Cru as hosts of the boxout.fm shows Booty Bangers (UK house/bass mixes) and The Comedown, which matches our genres (house, bass). Wild City artist page 4751 describes them as a Dubai-based collective.",
+  "eras": [],
+  "sound_tags": [
+   {"tag": "UK house and bass mixes", "source_url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm", "quote": "UK house/bass mixes"}
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {"title": "Booty Bangers (boxout.fm show playlist)", "url": "https://www.mixcloud.com/boxoutfm/playlists/booty-bangers/", "year": null},
+   {"title": "The Comedown (boxout.fm show playlist)", "url": "https://www.mixcloud.com/boxoutfm/playlists/the-comedown/", "year": null}
+  ],
+  "spotify": null,
+  "bio_draft": "264 Cru is a collective of Dubai-based music heads exploring sounds from across the globe. They hosted two shows on New Delhi's boxout.fm: Booty Bangers, a UK house and bass mix series, and The Comedown, made for weekend mornings.",
+  "bio_sources": [
+   {"fact": "Dubai-based collective exploring sounds from across the globe", "url": "https://www.thewildcity.com/artists/4751-264-cru"},
+   {"fact": "boxout.fm shows Booty Bangers (UK house/bass mixes) and The Comedown", "url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"}
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": "Dubai",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "collective",
+   "sources": {"based_city": "https://www.thewildcity.com/artists/4751-264-cru", "kind": "https://www.thewildcity.com/artists/4751-264-cru"}
+  },
+  "notes": "No members, socials or releases named on any page found. Scope check for Param: the only sources call them Dubai-based; no page states a South Asian link beyond the boxout.fm residency. Mixcloud links are boxout.fm show playlists (confirmed by Mixcloud oEmbed: author Boxout.Fm), not single episodes."
+ },
+ {
+  "slug": "adam-rahman",
+  "identity": "boxout.fm Weekender 2019 page (boxout.fm/weekender/2019/adam-rahman) describes a Dubai-based techno DJ, an early proponent of Chennai's techno scene around 2000, who hosts the monthly boxout.fm show WARPED. RA (ra.co/dj/adamrahman) gives born India, based UAE, same Warped history; SceneNoise and Mixmag MENA match.",
+  "eras": [
+   {
+    "from_year": 2017,
+    "to_year": null,
+    "sound": "Trippy, groove-led techno, from downtempo to dark techno",
+    "tags": ["techno", "downtempo", "dark techno"],
+    "source_url": "https://scenenoise.com/Sets/set-review-adam-rahman-on-resident-advisors-wild-city-mix",
+    "source_name": "SceneNoise",
+    "quote": "trippy, groove-fueled techno set ... hypnotic mellow downtempo to full-on deep dark techno"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "the tougher side of techno", "source_url": "https://boxout.fm/weekender/2019/adam-rahman", "quote": "His monthly show WARPED showcases the tougher side of techno"}
+  ],
+  "aliases": [
+   {"name": "A\\S\\O\\M", "type": "side project", "source_url": "https://mixmagmena.com/read/adam-rahman-belong-ep-news"}
+  ],
+  "press": [
+   {"title": "Adam Rahman drops 'Belong' EP", "publication": "Mixmag MENA", "url": "https://mixmagmena.com/read/adam-rahman-belong-ep-news", "date_published": "2022-12-26"},
+   {"title": "Set Review: Indian Dubai-based Adam Rahman on Resident Advisor's Wild City Mix", "publication": "SceneNoise", "url": "https://scenenoise.com/Sets/set-review-adam-rahman-on-resident-advisors-wild-city-mix", "date_published": "2017-12-28"},
+   {"title": "Adam Rahman (artist profile)", "publication": "SceneNoise", "url": "https://scenenoise.com/Artists/Profile/adam-rahman", "date_published": null}
+  ],
+  "mix_links": [
+   {"title": "RA / Wild City: Adam Rahman", "url": "https://api.soundcloud.com/tracks/372144173", "year": 2017},
+   {"title": "Warped (boxout.fm show playlist)", "url": "https://www.mixcloud.com/boxoutfm/playlists/warped/", "year": null}
+  ],
+  "spotify": null,
+  "bio_draft": "Adam Rahman is an India-born techno DJ and producer based in Dubai. He was one of the early people behind Chennai's techno scene around 2000, started the Warped party series in Dubai in 2004 and runs the label KitchenSync Records. He hosted the monthly techno show WARPED on boxout.fm.",
+  "bio_sources": [
+   {"fact": "born India, based UAE, DJ/producer", "url": "https://ra.co/dj/adamrahman"},
+   {"fact": "early proponent of Chennai's techno scene around 2000; Warped party series begun in Dubai in 2004; monthly boxout.fm show WARPED", "url": "https://boxout.fm/weekender/2019/adam-rahman"},
+   {"fact": "founded Dubai-based label KitchenSync Records", "url": "https://mixmagmena.com/read/adam-rahman-belong-ep-news"}
+  ],
+  "releases": [
+   {"title": "Belong", "year": 2022, "release_type": "ep", "label": null, "url": "https://mixmagmena.com/read/adam-rahman-belong-ep-news", "date": null}
+  ],
+  "ids": {"ra": "https://ra.co/dj/adamrahman", "bandcamp": "https://adamrahman03.bandcamp.com"},
+  "profile": {
+   "based_city": "Dubai",
+   "from_city": "Chennai",
+   "instagram": "https://www.instagram.com/adamrahman03",
+   "soundcloud": "https://soundcloud.com/adam-warped",
+   "mixcloud": null,
+   "website": "http://kitchensyncrecords.com",
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://boxout.fm/weekender/2019/adam-rahman",
+    "from_city": "https://boxout.fm/weekender/2019/adam-rahman",
+    "instagram": "https://ra.co/dj/adamrahman",
+    "soundcloud": "https://ra.co/dj/adamrahman",
+    "website": "https://ra.co/dj/adamrahman",
+    "kind": "https://ra.co/dj/adamrahman"
+   }
+  },
+  "notes": "from_city is soft: the boxout page says he was an original proponent of Chennai's techno scene before moving to the Middle East, not literally that he is from Chennai; RA says only born India. Param may prefer from_city null. The boxout bio spells him 'Adam Rehman'. Belong EP label not stated (Mixmag MENA says it is out on his Bandcamp; he runs KitchenSync Records). RA lists labels he has released on: Expmental Records, Unknown Territory, Diffuse Reality, Techfui, Since 16, KitchenSync Records, Postdynamic, systoliclabel, Zebra Rec., QEONE; SceneNoise profile names Bootleg Social Records (UK) and Techfui. His Bandcamp (adamrahman03.bandcamp.com) permission prompt timed out, so no per-release Bandcamp ids. Beatport 'Adam Warped' (beatport.com/artist/adam-warped/241900) is a different, US-based DJ: do not link. The RA Wild City mix URL is the SoundCloud API track URL (oEmbed confirms title 'RA / Wild City: Adam Rahman', poster Resident Advisor); permalink not resolved."
+ },
+ {
+  "slug": "aeon-waves",
+  "identity": "Wild City (9 May 2019) names Kanishk Budhori aka Aeon Waves, Ahmedabad, known for drum and bass and ambient, host of the monthly boxout.fm show Equal Measure; the boxout guide lists Equal Measure as drum n bass, jungle and ambient, matching our genres. His Bandcamp (aeonwaves.bandcamp.com) gives the same name and city.",
+  "eras": [
+   {
+    "from_year": 2018,
+    "to_year": null,
+    "sound": "Drum and bass with engulfing ambient pads",
+    "tags": ["drum and bass", "ambient", "jungle"],
+    "source_url": "https://www.thewildcity.com/news/12972-listen-one-life-many-faces-genesis-by-aeon-waves",
+    "source_name": "Wild City",
+    "quote": "known for his love of d'n'b and ambient"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "halftime percussion and low-end propulsion", "source_url": "https://igloomag.com/reviews/aeon-waves-anthropocene-onset-audio", "quote": "halftime percussion and low-end propulsion"},
+   {"tag": "drum n bass, jungle and ambient", "source_url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm", "quote": "A concoction of drum n bass, jungle and ambient music"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "Listen: 'One Life Many Faces/Genesis' By Aeon Waves", "publication": "Wild City", "url": "https://www.thewildcity.com/news/12972-listen-one-life-many-faces-genesis-by-aeon-waves", "date_published": "2019-05-09"},
+   {"title": "Aeon Waves :: Anthropocene / Degenerate (Onset Audio)", "publication": "Igloo Magazine", "url": "https://igloomag.com/reviews/aeon-waves-anthropocene-onset-audio", "date_published": "2020-10-15"},
+   {"title": "Listen: New Releases From Aeon Waves, Disco Puppet, Dolorblind & Sid Vashi", "publication": "Wild City", "url": "https://www.thewildcity.com/news/12808-listen-new-releases-from-aeon-waves-disco-puppet-dolorblind-sid-vashi", "date_published": null}
+  ],
+  "mix_links": [
+   {"title": "Equal Measure (boxout.fm show playlist)", "url": "https://www.mixcloud.com/boxoutfm/playlists/equal-measure/", "year": null}
+  ],
+  "spotify": null,
+  "bio_draft": "Aeon Waves is the project of Ahmedabad-based producer and DJ Kanishk Budhori, who also works as a sound engineer. He makes drum and bass and ambient music, has released on labels including Onset Audio, Mindtrick Records and TAABIIR, and hosted the monthly drum and bass, jungle and ambient show Equal Measure on boxout.fm.",
+  "bio_sources": [
+   {"fact": "project of Ahmedabad-based producer/DJ Kanishk Budhori; sound engineer; labels Onset Audio, Mindtricks Records", "url": "https://aeonwaves.bandcamp.com/music"},
+   {"fact": "drum and bass and ambient; monthly boxout.fm show Equal Measure", "url": "https://www.thewildcity.com/news/12972-listen-one-life-many-faces-genesis-by-aeon-waves"},
+   {"fact": "album on TAABIIR", "url": "https://aeonwaves.bandcamp.com/album/ode-to-a-dying-star"},
+   {"fact": "Equal Measure: drum n bass, jungle and ambient", "url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"}
+  ],
+  "releases": [
+   {"title": "Ode To A Dying Star", "year": 2019, "release_type": "album", "label": "TAABIIR", "url": "https://aeonwaves.bandcamp.com/album/ode-to-a-dying-star", "date": "2019-07-26", "bandcamp_id": 4042135051, "bandcamp_type": "album"},
+   {"title": "Rhea", "year": 2018, "release_type": "single", "label": null, "url": "https://aeonwaves.bandcamp.com/track/rhea", "date": "2018-01-19", "bandcamp_id": 3787652799, "bandcamp_type": "track"},
+   {"title": "Square One", "year": 2024, "release_type": "single", "label": null, "url": "https://aeonwaves.bandcamp.com/track/square-one", "date": "2024-03-16", "bandcamp_id": 3104169550, "bandcamp_type": "track"},
+   {"title": "One Life Many Faces / Genesis", "year": 2019, "release_type": "ep", "label": null, "url": "https://www.thewildcity.com/news/12972-listen-one-life-many-faces-genesis-by-aeon-waves", "date": null},
+   {"title": "Anthropocene / Degenerate", "year": 2020, "release_type": "single", "label": "Onset Audio", "url": "https://igloomag.com/reviews/aeon-waves-anthropocene-onset-audio", "date": null}
+  ],
+  "ids": {"bandcamp": "https://aeonwaves.bandcamp.com"},
+  "profile": {
+   "based_city": "Ahmedabad",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "producer",
+   "sources": {"based_city": "https://aeonwaves.bandcamp.com/music", "kind": "https://aeonwaves.bandcamp.com/music"}
+  },
+  "notes": "Our genres (drum and bass, jungle) match. Bandcamp also lists tracks Ethreal Tides, Supernova, Dark Matter, Terra, Memories, Starchaser, Starlight, Aura, Blurred Memories (dates not opened). The Ode To A Dying Star page describes it as a move from his 'slamming drum & bass sound' toward ambient; a second era could be split at 2019 if Param wants. Igloo also reviewed 'Mute Angel EP' (Mindtrick), page not opened. Release year for 'One Life Many Faces / Genesis' is the Wild City article date (premiered on Drum and Bass India). Bandcamp bio also names Easy Summer Group and Bearskin Records."
+ },
+ {
+  "slug": "agent",
+  "identity": "Wild City's boxout.fm guide (2017) lists Agent as host of World Ocean ('Illuminating global bass music') and a Magnetic Fields co-founder. Wild City artist page 5101 and a Wild City news item (7 Jun 2019) name her Smita Singh aka AGENT, co-founder of Magnetic Fields Festival, host of World Ocean on boxout.fm. Only these India-scene pages used; namesakes ignored.",
+  "eras": [
+   {
+    "from_year": 2017,
+    "to_year": null,
+    "sound": "Soulful, genre-hopping global sounds, tropical to tribal",
+    "tags": ["global bass", "tropical", "tribal"],
+    "source_url": "https://www.thewildcity.com/news/13385-boxout-fm-to-celebrate-world-oceans-day-with-six-hour-showcase-featuring-agent",
+    "source_name": "Wild City",
+    "quote": "soulful, genre-hopping sounds that span across continents ... ranging from tropical to tribal"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "global bass music", "source_url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm", "quote": "Illuminating global bass music"},
+   {"tag": "old school funk, hip-hop and house", "source_url": "https://www.thewildcity.com/artists/5101-AGENT", "quote": "Brought up on a diet of 80s and 90s funk, hip-hop and house"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "boxout.fm To Celebrate World Oceans Day With Six-Hour Showcase Featuring AGENT", "publication": "Wild City", "url": "https://www.thewildcity.com/news/13385-boxout-fm-to-celebrate-world-oceans-day-with-six-hour-showcase-featuring-agent", "date_published": "2019-06-07"}
+  ],
+  "mix_links": [
+   {"title": "World Ocean (boxout.fm show playlist)", "url": "https://www.mixcloud.com/boxoutfm/playlists/world-ocean/", "year": null}
+  ],
+  "spotify": null,
+  "bio_draft": "AGENT is Smita Singh, a fashion designer, interior stylist and co-founder of Magnetic Fields Festival who lives in Goa. Raised on 80s and 90s funk, hip-hop and house, she hosted World Ocean on boxout.fm, a show of soulful, genre-hopping music from across continents.",
+  "bio_sources": [
+   {"fact": "Smita Singh; fashion designer, interior stylist, Magnetic Fields co-founder; 80s and 90s funk, hip-hop and house", "url": "https://www.thewildcity.com/artists/5101-AGENT"},
+   {"fact": "lives by the ocean in Goa; hosts World Ocean on boxout.fm, soulful genre-hopping sounds", "url": "https://www.thewildcity.com/news/13385-boxout-fm-to-celebrate-world-oceans-day-with-six-hour-showcase-featuring-agent"}
+  ],
+  "releases": [
+   {"title": "Now And Then (with Daulat and Kaleekarma)", "year": 2018, "release_type": "single", "label": null, "url": "https://www.stampthewax.com/tag/bombay/", "date": null}
+  ],
+  "ids": {},
+  "profile": {
+   "based_city": "Goa",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {"based_city": "https://www.thewildcity.com/news/13385-boxout-fm-to-celebrate-world-oceans-day-with-six-hour-showcase-featuring-agent", "kind": "https://www.thewildcity.com/artists/5101-AGENT"}
+  },
+  "notes": "Our genre 'bass' fits ('global bass music'). The 2019 Wild City piece mentions an upcoming project 'Overtures' launching the label worldoceanrecords; not confirmed released. 'Now And Then' is a Stamp The Wax premiere dated 19 Sep 2018 (seen only on the tag listing; the post itself, stampthewax.com/2018/09/19/daulat-kaleekarma-agent-now-and-then/, was blocked by a timed-out permission prompt), so label unknown. based_city Goa is from her own quote 'by and with the ocean in Goa' (2019). No personal socials found on any opened page."
+ },
+ {
+  "slug": "amrisha",
+  "identity": "Wild City's boxout.fm guide (2017) lists Amrisha as host of A Worldwide Thing. boxout.fm Weekender 2019 page (IAMRISHA) and RA (ra.co/dj/amrisha) describe a London-based DJ and radio host whose show A Worldwide Thing has been on boxout.fm since it started; Worldwide FM (Dec 2025) names her Amrisha Singh with the same show. Our genre 'global club' fits.",
+  "eras": [
+   {
+    "from_year": 2014,
+    "to_year": null,
+    "sound": "Global underground music, from soul and funk to tropical bass",
+    "tags": ["soul", "funk", "tropical bass", "afro", "jazz"],
+    "source_url": "https://www.thewildcity.com/features/2460-a-worldwide-thing-march",
+    "source_name": "Wild City",
+    "quote": "global underground music, from soul and funk to tropical bass"
+   }
+  ],
+  "sound_tags": [
+   {"tag": "eclectic, soulful and percussive", "source_url": "https://de.ra.co/dj/amrisha", "quote": "blends eclectic, soulful and percussive elements from around the world"}
+  ],
+  "aliases": [
+   {"name": "IAMRISHA", "type": "former or alternate name", "source_url": "https://boxout.fm/weekender/2019/iamrisha"}
+  ],
+  "press": [
+   {"title": "A Worldwide Thing: #March", "publication": "Wild City", "url": "https://www.thewildcity.com/features/2460-a-worldwide-thing-march", "date_published": "2014-04-07"},
+   {"title": "A WORLDWIDE THING: #AUGUST", "publication": "Wild City", "url": "https://www.thewildcity.com/features/2481-a-worldwide-thing-august", "date_published": null}
+  ],
+  "mix_links": [
+   {"title": "Worldwide Breakfast: Valentine Comar w/ Amrisha (guest mix 'Breakfast at the Horizon')", "url": "https://www.worldwidefm.net/episode/worldwide-breakfast-valentine-comar-w-amrisha-guest-mix", "year": 2025},
+   {"title": "A Worldwide Thing (boxout.fm show playlist)", "url": "https://www.mixcloud.com/boxoutfm/playlists/a-worldwide-thing/", "year": null}
+  ],
+  "spotify": null,
+  "bio_draft": "Amrisha Singh is a London-based DJ and radio presenter who plays eclectic, soulful and percussive music from around the world. Her long-running show A Worldwide Thing started on Delhi online station Radio 79, has been on boxout.fm since the station began, and has aired on Worldwide FM, Jazz FM and Voices Radio.",
+  "bio_sources": [
+   {"fact": "London-based DJ and presenter; eclectic, soulful, percussive", "url": "https://de.ra.co/dj/amrisha"},
+   {"fact": "A Worldwide Thing on Delhi-based Radio 79 (2014)", "url": "https://www.thewildcity.com/features/2460-a-worldwide-thing-march"},
+   {"fact": "on boxout.fm since it started", "url": "https://boxout.fm/weekender/2019/iamrisha"},
+   {"fact": "Amrisha Singh; show aired on Worldwide FM, Jazz FM, Voices Radio", "url": "https://www.worldwidefm.net/episode/worldwide-breakfast-valentine-comar-w-amrisha-guest-mix"}
+  ],
+  "releases": [],
+  "ids": {"ra": "https://ra.co/dj/amrisha"},
+  "profile": {
+   "based_city": "London",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/amrishasingh__",
+   "soundcloud": "https://www.soundcloud.com/iamrisha",
+   "mixcloud": null,
+   "website": null,
+   "kind": "selector",
+   "sources": {
+    "based_city": "https://de.ra.co/dj/amrisha",
+    "instagram": "https://de.ra.co/dj/amrisha",
+    "soundcloud": "https://de.ra.co/dj/amrisha",
+    "kind": "https://de.ra.co/dj/amrisha"
+   }
+  },
+  "notes": "Scope check for Param: no page states a South Asian background; the link is her Delhi radio work (Radio 79, boxout.fm resident since launch, Boxout Weekender 2019). boxout page says she made an East Africa Radio special with Nyege Nyege and is part of the Musica Macondo collective. kind 'selector' chosen because sources call her DJ and radio host; 'dj' also fits. No releases found."
+ },
+ {
+  "slug": "aneesha-kotwani",
+  "identity": "Wild City's boxout.fm guide (2017) lists Aneesha Kotwani as host of WAVLNGTH on boxout.fm. Mixmag Asia (26 Dec 2020), Mixmag (31 Oct 2020) and Everpress describe the same person: founder of WAVLNGTH (Mumbai, 2016), radio presenter on BBC Asian Network, Soho Radio and Worldwide FM.",
+  "eras": [],
+  "sound_tags": [
+   {"tag": "alternative dance music from across India", "source_url": "https://mixmag.asia/feature/electric-india-wavlngth-founder-aneesha-kotwani-global-agenda", "quote": "presenting alternative dance music from across India"}
+  ],
+  "aliases": [],
+  "press": [
+   {"title": "Electric India: WAVLNGTH founder Aneesha Kotwani is set on a global agenda", "publication": "Mixmag Asia", "url": "https://mixmag.asia/feature/electric-india-wavlngth-founder-aneesha-kotwani-global-agenda", "date_published": "2020-12-26"},
+   {"title": "BBC Asian Network have announced a new set of DJ residencies", "publication": "Mixmag", "url": "https://mixmag.net/amp/bbc-asian-network-dj-residencies-dj-kye-almass-badat-dj-nojan-aneesha-kotwani", "date_published": "2020-10-31"},
+   {"title": "Bridging the gap with WAVLNGTH", "publication": "Everpress", "url": "https://everpress.com/blog/bridging-the-gap-with-wavlngth/", "date_published": null}
+  ],
+  "mix_links": [
+   {"title": "House of Carder x Wavlngth #27 with Aneesha Kotwani", "url": "https://sohoradiolondon.com/show/house-of-carder-x-wavlngth-27-with-aneesha-kotwani-14-04-2021/", "year": 2021},
+   {"title": "WAVLNGTH: Aneesha Kotwani with KAVYA and Anuj Choudry", "url": "https://worldwidefm.net/episode/wavlngth-aneesha-kotwani", "year": 2022},
+   {"title": "Wavlngth (boxout.fm show playlist)", "url": "https://www.mixcloud.com/boxoutfm/playlists/wavlngth/", "year": null}
+  ],
+  "spotify": null,
+  "bio_draft": "Aneesha Kotwani is a Mumbai-based radio presenter and the founder of WAVLNGTH, a music agency she started in 2016 that works on touring, artist management, radio and content. She moved to the UK in 2009, returned to India in 2013, and has presented shows on BBC Asian Network, Soho Radio, Worldwide FM and boxout.fm.",
+  "bio_sources": [
+   {"fact": "formed WAVLNGTH in Mumbai in 2016; agency covering radio, artist strategy, management, content; BBC Asian Network and Soho Radio shows", "url": "https://mixmag.asia/feature/electric-india-wavlngth-founder-aneesha-kotwani-global-agenda"},
+   {"fact": "moved to the UK in 2009, returned to India in 2013", "url": "https://mixmag.net/amp/bbc-asian-network-dj-residencies-dj-kye-almass-badat-dj-nojan-aneesha-kotwani"},
+   {"fact": "Worldwide FM show", "url": "https://worldwidefm.net/episode/wavlngth-aneesha-kotwani"},
+   {"fact": "WAVLNGTH show on boxout.fm", "url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"}
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": "Mumbai",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "selector",
+   "sources": {"based_city": "https://mixmag.asia/feature/electric-india-wavlngth-founder-aneesha-kotwani-global-agenda", "kind": "https://mixmag.asia/feature/electric-india-wavlngth-founder-aneesha-kotwani-global-agenda"}
+  },
+  "notes": "She says in Mixmag Asia 'Because I don't DJ': she is a radio presenter and agency founder, so 'selector' is the closest kind and 'dj' would be wrong. No eras: no source describes a sound of her own (Soho Radio calls her guest mix relaxed and downtempo). Mixmag says she started WAVLNGTH after returning in 2013, Mixmag Asia and Everpress say it was founded in 2016; the bio uses 2016. Worldwide FM and Soho Radio links are episode pages, not Mixcloud/SoundCloud embeds."
+ },
+ {
+  "slug": "angus-12",
+  "identity": "Not confirmed. No page found that uses the name 'Angus 12' for an Indian artist or ties it to Nikhil Kaul, Frame/Frame or Padmini Records.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {}
+  },
+  "notes": "Searches for 'Angus 12' / 'Angus12' with Padmini, boxout.fm, Nikhil Kaul, Frame/Frame and Wild City returned nothing relevant (an RA label page found for 'Angus' is Gallery, an Australian label, unrelated). What is sourced: Wild City artist page 151 (https://www.thewildcity.com/artists/151-frame-frame) says Frame/Frame is Nikhil Kaul, New Delhi, co-runs Padmini Records with Sahil Mendiratta (Inspector Maal) and co-founded Lowlit; SoundCloud https://soundcloud.com/framebyframe; Wild City 036 mix https://soundcloud.com/thewildcity/wild-city-036-frame-frame (2012, oEmbed confirmed); Get To Know feature https://www.thewildcity.com/features/2433-get-to-know-frame-frame (2013, debut EP Swimmers, framebyframeofficial.bandcamp.com). None of these mention 'Angus 12'. If Param confirms Angus 12 is Nikhil Kaul's alias, these can be used; until then, nothing is attached to this record."
+ }
+]

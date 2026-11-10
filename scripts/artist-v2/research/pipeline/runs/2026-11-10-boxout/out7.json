@@ -1,0 +1,818 @@
+[
+ {
+  "slug": "sarathy-korwar",
+  "identity": "London-based Indian percussionist and jazz musician named in Wild City's Boxout Weekender 2019 announcement; boxout.fm's own 2019 Weekender page confirms he hosted the monthly boxout.fm show Endangered Species. Wikipedia, his official site and MusicBrainz (same website, SoundCloud and Facebook) agree: born in the US, raised in India, based in London.",
+  "eras": [
+   {
+    "from_year": 2016,
+    "to_year": 2018,
+    "sound": "Indian folk instrumentation, jazz and electronics",
+    "tags": [
+     "jazz",
+     "Indian classical",
+     "electronic",
+     "field recordings"
+    ],
+    "source_url": "https://www.thewildcity.com/features/2575-bridging-the-gap-an-interview-with-sarathy-korwar",
+    "source_name": "Wild City",
+    "quote": "'Day To Day' employs elements of traditional Indian classical/folk instrumentation"
+   },
+   {
+    "from_year": 2019,
+    "to_year": 2021,
+    "sound": "Psychedelic jazz fusion with spoken word and rap",
+    "tags": [
+     "jazz fusion",
+     "spoken word",
+     "psychedelic"
+    ],
+    "source_url": "https://rollingstoneindia.com/sarathy-korwar-india-tour-more-arriving/amp",
+    "source_name": "Rolling Stone India",
+    "quote": "From thereon, More Arriving takes on a psychedelic jazz fusion of spoken word"
+   },
+   {
+    "from_year": 2022,
+    "to_year": null,
+    "sound": "Indo-futurist blend of jazz, electronics and Indian classical",
+    "tags": [
+     "jazz",
+     "electronic",
+     "Indian classical",
+     "Indo-futurism"
+    ],
+    "source_url": "https://homegrown.co.in/homegrown-creators/decolonising-utopia-listen-to-drummer-sarathy-korwars-indo-futurist-concept-album",
+    "source_name": "Homegrown",
+    "quote": "a distinctive blend of jazz, electronic, and Indian classical elements"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Indian-electronic-jazz",
+    "source_url": "https://www.thewildcity.com/features/2575-bridging-the-gap-an-interview-with-sarathy-korwar"
+   },
+   {
+    "tag": "Indian classical and folk with jazz and electronics",
+    "source_url": "https://sarathykorwar.com/about"
+   },
+   {
+    "tag": "Indo-futurism",
+    "source_url": "https://en.wikipedia.org/wiki/Sarathy_Korwar"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Bridging The Gap: An Interview With Sarathy Korwar",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/features/2575-bridging-the-gap-an-interview-with-sarathy-korwar",
+    "date_published": "2016-07-29"
+   },
+   {
+    "title": "Decolonising Utopia: Listen To Drummer Sarathy Korwar's Indo-Futurist Concept Album",
+    "publication": "Homegrown",
+    "url": "https://homegrown.co.in/homegrown-creators/decolonising-utopia-listen-to-drummer-sarathy-korwars-indo-futurist-concept-album",
+    "date_published": "2023-10-10"
+   },
+   {
+    "title": "\"We exist in more than one narrative\": Sarathy Korwar & Idris Rahman in conversation",
+    "publication": "Mixmag",
+    "url": "https://mixmag.net/feature/sarathy-korwar-idris-rahman-in-conversation-interview-jazz-classical-south-asian-series",
+    "date_published": "2021-09-09"
+   },
+   {
+    "title": "Sarathy Korwar on India Shows: 'Expect Some Loud, Heavy, Punk Jazz!'",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/sarathy-korwar-india-tour-more-arriving/amp",
+    "date_published": null
+   },
+   {
+    "title": "Sarathy Korwar Preps DJ Set Tour Kicking Off Next Week",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/sarathy-korwar-preps-dj-set-tour-kicking-off-next-week/amp",
+    "date_published": null
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Endangered Species (boxout.fm show playlist)",
+    "url": "https://www.mixcloud.com/boxoutfm/playlists/endangered-species/",
+    "year": null,
+    "note": "Mixcloud playlist of his monthly boxout.fm show, posted by boxout.fm and embedded on boxout.fm's 2019 Weekender page for him. Playlist, not a single episode; oEmbed title 'Endangered Species' by Boxout.Fm."
+   }
+  ],
+  "spotify": "https://open.spotify.com/artist/5GzH8EsRPqgNjNo3oBfRvk",
+  "bio_draft": "Sarathy Korwar is a percussionist and composer born in the US, raised in India and based in London. He blends Indian classical and folk traditions with jazz and electronics, on albums including Day To Day (Ninja Tune, 2016), More Arriving (The Leaf Label, 2019) and KALAK (The Leaf Label, 2022). He hosted the monthly boxout.fm show Endangered Species and played Boxout Weekender 2019 in New Delhi.",
+  "bio_sources": [
+   {
+    "fact": "Born in the US, raised in India, based in London; percussionist and composer",
+    "url": "https://www.thewildcity.com/artists/4506-Sarathy%20Korwar"
+   },
+   {
+    "fact": "Blends Indian classical and folk traditions with jazz, electronics",
+    "url": "https://sarathykorwar.com/about"
+   },
+   {
+    "fact": "Albums and labels: Day to Day (Ninja Tune 2016), More Arriving (Leaf 2019), KALAK (Leaf 2022)",
+    "url": "https://en.wikipedia.org/wiki/Sarathy_Korwar"
+   },
+   {
+    "fact": "Monthly boxout.fm show Endangered Species",
+    "url": "https://boxout.fm/weekender/2019/sarathy-korwar"
+   },
+   {
+    "fact": "Played Boxout Weekender 2019",
+    "url": "https://www.thewildcity.com/news/11971-spryk-sarathy-korwar-sub-z-more-announced-for-boxout-weekender-2019"
+   }
+  ],
+  "releases": [
+   {
+    "title": "Day to Day",
+    "year": 2016,
+    "release_type": "album",
+    "label": "Ninja Tune",
+    "url": "https://en.wikipedia.org/wiki/Sarathy_Korwar",
+    "date": "2016-07-08"
+   },
+   {
+    "title": "Day to Day Remixes",
+    "year": 2016,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": "2016-10-28"
+   },
+   {
+    "title": "A.R.E. Project",
+    "year": 2017,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": "2017-08-04"
+   },
+   {
+    "title": "My East Is Your West",
+    "year": 2018,
+    "release_type": "album",
+    "label": "Gearbox Records",
+    "url": "https://en.wikipedia.org/wiki/Sarathy_Korwar",
+    "date": "2018-11-09"
+   },
+   {
+    "title": "Mumbay",
+    "year": 2019,
+    "release_type": "single",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": "2019-05-02"
+   },
+   {
+    "title": "Bol",
+    "year": 2019,
+    "release_type": "single",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": "2019-07-11"
+   },
+   {
+    "title": "More Arriving",
+    "year": 2019,
+    "release_type": "album",
+    "label": "The Leaf Label",
+    "url": "https://en.wikipedia.org/wiki/Sarathy_Korwar",
+    "date": "2019-07-26"
+   },
+   {
+    "title": "Coolie",
+    "year": 2019,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": "2019-11-21"
+   },
+   {
+    "title": "Birthright",
+    "year": 2020,
+    "release_type": "single",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": "2020-02-19"
+   },
+   {
+    "title": "Turner on the 20",
+    "year": 2020,
+    "release_type": "single",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": "2020-06-19"
+   },
+   {
+    "title": "Equinox",
+    "year": 2020,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": "2020-07-17"
+   },
+   {
+    "title": "Otherland",
+    "year": 2020,
+    "release_type": "ep",
+    "label": "The Leaf Label",
+    "url": "https://en.wikipedia.org/wiki/Sarathy_Korwar",
+    "date": "2020-08-29"
+   },
+   {
+    "title": "Direct-To-Disc Sessions",
+    "year": 2020,
+    "release_type": "album",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": "2020-11-27"
+   },
+   {
+    "title": "Shruti Dances",
+    "year": 2022,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": "2022-06-17"
+   },
+   {
+    "title": "Kalak",
+    "year": 2022,
+    "release_type": "album",
+    "label": "The Leaf Label",
+    "url": "https://en.wikipedia.org/wiki/Sarathy_Korwar",
+    "date": "2022-11-11"
+   },
+   {
+    "title": "KAL (Real World)",
+    "year": 2023,
+    "release_type": "album",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": "2023-04-07"
+   },
+   {
+    "title": "Beauty Doesn't Know What It Looks Like / We Won't Go Searching",
+    "year": 2025,
+    "release_type": "single",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": null
+   },
+   {
+    "title": "There Is Beauty, There Already",
+    "year": 2025,
+    "release_type": "album",
+    "label": null,
+    "url": "https://musicbrainz.org/artist/90adc9e6-e622-447f-a61c-da0f2d9300a8",
+    "date": "2025-11-07"
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://sarathykorwar.bandcamp.com/",
+   "discogs": "https://www.discogs.com/artist/5147902",
+   "musicbrainz": "90adc9e6-e622-447f-a61c-da0f2d9300a8",
+   "beatport": null,
+   "ra": null,
+   "wikidata": "Q60168475"
+  },
+  "profile": {
+   "based_city": "London",
+   "from_city": null,
+   "instagram": "http://www.instagram.com/sarathykorwar",
+   "soundcloud": "https://soundcloud.com/sarathykorwar",
+   "mixcloud": null,
+   "website": "http://www.sarathykorwar.com/",
+   "kind": "live act",
+   "sources": {
+    "based_city": "https://www.thewildcity.com/artists/4506-Sarathy%20Korwar",
+    "instagram": "https://sarathykorwar.com/about",
+    "soundcloud": "https://sarathykorwar.com/about",
+    "website": "https://www.thewildcity.com/artists/4506-Sarathy%20Korwar",
+    "kind": "https://en.wikipedia.org/wiki/Sarathy_Korwar"
+   }
+  },
+  "notes": "Not South Asian electronic in the narrow sense: jazz and Indian classical percussionist, but Indian-raised and diaspora, so in scope. Raised in Chennai and Ahmedabad per Wikipedia (not used as from_city since he was born in the US). Spotify, Bandcamp, Discogs and Wikidata come from his MusicBrainz entry, which links the same official site and SoundCloud. Release labels other than the five Wikipedia names are left null. Rolling Stone India articles show no publish date. Also hosted Drummers Inc on Worldwide FM (not used). Co-produced Anoushka Shankar's Chapter III (official site). Endangered Species is a Mixcloud playlist, not a single mix; I could not find single episode URLs."
+ },
+ {
+  "slug": "sid-praja",
+  "identity": "The Ransom Note premiere (11 Mar 2026) names 'Jodhpur's Sid Praja' on 'Vigil' with Kaamin for Padmini Records, matching our Jodhpur and breaks record. Wild City (20 May 2025) also calls him a Jodhpur DJ-producer making breakbeat. Mixcloud account 'sidpraja' lists Jodhpur and breaks.",
+  "eras": [
+   {
+    "from_year": 2025,
+    "to_year": null,
+    "sound": "Euphoric breakbeat with plucked melodies and abstract pads",
+    "tags": [
+     "breaks",
+     "breakbeat",
+     "melodic"
+    ],
+    "source_url": "https://www.thewildcity.com/news/21151-sid-praja-attempts-to-mix-breakbeat-activism-on-no-more-genocide",
+    "source_name": "Wild City",
+    "quote": "ebullient plucked melodies and abstract pads"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "euphoric breaks for a heavy world",
+    "source_url": "https://www.thewildcity.com/news/21151-sid-praja-attempts-to-mix-breakbeat-activism-on-no-more-genocide"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Sid Praja Attempts To Mix Breakbeat & Activism On 'No more Genocide'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/21151-sid-praja-attempts-to-mix-breakbeat-activism-on-no-more-genocide",
+    "date_published": "2025-05-20"
+   },
+   {
+    "title": "Premiere: Kaamin, Sid Praja - Vigil [Padmini Records]",
+    "publication": "The Ransom Note",
+    "url": "https://www.theransomnote.com/music/premieres/premiere-kaamin-sid-praja-vigil-padmini-records/",
+    "date_published": "2026-03-11"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Sid Praja Ep. 3 Boogie Woogie",
+    "url": "https://www.mixcloud.com/sidpraja/sid-praja-ep-3-boogie-woogie/",
+    "year": null
+   },
+   {
+    "title": "Sid Praja Ep. 02",
+    "url": "https://www.mixcloud.com/sidpraja/sid-praja-ep-02/",
+    "year": null
+   },
+   {
+    "title": "Sid Praja Ep. 01",
+    "url": "https://www.mixcloud.com/sidpraja/sid-praja-ep-01/",
+    "year": null
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Sid Praja is a DJ and producer from Jodhpur. A self-taught DJ who started after moving to England in 2014, he mixes acid, breaks, techno and hip-hop. His releases include the single 'No more Genocide' (2025) and 'Vigil' with Kaamin on Padmini Records' compilation Yaar-Dost Vol. 2 (2026).",
+  "bio_sources": [
+   {
+    "fact": "DJ-producer from Jodhpur",
+    "url": "https://www.thewildcity.com/news/21151-sid-praja-attempts-to-mix-breakbeat-activism-on-no-more-genocide"
+   },
+   {
+    "fact": "Self-taught, started DJing after moving to England in May 2014; acid, breaks, techno, hip-hop",
+    "url": "https://www.mixcloud.com/sidpraja/uploads/"
+   },
+   {
+    "fact": "Single No more Genocide, 2025",
+    "url": "https://www.thewildcity.com/news/21151-sid-praja-attempts-to-mix-breakbeat-activism-on-no-more-genocide"
+   },
+   {
+    "fact": "Vigil with Kaamin on Yaar-Dost Vol. 2, Padmini Records",
+    "url": "https://www.theransomnote.com/music/premieres/premiere-kaamin-sid-praja-vigil-padmini-records/"
+   }
+  ],
+  "releases": [
+   {
+    "title": "No more Genocide",
+    "year": 2025,
+    "release_type": "single",
+    "label": null,
+    "url": "https://www.thewildcity.com/news/21151-sid-praja-attempts-to-mix-breakbeat-activism-on-no-more-genocide",
+    "date": null,
+    "bandcamp_id": "4134542752",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Vigil (with Kaamin)",
+    "year": 2026,
+    "release_type": "compilation",
+    "label": "Padmini Records",
+    "url": "https://www.theransomnote.com/music/premieres/premiere-kaamin-sid-praja-vigil-padmini-records/",
+    "date": null
+   }
+  ],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "profile": {
+   "based_city": "Jodhpur",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/sidpraja/",
+   "soundcloud": null,
+   "mixcloud": "https://www.mixcloud.com/sidpraja/",
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.mixcloud.com/sidpraja/uploads/",
+    "instagram": "https://www.thewildcity.com/news/21151-sid-praja-attempts-to-mix-breakbeat-activism-on-no-more-genocide",
+    "mixcloud": "https://www.mixcloud.com/sidpraja/uploads/",
+    "kind": "https://www.mixcloud.com/sidpraja/uploads/"
+   }
+  },
+  "notes": "Kind could also be 'producer' (Wild City says DJ-producer). The No more Genocide bandcamp_id comes from the Bandcamp embed on the Wild City page; no Bandcamp page URL was given. The Padmini Bandcamp album page (padminirecords.bandcamp.com/album/yaar-dost-vol-02) was refused (permission prompt timed out), so Vigil's exact date and bandcamp id are missing; it is a track on the compilation (2026, year from the premiere date). The Ransom Note premiere also plays on SoundCloud (private link soundcloud.com/ransom-note-records/kaamin-sid-praja-vigil-padmini/s-u9QRwU5QqrL, confirmed by oEmbed, posted by Ransom Note Records); left out of mix_links since it is a track, not a mix. Mixcloud upload years shown only as '4 years ago'. Mixcloud bio says he moved to England in 2014; current base not stated beyond the profile location Jodhpur. Antariksh, Dynamite Disco Club and Coven Code links not found for him."
+ },
+ {
+  "slug": "sub-z",
+  "identity": "Wild City artist page and boxout.fm's Boxout Weekender 2019 page describe Sub-Z as a New Delhi bass collective hosting Sub-z Sessions on boxout.fm; Wild City's 2017 boxout guide lists Arjun Sodhi as host of Sub-z Sessions. Matches our bass, garage, grime genres.",
+  "eras": [
+   {
+    "from_year": 2017,
+    "to_year": null,
+    "sound": "UK bass: dubstep, grime, jungle and garage",
+    "tags": [
+     "dubstep",
+     "grime",
+     "jungle",
+     "UK bass"
+    ],
+    "source_url": "https://boxout.fm/weekender/2019/sub-z",
+    "source_name": "boxout.fm",
+    "quote": "educating audiences about dubstep, grime and jungle sounds"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "everything between grime and garage",
+    "source_url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"
+   },
+   {
+    "tag": "the heavier side of bass music",
+    "source_url": "http://www.thewildcity.com/artists/10156-sub-z"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Sub-Z: New Delhi's Evolving Underground",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/features/8757-sub-z-new-delhi-s-evolving-underground",
+    "date_published": "2018-06-29"
+   },
+   {
+    "title": "Listen: 'Breach' By Sub-Z",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/9940-listen-breach-by-sub-z",
+    "date_published": "2018-08-30"
+   },
+   {
+    "title": "Spryk, Sarathy Korwar, Sub-Z & More Announced For Boxout Weekender 2019",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/11971-spryk-sarathy-korwar-sub-z-more-announced-for-boxout-weekender-2019",
+    "date_published": "2019-03-12"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Sub-Z Sessions (boxout.fm show playlist)",
+    "url": "https://www.mixcloud.com/boxoutfm/playlists/sub-z-sessions/",
+    "year": null,
+    "note": "Mixcloud playlist posted by boxout.fm, embedded on boxout.fm's Sub-Z Weekender page. Playlist, not a single episode."
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Sub-Z is a New Delhi collective of DJs and producers: Miredo, Tanzen, Stain, Sodhi and Npstr, focused on dubstep, grime and jungle. They hosted Sub-z Sessions on boxout.fm, started the Bassmndi parties in November 2017 and released the compilation EP Breach in 2018.",
+  "bio_sources": [
+   {
+    "fact": "New Delhi collective; members Miredo, Tanzen, Stain, Sodhi, Npstr; dubstep, grime, jungle; Sub-z Sessions on boxout.fm",
+    "url": "https://boxout.fm/weekender/2019/sub-z"
+   },
+   {
+    "fact": "Bassmndi parties, first in November 2017",
+    "url": "https://www.thewildcity.com/features/8757-sub-z-new-delhi-s-evolving-underground"
+   },
+   {
+    "fact": "Debut compilation EP Breach, 2018",
+    "url": "https://www.thewildcity.com/news/9940-listen-breach-by-sub-z"
+   }
+  ],
+  "releases": [
+   {
+    "title": "Breach",
+    "year": 2018,
+    "release_type": "compilation",
+    "label": null,
+    "url": "https://www.thewildcity.com/news/9940-listen-breach-by-sub-z",
+    "date": null
+   }
+  ],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": "New Delhi",
+   "instagram": null,
+   "soundcloud": "https://soundcloud.com/subzerodelhi",
+   "mixcloud": null,
+   "website": null,
+   "kind": "collective",
+   "sources": {
+    "based_city": "http://www.thewildcity.com/artists/10156-sub-z",
+    "from_city": "https://boxout.fm/weekender/2019/sub-z",
+    "soundcloud": "https://www.thewildcity.com/news/9940-listen-breach-by-sub-z",
+    "kind": "https://boxout.fm/weekender/2019/sub-z"
+   }
+  },
+  "notes": "Our context says Sub-Z is Arjun Sodhi, but every source describes Sub-Z as a five-member crew (Miredo = Saksham Popli, Stain = Sourodeep Guha, Tanzen = Suyagya Sharma, Npstr = Ankur Singh, and Arjun Sodhi aka Sodhi), per Wild City 29 Jun 2018. Arjun Sodhi hosted Sub-z Sessions (Wild City 2017) and DJs solo as SODHI (Goa Sunsplash: hip-hop, dancehall, bass DJ from New Delhi). Param may want a separate Sodhi page or to treat this as a collective. Stain is likely already a separate artist. Breach was posted on SoundCloud by Sub-Z (soundcloud.com/subzerodelhi; oEmbed confirmed via api.soundcloud.com/playlists/588890484); the set's public permalink could not be confirmed. Breach features Stain, Miredo, Tanzen and npstr. The 2017 Wild City guide calls the show 'UK based bass-music', which means UK-style bass, not that the crew is UK-based."
+ },
+ {
+  "slug": "swaggamuffin",
+  "identity": "Only one source found: Wild City's 5 April 2017 boxout.fm schedule lists 'Swaggamuffin & Tbonestakez' playing #BoxoutWednesdays with MC Soopy. That ties the name to boxout.fm, but nothing else (city, genre, links) could be confirmed.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Swaggamuffin played #BoxoutWednesdays in New Delhi on 5 April 2017, alongside Tbonestakez and MC Soopy.",
+  "bio_sources": [
+   {
+    "fact": "Played Boxout Wednesdays on 5 April 2017 with Tbonestakez and MC Soopy",
+    "url": "https://www.thewildcity.com/news/2220-boxout-fm-monthly-schedule-for-weekly-residency-in-april"
+   }
+  ],
+  "releases": [],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {}
+  },
+  "notes": "Searches on Wild City, RA, Rolling Stone India, Mixcloud, SoundCloud and the web turned up no profile, mixes or links for Swaggamuffin. The only hit is a Wild City listing ('05 April: Swaggamuffin & Tbonestakez'), so the bio is one sentence and the event venue is not named on that page (the residency was at Summer House Cafe per Wild City 6 Mar 2017). The two may be a duo or regular back-to-back partners; not stated. Not on the Boxout Weekender 2018 or 2019 lineups or the 2017 boxout.fm show guide. Param may know who this is."
+ },
+ {
+  "slug": "tbonestakez",
+  "identity": "Only one source found: Wild City's 5 April 2017 boxout.fm schedule lists 'Swaggamuffin & Tbonestakez' playing #BoxoutWednesdays with MC Soopy. That ties the name to boxout.fm, but nothing else (city, genre, links) could be confirmed.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Tbonestakez played #BoxoutWednesdays in New Delhi on 5 April 2017, alongside Swaggamuffin and MC Soopy.",
+  "bio_sources": [
+   {
+    "fact": "Played Boxout Wednesdays on 5 April 2017 with Swaggamuffin and MC Soopy",
+    "url": "https://www.thewildcity.com/news/2220-boxout-fm-monthly-schedule-for-weekly-residency-in-april"
+   }
+  ],
+  "releases": [],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {}
+  },
+  "notes": "Searches on Wild City, RA, Rolling Stone India, Mixcloud, SoundCloud and the web turned up no profile, mixes or links for Tbonestakez. The only hit is a Wild City listing ('05 April: Swaggamuffin & Tbonestakez'), so the bio is one sentence and the event venue is not named on that page (the residency was at Summer House Cafe per Wild City 6 Mar 2017). The two may be a duo or regular back-to-back partners; not stated. Not on the Boxout Weekender 2018 or 2019 lineups or the 2017 boxout.fm show guide. Param may know who this is."
+ },
+ {
+  "slug": "tarqeeb",
+  "identity": "Wild City's 2017 boxout.fm guide names Tarqeeb as host of Juggernaut; the Mixcloud account 'tarqeeb' says he hosts Juggernaut on boxout.fm and uploads the episodes; boxout.fm's Weekender 2018 page lists Tarqeeb (Dubstep) with a set on that same account. Wild City artist page and SoundCloud bio match (Tarqeeb is Ashish Jose).",
+  "eras": [
+   {
+    "from_year": 2016,
+    "to_year": null,
+    "sound": "Deep sub-bass, dubstep and jungle to Indian electronica",
+    "tags": [
+     "dubstep",
+     "jungle",
+     "drum and bass",
+     "Indian electronica"
+    ],
+    "source_url": "https://www.thewildcity.com/mixes/3132-wild-city-113-tarqeeb",
+    "source_name": "Wild City",
+    "quote": "His sets can vary from deep, sub bass room-shakers to frantic, vigorous DnB"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "meditative dubstep and jungle to Indian electronica",
+    "source_url": "https://www.mixcloud.com/tarqeeb/uploads/"
+   },
+   {
+    "tag": "deep, groovy bass-lines, dark atmospheres",
+    "source_url": "https://www.thewildcity.com/artists/188-Tarqeeb"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Wild City #113: Tarqeeb",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/mixes/3132-wild-city-113-tarqeeb",
+    "date_published": "2016-08-18"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Tarqeeb | Boxoutfm x Boiler Room Takeover",
+    "url": "https://soundcloud.com/platform/tarqeeb",
+    "year": null
+   },
+   {
+    "title": "Wild City #113 - Tarqeeb",
+    "url": "https://soundcloud.com/thewildcity/wild-city-113-tarqeeb",
+    "year": 2016
+   },
+   {
+    "title": "Tarqeeb Live @ Boxout Weekender [06-04-2018]",
+    "url": "https://www.mixcloud.com/tarqeeb/tarqeeb-live-boxout-weekender-06-04-2018/",
+    "year": 2018
+   },
+   {
+    "title": "Juggernaut 020 - Tarqeeb (Magnetic Fields Special) [23-11-2018]",
+    "url": "https://www.mixcloud.com/tarqeeb/juggernaut-020-tarqeeb-magnetic-fields-special-23-11-2018/",
+    "year": 2018
+   },
+   {
+    "title": "Juggernaut 027 - Tarqeeb [19-07-2019]",
+    "url": "https://www.mixcloud.com/tarqeeb/juggernaut-027-tarqeeb-19-07-2019/",
+    "year": 2019
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Tarqeeb is a DJ and producer from Mumbai who started the project in 2012. His sets range from meditative dubstep and jungle to Indian electronica, and he hosted the monthly show Juggernaut on boxout.fm, showcasing Indian electronica. He is part of the six-person artist collective DASTA.",
+  "bio_sources": [
+   {
+    "fact": "From Mumbai; sets from meditative dubstep and jungle to Indian electronica; monthly Juggernaut on boxout.fm; part of DASTA, a six-person collective",
+    "url": "https://www.mixcloud.com/tarqeeb/uploads/"
+   },
+   {
+    "fact": "Moniker formed in summer 2012",
+    "url": "https://www.thewildcity.com/artists/188-Tarqeeb"
+   },
+   {
+    "fact": "Juggernaut showcases Indian electronica",
+    "url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"
+   }
+  ],
+  "releases": [],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "profile": {
+   "based_city": "Mumbai",
+   "from_city": "Mumbai",
+   "instagram": null,
+   "soundcloud": "https://soundcloud.com/tarqeeb",
+   "mixcloud": "https://www.mixcloud.com/tarqeeb/",
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.mixcloud.com/tarqeeb/uploads/",
+    "from_city": "https://www.mixcloud.com/tarqeeb/uploads/",
+    "soundcloud": "https://www.thewildcity.com/artists/188-Tarqeeb",
+    "mixcloud": "https://www.mixcloud.com/tarqeeb/uploads/",
+    "kind": "https://www.mixcloud.com/tarqeeb/uploads/"
+   }
+  },
+  "notes": "Real name Ashish Jose (Wild City, SoundCloud bio); not entered as an alias. Mixcloud bio says 'from Mumbai'; used for both cities, but it may only mean based there. Kind could be 'producer' too (Mixcloud: 'digital artist and music producer'), though Wild City and Mixcloud focus on DJ sets; no releases found. Boiler Room set year not shown in oEmbed. Facebook on Wild City: facebook.com/Tarqeeb13. Also part of a quarterly antiSOCIAL Mumbai residency with Dreamstates, OX7GEN, Rafiki and Zokhuma (Wild City headline, not opened)."
+ },
+ {
+  "slug": "the-big-fat-minimalist",
+  "identity": "Wild City's 2017 boxout.fm guide names The Big Fat Minimalist as host of Control Sessions (dub, dubstep, grime, reggae), matching our genres. XXL Collective says 'Aniruddh Mehta aka the Big Fat Minimalist'; Wild City's artist page says 'Aniruddh Mehta aka bigfat' is a designer and dub DJ; Rolling Stone India (2015) confirms Aniruddh Mehta plays dubstep as Bigfat. bigfat played Boxout Weekender 2018 (Reggae) with a Mixcloud set posted by 'Bigfat'.",
+  "eras": [
+   {
+    "from_year": 2015,
+    "to_year": null,
+    "sound": "Minimal, low-end dub and dubstep with roots reggae",
+    "tags": [
+     "dub",
+     "dubstep",
+     "roots reggae",
+     "bass"
+    ],
+    "source_url": "https://www.thewildcity.com/artists/7507-bigfat",
+    "source_name": "Wild City",
+    "quote": "He is constantly exploring the larger hemisphere of dub music ranging from roots reggae to meditative dubstep."
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "no-hype, low-end bass music",
+    "source_url": "https://www.thewildcity.com/artists/7507-bigfat"
+   },
+   {
+    "tag": "dubstep, but more minimal",
+    "source_url": "https://rollingstoneindia.com/gig-preview-achint-milk-and-bigfat-at-blue-frog-mumbai/"
+   }
+  ],
+  "aliases": [
+   {
+    "name": "bigfat",
+    "source_url": "https://www.thewildcity.com/artists/7507-bigfat"
+   }
+  ],
+  "press": [
+   {
+    "title": "Gig Preview: Achint, MILK and Bigfat at Blue Frog, Mumbai",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/gig-preview-achint-milk-and-bigfat-at-blue-frog-mumbai/",
+    "date_published": "2015-10-21"
+   },
+   {
+    "title": "Aniruddh Mehta's Monochrome & Minimalist Make-over Of A Mumbai Rickshaw",
+    "publication": "Homegrown",
+    "url": "https://homegrown.co.in/homegrown-voices/aniruddh-mehtas-monochrome-minimalist-make-over-of-a-mumbai-rickshaw",
+    "date_published": "2021-06-08"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Bigfat Live @ Boxout Weekender [08-04-2018]",
+    "url": "https://www.mixcloud.com/anirude/bigfat-live-boxout-weekender-08-04-2018/",
+    "year": 2018
+   },
+   {
+    "title": "Control Sessions (boxout.fm show playlist)",
+    "url": "https://www.mixcloud.com/boxoutfm/playlists/control-sessions/",
+    "year": null,
+    "note": "Mixcloud playlist posted by boxout.fm (oEmbed title 'Control Sessions'). Playlist, not a single episode; URL not linked from a page tying it to him, only matched by show name."
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "The Big Fat Minimalist is the artist name of Aniruddh Mehta, a Mumbai-based designer and DJ who also plays as bigfat. His DJ sets explore dub music from roots reggae to meditative dubstep, and he hosted Control Sessions on boxout.fm, covering dub, dubstep, grime and reggae. He played Boxout Weekender 2018 in New Delhi.",
+  "bio_sources": [
+   {
+    "fact": "Aniruddh Mehta aka the Big Fat Minimalist; Studio Bigfat based out of Mumbai",
+    "url": "https://xxlcollective.com/artist-big-fat-minimalist"
+   },
+   {
+    "fact": "aka bigfat; designer and DJ; dub from roots reggae to meditative dubstep",
+    "url": "https://www.thewildcity.com/artists/7507-bigfat"
+   },
+   {
+    "fact": "Control Sessions on boxout.fm: dub, dubstep, grime and reggae",
+    "url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"
+   },
+   {
+    "fact": "bigfat on Boxout Weekender 2018 lineup",
+    "url": "https://boxout.fm/weekender/2018"
+   }
+  ],
+  "releases": [],
+  "ids": {
+   "bandcamp": null,
+   "discogs": null,
+   "musicbrainz": null,
+   "beatport": null,
+   "ra": null,
+   "wikidata": null
+  },
+  "profile": {
+   "based_city": "Mumbai",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": "https://www.mixcloud.com/anirude/",
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://xxlcollective.com/artist-big-fat-minimalist",
+    "mixcloud": "https://boxout.fm/weekender/2018",
+    "kind": "https://www.thewildcity.com/artists/7507-bigfat"
+   }
+  },
+  "notes": "Identity rests on the name chain: The Big Fat Minimalist = Aniruddh Mehta (XXL Collective, a design page) = bigfat the dub DJ (Wild City, Rolling Stone India). No page directly says the boxout.fm host is Aniruddh Mehta, but the genres match exactly. Mumbai is the base of his design studio; no source states his DJ base. The music name may be better as 'bigfat'. The Homegrown article is about his design work, not music; drop it if music-only press is wanted. Instagram handle looks like 'thebigfatminimalist' (themethod.art search title) but not confirmed, so left null."
+ }
+]

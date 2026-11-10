@@ -1,0 +1,553 @@
+[
+ {
+  "slug": "diggy-dang",
+  "identity": "Goa Sunsplash artist page: founding member of the Reggae Rajahs, from New Delhi and London. Wikipedia lists Diggy Dang among Reggae Rajahs members alongside DJ MoCity (the boxout.fm co-founder). Huck 2016 feature on Reggae Rajahs names him. Matches our stored genre (reggae).",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Reggae and dancehall sound system with dubplate specials",
+    "source_url": "https://huckmag.com/article/reggae-new-delhi"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Reggae is taking root in the streets of New Delhi",
+    "publication": "Huck",
+    "url": "https://huckmag.com/article/reggae-new-delhi",
+    "date_published": "2016-06-11"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Diggy Dang is a founding member of Reggae Rajahs, the New Delhi crew described as India's first reggae sound system, and co-founder of the ska jazz band The Ska Vengers. He works as a singer, guitarist, DJ and label manager, and has spent more than 15 years promoting reggae.",
+  "bio_sources": [
+   "https://www.goasunsplash.com/artist/diggy-dang",
+   "https://en.wikipedia.org/wiki/Reggae_Rajahs"
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": "New York City",
+   "from_city": "New Delhi",
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.goasunsplash.com/artist/diggy-dang",
+    "from_city": "https://www.goasunsplash.com/artist/diggy-dang",
+    "kind": "https://www.goasunsplash.com/artist/diggy-dang"
+   }
+  },
+  "notes": "No verify_note was present in batch3.json, so identity rests on the Reggae Rajahs link to DJ MoCity. Goa Sunsplash page (undated) says he is based in New York City and hails from New Delhi and London; Param may want to check the current base. No boxout.fm show found for him. No personal Instagram, SoundCloud or Mixcloud found; no mixes or releases confirmed. Ska Vengers releases were not researched (band, not his solo name)."
+ },
+ {
+  "slug": "dj-mocity",
+  "identity": "Wikipedia and Resident Advisor both describe DJ MoCity as the co-founder of boxout.fm (with Dualist Inquiry), born in Baghdad and raised in New Delhi. Matches the batch context.",
+  "eras": [
+   {
+    "from_year": 2014,
+    "to_year": null,
+    "sound": "Hip-hop roots, R&B grooves and washy synths",
+    "tags": [
+     "hip-hop",
+     "r&b",
+     "reggae",
+     "dub"
+    ],
+    "source_url": "https://www.thewildcity.com/mixes/3099-wild-city-080-dj-mocity",
+    "source_name": "Wild City",
+    "quote": "With roots firmly based in hip-hop ... pulsing rhythms, R&B grooves, and washy synths"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Reggae, hip hop, electronica",
+    "source_url": "https://en.wikipedia.org/wiki/DJ_MoCity"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Wild City #080: DJ MoCity",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/mixes/3099-wild-city-080-dj-mocity",
+    "date_published": "2014-07-10"
+   },
+   {
+    "title": "A Comprehensive Guide To boxout.fm",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm",
+    "date_published": "2017-06-06"
+   },
+   {
+    "title": "Championing New Music With An Uncompromising Vision: Boxout.fm",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/features/6791-championing-new-music-with-an-uncompromising-vision-boxout-fm",
+    "date_published": "2018-04-06"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Wild City #080 - DJ MoCity",
+    "url": "https://soundcloud.com/thewildcity/wild-city-080-dj-mocity",
+    "year": 2014
+   },
+   {
+    "title": "Motellacast (boxout.fm show playlist)",
+    "url": "https://www.mixcloud.com/boxoutfm/playlists/motellacast/",
+    "year": null
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "DJ MoCity was born in Baghdad and raised in New Delhi, and co-founded the online community radio station boxout.fm with Dualist Inquiry, where he hosts the show Motellacast. He also co-founded Reggae Rajahs, described as India's first reggae sound system, and the labels Dualism Records and 264 Records.",
+  "bio_sources": [
+   "https://en.wikipedia.org/wiki/DJ_MoCity",
+   "https://de.ra.co/dj/djmocity/biography",
+   "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"
+  ],
+  "releases": [],
+  "ids": {
+   "ra": "https://ra.co/dj/djmocity",
+   "bandcamp": "https://djmocity.bandcamp.com"
+  },
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": "Baghdad",
+   "instagram": "https://www.instagram.com/djmocity",
+   "soundcloud": "https://www.soundcloud.com/djmocity",
+   "mixcloud": "https://www.mixcloud.com/motellacast/",
+   "website": "http://mohd.website",
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://bandcamp.com/djmocity",
+    "from_city": "https://en.wikipedia.org/wiki/DJ_MoCity",
+    "instagram": "https://de.ra.co/dj/djmocity",
+    "soundcloud": "https://de.ra.co/dj/djmocity",
+    "mixcloud": "https://bandcamp.com/djmocity",
+    "website": "https://de.ra.co/dj/djmocity",
+    "kind": "https://bandcamp.com/djmocity"
+   }
+  },
+  "notes": "Wikipedia lists the website as djmocity.com while RA lists mohd.website; I used the RA one. Wikipedia gives two different boxout.fm launch dates (May 2016 and April 2017). He lived in Dubai from 2014 (Wild City 2014 calls Dubai his home then) and returned to India in 2016 per Wikipedia. based_city New Delhi is from his own Bandcamp fan profile. Mixcloud blog interview on his Mixcloud Online Radio Awards win (mixcloud.com/blog/2018/04/25/...) was blocked by a permission timeout, not used. No solo releases listed anywhere I opened."
+ },
+ {
+  "slug": "drum-attic",
+  "identity": "boxout.fm Weekender 2019 page: New Delhi's Drum Attic, core boxout.fm crew member, host of the boxout.fm show DulyUnruly. Wild City mix #170 also calls him New Delhi-based.",
+  "eras": [
+   {
+    "from_year": 2019,
+    "to_year": null,
+    "sound": "Dark 4x4 techno, dubby, acidic and pounding",
+    "tags": [
+     "techno",
+     "hard techno",
+     "dub",
+     "acid"
+    ],
+    "source_url": "https://boxout.fm/weekender/2019/drum-attic",
+    "source_name": "boxout.fm",
+    "quote": "dubby, acidic, wholly functional and almost always pounding"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Hard techno with dub and acid influences",
+    "source_url": "https://www.thewildcity.com/mixes/12296-wild-city-170-drum-attic"
+   }
+  ],
+  "aliases": [
+   {
+    "name": "Motion Noir",
+    "note": "techno duo, he is one half",
+    "source_url": "https://www.thewildcity.com/artists/4753-drum-attic"
+   }
+  ],
+  "press": [
+   {
+    "title": "Wild City #170: Drum Attic",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/mixes/12296-wild-city-170-drum-attic",
+    "date_published": "2019-04-03"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Wild City #170: Drum Attic",
+    "url": "https://soundcloud.com/thewildcity/wild-city-170-drum-attic",
+    "year": 2019
+   },
+   {
+    "title": "DulyUnruly (boxout.fm show playlist)",
+    "url": "https://www.mixcloud.com/boxoutfm/playlists/dulyunruly/",
+    "year": null
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Drum Attic is a New Delhi DJ and techno producer and a core member of the boxout.fm crew. His boxout.fm show DulyUnruly explores dark takes on 4x4 techno, and he is one half of the techno duo Motion Noir.",
+  "bio_sources": [
+   "https://boxout.fm/weekender/2019/drum-attic",
+   "https://www.thewildcity.com/artists/4753-drum-attic"
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://boxout.fm/weekender/2019/drum-attic",
+    "kind": "https://boxout.fm/weekender/2019/drum-attic"
+   }
+  },
+  "notes": "A Mixcloud account mixcloud.com/drumattic exists (oEmbed title 'Drum Attic') but no page I opened ties it to him, so it is not in profile. No releases found. Real name appears on the boxout.fm page; not used."
+ },
+ {
+  "slug": "emote",
+  "identity": "Wild City (2017 and 2018 boxout.fm guides) lists Emote as host of the boxout.fm show Curate.love. Worldwide FM ran 'The B-Side of India: Boxout FM with Emote' on 12 Feb 2021. Only boxout.fm-tied pages used; the name is shared worldwide.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Intimate soundscapes, almost confessional",
+    "source_url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "THE B-SIDE OF INDIA: Boxout FM with Emote // 12-02-21",
+    "url": "https://worldwidefm.net/episode/the-b-side-of-india-boxout-fm-with-emote-12-02-21",
+    "year": 2021
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Emote hosts Curate.love on boxout.fm, the New Delhi online community radio station, a show Wild City described as intimate soundscapes reflecting the presenter's own moods. Emote presented boxout.fm's slot on Worldwide FM's The B-Side of India series in February 2021.",
+  "bio_sources": [
+   "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm",
+   "https://www.thewildcity.com/features/6791-championing-new-music-with-an-uncompromising-vision-boxout-fm",
+   "https://worldwidefm.net/episode/the-b-side-of-india-boxout-fm-with-emote-12-02-21"
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": null,
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": null,
+   "sources": {}
+  },
+  "notes": "Thin: no city, real links or releases found. The boxout.fm resident page (boxout.fm/residents/emote) was blocked by a permission timeout. Worldwide FM tags the episode soul and electronic; our record says ambient, which no source states. No dated sound description, so no era. Curate.love Mixcloud playlist not found by oEmbed."
+ },
+ {
+  "slug": "ezzyland",
+  "identity": "boxout.fm Weekender 2019 page: Sidharth Ezhilan aka EZZYLAND, host of the boxout.fm show ZZY, a transplant from Dubai. Rolling Stone India (2014) profiles the same Sidharth Ezhilan as Ezzyland, a producer and rapper born in Salem who has lived in Dubai, Hyderabad and Chennai. Name and Dubai link match.",
+  "eras": [
+   {
+    "from_year": 2014,
+    "to_year": null,
+    "sound": "Hazy, slow beats built from chopped samples",
+    "tags": [
+     "beats",
+     "hip hop",
+     "electronic",
+     "samples"
+    ],
+    "source_url": "https://rollingstoneindia.com/ezzyland/amp",
+    "source_name": "Rolling Stone India",
+    "quote": "Right now, I mostly like to keep it hazy and slow."
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Electronic music fused with hip hop",
+    "source_url": "https://rsjonline.com/features/introducing-ezzyland.html"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Listen to Ezzyland From Chennai",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/ezzyland/amp",
+    "date_published": "2014-07-09"
+   },
+   {
+    "title": "Introducing Ezzyland",
+    "publication": "Rolling Stone India (RSJ Online)",
+    "url": "https://rsjonline.com/features/introducing-ezzyland.html",
+    "date_published": null
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "ZZY (boxout.fm show playlist)",
+    "url": "https://www.mixcloud.com/boxoutfm/playlists/zzy/",
+    "year": null
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "EZZYLAND is the project of producer and rapper Sidharth Ezhilan, born in Salem, Tamil Nadu, who has lived in Dubai, Hyderabad and Chennai. He makes sample-built beats that mix electronic music with hip hop, and hosts ZZY on boxout.fm, a show that pairs alternative, ambient, trip-hop and trap finds with better-known tracks.",
+  "bio_sources": [
+   "https://rollingstoneindia.com/ezzyland/amp",
+   "https://rsjonline.com/features/introducing-ezzyland.html",
+   "https://boxout.fm/weekender/2019/ezzyland"
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": null,
+   "from_city": "Salem",
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "producer",
+   "sources": {
+    "from_city": "https://rollingstoneindia.com/ezzyland/amp",
+    "kind": "https://rollingstoneindia.com/ezzyland/amp"
+   }
+  },
+  "notes": "Based in Chennai in 2014 (Rolling Stone India); current base not stated, so based_city left null. RSJ Online names The Simple EP (with single After Dark) and Alien Brown (track Shoegazing), self-released on SoundCloud, but gives no years, so not added as releases. No personal Instagram or SoundCloud URL found on pages opened (RSJ embeds api.soundcloud.com/tracks/105923544)."
+ },
+ {
+  "slug": "fadescha",
+  "identity": "Wind Horse Records / Beats Beyond Borders (2019): DJ from New Delhi, member of Delhi collective Coven Code. Rolling Stone India lists Fadescha among Coven Code's DJs at Boxout Weekender 2019. Hyperallergic (2023) profiles the same Fadescha as an artist and curator between Berlin and New Delhi.",
+  "eras": [
+   {
+    "from_year": 2019,
+    "to_year": null,
+    "sound": "Techno and house leaning acid, industrial and hard",
+    "tags": [
+     "techno",
+     "house",
+     "acid",
+     "industrial",
+     "psychedelic"
+    ],
+    "source_url": "https://beatsbeyondborders.com/?p=2578",
+    "source_name": "Beats Beyond Borders",
+    "quote": "Fadescha showcases Techno & House leaning towards Acid, Industrial, Hard and Psychedelic sounds."
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Field recordings and found sound in production",
+    "source_url": "https://beatsbeyondborders.com/?p=2578"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Fadescha on Parties, Healing, and \"Radically Exclusive\" Spaces",
+    "publication": "Hyperallergic",
+    "url": "https://hyperallergic.com/fadescha-on-parties-healing-and-radically-exclusive-spaces",
+    "date_published": "2023-06-07"
+   },
+   {
+    "title": "WHR Podcast 56 Ft. Fadescha",
+    "publication": "Beats Beyond Borders",
+    "url": "https://beatsbeyondborders.com/?p=2578",
+    "date_published": "2019-06-12"
+   },
+   {
+    "title": "FEMWAV make space please Mix 003: Fadescha",
+    "publication": "FEMWAV",
+    "url": "https://femwav.blogspot.com/2019/10/femwav-make-space-please-mix-003.html",
+    "date_published": null
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "WHR Podcast 56 Ft. Fadescha",
+    "url": "https://soundcloud.com/wind-horse-records/whr-podcast-56-ft-fadescha",
+    "year": 2019
+   },
+   {
+    "title": "FEMWAV make space please Mix 003: Fadescha",
+    "url": "https://www.mixcloud.com/femwav/femwav-make-space-please-mix-003-fadescha/",
+    "year": 2019
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Fadescha is a DJ, artist and curator from New Delhi, working between Berlin and New Delhi, and a member of the Delhi collective Coven Code. Their DJ sets cover techno and house leaning towards acid, industrial and psychedelic sounds, and they host Party Office, an art and social space in New Delhi.",
+  "bio_sources": [
+   "https://beatsbeyondborders.com/?p=2578",
+   "https://hyperallergic.com/fadescha-on-parties-healing-and-radically-exclusive-spaces",
+   "https://rollingstoneindia.com/spryk-kumail-delhi-sultanate-perform-boxout-weekender-2019/"
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/fadescha/",
+   "soundcloud": "https://soundcloud.com/fadescha",
+   "mixcloud": "https://www.mixcloud.com/fadescha/",
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://hyperallergic.com/fadescha-on-parties-healing-and-radically-exclusive-spaces",
+    "instagram": "https://beatsbeyondborders.com/?p=2578",
+    "soundcloud": "https://beatsbeyondborders.com/?p=2578",
+    "mixcloud": "https://beatsbeyondborders.com/?p=2578",
+    "kind": "https://beatsbeyondborders.com/?p=2578"
+   }
+  },
+  "notes": "Hyperallergic (2023) describes Fadescha as nonbinary; the 2019 pages use she/her. Bio draft uses they/their; Param may want to confirm current pronouns. Hyperallergic says they live and work between Berlin and New Delhi. Also co-founded Sive (collective on caste and gender) and the After Party Collective AV act per FEMWAV/WHR. Real first name appears on pages; not used. No releases confirmed."
+ },
+ {
+  "slug": "farhan-rehman",
+  "identity": "Magnetic Fields 2023 artist page links the same Instagram (farhanrehman_) and SoundCloud (farhan-rehman) we store and says he plays residencies in Mumbai. Wild City and Mixmag Asia call him Mumbai-based, A&R and label manager of Dynamite Disco Club. Matches stored city and genres.",
+  "eras": [
+   {
+    "from_year": 2021,
+    "to_year": null,
+    "sound": "Funk and jazz guitar over disco and house rhythms",
+    "tags": [
+     "disco",
+     "house",
+     "funk",
+     "jazz",
+     "afro"
+    ],
+    "source_url": "https://rollingstoneindia.com/bandcamp-friday-krithi-farhan-rehman-prime-rage/amp",
+    "source_name": "Rolling Stone India",
+    "quote": "ties together funk and jazz-informed guitar melodies, disco vibrance and house rhythms"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Soulful, deep and funky house",
+    "source_url": "https://beatsbeyondborders.com/?p=4569"
+   },
+   {
+    "tag": "90s New York-styled house",
+    "source_url": "https://electronicgroove.com/series/premieres/farhan-rehman-strictly-rhythm-dynamite-disco-club/"
+   },
+   {
+    "tag": "Afro, worldbeat, funk, jazz, house and disco",
+    "source_url": "https://2023.magneticfields.in/artists/farhan-rehman"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Mixmag Asia Radio: Farhan Rehman brings light to the hidden world of Indian disco",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/mixmag-asia-radio-farhan-rehman-brings-light-to-the-hidden-world-of-indian-disco-exclusive-mixes",
+    "date_published": "2024-11-06"
+   },
+   {
+    "title": "Farhan Rehman Delves Into a Fusion of Jazz, Afro & Latin on Debut EP 'Cool Cat, Jazz Cat'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/20416-farhan-rehman-delves-into-a-fusion-of-jazz-afro-latin-on-debut-ep-cool-cat-jazz-cat",
+    "date_published": "2023-09-28"
+   },
+   {
+    "title": "Wild City #228: Farhan Rehman",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/mixes/20391-wild-city-228-farhan-rehman",
+    "date_published": "2023-09-12"
+   },
+   {
+    "title": "Farhan Rehman - Strictly Rhythm - Dynamite Disco Club",
+    "publication": "Electronic Groove",
+    "url": "https://electronicgroove.com/series/premieres/farhan-rehman-strictly-rhythm-dynamite-disco-club/",
+    "date_published": "2025-07-18"
+   },
+   {
+    "title": "Dynamite Disco Club evolves into India's first (and only) disco house music imprint",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/dynamite-disco-club-indias-first-disco-house-music-imprint-local",
+    "date_published": "2021-08-09"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Wild City #228: Farhan Rehman",
+    "url": "https://soundcloud.com/thewildcity/wild-city-228-farhan-rehman",
+    "year": 2023
+   },
+   {
+    "title": "Mixmag Asia Radio 160: Farhan Rehman (India)",
+    "url": "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-160-farhan-rehman-india/",
+    "year": 2024
+   },
+   {
+    "title": "Mix 008 Ft. Farhan Rehman",
+    "url": "https://soundcloud.com/wind-horse-records/mix-008-ft-farhan-rehman",
+    "year": null
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Farhan Rehman is a Mumbai DJ and producer who started producing at 16 and landed his first record on Ovum Recordings. He is the A&R and label manager of Dynamite Disco Club, the Indian disco and house label, and his sets and productions draw on afro, funk, jazz, house and disco.",
+  "bio_sources": [
+   "https://www.thewildcity.com/artists/9918-farhan-rehman",
+   "https://mixmag.asia/read/dynamite-disco-club-indias-first-disco-house-music-imprint-local",
+   "https://2023.magneticfields.in/artists/farhan-rehman"
+  ],
+  "releases": [
+   {
+    "title": "Cool Cat, Jazz Cat",
+    "year": 2023,
+    "release_type": "ep",
+    "label": "Krunk Kulture",
+    "url": "https://krunkkulture.bandcamp.com/album/cool-cat-jazz-cat",
+    "date": "2023-09-27",
+    "bandcamp_id": 4188236556,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Disco Segway",
+    "year": 2021,
+    "release_type": "single",
+    "label": "Dynamite Disco Club",
+    "url": "https://mixmag.asia/read/dynamite-disco-club-indias-first-disco-house-music-imprint-local",
+    "date": null
+   },
+   {
+    "title": "Not a l.u.v thang",
+    "year": 2024,
+    "release_type": "single",
+    "label": null,
+    "url": "https://mixmag.asia/read/mixmag-asia-radio-farhan-rehman-brings-light-to-the-hidden-world-of-indian-disco-exclusive-mixes",
+    "date": null
+   },
+   {
+    "title": "Strictly Rhythm",
+    "year": 2025,
+    "release_type": "single",
+    "label": "Dynamite Disco Club",
+    "url": "https://electronicgroove.com/series/premieres/farhan-rehman-strictly-rhythm-dynamite-disco-club/",
+    "date": null
+   }
+  ],
+  "ids": {},
+  "profile": {
+   "based_city": "Mumbai",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/farhanrehman_/",
+   "soundcloud": "https://soundcloud.com/farhan-rehman",
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.thewildcity.com/artists/9918-farhan-rehman",
+    "instagram": "https://2023.magneticfields.in/artists/farhan-rehman",
+    "soundcloud": "https://2023.magneticfields.in/artists/farhan-rehman",
+    "kind": "https://www.thewildcity.com/mixes/20391-wild-city-228-farhan-rehman"
+   }
+  },
+  "notes": "Disco Segway year is from the Mixmag Asia article dated 9 Aug 2021 calling it the label's second release; exact date not shown. Not a l.u.v thang is called his latest single in Mixmag Asia (Nov 2024); label not stated, year 2024 is the article year. Strictly Rhythm is on the compilation Dynamite Cuts Vol. 1 (DDC's 50th release); Electronic Groove gives both 11 July and 18 July 2025, so date left null. His first Ovum Recordings record is not named on any page opened. Beats Beyond Borders links Beatport and Traxsource discographies, not opened, so no ids. Wild City EP article calls it two tracks; Bandcamp lists four (two originals plus radio edits)."
+ }
+]

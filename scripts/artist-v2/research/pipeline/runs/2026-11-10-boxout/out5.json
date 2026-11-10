@@ -1,0 +1,893 @@
+[
+ {
+  "slug": "luna-toke",
+  "identity": "Wild City's boxout.fm guide (6 Jun 2017) lists the resident show Magic Tea presented by Luna Toke and links the Wild City artist page; that page and the Wild City 'Wandering' news piece (13 Nov 2017) name him as Sachin Shetty with a home studio in the forests of Goa. boxout.fm's Mixcloud uploads of Magic Tea describe him as Goa-based. His SoundCloud profile (oEmbed) says 'Resident at Boxout.fm'.",
+  "eras": [
+   {
+    "from_year": 2017,
+    "to_year": null,
+    "sound": "World percussion and grooves inside house and techno",
+    "tags": [
+     "house",
+     "techno",
+     "afro",
+     "world music"
+    ],
+    "source_url": "https://www.mixcloud.com/boxoutfm/magic-tea-001-luna-toke-13-04-2017/",
+    "source_name": "boxout.fm (Mixcloud)",
+    "quote": "a mix of underground South American grooves/African tribal music, infused with house and techno."
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "South American and African grooves",
+    "source_url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"
+   },
+   {
+    "tag": "headphone storytelling influenced by mysticism",
+    "source_url": "https://www.thewildcity.com/news/4923-first-listen-wandering-by-luna-toke"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "First Listen: 'Wandering' By Luna Toke",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/4923-first-listen-wandering-by-luna-toke",
+    "date_published": "2017-11-13"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Magic Tea 001 - Luna Toke [13-04-2017]",
+    "url": "https://www.mixcloud.com/boxoutfm/magic-tea-001-luna-toke-13-04-2017/",
+    "year": 2017
+   },
+   {
+    "title": "Magic Tea 012 - Luna Toke [08-05-2018]",
+    "url": "https://www.mixcloud.com/boxoutfm/magic-tea-012-luna-toke-08-05-2018/",
+    "year": 2018
+   },
+   {
+    "title": "Magic Tea 015 - Luna Toke [27-08-2018]",
+    "url": "https://www.mixcloud.com/LunaToke/magic-tea-015-luna-toke-27-08-2018/",
+    "year": 2018
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Luna Toke is the project of Goa-based producer and selector Sachin Shetty. He hosted Magic Tea on boxout.fm, a show of South American and African grooves mixed with house and techno, and released his debut EP 'Wandering' in 2017. His SoundCloud lists him as co-founder of the Tsunami Soup collective.",
+  "bio_sources": [
+   {
+    "fact": "Sachin Shetty, home studio in Goa",
+    "url": "https://www.thewildcity.com/news/4923-first-listen-wandering-by-luna-toke"
+   },
+   {
+    "fact": "Goa-based; Magic Tea on boxout.fm, South American and African grooves with house and techno",
+    "url": "https://www.mixcloud.com/boxoutfm/magic-tea-001-luna-toke-13-04-2017/"
+   },
+   {
+    "fact": "debut EP Wandering, 2017",
+    "url": "https://www.thewildcity.com/news/4923-first-listen-wandering-by-luna-toke"
+   },
+   {
+    "fact": "co-founder of Tsunami Soup collective, resident at boxout.fm",
+    "url": "https://soundcloud.com/lunatoke"
+   }
+  ],
+  "releases": [
+   {
+    "title": "Wandering",
+    "year": 2017,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://www.thewildcity.com/news/4923-first-listen-wandering-by-luna-toke",
+    "date": null
+   }
+  ],
+  "ids": {},
+  "profile": {
+   "based_city": "Goa",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": "https://soundcloud.com/lunatoke",
+   "mixcloud": "https://www.mixcloud.com/LunaToke/",
+   "website": null,
+   "kind": "selector",
+   "sources": {
+    "based_city": "https://www.mixcloud.com/boxoutfm/magic-tea-001-luna-toke-13-04-2017/",
+    "soundcloud": "https://www.thewildcity.com/artists/4117-luna-toke",
+    "mixcloud": "https://www.mixcloud.com/LunaToke/magic-tea-015-luna-toke-27-08-2018/",
+    "kind": "https://soundcloud.com/lunatoke"
+   }
+  },
+  "notes": "Wild City Mix 054 (4 Apr 2013, https://www.thewildcity.com/mixes/3073-wild-city-054-sachin-shetty) is by Sachin Shetty, then based in Bombay, and names his space ambient project Antariksh and the techno project Clusters. Wild City's artist page treats Luna Toke and Sachin Shetty as the same person, which may explain the Antariksh Records link in the verify note, but I did not add Antariksh or Clusters as aliases because no page states it outright. 'Goa' is a region, not a city: the sources say Goa-based. kind 'selector' comes from his SoundCloud line 'Selector of eclectic sounds. Producer.' Instagram not found. The Facebook page facebook.com/pg/lunatoke is on Wild City."
+ },
+ {
+  "slug": "madstarbase",
+  "identity": "Wild City's boxout.fm guide (2017) lists the show MSB World by MadStarBase, members Anant Ahuja and Neal Sekhri, playing hip-hop and dancehall, and links Wild City's artist page (New Delhi). Homegrown (Aug 2024) names the same members as a Delhi-based duo. Their Bandcamp lists New Delhi and the same bio wording as Wild City. The boxout.fm Mixcloud set of 24 May 2017 is credited to Madstarbase.",
+  "eras": [
+   {
+    "from_year": 2024,
+    "to_year": null,
+    "sound": "Bass-heavy electronic flips of classic Bollywood songs",
+    "tags": [
+     "bass",
+     "Bollywood edits",
+     "electronic",
+     "hip hop"
+    ],
+    "source_url": "https://homegrown.co.in/homegrown-creators/homegrown-duo-madstarbase-is-bringing-bass-heavy-bollywood-to-the-paris-olympics",
+    "source_name": "Homegrown",
+    "quote": "bass-heavy electronic renditions of classic"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "hip-hop and bass rooted, sample-heavy explorations of indigenous sounds",
+    "source_url": "https://madstarbase.bandcamp.com/track/ghazal"
+   },
+   {
+    "tag": "hip-hop and dancehall",
+    "source_url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Homegrown Duo MadStarBase Is Bringing Bass-Heavy Bollywood To The Paris Olympics",
+    "publication": "Homegrown",
+    "url": "https://homegrown.co.in/homegrown-creators/homegrown-duo-madstarbase-is-bringing-bass-heavy-bollywood-to-the-paris-olympics",
+    "date_published": "2024-08-07"
+   },
+   {
+    "title": "MadStarBase Feature Killa P On New Single 'Lucky'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/18547-madstarbase-feature-killa-p-on-new-single-lucky",
+    "date_published": "2021-06-25"
+   },
+   {
+    "title": "MadStarBase",
+    "publication": "Platform",
+    "url": "https://www.platform-mag.com/music/madstarbase.html",
+    "date_published": null
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Bw011.3 - Neal.Ess | Madstarbase [24-05-2017] (#BoxoutWednesdays)",
+    "url": "https://www.mixcloud.com/boxoutfm/boxoutwednesdays-0113-madstarbase-24-05-2017/",
+    "year": 2017
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "MadStarBase is a New Delhi production and DJ duo of Anant Ahuja (Ase) and Neal Sekhri. They make hip-hop and bass music built on samples and are known for bass-heavy flips of classic Bollywood songs, and they hosted MSB World on boxout.fm. In 2024 they played a set at India House during the Paris Olympics.",
+  "bio_sources": [
+   {
+    "fact": "New Delhi duo, Anant Ahuja and Neal Sekhri",
+    "url": "https://homegrown.co.in/homegrown-creators/homegrown-duo-madstarbase-is-bringing-bass-heavy-bollywood-to-the-paris-olympics"
+   },
+   {
+    "fact": "Ase and Neal; hip-hop and bass rooted, sample-heavy; New Delhi",
+    "url": "https://madstarbase.bandcamp.com/track/ghazal"
+   },
+   {
+    "fact": "MSB World on boxout.fm",
+    "url": "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm"
+   },
+   {
+    "fact": "bass-heavy Bollywood renditions; India House, Paris Olympics set",
+    "url": "https://homegrown.co.in/homegrown-creators/homegrown-duo-madstarbase-is-bringing-bass-heavy-bollywood-to-the-paris-olympics"
+   }
+  ],
+  "releases": [
+   {
+    "title": "Ghazal",
+    "year": 2024,
+    "release_type": "single",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/ghazal",
+    "date": "2024-05-03",
+    "bandcamp_id": 754571580,
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Lucky (feat. Killa P)",
+    "year": 2021,
+    "release_type": "single",
+    "label": null,
+    "url": "https://www.thewildcity.com/news/18547-madstarbase-feature-killa-p-on-new-single-lucky",
+    "date": null,
+    "bandcamp_id": 2124920467,
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Desi Dub Riddims EP",
+    "year": 2026,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/album/desi-dub-riddims-ep",
+    "date": null
+   },
+   {
+    "title": "mandem just caught feelings (Remix) [feat. Akash] (with zefaan)",
+    "year": 2026,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/madstarbase-zefaan-mandem-just-caught-feelings-remix-feat-akash",
+    "date": null
+   },
+   {
+    "title": "Cashh - Mexico (MadStarBase Remix)",
+    "year": 2025,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/cashh-mexico-madstarbase-remix",
+    "date": null
+   },
+   {
+    "title": "LOKRE - Body (Remix w/ David Marston)",
+    "year": 2025,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/lokre-body-remix-w-david-marston",
+    "date": null
+   },
+   {
+    "title": "Ashanti Remix EP",
+    "year": null,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/album/ashanti-remix-ep",
+    "date": null
+   },
+   {
+    "title": "Aayega Kal (MadStarBase Remix)",
+    "year": null,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/aayega-kal-madstarbase-remix",
+    "date": null
+   },
+   {
+    "title": "Ganja Man",
+    "year": null,
+    "release_type": "single",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/ganja-man",
+    "date": null
+   },
+   {
+    "title": "fsho",
+    "year": null,
+    "release_type": "single",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/fsho",
+    "date": null
+   },
+   {
+    "title": "Zelda",
+    "year": null,
+    "release_type": "single",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/zelda-2",
+    "date": null
+   },
+   {
+    "title": "Akash - Balenciaga (W/ Fetty Wap & Lisa Mishra)",
+    "year": null,
+    "release_type": "single",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/akash-balenciaga-w-fetty-wap-lisa-mishra",
+    "date": null
+   },
+   {
+    "title": "Club Edits Vol.2",
+    "year": null,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/album/club-edits-vol-2",
+    "date": null
+   },
+   {
+    "title": "RiSK Feat. ANS - Cocaine Kisses (MadStarBase Remix)",
+    "year": null,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/risk-feat-ans-cocaine-kisses-madstarbase-remix",
+    "date": null
+   },
+   {
+    "title": "RiSK Feat. Ransel - Mimosa (MadStarBase Remix)",
+    "year": null,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/risk-feat-ransel-mimosa-madstarbase-remix",
+    "date": null
+   },
+   {
+    "title": "Mollywood Vol.3",
+    "year": null,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/album/mollywood-vol-3",
+    "date": null
+   },
+   {
+    "title": "Podi Pow EP",
+    "year": null,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/album/podi-pow-ep",
+    "date": null
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://madstarbase.bandcamp.com"
+  },
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": "New Delhi",
+   "instagram": "https://www.instagram.com/madstarbase",
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": "https://madstarbase.com",
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://madstarbase.bandcamp.com/track/ghazal",
+    "from_city": "https://www.platform-mag.com/music/madstarbase.html",
+    "instagram": "https://homegrown.co.in/homegrown-creators/homegrown-duo-madstarbase-is-bringing-bass-heavy-bollywood-to-the-paris-olympics",
+    "website": "https://madstarbase.bandcamp.com/track/ghazal",
+    "kind": "https://www.thewildcity.com/artists/3908-madstarbase"
+   }
+  },
+  "notes": "Release years for the Bandcamp grid items come only from the months shown on the Ghazal page sidebar (Desi Dub Riddims EP Sep 2026, mandem Jan 2026, Mexico Dec 2025, Body May 2025). The rest have year null because I did not open each page. The Ashanti Remix EP and Club Edits / Mollywood items may be edits or bootlegs rather than official releases, so check them before import. The 'Lucky' bandcamp_id comes from the Wild City embed (track=2124920467). Wild City news also mentions 'First Kiss', their first official single on boxout.fm Recordings, and a 2026 Saregama deal backing their Bollywood edits (ticketfairy and musicplus pieces, not opened). Platform says both members grew up in New Delhi, which is the source for from_city. kind is 'dj': Wild City calls them a 'production and DJ duo'. Collaboration: 'Snake Charmer' on MALFNKTION's No Dough EP (Exit Records, 2021)."
+ },
+ {
+  "slug": "malfnktion",
+  "identity": "Wild City's artist page names MALFNKTION as Aditya Alamuru, previously Bangalore-based and now in Toronto. RA's review of No Dough (Exit Records, 2021) and Mixmag Asia's premiere confirm the same person. Homegrown reports his 2022 single 'Watch' on boxout.fm recordings, which ties him to the boxout.fm batch. MadStarBase features on his EP.",
+  "eras": [
+   {
+    "from_year": 2015,
+    "to_year": 2020,
+    "sound": "Minimal hip-hop beats with electronica and Indian field sounds",
+    "tags": [
+     "hip hop",
+     "electronica",
+     "beats",
+     "field recordings"
+    ],
+    "source_url": "https://www.thewildcity.com/mixes/3154-wild-city-135-malfnktion",
+    "source_name": "Wild City",
+    "quote": "One of the coolest forms of experimental beat making currently taking place combines minimal hip-hop"
+   },
+   {
+    "from_year": 2021,
+    "to_year": null,
+    "sound": "Hip-hop rooted dubstep and jungle with fierce basslines",
+    "tags": [
+     "dubstep",
+     "jungle",
+     "hip hop",
+     "bass"
+    ],
+    "source_url": "https://ra.co/reviews/33983",
+    "source_name": "Resident Advisor",
+    "quote": "Rooted in hip-hop, deep dubstep and jungle"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "contemporary Indian dance music",
+    "source_url": "https://mixmag.asia/read/malfnktion-east-west-fantasy-land-big-foot-premiere"
+   },
+   {
+    "tag": "an energetic meeting of trap and dubstep",
+    "source_url": "https://ra.co/reviews/33983"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Malfnktion - No Dough (review)",
+    "publication": "Resident Advisor",
+    "url": "https://ra.co/reviews/33983",
+    "date_published": "2021-06-10"
+   },
+   {
+    "title": "Premiere: Malfnktion creates an east-west fantasy land with new drop 'Bigfoot' on EXIT Records",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/malfnktion-east-west-fantasy-land-big-foot-premiere",
+    "date_published": "2021-05-28"
+   },
+   {
+    "title": "MALFNKTION Takes Help Of Daisuke Tanabe, MadStarBase & More On Exit Records Release 'No Dough'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/18487-malfnktion-takes-help-of-daisuke-tanabe-madstarbase-more-on-exit-records-release-no-dough",
+    "date_published": "2021-06-07"
+   },
+   {
+    "title": "MALFNKTION's Latest Collaboration Gives Dub & Techno A Distinctly Indian Sound",
+    "publication": "Homegrown",
+    "url": "https://homegrown.co.in/homegrown-explore/malfnktions-latest-collaboration-gives-dub-techno-a-distinctly-indian-sound",
+    "date_published": "2022-09-12"
+   },
+   {
+    "title": "Wild City #135: MALFNKTION",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/mixes/3154-wild-city-135-malfnktion",
+    "date_published": "2017-06-14"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "MALFNKTION is the electronic project of Aditya Alamuru, a producer who came up in Bangalore's club and festival circuit and moved to Toronto in 2020. He released the EPs 'Hindustani Rascal' (2015) and 'Vote for Worms' (2016), then 'No Dough' on London's Exit Records in 2021, the first artist from India on the label. His music mixes hip-hop, bass and dubstep with Indian sounds and film samples.",
+  "bio_sources": [
+   {
+    "fact": "Aditya Alamuru; Bangalore club circuit; moved to Toronto the year before June 2021",
+    "url": "https://ra.co/reviews/33983"
+   },
+   {
+    "fact": "Hindustani Rascal Sept 2015, Vote for Worms Dec 2016",
+    "url": "https://www.thewildcity.com/artists/501-malfnktion"
+   },
+   {
+    "fact": "No Dough on Exit Records, first artist from India on Exit",
+    "url": "https://ra.co/reviews/33983"
+   },
+   {
+    "fact": "Indian instruments and vintage film clips",
+    "url": "https://mixmag.asia/read/malfnktion-east-west-fantasy-land-big-foot-premiere"
+   }
+  ],
+  "releases": [
+   {
+    "title": "No Dough",
+    "year": 2021,
+    "release_type": "ep",
+    "label": "Exit Records",
+    "url": "https://ra.co/reviews/33983",
+    "date": null,
+    "bandcamp_id": 3055960453,
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Hindustani Rascal",
+    "year": 2015,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://www.thewildcity.com/artists/501-malfnktion",
+    "date": null
+   },
+   {
+    "title": "Vote for Worms",
+    "year": 2016,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://www.thewildcity.com/artists/501-malfnktion",
+    "date": null
+   },
+   {
+    "title": "Watch (with CEE, Rider Shafique, Shrii)",
+    "year": 2022,
+    "release_type": "single",
+    "label": "boxout.fm recordings",
+    "url": "https://homegrown.co.in/homegrown-explore/malfnktions-latest-collaboration-gives-dub-techno-a-distinctly-indian-sound",
+    "date": null
+   }
+  ],
+  "ids": {},
+  "profile": {
+   "based_city": "Toronto",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": "https://soundcloud.com/malfnktion",
+   "mixcloud": null,
+   "website": null,
+   "kind": "producer",
+   "sources": {
+    "based_city": "https://www.thewildcity.com/news/18487-malfnktion-takes-help-of-daisuke-tanabe-madstarbase-more-on-exit-records-release-no-dough",
+    "soundcloud": "https://www.thewildcity.com/artists/501-malfnktion",
+    "kind": "https://mixmag.asia/read/malfnktion-east-west-fantasy-land-big-foot-premiere"
+   }
+  },
+  "notes": "He is listed as Bangalore-based before 2020; no page gives a home town, so from_city is null. The No Dough Bandcamp id is from the Wild City embed (album=3055960453), and the catalogue number is EXIT094 (RA). The Wild City artist page also lists RAAJA BEATS with Raka Ashok, the 'Lehrein' compilation (GRUV.COAST), the FOLKSOUL compilation with Krantinaari & Charu, and the single 'Infinity Trail'. I did not open these, so they are not in releases. Facebook: facebook.com/Malfnktion. No Instagram found. I found no mix URL I could confirm (the Wild City #135 page gives no embed)."
+ },
+ {
+  "slug": "nishant-mittal",
+  "identity": "Wild City's boxout.fm guide lists The Home And The World presented by Nishant Mittal. boxout.fm's Mixcloud uploads credit the show to mixcloud.com/nishantmittal, whose bio links to Digging In India (instagram.com/digginginindia). Magnetic Fields, NTS and Wild City all name Nishant Mittal aka Digging In India as a New Delhi music archivist and record store owner.",
+  "eras": [
+   {
+    "from_year": 2018,
+    "to_year": null,
+    "sound": "Indian and global records: rock, funk, disco, Bollywood",
+    "tags": [
+     "funk",
+     "disco",
+     "Bollywood",
+     "Indian rock"
+    ],
+    "source_url": "https://www.mixcloud.com/boxoutfm/the-home-001-all-girl-%E0%A4%91%E0%A4%B2-%E0%A4%97%E0%A4%B0%E0%A4%B2-nishant-mittal-28-02-2018/",
+    "source_name": "boxout.fm (Mixcloud)",
+    "quote": "featuring pop, jazz, rock and disco music from solo albums, collaborations and Bollywood from the 60s, 70s and 80s."
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "offbeat music from India and around the world",
+    "source_url": "https://nts.live/shows/digging-in-india"
+   },
+   {
+    "tag": "rock and roll from India in the '60s and '70s",
+    "source_url": "https://www.mansworldindia.com/article/savouring-a-slice-of-indias-rich-crate-digging-culture-with-nishant-mittal"
+   }
+  ],
+  "aliases": [
+   {
+    "name": "Digging In India",
+    "source_url": "https://magneticfields.in/artists/nishant-mittal"
+   }
+  ],
+  "press": [
+   {
+    "title": "Savouring A Slice Of India's Rich Crate-Digging Culture With Nishant Mittal",
+    "publication": "Man's World India",
+    "url": "https://www.mansworldindia.com/article/savouring-a-slice-of-indias-rich-crate-digging-culture-with-nishant-mittal",
+    "date_published": "2023-02-28"
+   },
+   {
+    "title": "New Delhi's Digging In India Launches Physical Release Label",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/20971-new-delhi-s-digging-in-india-launches-physical-release-label",
+    "date_published": "2025-01-30"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "The Home and The World 001 (ALL GIRL) - Nishant Mittal [28-02-2018]",
+    "url": "https://www.mixcloud.com/boxoutfm/the-home-001-all-girl-%E0%A4%91%E0%A4%B2-%E0%A4%97%E0%A4%B0%E0%A4%B2-nishant-mittal-28-02-2018/",
+    "year": 2018
+   },
+   {
+    "title": "The Home And The World 007 (Desi Disco) - Nishant Mittal [08-08-2018]",
+    "url": "https://www.mixcloud.com/boxoutfm/the-home-and-the-world-007-nishant-mittal-08-08-2018/",
+    "year": 2018
+   },
+   {
+    "title": "The Home And The World 031 (INDIAN ROCK 60-80s) - Nishant Mittal [03-02-2020]",
+    "url": "https://www.mixcloud.com/nishantmittal/indian-rock/",
+    "year": 2020
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Nishant Mittal, also known as Digging In India, is a New Delhi music archivist, DJ and record store owner. He hosted the monthly show The Home And The World on boxout.fm from 2018, playing records from India and abroad, and now hosts a show on NTS Radio. In 2025 he launched the label Digging In India Records for cassette and vinyl releases and reissues.",
+  "bio_sources": [
+   {
+    "fact": "aka Digging In India, New Delhi archivist and record store owner",
+    "url": "https://magneticfields.in/artists/nishant-mittal"
+   },
+   {
+    "fact": "The Home And The World, monthly boxout.fm show from Feb 2018",
+    "url": "https://www.mixcloud.com/boxoutfm/the-home-001-all-girl-%E0%A4%91%E0%A4%B2-%E0%A4%97%E0%A4%B0%E0%A4%B2-nishant-mittal-28-02-2018/"
+   },
+   {
+    "fact": "NTS show, DJ",
+    "url": "https://nts.live/shows/digging-in-india"
+   },
+   {
+    "fact": "Digging In India Records launched",
+    "url": "https://www.thewildcity.com/news/20971-new-delhi-s-digging-in-india-launches-physical-release-label"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": null,
+   "instagram": "https://www.instagram.com/digginginindia/",
+   "soundcloud": null,
+   "mixcloud": "https://www.mixcloud.com/nishantmittal/",
+   "website": null,
+   "kind": "selector",
+   "sources": {
+    "based_city": "https://magneticfields.in/artists/nishant-mittal",
+    "instagram": "https://nts.live/shows/digging-in-india",
+    "mixcloud": "https://www.mixcloud.com/boxoutfm/the-home-001-all-girl-%E0%A4%91%E0%A4%B2-%E0%A4%97%E0%A4%B0%E0%A4%B2-nishant-mittal-28-02-2018/",
+    "kind": "https://nts.live/shows/digging-in-india"
+   }
+  },
+  "notes": "Digging In India is both his alias and the name of his New Delhi record store and label, so Param should decide whether to merge it as an alias. He also runs mixcloud.com/digginginindia and youtube.com/@DiggingInIndia (on the NTS page). Our genre 'global club' does not fit: sources describe a crate-digger of Indian rock, funk, disco and Bollywood. As a label head, his releases are the label's, not his own, so releases is empty."
+ },
+ {
+  "slug": "oceantied",
+  "identity": "boxout.fm's Weekender 2019 page names Oceantied as Bangalore producer and DJ Ketan Bahirat, host of the boxout.fm show Ripple. RA, Mixmag Asia and Wild City name the same person and city.",
+  "eras": [
+   {
+    "from_year": 2019,
+    "to_year": null,
+    "sound": "Club-oriented house, footwork and juke with heavy 808s",
+    "tags": [
+     "footwork",
+     "house",
+     "juke",
+     "breaks",
+     "jungle"
+    ],
+    "source_url": "https://mixmag.asia/feature/electric-india-oceantied-bass-music",
+    "source_name": "Mixmag Asia",
+    "quote": "an inherent funkiness that has the ability to get bodies moving"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "heavy 808's, sub frequencies and locally sourced sounds",
+    "source_url": "https://www.thewildcity.com/news/14463-listen-on-the-floor-vol-1-by-oceantied"
+   },
+   {
+    "tag": "Ghetto tech and UK techno",
+    "source_url": "https://www.mixcloud.com/boxoutfm/ripple-001-oceantied-29-03-2018/"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Electric India: Oceantied is forging a new identity for bass music",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/feature/electric-india-oceantied-bass-music",
+    "date_published": "2021-03-13"
+   },
+   {
+    "title": "Oceantied - On The Floor Vol. 2 (review)",
+    "publication": "Resident Advisor",
+    "url": "https://pl.ra.co/reviews/24683",
+    "date_published": "2020-01-16"
+   },
+   {
+    "title": "Listen: 'On The Floor Vol. 1' By Oceantied",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/14463-listen-on-the-floor-vol-1-by-oceantied",
+    "date_published": "2019-08-23"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Ripple 001 - Oceantied [29-03-2018]",
+    "url": "https://www.mixcloud.com/boxoutfm/ripple-001-oceantied-29-03-2018/",
+    "year": 2018
+   },
+   {
+    "title": "Ripple 012 - Oceantied (Ft. Daisho) [07-03-2019]",
+    "url": "https://www.mixcloud.com/boxoutfm/ripple-012-oceantied-ft-daisho-07-03-2019/",
+    "year": 2019
+   },
+   {
+    "title": "Ripple 014 - Oceantied [02-05-2019]",
+    "url": "https://www.mixcloud.com/oceantiedmusic/ripple-014-oceantied-02-05-2019/",
+    "year": 2019
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Oceantied is the alias of Bangalore producer and DJ Ketan Bahirat, active since 2014. He played the first Boiler Room session in India, hosted the monthly show Ripple on boxout.fm, and released the self-released footwork EP 'On The Floor Vol. 2' in 2019. He also co-founded the Bangalore collective Dasta in 2016 and plays guitar in Until We Last.",
+  "bio_sources": [
+   {
+    "fact": "alias of Bangalore producer and DJ Ketan Bahirat, active since 2014",
+    "url": "https://pl.ra.co/dj/oceantied/biography"
+   },
+   {
+    "fact": "first Boiler Room session in India; Ripple on boxout.fm",
+    "url": "https://boxout.fm/weekender/2019/oceantied"
+   },
+   {
+    "fact": "On The Floor Vol. 2, self-released, Dec 2019, footwork",
+    "url": "https://pl.ra.co/reviews/24683"
+   },
+   {
+    "fact": "co-founded Dasta in 2016; guitar in Until We Last",
+    "url": "https://www.mixcloud.com/Oceantied/"
+   }
+  ],
+  "releases": [
+   {
+    "title": "On The Floor Vol. 1",
+    "year": 2019,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://www.thewildcity.com/news/14463-listen-on-the-floor-vol-1-by-oceantied",
+    "date": null
+   },
+   {
+    "title": "On The Floor Vol. 2",
+    "year": 2019,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://pl.ra.co/reviews/24683",
+    "date": null
+   }
+  ],
+  "ids": {
+   "ra": "https://ra.co/dj/oceantied"
+  },
+  "profile": {
+   "based_city": "Bangalore",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": "https://www.mixcloud.com/oceantiedmusic/",
+   "website": null,
+   "kind": "producer",
+   "sources": {
+    "based_city": "https://pl.ra.co/dj/oceantied/biography",
+    "mixcloud": "https://www.mixcloud.com/oceantiedmusic/ripple-014-oceantied-02-05-2019/",
+    "kind": "https://pl.ra.co/dj/oceantied/biography"
+   }
+  },
+  "notes": "The Dasta and Until We Last facts come from the Oceantied Mixcloud bio (via the Mixcloud API), not an outlet. A second Mixcloud account, mixcloud.com/Oceantied, has the same bio and city Bangalore. soundcloud.com/oceantied exists but its oEmbed shows no description, so I could not confirm it and left it out. Wild City also has 'Paradise/Closets' and 'My Way: Oceantied X Boiler Room' news (not opened). Mixmag Asia links him to the KRUNK KULTURE collective and the Kaala Khatta Vol 1 compilation. RA id taken from the pl.ra.co/dj/oceantied page."
+ },
+ {
+  "slug": "pagal-sound",
+  "identity": "boxout.fm's Mixcloud uploads credit vinyl shows (WAXOUT, Pagal Records) to Pagal Sound and tie him to Pagal Records, a record store in Hauz Khas Village, Delhi. Wild City's Boxout Weekender 2018 line-up lists Pagal Sound in the Sunday reggae, dub and world music session (8 April 2018).",
+  "eras": [
+   {
+    "from_year": 2017,
+    "to_year": null,
+    "sound": "Roots reggae, dancehall and dub on vinyl",
+    "tags": [
+     "roots reggae",
+     "dancehall",
+     "dub",
+     "vinyl"
+    ],
+    "source_url": "https://www.mixcloud.com/boxoutfm/pagal-records-001-pagal-sound-28-11-2017/",
+    "source_name": "boxout.fm (Mixcloud)",
+    "quote": "This mix is strictly roots reggae vibe!"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "strictly roots reggae vibe",
+    "source_url": "https://www.mixcloud.com/boxoutfm/pagal-records-001-pagal-sound-28-11-2017/"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Pagal Records 001 - Pagal Sound [28-11-2017]",
+    "url": "https://www.mixcloud.com/boxoutfm/pagal-records-001-pagal-sound-28-11-2017/",
+    "year": 2017
+   },
+   {
+    "title": "WAXOUT - Pagal Sound [30-05-2017]",
+    "url": "https://www.mixcloud.com/boxoutfm/waxout-008-pagal-sound-30-05-2017/",
+    "year": 2017
+   },
+   {
+    "title": "Pagal Records 016 - Pagal Sound [28-08-2018]",
+    "url": "https://www.mixcloud.com/boxoutfm/pagal-records-016-pagal-sound-28-08-2018/",
+    "year": 2018
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Pagal Sound is a Delhi reggae selector linked to Pagal Records, a record store in Hauz Khas Village. He played all-vinyl roots reggae, dancehall and dub on boxout.fm from 2017, on WAXOUT and his own show Pagal Records, and played the reggae and dub session at Boxout Weekender in April 2018.",
+  "bio_sources": [
+   {
+    "fact": "Pagal Records store in HKV, Delhi; roots reggae",
+    "url": "https://www.mixcloud.com/boxoutfm/pagal-records-001-pagal-sound-28-11-2017/"
+   },
+   {
+    "fact": "vinyl-only selection on WAXOUT",
+    "url": "https://www.mixcloud.com/boxoutfm/waxout-008-pagal-sound-30-05-2017/"
+   },
+   {
+    "fact": "Boxout Weekender 2018 reggae, dub, world music session",
+    "url": "https://www.thewildcity.com/news/6200-boxout-fm-turns-one-with-boxout-weekender"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": "New Delhi",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "selector",
+   "sources": {
+    "based_city": "https://www.mixcloud.com/boxoutfm/pagal-records-001-pagal-sound-28-11-2017/",
+    "kind": "https://www.mixcloud.com/boxoutfm/waxout-008-pagal-sound-30-05-2017/"
+   }
+  },
+  "notes": "Thin public record. I found no outlet profile, real name or own social accounts. The store's Mixcloud is mixcloud.com/pagalrecordshop. Platform (2025) says the store was founded by an Italian collector called Joe and is now owned by Abhay, but nothing I opened says which of them is Pagal Sound, so no person is named. pagalrecords.com is not the store's site now (it serves adult content), so do not link it. An Insider event 'The Gig Week - Delhi Sultanate ft Begum X + Pagal Sound' (2 Dec 2017) exists but the page would not render. based_city is New Delhi (the source says 'HKV, Delhi')."
+ },
+ {
+  "slug": "pia-collada",
+  "identity": "Wild City's artist page describes Pia Collada as a Goa-based bass DJ, Worldwide FM resident and founder of BASS WAV who has played Magnetic Fields. Mixmag Asia (Oct 2022) says she moved to Goa from Delhi, and Worldwide FM's Global Wav episode names her as a Goa-based DJ and founder of BASS WAV. I found no page tying her to boxout.fm itself, so the identity rests on the Indian scene sources.",
+  "eras": [
+   {
+    "from_year": 2022,
+    "to_year": null,
+    "sound": "Bass-heavy club music with hip hop, reggae and afro",
+    "tags": [
+     "bass",
+     "reggae",
+     "dancehall",
+     "afro",
+     "jungle"
+    ],
+    "source_url": "https://mixmag.asia/read/mixmag-asia-radio-goa-pia-collada-afro-reggae-set-exclusive-mixes",
+    "source_name": "Mixmag Asia",
+    "quote": "from house to trap"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "percussive interplays and celluloid samples",
+    "source_url": "https://www.thewildcity.com/mixes/21727-wild-city-262-pia-collada-b2b-stain"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Mixmag Asia Radio: Goa-based Pia Collada drops an afro & reggae set",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/mixmag-asia-radio-goa-pia-collada-afro-reggae-set-exclusive-mixes",
+    "date_published": "2022-10-19"
+   },
+   {
+    "title": "Wild City #262: Pia Collada B2B Stain",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/mixes/21727-wild-city-262-pia-collada-b2b-stain",
+    "date_published": "2026-06-18"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Mixmag Asia Radio 107 - Pia Collada [India]",
+    "url": "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-107-pia-collada-india/",
+    "year": 2022
+   },
+   {
+    "title": "Wild City #262: Pia Collada B2B Stain (Future Funk: The One Year Dance)",
+    "url": "https://soundcloud.com/thewildcity/wild-city-262-pia-collada-b2b",
+    "year": 2026
+   },
+   {
+    "title": "Global Wav: India w/ Pia Collada, Prakriti Abel, Henna Brar, Kiss Nuka, Homo Chutney & Benkii",
+    "url": "https://www.worldwidefm.net/episode/global-wav-w-pia-collada",
+    "year": 2025
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Pia Collada is a Goa-based bass DJ who grew up across India, the USA and Tanzania and moved to Goa from Delhi. She is a resident at Worldwide FM, where she hosts Global Wav, and founded BASS WAV, a platform for women and femme DJs and artists. She has played Glastonbury, Shambala and Magnetic Fields.",
+  "bio_sources": [
+   {
+    "fact": "Goa-based bass DJ; India, USA, Tanzania; Worldwide FM resident; BASS WAV; Glastonbury, Shambala, Magnetic Fields",
+    "url": "https://www.thewildcity.com/artists/21724-pia-collada"
+   },
+   {
+    "fact": "moved to Goa from Delhi",
+    "url": "https://mixmag.asia/read/mixmag-asia-radio-goa-pia-collada-afro-reggae-set-exclusive-mixes"
+   },
+   {
+    "fact": "hosts Global Wav on Worldwide FM",
+    "url": "https://www.worldwidefm.net/episode/global-wav-w-pia-collada"
+   }
+  ],
+  "releases": [],
+  "ids": {},
+  "profile": {
+   "based_city": "Goa",
+   "from_city": null,
+   "instagram": null,
+   "soundcloud": null,
+   "mixcloud": null,
+   "website": null,
+   "kind": "dj",
+   "sources": {
+    "based_city": "https://www.thewildcity.com/artists/21724-pia-collada",
+    "kind": "https://www.thewildcity.com/artists/21724-pia-collada"
+   }
+  },
+  "notes": "Not tied to boxout.fm on any page I opened; check the verify_note. The Wild City #262 page is dated 18 Jun 2026 as fetched. Her Instagram looks like @piacollada (only seen on a third-party viewer, so left out). The Worldwide FM host page is worldwidefm.net/hosts/pia-collada. Goa is a state: sources say Goa-based. The Worldwide FM link is an episode page, not a SoundCloud, YouTube or Mixcloud embed, so it may not play on the page."
+ }
+]
