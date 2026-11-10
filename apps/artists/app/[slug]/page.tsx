@@ -7,14 +7,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
-  ButtonLink, Pill, SectionHead, Keycap, Led, Plinth,
-  Passport, Knob, Marquee, Icon, type StampData,
+  ButtonLink, Pill, Led, Icon,
 } from "@ccd/ui";
 import { getArtistPage, inrShort, dayParts } from "@/lib/artist-page";
 import { isSlug, todayIST } from "@/lib/db";
 import { RESERVED, siteUrl } from "@/lib/site";
 import FollowButton from "@/components/FollowButton";
-import ArtistTabs from "@/components/ArtistTabs";
 import ArtistExplorer from "@/components/ArtistExplorer";
 import ShareProfile from "@/components/ShareProfile";
 import FanWall from "@/components/FanWall";
@@ -43,8 +41,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /** Stamp colours: ink colours that read on paper. */
-const INKS = ["#1f5fd6", "#c2185b", "#2e7d32", "#6a1b9a", "#e65100", "#00695c", "#37474f"];
-const SHAPES: StampData["shape"][] = ["round", "plain", "double", "round", "plain", "double", "round"];
 
 export default async function ArtistPage({ params }: Props) {
   const { slug } = await params;
@@ -55,7 +51,6 @@ export default async function ArtistPage({ params }: Props) {
   const today = todayIST();
   const playable = a.popular.length > 0 || a.releases.some((r) => r.trackId);
   const ig = a.links.find((l) => /instagram/i.test(l.url));
-  const stamps: StampData[] = p.stamps.slice(0, 9).map((s, i) => ({ city: s.city, count: s.count, colour: INKS[i % INKS.length], shape: SHAPES[i % SHAPES.length] }));
   const up = a.upcoming[0];
   const next = up ? { day: dayParts(up.event_date).day, title: up.title, where: [up.venue, up.city].filter(Boolean).join(", "), href: up.ticket_url ?? up.url ?? "#shows", ext: !!(up.ticket_url ?? up.url) } : null;
   const since = a.releases.filter((r) => !r.undated).map((r) => Math.floor(r.y)).sort((x, y) => x - y)[0] ?? null;
@@ -112,90 +107,44 @@ export default async function ArtistPage({ params }: Props) {
           </div>
         }
         wall={<FanWall slug={slug} name={p.name} about={about} />}
+        side={
+          <>
+            <div className="apr-card apr-share">
+              <span className="k-m">Their card</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`/api/card/profile/${slug}?size=story`} alt={`${p.name}: eras, records and shows, as one card`} loading="lazy" />
+              <b className="k-d" style={{ fontSize: 22 }}>Their whole story, made for a story.</b>
+              <ShareProfile slug={slug} name={p.name} />
+            </div>
+            <div className="apr-card">
+              <span className="k-m">Upcoming</span>
+              {a.upcoming.length > 0 ? a.upcoming.slice(0, 3).map((u) => (
+                <a key={u.id} href={u.ticket_url ?? u.url ?? "#"} className="k-li" style={{ padding: "8px 0" }}><span className="k-m w-[64px] flex-none !text-[var(--k-tx)]">{dayParts(u.event_date).day}</span><span className="min-w-0 flex-1"><b>{u.title}</b><small>{[u.venue, u.city].filter(Boolean).join(", ")}</small></span></a>
+              )) : (
+                <><b>No dates near you yet.</b><p>Follow and you hear the moment they announce one.</p><FollowButton slug={slug} name={p.name} size="s" /></>
+              )}
+            </div>
+            {(fee || a.bookable) && (
+              <div className="apr-card apr-book" id="book">
+                <span className="k-m" style={{ color: "var(--k-pc)" }}>Book {p.name}</span>
+                {fee && <b className="k-d" style={{ fontSize: 28 }}>From {inrShort(fee.min)}</b>}
+                <p>Club, festival or private. Send the date, city and room. You agree in one thread and both sign a contract.</p>
+                <ButtonLink variant="key" href="#ask">Ask for a date</ButtonLink>
+              </div>
+            )}
+            {!a.claimed && (
+              <Link className="apr-card" href="/claim" style={{ textDecoration: "none" }}><span className="k-m">Is this you?</span><b>Claim this page</b><p>See who follows you and where, pin fan notes, post dates, take bookings.</p></Link>
+            )}
+          </>
+        }
       />
-
-      <div className="k-wrap pt-12"><ArtistTabs slug={slug} current="overview" music={counts.records} shows={counts.shows} /></div>
-
-      {p.labels.length > 2 && (
-        <section className="pt-20" aria-label="Released on">
-          <p className="k-m k-wrap mb-4">Released on</p>
-          <Marquee items={p.labels.slice(0, 14)} label="Labels" />
-        </section>
-      )}
-
-      {/* ── Shows ── */}
-      {(a.upcoming.length > 0 || stamps.length > 1 || p.nextNear) && (
-        <section className="k-wrap k-section" aria-labelledby="shows">
-          <div className="grid items-start gap-12 md:grid-cols-[1fr_minmax(0,600px)] md:gap-16">
-            <div>
-              <SectionHead id="shows" title="Next shows" sub="Follow and you hear first when they play your city. Tickets open in Nights." />
-              {a.upcoming.length > 0 ? (
-                <ul className="mt-7 list-none p-0">
-                  {a.upcoming.slice(0, 4).map((u) => {
-                    const d = dayParts(u.event_date);
-                    return (
-                      <li key={u.id}>
-                        <a className="k-li" href={u.ticket_url ?? u.url ?? "#"}>
-                          <span className="k-m w-[72px] flex-none !text-[var(--k-tx)]">{d.day}</span>
-                          <span className="min-w-0 flex-1"><b>{u.title}</b><small>{[u.venue, u.city].filter(Boolean).join(", ")}</small></span>
-                          <span className="text-sm font-semibold" style={{ color: "var(--k-pc)" }}>Tickets</span>
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              ) : p.nextNear ? (
-                <div className="k-surface mt-7 flex items-center gap-4 rounded-[20px] px-5 py-4">
-                  <Led state="off"><span className="k-sr">No date</span></Led>
-                  <span className="flex-1"><b className="block text-[17px] font-semibold">No {p.nextNear.city} date yet</b><span className="k-b text-sm">Their next show near you lands here.</span></span>
-                  <FollowButton slug={slug} name={p.name} size="s" />
-                </div>
-              ) : null}
-            </div>
-            {stamps.length > 1 && <div className="k-rvs md:mt-10"><Passport stamps={stamps} summary={`${counts.cities} cities`} /></div>}
-          </div>
-        </section>
-      )}
-
-      {/* ── Book ── */}
-      {fee && (
-        <section className="k-wrap k-section" aria-labelledby="book">
-          <div className="k-rvs grid items-center gap-10 rounded-[28px] bg-[#0e0f11] p-6 md:grid-cols-[1fr_480px] md:p-16" style={{ boxShadow: "inset 0 0 0 2px var(--k-pc)" }}>
-            <div>
-              <h2 id="book" className="k-d text-[44px] md:text-[72px]">Book {p.name} for your night</h2>
-              <p className="k-b mt-4 max-w-[560px] text-[18px]">Pick a date and a set. They reply in the app or on WhatsApp.</p>
-              <ul className="mt-6 max-w-[560px] list-none p-0">
-                {["Open to bookings", `Their range: ${inrShort(fee.min)} to ${inrShort(fee.max)}`, "Add a VJ or a photographer to the same ask"].map((t) => (
-                  <li key={t} className="flex items-center gap-2.5 border-t border-[var(--k-hair)] py-3 text-[15px]"><span style={{ color: "var(--k-pc)" }}><Icon name="check" size={14} stroke={2.6} /></span>{t}</li>
-                ))}
-              </ul>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <ButtonLink variant="key" size="l" href="#ask">Send an ask</ButtonLink>
-              </div>
-            </div>
-            <Plinth className="p-6" style={{ borderRadius: 26 }}>
-              <span className="k-m">Their range</span>
-              <div className="relative mt-4 grid place-items-center pb-8">
-                <Knob size={190} label={`Range ${inrShort(fee.min)} to ${inrShort(fee.max)}`} />
-                <span className="k-m absolute bottom-0 left-6">{inrShort(fee.min)}</span>
-                <span className="k-m absolute bottom-0 right-6">{inrShort(fee.max)}</span>
-              </div>
-              <div className="mt-4 grid grid-cols-3 gap-2.5">
-                <Keycap href="#ask" sub="set">Club</Keycap>
-                <Keycap href="#ask" sub="set">Festival</Keycap>
-                <Keycap href="#ask" sub="party">Private</Keycap>
-              </div>
-            </Plinth>
-          </div>
-        </section>
-      )}
 
       {/* ── Around them: two tight rows of chips, not two long lists (Param, 10 Nov 2026) ── */}
       {(a.playedWith.length > 0 || similar.length > 0) && (
         <section className="k-wrap k-section ap-around">
           {similar.length > 0 && (
             <div>
-              <div className="ap-around-h"><h2 className="k-d">If you like {p.name}</h2><a href="/artists" className="k-b">All artists</a></div>
+              <div className="ap-around-h"><h2 className="k-d">If you like {p.name}</h2><Link href="/artists" className="k-b">All artists</Link></div>
               <ul className="ap-chips">
                 {similar.slice(0, 12).map((s) => (
                   <li key={s.n}><a className="ap-chip" href={s.u ?? "#"} target={s.internal ? undefined : "_blank"} rel="noopener" title={s.why ?? undefined}><Avatar name={s.n} img={s.img} /><b>{s.n}</b></a></li>
