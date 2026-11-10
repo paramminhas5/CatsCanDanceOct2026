@@ -7,8 +7,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { loadThread, postMessage, actOn, keyFor, type Thread as T } from "@/lib/booking-desk";
 import { STAGE_LABEL, stageStep, dayLong, inrShort, inrFull, DEFAULT_TEMPLATES } from "@/lib/desk";
+import ContractPanel from "@/components/ContractPanel";
 
 const STEPS = ["Sent", "Seen", "Answer", "Accepted", "Confirmed"];
+/** What an action says in the thread when it came without a note. */
+const KIND_LINE: Record<string, string> = { accepted: "Accepted the terms.", confirmed: "Confirmed the booking.", interested: "Interested.", declined: "Can't do this one.", cancelled: "Withdrew the request.", seen: "Seen." };
 
 export default function Thread({ id, urlKey }: { id: string; urlKey: string | null }) {
   const [t, setT] = useState<T | null>(null);
@@ -63,9 +66,10 @@ export default function Thread({ id, urlKey }: { id: string; urlKey: string | nu
           {t.messages.map((m) => (
             <Bubble key={m.id} who={m.author_role === "artist" ? (artistSide ? "You" : t.artist?.name ?? "Artist") : m.author_role === "requester" ? (artistSide ? r.name : "You") : "Cats Can Dance"}
               mine={(m.author_role === "artist") === artistSide && m.author_role !== "system" && m.author_role !== "ops"}
-              body={[m.fee_inr ? `Fee: ${inrFull(m.fee_inr)}` : null, m.set_terms, m.body].filter(Boolean).join("\n")} at={m.created_at} />
+              body={[m.fee_inr ? `Fee: ${inrFull(m.fee_inr)}` : null, m.set_terms, m.body].filter(Boolean).join("\n") || (KIND_LINE[m.kind] ?? "")} at={m.created_at} />
           ))}
         </ul>
+        <ContractPanel id={id} urlKey={key} stage={r.stage} onChange={reload} />
         {!closed && (
           <div className="k-surface grid gap-3 rounded-[22px] p-4">
             <label className="sr-only" htmlFor="msg">Message</label>
@@ -107,7 +111,7 @@ export default function Thread({ id, urlKey }: { id: string; urlKey: string | nu
           {[["Date", r.event_date ? dayLong(r.event_date) : null], ["City", r.city], ["Venue", r.venue], ["Set", r.set_length], ["Budget", r.budget_band], ["Fee agreed", r.fee_inr ? inrFull(r.fee_inr) : null], ["Also on the bill", r.other_acts]]
             .filter(([, v]) => v).map(([k, v]) => <div key={k as string}><dt className="k-m">{k}</dt><dd className="m-0 mt-1">{v}</dd></div>)}
         </dl>
-        <p className="k-b m-0 text-sm">Contracts and deposits switch on later. Until then, agree the details here and keep them in the thread.</p>
+        <p className="k-b m-0 text-sm">Once the organiser accepts, either of you can put it in a contract here. Both sign with a code we email, and the deposit is held by us until after the show.</p>
       </aside>
     </div>
   );
