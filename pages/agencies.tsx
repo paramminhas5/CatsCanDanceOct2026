@@ -63,8 +63,8 @@ export default function AgenciesPage({ agencies }: { agencies: Agency[] }) {
                 {a.blurb && <p className="text-sm text-ink/80 line-clamp-4">{a.blurb}</p>}
                 {a.founders && <p className="text-xs text-ink/70"><b>Founders:</b> {a.founders}</p>}
                 <div className="flex flex-wrap gap-2 pt-1 mt-auto">
-                  {ext(a.website) && <a href={ext(a.website)!} target="_blank" rel="noreferrer" className="text-[11px] font-display bg-cream text-ink px-2 py-1 border-2 border-ink">Website ↗</a>}
-                  {a.instagram && /^[a-z0-9._]+$/i.test(a.instagram) && <a href={`https://instagram.com/${a.instagram}`} target="_blank" rel="noreferrer" className="text-[11px] font-display bg-ink text-cream px-2 py-1 border-2 border-ink">@{a.instagram}</a>}
+                  {ext(a.website) && <a href={ext(a.website)!} target="_blank" rel="noreferrer" className="inline-flex items-center min-h-[28px] text-[11px] font-display bg-cream text-ink px-2 py-1 border-2 border-ink">Website ↗</a>}
+                  {a.instagram && /^[a-z0-9._]+$/i.test(a.instagram) && <a href={`https://instagram.com/${a.instagram}`} target="_blank" rel="noreferrer" className="inline-flex items-center min-h-[28px] text-[11px] font-display bg-ink text-cream px-2 py-1 border-2 border-ink">@{a.instagram}</a>}
                 </div>
               </article>
             ))}

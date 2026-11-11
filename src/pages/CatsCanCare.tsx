@@ -45,7 +45,7 @@ const NgoCard = ({ n }: { n: Ngo }) => {
           Donate →
         </a>
         {site && (
-          <a href={site} target="_blank" rel="noreferrer" className="text-xs underline text-ink/70">
+          <a href={site} target="_blank" rel="noreferrer" className="inline-flex items-center min-h-[28px] px-1 text-xs underline text-ink/70">
             Website
           </a>
         )}
