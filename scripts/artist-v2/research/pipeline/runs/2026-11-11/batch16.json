@@ -1,0 +1,389 @@
+[
+ {
+  "slug": "priyam",
+  "name": "Priyam",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/dandelion-hour-006-guest-mix-by-priyam-19-02-2021/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Priyam is a DJ who has played Boxout Wednesdays, boxout.fm's weekly club night, and recorded guest mixes for the station between 2018 and 2022.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "Floor thumping eclecticism"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/boxoutfm-x-start-sessions-012-priyam-friction-at-kona-02-03-2019/",
+   "https://www.mixcloud.com/boxoutfm/dandelion-hour-006-guest-mix-by-priyam-19-02-2021/",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-193-priyam-06-07-2022/",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-187-priyam-25-05-2022/",
+   "https://www.mixcloud.com/boxoutfm/guest-mix-354-priyam-31-08-2019/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "profound",
+  "name": "Profound",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "Chandigarh",
+  "genres": [],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/profoundsoundsofficial",
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/Profoundsounds/profound-live-boxout-weekender-06-04-2018/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Profound is a hip-hop and electronic producer from Chandigarh, based in New Delhi. His debut EP Returning Rituals came out with KRUNK in 2015 and the beat tape fre$h on Knowmad Records in 2017. He played the first Boxout Weekender in 2018 as a Boxout.fm Recordings artist.",
+  "releases_on_record": 3,
+  "release_years": [
+   2015,
+   2017
+  ],
+  "sample_releases": [
+   "slowdowngf (2017, Knowmad Records)",
+   "fre$h (2017, Knowmad Records)",
+   "Returning Rituals (2015, KRUNK)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/1886-listen-profound-releases-debut-ep-returning-rituals",
+   "https://www.thewildcity.com/news/2175-first-listen-slowdowngf-by-profound",
+   "https://www.thewildcity.com/news/2177-listen-fre-h-by-profound",
+   "https://rollingstoneindia.com/profound-riding-the-vaporwave/"
+  ],
+  "sound_tags_already_stored": [
+   "Heavy bass and beats",
+   "Multilayered with subliminal beats and lo-fi elements"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/Profoundsounds/profound-live-boxout-weekender-06-04-2018/",
+   "https://www.youtube.com/watch?v=XdbJhgQSIRc",
+   "https://www.mixcloud.com/boxoutfm/boxoutwednesdays-019-profound-19-07-2017/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "prog-rescue",
+  "name": "Prog Rescue",
+  "kind": "musician",
+  "based_city": "Mumbai",
+  "from_city": null,
+  "genres": [
+   "deep tech",
+   "micro house",
+   "minimal"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "prog.rescue",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=cyFP8-polys",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=cyFP8-polys",
+   "https://www.youtube.com/watch?v=WCOOUoOohVc",
+   "https://www.youtube.com/watch?v=XRZ6sMfuowg"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "pulpy-shilpy",
+  "name": "PULPY SHILPY",
+  "kind": "musician",
+  "based_city": "Pune, India",
+  "from_city": "India",
+  "genres": [
+   "Electro",
+   "Disco"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "pulpyshilpy",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=hqkNChaS0kM",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Pulpy Shilpy is an electronic producer who works from a home studio in Pune. Her debut electro EP Slough was covered by Wild City. A second EP, heavy on disco and synths, was in progress, and she releases on OCL Records.",
+  "releases_on_record": 4,
+  "release_years": [
+   2017,
+   2023
+  ],
+  "sample_releases": [
+   "Greaser (2023, OCL Records)",
+   "Swarm Intel Vol.1 (track: Rigor Tortoise) (2022, OCL Records)",
+   "Slough (2019)",
+   "Kaadal Mannan (2017)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/20021-pulpy-shilpy-is-at-the-peripheries-of-leftfield-acid-house-on-greaser",
+   "https://www.thewildcity.com/news/12016-first-listen-slough-by-pulpy-shilpy",
+   "https://rollingstoneindia.com/gowri-jayakumar-is-at-her-feminist-fiercest-on-kaadal-mannan/"
+  ],
+  "sound_tags_already_stored": [
+   "cyborg sex funk (her SoundCloud tag)"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "bandcamp": "https://pulpyshilpy.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "ids"
+  ]
+ },
+ {
+  "slug": "radiostar",
+  "name": "Radiostar",
+  "kind": "musician",
+  "based_city": "Kolkata",
+  "from_city": null,
+  "genres": [
+   "house",
+   "breaks",
+   "uk garage",
+   "disco"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=tiMI_KlMixY",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=tiMI_KlMixY"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "rafiki",
+  "name": "RAFIKI",
+  "kind": "musician",
+  "based_city": "Mumbai",
+  "from_city": null,
+  "genres": [
+   "acid",
+   "breaks",
+   "house",
+   "techno"
+  ],
+  "spotify": "https://open.spotify.com/artist/3ROQdOAplnJWKboYPuAbik",
+  "soundcloud": "https://soundcloud.com/rafikisoundsindia",
+  "instagram": "rafikisounds",
+  "website": "https://krunklive.com/artist/rafiki/",
+  "mix_url": "https://www.youtube.com/watch?v=P7EjmDotJwM",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Rafiki is the DJ and producer alias of Sohail Arora, founder of the Mumbai events and artist management company Krunk and its label Krunk Kulture. Based in Mumbai, he plays acid, breaks, house and techno, has played Magnetic Fields and NH7 Weekender, and has released on Welt Discos, Permanent Vacation and Krunk Kulture.",
+  "releases_on_record": 7,
+  "release_years": [
+   2021,
+   2025
+  ],
+  "sample_releases": [
+   "Good Luck (with Squidworks) (2025, Krunk Kulture)",
+   "Anand Mahal (2024, Permanent Vacation)",
+   "5 AM Dub (2023, Krunk Kulture)",
+   "The Source (2023, Welt Discos)",
+   "New Shifts (2023, Krunk Kulture)",
+   "Funky Acid Party (on Jaljeera, Flavours of the East) (2021, Krunk Kulture)",
+   "Point of View, Vol. 1 (An Acid Experiment) (2021, Regenerate Music)"
+  ],
+  "press_urls_already_stored": [
+   "https://mixmag.asia/read/rafiki-squidworks-tribute-to-mumbai-suburb-bandra-good-luck-ep-new-releases",
+   "https://mixmag.asia/read/premiere-rafiki-new-shifts-ep-walk-the-talk-single-premiere",
+   "https://ra.co/reviews/35687",
+   "https://mixmag.net/feature/the-mix-019-rafiki-dj-interview-mumbai-house-techno-krunk-kulture"
+  ],
+  "sound_tags_already_stored": [
+   "Broken beat, jungle, breaks and house",
+   "Steely breakbeats and psychedelic effects",
+   "Somewhere between a straight and broken beat"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=P7EjmDotJwM",
+   "https://www.youtube.com/watch?v=wFzp8TNSSvM",
+   "https://www.youtube.com/watch?v=UNlI2tJvzT8",
+   "https://www.youtube.com/watch?v=3h6hCBUJXBo",
+   "https://soundcloud.com/platform/rafiki-krunk-presents-kiss"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://rafikisounds.bandcamp.com",
+   "beatport": "https://www.beatport.com/artist/rafiki-in/912625",
+   "ra": "https://ra.co/dj/rafikiin"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "raj",
+  "name": "Raj",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "jazz house",
+   "chill house",
+   "deep house"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "Rajkanwarsodhi",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=GdZLYuP7Z4A",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=GdZLYuP7Z4A",
+   "https://www.youtube.com/watch?v=zam7bpe5ZZ8"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "rajah-betta",
+  "name": "Rajah Betta",
+  "kind": "musician",
+  "based_city": "Mumbai",
+  "from_city": "Mumbai",
+  "genres": [
+   "electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "rajahbetta",
+  "website": null,
+  "mix_url": "https://soundcloud.com/thewildcity/wild-city-251-rajah-betta",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Rajah Betta is a DJ, producer and radio host born in Bombay who developed his sound in New York, where he hosted Betta Sounds on Brooklyn's Newtown Radio, before moving back to India in 2025. He calls his blend of club music and Bombay samples \"Bombay Club\". In 2026 he appeared on Padmini Records' Yaar-Dost vol. 2 and released the two-track EP Offcuts on Stereo Ferment.",
+  "releases_on_record": 2,
+  "release_years": [
+   2026,
+   2026
+  ],
+  "sample_releases": [
+   "Offcuts (2026, Stereo Ferment)",
+   "But... (on Yaar-Dost vol. 2) (2026, Padmini Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/21593-padmini-records-includes-monophonik-shantam-chhabb-more-on-yaar-dost-vol-2",
+   "https://theindianmusicdiaries.com/rajah-bettas-offcuts-sf021-imagines-classic-indian-tunes-for-the-dance-floor/",
+   "https://www.thewildcity.com/news/21658-rajah-betta-flips-classic-ad-jingles-south-asian-cultural-memory-for-the-club-on-offcuts"
+  ],
+  "sound_tags_already_stored": [
+   "Controlled chaos by way of Bombay Club",
+   "House, obscure electronic, dnb, breakbeat, bollywood"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/rajahbetta/bombay-bubs-and-dubs-mansions-dec-13-2024/",
+   "https://www.mixcloud.com/newtownradiobk/betta-sounds-ep-1-feat-choo-choo-04152024/",
+   "https://www.mixcloud.com/WildCity/wild-city-251-rajah-betta/",
+   "https://soundcloud.com/thewildcity/wild-city-251-rajah-betta"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://rajahbetta.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ }
+]

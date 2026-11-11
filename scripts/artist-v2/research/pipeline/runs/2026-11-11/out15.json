@@ -1,0 +1,190 @@
+[
+ {
+  "slug": "omdg",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searched Dhaka progressive, UK garage and indie dance. No page found that names OMDG, so nothing confirmed. Returned empty."
+ },
+ {
+  "slug": "pagal-sound",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searched Pagal Records and Pagal Sound. Platform (platform-mag.com/music/pagal-records.html, 4 Jun 2025) covers the Hauz Khas shop but does not mention a selector called Pagal Sound, so no new facts used. No press, releases or ids found."
+ },
+ {
+  "slug": "parvati",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Search for Naksha returned only the stored Wild City article. No Bandcamp, RA or other page for this Parvati found (a Bandcamp track 'Parvati' by Setu Ketu is unrelated). Nothing new confirmed."
+ },
+ {
+  "slug": "peach-blok",
+  "identity": "Rolling Stone India (3 Sep 2020 and 5 Oct 2021) names Bengaluru producer Rishii Rohra as Peach Blok, matching our record. Rolling Stone India review rundown places the Iris EP (track 'Ticks and Mites') with Peach Blok, Bengaluru; Homegrown (13 Feb 2024) lists the album IRIS with the same track; Volumo lists IRIS by Peach Blok on Krunk Kulture, 14 Feb 2024.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Groove-heavy electronic-pop",
+    "source_url": "https://rollingstoneindia.com/review-rundown-sihie-sabotage-splinter-peach-blok-khus-fir-album/amp"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Exclusive Stream: Bengaluru Producer Peach Blok Teases Slinky New Beat Tape 'Solitude'",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/exclusive-stream-peach-blok-beat-tape-solitude/",
+    "date_published": "2020-09-03"
+   },
+   {
+    "title": "Peach Blok, Smokey the Ghost and Joel Sakkari, 'High and Getting Old'",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/bengaluru-peach-blok-smokey-the-ghost-joel-sakkari-high-and-getting-old/amp",
+    "date_published": "2021-10-05"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {
+    "title": "IRIS",
+    "year": 2024,
+    "release_type": "album",
+    "label": "Krunk Kulture",
+    "url": "https://volumo.com/artist/634247-peach-blok/albums",
+    "date": "2024-02-14"
+   },
+   {
+    "title": "Solitude",
+    "year": 2020,
+    "release_type": "album",
+    "label": null,
+    "url": "https://rollingstoneindia.com/exclusive-stream-peach-blok-beat-tape-solitude/",
+    "date": "2020-09-05"
+   },
+   {
+    "title": "That 90's Beat Tape",
+    "year": 2020,
+    "release_type": "album",
+    "label": null,
+    "url": "https://rollingstoneindia.com/exclusive-stream-peach-blok-beat-tape-solitude/",
+    "date": null
+   }
+  ],
+  "ids": {},
+  "notes": "Rolling Stone India (Oct 2021) said Iris was an eight-track album due early 2022; the review rundown calls it an EP; Homegrown and Volumo date it Feb 2024. Release type left as album per Volumo. Beat tape types are my reading (Rolling Stone calls them beat tapes), release_type album is approximate. Our bio says no releases on record; these are new. Label Krunk Kulture only from Volumo, not seen on a Bandcamp page. No Bandcamp, Discogs or RA ids confirmed."
+ },
+ {
+  "slug": "phreshprince",
+  "identity": "Magnetic Fields artist page names Tushar Bagla as PhreshPrince, a DJ across hip-hop, R&B, afro, garage and UK funky. Genres overlap our stored afro and global tags, and Boxout mixes are stored, but the page names no city, so identity is probable, not firm.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Open-format DJ who also explores styles in depth",
+    "source_url": "https://www.magneticfields.in/artists/phreshprince"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Gap was city and bio. Magnetic Fields page gives no city; it says he was introduced to hip-hop culture at a UK university. Did not write a bio draft because city is unconfirmed. Genres on the page (hip-hop, R&B, soul, funk, disco, UK funky, garage, grime, afro, bashment, jazz) differ somewhat from our stored afro, arabic, latin, global, so Param may want to check it is the same person."
+ },
+ {
+  "slug": "pia-collada",
+  "identity": "Clash (9 Nov 2026) and Wild City both place her in Goa, with Worldwide FM and BASS WAV, matching our record.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Smashing together 140 sounds and bass weight with other influences",
+    "source_url": "https://www.clashmusic.com/?p=465290"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "System Mistress: Pia Collada Interviewed",
+    "publication": "Clash",
+    "url": "https://www.clashmusic.com/?p=465290",
+    "date_published": "2026-11-09"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Earth Agency page (earth-agency.com/artist/pia-collada) and Shambala page surfaced in search but were not opened. Worldwide FM Global Wav episodes exist at worldwidefm.net but are already stored or not opened. No releases found."
+ },
+ {
+  "slug": "prav",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Search found no page naming a hip-hop, R&B and future beats artist PRAV. Namesakes only. Nothing confirmed. City still unknown."
+ },
+ {
+  "slug": "prismer",
+  "identity": "RA profile (ra.co/dj/prismer) names Rohan Kale, lists SoundCloud prismeratti and Instagram prismertraxx, matching our stored links. Bandcamp profile bandcamp.com/rohankale says Prismer, New Delhi, with soundcloud.com/prismeratti.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [
+   {
+    "alias": "Don Jiro",
+    "source_url": "https://ra.co/dj/prismer"
+   }
+  ],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "ra": "https://ra.co/dj/prismer",
+   "bandcamp": "https://prismertraxx.bandcamp.com"
+  },
+  "notes": "Bandcamp URL prismertraxx.bandcamp.com is from the RA profile; the page itself was blocked by a permission timeout, so its releases were not read. bandcamp.com/rohankale is a fan collection profile with 1,600 items, not a label page. 'claims' gap: no source found to confirm the playing-alongside claims in our bio; not checked beyond the stored press."
+ }
+]

@@ -1,0 +1,304 @@
+[
+ {
+  "slug": "lacuna",
+  "identity": "Wild City and RA profile both name Mihir Raina, born in Chandigarh, based in the Netherlands, SoundCloud lacuna_official, matching our record.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Experimental, borrowing from hip-hop, bass, trip-hop and jungle",
+    "source_url": "https://www.thewildcity.com/artists/4537-Lacuna"
+   },
+   {
+    "tag": "Leaning fully into dubstep",
+    "source_url": "https://www.thewildcity.com/news/21602-lacuna-leans-fully-into-dubstep-on-new-ep-light-work"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "ra": "https://ra.co/dj/lacuna"
+  },
+  "notes": "Gaps were photo and ids. RA profile https://ra.co/dj/lacuna confirms the same person (Netherlands based, SoundCloud lacuna_official). Wild City artist page still says New Delhi based, which is out of date versus the March 2026 article (Utrecht). No Bandcamp or Discogs found. Era data from Wild City is undated, so no new eras."
+ },
+ {
+  "slug": "long-distances",
+  "identity": "Rolling Stone India, Platform and Wild City (all already stored) describe the Mumbai indie band at the intersection of post-punk, shoegaze, dreampop and synthpop, matching our record.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "On Long Distances, How the Mighty Will Fall",
+    "publication": "After EOD (Substack)",
+    "url": "https://aftereod.substack.com/p/on-long-distances-how-the-mighty",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Bandcamp id already stored. Nothing new confirmed beyond a members list on Platform (Aarifah vocals, Adil bass, Apurv guitar/synth/mix, Gouri harmonies/synths, Karun drums, Zubin guitar/production/songwriting). Not added as a field. No mixes expected for a band. One extra press candidate found."
+ },
+ {
+  "slug": "luna-toke",
+  "identity": "Wild City profile names Luna Toke as Sachin Shetty, hosts Magic Tea on boxout.fm, SoundCloud lunatoke, same as our record.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Percussion and rhythm of ancient times through modern house and techno soundscapes",
+    "source_url": "https://www.thewildcity.com/artists/4117-Luna Toke"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Only gaps were photo and ids; nothing found for ids. Wild City has a mix 'Wild City 054: Sachin Shetty' (https://www.thewildcity.com/mixes/3073-wild-city-054-sachin-shetty), SoundCloud not verified so not added as mix link. Web search for Tsunami Soup returned only food results, so the collective claim is unconfirmed beyond his SoundCloud."
+ },
+ {
+  "slug": "maddeof",
+  "identity": "Cannot confirm. Search returned nothing for this name; only Instagram handle and YouTube mixes stored.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing public found by name. No city, label or release source. Returned empty."
+ },
+ {
+  "slug": "madstarbase",
+  "identity": "Wild City, Rolling Stone India and Homegrown (stored) describe the Delhi duo Neal Sekhri and Anant Ahuja; Bandcamp madstarbase matches stored id.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Reinterpreting, flipping and sampling Bollywood",
+    "source_url": "https://www.thewildcity.com/news/21722-after-years-of-takedowns-madstarbase-s-edits-receive-saregama-s-backing"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "After Years Of Takedowns, MadStarBase's Edits Receive Saregama's Backing",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/21722-after-years-of-takedowns-madstarbase-s-edits-receive-saregama-s-backing",
+    "date_published": "2026-06-12"
+   },
+   {
+    "title": "MadStarBase Signs Landmark Remix Deal With Saregama",
+    "publication": "Loudest",
+    "url": "https://loudest.in/news/madstarbase-signs-landmark-remix-deal-with-saregama-19757.html",
+    "date_published": null
+   },
+   {
+    "title": "Non Normative Definitions of Good Music with Neal Sekhri of MadStarBase",
+    "publication": "The Citizen",
+    "url": "https://www.thecitizen.in/index.php/en/NewsDetail/index/16/17137/Non-Normative-Definitions-of-Good-Music-with-Neal-Sekhri-of-MadStarBase",
+    "date_published": null
+   },
+   {
+    "title": "MadStarBase's Mollywood Brings the Bass to Bollywood",
+    "publication": "Ones to Watch",
+    "url": "https://onestowatch.com/en/blog/madstarbase-mollywood",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {
+    "title": "Ghazal",
+    "year": 2024,
+    "release_type": "single",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/ghazal",
+    "date": "2024-05-03",
+    "bandcamp_id": 754571580,
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Ashanti Remix EP",
+    "year": null,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/album/ashanti-remix-ep",
+    "date": null
+   },
+   {
+    "title": "Club Edits Vol.2",
+    "year": null,
+    "release_type": "compilation",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/album/club-edits-vol-2",
+    "date": null
+   },
+   {
+    "title": "Mollywood Vol.3",
+    "year": null,
+    "release_type": "compilation",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/album/mollywood-vol-3",
+    "date": null
+   },
+   {
+    "title": "Podi Pow EP",
+    "year": null,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/album/podi-pow-ep",
+    "date": null
+   },
+   {
+    "title": "Ganja Man",
+    "year": null,
+    "release_type": "single",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/ganja-man",
+    "date": null
+   },
+   {
+    "title": "fsho",
+    "year": null,
+    "release_type": "single",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/fsho",
+    "date": null
+   },
+   {
+    "title": "Zelda",
+    "year": null,
+    "release_type": "single",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/zelda-2",
+    "date": null
+   },
+   {
+    "title": "Aayega Kal (MadStarBase Remix)",
+    "year": null,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/aayega-kal-madstarbase-remix",
+    "date": null
+   },
+   {
+    "title": "Akash - Balenciaga (W/ Fetty Wap & Lisa Mishra)",
+    "year": null,
+    "release_type": "single",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/akash-balenciaga-w-fetty-wap-lisa-mishra",
+    "date": null
+   },
+   {
+    "title": "RiSK Feat. ANS - Cocaine Kisses (MadStarBase Remix)",
+    "year": null,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/risk-feat-ans-cocaine-kisses-madstarbase-remix",
+    "date": null
+   },
+   {
+    "title": "RiSK Feat. Ransel - Mimosa (MadStarBase Remix)",
+    "year": null,
+    "release_type": "remix",
+    "label": null,
+    "url": "https://madstarbase.bandcamp.com/track/risk-feat-ransel-mimosa-madstarbase-remix",
+    "date": null
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://madstarbase.bandcamp.com"
+  },
+  "notes": "Bandcamp listing gives no dates, so years are null except Ghazal (3 May 2024 on its page). Release types inferred from Bandcamp URL path and titles (album pages with EP in title set as ep; Club Edits and Mollywood volumes set as compilation, unverified). Saregama deal: Wild City 12 June 2026 says Saregama is releasing official remixes of the duo (Dum Maaro Dum, Saat Samundar, two more due 17 and 24 June); the duo's own Bandcamp does not list them. Our record dates Desi Dub Riddims EP 2026 and Bandcamp shows Sep 2026, consistent."
+ },
+ {
+  "slug": "malfnktion",
+  "identity": "Wild City, Mixmag Asia and Homegrown name Aditya Alamuru, Bangalore to Toronto, Exit Records No Dough (28 May 2021), matching our record.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Distinctly Indian sounds that jump across genres",
+    "source_url": "https://homegrown.co.in/homegrown-explore/malfnktions-latest-collaboration-gives-dub-techno-a-distinctly-indian-sound"
+   },
+   {
+    "tag": "Sound collecting finds, retro films and Indian instruments",
+    "source_url": "https://mixmag.asia/read/malfnktion-east-west-fantasy-land-big-foot-premiere"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Listen: 'Infinity Trail' By MALFNKTION",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/15228-listen-infinity-trail-by-malfnktion",
+    "date_published": null
+   },
+   {
+    "title": "Listen: 'Chopta' By MALFNKTION Ft. Aerate Sound",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/14680-listen-chopta-by-malfnktion-ft-aerate-sound",
+    "date_published": null
+   },
+   {
+    "title": "First Listen: 'Buenos Aires' (feat. Ramiro Jota) By MALFNKTION",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/3510-first-listen-buenos-aires-feat-ramiro-jota-by-malfnktion",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Wild City artist page says he began making music in the US in 2012 and also lists the album 'Infinity Trail' (conceived 2017, year not stated; Wild City news item https://www.thewildcity.com/news/15228-listen-infinity-trail-by-malfnktion, not opened) and 'RAAJA BEATS' with Raka Ashok. Not in our releases on record; not added as releases because no primary page with a date was opened. Refuge Worldwide show page 'Spicetape | Asmi Shetty & Malfnktion' (30 May 2023) has no embed, so not added as a mix. Wild City says 'Bangalore-based' in older pieces; newer ones say Toronto, consistent with our record."
+ },
+ {
+  "slug": "mc-soopy",
+  "identity": "Wild City artist page: Siddhant Roop Rai, New Delhi, MC and DJ, matches our record.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "No releases or ids found. Wild City page lists only a Facebook link (https://www.facebook.com/MCSoopy/). Our stored city 'New Delhi, India' and from_city 'India' look like a formatting issue only."
+ },
+ {
+  "slug": "merman",
+  "identity": "Cannot confirm. Search for MERMAN with Bengaluru and CCD returned no page about this artist.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing public found; name is generic and likely CCD's own founder project. Returned empty."
+ }
+]

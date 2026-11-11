@@ -1,0 +1,623 @@
+{
+ "eras": [
+  {
+   "s": "kairavi",
+   "f": 2025,
+   "t": null,
+   "snd": "Playful, compelling house, dub and techno",
+   "tags": [
+    "house",
+    "dub",
+    "techno"
+   ],
+   "u": "https://refugeworldwide.com/artists/kairavi",
+   "n": "Refuge Worldwide",
+   "p": "ink"
+  },
+  {
+   "s": "tapan-raj",
+   "f": 2002,
+   "t": null,
+   "snd": "Atmospheric, synth driven drum 'n' bass",
+   "tags": [
+    "drum and bass",
+    "synths",
+    "Indian electronica"
+   ],
+   "u": "https://mixmag.asia/feature/electric-india-bangin-the-drum-bass-with-the-legendary-midival-punditz",
+   "n": "Mixmag Asia",
+   "p": "ink"
+  },
+  {
+   "s": "tartaruga",
+   "f": 2024,
+   "t": null,
+   "snd": "Old-school mixing, deep organic four-to-the-floor house",
+   "tags": [
+    "house",
+    "deep",
+    "organic"
+   ],
+   "u": "https://www.thewildcity.com/mixes/20888-wild-city-241-hamza-rahimtula-b2b-tartaruga",
+   "n": "Wild City",
+   "p": "blush"
+  },
+  {
+   "s": "tech-panda-x-kenzani",
+   "f": 2023,
+   "t": null,
+   "snd": "Techno and downtempo blended with Indian traditional music",
+   "tags": [
+    "techno",
+    "downtempo",
+    "trip-hop",
+    "Indian electronica"
+   ],
+   "u": "https://rollingstoneindia.com/tech-panda-kenzani-dilbar-song-interview/amp",
+   "n": "Rolling Stone India",
+   "p": "blush"
+  }
+ ],
+ "bio": [
+  {
+   "s": "kairavi",
+   "b": "Kairavi is a DJ and composer originally from India and now based in Berlin. She plays house, dub and techno and has played dozens of shows in India before expanding into Europe.",
+   "src": [
+    "https://refugeworldwide.com/artists/kairavi",
+    "https://www.festivalabroad.com/artists/kairavi",
+    "https://ra.co/dj/kairavi"
+   ]
+  },
+  {
+   "s": "rasa",
+   "b": "Rasa is a bass DJ based in Bengaluru who started DJing during the COVID-19 lockdown. Her sets draw on drum and bass, jungle, UK garage, dub, grime and breaks.",
+   "src": [
+    "https://mixmag.asia/read/mma-radio-bass-queen-rasa-exclusive-mixes",
+    "https://2023.magneticfields.in/artists/rasa"
+   ]
+  },
+  {
+   "s": "anisha",
+   "b": "Anisha is a Bombay-based DJ who plays a wide range of genres, including disco, funky, breaks and club music.",
+   "src": [
+    {
+     "fact": "Bombay-based; plays disco, funky, breaks and club music",
+     "url": "https://2023.magneticfields.in/artists/anisha/"
+    }
+   ]
+  },
+  {
+   "s": "tartaruga",
+   "b": "Tartaruga is a DJ in the Warehouse Mix collective who plays house with an old-school mixing style.",
+   "src": [
+    "https://www.thewildcity.com/mixes/20888-wild-city-241-hamza-rahimtula-b2b-tartaruga"
+   ]
+  },
+  {
+   "s": "bb-nabi",
+   "b": "BB Nabi is a queer DJ and designer based in Delhi. Their sets draw on melodic loops, futuristic sounds, anime and advert jingles.",
+   "src": [
+    "https://homegrown.co.in/homegrown-creators/paradisco-attend-a-genre-bending-dance-party-celebrating-music-drag-and-community",
+    "https://www.mixcloud.com/boxoutfm/bb-nabi-true-music-fund-pop-up-radio-19102025/",
+    "https://www.mixcloud.com/room303radio/bb-nabi2026%E5%B9%B48%E6%9C%8829%E6%97%A5/"
+   ]
+  }
+ ],
+ "spotify": [
+  {
+   "s": "kairavi",
+   "u": "https://open.spotify.com/artist/6HNwzATRQmFRyeYIgWkVPI"
+  },
+  {
+   "s": "baalti",
+   "u": "https://open.spotify.com/artist/2CtpjGWvsq4QnUIx9PHDAN"
+  },
+  {
+   "s": "baalti",
+   "u": "https://open.spotify.com/artist/2CtpjGWvsq4QnUIx9PHDAN"
+  },
+  {
+   "s": "dameer",
+   "u": "https://open.spotify.com/artist/1rTEkzUiftHqoVMjSucIV6"
+  }
+ ],
+ "aliases": [
+  {
+   "s": "boyroy",
+   "a": "SoCalFunk",
+   "k": "also_known_as",
+   "u": "https://www.youtube.com/@boyroymusic"
+  },
+  {
+   "s": "dakta-dub",
+   "a": "Monkey Sound System (with Dakta Dub, as listed by Goa Sunsplash)",
+   "k": "also_known_as",
+   "u": "https://www.goasunsplash.com/artist/monkey-sound-system---dakta-dub"
+  },
+  {
+   "s": "ezzyland",
+   "a": "EZZYLVND",
+   "k": "also_known_as",
+   "u": "https://www.thewildcity.com/news/1978-listen-dreamhour-and-ezzylvnd-release-split-mixtape-not-for-release"
+  }
+ ],
+ "ids": [
+  {
+   "s": "varun-desai",
+   "k": "bandcamp",
+   "v": "https://bandcamp.com/yidam",
+   "u": "https://bandcamp.com/yidam"
+  },
+  {
+   "s": "bullzeye",
+   "k": "ra",
+   "v": "https://ra.co/dj/bullzeye",
+   "u": "https://ra.co/dj/bullzeye"
+  }
+ ],
+ "releases": [
+  {
+   "s": "peach-blok",
+   "ti": "IRIS",
+   "ty": "album",
+   "y": 2024,
+   "d": "2024-02-14",
+   "l": "Krunk Kulture",
+   "u": "https://volumo.com/artist/634247-peach-blok/albums"
+  },
+  {
+   "s": "peach-blok",
+   "ti": "Solitude",
+   "ty": "album",
+   "y": 2020,
+   "d": "2020-09-05",
+   "l": null,
+   "u": "https://rollingstoneindia.com/exclusive-stream-peach-blok-beat-tape-solitude/"
+  },
+  {
+   "s": "peach-blok",
+   "ti": "That 90's Beat Tape",
+   "ty": "album",
+   "y": 2020,
+   "d": null,
+   "l": null,
+   "u": "https://rollingstoneindia.com/exclusive-stream-peach-blok-beat-tape-solitude/"
+  },
+  {
+   "s": "anish-sood",
+   "ti": "Asman (feat. Samad Khan)",
+   "ty": "single",
+   "y": 2026,
+   "d": "2026-11-03",
+   "l": "Anjunadeep",
+   "u": "https://anjunadeep.bandcamp.com/album/asman"
+  },
+  {
+   "s": "anish-sood",
+   "ti": "Flectere",
+   "ty": "ep",
+   "y": 2025,
+   "d": "2025-03-26",
+   "l": null,
+   "u": "https://rollingstoneindia.com/anyasa-flectere-ep-north-america-tour"
+  },
+  {
+   "s": "ezzyland",
+   "ti": "Deps X Anxies",
+   "ty": "album",
+   "y": 2017,
+   "d": null,
+   "l": null,
+   "u": "https://www.thewildcity.com/features/7226-the-deps-x-anxies-of-ezzyland"
+  },
+  {
+   "s": "ezzyland",
+   "ti": "Kryptonite",
+   "ty": "single",
+   "y": 2018,
+   "d": "2018-08-07",
+   "l": null,
+   "u": "https://www.thewildcity.com/news/9592-ezzyland-releases-new-single-kryptonite"
+  },
+  {
+   "s": "ezzyland",
+   "ti": "Speedrun",
+   "ty": "single",
+   "y": 2019,
+   "d": null,
+   "l": null,
+   "u": "https://theplayground.co.uk/premiere-ezzy%e2%84%92and-speedrun-interview-with-the-genre-blender-graphic-interpreter-sidharth-ezhilan/"
+  },
+  {
+   "s": "ezzyland",
+   "ti": "BLEEDER TAPES",
+   "ty": "ep",
+   "y": 2023,
+   "d": null,
+   "l": null,
+   "u": "https://homegrown.co.in/homegrown-creators/producer-sidharth-ezhilan-used-his-bleeder-tapes-ep-to-heal-from-personal-trauma"
+  },
+  {
+   "s": "hamza-rahimtula",
+   "ti": "Origins (Extended Mix version)",
+   "ty": "album",
+   "y": 2025,
+   "d": "2025-07-10",
+   "l": "Sol Selectas",
+   "u": "https://solselectas.bandcamp.com/album/origins"
+  },
+  {
+   "s": "teej",
+   "ti": "Apocalypto",
+   "ty": "single",
+   "y": 2016,
+   "d": "2016-10-31",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/404eb249-0798-4189-9e78-ebed79196a31"
+  },
+  {
+   "s": "teej",
+   "ti": "Apocalypto VIP",
+   "ty": "single",
+   "y": 2016,
+   "d": "2016-12-18",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/f7f9cff7-cdca-42ae-8fbb-617ad352af4b"
+  },
+  {
+   "s": "teej",
+   "ti": "Hush It",
+   "ty": "single",
+   "y": 2017,
+   "d": "2017-02-23",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/c1f5d65f-f5fd-471e-b133-c26a1bead973"
+  },
+  {
+   "s": "teej",
+   "ti": "Masterpiece EP",
+   "ty": "ep",
+   "y": 2020,
+   "d": "2020-05-11",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/97f4aa8c-a160-4366-bee4-592dba896679"
+  },
+  {
+   "s": "teej",
+   "ti": "Thug Stripes",
+   "ty": "single",
+   "y": 2020,
+   "d": "2020-05-27",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/b4645883-bd05-4fd9-b717-f194c5e5baac"
+  },
+  {
+   "s": "teej",
+   "ti": "Drama EP",
+   "ty": "ep",
+   "y": 2021,
+   "d": "2021-07-07",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/b5e782e1-652a-4775-b717-bd8d9469d53d"
+  },
+  {
+   "s": "teej",
+   "ti": "Nice Up the Dance",
+   "ty": "single",
+   "y": 2021,
+   "d": "2021-07-30",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/24959864-8821-4585-85a2-0264e7322180"
+  },
+  {
+   "s": "teej",
+   "ti": "Portal",
+   "ty": "ep",
+   "y": 2021,
+   "d": "2021-09-24",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/a8faf6d9-a1d7-419a-841b-e96b09e281c9"
+  },
+  {
+   "s": "teej",
+   "ti": "Profound Beats Remix Edition Part 2",
+   "ty": "single",
+   "y": 2022,
+   "d": "2022-03-24",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/9e5fe56a-927e-40ef-a82a-7d8c14073ad5"
+  },
+  {
+   "s": "teej",
+   "ti": "Hot One",
+   "ty": "single",
+   "y": 2022,
+   "d": "2022-04-22",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/1ed0dbe6-bc83-4cc3-bbc2-e31e7891567e"
+  },
+  {
+   "s": "teej",
+   "ti": "Slip & Slide",
+   "ty": "single",
+   "y": 2022,
+   "d": "2022-07-15",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/d8050b89-0ae9-453a-8c4d-74ec7729a529"
+  },
+  {
+   "s": "teej",
+   "ti": "Blackout",
+   "ty": "single",
+   "y": 2022,
+   "d": "2022-09-16",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/55c801bd-0f3e-40e0-85a2-8702825b97e1"
+  },
+  {
+   "s": "teej",
+   "ti": "Segments: 001",
+   "ty": "single",
+   "y": 2022,
+   "d": "2022-12-09",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/93615c90-7638-4719-9453-bba4c3b463a3"
+  },
+  {
+   "s": "teej",
+   "ti": "Soundkill",
+   "ty": "single",
+   "y": 2023,
+   "d": "2023-03-02",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/acd2f897-46c4-4f9a-8cf6-7b49ec08f012"
+  },
+  {
+   "s": "teej",
+   "ti": "Segments: 002",
+   "ty": "single",
+   "y": 2023,
+   "d": "2023-03-24",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/59934434-e9fd-4322-91e8-7ce94f779a0e"
+  },
+  {
+   "s": "teej",
+   "ti": "Anti Roller Roller Club",
+   "ty": "ep",
+   "y": 2023,
+   "d": "2023-07-14",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/11c408c3-abd1-4f5d-a3fe-97d5373aaac4"
+  },
+  {
+   "s": "teej",
+   "ti": "Hot Property",
+   "ty": "single",
+   "y": 2023,
+   "d": "2023-08-18",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/a79d643c-8e69-47e9-a129-5d02e5b0ac0c"
+  },
+  {
+   "s": "teej",
+   "ti": "Incursion",
+   "ty": "single",
+   "y": 2024,
+   "d": "2024-01-10",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/76a0e1c2-2e76-4ccc-8e4b-2021db5e4a42"
+  },
+  {
+   "s": "teej",
+   "ti": "Loud Pack",
+   "ty": "single",
+   "y": 2024,
+   "d": "2024-02-02",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/2069e57f-ce11-41ed-8d77-6d40d27762a4"
+  },
+  {
+   "s": "teej",
+   "ti": "War Cry (The Remixes)",
+   "ty": "ep",
+   "y": 2024,
+   "d": "2024-07-18",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/695c2208-6aa9-4fe9-a14e-7317c1ec4202"
+  },
+  {
+   "s": "dameer",
+   "ti": "Easier",
+   "ty": "single",
+   "y": 2018,
+   "d": "2018-06-28",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/fc459e12-c3a6-49ae-bbc1-d171f38b30b5"
+  },
+  {
+   "s": "dameer",
+   "ti": "Amar Jaan",
+   "ty": "single",
+   "y": 2021,
+   "d": "2021-01-15",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/a2b7857c-dd92-4691-8221-8cf1e5f9f4e5"
+  },
+  {
+   "s": "dameer",
+   "ti": "For We Are Distant",
+   "ty": "ep",
+   "y": 2021,
+   "d": "2021-02-26",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/64e26b84-4af3-4360-97d6-a36851ad8d94"
+  },
+  {
+   "s": "dameer",
+   "ti": "Bashbo Bhalo",
+   "ty": "single",
+   "y": 2022,
+   "d": "2022-03-02",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/012a3f23-a2b5-4f95-8bfb-ef04e9090d79"
+  },
+  {
+   "s": "dameer",
+   "ti": "What Love Meant",
+   "ty": "single",
+   "y": 2022,
+   "d": "2022-06-29",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/7f6ce2cd-107e-4e32-90a7-0df02a5fe88f"
+  },
+  {
+   "s": "dameer",
+   "ti": "It'll Be Alright",
+   "ty": "single",
+   "y": 2022,
+   "d": "2022-10-28",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/4e7aa944-4ffd-48cc-b029-e5a6cc558ff5"
+  },
+  {
+   "s": "dameer",
+   "ti": "Gimme All of Your Love",
+   "ty": "single",
+   "y": 2023,
+   "d": "2023-07-27",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/a1625750-f8ec-4e61-8ded-c0428e307d13"
+  },
+  {
+   "s": "dameer",
+   "ti": "Khancha",
+   "ty": "single",
+   "y": 2025,
+   "d": "2025-03-08",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/7fdc981d-b86f-475d-9c52-aef727d8caaf"
+  },
+  {
+   "s": "dameer",
+   "ti": "Shopner Shongshar",
+   "ty": "single",
+   "y": 2026,
+   "d": "2026-01-31",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/24ba454d-319c-405b-b03d-01977886f171"
+  },
+  {
+   "s": "dameer",
+   "ti": "Haater Rekha (From \"Prem Shots\")",
+   "ty": "single",
+   "y": 2026,
+   "d": "2026-07-22",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/0ff0643e-5c5e-4b41-857a-02751688d9c9"
+  },
+  {
+   "s": "dameer",
+   "ti": "Dhaka Love",
+   "ty": "single",
+   "y": 2026,
+   "d": "2026-08-14",
+   "l": null,
+   "u": "https://musicbrainz.org/release-group/8de7f00e-6900-4ac9-845f-20730cda2e04"
+  }
+ ],
+ "tags": [
+  {
+   "s": "dameer",
+   "tag": "Uplifting psychedelic pop",
+   "u": "https://majesticjournal.com/introducing-dameer"
+  },
+  {
+   "s": "dameer",
+   "tag": "Western indie and jazz with Bengali influences",
+   "u": "https://www.tbsnews.net/glitz/dameer-voice-and-mind-behind-amar-jaan-279553"
+  }
+ ],
+ "bc": [
+  {
+   "s": "oceantied",
+   "t": "Tribes",
+   "ty": "album",
+   "id": 1955634110
+  },
+  {
+   "s": "oceantied",
+   "t": "Let You Go",
+   "ty": "track",
+   "id": 3753847192
+  },
+  {
+   "s": "oceantied",
+   "t": "Nostalgia",
+   "ty": "album",
+   "id": 441622690
+  },
+  {
+   "s": "oceantied",
+   "t": "U R",
+   "ty": "album",
+   "id": 1762465173
+  },
+  {
+   "s": "oceantied",
+   "t": "On The Floor Vol. 3",
+   "ty": "album",
+   "id": 3704647032
+  },
+  {
+   "s": "anish-sood",
+   "t": "Asman (feat. Samad Khan)",
+   "ty": "album",
+   "id": 1125959445
+  },
+  {
+   "s": "blu-attic",
+   "t": "Anjunadeep Explorations Vol. 1",
+   "ty": "album",
+   "id": 1225390669
+  },
+  {
+   "s": "corridors",
+   "t": "In Transit EP",
+   "ty": "album",
+   "id": 3420496639
+  },
+  {
+   "s": "corridors",
+   "t": "Fight The Retrograde",
+   "ty": "track",
+   "id": 2446761315
+  },
+  {
+   "s": "corridors",
+   "t": "g/old EP",
+   "ty": "album",
+   "id": 1297046630
+  },
+  {
+   "s": "daisho",
+   "t": "In Hiding",
+   "ty": "album",
+   "id": 4056285591
+  },
+  {
+   "s": "daisho",
+   "t": "Friends and Isles Demo",
+   "ty": "album",
+   "id": 3605691261
+  },
+  {
+   "s": "hamza-rahimtula",
+   "t": "Origins (Extended Mix version)",
+   "ty": "album",
+   "id": 865972465
+  }
+ ],
+ "press": [],
+ "mixes": []
+}

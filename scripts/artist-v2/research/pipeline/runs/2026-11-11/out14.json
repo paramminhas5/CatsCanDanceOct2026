@@ -1,0 +1,292 @@
+[
+ {
+  "slug": "nida",
+  "identity": "Wild City mix page #257 (18 Dec 2025) names Nida as Mumbai-based, founder of the ParaDisco party series, playing disco and house; matches our genres and the ParaDisco claim in our bio. Beatportal (29 Sep 2026) confirms ParaDisco and the same disco and house sound.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Disco and house, branching into acid, cosmic house, UKG and breaks",
+    "source_url": "https://www.beatportal.com/articles/1643844-eight-new-delhi-artists-shaping-the-sound-of-indian-electronic-music"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Eight Delhi Artists Shaping The Sound of Indian Electronic Music",
+    "publication": "Beatportal",
+    "url": "https://www.beatportal.com/articles/1643844-eight-new-delhi-artists-shaping-the-sound-of-indian-electronic-music",
+    "date_published": "2026-09-29"
+   },
+   {
+    "title": "Dynamite Disco Club Marks Its 50th Release With Compilation Featuring Nida, Stalvart John & More",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/21218-dynamite-disco-club-marks-its-50th-release-with-compilation-featuring-nida-stalvart-john-more",
+    "date_published": "2025-07-22"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Wild City #257: Nida x Choksi x Rafiki (ParaDisco)",
+    "url": "https://soundcloud.com/thewildcity/wild-city-257-nida-x-choksi-x-rafiki",
+    "year": 2025
+   }
+  ],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {
+    "title": "Where Were You?",
+    "year": 2025,
+    "release_type": "single",
+    "label": "Dynamite Disco Club",
+    "url": "https://www.thewildcity.com/news/21218-dynamite-disco-club-marks-its-50th-release-with-compilation-featuring-nida-stalvart-john-more",
+    "date": null,
+    "note": "Track on the compilation Dynamite Cuts Vol. 1; the article is dated 22 Jul 2025, exact release date not shown. Described as her producer debut."
+   }
+  ],
+  "ids": {},
+  "notes": "City: Wild City says Mumbai-based (our record has from_city Mumbai, based_city empty). Namesake: a Pune singer-songwriter called Nida released the EP Glimpses (Sep 2025); not the same artist, not used. Traxsource page for Dynamite Cuts Vol. 1 would not open. Boiler Room and Mixmag Lab claims in our bio were not re-checked this pass. No discogs, RA or beatport ids found."
+ },
+ {
+  "slug": "nishant-mittal",
+  "identity": "RA news (22 Feb 2024) says Nishant Mittal DJs as Digging In India and opened a record shop in New Delhi; Magnetic Fields bio calls him a New Delhi-based music archivist and record store owner; Wild City (30 Jan 2025) says he launched the label. Matches our record.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [
+   {
+    "alias": "Digging In India",
+    "source_url": "https://magneticfields.in/artists/nishant-mittal"
+   }
+  ],
+  "press": [
+   {
+    "title": "Digging In India vinyl record collectibles store opens in New Delhi",
+    "publication": "RA",
+    "url": "https://ra.co/news/80304",
+    "date_published": "2024-02-22"
+   },
+   {
+    "title": "Digging In India: A New Vinyl Store Has Opened Its Doors To New Delhi's Music Enthusiasts",
+    "publication": "Homegrown",
+    "url": "https://homegrown.co.in/homegrown-explore/digging-in-india-a-new-vinyl-store-has-opened-its-doors-to-new-delhis-music-enthusiasts",
+    "date_published": null
+   },
+   {
+    "title": "New Delhi Gets A New Record Store By Digging In India",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/20576-new-delhi-gets-a-new-record-store-by-digging-in-india",
+    "date_published": null
+   },
+   {
+    "title": "Digging In India vinyl records and collectibles store opens in New Delhi",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/read/digging-in-india-vinyl-record-collectibles-store-open-new-delhi-local",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "bandcamp.com/nishantmittal is a collector profile (Nishant M, New Delhi, 51 collection items) with no releases of his own; not stored as an id because it is not confirmed as an artist page. Label release found: Excise Dept., SAB KUCH MIL GAYA MUJHE VOL. 1, cassette on Digging In India Records, Jan 2025 (https://www.thewildcity.com/news/20971-new-delhi-s-digging-in-india-launches-physical-release-label); it is another artist's release, so not added under his name. Press dates marked null were not shown in the search snippet and not opened. Mixmag Asia and Homegrown press pages were not opened beyond the search result title."
+ },
+ {
+  "slug": "no-mo-soul",
+  "identity": "Not confirmed. Searches by name, city and genre returned nothing about this artist.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing public found. Our stored mixes are on the Mixcloud account sachit_sethi, so the artist may be Sachit Sethi, but no source opened confirms that link or the Delhi base. Instagram no_mo_soul was not checked (not searchable here)."
+ },
+ {
+  "slug": "norbu",
+  "identity": "Not confirmed. No page found that ties a Norbu to Chandigarh, Deep Tempo, OneFortyAsia, Sec13 or Screech Collective.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searches by name, city and labels found no press. Mixmag Asia's OneFortyAsia Volume 1 piece (May 2026) and Wild City's Lacuna EP piece do not mention Norbu. The SoundCloud oEmbed check for soundcloud.com/norbu-noises was blocked by a permission prompt timeout, so it was skipped. Label claims in our bio remain unsourced; a check of the label Bandcamp pages (onefortyasia.bandcamp.com/album/volume-1 tracklist) would settle it."
+ },
+ {
+  "slug": "oceantied",
+  "identity": "Bandcamp Daily feature (27 Sep 2017) names Oceantied as Ketan Bahirat of Bengaluru, RBMA graduate, DASTA member and guitarist in Until We Last; the Bandcamp page oceantiedmusic.bandcamp.com carries the On The Floor series already on our record.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Oceantied feature",
+    "publication": "Bandcamp Daily",
+    "url": "https://daily.bandcamp.com/features/oceantied-feature",
+    "date_published": "2017-09-27"
+   },
+   {
+    "title": "In Conversation With: RBMA Selectee Oceantied",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/features/2580-in-conversation-with-rbma-selectee-oceantied",
+    "date_published": null
+   },
+   {
+    "title": "Oceantied Returns With 'On The Floor Vol. 3'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/20138-oceantied-returns-with-on-the-floor-vol-3",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {
+    "title": "Tribes",
+    "year": 2016,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://oceantiedmusic.bandcamp.com/album/tribes",
+    "date": "2016-12-02",
+    "bandcamp_id": "1955634110",
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "Let You Go",
+    "year": 2019,
+    "release_type": "single",
+    "label": null,
+    "url": "https://oceantiedmusic.bandcamp.com/track/let-you-go",
+    "date": "2019-01-24",
+    "bandcamp_id": "3753847192",
+    "bandcamp_type": "track"
+   },
+   {
+    "title": "Nostalgia",
+    "year": 2020,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://oceantiedmusic.bandcamp.com/album/nostalgia",
+    "date": "2020-03-20",
+    "bandcamp_id": "441622690",
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "U R",
+    "year": 2022,
+    "release_type": "single",
+    "label": null,
+    "url": "https://oceantiedmusic.bandcamp.com/album/u-r",
+    "date": "2022-03-02",
+    "bandcamp_id": "1762465173",
+    "bandcamp_type": "album"
+   },
+   {
+    "title": "On The Floor Vol. 3",
+    "year": 2023,
+    "release_type": "ep",
+    "label": null,
+    "url": "https://oceantiedmusic.bandcamp.com/album/on-the-floor-vol-3",
+    "date": "2023-03-03",
+    "bandcamp_id": "3704647032",
+    "bandcamp_type": "album"
+   }
+  ],
+  "ids": {
+   "bandcamp": "https://oceantiedmusic.bandcamp.com"
+  },
+  "notes": "Our bio says active since 2014 and gives On The Floor Vol. 1 and 2 as 2019; Bandcamp Daily shows a debut EP Tribes in 2016 (Bandcamp date 2 Dec 2016) and a Boiler Room India set in 2016, so releases on record may start later than his first release. Not a contradiction of the bio, but the timeline should start 2016. U R is a 2-track release (original plus a Glyph & Hystatus remix), typed single. Wild City press dates were not opened."
+ },
+ {
+  "slug": "odd",
+  "identity": "Not confirmed. Search results for a DJ called Odd (a soundcloud.com/djodd result) could not be tied to the techno DJ with Dubfire, VRIL, Exos and Luigi Tozzi credits or to NDCR #029.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Common name, nothing public found that matches. No city in our record and none found. NDCR page (Homegrown article on New Delhi Community Radio) did not name him in the search snippet."
+ },
+ {
+  "slug": "og-shez",
+  "identity": "Wild City #261 mix page (19 May 2026) calls OG SHEZ a Mumbai DJ who runs the party series Culture Club. Only one opened source, so identity is moderate; District listings (SOCIAL Selects, Aug 2025; a Lush Lata and Utkarshflips night, Oct 2025) and a Boiler Room x Ballantine's True Music Studios Mumbai set title also turned up in search but were not opened.",
+  "eras": [
+   {
+    "from_year": 2026,
+    "to_year": null,
+    "sound": "Desi hip-hop, Jersey club, dubstep and experimental edits",
+    "tags": [
+     "Desi hip-hop",
+     "Jersey club",
+     "dubstep",
+     "electro",
+     "edits"
+    ],
+    "source_url": "https://www.thewildcity.com/mixes/21685-wild-city-261-og-shez",
+    "source_name": "Wild City",
+    "quote": "fresh drops from the independent Desi hip-hop scene, Jersey Club, dubstep, electro, and experimental edits"
+   }
+  ],
+  "sound_tags": [
+   {
+    "tag": "Spotlighting the underground",
+    "source_url": "https://www.thewildcity.com/mixes/21685-wild-city-261-og-shez"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Wild City #261: OG SHEZ",
+    "url": "https://soundcloud.com/thewildcity/wild-city-261-og-shez",
+    "year": 2026
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "OG SHEZ is a Mumbai DJ who plays independent Desi hip-hop, Jersey club, dubstep, electro and experimental edits. She runs the party series Culture Club, whose second edition was set for Raasta Mumbai on 22 May 2026.",
+  "bio_sources": [
+   "https://www.thewildcity.com/mixes/21685-wild-city-261-og-shez"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "No city on our record; Wild City says Mumbai. The era is a single 2026 source, so from_year is the mix date, not a proven start of the sound. Possible extra source to check: boilerroom.tv session page for the Mumbai True Music Studios set (OG SHEZ listed on set79 tracklist), not opened."
+ },
+ {
+  "slug": "okedo",
+  "identity": "Our record is detailed and sourced by Wild City and Mixmag Asia; Wild City's Okedo artist page lists Wacheewan//Wacheenee, Destiny, Impulse, New Fusion Movements and Season 1, matching our releases.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [
+   {
+    "alias": "Okedolo (duo with Dolorblind)",
+    "source_url": "https://www.thewildcity.com/news/19853-okedo-dolorblind-introduce-their-duo-okedolo-with-ep-season-1"
+   }
+  ],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Gap was ids only. Wild City artist page (thewildcity.com/artists/12205-Okedo) gave no Discogs, RA, Beatport or MusicBrainz id, only facebook.com/musicbyokedo. Searches found none to confirm. For reference, that page names Okedolo's partner as Rohan Sinha (Dolorblind) and Pluto Monkey as Antriksh Mohapatra. The duo-with-Will-Clarke claim in our bio was not checked."
+ }
+]

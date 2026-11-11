@@ -1,0 +1,152 @@
+[
+ {
+  "slug": "sage",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing confirmed. Stored instagram harshitaasethi but no public page found tying it to a DJ named Sage in Delhi. Homegrown's women DJs piece lists a Sage Spins (Mumbai), a different artist. No bio, press or ids added."
+ },
+ {
+  "slug": "sanjith",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing new found in the time spent; no page tying a Sanjith with a city to the stored boxout.fm shows. City not confirmed."
+ },
+ {
+  "slug": "sarathy-korwar",
+  "identity": "Own site sarathykorwar.com (matches stored website) lists the press items; platform-mag piece names Sarathy Korwar and his label Otherland.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Kalak review: deep, dark drumbeats create a mesmerising story",
+    "publication": "The Guardian",
+    "url": "https://www.theguardian.com/music/2022/oct/07/sarathy-korwar-kalak-review-deep-dark-drumbeats-create-mesmeric-story",
+    "date_published": "2022-10-07"
+   },
+   {
+    "title": "Beyond the Stereotypes, a New View of Indian Music",
+    "publication": "The New York Times",
+    "url": "https://www.nytimes.com/2019/08/28/arts/sarathy-korwar.html",
+    "date_published": "2019-08-28"
+   },
+   {
+    "title": "Sarathy Korwar on uniting sound worlds through defiance",
+    "publication": "MusicTech",
+    "url": "https://www.musictech.net/features/interviews/sarathy-korwar-award-uniting-sonic-worlds/",
+    "date_published": null
+   },
+   {
+    "title": "There is Beauty, There Already",
+    "publication": "Platform",
+    "url": "https://www.platform-mag.com/music/there-is-beauty-there-already.html",
+    "date_published": "2025-10-24"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Platform article says the 2025 album is on Otherland, his own new label (our record lists no label for it). Date inferred from article date and URL dates for Guardian and NYT; page showed them on his press page. No new mixes or releases added."
+ },
+ {
+  "slug": "sartdawg",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing found. Stored instagram handle is 'startdawg' (spelling differs from SARTDAWG), worth checking. No public pages confirmed."
+ },
+ {
+  "slug": "shama-anwar",
+  "identity": "Wild City artist page: East London based, British-born of Bangladeshi heritage, DJ with Wild City #167 mix (matches stored mix_url).",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Grime to Bollywood influences, genre-mixing sets",
+    "source_url": "https://www.thewildcity.com/artists/11608-shama-anwar"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Wild City says she began throwing parties at the Ace Hotel, London in early 2013, later with Nick Hook, Eclair Fifi and Bok Bok, with parties in Berlin, Paris and New York. City: East London (source: Wild City). No press found."
+ },
+ {
+  "slug": "shantam",
+  "identity": "Wild City and Magnetic Fields Nomads pages name Shantam (Shantam Khanna), SoundCloud soundcloud.com/shantamk, matching stored link.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "City conflict: Magnetic Fields Nomads (https://nomads.magneticfields.in/artists/shantam-live) calls him Goa-based; Wild City (https://www.thewildcity.com/artists/13829-Shantam) says Noida, with a news item calling him 'Goa-based Noida-rooted'. We store Noida. Wild City bio: started 2007 via trance; plays keys in band FOPCHU (source Wild City). MF Nomads lists instagram shantamkhanna; we store 'shantam'. No new press, mixes or ids."
+ },
+ {
+  "slug": "shasha",
+  "identity": "Not confirmed.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Magnetic Fields page (https://magneticfields.in/artists/shasha) describes an India-based house DJ and producer, deep and underground house, afro, disco, breaks, electro, no city and no links, so it cannot be tied to our stored instagram shasha.lively. Left empty."
+ },
+ {
+  "slug": "sheral",
+  "identity": "Wild City artist page: DJ and graphic designer, house, bass, breaks, techno, Magnetic Fields and Boiler Room Gurgaon; matches stored bio.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Wild City page says only 'the capital' for city, consistent with Delhi. No press articles found beyond Boiler Room mention. Wild City #248 and Boiler Room mix already stored."
+ }
+]

@@ -1,0 +1,408 @@
+[
+ {
+  "slug": "mogasu",
+  "name": "MOGASU",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/mogasu",
+  "instagram": "mogasu",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=WGpxE82dKkc",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "DGTL India 2025 and Echoes of Earth 2024.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "exploring diverse tunes",
+   "no fixed style, drawing on a wide world of music"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=9dLP_cofmv0",
+   "https://www.youtube.com/watch?v=WGpxE82dKkc",
+   "https://www.youtube.com/watch?v=fvFuK5sQFDs",
+   "https://soundcloud.com/mogasu/disco-on-a-wednesday",
+   "https://soundcloud.com/mogasu/yatrigan-kripya-dhyan-de"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "mowgli",
+  "name": "MOWGLI",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "ukg",
+   "grime",
+   "baile funk",
+   "global club"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=OBiWl628GDE",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=OBiWl628GDE",
+   "https://www.youtube.com/watch?v=018ORacC-Zc",
+   "https://www.youtube.com/watch?v=zPFi1LgU_VY"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "murthovic",
+  "name": "MURTHOVIC",
+  "kind": "musician",
+  "based_city": "Hyderabad",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "Live Electronica",
+   "Transmedia",
+   "Techno",
+   "Carnatic-Electronic",
+   "Bass",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "murthovic",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=vA75LkFzeb4",
+  "labels": "Qilla Records",
+  "members": null,
+  "bio_excerpt": "Murthovic (MSR Murthy) is a Hyderabad DJ, producer, sound practitioner and researcher with close to 20 years in electronic music, and a Magnetic Fields regular. With visual artist Thiruda (Avinash Kumar) he created Elsewhere In India, a transmedia project that joins game engine technology with live performance, set in 2079 with digital avatars of both artists. Their project Jal, Jungle, Zameen deb",
+  "releases_on_record": 7,
+  "release_years": [
+   2017,
+   2024
+  ],
+  "sample_releases": [
+   "Automated Inside (Murthovic's Inside Out Remix), Aardy & Shaun Moses (2024, Hydrozoa)",
+   "Banaue Riddim (on Forte Vol. 9) (2021, Qilla Records)",
+   "Antariksha Sanchar: Transmissions in Space - Vol. 1 (2020)",
+   "Antariksha Sanchar: Transmissions in Space - Vol. 2 (2020)",
+   "In The Flesh, on India Gets Physical Vol. 01 (2019, Get Physical Music)",
+   "Baby Git Down (S-pot & Murthovic Remix), DJ EFX (2017, Abracadabra Recordings)",
+   "They Say (S-pot & Murthovic Remix), on Digitail - Speculator EP (2017, G-Stoned Recordings)"
+  ],
+  "press_urls_already_stored": [
+   "https://homegrown.co.in/homegrown-explore/hyderabad-this-weekend-attend-an-audiovisual-bharatnatyam-dj-set-by-murthovic",
+   "https://magzter.com/stories/entertainment/RollingStone-India/AUDIOVISUAL-ARTISTS-MURTHOVIC-AND-THIRUDA-UNVEIL-NEW-PROJECT-ELSEWHERE-IN-INDIA",
+   "https://www.asianage.com/entertainment/music/281118/a-bandwagon-of-sounds.html",
+   "https://homegrown.co.in/amp/story/homegrown-explore/now-streaming-antariksha-sanchar-is-a-phenomenal-cocktail-of-carnatic-electronic-fusion-music"
+  ],
+  "sound_tags_already_stored": [
+   "tunes resting on electronic music and ambient vocals",
+   "electro-classical score blends modular synthesis with South Asian folk sound"
+  ],
+  "mix_urls_already_stored": [
+   "https://soundcloud.com/murthovic/murthovic-house-min-ukg-july",
+   "https://www.youtube.com/watch?v=vA75LkFzeb4",
+   "https://www.youtube.com/watch?v=gHKRdwIGS8c",
+   "https://www.mixcloud.com/murthovic/murthovic-nada-bramha-25-pioneer-dj-underground-sounds-of-india/",
+   "https://www.mixcloud.com/PioneerDJRadio/murthovic-nada-bramha-001-underground-sounds-of-india/"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://murthovic.bandcamp.com",
+   "musicbrainz": "b71af333-6ae8-42b0-97bc-883c47afeee3",
+   "discogs": "https://www.discogs.com/artist/7582131"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "musicklunatic",
+  "name": "MUSICKLUNATIC",
+  "kind": "musician",
+  "based_city": "London",
+  "from_city": null,
+  "genres": [
+   "deep house",
+   "deep techno",
+   "house"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=FmzLJys3XXg",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=FmzLJys3XXg",
+   "https://www.mixcloud.com/VoicesRadio/musicklunatic-290926-voices-radio/",
+   "https://www.mixcloud.com/Aajamusic/usual-suspects-w-musicklunatic-phenomenon-aaja-channel-2-24-11-24/",
+   "https://www.mixcloud.com/Reprezent/daytimera-8th-july-2026/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "nac-n-cheeze",
+  "name": "Nac N Cheeze",
+  "kind": "musician",
+  "based_city": "Delhi",
+  "from_city": null,
+  "genres": [
+   "electro funk",
+   "uk garage",
+   "bassline"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "nacncheeze",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=wSvM2GitIjQ",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=wSvM2GitIjQ",
+   "https://www.youtube.com/watch?v=nY33xgbdIy0",
+   "https://www.youtube.com/watch?v=ADFQV85mMeY"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "nash",
+  "name": "Nash",
+  "kind": "musician",
+  "based_city": "Delhi",
+  "from_city": "New Delhi",
+  "genres": [
+   "electro",
+   "bass",
+   "ukg",
+   "afro"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/nashjrofficial",
+  "instagram": "nashselector_",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=pWCjC-YNkM0",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Nash is a Delhi DJ and selector who plays Afro, house, disco, UK funky, garage, breaks, electro and left-field techno, and runs the Mother Dance community and events. He has played Magnetic Fields, India's Jazz Weekender, Celtronic in Ireland and a Keep Hush night in London. His first production, a remix of Nina Las Vegas and Swick's 'Shot Caller', came out on NLV Records in 2026.",
+  "releases_on_record": 1,
+  "release_years": [
+   2026,
+   2026
+  ],
+  "sample_releases": [
+   "Shot Caller (NASH Remix) (2026, NLV Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/13729-wild-city-175-nash-jr",
+   "https://www.thewildcity.com/news/21675-nash-steps-into-a-producer-s-role-with-a-remix-for-nina-las-vegas",
+   "https://mixmag.asia/read/nash-mother-dance-delhi-umami-shuffle-march-22-events"
+  ],
+  "sound_tags_already_stored": [
+   "Open-format",
+   "UKG and UK bass"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=pWCjC-YNkM0",
+   "https://www.youtube.com/watch?v=mDDpPQRPeXw",
+   "https://www.thewildcity.com/mixes/13729-wild-city-175-nash-jr"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/nash."
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "natasha-diggs",
+  "name": "NATASHA DIGGS",
+  "kind": "musician",
+  "based_city": "New York, United States",
+  "from_city": "USA",
+  "genres": [
+   "Soul",
+   "Funk",
+   "Disco",
+   "Hip-Hop"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/NTSRadio/natasha-diggs-30th-august-2019/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Natasha Diggs is a New York City DJ and the resident of the Soul in the Horn party series. She plays soul, funk, hip-hop, disco and Latin records, mostly on vinyl. She was the official DJ on Lauryn Hill's 2015 international tour.",
+  "releases_on_record": 5,
+  "release_years": [
+   2015,
+   2026
+  ],
+  "sample_releases": [
+   "What Went Wrong Last Night (Natasha Diggs Remixes) - Millie Jackson (2026, Acid Jazz)",
+   "Soul In The Horn - The 10 Year Anniversary Edition (2025, Fat Beats)",
+   "Think About This Day (feat. Omar) (2024, Soul in the Horn / Sassafrass Girl)",
+   "Breathe (Natasha Diggs Extended Remix) - Blaze (2023, Slip 'n' Slide)",
+   "Soul Box 45s (with Mr. Len) (2015, Brunswick Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://uproxx.com/music/soul-in-the-horn-interview",
+   "https://the-drop.serato.com/culture/natasha-diggs/",
+   "https://udiscovermusic.com/news/natasha-diggs-celebrating-janet-jackson",
+   "https://mixmag.net/read/soul-in-the-horn-takeover-with-natasha-diggs-in-the-lab-nyc-the-lab",
+   "https://rapisouttacontrol.com/interviews/natasha-diggs-mr-len-soul-box-45s-interview/",
+   "https://djmag.com/news/natasha-diggs-announces-debut-london-headline-show-soul-horn",
+   "https://www.bustle.com/style/brooklyn-dj-natasha-diggs-wants-to-lift-you-up"
+  ],
+  "sound_tags_already_stored": [
+   "eclectic range and deep musical knowledge"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=Y2UOn2slU30",
+   "https://www.mixcloud.com/NTSRadio/natasha-diggs-30th-august-2019/",
+   "https://www.mixcloud.com/magneticfieldsfestival/natasha-diggs-desert-disco-mf19/",
+   "https://www.youtube.com/watch?v=auh7d8oMHv4",
+   "https://www.youtube.com/watch?v=28Y_2pIkRB0"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/natashadiggs",
+   "discogs": "https://www.discogs.com/artist/10262428"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "neeka",
+  "name": "Neeka",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "electro",
+   "breakbeat",
+   "nu disco"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "neeka.music",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=BU0uYqR26fo",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=BU0uYqR26fo",
+   "https://www.youtube.com/watch?v=BtXePnVDZuk"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ }
+]

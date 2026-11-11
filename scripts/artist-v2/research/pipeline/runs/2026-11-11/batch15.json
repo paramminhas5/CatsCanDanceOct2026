@@ -1,0 +1,385 @@
+[
+ {
+  "slug": "omdg",
+  "name": "OMDG",
+  "kind": "musician",
+  "based_city": "Dhaka",
+  "from_city": null,
+  "genres": [
+   "progressive",
+   "electronica",
+   "uk garage",
+   "indie dance"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=9YJPYw3xE1M",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=9YJPYw3xE1M",
+   "https://www.youtube.com/watch?v=x8Jj7y311Pk",
+   "https://www.youtube.com/watch?v=2hzpsWv50zw",
+   "https://www.youtube.com/watch?v=u62PKtyG_4Y"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "pagal-sound",
+  "name": "Pagal Sound",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": null,
+  "genres": [
+   "reggae",
+   "dub"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/pagal-records-016-pagal-sound-28-08-2018/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Pagal Sound is a Delhi reggae selector linked to Pagal Records, a record store in Hauz Khas Village. He played all-vinyl roots reggae, dancehall and dub on boxout.fm from 2017, on WAXOUT and his own show Pagal Records, and played the reggae and dub session at Boxout Weekender in April 2018.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "strictly roots reggae vibe"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/pagal-records-016-pagal-sound-28-08-2018/",
+   "https://www.mixcloud.com/boxoutfm/waxout-008-pagal-sound-30-05-2017/",
+   "https://www.mixcloud.com/boxoutfm/pagal-records-001-pagal-sound-28-11-2017/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "ids"
+  ]
+ },
+ {
+  "slug": "parvati",
+  "name": "Parvati",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": null,
+  "genres": [
+   "breaks",
+   "house",
+   "electronica",
+   "disco",
+   "electro"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "Parvatimusic",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=pkyuG3j9jHY",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Parvati is a New Delhi electronic music project. The 2022 album 'Naksha' set pitched-down Baul-style vocals, flute and classical-style singing over organic house, moving into straight house on its closing tracks 'Shikaari' and 'Nikas'.",
+  "releases_on_record": 1,
+  "release_years": [
+   2022,
+   2022
+  ],
+  "sample_releases": [
+   "Naksha (2022)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/19901-parvati-offers-thumping-organic-house-with-naksha"
+  ],
+  "sound_tags_already_stored": [
+   "Emotive uplifting textures",
+   "Thumping organic house"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=pkyuG3j9jHY",
+   "https://www.youtube.com/watch?v=OZbCgpp9uTY",
+   "https://www.youtube.com/watch?v=UsiWutUym30",
+   "https://www.youtube.com/watch?v=kVz-HBxG-f8",
+   "https://www.youtube.com/watch?v=x3MEiOIDpvU",
+   "https://www.youtube.com/watch?v=9jx787h-15I",
+   "https://www.youtube.com/watch?v=cvE_S50hM-8"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "peach-blok",
+  "name": "Peach Blok",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": null,
+  "genres": [
+   "house",
+   "breakbeats",
+   "garage"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "peachblok",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=JgVAUUe0vgY",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Peach Blok is the Bengaluru DJ and producer Rishii Rohra. His productions lean laid-back, while his club sets move through house, acid, trance and breakbeats, as heard on his 2024 Wild City mix.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=JgVAUUe0vgY",
+   "https://soundcloud.com/thewildcity/wild-city-238-peach-blok",
+   "https://www.mixcloud.com/rishiirohra/podcast-5-bring-that-bass/",
+   "https://www.youtube.com/watch?v=nAOtDJxwTg8",
+   "https://www.youtube.com/watch?v=xtpxRKieClc",
+   "https://www.mixcloud.com/worldwidefm/krunk-kulture-flavours-of-the-east-26-08-22/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "phreshprince",
+  "name": "PhreshPrince",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "afro",
+   "arabic",
+   "latin",
+   "global"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "the_phreshprince",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=Fo5RIICmamc",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=Fo5RIICmamc",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-247-phreshprince-16-08-2023/",
+   "https://www.mixcloud.com/boxoutfm/chai-and-chill-072-phresh-prince-08-09-2019/",
+   "https://www.mixcloud.com/boxoutfm/her-brown-sugar-001-phreshprince-29-11-2019/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "pia-collada",
+  "name": "Pia Collada",
+  "kind": "musician",
+  "based_city": "Goa",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-107-pia-collada-india/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Pia Collada is a Goa-based bass DJ who grew up across India, the USA and Tanzania and moved to Goa from Delhi. She is a resident at Worldwide FM, where she hosts Global Wav, and founded BASS WAV, a platform for women and femme DJs and artists. She has played Glastonbury, Shambala and Magnetic Fields.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/21727-wild-city-262-pia-collada-b2b-stain",
+   "https://mixmag.asia/read/mixmag-asia-radio-goa-pia-collada-afro-reggae-set-exclusive-mixes"
+  ],
+  "sound_tags_already_stored": [
+   "percussive interplays and celluloid samples"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.worldwidefm.net/episode/global-wav-w-pia-collada",
+   "https://soundcloud.com/thewildcity/wild-city-262-pia-collada-b2b",
+   "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-107-pia-collada-india/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "prav",
+  "name": "PRAV",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "hip-hop",
+   "rnb",
+   "future beats"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=LBjZDpErV84",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=LBjZDpErV84"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "prismer",
+  "name": "PRISMER",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "India",
+  "genres": [
+   "Techno",
+   "Bass",
+   "Jungle",
+   "House",
+   "Dubstep",
+   "Breakbeat",
+   "Disco"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/prismeratti",
+  "instagram": "prismertraxx",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=9E_2C4o8KlU",
+  "labels": "Boxout.FM, Reel Long Overdub, Tokyo Hell",
+  "members": null,
+  "bio_excerpt": "Prismer is Rohan Kale, a New Delhi producer and DJ whose music runs across techno, jungle, drum and bass, dubstep, breakbeat and house. His early releases came out on Boxout.FM, Reel Long Overdub and Tokyo Hell. He has played alongside DJ Stingray, Pangaea, Ivy Lab and Rider Shafique, and has played Magnetic Fields and Grasslands in Nepal. He was on the bill for The Warehouse Project India in Octo",
+  "releases_on_record": 2,
+  "release_years": [
+   2021,
+   2022
+  ],
+  "sample_releases": [
+   "Rushh (on Reel Small World: India) (2022, Reel Long Overdub)",
+   "Babel (on SUCHI SELECTS) (2021, boxout.fm Recordings)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.ticketfairy.com/word/2023/01/20/tfword-in-conversation-with-prismer",
+   "https://theindianmusicdiaries.com/electrifying-nights-await-g5as-port-after-dark-with-dj-nariki-prismer/",
+   "https://www.goethe.de/prj/zei/en/exp/25808212.html",
+   "https://www.thewildcity.com/mixes/6930-wild-city-148-rohan-kal"
+  ],
+  "sound_tags_already_stored": [
+   "dark and arresting sets",
+   "deep, boundaryless realm of sound",
+   "thumping bass, breaks and techno"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=JxvsTrIbq-Q",
+   "https://www.youtube.com/watch?v=9E_2C4o8KlU",
+   "https://www.youtube.com/watch?v=28cFJOVcjc8",
+   "https://soundcloud.com/thewildcity/wild-city-148-rohan-kale",
+   "https://soundcloud.com/tfword/tf-guest-mix-prismer",
+   "https://www.youtube.com/watch?v=a0mA9euKJNY",
+   "https://www.youtube.com/watch?v=7XPE9C02MLQ"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "ids",
+   "claims"
+  ]
+ }
+]

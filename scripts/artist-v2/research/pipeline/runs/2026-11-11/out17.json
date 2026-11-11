@@ -1,0 +1,174 @@
+[
+ {
+  "slug": "rasa",
+  "identity": "Mixmag Asia Radio 099 profile and Magnetic Fields 2023 artist page both describe Rasa as a bass DJ in India; Mixmag says Bengaluru, which matches CCD scope. No stored links to cross-check, so identity rests on those two pages agreeing on bass focus and India.",
+  "eras": [
+   {
+    "from_year": 2022,
+    "to_year": null,
+    "sound": "Dark, high-energy bass sets for boogie or mosh",
+    "tags": [
+     "bass",
+     "dark",
+     "high-energy"
+    ],
+    "source_url": "https://mixmag.asia/read/mma-radio-bass-queen-rasa-exclusive-mixes",
+    "source_name": "Mixmag Asia",
+    "quote": "Electronic sounds for a boogie, or a mosh."
+   }
+  ],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [
+   {
+    "title": "Mixmag Asia Radio 099: Rasa India",
+    "url": "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-099-rasa-india/",
+    "year": 2022
+   }
+  ],
+  "spotify": null,
+  "bio_draft": "Rasa is a bass DJ based in Bengaluru who started DJing during the COVID-19 lockdown. Her sets draw on drum and bass, jungle, UK garage, dub, grime and breaks.",
+  "bio_sources": [
+   "https://mixmag.asia/read/mma-radio-bass-queen-rasa-exclusive-mixes",
+   "https://2023.magneticfields.in/artists/rasa"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Stored record is empty (no city, links, genres). Sources suggest Bengaluru (Mixmag Asia 2022). Magnetic Fields page lists Instagram rasa.wav and SoundCloud soundcloud.com/rasa-official (not opened, SoundCloud blocks fetches); Param may want to confirm before storing. Magnetic Fields page says she made a Boiler Room debut, not verified. Mixmag Asia page is a Mixcloud embed only. No releases found."
+ },
+ {
+  "slug": "rattyatty",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searched by name, city and genres; no page found that confirms a Goa DJ called RattyAtty beyond the stored Mixcloud links. Nothing added."
+ },
+ {
+  "slug": "reble",
+  "identity": "Stored MBID and bio already match.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing new found this pass; has_eras true and only photo gap remains."
+ },
+ {
+  "slug": "reggae-rajahs",
+  "identity": "Wikipedia and Huck 2016 both describe the New Delhi reggae sound system formed 2009 by DJ MoCity, Diggy Dang and Mr Herbalist, matching stored bio and website.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Reggae is taking root in the streets of New Delhi",
+    "publication": "Huck",
+    "url": "https://www.huckmag.com/article/reggae-new-delhi",
+    "date_published": "2016-06-11"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Wikipedia says Ziggy B and BeLights joined in 2015 and General Zooz is a member (Zorawar Shukla is Mr Herbalist per Huck 2016, General Zooz per Wikipedia); stored bio lists Mr Herbalist only. Huck says weekly show on Radio 79 (stored bio says boxout.fm later). No releases or database ids found; SoundCloud page lists none."
+ },
+ {
+  "slug": "ritz",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searched Ritzzz with the festivals named; nothing identifying her found. Nothing added."
+ },
+ {
+  "slug": "rohan-kalee",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Not searched beyond stored sources; has_eras true. No new ids or releases found."
+ },
+ {
+  "slug": "rohan-rakhit",
+  "identity": "Mixmag feature (23 Nov 2023) and Worldwide FM page both name Rohan Rakhit as London DJ and Daytimers co-organiser, matching stored bio.",
+  "eras": [
+   {
+    "from_year": 2023,
+    "to_year": null,
+    "sound": "UK funky, soulful house, nu-jazz and broken beat",
+    "tags": [
+     "UK funky",
+     "soulful house",
+     "nu-jazz",
+     "broken beat"
+    ],
+    "source_url": "https://mixmag.net/feature/rohan-rakhit-dj-mix-interview-daytimers",
+    "source_name": "Mixmag",
+    "quote": "blends styles ranging from energetic UK funky to stirring soulful house to exploratory nu-jazz and broken beat."
+   }
+  ],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Storytelling through art: Rohan Rakhit is the multi-talented creative uplifting dancefloors and communities",
+    "publication": "Mixmag",
+    "url": "https://mixmag.net/feature/rohan-rakhit-dj-mix-interview-daytimers",
+    "date_published": "2023-11-23"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Bandcamp user rohan_rakhit (bandcamp.com/rohan_rakhit) is a London collector page with no releases; not confirmed as him, not added. Mixmag feature embeds the Impact mix with no standalone URL."
+ },
+ {
+  "slug": "rufy-ghazi",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searched by name and Lady Ruffelin alias; the pages that came up were Mixcloud (already stored), a She Is The Music page with no profile content, and a dynamics-music.com page that redirected to a domain-sale site (not opened). Nothing added."
+ }
+]
