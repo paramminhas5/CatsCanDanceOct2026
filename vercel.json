@@ -1,6 +1,16 @@
 {
   "crons": [
-    { "path": "/api/cron/releases", "schedule": "17 3 * * 1" },
-    { "path": "/api/cron/reminders", "schedule": "33 12 * * *" }
+    {
+      "path": "/api/cron/releases",
+      "schedule": "17 3 * * 1"
+    },
+    {
+      "path": "/api/cron/reminders",
+      "schedule": "33 12 * * *"
+    },
+    {
+      "path": "/api/cron/lifecycle",
+      "schedule": "11 13 * * *"
+    }
   ]
 }

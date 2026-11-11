@@ -13,7 +13,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { supabase } from "@/lib/supabase";
-import { memberRpc, useMember } from "@/lib/member";
+import { memberRpc, useMember, sendWelcomeMail } from "@/lib/member";
 import { memberTickets, type PassTicket } from "@/lib/booking";
 import { directionsUrl, todayIST } from "@/lib/nights";
 import {
@@ -110,6 +110,7 @@ function QuickJoin({ onDone }: { onDone: () => void }) {
         e.preventDefault(); setErr(""); setBusy(true);
         const r = await memberRpc("join_member", { p_name: name, p_city: city, p_genres: [] });
         if (!r.ok) { setBusy(false); setErr(r.error ?? "Could not finish."); return; }
+        sendWelcomeMail();
         if (phone.replace(/\D/g, "").length >= 10) await memberRpc("set_my_phone", { p_phone: phone });
         await applyPending();
         await refreshMe();

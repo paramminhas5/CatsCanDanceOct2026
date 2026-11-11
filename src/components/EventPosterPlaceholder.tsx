@@ -36,7 +36,7 @@ const EventPosterPlaceholder = ({
         portrait ? "aspect-[3/4]" : "aspect-video"
       }`}
       role="img"
-      aria-label={`${title} — placeholder poster`}
+      aria-label={`${title} poster`}
     >
       {/* concentric arcs */}
       <svg
@@ -78,7 +78,7 @@ const EventPosterPlaceholder = ({
           )}
           <div className="flex items-center justify-between gap-2 text-[10px] md:text-xs font-display tracking-widest">
             <span className="bg-acid-yellow text-ink px-2 py-1 border-2 border-ink">CCD</span>
-            <span className="opacity-60">PLACEHOLDER · POSTER COMING</span>
+            <span className="opacity-60">CATS CAN DANCE</span>
           </div>
         </div>
       </div>

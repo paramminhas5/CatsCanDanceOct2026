@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import SEO from "@/components/SEO";
 import { supabase } from "@/lib/supabase";
-import { useMember, memberRpc } from "@/lib/member";
+import { useMember, memberRpc, sendWelcomeMail } from "@/lib/member";
 
 const CITIES = ["Bengaluru", "Mumbai", "Delhi NCR", "Goa", "Pune", "Hyderabad", "Chennai", "Kolkata"];
 const GENRES = ["Techno", "House", "Disco", "Drum & Bass", "Jungle", "Garage", "Ambient", "Hip-Hop", "Experimental"];
@@ -44,6 +44,7 @@ export default function Join() {
     e.preventDefault();
     const r = await memberRpc("join_member", { p_name: name, p_city: city, p_genres: genres });
     if (!r.ok) return setMsg(r.error ?? "Something went wrong.");
+    sendWelcomeMail();
     // Any page or application already waiting for this email is handed over by the join trigger.
     const isUrlOrHandle = link.trim();
     if (wantArtist) {
