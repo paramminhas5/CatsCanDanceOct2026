@@ -66,7 +66,7 @@ export default async function OpsPoints({ searchParams }: { searchParams: { m?: 
       </p>
       {searchParams?.m && <p className="msg">{searchParams.m}</p>}
       {err && <p style={{ color: "#dc2626" }}>Could not load: {err}</p>}
-      {!o && !err && <p>Points are not set up yet. Apply migration 063.</p>}
+      {!o && !err && <p>Points are not set up yet. Apply migration 071.</p>}
       {o && (
         <>
           <div className="stats">

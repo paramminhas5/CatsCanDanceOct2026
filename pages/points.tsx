@@ -1,5 +1,5 @@
 /**
- * /points: how CCD points work, your balance, spend them on a night, and your invite link (migration 063).
+ * /points: how CCD points work, your balance, spend them on a night, and your invite link (migration 071).
  * Points come only from nights the door can prove, so nothing here can be gamed by tapping buttons.
  */
 import { useEffect, useMemo, useState } from "react";

@@ -1,5 +1,5 @@
 /**
- * CCD points (migration 063). Points come from nights the door can prove: CCD tickets and RSVPs that
+ * CCD points (migration 071). Points come from nights the door can prove: CCD tickets and RSVPs that
  * were checked in, and any outside ticket scanned at a Gate door. Friends who come through your
  * invite, crew mates who show up and rating a night you were at add more. Spend them on a
  * guaranteed spot, a +1 or a free ticket.

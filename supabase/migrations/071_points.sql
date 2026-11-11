@@ -1,4 +1,4 @@
--- 063: CCD points (Param, 9 Nov 2026: "like your credit card, every gig you go to or every gig ticket
+-- 071: CCD points (Param, 9 Nov 2026: "like your credit card, every gig you go to or every gig ticket
 -- you upload or use adds points which help you buy free tickets. Loyalty for all events.")
 --
 -- Design
@@ -110,13 +110,13 @@ language sql stable security definer set search_path = public as $$
   x as (
     select t.event_slug, t.checked_in_at as at, 'ticket'::text as via
     from tickets t join ticket_orders o on o.id = t.order_id, me
-    where t.checked_in_at is not null and lower(o.buyer_email) = me.email
+    where t.checked_in_at is not null and t.voided_at is null and lower(o.buyer_email) = me.email
     union all
     select r.event_slug, r.checked_in_at, 'rsvp' from event_rsvps r, me
     where r.checked_in_at is not null and lower(r.email) = me.email
     union all
     select g.event_slug, g.checked_in_at, 'gate' from door_guests g, me
-    where g.checked_in_at is not null and (g.member_id = me.id or lower(g.email) = me.email)
+    where g.checked_in_at is not null and g.voided_at is null and (g.member_id = me.id or lower(g.email) = me.email)
   )
   select x.event_slug, min(x.at), (array_agg(x.via order by x.at))[1] from x group by x.event_slug;
 $$;
@@ -143,7 +143,7 @@ language sql stable security definer set search_path = public as $$
   union all
   select g.created_at, 'night', 'Ticket uploaded: ' || coalesce((select title from titles where slug = g.event_slug limit 1), g.event_slug), g.event_slug, _points_rule('night'), 'pending'
   from door_guests g, me
-  where g.member_id = me.id and g.status = 'uploaded' and g.checked_in_at is null
+  where g.member_id = me.id and g.status = 'uploaded' and g.checked_in_at is null and g.voided_at is null
     and not exists (select 1 from nights n where n.event_slug = g.event_slug)
   -- friends you invited who came
   union all

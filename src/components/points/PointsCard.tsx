@@ -1,6 +1,6 @@
 /**
  * Points on /me: balance, status, the next status, and the invite link. Also claims a friend's invite
- * the first time a new member lands here after joining (claim_referral, migration 063).
+ * the first time a new member lands here after joining (claim_referral, migration 071).
  */
 import { useEffect, useState } from "react";
 import Link from "next/link";
