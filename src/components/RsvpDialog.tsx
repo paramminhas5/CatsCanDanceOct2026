@@ -245,11 +245,11 @@ const RsvpDialog = ({ open, onOpenChange, eventSlug, eventTitle, eventDate, even
                 labelClassName="font-display text-sm text-ink"
                 inputClassName="w-full bg-cream text-ink border-4 border-ink px-4 py-3 font-medium focus:outline-none focus:bg-acid-yellow placeholder:text-ink/40"
               />
-              {/* WhatsApp opt-in — optional, for day-of reminders */}
+              {/* WhatsApp opt-in: stored only until WhatsApp sending is switched on; reminders go by email */}
               <div>
                 <label htmlFor="rsvp-wa" className="font-display text-sm text-ink mb-1 block">
                   WHATSAPP
-                  <span className="font-sans font-normal text-ink/40 text-xs ml-2 normal-case">(optional, day-of reminder)</span>
+                  <span className="font-sans font-normal text-ink/40 text-xs ml-2 normal-case">(optional, for WhatsApp reminders when they start)</span>
                 </label>
                 <input
                   id="rsvp-wa"
