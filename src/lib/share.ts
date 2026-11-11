@@ -4,7 +4,7 @@
  */
 import { track } from "@/lib/track";
 import { supabase } from "@/lib/supabase";
-import { myInviteCode } from "@/lib/points";
+import { myInviteCode, captureInvite } from "@/lib/points";
 
 export type ShareKind = "going" | "night" | "artist" | "tour" | "episode" | "booked" | "beat";
 // Links and card images use the site the visitor is on (previews and production alike); the canonical domain on the server.
@@ -35,6 +35,7 @@ export function logShare(kind: ShareKind, target: string, action: "share" | "ope
 
 /** Call once on page load: a visit from a shared link counts as an open for that card. */
 export function logOpenFromRef() {
+  captureInvite(); // ?i=<code> from a member's invite or share link (src/lib/points.ts)
   try {
     const q = new URLSearchParams(window.location.search);
     const via = q.get("via");
