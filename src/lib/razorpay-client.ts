@@ -22,7 +22,7 @@ export async function payOrder(kind: "ticket" | "shop", orderId: string, buyer: 
       key: s.key_id, amount: s.amount, currency: "INR", order_id: s.razorpay_order_id, name: "Cats Can Dance", description: label,
       prefill: { name: buyer.name, email: buyer.email, contact: buyer.phone ?? "" }, theme: { color: "#dc2626" },
       handler: async (resp: any) => {
-        const v = await fetch("/api/pay/verify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kind, ...resp }) });
+        const v = await fetch("/api/pay/verify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kind, ...resp, amount: s.amount }) });
         const j = await v.json();
         v.ok ? resolve(j.order_id) : reject(new Error(j.error ?? "Payment could not be verified."));
       },

@@ -36,7 +36,9 @@ const Privacy = () => {
             <li><strong>Contact form</strong>: your name, email, and message.</li>
             <li><strong>Shop orders</strong>: handled by Shopify. We don't store card details. See Shopify's privacy policy.</li>
             <li><strong>Cart state</strong>: kept in your browser's local storage so your cart survives a refresh.</li>
-            <li><strong>Analytics</strong>: anonymous, aggregated traffic data (page views, country, referrer). No personal profiles, no cross-site tracking.</li>
+            <li><strong>Analytics</strong>: anonymous, aggregated traffic data (page views, country, referrer) through Vercel Web Analytics.</li>
+            <li><strong>How you found us</strong>: when you RSVP, book or write to us we ask how you heard about us, and keep the campaign link you arrived from (UTM tags), so we know what works.</li>
+            <li><strong>Ad measurement</strong>: when we run Meta ads, the Meta pixel sets a cookie to measure which ads lead to RSVPs and tickets. We don't send Meta your name, email or phone. See <a href="/cookies">Cookies</a>.</li>
             <li><strong>Cookies</strong>: only what's needed to keep you logged into admin tools and to remember your theme. See <a href="/cookies">Cookies</a>.</li>
           </ul>
 
