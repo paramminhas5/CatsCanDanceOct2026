@@ -1,7 +1,7 @@
 /**
  * Attribution: where a visitor came from (UTM / click ids, first touch per session) and what they
  * tell us when they convert ("how did you hear about us"). Stored through the log_lead_signal RPC
- * (migration 062) and joined to orders, RSVPs, signups and contact messages in marketing.leads_feed.
+ * (migration 070) and joined to orders, RSVPs, signups and contact messages in marketing.leads_feed.
  * Everything here is best effort: it never blocks or breaks a form.
  */
 import { supabase } from "@/lib/supabase";
