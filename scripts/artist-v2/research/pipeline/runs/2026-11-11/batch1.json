@@ -1,0 +1,400 @@
+[
+ {
+  "slug": "264-cru",
+  "name": "264 Cru",
+  "kind": "musician",
+  "based_city": "Dubai",
+  "from_city": null,
+  "genres": [
+   "house",
+   "bass"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/playlists/the-comedown/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "264 Cru is a collective of Dubai-based music heads exploring sounds from across the globe. They hosted two shows on New Delhi's boxout.fm: Booty Bangers, a UK house and bass mix series, and The Comedown, made for weekend mornings.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "UK house and bass mixes"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/playlists/the-comedown/",
+   "https://www.mixcloud.com/boxoutfm/playlists/booty-bangers/",
+   "https://www.mixcloud.com/WHotels/the-264-cru-future-rising-dubai-w-hotels-mixcloud/",
+   "https://www.mixcloud.com/the264cru/the-comedown-076-the-264-cru-cob/",
+   "https://www.mixcloud.com/the264cru/the-comedown-020-the-264-cru/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "ids"
+  ]
+ },
+ {
+  "slug": "8-bit-culprit",
+  "name": "8-Bit Culprit",
+  "kind": "musician",
+  "based_city": "Bangalore",
+  "from_city": "Kolkata",
+  "genres": [
+   "house",
+   "tech house",
+   "minimal tech"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "8bitculprit",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=lxYQ1J9bbqI",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "8-Bit Culprit is the project of Kolkata-rooted producer and DJ Faraz Ehsan, who released his debut track 'Slugger' on Soupherb Records in 2016. In 2023 he became the first Indian producer to release on Maceo Plex's label Ellum Audio, and in 2025 he started his own label, Earth Tapes, with the EP 'Feral'.",
+  "releases_on_record": 4,
+  "release_years": [
+   2016,
+   2025
+  ],
+  "sample_releases": [
+   "Feral (2025, Earth Tapes)",
+   "Refurbished Robots (2023, Ellum Audio)",
+   "Triptower (2019)",
+   "Slugger (2016, Soupherb Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.groovenexus.com/interview/8-bit-culprit-interview/",
+   "https://www.thewildcity.com/news/14880-listen-triptower-by-ash-roy-8-bit-culprit",
+   "https://www.thewildcity.com/news/21260-8-bit-culprit-launches-new-label-earth-tapes-with-ep-feral",
+   "https://mixmag.asia/read/8-bit-culprit-breakbeat-refurbished-robots-ellum-audio-maceo-plex-new-releases"
+  ],
+  "sound_tags_already_stored": [
+   "Deep, hypnotic sounds"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=lxYQ1J9bbqI",
+   "https://www.mixcloud.com/Konnektindia/ksm001-8-bit-culprit/",
+   "https://www.youtube.com/watch?v=FsvhOdmjZXI",
+   "https://www.mixcloud.com/mixmagasia/m/",
+   "https://www.youtube.com/watch?v=mJCjeOU1VaM"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids",
+   "claims"
+  ]
+ },
+ {
+  "slug": "aayna",
+  "name": "AAYNA",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/user-519313833",
+  "instagram": "aayna",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=EQyBRFmjHLY",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Aayna is a DJ and producer whose sets are shaped by the Roland TB-303 and 1980s and 1990s acid house. She has played Magnetic Fields, DGTL, Echoes of Earth and Grasslands Festival in Nepal, and played for the UK community Keep Hush.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "the rawness of acid",
+   "disco, electro, breaks, UKG, IDM and further leftfield sounds",
+   "heavily influenced by Roland TB 303 and acid house greats of the 80s and 90s"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=EQyBRFmjHLY",
+   "https://www.youtube.com/watch?v=9cz27-Ks8UM",
+   "https://www.youtube.com/watch?v=eyS5yFogzFY",
+   "https://www.youtube.com/watch?v=D2u55RHex8g",
+   "https://www.youtube.com/watch?v=wW6c6HCwk3A"
+  ],
+  "ids_already_stored": {
+   "youtube": "https://www.youtube.com/@aaynamusic",
+   "ra": "aayna",
+   "musicbrainz": "8bd1a13f-0e21-40ae-9796-6be2c2f13503"
+  },
+  "has_eras": true,
+  "mbid": "8bd1a13f-0e21-40ae-9796-6be2c2f13503",
+  "gaps": [
+   "releases",
+   "press",
+   "city"
+  ]
+ },
+ {
+  "slug": "abhi-meer",
+  "name": "ABHI MEER",
+  "kind": "musician",
+  "based_city": "Mumbai, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/abhimeer",
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=g04C3QNMAJQ",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Abhi Meer is a Mumbai DJ, producer, synthesist and radio host who works with modular synths and drones. He represented Resident Advisor at Magnetic Fields, played New Delhi's first Boiler Room, hosts shows on boxout.fm, and released the EP Omerta.",
+  "releases_on_record": 5,
+  "release_years": [
+   2019,
+   2022
+  ],
+  "sample_releases": [
+   "Screen Dream (2022)",
+   "Emotionally Unavailable (2021)",
+   "Omerta (2020)",
+   "Penfield Mood Organelle (2020)",
+   "Castalian Spring (2019)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/14390-listen-castalian-spring-by-abhi-meer",
+   "https://www.thewildcity.com/news/17786-abhi-meer-offers-live-streamed-installation-performance-with-isoxia",
+   "https://www.thewildcity.com/news/16902-listen-penfield-mood-organelle-by-abhi-meer",
+   "https://mixmag.asia/read/abhi-meer-screen-dream-modular-synthesizer-recordings-new-releases",
+   "https://ra.co/reviews/33739"
+  ],
+  "sound_tags_already_stored": [
+   "bursts of staccato bleeps, claps, acid and electro",
+   "melodic drone with gentle acid undertones"
+  ],
+  "mix_urls_already_stored": [
+   "https://soundcloud.com/thewildcity/wild-city-mix-178-abhi-meer"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "ids"
+  ]
+ },
+ {
+  "slug": "adam-rahman",
+  "name": "Adam Rahman",
+  "kind": "musician",
+  "based_city": "Dubai",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/adam-warped",
+  "instagram": "adamrahman03",
+  "website": "http://kitchensyncrecords.com",
+  "mix_url": "https://www.mixcloud.com/boxoutfm/playlists/warped/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Adam Rahman is an India-born techno DJ and producer based in Dubai. He was one of the early people behind Chennai's techno scene around 2000, started the Warped party series in Dubai in 2004 and runs the label KitchenSync Records. He hosted the monthly techno show WARPED on boxout.fm.",
+  "releases_on_record": 1,
+  "release_years": [
+   2022,
+   2022
+  ],
+  "sample_releases": [
+   "Belong (2022)"
+  ],
+  "press_urls_already_stored": [
+   "https://scenenoise.com/Artists/Profile/adam-rahman",
+   "https://scenenoise.com/Sets/set-review-adam-rahman-on-resident-advisors-wild-city-mix",
+   "https://mixmagmena.com/read/adam-rahman-belong-ep-news"
+  ],
+  "sound_tags_already_stored": [
+   "the tougher side of techno"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/playlists/warped/",
+   "https://api.soundcloud.com/tracks/372144173",
+   "https://www.mixcloud.com/boxoutfm/budweiser-x-bw0452-adam-rahman-24-01-2018/",
+   "https://www.mixcloud.com/egpodcast/eg-spotlight117-adam-rahman/",
+   "https://www.mixcloud.com/Adam_Warped/adam-rahman-electronic-labor-day-may-2020/"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://adamrahman03.bandcamp.com",
+   "ra": "https://ra.co/dj/adamrahman"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "claims"
+  ]
+ },
+ {
+  "slug": "adidamix",
+  "name": "ADIDAMIX",
+  "kind": "musician",
+  "based_city": "Hyderabad",
+  "from_city": null,
+  "genres": [
+   "broken beats",
+   "left-field house",
+   "baile funk",
+   "bass"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "adidamix_",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=FHv4hH3ZBks",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "ADIDAMIX is a Hyderabad-based DJ whose name comes from the phrase 'I did a mix'. She plays broken beats, left-field house, baile funk, bass and dub.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=FHv4hH3ZBks",
+   "https://www.youtube.com/watch?v=Onqa2rxJPUM",
+   "https://www.youtube.com/watch?v=F2saEcFSVko",
+   "https://www.mixcloud.com/VoicesRadio/dusty-showbiz-w-adidamix-010625-voices-radio/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "aeon-waves",
+  "name": "Aeon Waves",
+  "kind": "musician",
+  "based_city": "Ahmedabad",
+  "from_city": null,
+  "genres": [
+   "drum and bass",
+   "jungle"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/playlists/equal-measure/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Aeon Waves is the project of Ahmedabad-based producer and DJ Kanishk Budhori, who also works as a sound engineer. He makes drum and bass and ambient music, has released on labels including Onset Audio, Mindtrick Records and TAABIIR, and hosted the monthly drum and bass, jungle and ambient show Equal Measure on boxout.fm.",
+  "releases_on_record": 5,
+  "release_years": [
+   2018,
+   2024
+  ],
+  "sample_releases": [
+   "Square One (2024)",
+   "Anthropocene / Degenerate (2020, Onset Audio)",
+   "Ode To A Dying Star (2019, TAABIIR)",
+   "One Life Many Faces / Genesis (2019)",
+   "Rhea (2018)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/12808-listen-new-releases-from-aeon-waves-disco-puppet-dolorblind-sid-vashi",
+   "https://igloomag.com/reviews/aeon-waves-anthropocene-onset-audio",
+   "https://www.thewildcity.com/news/12972-listen-one-life-many-faces-genesis-by-aeon-waves"
+  ],
+  "sound_tags_already_stored": [
+   "drum n bass, jungle and ambient",
+   "halftime percussion and low-end propulsion"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/playlists/equal-measure/",
+   "https://www.mixcloud.com/boxoutfm/absolut-x-bw0681-aeon-waves-04-07-2018/",
+   "https://www.mixcloud.com/boxoutfm/equal-measure-022-aeon-waves-09-11-2019/",
+   "https://www.mixcloud.com/boxoutfm/guest-mix-115-aeon-waves-22-11-2017/"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://aeonwaves.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "aesh",
+  "name": "AESH",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "disco",
+   "afro house",
+   "global grooves"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/aeshhhhmusic",
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=jcQzHCfTS28",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=jcQzHCfTS28",
+   "https://www.youtube.com/watch?v=xr1QcXy7Z84",
+   "https://www.youtube.com/watch?v=f3zBVLZXnNE",
+   "https://www.youtube.com/watch?v=AXgH3LPbC3E"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ }
+]

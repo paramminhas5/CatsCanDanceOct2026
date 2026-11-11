@@ -1,0 +1,165 @@
+[
+ {
+  "slug": "full-motion-disaster",
+  "identity": "Filth Inc. Bandcamp (Mumbai label) lists the same six Full Motion Disaster releases we hold, all on Filth Inc.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "bandcamp": "https://filth-inc.bandcamp.com/"
+  },
+  "notes": "Bandcamp label page confirms the six releases on record; no dates or item ids shown, so no new releases or bandcamp ids added. No press found in searches (only passing mentions). Label page is Filth Inc., not an artist page; ids.bandcamp is the label account."
+ },
+ {
+  "slug": "fushi",
+  "identity": "District artist page describes FUSHI as a South Asian DJ who has played Bangalore, Goa, Delhi, Chennai, Pondicherry, with a Durian Radio mix in Dec 2024; matches stored bio.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Garage, bass and breaks",
+    "source_url": "https://www.district.in/events/fushi-fushi/artist"
+   }
+  ],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "No home city stated on the District page (it lists Bangalore, Goa, Delhi, Chennai, Pondicherry as places played). Page also mentions Boiler Room, HOR and Road to Lollapalooza; not confirmed elsewhere. No releases, press or ids found. Handle is a short name, so searches mix with other artists; nothing else confirmed."
+ },
+ {
+  "slug": "gauriwho",
+  "identity": "Not confirmed. Searches returned no page about GAURIWHO.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing found for the Boiler Room Chandigarh, NH7 or Grasslands claims or for city. Returned empty."
+ },
+ {
+  "slug": "girls-night-out",
+  "identity": "Magnetic Fields Nomads and Wild City pages both name Girls Night Out as the project of Vijayant Singh, Delhi, matching stored bio.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "City confirmed as Delhi / New Delhi (Nomads: https://nomads.magneticfields.in/artists/girls-night-out ; Wild City: https://www.thewildcity.com/artists/9643-girls-night-out). Wild City lists genres as wave, industrial, post-punk, EBM, new beat, left-field techno, which differs from stored house/techno/disco/acid (Nomads says house, techno, disco, acid). Not a contradiction, two sources. No releases found on those pages. District event page exists (district.in dj-performance-girls-night-out-oct9-2025) but not opened."
+ },
+ {
+  "slug": "green-park",
+  "identity": "Wild City and Indian Music Diaries describe Green Park as a New Delhi indie trio with the Newly Aged album and the EP All My Pictures Have Grown Smiles; matches record.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Indie pop with shoegaze colours",
+    "source_url": "https://theindianmusicdiaries.com/green-parks-debut-ep-all-my-pictures-have-grown-smiles-hits-some-right-notes-but-the-band-can-do-more/"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Theatrical Rock & Soft Songwriting Mix On Green Park's Debut Album 'Newly Aged'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/20632-theatrical-rock-soft-songwriting-mix-on-green-park-s-debut-album-newly-aged",
+    "date_published": "2024-04-05"
+   },
+   {
+    "title": "Green Park's debut EP All My Pictures Have Grown Smiles hits some right notes, but the band can do more",
+    "publication": "The Indian Music Diaries",
+    "url": "https://theindianmusicdiaries.com/green-parks-debut-ep-all-my-pictures-have-grown-smiles-hits-some-right-notes-but-the-band-can-do-more/",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Wild City says the trio was previously a quartet. Only the MusicBrainz EP (2022-12-08) was already in out_auto; no new releases confirmed."
+ },
+ {
+  "slug": "groovier",
+  "identity": "Not confirmed. No public page found.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Only our record (CCD Episode 2, Indiranagar Social). Nothing found."
+ },
+ {
+  "slug": "hamza-rahimtula",
+  "identity": "Sol Selectas Bandcamp and Indian Music Diaries confirm Origins by Hamza Rahimtula and Rajasthan Folkstars, matching record.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Hamza Rahimtula and The Rajasthan Folkstars Reimagine Rajasthani Tradition in Origins",
+    "publication": "The Indian Music Diaries",
+    "url": "https://theindianmusicdiaries.com/hamza-rahimtula-and-the-rajasthan-folkstars-reimagine-rajasthani-tradition-in-origins/",
+    "date_published": "2025-05-05"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {
+    "title": "Origins (Extended Mix version)",
+    "year": 2025,
+    "release_type": "album",
+    "label": "Sol Selectas",
+    "url": "https://solselectas.bandcamp.com/album/origins",
+    "date": "2025-07-10",
+    "bandcamp_id": "865972465",
+    "bandcamp_type": "album"
+   }
+  ],
+  "ids": {},
+  "notes": "Bandcamp page shows 10 July 2025 with Extended Mix track names, while our record says 25 April 2025 (likely the original release; Bandcamp may be the extended edition). Param to check before adding. Indian Music Diaries does not state Hamza's city."
+ },
+ {
+  "slug": "hedz",
+  "identity": "Not confirmed. No public page found for a Bengaluru jungle/DnB artist named HEDZ.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searches returned only general Bengaluru DnB event listings. Returned empty."
+ }
+]

@@ -1,0 +1,178 @@
+[
+ {
+  "slug": "djazz",
+  "identity": "Wild City and Indian Music Diaries articles name DJazz as Aditya Malve of Mumbai, formerly DIVERSION AHEAD, label All That DJazz; matches our bio.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [
+   {
+    "name": "DIVERSION AHEAD.",
+    "source_url": "https://www.thewildcity.com/news/21089-djazz-returns-with-house-ep-pale-criminal"
+   }
+  ],
+  "press": [
+   {
+    "title": "DJazz Returns With House EP 'Pale Criminal'",
+    "publication": "Wild City",
+    "url": "https://www.thewildcity.com/news/21089-djazz-returns-with-house-ep-pale-criminal",
+    "date_published": "2025-04-24"
+   },
+   {
+    "title": "Technical Precision Meets Artistic Curiosity in DJazz's latest release 'Her Mom's A Gypsy'",
+    "publication": "The Indian Music Diaries",
+    "url": "https://theindianmusicdiaries.com/technical-precision-meets-artistic-curiosity-in-djazzs-latest-release-her-moms-a-gypsy/",
+    "date_published": "2026-04-11"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Nothing new for ids: no Bandcamp, Beatport or RA artist page found for DJazz in search. Her Mom's a Gypsy has Bandcamp album id 1745180764 (from the embed on the Wild City article), already in sample releases; could be added as bandcamp_id. Pale Criminal EP (All That DJazz, 2025) is likely among the 11 on record. Photo not searched."
+ },
+ {
+  "slug": "dotdat",
+  "identity": "RA biography: producer/DJ based in Goa, sci-fi techno, EP HYD with Truncate, project founded 2020; matches stored Goa, techno, HYD and Subtrap.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "ra": "https://ra.co/dj/dotdat",
+   "bandcamp": "https://dotdat.bandcamp.com"
+  },
+  "notes": "RA bio also names labels Symbolism (Ben Sims) and BLACKAXON and says he joined Observant as A&R; not on our record. Pune origin not confirmed by RA page. No new mixes found beyond stored Wild City and Boiler Room Pune. Photo not searched."
+ },
+ {
+  "slug": "dreamstates",
+  "identity": "Wild City artist page: Mumbai DJ, hazy house and techno, Boxout.fm resident, Cosmic Claps podcast, Redline DJs at antiSOCIAL; matches our bio.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "No releases, RA, Bandcamp or SoundCloud artist page listed by Wild City; none found. Extra mixes not added as many already stored. Wild City says Redline DJs crew, not on our record."
+ },
+ {
+  "slug": "drum-attic",
+  "identity": "Wild City artist page: Drum Attic, real name Siddharth Mehra, one half of techno duo Motion Noir; matches our bio (Motion Noir).",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [
+   {
+    "name": "Motion Noir (duo, with a partner)",
+    "source_url": "https://www.thewildcity.com/artists/4753-drum-attic"
+   }
+  ],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Wild City lists SoundCloud https://soundcloud.com/drum-attic and no releases, Bandcamp or RA. City not stated on that page (our record: New Delhi). Real name not added as a fact, per rules."
+ },
+ {
+  "slug": "dualist-inquiry",
+  "identity": "Mixmag Asia 2024 feature and Rolling Stone India describe Delhi-based electronica producer Dualist Inquiry; album label Dualism Records matches stored Dreamcatcher label.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Dualist Inquiry, When We Get There (new album feature)",
+    "publication": "Mixmag Asia",
+    "url": "https://mixmag.asia/feature/dualist-inquiry-when-we-get-there-new-album-india",
+    "date_published": "2024-02-26"
+   },
+   {
+    "title": "Exclusive: Dualist Inquiry Speaks About Novel A/V Set and Debut Lollapalooza India Performance",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/dualist-inquiry-debut-lollapalooza-india-2024-performance",
+    "date_published": "2024-01-23"
+   },
+   {
+    "title": "Dualist Inquiry: 'People Told Me My Sound Isn't Indian Enough'",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/dualist-inquiry-people-told-me-my-sound-isnt-indian-enough",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [
+   {
+    "title": "When We Get There",
+    "year": 2024,
+    "release_type": "album",
+    "label": "Dualism Records",
+    "url": "https://mixmag.asia/feature/dualist-inquiry-when-we-get-there-new-album-india",
+    "date": "2024-02-16"
+   }
+  ],
+  "ids": {},
+  "notes": "Rolling Stone India piece 'People Told Me My Sound Isn't Indian Enough' calls him Delhi-based, consistent with record. Press dates not shown for that piece. Other press results seen but not opened: Homegrown 'Mirror, Mirror', Rolling Stone India cover story, 15questions interviews."
+ },
+ {
+  "slug": "dwell",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Could not confirm identity. Searches found only a tribe.best page for 'djdwellofficial' with no city or link tying it to our Bengaluru DWELL. Returning empty."
+ },
+ {
+  "slug": "ebitda",
+  "identity": "RA biography: Simple Oxford resident, built career in Indian underground, played seven Indian cities; Simple Productions page lists Bangalore and Kolkata venues; matches our bio.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "ra": "https://ra.co/dj/ebitda"
+  },
+  "notes": "RA bio says Mixcloud mix reached number four on global charts in Nov 2024 (no URL given). Simple Productions page embeds SoundCloud https://soundcloud.com/yash-mundhra but no specific mix title, so not added. Kolkata origin not stated by RA ('rooted in' not confirmed); mention Monkey Bar Kolkata on Simple page. Toured four Thai cities early 2025 per RA. No releases found."
+ },
+ {
+  "slug": "electroson",
+  "identity": "RA page: electroson, location India, plays mostly Goa, past events at The Loft Goa and JUNA, first RA event 2022; matches Goa.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "RA page has no bio, releases or mixes; Instagram listed is electroson.wav (our record has none). Zionwolf alias not confirmed by any source found. Nothing playable found."
+ }
+]

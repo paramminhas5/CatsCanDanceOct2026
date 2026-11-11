@@ -1,0 +1,361 @@
+[
+ {
+  "slug": "tarqeeb",
+  "name": "Tarqeeb",
+  "kind": "musician",
+  "based_city": "Mumbai",
+  "from_city": "Mumbai",
+  "genres": [
+   "electronic"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/tarqeeb",
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://soundcloud.com/platform/tarqeeb",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Tarqeeb is a DJ and producer from Mumbai who started the project in 2012. His sets range from meditative dubstep and jungle to Indian electronica, and he hosted the monthly show Juggernaut on boxout.fm, showcasing Indian electronica. He is part of the six-person artist collective DASTA.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/3132-wild-city-113-tarqeeb"
+  ],
+  "sound_tags_already_stored": [
+   "deep, groovy bass-lines, dark atmospheres",
+   "meditative dubstep and jungle to Indian electronica"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/tarqeeb/juggernaut-027-tarqeeb-19-07-2019/",
+   "https://www.mixcloud.com/tarqeeb/juggernaut-020-tarqeeb-magnetic-fields-special-23-11-2018/",
+   "https://www.mixcloud.com/tarqeeb/tarqeeb-live-boxout-weekender-06-04-2018/",
+   "https://soundcloud.com/thewildcity/wild-city-113-tarqeeb",
+   "https://soundcloud.com/platform/tarqeeb"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "tartaruga",
+  "name": "Tartaruga",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "disco",
+   "house",
+   "dub"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "tartaruga.selector",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=SAl98xliTwA",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=SAl98xliTwA",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-213-tartaruga-23-11-2022/",
+   "https://www.mixcloud.com/WildCity/wild-city-241-tartaruga-b2b-hamza-rahimtula/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "tbonestakez",
+  "name": "Tbonestakez",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Tbonestakez played #BoxoutWednesdays in New Delhi on 5 April 2017, alongside Swaggamuffin and MC Soopy.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "tech-panda-x-kenzani",
+  "name": "Tech Panda X Kenzani",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=2F-6WSn7PH0",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=2F-6WSn7PH0",
+   "https://www.youtube.com/watch?v=A2cucl90IM8",
+   "https://www.mixcloud.com/WildCity/wild-city-236-tech-panda-x-kenzani/",
+   "https://www.mixcloud.com/boxoutfm/m168-018-guest-mix-by-tech-panda-kenzani-23-08-2020/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "teej",
+  "name": "TEEJ",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "Drum And Bass"
+  ],
+  "spotify": "https://open.spotify.com/artist/34N30oQPs53dJs0dJ7y0Ru",
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": "3f39ca74-ab90-4984-ba9e-da0212de1c6b",
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "the-big-fat-minimalist",
+  "name": "The Big Fat Minimalist",
+  "kind": "musician",
+  "based_city": "Mumbai",
+  "from_city": null,
+  "genres": [
+   "dub",
+   "dubstep",
+   "grime"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/playlists/control-sessions/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "The Big Fat Minimalist is the artist name of Aniruddh Mehta, a Mumbai-based designer and DJ who also plays as bigfat. His DJ sets explore dub music from roots reggae to meditative dubstep, and he hosted Control Sessions on boxout.fm, covering dub, dubstep, grime and reggae. He played Boxout Weekender 2018 in New Delhi.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://homegrown.co.in/homegrown-voices/aniruddh-mehtas-monochrome-minimalist-make-over-of-a-mumbai-rickshaw",
+   "https://rollingstoneindia.com/gig-preview-achint-milk-and-bigfat-at-blue-frog-mumbai/"
+  ],
+  "sound_tags_already_stored": [
+   "dubstep, but more minimal",
+   "no-hype, low-end bass music"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/playlists/control-sessions/",
+   "https://www.mixcloud.com/anirude/bigfat-live-boxout-weekender-08-04-2018/",
+   "https://www.mixcloud.com/anirude/ontrol-sessions-025-bigfat-03-08-2019/",
+   "https://www.mixcloud.com/krunklive/krunk-guest-mix-039-big-fat/",
+   "https://www.mixcloud.com/boxoutfm/control-sessions-001-big-fat-minimalist-15-04-2017/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "the-untitled-one",
+  "name": "The Untitled One",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": null,
+  "genres": [
+   "drum",
+   "bass",
+   "uk garage",
+   "140"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/TheUntitledOneOfficial",
+  "instagram": "TheUntitledOneOfficial",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=jTKSmlVOXnY",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "The Untitled One is a Bengaluru drum and bass DJ and a co-founder of Drum and Bass India, which he started in 2013, and he runs the Bangalore Massive nights. His radio show and club night Sub-Titles ran on boxout.fm, and he has shared the decks with Netsky and Goth Trad.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.ticketfairy.com/word/2025/03/12/how-to-build-a-thriving-drum-bass-scene-in-india-feat-the-untitled-one"
+  ],
+  "sound_tags_already_stored": [
+   "12 Years of Liquid and Soul"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=jTKSmlVOXnY",
+   "https://www.mixcloud.com/TheUntitledOneOfficial/drum-and-bass-mix-october-2017/",
+   "https://www.mixcloud.com/TheUntitledOneOfficial/the-untitled-one-live-stream-001-22nd-may-2020/",
+   "https://www.mixcloud.com/TheUntitledOneOfficial/closing-set-for-netsky-at-xu-bangalore-31st-mar-2018-1/"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/theuntitledone"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases"
+  ]
+ },
+ {
+  "slug": "thegreybox",
+  "name": "THEGREYBOX",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=s2NufPopQs4",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "thegreybox is Utkarsh Bhandari, a DJ, producer and graphic designer known for his work with the online community radio station boxout.fm. His debut LP, Beats, came out on 18 September 2019 and mixes hip-hop, soul, R&B and house.",
+  "releases_on_record": 1,
+  "release_years": [
+   2019,
+   2019
+  ],
+  "sample_releases": [
+   "Beats (2019)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/14699-wild-city-presents-listening-sessions-ft-thegreybox-beats",
+   "https://www.thewildcity.com/features/15842-a-comprehensive-guide-to-the-music-at-magnetic-fields-2019",
+   "https://www.thewildcity.com/features/15432-wild-city-singled-out-september-2019"
+  ],
+  "sound_tags_already_stored": [
+   "understated, muted banger with a sombre haze of melancholia",
+   "hip-hop, soul, R&B and house"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/boxoutwednesdays-0112-thegreybox-24-04-2017/",
+   "https://www.mixcloud.com/utkarsh-bhandari/hoodvibes-016-thegreybox-28-04-2019/",
+   "https://www.mixcloud.com/utkarsh-bhandari/hoodvibes-023-thegreybox-24-11-2019/",
+   "https://www.youtube.com/watch?v=7oN-yTXk0Go"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/thegreybox"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "city"
+  ]
+ }
+]

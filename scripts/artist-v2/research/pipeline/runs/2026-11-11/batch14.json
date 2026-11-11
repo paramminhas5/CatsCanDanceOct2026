@@ -1,0 +1,385 @@
+[
+ {
+  "slug": "nida",
+  "name": "Nida",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": "Mumbai",
+  "genres": [
+   "disco",
+   "house",
+   "funk",
+   "global club"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "nidadadj",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=XXeNThlbJAo",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Nida Merchant is a Mumbai-born DJ who plays disco, house, acid house and Afro-influenced music. She founded the ParaDisco party series, which has run in Delhi, Goa, London and Mumbai, and co-founded New Delhi Community Radio, where she is a resident. She has played Boiler Room and Mixmag Lab and also runs the fashion label Kefi by Nida.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://homegrown.co.in/homegrown-creators/new-delhi-community-radio-is-building-a-radical-cross-cultural-south-asian-sound-network",
+   "https://www.harpersbazaar.in/culture/story/inside-the-2025-party-playlists-of-four-trailblazing-female-djs-1146857-2025-01-06",
+   "https://homegrown.co.in/homegrown-creators/paradisco-attend-a-genre-bending-dance-party-celebrating-music-drag-and-community"
+  ],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=XXeNThlbJAo",
+   "https://www.youtube.com/watch?v=D03L19CGbKs",
+   "https://www.youtube.com/watch?v=rxsM9u-SDu4",
+   "https://www.mixcloud.com/WildCity/wild-city-257-nida-x-choksi-x-rafiki/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "nishant-mittal",
+  "name": "Nishant Mittal",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": null,
+  "genres": [
+   "global club"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "digginginindia",
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/nishantmittal/indian-rock/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Nishant Mittal, also known as Digging In India, is a New Delhi music archivist, DJ and record store owner. He hosted the monthly show The Home And The World on boxout.fm from 2018, playing records from India and abroad, and now hosts a show on NTS Radio. In 2025 he launched the label Digging In India Records for cassette and vinyl releases and reissues.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/20971-new-delhi-s-digging-in-india-launches-physical-release-label",
+   "https://www.mansworldindia.com/article/savouring-a-slice-of-indias-rich-crate-digging-culture-with-nishant-mittal"
+  ],
+  "sound_tags_already_stored": [
+   "rock and roll from India in the '60s and '70s",
+   "offbeat music from India and around the world"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/nishantmittal/indian-rock/",
+   "https://www.mixcloud.com/boxoutfm/the-home-and-the-world-007-nishant-mittal-08-08-2018/",
+   "https://www.mixcloud.com/boxoutfm/the-home-001-all-girl-%E0%A4%91%E0%A4%B2-%E0%A4%97%E0%A4%B0%E0%A4%B2-nishant-mittal-28-02-2018/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "no-mo-soul",
+  "name": "No Mo Soul",
+  "kind": "musician",
+  "based_city": "Delhi",
+  "from_city": null,
+  "genres": [
+   "house",
+   "disco",
+   "afro"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "no_mo_soul",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=r1Ecp3JXh9g",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=r1Ecp3JXh9g",
+   "https://www.mixcloud.com/sachit_sethi/nu-house-mix-07-all-about-jovonn/",
+   "https://www.mixcloud.com/sachit_sethi/nu-house-mix-02/",
+   "https://www.mixcloud.com/sachit_sethi/nu-house-mix-01/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "norbu",
+  "name": "Norbu",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": "Chandigarh",
+  "genres": [
+   "140",
+   "breaks",
+   "jungle"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/norbu-noises",
+  "instagram": "norbu.noises",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=Zn5n7KHQHVQ",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Norbu is an electronic music producer, sound designer and DJ from Chandigarh, active in the underground scene since 2021. His music sits between leftfield bass, dubstep, UK garage, DnB and IDM, with releases on Deep Tempo Records, OneFortyAsia, Sec13 Records and Screech Collective.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "Intricate sound design and detailed drum programming"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=Zn5n7KHQHVQ",
+   "https://www.youtube.com/watch?v=nuWaYjklrLQ"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "oceantied",
+  "name": "Oceantied",
+  "kind": "musician",
+  "based_city": "Bangalore",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/ripple-001-oceantied-29-03-2018/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Oceantied is the alias of Bangalore producer and DJ Ketan Bahirat, active since 2014. He played the first Boiler Room session in India, hosted the monthly show Ripple on boxout.fm, and released the self-released footwork EP 'On The Floor Vol. 2' in 2019. He also co-founded the Bangalore collective Dasta in 2016 and plays guitar in Until We Last.",
+  "releases_on_record": 2,
+  "release_years": [
+   2019,
+   2019
+  ],
+  "sample_releases": [
+   "On The Floor Vol. 1 (2019)",
+   "On The Floor Vol. 2 (2019)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/14463-listen-on-the-floor-vol-1-by-oceantied",
+   "https://pl.ra.co/reviews/24683",
+   "https://mixmag.asia/feature/electric-india-oceantied-bass-music"
+  ],
+  "sound_tags_already_stored": [
+   "Ghetto tech and UK techno",
+   "heavy 808's, sub frequencies and locally sourced sounds"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/oceantiedmusic/ripple-014-oceantied-02-05-2019/",
+   "https://www.mixcloud.com/boxoutfm/ripple-012-oceantied-ft-daisho-07-03-2019/",
+   "https://www.mixcloud.com/boxoutfm/ripple-001-oceantied-29-03-2018/"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/oceantied"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "odd",
+  "name": "Odd",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "acid house",
+   "dub techno",
+   "hypnotic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "oddmusica",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=8w3SPsPJ_gk",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Odd is a DJ who mixes techno, house and progressive with dubby atmospheres, hypnotic grooves and industrial edges, shaped by years of nightlife in Asia and Europe. He has shared stages with Dubfire, VRIL, Exos and Luigi Tozzi, and played NDCR #029 in September 2025.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=8w3SPsPJ_gk"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city",
+   "claims"
+  ]
+ },
+ {
+  "slug": "og-shez",
+  "name": "OG SHEZ",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "okedo",
+  "name": "OKEDO",
+  "kind": "musician",
+  "based_city": "London and New Delhi",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": "https://open.spotify.com/artist/632612LK6yqJ8mwdqYILAE",
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/14644-wild-city-180-ishaan-okedo",
+  "labels": null,
+  "members": "Ishaan Gandhi",
+  "bio_excerpt": "Okedo is the production name of Ishaan Gandhi, based between London and New Delhi. It started as a duo with Will Clarke. Okedo made the EP New Fusion Movements with Pluto Monkey (2023), the joint project Okedolo with Dolorblind (Season 1, 2022) and the two Soft Serve releases (2025).",
+  "releases_on_record": 8,
+  "release_years": [
+   2019,
+   2025
+  ],
+  "sample_releases": [
+   "Soft Serve (Side A) (2025)",
+   "Soft Serve (Side B) (2025)",
+   "New Fusion Movements (with Pluto Monkey) (2023, Creative Bin Records)",
+   "Season 1 (as Okedolo with Dolorblind) (2022, Export Quality Records)",
+   "Fairy Land (2020, Stamp The Wax)",
+   "Destiny (with King Prawns) (2020)",
+   "Impulse (2020, Skip-A-Beat)",
+   "Wacheewan // Wacheenee (2019)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/17589-okedo-amp-up-their-individual-voices-danceability-on-new-single-impulse",
+   "https://www.thewildcity.com/news/20141-okedo-pluto-monkey-release-collaborative-ep-new-fusion-movements",
+   "https://www.thewildcity.com/news/12572-listen-wacheewan-by-okedo",
+   "https://www.thewildcity.com/news/19853-okedo-dolorblind-introduce-their-duo-okedolo-with-ep-season-1",
+   "https://mixmag.asia/read/okedolo-okedo-dolorblind-india-season-1-export-quality-records-new-releases",
+   "https://homegrown.co.in/homegrown-creators/new-fusion-movements-listen-to-okedo-pluto-monkeys-new-layered-textural-ep",
+   "https://mixmag.asia/read/okedo-pluto-monkey-prayer-for-a-simple-time-audio-asia"
+  ],
+  "sound_tags_already_stored": [
+   "deep house, hazy",
+   "lo-fi electronic swagger",
+   "live instrumentation, dusty drums",
+   "synthesizer-heavy; indie-pop, Afrobeat, glitch, psychedelia",
+   "percussion-rich downtempo with IDM influences",
+   "percussion-centric, glitch-inspired",
+   "house and electronica",
+   "intricate rhythmic interplay"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/14644-wild-city-180-ishaan-okedo",
+   "https://www.thewildcity.com/mixes/19819-wild-city-213-okedolo",
+   "https://soundcloud.com/okedomusic/sets/mixes",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-185-okedo-11-05-2022/",
+   "https://www.mixcloud.com/skipabeatlive/skip-a-beat-041-guest-mix-by-okedo-30-10-2020/",
+   "https://www.mixcloud.com/boxoutfm/chai-and-chill-085-okedo-19-07-2020/",
+   "https://www.mixcloud.com/krunklive/krunk-guest-mix-106-okedo/"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://okedo.bandcamp.com/"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "ids"
+  ]
+ }
+]

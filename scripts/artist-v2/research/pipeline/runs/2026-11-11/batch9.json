@@ -1,0 +1,393 @@
+[
+ {
+  "slug": "full-motion-disaster",
+  "name": "Full Motion Disaster",
+  "kind": "musician",
+  "based_city": "Mumbai",
+  "from_city": null,
+  "genres": [
+   "electro",
+   "breakbeat",
+   "ghetto house",
+   "juke"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/full-motion-disaster",
+  "instagram": "fullmotiondisaster",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=ChBxwnqrcT0",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Full Motion Disaster, also known as FMD, is a Mumbai-based DJ and producer. He owns and runs Filth Inc., a Mumbai record label and promotional channel started in March 2019 that began with lo-fi house and moved into ghettotech, electro, breakbeat and rave. His sets mix electro, ghettotech, ghetto house, breakbeat and rave, usually rising from about 130 to 160 bpm.",
+  "releases_on_record": 6,
+  "release_years": [
+   2023,
+   2026
+  ],
+  "sample_releases": [
+   "Where There is a Will (2026, Filth Inc.)",
+   "Rite of Passage (2025, Filth Inc.)",
+   "Trials of Ascension (2025, Filth Inc.)",
+   "Happiness is This (with Noizy Wilson) (2024, Filth Inc.)",
+   "Ode to a Better Day (2024, Filth Inc.)",
+   "Hope Canyon (with Belljack) (2023, Filth Inc.)"
+  ],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "Sets that climb from 130 to 160 bpm"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=ChBxwnqrcT0",
+   "https://www.mixcloud.com/mitsubishidanceklub/mitsubishi-dance-klub-vol9-full-motion-disaster/",
+   "https://www.mixcloud.com/8ballradio/dance-w-friends-ep-17-special-guest-full-motion-disaster/",
+   "https://www.mixcloud.com/boxoutfm/disconnect-032-guest-mix-by-full-motion-disaster-04-11-2021/",
+   "https://www.mixcloud.com/boxoutfm/lushthetics-024-guest-mix-by-full-motion-disaster-14-08-2021/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "press",
+   "ids"
+  ]
+ },
+ {
+  "slug": "fushi",
+  "name": "FUSHI",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "bass",
+   "leftfield club",
+   "uk bass",
+   "global club"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "fushiup",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=WMWnlAGR4io",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "FUSHI is a South Asian DJ who mixes bass music with leftfield club sounds, and has been part of the 4NC¥ collective since it started. FUSHI has played Bangalore, Goa, Kochi, Delhi, Chennai and Pondicherry, including Bangalore Massive and Dance OK Please, and has done mixes for Durian Radio, Subtle Radio, 8ball Radio and Wavlngth.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=WMWnlAGR4io",
+   "https://www.mixcloud.com/Fushiup/grrave-tape-001-for-change-fushi-at-h%C3%B6r/",
+   "https://www.mixcloud.com/8ballradio/dance-w-friends-special-guest-fushi/",
+   "https://www.youtube.com/watch?v=1_PSqvnPqiw",
+   "https://www.youtube.com/watch?v=SRuFiXqNH9c"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "gauriwho",
+  "name": "GAURIWHO",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "house",
+   "ukg",
+   "electro"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "gauri.who",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=5kF17gl7of0",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "GAURIWHO is a DJ whose sets move between house, deep house, breaks and UK garage. She started with a debut at Boiler Room Chandigarh and has played NH7 Weekender and Grasslands Festival.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "Emotional depth and global percussion"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=5kF17gl7of0",
+   "https://www.youtube.com/watch?v=OrKpRFVmvhc",
+   "https://www.youtube.com/watch?v=49i4nNSOE8I",
+   "https://www.mixcloud.com/boxoutfm/sanspublic-003-guest-mix-by-gauriwho-21-01-2021/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "girls-night-out",
+  "name": "GIRLS NIGHT OUT",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "India",
+  "genres": [
+   "House",
+   "Techno",
+   "Disco",
+   "Acid"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/18583-wild-city-205-girls-night-out",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Girls Night Out is the solo DJ project of Vijayant Singh, based in Delhi. He plays house, techno, disco and acid, and has played Magnetic Fields, Serendipity Arts Festival and Boxout Weekender. His Magnetic Fields Nomads profile also lists Boiler Room.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/20626-magnetic-fields-festival-releases-mixes-by-nosedrip-dj-adhd-mixtress-girls-night-out-more",
+   "https://www.thewildcity.com/mixes/18583-wild-city-205-girls-night-out"
+  ],
+  "sound_tags_already_stored": [
+   "off-kilter tunes inspired by the 70s and 80s",
+   "strong 90's energy",
+   "industrial soundscapes crossing krautrock, post-punk, EBM, wave and new beat"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-206-girls-night-out-05-10-2022/",
+   "https://www.mixcloud.com/boxoutfm/the-waiting-room-020-girls-night-out-17-10-2019/",
+   "https://www.mixcloud.com/boxoutfm/the-waiting-room-001-girls-night-out-22-03-2018/",
+   "https://www.mixcloud.com/vijayant-singh/boxout-weekenders-2019-girls-night-out-auro-kitchen-bar06-04-2019/",
+   "https://soundcloud.com/thewildcity/wild-city-205-girls-night-out"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "green-park",
+  "name": "GREEN PARK",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "New Delhi",
+  "genres": [
+   "Electronic",
+   "Indie"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "allparksaregreen",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=27jQgL1-z1A",
+  "labels": null,
+  "members": "Arpan Kumar, Sidharth Gupta, Rishabh Bhan Singh",
+  "bio_excerpt": "Green Park is an indie pop trio from New Delhi, formed in late 2021. The band is Arpan Kumar on guitar and vocals, Sidharth Gupta on bass and Rishabh Bhan Singh on drums. Their debut album Newly Aged came out in March 2024.",
+  "releases_on_record": 4,
+  "release_years": [
+   2022,
+   2024
+  ],
+  "sample_releases": [
+   "Newly Aged (2024)",
+   "I Met Someone (2024, Indimints Records)",
+   "Dulcet Tones (2024, Indimints Records)",
+   "All My Pictures Have Grown Smiles (2022)"
+  ],
+  "press_urls_already_stored": [
+   "https://homegrown.co.in/homegrown-creators/newly-aged-does-green-parks-debut-album-signal-a-homegrown-indie-band-resurgence",
+   "https://rollingstoneindia.com/green-park-delhi-band-newly-aged-album-interview",
+   "https://rsjonline.com/reviews/delhis-green-park-comes-in-with-a-debut-of-the-year-contender.html",
+   "https://www.thechakkar.com/home/greenpark",
+   "https://theindianmusicdiaries.com/on-growing-up-dissecting-green-parks-latest-album-newly-aged/"
+  ],
+  "sound_tags_already_stored": [
+   "timeless melodies and modern experimentation",
+   "swirling synths, dramatic orchestral arrangements"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=WZFxPK53-y4",
+   "https://www.youtube.com/watch?v=Bya0rleJbzw",
+   "https://www.youtube.com/watch?v=27jQgL1-z1A",
+   "https://www.youtube.com/watch?v=gIojc63LAX0",
+   "https://www.youtube.com/watch?v=7EXEBY_J-lc"
+  ],
+  "ids_already_stored": {
+   "musicbrainz": "c1f9692e-b527-44a5-88ad-b1efb7362129",
+   "bandcamp": "https://allparksaregreen.bandcamp.com/"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "groovier",
+  "name": "GROOVIER",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Played CCD Episode 2 at Indiranagar Social.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "hamza-rahimtula",
+  "name": "HAMZA RAHIMTULA",
+  "kind": "musician",
+  "based_city": "New Delhi, India",
+  "from_city": "India",
+  "genres": [
+   "Deep House",
+   "Organic House"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/HamzaRahimtula",
+  "instagram": "hamzarahimtula",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=-0qcL1aan1I",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Hamza Rahimtula is a New Delhi DJ and producer known for deep house. His album Origins with Rajasthan Folkstars came out on Sol Selectas on 25 April 2025 and reached number 1 on Beatport's Organic House chart.",
+  "releases_on_record": 13,
+  "release_years": [
+   2014,
+   2025
+  ],
+  "sample_releases": [
+   "Origins (with Rajasthan Folkstars) (2025, Sol Selectas)",
+   "Cheetah (2023)",
+   "Nuevo Groove (2023, Krunk Kulture)",
+   "Banjara Series, India (2022, Wind Horse Records)",
+   "Dancing feat. Loopy Juice (with Farhan Rehman and Stalvart John) (2022, Dynamite Disco Club)",
+   "Banjara Series, Mali (2021, Wind Horse Records)",
+   "Banjara Series, Spain & South America (2021, Wind Horse Records)",
+   "Sounds Beyond Borders (with Omanu) (2020, Wind Horse Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/features/21144-this-is-house-music-for-house-heads-hamza-rahimtula-brings-rajasthan-folkstars-to-the-dancefloor-without-the-fusion",
+   "https://mixmag.asia/feature/hamza-rahimtula-interview",
+   "https://www.thewildcity.com/news/19697-hamza-rahimtula-brings-his-banjara-series-to-india",
+   "https://rollingstoneindia.com/hamza-rahimtula-rajasthan-folkstars-origins-album",
+   "https://www.platform-mag.com/music/hamza-rahimtulas-origins.html",
+   "https://mixmag.asia/read/house-meets-heritage-hamza-rahimtula-rajasthan-folkstars-origins-album-new-releases"
+  ],
+  "sound_tags_already_stored": [
+   "seamless dialogue between raw folk expression and club-ready grooves"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=-0qcL1aan1I"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/hamzarahimtula",
+   "beatport": "https://www.beatport.com/artist/hamza-rahimtula/141905",
+   "bandcamp": "https://hamzarahimtula.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "hedz",
+  "name": "HEDZ",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": null,
+  "genres": [
+   "Jungle",
+   "Drum & Bass"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "CCD resident selector.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ }
+]

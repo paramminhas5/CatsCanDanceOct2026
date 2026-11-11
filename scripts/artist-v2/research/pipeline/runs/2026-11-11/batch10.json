@@ -1,0 +1,395 @@
+[
+ {
+  "slug": "inaara",
+  "name": "Inaara",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "imchats_",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=F2TSXit3vvU",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=F2TSXit3vvU"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "indo-warehouse",
+  "name": "INDO WAREHOUSE",
+  "kind": "musician",
+  "based_city": "New York, USA",
+  "from_city": "India",
+  "genres": [
+   "Indo House",
+   "Melodic Techno",
+   "Deep House",
+   "South Asian Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/indowarehouse",
+  "instagram": "indo.warehouse",
+  "website": "https://indowarehouse.com",
+  "mix_url": null,
+  "labels": "Indo Warehouse Records",
+  "members": "Kahani + Kunal Merchant",
+  "bio_excerpt": "Indo Warehouse is a record label and event series founded in 2022 by Kunal Merchant and Kahani (Armaan Gupta). They coined the term Indo House for their mix of South Asian elements with house and techno. Their first party was a 200-person night on New York's Lower East Side in February 2022, and they have since played across Europe, Asia and the Middle East, including Hï Ibiza. In 2025 they were t",
+  "releases_on_record": 3,
+  "release_years": [
+   2022,
+   2026
+  ],
+  "sample_releases": [
+   "Chor (with Rashmeet Kaur) (2026, Indo Warehouse)",
+   "GARBA SZN (2022, Indo Warehouse)",
+   "Indo Warehouse: Year One (2022, Indo Warehouse)"
+  ],
+  "press_urls_already_stored": [
+   "https://grayarea.co/magazine/indo-warehouse-bring-their-south-asian-roots-to-the-rave",
+   "https://mixmagde.com/read/new-york-citys-indo-warehouse-announces-india-debut-with-10-city-tour-events",
+   "https://mixmag.asia/read/garba-szn-indo-warehouse-debut-ep-navratri-traditional-sounds-new-releases",
+   "https://www.beatportal.com/articles/1132412-hype-label-of-the-month-indo-warehouse",
+   "https://ca.billboard.com/music/indo-warehouse-interview",
+   "https://mixmag.net/read/new-york-record-label-indo-warehouse-africa-tour-news",
+   "https://www.cosmopolitan.in/life/features/story/how-new-york-based-south-asian-musicians-indo-warehouse-are-rewriting-the-rules-of-music-1172314-2025-02-18",
+   "https://www.hollywoodreporterindia.com/features/interviews/indo-warehouse-on-taking-south-asian-house-music-global"
+  ],
+  "sound_tags_already_stored": [
+   "Fusing house, techno, and South Asian tradition",
+   "electronic music that pulls from percussion, vocals and instruments across South Asia"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "musicbrainz": "71268c8b-f2c9-4b9f-8ea6-761f7322b7af"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "claims"
+  ]
+ },
+ {
+  "slug": "inspector-maal",
+  "name": "Inspector Maal",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "Kumaon",
+  "genres": [
+   "acid",
+   "electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "inspector.m.music",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=OGK_olOXvro",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Inspector Maal is the project of Sahil Mendiratta, a New Delhi based producer whose music draws on the Kumaon mountains. His debut EP Fractal Spectre came out on Krunk Kulture in 2021, followed by Equal on Antariksh Records in 2023 and Namaste on Krunk Kulture in 2024. He runs Padmini Records with Nikhil Kaul.",
+  "releases_on_record": 7,
+  "release_years": [
+   2019,
+   2026
+  ],
+  "sample_releases": [
+   "Saare Nashe (on Yaar-Dost Vol. 2) (2026, Padmini Records)",
+   "PLNT CRVN (2025)",
+   "Namaste (2024, Krunk Kulture)",
+   "Kukeon (2023)",
+   "Equal (2023, Antariksh Records)",
+   "Fractal Spectre (2021, Krunk Kulture)",
+   "Cold Feet (2019, MMM)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/21593-padmini-records-includes-monophonik-shantam-chhabb-more-on-yaar-dost-vol-2",
+   "https://djmag.com/listen/premiere-inspector-maal-log-fire",
+   "https://mixmag.asia/read/inspector-maal-organic-electronica-debut-ep-krunk-kulture-new-releases"
+  ],
+  "sound_tags_already_stored": [
+   "Organic electronica",
+   "Whirring acid squelches"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=OGK_olOXvro"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://inspectormaal.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "jaag",
+  "name": "Jaag",
+  "kind": "musician",
+  "based_city": "San Francisco",
+  "from_city": "San Francisco Bay Area",
+  "genres": [
+   "breaks",
+   "electro",
+   "acid",
+   "trance"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "____jaag____",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=zHYrMLkmR74",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Jaag is a DJ based in San Francisco and a native of the Bay Area. Her sets blend breaks, electro, leftfield bass, trance, acid and global percussive styles. She co-runs Maja Blast, a party series with SF DJ nofi.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "Global percussive genres"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=zHYrMLkmR74",
+   "https://www.youtube.com/watch?v=Jo9KfjmDuGI",
+   "https://www.youtube.com/watch?v=z1tQW4RLdwE"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "ids"
+  ]
+ },
+ {
+  "slug": "jael",
+  "name": "JAEL",
+  "kind": "musician",
+  "based_city": "Amsterdam, Netherlands",
+  "from_city": "India",
+  "genres": [
+   "Bass",
+   "UK Garage",
+   "Jungle",
+   "Future Beats"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/ja-el",
+  "instagram": "knownasjael",
+  "website": null,
+  "mix_url": "https://soundcloud.com/soulection/soulection-radio-show-591-jael-takeover",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Giovanni Jaël Jano, known as JAEL, is a Moluccan DJ, producer and vocalist from the Netherlands, based in Amsterdam. He is a long-time member of the Soulection collective. He released the EP Motion Sickness in 2025 and played Magnetic Fields in India in 2019.",
+  "releases_on_record": 11,
+  "release_years": [
+   2017,
+   2026
+  ],
+  "sample_releases": [
+   "FIX YOUR MIND (Radio Edit) (2026)",
+   "Robin S - Show Me Love (JAEL Remix) (2026)",
+   "Big Energy (2026)",
+   "Vicious (with Jengi) (2026)",
+   "Motion Sickness (2025, Mena Muria Records)",
+   "Rude Boy (2025)",
+   "SWING THEORY VOL. I (2025)",
+   "Short Covers VOL. 1 (2024)"
+  ],
+  "press_urls_already_stored": [
+   "https://dancewax.net/2025/09/30/jaels-garage-appreciation-mixtape/",
+   "https://www.voicemag.uk/review/9190/jael-half-as-much-album-review",
+   "https://www.scoope.nl/?p=21469",
+   "https://www.khaleejtimes.com/entertainment/jael-drops-new-ep-motion-sickness"
+  ],
+  "sound_tags_already_stored": [
+   "Bold, emotive and dancefloor-ready",
+   "Skippy, sub-heavy UKG beats"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.rinse.fm/episodes/jael-22-07-2026-1900",
+   "https://www.rinse.fm/episodes/jael-23-10-2025-1600",
+   "https://www.kaltblut-magazine.com/mixtape-jael/"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://knownasjael.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "ids"
+  ]
+ },
+ {
+  "slug": "jay-drive",
+  "name": "Jay Drive",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": null,
+  "genres": [
+   "house",
+   "minimal house",
+   "tech house"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "jaydrive_",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=lO96Gwo-TnU",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Jay Drive is a New Delhi DJ who plays electro, house, minimal and techno, with over a decade behind the decks. He has been a resident and programmer at Auro and Summerhouse, opened for Helena Hauff in New Delhi in 2025, and played Magnetic Fields Nomads 2026.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/21404-wild-city-254-jay-drive"
+  ],
+  "sound_tags_already_stored": [
+   "Immersive and dynamic musical journeys",
+   "Acid and straight grooves"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=lO96Gwo-TnU",
+   "https://www.mixcloud.com/WildCity/wild-city-254-jay-drive/",
+   "https://soundcloud.com/thewildcity/wild-city-254-jay-drive"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids",
+   "claims"
+  ]
+ },
+ {
+  "slug": "kaamin",
+  "name": "Kaamin",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "breaks",
+   "electronic"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/callmekaamin",
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://soundcloud.com/callmekaamin/stakna-ladakh-melodic-techno-breaks",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Kaamin is an Indian DJ and producer of melodic techno and breaks who recorded the first Hideout live set at Stakna Monastery in Ladakh in 2022. His track 'Vigil' with Sid Praja appears on Padmini Records' compilation Yaar-Dost Vol. 2 (2026).",
+  "releases_on_record": 1,
+  "release_years": [
+   2026,
+   2026
+  ],
+  "sample_releases": [
+   "Vigil (with Sid Praja, on Yaar-Dost Vol. 2) (2026, Padmini Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://edmhoney.com/kaamin-performs-liveset-from-stakna-monastery-in-ladakh-india-for-first-edition-of-hideout-series",
+   "https://www.theransomnote.com/music/premieres/premiere-kaamin-sid-praja-vigil-padmini-records/"
+  ],
+  "sound_tags_already_stored": [
+   "Stuttered bass-heavy cut"
+  ],
+  "mix_urls_already_stored": [
+   "https://soundcloud.com/callmekaamin/stakna-ladakh-melodic-techno-breaks",
+   "https://www.youtube.com/watch?v=PdFvOfA398c",
+   "https://www.youtube.com/watch?v=Kd6NdexJKsg"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "kairavi",
+  "name": "Kairavi",
+  "kind": "musician",
+  "based_city": "Berlin",
+  "from_city": null,
+  "genres": [
+   "house",
+   "dub",
+   "techno",
+   "global grooves"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "kikiwaap",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=jl6uxZ7wh4A",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=jl6uxZ7wh4A",
+   "https://www.youtube.com/watch?v=Yw1ybGVXk0M",
+   "https://www.youtube.com/watch?v=zCKUllOLypU",
+   "https://www.youtube.com/watch?v=JzOV5syZemQ"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ }
+]

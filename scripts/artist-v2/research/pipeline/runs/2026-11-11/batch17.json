@@ -1,0 +1,388 @@
+[
+ {
+  "slug": "rasa",
+  "name": "RASA",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "rattyatty",
+  "name": "RattyAtty",
+  "kind": "musician",
+  "based_city": "Goa",
+  "from_city": null,
+  "genres": [
+   "bass",
+   "ukg",
+   "grime",
+   "jungle"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=FEYRCSG4NKU",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=FEYRCSG4NKU",
+   "https://www.youtube.com/watch?v=NxQ5oyhr6g8",
+   "https://www.mixcloud.com/RattyAtty/radio-alhara-ep-13-ethio-jazz/",
+   "https://www.mixcloud.com/blendcorp/the-blend-310826-w-guest-rattyatty-goaind/",
+   "https://www.mixcloud.com/radiorumahoma/rro-mix-034-rattyatty-10052026/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "reble",
+  "name": "REBLE",
+  "kind": "musician",
+  "based_city": "Meghalaya, India",
+  "from_city": "India",
+  "genres": [
+   "Hip-Hop",
+   "Trap",
+   "Hardcore"
+  ],
+  "spotify": "https://open.spotify.com/artist/3MsxNLVtDVGxjEaxgKAoi0",
+  "soundcloud": null,
+  "instagram": "rebleofficial",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=4DVgVN8r_k4",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Reble is Daiaphi Lamare, a rapper and songwriter from Nangbah in West Jaintia Hills, Meghalaya. She began in 2018 as Daya, released her debut EP Entropy on Kamani Records in 2022, and contributed to the Dhurandhar film soundtracks in 2025.",
+  "releases_on_record": 27,
+  "release_years": [
+   2019,
+   2026
+  ],
+  "sample_releases": [
+   "Move - Yeh Ishq Ishq (Eclipsa Audio) (2026, Saregama India Ltd)",
+   "Run Down The City (Monica Eclipsa Audio) (2026, Saregama India Ltd)",
+   "Praying Mantis (Radio Edit) (2026, A Homegrown Records / Atlantic Records Release)",
+   "Didi (Sher-E-Baloch) (From \"Dhurandhar The Revenge\") (2026, Super Cassettes Industries Private Limited)",
+   "Vaari Jaavan (From \"Dhurandhar The Revenge\") (2026, Super Cassettes Industries Private Limited)",
+   "Rang De Lal (Oye Oye) (From \"Dhurandhar The Revenge\") (2026, Super Cassettes Industries Private Limited)",
+   "Main Aur Tu (From \"Dhurandhar The Revenge\") (2026, Super Cassettes Industries Private Limited)",
+   "Naal Nachna (Eclipsa Audio) (2026)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/20729-reble-releases-ambitious-music-video-for-tre-ess-produced-terror",
+   "https://www.thewildcity.com/news/21693-reble-returns-to-her-aggressive-trap-roots-with-praying-mantis-after-bollywood-breakthrough",
+   "https://rollingstoneindia.com/shillong-hip-hop-artist-reble-entropy-ep-bond-fission-video/",
+   "https://www.freepressjournal.in/lifestyle/meet-reble-the-24-year-old-artist-from-meghalaya-reshaping-the-sound-of-indian-hip-hop",
+   "https://www.esquireindia.co.in/amp/story/culture/books-and-music/rapper-reble-story-from-shillong-outsider-to-indias-most-uncompromising-hip-hop-voice",
+   "https://www.globalindian.com/youth/reble-from-the-hills-of-meghalaya-to-bollywood-spotlight/",
+   "https://theindianmusicdiaries.com/i-will-always-do-justice-to-its-sound-the-rest-destiny-will-figure-out-for-itself-in-conversation-with-reble/",
+   "https://www.etvbharat.com/en/lifestyle/interview-reble-meghalaya-hip-hop-music-enn25111402262"
+  ],
+  "sound_tags_already_stored": [
+   "raw energy, distorted synths",
+   "hip hop with elements from trap, hardcore, alternative and R&B"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "wikidata": "Q137773348",
+   "musicbrainz": "0a14e86f-9305-4de7-8b6d-2f8998dc2cdc",
+   "deezer": "14384615"
+  },
+  "has_eras": true,
+  "mbid": "0a14e86f-9305-4de7-8b6d-2f8998dc2cdc",
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "reggae-rajahs",
+  "name": "Reggae Rajahs",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "New Delhi",
+  "genres": [
+   "reggae",
+   "dub"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/reggaerajahs",
+  "instagram": null,
+  "website": "https://reggaerajahs.com",
+  "mix_url": "https://www.mixcloud.com/ReggaeRajahs/pressure-drop-199-diggy-dang-reggae-rajahs-10-09-2022/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Reggae Rajahs are a reggae sound system of DJs and MCs from New Delhi, formed in 2009 by DJ MoCity, Diggy Dang and Mr Herbalist, who play dub, reggae and dancehall. They ran the weekly show Pressure Drop, later on boxout.fm, started Goa Sunsplash in 2016 and have played Rototom Sunsplash, Sziget and Outlook in Europe.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/1944-reggae-rajahs-unveil-10-000-lions-soundsystem-in-goa",
+   "https://largeup.com/?p=3047",
+   "https://rollingstoneindia.com/reggae-rajahs-reggae-music-is-not-commercially-accepted/",
+   "https://rollingstoneindia.com/inna-reggae-rajahs-style/",
+   "https://caravanmagazine.in/reviews-and-essays/jamaica-new-delhi"
+  ],
+  "sound_tags_already_stored": [
+   "Roots reggae, rock, ska and dancehall",
+   "India's first reggae sound system"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/ReggaeRajahs/pressure-drop-199-diggy-dang-reggae-rajahs-10-09-2022/",
+   "https://www.mixcloud.com/ReggaeRajahs/pressure-drop-192-general-zooz-reggae-rajahs-25-09-2020/",
+   "https://www.mixcloud.com/ReggaeRajahs/reggae-rajahs-vol-16-reggae-got-soul-a-tribute-to-toots/",
+   "https://www.mixcloud.com/boxoutfm/pressure-drop-057-dennis-brown-special-19-05-2017/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "ritz",
+  "name": "Ritz",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "house",
+   "breaks",
+   "disco"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=C-WCGvGvDto",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Ritzzz is a DJ who plays house, electronica and deep disco shaped by 1990s dance music, with breaks and acid in her sets. She has played Echoes of Earth in Bangalore and Circle of Love in Chennai.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "Breaks and acid",
+   "House, electronica and deep disco shaped by 90s dance music"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=C-WCGvGvDto"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "rohan-kalee",
+  "name": "Rohan Kalé",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/RohanKale/rohan-kal%C3%A9-adidas-nmd-launch-party-new-delhi-india-29-07-2017/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Rohan Kalé is a New Delhi DJ and producer with a love for drum and bass and jungle. He was Radio Program Manager at boxout.fm, where he hosted the shows Reflections and Chai and Chill, and played Boxout Wednesdays and the station's Boiler Room takeover.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/6930-wild-city-148-rohan-kal"
+  ],
+  "sound_tags_already_stored": [
+   "Jazzy outbursts (Reflections show)"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/chai-and-chill-060-rohan-kal%C3%A9-05-05-2019/",
+   "https://www.mixcloud.com/boxoutfm/reflections-010-rohan-kal%C3%A9-29-05-2018/",
+   "https://www.mixcloud.com/RohanKale/rohan-kal%C3%A9-adidas-nmd-launch-party-new-delhi-india-29-07-2017/",
+   "https://www.mixcloud.com/boxoutfm/boxoutfm-x-boiler-room-rohan-kal%C3%A9-13-12-2017/",
+   "https://soundcloud.com/thewildcity/wild-city-148-rohan-kale/s-23H5b"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "rohan-rakhit",
+  "name": "ROHAN RAKHIT",
+  "kind": "musician",
+  "based_city": "London, United Kingdom",
+  "from_city": null,
+  "genres": [
+   "Global Club",
+   "Jazz",
+   "Broken Beat"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": "https://earth-agency.com/artist/rohan-rakhit/",
+  "mix_url": "https://www.youtube.com/watch?v=69ZvqSf98ls",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Rohan Rakhit is a London DJ, actor and broadcaster. He is a resident at Worldwide FM, where he hosts the weekly show First Light, and co-organises the South Asian underground collective Daytimers.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://mixmag.net/read/horniman-museum-daytimers-day-festival-south-asian-artistry-news",
+   "https://crackmagazine.net/article/profiles/daytimers-the-new-kids-on-the-block/2",
+   "https://www.clashmusic.com/features/personality-clash-rohan-rakhit-rea/",
+   "https://mixmag.net/feature/the-best-dj-mixes-of-the-year-2021-so-far-august",
+   "https://www.growhackney.co.uk/grow-hackney-blog-journey/rohan-rakhit-the-emerging-dj-championing-marginalised-grassroots-music",
+   "https://www.ticketfairy.com/word/2021/09/08/daytimers-make-boiler-room-history",
+   "https://www.mixcloud.com/blog/2026/04/08/rohan-rakhit-my-spotlights"
+  ],
+  "sound_tags_already_stored": [
+   "diverse and genre-less, introducing Broken Beat",
+   "the soulful and percussive sound that encapsulates his home city London"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.worldwidefm.net/episode/first-light-rohan-rakhit-and-donut-releases-of-2025-special",
+   "https://www.worldwidefm.net/episode/first-light-rohan-rakhit-w-sarathy-korwar-live-session-interview",
+   "https://www.mixcloud.com/worldwidefm/first-light-rohan-rakhit-w-marie-dahlstr%C3%B8m-15-09-26/",
+   "https://www.youtube.com/watch?v=arTdtfFIAWM",
+   "https://www.youtube.com/watch?v=-KaTMoCWFx4",
+   "https://www.youtube.com/watch?v=OLtwjeMsqa0",
+   "https://www.youtube.com/watch?v=ieMycwV2GPM"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/rohanrakhit"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases"
+  ]
+ },
+ {
+  "slug": "rufy-ghazi",
+  "name": "Rufy Ghazi",
+  "kind": "musician",
+  "based_city": "London",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "lady_ruffelin",
+  "website": "https://rufyghazi.com/",
+  "mix_url": "https://www.mixcloud.com/lady-ruffelin/q-radio-episode-117-lady-ruffeliin/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Rufy Ghazi, who DJs as Lady Ruffelin, is a London based DJ and music business professional who hosted Lady Ruffelin's Escape, a festival themed show, on boxout.fm in 2017. She has played Magnetic Fields, Mixmag LAB and Bass Camp, with sets across grime, drum and bass, UK garage, breakbeat and leftfield.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "Thumping breakbeat and innovative leftfield",
+   "Grimey 140s, Drum & Bass and UKG"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/lady-ruffelin/q-radio-episode-117-lady-ruffeliin/",
+   "https://www.mixcloud.com/lady-ruffelin/dynamix-001-lady-ruffelin-dynamics-music-uk/",
+   "https://www.mixcloud.com/lady-ruffelin/echoes-of-london-2024/",
+   "https://www.mixcloud.com/boxoutfm/lady-ruffelins-escape-001-rufy-ghazi-20-05-2017/",
+   "https://www.mixcloud.com/boxoutfm/lady-ruffelins-escape-003-rufy-ghazi-10-07-2017/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "ids"
+  ]
+ }
+]

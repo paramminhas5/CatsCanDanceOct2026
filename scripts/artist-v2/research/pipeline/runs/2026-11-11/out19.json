@@ -1,0 +1,134 @@
+[
+ {
+  "slug": "shireen",
+  "identity": "Wild City artist page 12022 matches: Delhi-based DJ, member of all-femme collective Coven Code, house/techno with UK garage and breakbeat.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Web search budget ran out mid-batch. Wild City page lists no press, socials or releases. Magnetic Fields Nomads artist page returned 'Artist not found'. No releases, press or ids confirmed. Search results also listed a FEMWAV mix 001 by SHIREEN (femwav.blogspot.com/2019/09/femwav-make-space-please-mix-001-shireen.html) and a Refuge Worldwide Daytimers show (refugeworldwide.com/radio/daytimers-1st-oct-2021) but I did not open them, so not used."
+ },
+ {
+  "slug": "sickflip",
+  "identity": "Stored MBID, RA and Discogs ids already match.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Not researched: search budget ran out before this artist. City gap (stored as 'India') unresolved."
+ },
+ {
+  "slug": "sid-praja",
+  "identity": "Wild City and The Ransom Note pages already stored match Jodhpur DJ with Padmini Records release.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Search budget ran out. Wild City news 21593 (18 Mar 2026) confirms Yaar-Dost vol. 2 on Padmini Records (Nikhil Kaul and Sahil Mendiratta); embed shows Bandcamp album id 2645554230 for that compilation (read from an embed link on the Wild City page, not from the Bandcamp page itself). Vigil is already in sample_releases. District lists a Padmini Records night with Sid Praja on 28 Aug 2026 (search snippet only, not opened). No ids or photo found."
+ },
+ {
+  "slug": "sid-vashi",
+  "identity": "Platform Mag piece describes a multi-instrumentalist, producer and composer whose debut LP is Motherland Tourism, which matches our record.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "arrangement over notes and rhythms, field recordings and Bollywood samples",
+    "source_url": "https://www.platform-mag.com/music/all-about-sax.html"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "All about sax",
+    "publication": "Platform",
+    "url": "https://www.platform-mag.com/music/all-about-sax.html",
+    "date_published": null
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Search budget ran out. Platform Mag says Vashi is 'from Detroit, Boston, and Bombay'; our record says Mumbai, from Michigan. Consistent enough, flagged for Param. No ids confirmed. The Sofar Sounds page and Magnetic Fields page (sid-vashi-live) were not readable or not opened."
+ },
+ {
+  "slug": "sirry",
+  "identity": "Cannot confirm: nothing on record (no city, genre or links).",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Search budget ran out before any search for this name. Nothing found. Needs a link or city before research."
+ },
+ {
+  "slug": "sodhi",
+  "identity": "Stored bio and British Council page already match.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Not researched: search budget ran out. Beatportal's Sept 2026 Delhi artists article does not mention Sodhi, SourOG or Shireen."
+ },
+ {
+  "slug": "sourog",
+  "identity": "Not confirmed.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Search returned no confirmed page for SourOG. Beatportal Delhi article (29 Sep 2026) does not mention her. Nothing added."
+ },
+ {
+  "slug": "spiralynk",
+  "identity": "Stored Bandcamp id and SoundCloud already tie the record.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Search budget ran out; the one search I ran for Ankit Malik returned unrelated results. Nothing new confirmed."
+ }
+]

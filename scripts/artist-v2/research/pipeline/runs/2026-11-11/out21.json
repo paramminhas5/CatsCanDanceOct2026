@@ -1,0 +1,162 @@
+[
+ {
+  "slug": "tarqeeb",
+  "identity": "Wild City artist page 188 matches the stored Wild City #113 mix and the soundcloud.com/tarqeeb link; names Dasta membership as in our bio.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "No solo releases or ids found. DASTA collective Bandcamp is dastaindia.bandcamp.com (collective only, shows SSP Volume 2, Tarqeeb not listed on the page I opened). Wild City page does not state a home city; it lists a Redline DJs quarterly residency at antiSOCIAL Mumbai (https://www.thewildcity.com/artists/188-Tarqeeb). Wild City says Dasta founded 2016 (https://www.thewildcity.com/artists/4258-Dasta). Search budget ran out, so no further press/mixes checked."
+ },
+ {
+  "slug": "tartaruga",
+  "identity": "Wild City #241 page is the same mix as our stored Mixcloud link (Wild City 241, Tartaruga b2b Hamza Rahimtula); names Tartaruga as a DJ in Warehouse Mix.",
+  "eras": [
+   {
+    "from_year": 2024,
+    "to_year": null,
+    "sound": "Old-school mixing, deep organic four-to-the-floor house",
+    "tags": [
+     "house",
+     "deep",
+     "organic"
+    ],
+    "source_url": "https://www.thewildcity.com/mixes/20888-wild-city-241-hamza-rahimtula-b2b-tartaruga",
+    "source_name": "Wild City",
+    "quote": "old-school mixing style; deep/organic sounds"
+   }
+  ],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Tartaruga is a DJ in the Warehouse Mix collective who plays house with an old-school mixing style.",
+  "bio_sources": [
+   "https://www.thewildcity.com/mixes/20888-wild-city-241-hamza-rahimtula-b2b-tartaruga"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "City not stated by any source I opened. The Wild City mix is dated 9 Oct 2024 and was recorded at an AQI event at Crashpad Mangar near Delhi (event place, not home city). Era quote is from my fetch summary of the page, check wording before publishing. Search budget ran out; no releases, press or ids checked."
+ },
+ {
+  "slug": "tbonestakez",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Not researched: shared web search budget ran out before I reached this artist. Nothing confirmed."
+ },
+ {
+  "slug": "tech-panda-x-kenzani",
+  "identity": "Rolling Stone India interview calls them a New Delhi DJ-producer duo; Wikipedia gives origin Delhi, members Tech Panda and Kenzani. Matches stored Wild City #236 and Boxout guest mix names.",
+  "eras": [
+   {
+    "from_year": 2023,
+    "to_year": null,
+    "sound": "Techno and downtempo blended with Indian traditional music",
+    "tags": [
+     "techno",
+     "downtempo",
+     "trip-hop",
+     "Indian electronica"
+    ],
+    "source_url": "https://rollingstoneindia.com/tech-panda-kenzani-dilbar-song-interview/amp",
+    "source_name": "Rolling Stone India",
+    "quote": "molding techno, downtempo and even a bit of trip-hop into India's traditional music stories"
+   }
+  ],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Tech Panda and Kenzani Discuss Their New Smash 'Dilbar' and Ushering In a New Era of Electronic Music",
+    "publication": "Rolling Stone India",
+    "url": "https://rollingstoneindia.com/tech-panda-kenzani-dilbar-song-interview/amp",
+    "date_published": "2023-05-08"
+   }
+  ],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": "Tech Panda & Kenzani are a New Delhi DJ-producer duo who blend Indian vocal samples and traditional music with techno and downtempo.",
+  "bio_sources": [
+   "https://rollingstoneindia.com/tech-panda-kenzani-dilbar-song-interview/amp"
+  ],
+  "releases": [],
+  "ids": {},
+  "notes": "Wikipedia (https://en.wikipedia.org/wiki/Tech_Panda_%26_Kenzani) lists labels Sony Music, Groovebird Records, Aluku Records and releases (Saawariya 2019, Khoyo 2021, Dilbar 2023, Kulli 2023, Heer 2024) but is not a primary source, so none added as releases. Wikipedia is inconsistent on start (text about 2018, infobox 2010). Era from_year is the article date; earlier sound not sourced."
+ },
+ {
+  "slug": "teej",
+  "identity": "Not confirmed as South Asian.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Rinse FM bio (https://www.rinse.fm/shows/teej) says TEEJ is Bristol, UK, drum and bass/140/garage, debuted 2017, releases on Flexout Audio, 31 Recordings, Soul In Motion, Trust Audio. Our stored MBID releases (2016 to 2017) may or may not be this person, and I found no India or South Asian link. Likely out of scope or a namesake; Param to decide. No city/bio filled. Beatport page would not fetch."
+ },
+ {
+  "slug": "the-big-fat-minimalist",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Not researched: shared web search budget ran out. Already has eras; nothing new confirmed."
+ },
+ {
+  "slug": "the-untitled-one",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Not researched: shared web search budget ran out. Already has eras; nothing new confirmed."
+ },
+ {
+  "slug": "thegreybox",
+  "identity": "",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Not researched: shared web search budget ran out. Already has eras; city gap (stored 'India') not resolved."
+ }
+]

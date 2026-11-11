@@ -1,0 +1,393 @@
+[
+ {
+  "slug": "emote",
+  "name": "Emote",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "ambient"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://worldwidefm.net/episode/the-b-side-of-india-boxout-fm-with-emote-12-02-21",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Emote hosts Curate.love on boxout.fm, the New Delhi online community radio station, a show Wild City described as intimate soundscapes reflecting the presenter's own moods. Emote presented boxout.fm's slot on Worldwide FM's The B-Side of India series in February 2021.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "Intimate soundscapes, almost confessional"
+  ],
+  "mix_urls_already_stored": [
+   "https://worldwidefm.net/episode/the-b-side-of-india-boxout-fm-with-emote-12-02-21",
+   "https://www.mixcloud.com/Curate/curate-session-29/",
+   "https://www.mixcloud.com/Curate/curate-session-30/",
+   "https://www.mixcloud.com/boxoutfm/playlists/curate-sessions/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "eshie",
+  "name": "Eshie",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "dub techno",
+   "percussive house",
+   "140",
+   "uk club"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=1FHyDQwrauk",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=1FHyDQwrauk",
+   "https://www.mixcloud.com/VoicesRadio/the-monthly-seshie-w-eshie-031023-voices-radio/",
+   "https://www.mixcloud.com/VoicesRadio/rhythms-between-lines-w-eshie-191225-voices-radio/",
+   "https://www.mixcloud.com/VoicesRadio/femme-frequencies-w-eshie-awaaz-takeover-291025-voices-radio/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "ezzyland",
+  "name": "EZZYLAND",
+  "kind": "musician",
+  "based_city": "Chennai",
+  "from_city": "Salem",
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/playlists/zzy/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "EZZYLAND is the project of producer and rapper Sidharth Ezhilan, born in Salem, Tamil Nadu, who has lived in Dubai, Hyderabad and Chennai. He makes sample-built beats that mix electronic music with hip hop, and hosts ZZY on boxout.fm, a show that pairs alternative, ambient, trip-hop and trap finds with better-known tracks.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://rsjonline.com/features/introducing-ezzyland.html",
+   "https://rollingstoneindia.com/ezzyland/amp"
+  ],
+  "sound_tags_already_stored": [
+   "Electronic music fused with hip hop"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/playlists/zzy/",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-1272-ezzyland-04-09-2019/",
+   "https://www.mixcloud.com/krunklive/krunk-guest-mix-033-ezzyland/",
+   "https://www.mixcloud.com/WildCity/wild-city-141-ezzyland/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "fadescha",
+  "name": "Fadescha",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/fadescha",
+  "instagram": "fadescha",
+  "website": null,
+  "mix_url": "https://soundcloud.com/wind-horse-records/whr-podcast-56-ft-fadescha",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Fadescha is a DJ, artist and curator from New Delhi, working between Berlin and New Delhi, and a member of the Delhi collective Coven Code. Their DJ sets cover techno and house leaning towards acid, industrial and psychedelic sounds, and they host Party Office, an art and social space in New Delhi.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://femwav.blogspot.com/2019/10/femwav-make-space-please-mix-003.html",
+   "https://beatsbeyondborders.com/?p=2578",
+   "https://hyperallergic.com/fadescha-on-parties-healing-and-radically-exclusive-spaces"
+  ],
+  "sound_tags_already_stored": [
+   "Field recordings and found sound in production"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/femwav/femwav-make-space-please-mix-003-fadescha/",
+   "https://soundcloud.com/wind-horse-records/whr-podcast-56-ft-fadescha",
+   "https://www.mixcloud.com/boxoutfm/the-good-mostly-bad-show-anniversary-special-gmb-ft-fadescha-25-04-2020/",
+   "https://www.mixcloud.com/BoxoutWednesdays/boxout-wednesdays-096-rooftop-sessions-fadescha-30-01-2019/",
+   "https://www.mixcloud.com/boxoutfm/guest-mix-293-fadescha-24-01-2019/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "farhan-rehman",
+  "name": "Farhan Rehman",
+  "kind": "musician",
+  "based_city": "Mumbai",
+  "from_city": null,
+  "genres": [
+   "disco",
+   "house",
+   "afro",
+   "funk"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/farhan-rehman",
+  "instagram": "farhanrehman_",
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-160-farhan-rehman-india/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Farhan Rehman is a Mumbai DJ and producer who started producing at 16 and landed his first record on Ovum Recordings. He is the A&R and label manager of Dynamite Disco Club, the Indian disco and house label, and his sets and productions draw on afro, funk, jazz, house and disco.",
+  "releases_on_record": 4,
+  "release_years": [
+   2021,
+   2025
+  ],
+  "sample_releases": [
+   "Strictly Rhythm (2025, Dynamite Disco Club)",
+   "Not a l.u.v thang (2024)",
+   "Cool Cat, Jazz Cat (2023, Krunk Kulture)",
+   "Disco Segway (2021, Dynamite Disco Club)"
+  ],
+  "press_urls_already_stored": [
+   "https://mixmag.asia/read/dynamite-disco-club-indias-first-disco-house-music-imprint-local",
+   "https://electronicgroove.com/series/premieres/farhan-rehman-strictly-rhythm-dynamite-disco-club/",
+   "https://www.thewildcity.com/mixes/20391-wild-city-228-farhan-rehman",
+   "https://www.thewildcity.com/news/20416-farhan-rehman-delves-into-a-fusion-of-jazz-afro-latin-on-debut-ep-cool-cat-jazz-cat",
+   "https://mixmag.asia/read/mixmag-asia-radio-farhan-rehman-brings-light-to-the-hidden-world-of-indian-disco-exclusive-mixes"
+  ],
+  "sound_tags_already_stored": [
+   "Afro, worldbeat, funk, jazz, house and disco",
+   "90s New York-styled house",
+   "Soulful, deep and funky house"
+  ],
+  "mix_urls_already_stored": [
+   "https://soundcloud.com/wind-horse-records/mix-008-ft-farhan-rehman",
+   "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-160-farhan-rehman-india/",
+   "https://soundcloud.com/thewildcity/wild-city-228-farhan-rehman",
+   "https://www.youtube.com/watch?v=yCCVllDWUdw"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "film",
+  "name": "FILM",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/film011",
+  "instagram": "film011",
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/filmbeatz/medium-rare-047-prime-cutz-by-film-18-11-2019/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "FILM is New Delhi DJ and producer Sanil Sudan, who mixes house, breaks and techno and also makes dub techno as Tyrell Dub Corp. His self-titled debut album came out on Qilla Records in 2022, and his EP Miwonowi followed on Remmah. He hosted the Medium Rare show on boxout.fm and has run the Delhi venues Auro and Summer House Cafe.",
+  "releases_on_record": 3,
+  "release_years": [
+   2022,
+   2025
+  ],
+  "sample_releases": [
+   "Nihon/ Fuse (2025)",
+   "Miwonowi (2023, Remmah Records)",
+   "FILM (2022, Qilla Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/21749-tyrell-dub-corp-dials-up-the-latter-bit-in-dub-techno-on-mk618",
+   "https://www.thewildcity.com/news/21356-film-moves-from-spacious-techno-to-melodic-tech-house-on-nihon-fuse-with-remixes-from-blurry-slur-sublime-sound",
+   "https://www.thewildcity.com/news/20472-film-homages-feel-good-house-music-on-ep-miwonowi",
+   "https://djmag.com/features/fresh-kicks-181-film",
+   "https://mixmag.asia/read/film-eponymous-debut-album-local"
+  ],
+  "sound_tags_already_stored": [
+   "Melodic tech-house",
+   "House, breaks and IDM",
+   "Feel-good house"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/filmbeatz/medium-rare-047-prime-cutz-by-film-18-11-2019/",
+   "https://www.mixcloud.com/filmbeatz/medium-rare-052-prime-cutz-by-film-15-06-2020/",
+   "https://www.mixcloud.com/filmbeatz/medium-rare-058-round-up-2020-18-12-2020/",
+   "https://www.mixcloud.com/filmbeatz/medium-rare-063-prime-cutz-by-film-28-05-2021/",
+   "https://www.mixcloud.com/filmbeatz/film-live-boxout-weekender-08-04-2018/",
+   "https://www.youtube.com/watch?v=ZnEu6tOVRIQ"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "fopchu",
+  "name": "FOPCHU",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/fopchu",
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/indie-as-fuck-fopchu-15-08-2020/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "FOPCHU is an electronic band from New Delhi that started as a trio of Kaizad Nariman, Shantam Khanna and Siddhant Subs and later became a duo of Khanna and Subs. Their debut EP Milk Bred came out on boxout.fm Recordings in 2018, followed by Now Showing in 2020 and Tall Tales on Krunk Kulture in 2021.",
+  "releases_on_record": 6,
+  "release_years": [
+   2016,
+   2021
+  ],
+  "sample_releases": [
+   "Tall Tales (2021, Krunk Kulture)",
+   "Now Showing (2020)",
+   "Gypsy (2019)",
+   "Milk Bred EP (2018, boxout.fm Recordings)",
+   "Sweet Tooth (2017)",
+   "Square Hugs (2016)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/18398-releases-of-the-week-sickflip-fopchu-gouri-and-aksha-more",
+   "https://www.thewildcity.com/news/17976-fopchu-add-a-retro-flavour-to-their-zaniness-on-now-showing"
+  ],
+  "sound_tags_already_stored": [
+   "Baraat rhythms and skiffle",
+   "Non-serious fun-focused musicality"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/worldwidefm/krunk-kulture-flavours-of-the-east-with-fopchu-23-04-21/",
+   "https://www.mixcloud.com/boxoutfm/indie-as-fuck-fopchu-15-08-2020/",
+   "https://www.mixcloud.com/boxoutfm/fresh-out-the-box-fopchu-04-10-2018/",
+   "https://www.mixcloud.com/boxoutfm/synth-city-fopchuinternational-synth-day-23-05-2018/"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://fopchu.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "fringe-mechanics",
+  "name": "Fringe Mechanics",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": null,
+  "genres": [
+   "acid house",
+   "house",
+   "electro",
+   "new beat"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "fringe.mechanics",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=L3IVQZrGFuE",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Fringe Mechanics is the New Delhi selector Bhavya Singh. He was a regular at Delhi's Medium Rare (now No More Parties) gatherings and made his Magnetic Fields debut at Magnetic Fields Nomads in February 2026.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "Acid-laced grooves",
+   "Texture over genre"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=L3IVQZrGFuE",
+   "https://www.youtube.com/watch?v=jZcrezkzJyM",
+   "https://www.youtube.com/watch?v=djmwt8WOsZs",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-252-fringe-mechanics-20-09-2023/",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-225-fringe-harmonics-15-03-2023/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "ids"
+  ]
+ }
+]

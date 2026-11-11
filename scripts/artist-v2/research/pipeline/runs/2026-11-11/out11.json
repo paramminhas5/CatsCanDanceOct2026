@@ -1,0 +1,164 @@
+[
+ {
+  "slug": "kalbaisakhi",
+  "identity": "Not extended: stored Spotify, SoundCloud and press (Platform, Rolling Stone India) already tie the Delhi producer Vibhu Singh to the name. Searches returned no new page I could confirm as the same artist.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "No Bandcamp, Discogs, Beatport or RA page found for Kalbaisakhi. bandcamp.com/klbski is a fan collection page with no location, not confirmed as him, so not used. The Beatportal Delhi artists piece (Sept 2026) does not mention him. Rolling Stone India feature 'Kalbaisakhi was never meant to be quiet' appears only on Magzter (not opened). Photo gap not worked (no image source checked). Nothing contradicts our record."
+ },
+ {
+  "slug": "kaleekarma",
+  "identity": "Wild City artist page (thewildcity.com/artists/3549-Kaleekarma) names Harshita Kalee as Kaleekarma, DJing on Mumbai's club circuit, with the track Now and Then (with Agent and Daulat) and a Mixmag mini documentary. Matches our Mumbai record and release.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "No Discogs, RA or Bandcamp link on the Wild City page, and none found in search. Candidate press seen in search results but not opened, so not cited: stampthewax.com City Guide: Kaleekarma presents Mumbai (2017-10-05), Mixmag The Lab Goa, Electronic Beats feed piece on Mumbai underground. Wild City describes her sound as deep house, electronica and 'ethno' techno, which is broadly in line with our bio (ours also lists trip hop, minimal, downtempo)."
+ },
+ {
+  "slug": "kampai",
+  "identity": "Homegrown #HGSessions 012 (8 Jun 2021) names Bangalore artist Rumit Virmani as Kampai, and the Mixcloud profile mixcloud.com/Kampai/ says solo project of Bangalore-based Rumit Virmani. Matches our record.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Quirky style across Jersey club, twerk, drum and bass and footwork",
+    "source_url": "https://homegrown.co.in/homegrown-explore/hgsessions-012-kampai"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "#HGSessions 012: Kampai",
+    "publication": "Homegrown",
+    "url": "https://homegrown.co.in/homegrown-explore/hgsessions-012-kampai",
+    "date_published": "2021-06-08"
+   }
+  ],
+  "mix_links": [
+   {
+    "title": "Demo Mix",
+    "url": "https://www.mixcloud.com/Kampai/demo-mix/",
+    "year": null
+   },
+   {
+    "title": "Minimix for opening at Sunburn-Silvassa",
+    "url": "https://www.mixcloud.com/Kampai/minimix-for-opening-at-sunburn-silvassa-spinwithola/",
+    "year": null
+   },
+   {
+    "title": "Future Bass Mix 1",
+    "url": "https://www.mixcloud.com/Kampai/future-bass-mix-1/",
+    "year": null
+   }
+  ],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Mixcloud account is posted by the artist (older future bass and trap era, roughly a decade ago by the page's own dating). Homegrown also embeds a SoundCloud track (api.soundcloud.com/tracks/310668300) for the HGSessions set, not confirmed by oEmbed. Wild City artist page 82-Kampai describes an older focus on future bass and trap, which differs from our current global club bio; not contradictory, just earlier. No releases found on any primary page. DGTL festival has a Kampai artist page (dgtl-festival.com/en/artists/kampai/), not opened."
+ },
+ {
+  "slug": "kandy-kuri",
+  "identity": "Wild City mix page (already stored) and Boiler Room Bengaluru coverage align with our Bengaluru record. No new page opened that adds facts.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Searches found no releases, Bandcamp, Discogs or RA pages. Spelling variant 'Kandi Kuri' appears on an Explocity event listing (Koramangala Social); our record uses Kandy Kuri. Seven mixes already stored, nothing new added."
+ },
+ {
+  "slug": "khxdeej",
+  "identity": "Worldwide FM episode page 'Global WAV OneFortyAsia takeover' (26 Nov 2025) lists KHXDEEJ among four artists of a collective; matches the stored Mixcloud link. Could not confirm Surat birthplace or heritage from any source.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "CITY: the Worldwide FM page says the episode 'features 4 artists from the collective based in Goa, India; The Greys, KHXDEEJ, Babban & Mungk'. It is unclear whether Goa describes the collective or each artist, but it is a possible based_city (ours is empty). https://www.worldwidefm.net/episode/global-wav-oneforty-asia-takeover-feat-the-greys-khxdeej-babban-and-mungk . No source found for Surat. No eras, releases or press found. NTS x Bershka Mumbai mix is already stored."
+ },
+ {
+  "slug": "kibo",
+  "identity": "Magnetic Fields artist page (magneticfields.in/artists/kibo) says KIBO is a Mumbai-based electronic artist, genre-fluid, rooted in house with jazzy touches, deep grooves and experimental textures. Matches our record (Mumbai, she).",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "The Magnetic Fields page gives no dates, so no era. DGTL page for Kibo (dgtl-festival.com/en/artists/kibo) has no bio. A G5A Foundation 'After Dark | KIBO' event page exists (not opened). No releases, press or ids found. Sound tags already stored match the Magnetic Fields wording."
+ },
+ {
+  "slug": "kizzi",
+  "identity": "Cannot confirm. Searches for 'Kizzi' returned unrelated artists (DJ Kizzi in the UK on Sternberg Clarke, an Izzi show on Reprezent). Nothing tied to South Asia or to the stored Voices Radio mixes.",
+  "eras": [],
+  "sound_tags": [],
+  "aliases": [],
+  "press": [],
+  "mix_links": [],
+  "spotify": null,
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {},
+  "notes": "Namesake risk: DJ Kizzi at sternbergclarke.co.uk/our-acts/dj-kizzi/ and scenenoise.com Select 349 Mixed Kizzi were not opened and not linked to our record. Stored Voices Radio mixes show she plays there but no bio source found. No South Asian link verified, scope check suggested before publishing."
+ },
+ {
+  "slug": "kumail",
+  "identity": "Bandcamp kumail.bandcamp.com says Kumail is from Mumbai, now based in Lisbon; Tru Thoughts announcement (10 Apr 2026) covers Mudbrown. Matches record and MusicBrainz id already found.",
+  "eras": [],
+  "sound_tags": [
+   {
+    "tag": "Groove-based R&B and soul",
+    "source_url": "https://tru-thoughts.co.uk/kumail-releases-new-album-mudbrown/"
+   }
+  ],
+  "aliases": [],
+  "press": [
+   {
+    "title": "Kumail releases new album Mudbrown",
+    "publication": "Tru Thoughts",
+    "url": "https://tru-thoughts.co.uk/kumail-releases-new-album-mudbrown/",
+    "date_published": "2026-04-10"
+   }
+  ],
+  "mix_links": [],
+  "spotify": "https://open.spotify.com/artist/2JYgvhoagKBhBYkpD0gIKj",
+  "bio_draft": null,
+  "bio_sources": [],
+  "releases": [],
+  "ids": {
+   "musicbrainz": "c36fb3d5-ce2f-4639-88bc-f17693f79d6e"
+  },
+  "notes": "Not opened, so not cited: Wild City 'Kumail Returns After 6 Years' (thewildcity.com/news/21472) and Bandcamp Daily 'Kumail's Post-Apocalyptic Funk World' (2019-11-22). The Tru Thoughts page notes influences from time in Kinshasa and names tracks Vultures, True to You, Off My Back, Tear It Off, Bring It Back, Money, On Something, Lady, Darlin, Get Down. Bandcamp lists Lady remixes as Nov 2026 and Mudbrown Apr 2026, matching our record. Spotify URL is the one MusicBrainz auto pass gave; our record has none, so it needs a check by Param. Bandcamp item ids not shown on the page. Photo gap not worked."
+ }
+]

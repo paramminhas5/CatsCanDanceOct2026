@@ -1,0 +1,385 @@
+[
+ {
+  "slug": "djazz",
+  "name": "DJazz",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": "Mumbai",
+  "genres": [
+   "House",
+   "Disco",
+   "Drum and Bass",
+   "Breakbeat",
+   "Acid"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "DJazz is Aditya Malve, a DJ and producer working between Bengaluru and Mumbai and a resident selector at Cats Can Dance. He released earlier music as DIVERSION AHEAD and runs his own imprint, All That DJazz.",
+  "releases_on_record": 11,
+  "release_years": [
+   2025,
+   2026
+  ],
+  "sample_releases": [
+   "7AM In Bangkok (2026, All That DJazz)",
+   "The Girl Who Spoke Jazz (2026)",
+   "Shaastriya Sangeet Vol. II: Religion of Eternity (2026)",
+   "Tantric Acid Vol. III: For Her Majesty (2026)",
+   "Janbaaz / Kalyanji-Anandji - Pyar Do Pyar Lo (DJazz Edit) (2026)",
+   "Her Mom's a Gypsy (2026)",
+   "Tantric Acid Vol. I (2025)",
+   "Tantric Acid, Vol. II and Opening Tracks for Floating Points (Extra Crunch Mixes Only) (2025)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/21025-aditya-malve-launches-new-moniker-djazz-label-with-2-track-drum-n-bass-ep",
+   "https://mixmag.asia/read/djazz-acid-house-indian-classical-drones-pale-criminal-ep-new-releases",
+   "https://www.thewildcity.com/news/21631-inspired-by-goa-sunsplash-djazz-blurs-dub-breakbeats-and-techno-on-new-ep",
+   "https://theindianmusicdiaries.com/shaastriya-frequencies-djazzs-classical-collision-and-tabla-electronica-in-new-ep/",
+   "https://electronicgroove.com/?p=187335",
+   "https://ufo-network.com/?p=168240"
+  ],
+  "sound_tags_already_stored": [
+   "hypnotic acid lines over the textured hum of Indian classical instrumentation"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "dotdat",
+  "name": "DOTDAT",
+  "kind": "musician",
+  "based_city": "Goa",
+  "from_city": "Pune",
+  "genres": [
+   "Techno"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/dotdatofficial",
+  "instagram": "dotdatofficial",
+  "website": "https://oddx.in",
+  "mix_url": "https://soundcloud.com/platform/dotdat-pune",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Groove-infused sci-fi techno. Echoes of Earth 2025, DGTL.",
+  "releases_on_record": 4,
+  "release_years": [
+   2020,
+   2024
+  ],
+  "sample_releases": [
+   "Steady Faith (2024)",
+   "HYD (with Truncate) (2021, Truncate)",
+   "In Circles (on Synchronicity Vol. 2) (2021)",
+   "Subtrap (2020, KSR)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/17748-dotdat-drops-his-high-octane-debut-ep-subtrap",
+   "https://www.thewildcity.com/news/18870-dotdat-releases-in-circles-as-part-of-ben-sims-synchronicity-compilation"
+  ],
+  "sound_tags_already_stored": [
+   "groove infused hypnotic techno",
+   "a near-constant two-note motif of retro sci-fi tone"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/9801-wild-city-155-dotdat"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/dotdat",
+   "beatport": "https://www.beatport.com/artist/dotdat/707980",
+   "bandcamp": "https://dotdat.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "dreamstates",
+  "name": "DREAMSTATES",
+  "kind": "musician",
+  "based_city": "Mumbai, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "Psychedelic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "dreamstates",
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/dreamstates/cosmic-claps-050-dreamstates-28-05-2021/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "dreamstates is a Mumbai-based DJ playing house, techno, breakbeat, acid and electro. He hosts the monthly Boxout.fm show Cosmic Claps and has played DGTL India 2025, Echoes of Earth and Magnetic Fields.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/16102-dreamstates-ox7gen-rafiki-tarqeeb-zokhuma-join-forces-for-quarterly-residency-at-antisocial-mumbai",
+   "https://mixmag.net/read/dreamstates-b2b-zokhuma-in-the-lab-goa-dj-lab"
+  ],
+  "sound_tags_already_stored": [
+   "a hazy approach to house and techno",
+   "lo-fi breakbeats, electro, garage or acid"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/dreamstates/cosmic-claps-050-dreamstates-28-05-2021/",
+   "https://mixmag.asia/read/mixmag-asia-radio-dreamstates-conjures-realm-genre-defiance-india-exclusive-mixes",
+   "https://soundcloud.com/indreamstates/midnight-shuffle",
+   "https://soundcloud.com/q_radio/club-fm-dreamstates-b2b-kandy",
+   "https://www.mixcloud.com/dreamstates/cosmic-claps-048-dreamstates-26-03-2021/",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-1182-dreamstates-03-07-2019/",
+   "https://www.mixcloud.com/dreamstates/dreamstates-live-boxout-weekender-07-04-2018/",
+   "https://www.youtube.com/watch?v=r-1GDbUJ8nM",
+   "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-102-dreamstates-india/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "drum-attic",
+  "name": "Drum Attic",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/playlists/dulyunruly/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Drum Attic is a New Delhi DJ and techno producer and a core member of the boxout.fm crew. His boxout.fm show DulyUnruly explores dark takes on 4x4 techno, and he is one half of the techno duo Motion Noir.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/12296-wild-city-170-drum-attic"
+  ],
+  "sound_tags_already_stored": [
+   "Hard techno with dub and acid influences"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/playlists/dulyunruly/",
+   "https://soundcloud.com/thewildcity/wild-city-170-drum-attic",
+   "https://www.youtube.com/watch?v=eiVnUitLkEE",
+   "https://www.youtube.com/watch?v=Y2_tgYxEUSs",
+   "https://www.mixcloud.com/boxoutfm/boxoutfm-x-boiler-room-drum-attic-13-12-2017/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "dualist-inquiry",
+  "name": "DUALIST INQUIRY",
+  "kind": "musician",
+  "based_city": "New Delhi, India",
+  "from_city": "Chandigarh, India",
+  "genres": [
+   "Indie Electronic",
+   "Experimental"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/dualistinquiry",
+  "instagram": "dualistinquiry",
+  "website": "https://intersect9.in",
+  "mix_url": "https://www.thewildcity.com/mixes/3022-wild-city-001-dualist-inquiry-presents-dualism",
+  "labels": "Field Works",
+  "members": "Sahej Bakshi",
+  "bio_excerpt": "Dualist Inquiry is Sahej Bakshi, a Delhi-based electronica producer. His first album Doppelganger came out in 2013 and he later co-founded boxout.fm. He played The Lab Goa in December 2021.",
+  "releases_on_record": 7,
+  "release_years": [
+   2011,
+   2024
+  ],
+  "sample_releases": [
+   "Take Me Home (feat. Ramya Pothuri) (2024)",
+   "No Escape (with Rudy Mukta) (2023)",
+   "Serpentine Remixed (Dualist Inquiry remix) (2023)",
+   "You & Me (feat. Sanchal Malhar) (2018)",
+   "Dreamcatcher (2016, Dualism Records)",
+   "Doppelganger (2013, OML Entertainment)",
+   "Dualism EP (2011, Audio Aashram)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/20216-dualist-inquiry-rudy-mukta-collaborate-on-uk-house-style-single-no-escape",
+   "https://www.thewildcity.com/news/20883-exclusive-first-listen-dualist-inquiry-pairs-up-with-ramya-pothuri-for-take-me-home",
+   "https://www.thewildcity.com/features/2413-sahej-bakshi-the-art-of-expanding-universes",
+   "https://www.thewildcity.com/features/8672-you-thought-you-knew-dualist-inquiry",
+   "https://www.musicaloud.com/2013/05/22/music-review-doppelganger-dualist-inquiry-electronica-album"
+  ],
+  "sound_tags_already_stored": [
+   "wobble beats, drones and slide guitar riffs",
+   "major chord melodies in the form of sustained plucked guitar lines"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "discogs": "5372510",
+   "wikidata": "Q93377291",
+   "musicbrainz": "983211ed-a54e-4cca-8a13-92932e2a8eeb",
+   "ra": "https://ra.co/dj/dualistinquiry"
+  },
+  "has_eras": true,
+  "mbid": "983211ed-a54e-4cca-8a13-92932e2a8eeb",
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "dwell",
+  "name": "DWELL",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Played CCD Episode 4 at Bar Wild.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "ebitda",
+  "name": "EBITDA",
+  "kind": "musician",
+  "based_city": "Oxford",
+  "from_city": "Kolkata",
+  "genres": [
+   "leftfield",
+   "techno",
+   "raw club",
+   "underground"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": "https://linktr.ee/ebitda.dj",
+  "mix_url": "https://www.youtube.com/watch?v=RkdwmEWjVfw",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "EBITDA is an Indian DJ, rooted in Kolkata, who played clubs in Delhi and Bangalore before moving to the UK, where he is resident at Simple in Oxford. His sets cover electro, breaks, IDM, techno, drum and bass and acid, and he has closed for Joy Orbison.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.ticketfairy.com/word/2026/01/14/trusting-the-process-featuring-ebitda"
+  ],
+  "sound_tags_already_stored": [
+   "Forward-thinking club music",
+   "Relentless leftfield selection"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=RkdwmEWjVfw",
+   "https://www.youtube.com/watch?v=6EZk2CDA7gQ",
+   "https://www.youtube.com/watch?v=Ex4BB2Ixu1A",
+   "https://soundcloud.com/thewildcity/wild-city-256-ebitda"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/ebitda"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases"
+  ]
+ },
+ {
+  "slug": "electroson",
+  "name": "ELECTROSON",
+  "kind": "musician",
+  "based_city": "Goa, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Electroson is a Goa-based selector who also performs as Zionwolf. He played the Ray-Ban Desert Oasis stage at Magnetic Fields in December 2022.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "cerebral selections, relentless rhythms, and exploratory tunes"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/electroson"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "plays",
+   "releases",
+   "press"
+  ]
+ }
+]

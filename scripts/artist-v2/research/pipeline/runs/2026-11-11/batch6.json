@@ -1,0 +1,375 @@
+[
+ {
+  "slug": "delhi-sultanate",
+  "name": "Delhi Sultanate",
+  "kind": "musician",
+  "based_city": "Delhi",
+  "from_city": "New Delhi",
+  "genres": [
+   "dub",
+   "reggae"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/delhi-sultanate",
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/playlists/dubplates-and-45s/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Delhi Sultanate is the stage name of Taru Dalmia, a reggae and dancehall artist from New Delhi. He is the MC and a founding member of BASSFoundation, lead singer of The Ska Vengers, and runs BFR Sound System with Begum X. On boxout.fm he hosted Dubplates And 45s, a vinyl-only show of dub and reggae.",
+  "releases_on_record": 2,
+  "release_years": [
+   2015,
+   2020
+  ],
+  "sample_releases": [
+   "Zor (with Ahmer) (2020, Azadi Records)",
+   "India-2-Africa Bootleg Versions (2015)"
+  ],
+  "press_urls_already_stored": [
+   "https://rsjonline.com/buzz/delhi-sultanate-talks-bass-foundation-roots-sound-system.html",
+   "https://www.platform-mag.com/music/what-makes-delhi-sultanate-rule.html",
+   "https://www.thewildcity.com/news/17598-ahmer-delhi-sultanate-join-forces-on-new-single-zor",
+   "https://www.thewildcity.com/news/1884-listen-delhi-sultanate-releases-india-2-africa-bootleg-versions",
+   "https://rollingstoneindia.com/delhi-sultanate/"
+  ],
+  "sound_tags_already_stored": [
+   "Performance poetry",
+   "Jamaican sound system culture",
+   "Vinyl-only dub and reggae"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/playlists/dubplates-and-45s/",
+   "https://soundcloud.com/thewildcity/wild-city-087-bassfoundation-roots",
+   "https://soundcloud.com/platform/delhi-sultanate-bfr-sound",
+   "https://soundcloud.com/platform/delhi-sultanate"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "didar",
+  "name": "Didar",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "house",
+   "hard groove",
+   "electro",
+   "hyperpop"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "heyydidar",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=F_CXw17-2eE",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=F_CXw17-2eE",
+   "https://www.youtube.com/watch?v=SN0aD3G_DMM",
+   "https://www.youtube.com/watch?v=cDSJs0Wo9V0",
+   "https://www.youtube.com/watch?v=4Bl4CunCF3o",
+   "https://www.youtube.com/watch?v=3-8mw0XGxaU"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "diggy-dang",
+  "name": "Diggy Dang",
+  "kind": "musician",
+  "based_city": "New York City",
+  "from_city": "New Delhi",
+  "genres": [
+   "reggae"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/ReggaeRajahs/pressure-drop-191-reggae-rajahs-18-09-2020/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Diggy Dang is a founding member of Reggae Rajahs, the New Delhi crew described as India's first reggae sound system, and co-founder of the ska jazz band The Ska Vengers. He works as a singer, guitarist, DJ and label manager, and has spent more than 15 years promoting reggae.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://huckmag.com/article/reggae-new-delhi"
+  ],
+  "sound_tags_already_stored": [
+   "Reggae and dancehall sound system with dubplate specials"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/ReggaeRajahs/pressure-drop-191-reggae-rajahs-18-09-2020/",
+   "https://www.mixcloud.com/diggydang/diggy-dang-dancehall-4eva-new-delhi-india-4th-august-2018/",
+   "https://www.mixcloud.com/diggydang/diggy-dang-live-boxout-weekender-08-04-2018/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "eras",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "direct-drive",
+  "name": "Direct Drive",
+  "kind": "musician",
+  "based_city": "Delhi",
+  "from_city": null,
+  "genres": [
+   "house",
+   "progressive",
+   "minimal"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "directdrive__",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=eT9U88QWlys",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Direct Drive is a Delhi DJ project built around vinyl and vinyl-heavy sets of house, techno, jazz, dub and global grooves. It has played in New Delhi, London, Hyderabad, Goa, Lyon, Amsterdam and Edinburgh, and was on the Magnetic Fields Nomads 2026 lineup.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "Majorly through vinyl DJing",
+   "Warm analog sound"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=eT9U88QWlys",
+   "https://refugeworldwide.com/radio/singju-1",
+   "https://soundcloud.com/wind-horse-records/mix-003-ft-direct-drive"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "ids"
+  ]
+ },
+ {
+  "slug": "discokid",
+  "name": "DISCOKID",
+  "kind": "musician",
+  "based_city": "Goa, India",
+  "from_city": null,
+  "genres": [
+   "Disco",
+   "Funk",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/iamdiscokid",
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://soundcloud.com/iamdiscokid/mixmag-presents-the-lab-goa-featuring-discokid",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Discokid is the DJ name of Fatema Hakim, a disco and funk DJ from India. Her property Paradise Disco hosted the first Disco Diwali in 2021. She played Mixmag's The Lab Goa in January 2022.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://mixmag.net/read/discokid-in-the-lab-goa-dj-lab",
+   "https://grayarea.co/magazine/mixmag-lab-goa-discokid-mix-of-the-week",
+   "https://www.virtualclubbinglife.com/disco-funk-and-house-set-from-discokid-in-the-lab-goa/",
+   "https://gogoanow.com/goa-based-musician-discokid-perform-serendipity-arts-festival-2023/"
+  ],
+  "sound_tags_already_stored": [
+   "a collection of worldwide musical gems to perform a funky live set"
+  ],
+  "mix_urls_already_stored": [
+   "https://soundcloud.com/iamdiscokid/discokid-2-80s-were-for-shiny-balls",
+   "https://soundcloud.com/iamdiscokid/discokid-secret-guests-asia-at-downtown-tulum-radio",
+   "https://soundcloud.com/iamdiscokid/live-at-nye-2026-juna-goa",
+   "https://www.youtube.com/watch?v=x3pF5DucVjE",
+   "https://www.youtube.com/watch?v=ELmuz5QjV6o"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "dj-mocity",
+  "name": "DJ MoCity",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "Baghdad",
+  "genres": [],
+  "spotify": null,
+  "soundcloud": "https://www.soundcloud.com/djmocity",
+  "instagram": "djmocity",
+  "website": "http://mohd.website",
+  "mix_url": "https://soundcloud.com/thewildcity/wild-city-080-dj-mocity",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "DJ MoCity was born in Baghdad and raised in New Delhi, and co-founded the online community radio station boxout.fm with Dualist Inquiry, where he hosts the show Motellacast. He also co-founded Reggae Rajahs, described as India's first reggae sound system, and the labels Dualism Records and 264 Records.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/features/6791-championing-new-music-with-an-uncompromising-vision-boxout-fm",
+   "https://www.thewildcity.com/features/2609-a-comprehensive-guide-to-boxout-fm",
+   "https://www.thewildcity.com/mixes/3099-wild-city-080-dj-mocity"
+  ],
+  "sound_tags_already_stored": [
+   "Reggae, hip hop, electronica"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/playlists/motellacast/",
+   "https://soundcloud.com/thewildcity/wild-city-080-dj-mocity",
+   "https://www.youtube.com/watch?v=t-nkNKKOZXs"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/djmocity",
+   "bandcamp": "https://djmocity.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases"
+  ]
+ },
+ {
+  "slug": "dj-pants",
+  "name": "DJ PANTS",
+  "kind": "musician",
+  "based_city": "India",
+  "from_city": "India",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://soundcloud.com/thewildcity/wild-city-242-dj-pants",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "DJ Pants is the alias of Aditya Mehta, a multidisciplinary artist and live sound engineer. He plays Balearic beat, disco, boogie, house and street soul, moving from relaxed daytime sets to club energy. He is on the Magnetic Fields artist roster.",
+  "releases_on_record": 1,
+  "release_years": [
+   2024,
+   2024
+  ],
+  "sample_releases": [
+   "Extra Style (2024, PARADIA)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/20911-wild-city-242-dj-pants"
+  ],
+  "sound_tags_already_stored": [
+   "bass-heavy house",
+   "lush, relaxed grooves with harder, club-focused energy",
+   "downtempo breakbeats and deep basslines"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-230-girls-night-out-b2b-dj-pants-19-04-2023/",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-209-dj-pants-26-10-2022/",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-194-dj-pants-13-07-2022/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "dj-ravator",
+  "name": "DJ RAVATOR",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "New Delhi",
+  "genres": [
+   "Bass"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "saprasap",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Self-made Delhi producer. DGTL circuit.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.bollywoodhungama.com/news/features/t-series-ropes-indian-youth-sensation-dj-ravator"
+  ],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "plays",
+   "eras",
+   "releases",
+   "tags",
+   "ids"
+  ]
+ }
+]

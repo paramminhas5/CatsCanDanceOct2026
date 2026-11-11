@@ -1,0 +1,390 @@
+[
+ {
+  "slug": "agent",
+  "name": "AGENT",
+  "kind": "musician",
+  "based_city": "Goa",
+  "from_city": null,
+  "genres": [
+   "bass"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/playlists/world-ocean/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "AGENT is Smita Singh, a fashion designer, interior stylist and co-founder of Magnetic Fields Festival who lives in Goa. Raised on 80s and 90s funk, hip-hop and house, she hosted World Ocean on boxout.fm, a show of soulful, genre-hopping music from across continents.",
+  "releases_on_record": 1,
+  "release_years": [
+   2018,
+   2018
+  ],
+  "sample_releases": [
+   "Now And Then (with Daulat and Kaleekarma) (2018)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/13385-boxout-fm-to-celebrate-world-oceans-day-with-six-hour-showcase-featuring-agent"
+  ],
+  "sound_tags_already_stored": [
+   "global bass music",
+   "old school funk, hip-hop and house"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/playlists/world-ocean/",
+   "https://www.mixcloud.com/smita-singh/world-ocean-017-agent-08-06-2019/",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-180-agent-06-04-2022/",
+   "https://www.mixcloud.com/smita-singh/agent-live-boxout-weekender-07-04-2018/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "agent-bugs",
+  "name": "AGENT BUGS",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Played CCD Episode 2 at Indiranagar Social.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "ak-sports",
+  "name": "AK SPORTS",
+  "kind": "musician",
+  "based_city": "Los Angeles, USA",
+  "from_city": "Sydney, Australia",
+  "genres": [
+   "Hard Techno",
+   "Hardstyle",
+   "Trance"
+  ],
+  "spotify": "https://open.spotify.com/artist/7qiOBa5jCbTeyLY2Chw9ju",
+  "soundcloud": "https://soundcloud.com/aksportsdj",
+  "instagram": "aksportsdj",
+  "website": null,
+  "mix_url": "https://soundcloud.com/platform/ak-sports-bengaluru",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "AK Sports is a Sydney-born radio host, DJ and producer based between London and Los Angeles. The show on Rinse FM and the sets run through hard techno, hardstyle and trance. AK Sports played Boiler Room Bengaluru on 7 June 2024.",
+  "releases_on_record": 7,
+  "release_years": [
+   2020,
+   2024
+  ],
+  "sample_releases": [
+   "You Forget (Remixes) (2024, Sweat It Out!)",
+   "Ride Or Die (2024, HARD Recs)",
+   "Displaced (2022, Lobster Theremin)",
+   "Lost In The Sauce EP (2022, Shall Not Fade)",
+   "Gurl EP (AK Sports remix) (2021, Dansu Discs)",
+   "Queens of Club (2020, Raiders Records)",
+   "Polarize (2020, Gallery Recordings)"
+  ],
+  "press_urls_already_stored": [
+   "https://mixmag.net/read/ak-sports-shares-debut-v-a-on-club-madhouse-imprint-news",
+   "https://djmag.com/features/fresh-kicks-199-ak-sports",
+   "https://brokemagazine.co.uk/ak-sports-b2b-broke-magazine",
+   "https://grayarea.co/magazine/ones-to-watch-ak-sports"
+  ],
+  "sound_tags_already_stored": [
+   "High NRG Techno, Breakcore, and experimental 4x4",
+   "oddball beat structures with layer upon layer of dancefloor reference points",
+   "hard, fast, fun techno sets and productions",
+   "new-world-rave under the techno umbrella"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.rinse.fm/episodes/ak-sports-25-01-2024-0100",
+   "https://djmag.com/features/fresh-kicks-199-ak-sports"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://aksports.bandcamp.com",
+   "beatport": "https://beatport.com/artist/ak-sports/835442",
+   "discogs": "https://www.discogs.com/artist/8251322",
+   "deezer": "88991832",
+   "ra": "https://ra.co/dj/sports",
+   "musicbrainz": "1f33306e-ddc2-4917-8e1e-68c2a5e349e9"
+  },
+  "has_eras": true,
+  "mbid": "1f33306e-ddc2-4917-8e1e-68c2a5e349e9",
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "amrisha",
+  "name": "Amrisha",
+  "kind": "musician",
+  "based_city": "London",
+  "from_city": null,
+  "genres": [
+   "global club"
+  ],
+  "spotify": null,
+  "soundcloud": "https://www.soundcloud.com/iamrisha",
+  "instagram": "amrishasingh__",
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/playlists/a-worldwide-thing/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Amrisha Singh is a London-based DJ and radio presenter who plays eclectic, soulful and percussive music from around the world. Her long-running show A Worldwide Thing started on Delhi online station Radio 79, has been on boxout.fm since the station began, and has aired on Worldwide FM, Jazz FM and Voices Radio.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/features/2481-a-worldwide-thing-august",
+   "https://www.thewildcity.com/features/2460-a-worldwide-thing-march"
+  ],
+  "sound_tags_already_stored": [
+   "eclectic, soulful and percussive"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/playlists/a-worldwide-thing/",
+   "https://www.worldwidefm.net/episode/worldwide-breakfast-valentine-comar-w-amrisha-guest-mix",
+   "https://www.mixcloud.com/VoicesRadio/a-worldwide-thing-w-amrisha-011126-voices-radio/",
+   "https://www.mixcloud.com/VoicesRadio/a-worldwide-thing-w-amrisha-singh-170324-voices-radio/",
+   "https://www.mixcloud.com/VoicesRadio/voices-south-asian-takeover-awaaz-amrisha-w-sandunes-310125-voices-radio/"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/amrisha"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases"
+  ]
+ },
+ {
+  "slug": "aneesha-kotwani",
+  "name": "Aneesha Kotwani",
+  "kind": "musician",
+  "based_city": "Mumbai",
+  "from_city": null,
+  "genres": [],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/playlists/wavlngth/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Aneesha Kotwani is a Mumbai-based radio presenter and the founder of WAVLNGTH, a music agency she started in 2016 that works on touring, artist management, radio and content. She moved to the UK in 2009, returned to India in 2013, and has presented shows on BBC Asian Network, Soho Radio, Worldwide FM and boxout.fm.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [
+   "https://everpress.com/blog/bridging-the-gap-with-wavlngth/",
+   "https://mixmag.net/amp/bbc-asian-network-dj-residencies-dj-kye-almass-badat-dj-nojan-aneesha-kotwani",
+   "https://mixmag.asia/feature/electric-india-wavlngth-founder-aneesha-kotwani-global-agenda"
+  ],
+  "sound_tags_already_stored": [
+   "alternative dance music from across India"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/playlists/wavlngth/",
+   "https://worldwidefm.net/episode/wavlngth-aneesha-kotwani",
+   "https://sohoradiolondon.com/show/house-of-carder-x-wavlngth-27-with-aneesha-kotwani-14-04-2021/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "eras",
+   "releases",
+   "ids"
+  ]
+ },
+ {
+  "slug": "angus-12",
+  "name": "Angus 12",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "anish-sood",
+  "name": "ANISH SOOD",
+  "kind": "musician",
+  "based_city": "Goa",
+  "from_city": "India",
+  "genres": [
+   "Progressive",
+   "Deep House"
+  ],
+  "spotify": "https://open.spotify.com/artist/7qjp4poDA0EDaiCEKuH1ZQ",
+  "soundcloud": null,
+  "instagram": "anyasamusic",
+  "website": "https://anyasa.com",
+  "mix_url": "https://www.youtube.com/watch?v=YPS38_c3RHw",
+  "labels": "Anjunadeep (UK)",
+  "members": "ANYASA",
+  "bio_excerpt": "Anish Sood records as Anyasa and was born in Goa in 1989. He debuted on Anjunadeep in July 2021 with the single Rasiya, reported as the first Indian artist signed to the label. He also runs the label Class Action.",
+  "releases_on_record": 10,
+  "release_years": [
+   2011,
+   2020
+  ],
+  "sample_releases": [
+   "Say My Name (2020, Class Action)",
+   "Running Back to You (2020, Class Action)",
+   "Mountain of a Man (2018, Class Action)",
+   "Castles (2018, Class Action)",
+   "Starry Night (2017, Class Action)",
+   "Going Under (2017, Class Action)",
+   "Don't Stop (2017, Class Action)",
+   "Superfly (2015)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/18613-anish-sood-debuts-as-anyasa-on-anjunadeep-with-new-single-rasiya",
+   "https://rollingstoneindia.com/anish-sood-transitions-into-anyasa-releases-new-single-rasiya/",
+   "https://mixmag.net/feature/anyasa-anjunadeep-anjunabeats-goa-india-traditional-interview",
+   "https://anjunadeep.com/news/top-10-most-epic-livestreams",
+   "https://rollingstoneindia.com/anyasa-flectere-ep-north-america-tour",
+   "https://homegrown.co.in/homegrown-creators/indian-producer-anyasa-is-taking-his-new-ep-on-a-north-american-tour",
+   "https://mixmag.asia/read/above-beyond-anyasa-anjunadeep-ep-india-local",
+   "https://mixmag.net/read/anyasa-in-the-lab-goa-dj-lab"
+  ],
+  "sound_tags_already_stored": [
+   "a dreamy, cross-cultural melange"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=GsLRpF6hrUU",
+   "https://www.youtube.com/watch?v=YPS38_c3RHw",
+   "https://www.youtube.com/watch?v=wiV3ONkzzJ8",
+   "https://www.youtube.com/watch?v=XrCSQ5vuLbw",
+   "https://www.youtube.com/watch?v=7ueAKLgf7co"
+  ],
+  "ids_already_stored": {
+   "discogs": "2871210",
+   "wikidata": "Q4765311",
+   "musicbrainz": "78361be1-bcb4-4758-8281-5b8e17286231",
+   "deezer": "4943579",
+   "beatport": "https://www.beatport.com/artist/anish-sood/207812"
+  },
+  "has_eras": true,
+  "mbid": "78361be1-bcb4-4758-8281-5b8e17286231",
+  "gaps": [
+   "claims"
+  ]
+ },
+ {
+  "slug": "anisha",
+  "name": "Anisha",
+  "kind": "musician",
+  "based_city": "Bombay",
+  "from_city": null,
+  "genres": [
+   "ambient",
+   "breaks",
+   "idm"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=Edh4A1gjxYI",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=Edh4A1gjxYI",
+   "https://www.youtube.com/watch?v=a3UVajdJqxA"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ }
+]

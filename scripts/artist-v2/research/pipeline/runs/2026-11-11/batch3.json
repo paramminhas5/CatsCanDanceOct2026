@@ -1,0 +1,414 @@
+[
+ {
+  "slug": "antariksh-daddy",
+  "name": "Antariksh Daddy",
+  "kind": "musician",
+  "based_city": "Delhi",
+  "from_city": null,
+  "genres": [
+   "house",
+   "electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "antarikshdaddy",
+  "website": null,
+  "mix_url": "https://refugeworldwide.com/radio/singju-jogita-and-antariksh-daddy-05-may-2025",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Antariksh Daddy is the DJ and producer name of Anandit Sachdev, a record collector and researcher based in Delhi. He started DJing in Berlin in 2015 and, after returning to India in 2018, founded Antariksh Records, a label and community project for dance music in South Asia. He has played in Germany, Egypt and Indonesia, and released the breakbeat EP Stank Face Star Sign on Antariksh Records in 20",
+  "releases_on_record": 1,
+  "release_years": [
+   2023,
+   2023
+  ],
+  "sample_releases": [
+   "Stank Face Star Sign (2023, Antariksh Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://homegrown.co.in/homegrown-creators/hgmusic-listen-to-new-releases-from-pranav-bhasin-antariksh-daddy-more"
+  ],
+  "sound_tags_already_stored": [
+   "Bollywood disco boogie",
+   "Breakbeat"
+  ],
+  "mix_urls_already_stored": [
+   "https://refugeworldwide.com/radio/singju-jogita-and-antariksh-daddy-05-may-2025",
+   "https://www.youtube.com/watch?v=zxWFrSURuf0",
+   "https://www.youtube.com/watch?v=OYmG9RfA9Vk",
+   "https://www.youtube.com/watch?v=uOPuCg_f9K4",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-254-antariksh-daddy-04-10-2023/"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://antarikshdaddy.bandcamp.com/"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "anushka",
+  "name": "ANUSHKA",
+  "kind": "musician",
+  "based_city": "Goa, India",
+  "from_city": "India",
+  "genres": [
+   "Breaks",
+   "Disco",
+   "House"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://soundcloud.com/thewildcity/wild-city-235-anushka",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Anushka Menon is a Goa-based DJ and former fashion and beauty photographer. She is one half of the duo Anushka + Agent with Smita Singh, a co-founder of Magnetic Fields. Her Wild City #235 mix, recorded at JUNA, was released on 28 May 2024.",
+  "releases_on_record": 3,
+  "release_years": [
+   2019,
+   2025
+  ],
+  "sample_releases": [
+   "Cruise Control (OX7GEN feat. Anushka) (2025, Fresh Air Records)",
+   "Take (2020)",
+   "Falling (2019)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/21071-ox7gen-launches-new-label-fresh-air-records-with-single-cruise-control-feat-anushka",
+   "https://rollingstoneindia.com/anushka-sid-vashi-take-video",
+   "https://www.kaltblut-magazine.com/machine-love-an-interview-with-anushka-agent/",
+   "https://grayarea.co/magazine/anushka-menon-dichotomy-the-vogue-anarchist-and-rave-alchemist"
+  ],
+  "sound_tags_already_stored": [
+   "Drum and bass meets disco shimmer",
+   "Electro jolts and restless grooves"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/9394-wild-city-154-anu-hka",
+   "https://www.youtube.com/watch?v=t8doKAf1LYA"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "ashna",
+  "name": "Ashna",
+  "kind": "musician",
+  "based_city": "Delhi",
+  "from_city": null,
+  "genres": [
+   "acid house",
+   "house",
+   "minimal house"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "ashnamalik_music",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=q7aC1Y21HXc",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=q7aC1Y21HXc",
+   "https://www.mixcloud.com/AcidMoons/moon-tunes-ft-ashna-malik/",
+   "https://www.youtube.com/watch?v=tYGQtVaIF48",
+   "https://www.mixcloud.com/boxoutfm/ashna-malik-true-music-fund-pop-up-radio-23102025/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "audio-units",
+  "name": "AUDIO UNITS",
+  "kind": "musician",
+  "based_city": "Bengaluru, India",
+  "from_city": "India",
+  "genres": [
+   "Techno"
+  ],
+  "spotify": "https://open.spotify.com/artist/2WzS5ZDxPqo32zdVI3hHk9",
+  "soundcloud": "https://soundcloud.com/audiounits",
+  "instagram": "audio_units",
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/3128-wild-city-109-audio-units",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Audio Units is a brother duo making hardware-driven techno inspired by art, science fiction and technology. They have released on Molecular, Newrhythmic, Dynamic Reflection and Illegal Alien, and played DGTL.",
+  "releases_on_record": 41,
+  "release_years": [
+   2011,
+   2025
+  ],
+  "sample_releases": [
+   "GSTDVA002 (2025, Genom Sequence)",
+   "Magnum Opus (2025, Molecular Recordings)",
+   "Best Of PRX Vol.2 (2024, PRX Records)",
+   "Macro Data Refinement (2024, Devotion Records)",
+   "Chapter Two/No Sleep (2024, Balders Audio)",
+   "Atraxia (2024, Illegal Alien Records)",
+   "Halcyon (2024, Qilla Records)",
+   "Aristotelian Tradition EP (2023, Mind Medizin Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://mixmag.asia/read/mama-snake-audio-units-and-kollision-in-the-lab-mumbai-local",
+   "https://djmag.com/listen/premiere-audio-units-aristotelian-tradition-ben-sims-remix",
+   "https://findyoursounds.com/bangalore-based-brotherly-duo-ashwin-and-ashrith-baburao-combine-as-audio-units-on-a-potent-new-ep-for-lady-tazzs-mind-medizin-featuring-remixes-from-ben-sims-and-temudo/",
+   "https://dirty-epic.com/2023/04/10/audio-units-the-gateway-experience-anaoh-records-april-3rd-2023/"
+  ],
+  "sound_tags_already_stored": [
+   "forward moving, body rolling",
+   "a detailed, modern interpretation of techno",
+   "4/4 rhythms with glitchy digital bleeps and swirling textures",
+   "heart-pounding techno with some dub features"
+  ],
+  "mix_urls_already_stored": [
+   "https://soundcloud.com/platform/audio-units-hyderabad"
+  ],
+  "ids_already_stored": {
+   "discogs": "2635049",
+   "musicbrainz": "0b00f1fa-be3e-4d33-8727-70a7a56ffcc2",
+   "deezer": "1511447",
+   "ra": "https://ra.co/dj/audiounits",
+   "beatport": "https://www.beatport.com/artist/audio-units/205092"
+  },
+  "has_eras": true,
+  "mbid": "0b00f1fa-be3e-4d33-8727-70a7a56ffcc2",
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "avantika",
+  "name": "AVANTIKA",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": null,
+  "genres": [
+   "house",
+   "indian electronic",
+   "afro house",
+   "organic"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/avantikabakshi",
+  "instagram": "avantikabakshi",
+  "website": "https://avantikabakshi.com",
+  "mix_url": "https://www.youtube.com/watch?v=Vafwx-9U7tw",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Avantika is an Indian-born DJ, producer and singer who plays house music with live vocals, drawing on classical Indian vocal training and rock. Her debut EP, Moody Koyal, came out on Berlin label Get Physical Music in June 2025. Press around the release called her the first Indian DJ to play EXIT Festival in Serbia.",
+  "releases_on_record": 1,
+  "release_years": [
+   2025,
+   2025
+  ],
+  "sample_releases": [
+   "Moody Koyal (2025, Get Physical Music)"
+  ],
+  "press_urls_already_stored": [
+   "https://housenest.net/?p=23091",
+   "https://mixmagde.com/read/avantika-debuts-on-get-physical-with-spellbinding-moody-koyal-ep-music"
+  ],
+  "sound_tags_already_stored": [
+   "Hybrid live DJ sets with vocals",
+   "Groove-driven global house"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=Vafwx-9U7tw",
+   "https://www.mixcloud.com/avantikabakshi/6-december-2015-sunburn-live/",
+   "https://www.mixcloud.com/RaipurUndergroundCommunity/rucast-002-by-avantika-bakshi/",
+   "https://www.mixcloud.com/RavingSocietyRadio/avantika-bakshi-ravingsocietyradio-20062018/"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/avantika"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "claims"
+  ]
+ },
+ {
+  "slug": "ayushman",
+  "name": "Ayushman",
+  "kind": "musician",
+  "based_city": "Mumbai",
+  "from_city": null,
+  "genres": [
+   "house",
+   "hard house",
+   "hardgroove",
+   "trance"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=EWhkQA_kTmg",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=EWhkQA_kTmg",
+   "https://www.youtube.com/watch?v=bLkluJrURdM",
+   "https://www.youtube.com/watch?v=pjIkH7U50l0",
+   "https://www.youtube.com/watch?v=ZV-4YXC_EVA"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "baalti",
+  "name": "Baalti",
+  "kind": "musician",
+  "based_city": "New York",
+  "from_city": null,
+  "genres": [
+   "global club",
+   "south asian club",
+   "uk bass"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/baalti",
+  "instagram": "baalti.mp3",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=eVvY7djtPI4",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Baalti is a DJ and production duo of Mihir Chauhan and Jaiveer Singh, both born in India, who started in the San Francisco Bay Area in 2020 and are now based in New York. Their music blends UK bass and club styles with the soundsystem traditions of West Bengal and Delhi, with releases on Krunk Kulture, All My Thoughts and Steel City Dance Discs. They host a monthly show on Rinse FM.",
+  "releases_on_record": 7,
+  "release_years": [
+   2021,
+   2026
+  ],
+  "sample_releases": [
+   "Threads (with Lapgan) (2026, Azal Records)",
+   "Stunt Doubles (Pt. 1) (2025)",
+   "Mela (2025, Steel City Dance Discs)",
+   "123 (2025)",
+   "Stunt Doubles (Pt. 2) (2025)",
+   "Better Together (2023, All My Thoughts)",
+   "Baalti (2021, Krunk Kulture)"
+  ],
+  "press_urls_already_stored": [
+   "https://djmag.com/features/dj-mags-artists-watch-2026",
+   "https://djmag.com/features/selections-baalti",
+   "https://ra.co/reviews/35925",
+   "https://mixmag.asia/read/baalti-mela-ep-inspired-by-soundsystem-culture-west-bengal-steel-city-dance-discs-new-releases",
+   "https://www.thewildcity.com/news/18730-baalti-sample-rupa-biswas-ustad-zakir-hussain-more-on-eponymous-debut-ep"
+  ],
+  "sound_tags_already_stored": [
+   "West Bengal soundsystem culture",
+   "Lots of percussion, kinda wonky",
+   "UK bass with West Bengal and Delhi traditions"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=eVvY7djtPI4",
+   "https://www.rinse.fm/episodes/baalti-09-02-2026-0100",
+   "https://www.rinse.fm/episodes/baalti-09-05-2025-1900",
+   "https://refugeworldwide.com/radio/all-my-thoughts-label-tour-takeover-baalti-mauv-and-tom-vr-01-feb-2024",
+   "https://www.mixcloud.com/mixmagasia/mixmag-asia-radio-114-baalti-indiausa/"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://baalti.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "baba",
+  "name": "Baba",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "hip hop",
+   "pop",
+   "dance"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "baba___music",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=wytIHU-iO9g",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=wytIHU-iO9g"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ }
+]

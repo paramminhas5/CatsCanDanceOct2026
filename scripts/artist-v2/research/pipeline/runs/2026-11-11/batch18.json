@@ -1,0 +1,404 @@
+[
+ {
+  "slug": "sage",
+  "name": "Sage",
+  "kind": "musician",
+  "based_city": "Delhi",
+  "from_city": null,
+  "genres": [
+   "electro",
+   "breakbeat",
+   "house"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "harshitaasethi",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=cp7RIj8Hizc",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=cp7RIj8Hizc",
+   "https://www.mixcloud.com/Aajamusic/scaefa-w-ebitda-b2b-sage-aaja-channel-1-01-01-25/",
+   "https://www.youtube.com/watch?v=eo8n1ogoRbs",
+   "https://www.youtube.com/watch?v=f0qiAHxEa9M",
+   "https://www.youtube.com/watch?v=qOZh8vLOscY",
+   "https://www.youtube.com/watch?v=o2BoKyj9NoA"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "sanjith",
+  "name": "Sanjith",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "house",
+   "techno"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/unequalunequal-001-sanjith-06-10-2017/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Sanjith is a DJ who hosted two boxout.fm shows from 2017: Unequal, with house and techno selections, and Groove Nuggets, with soulful and funky cuts from around the world. He played a deep house, breaks and electro set at the first Boxout Weekender in April 2018.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "Multi-cultural soulful and groovy cuts",
+   "Tailor made house and techno selections"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/groove-nuggets-009-sanjith-20-04-2017/",
+   "https://www.mixcloud.com/boxoutfm/unequalunequal-007-sanjith-13-04-2018/",
+   "https://www.mixcloud.com/boxoutfm/groove-nuggets-001-sanjith-11-11-2017/",
+   "https://www.mixcloud.com/boxoutfm/unequalunequal-001-sanjith-06-10-2017/",
+   "https://www.mixcloud.com/boxoutfm/sanjith-live-boxout-weekender-07-04-2018/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "releases",
+   "press",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "sarathy-korwar",
+  "name": "Sarathy Korwar",
+  "kind": "musician",
+  "based_city": "London",
+  "from_city": null,
+  "genres": [
+   "jazz"
+  ],
+  "spotify": "https://open.spotify.com/artist/5GzH8EsRPqgNjNo3oBfRvk",
+  "soundcloud": "https://soundcloud.com/sarathykorwar",
+  "instagram": "sarathykorwar",
+  "website": "http://www.sarathykorwar.com/",
+  "mix_url": "https://www.mixcloud.com/boxoutfm/playlists/endangered-species/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Sarathy Korwar is a percussionist and composer born in the US, raised in India and based in London. He blends Indian classical and folk traditions with jazz and electronics, on albums including Day To Day (Ninja Tune, 2016), More Arriving (The Leaf Label, 2019) and KALAK (The Leaf Label, 2022). He hosted the monthly boxout.fm show Endangered Species and played Boxout Weekender 2019 in New Delhi.",
+  "releases_on_record": 18,
+  "release_years": [
+   2016,
+   2025
+  ],
+  "sample_releases": [
+   "There Is Beauty, There Already (2025)",
+   "Beauty Doesn't Know What It Looks Like / We Won't Go Searching (2025)",
+   "KAL (Real World) (2023)",
+   "Kalak (2022, The Leaf Label)",
+   "Shruti Dances (2022)",
+   "Otherland (2020, The Leaf Label)",
+   "Turner on the 20 (2020)",
+   "Birthright (2020)"
+  ],
+  "press_urls_already_stored": [
+   "https://rollingstoneindia.com/sarathy-korwar-preps-dj-set-tour-kicking-off-next-week/amp",
+   "https://rollingstoneindia.com/sarathy-korwar-india-tour-more-arriving/amp",
+   "https://mixmag.net/feature/sarathy-korwar-idris-rahman-in-conversation-interview-jazz-classical-south-asian-series",
+   "https://homegrown.co.in/homegrown-creators/decolonising-utopia-listen-to-drummer-sarathy-korwars-indo-futurist-concept-album",
+   "https://www.thewildcity.com/features/2575-bridging-the-gap-an-interview-with-sarathy-korwar"
+  ],
+  "sound_tags_already_stored": [
+   "Indo-futurism",
+   "Indian classical and folk with jazz and electronics",
+   "Indian-electronic-jazz"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/playlists/endangered-species/",
+   "https://www.mixcloud.com/CrackMagazine/sunday-mix-sarathy-korwar/",
+   "https://www.mixcloud.com/TheVinylFactory/vf-mix-121-indo-jazz-by-sarathy-korwar/",
+   "https://www.mixcloud.com/NTSRadio/sarathy-korwar-indian-folk-music-special-18th-september-2022/"
+  ],
+  "ids_already_stored": {
+   "wikidata": "Q60168475",
+   "musicbrainz": "90adc9e6-e622-447f-a61c-da0f2d9300a8",
+   "discogs": "https://www.discogs.com/artist/5147902",
+   "bandcamp": "https://sarathykorwar.bandcamp.com/"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "sartdawg",
+  "name": "SARTDAWG",
+  "kind": "musician",
+  "based_city": "Bengaluru",
+  "from_city": "Bengaluru",
+  "genres": [
+   "House",
+   "Disco",
+   "Garage"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "startdawg",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "House selector with a soft spot for disco edits and the long build. CCD resident. Plays Bar Wild, Social and club nights across the city.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "plays",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids"
+  ]
+ },
+ {
+  "slug": "shama-anwar",
+  "name": "SHAMA ANWAR",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": "East London, UK",
+  "genres": [
+   "Electronic"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": null,
+  "mix_url": "https://www.thewildcity.com/mixes/11892-wild-city-167-shama-anwar",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Shama Anwar is a British-born, Bangladesh-raised DJ and music publicist from East London. Her sets move across genres and sit closest to UK garage, taking in techno, house and minimal.",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "Lush jazz numbers",
+   "Trap vibes",
+   "Unapologetically unique take on hip-hop and electronic music"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/SelectorRadio/south-asian-heritage-month-special-round-table-the-link-up-shama-anwar-guest-mix-13-aug-21/",
+   "https://www.mixcloud.com/boxoutfm/chai-and-chill-048-shama-anwar-03-02-2019/",
+   "https://www.mixcloud.com/drmartens/shama-anwar-dj-set-dr-martens-on-air-camden/",
+   "https://www.mixcloud.com/boxoutfm/world-of-echo-001-shama-anwar-22-06-2019/",
+   "https://www.mixcloud.com/magneticfieldsfestival/shama-anwar-budxyard-mf19/"
+  ],
+  "ids_already_stored": {},
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "releases",
+   "press",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "shantam",
+  "name": "SHANTAM",
+  "kind": "musician",
+  "based_city": "Noida, India",
+  "from_city": "India",
+  "genres": [
+   "Ambient",
+   "Techno"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/shantamk",
+  "instagram": "shantam",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Echoes of Earth 2024, Magnetic Fields regular.",
+  "releases_on_record": 11,
+  "release_years": [
+   2019,
+   2026
+  ],
+  "sample_releases": [
+   "Iridescent (Shantones series, 2nd EP) (2026)",
+   "BAGGAGE (2026)",
+   "Millefluous (2026)",
+   "FreaQ (2025)",
+   "FLiPS (2025)",
+   "Out The House (2024, Krunk Kulture)",
+   "bleep (2023, Noosphere Network)",
+   "Patturbed (2023, Soupherb Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/18742-shantam-releases-14-track-album-telekinetik-via-social-isolation",
+   "https://www.thewildcity.com/news/20485-shantam-adds-emotional-warmth-to-idm-frenzy-on-ep-bleep",
+   "https://www.thewildcity.com/news/21759-shantam-releases-2nd-ep-under-shantones-series-exploring-techno"
+  ],
+  "sound_tags_already_stored": [
+   "genre-defying, breaks techno that pushes boundaries",
+   "IDM; emotionally warm; chopped, stiff breakbeats",
+   "four-to-the-floor techno with rolling drums and 909 snare rolls",
+   "abstract compositions, analog textures, funk-house, dub, leftfield/ambient/noise",
+   "wonky and groovy take on beat",
+   "low, murky analog textures, punchy drums, lingering melodies; drum machines, samplers and synths live",
+   "playful and genre-fluid"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "deezer": "1093443",
+   "musicbrainz": "733dbce9-1fc8-4c77-847c-e5dd7b09b25a",
+   "discogs": "https://www.discogs.com/artist/2302399"
+  },
+  "has_eras": true,
+  "mbid": "733dbce9-1fc8-4c77-847c-e5dd7b09b25a",
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "shasha",
+  "name": "Shasha",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "house music",
+   "deep house",
+   "tech house"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": "shasha.lively",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=nNVBFZtx6E0",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": null,
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=nNVBFZtx6E0",
+   "https://www.youtube.com/watch?v=zBQ32WUHloU",
+   "https://www.youtube.com/watch?v=b_8ML6U92xQ",
+   "https://www.youtube.com/watch?v=SbJkrshDCPQ"
+  ],
+  "ids_already_stored": {},
+  "has_eras": false,
+  "mbid": null,
+  "gaps": [
+   "bio",
+   "photo",
+   "eras",
+   "releases",
+   "press",
+   "tags",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "sheral",
+  "name": "SHERAL",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "India",
+  "genres": [
+   "House",
+   "Bass",
+   "Breaks",
+   "Footwork",
+   "Techno"
+  ],
+  "spotify": null,
+  "soundcloud": "https://www.soundcloud.com/sheralb",
+  "instagram": "sheralb_",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=wKnDYbAlPcU",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Sheral is a Delhi-based DJ and graphic designer who moves through house, bass, breaks, footwork, and techno to shape a sound that is distinctly hers. She is a rising female DJ in the Indian electronic scene, known for her colourful energy and explorative approach. She made her Boiler Room debut in Gurugram (Delhi NCR) in June 2024 alongside Kohra, Prismer, Girls Night Out, and AK Sports. In April ",
+  "releases_on_record": 0,
+  "release_years": [
+   null,
+   null
+  ],
+  "sample_releases": [],
+  "press_urls_already_stored": [],
+  "sound_tags_already_stored": [
+   "merging club sounds with a deep instinct for rhythm",
+   "glitchy rhythms, unexpected textures, and weird basslines"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.thewildcity.com/mixes/21137-wild-city-248-sheral",
+   "https://soundcloud.com/platform/sheral-gurugram-delhi-ncr",
+   "https://www.mixcloud.com/sheralbabbarr/sheral-b2b-bombie/",
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-229-sheral-12-04-2023/",
+   "https://www.mixcloud.com/SoundRedefined/ambient-drift-ix-sheral-014/",
+   "https://www.mixcloud.com/boxoutfm/sheral-true-music-fund-pop-up-radio-23102025/",
+   "https://www.youtube.com/watch?v=otY-903rLmE",
+   "https://www.youtube.com/watch?v=DTlmPnQ71bo"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/sheral"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "releases",
+   "press"
+  ]
+ }
+]

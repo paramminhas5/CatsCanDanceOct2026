@@ -1,0 +1,294 @@
+[
+ {
+  "slug": "vridian",
+  "name": "Vridian",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "New Delhi",
+  "genres": [
+   "progressive house",
+   "dubstep",
+   "minimal deep tech",
+   "minimal / deep tech"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/vridianmusic",
+  "instagram": "vridianmusic",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=tKSzxcHq3uI",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "VRIDIAN is an electronic music project from New Delhi led by Vir Rattan Chowdhry (Vir RC), who calls his music deep, emotive and groovy electronic music. He has released on Qilla Records and Manjumasi, moving from melodic techno and minimal house to darker techno on the 2025 EP 'Days Of Paradiso'.",
+  "releases_on_record": 6,
+  "release_years": [
+   2019,
+   2025
+  ],
+  "sample_releases": [
+   "Days Of Paradiso (2025)",
+   "Instant Transmission (with Atish) (2022, Manjumasi)",
+   "Clandestine (with Jay Pei) (2020)",
+   "Mulberry Dreams (2020)",
+   "Strange Statistics (2020)",
+   "Knowbot (2019, Qilla Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.fredperry.com/subculture/articles/vridian",
+   "https://www.thewildcity.com/news/15595-listen-knowbot-by-vridian",
+   "https://www.thewildcity.com/news/17121-listen-mulberry-dreams-by-vridian",
+   "https://www.thewildcity.com/news/19764-vridian-atish-release-collaborative-ep-instant-transmission-via-manjumasi",
+   "https://www.thewildcity.com/news/21045-vridian-imagines-goa-s-psychedelia-with-a-techno-lens-on-days-of-paradiso"
+  ],
+  "sound_tags_already_stored": [
+   "Deep, emotive and groovy electronic music"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=tKSzxcHq3uI",
+   "https://www.youtube.com/watch?v=mIhy0f3U89s",
+   "https://www.mixcloud.com/WildCity/wild-city-151-vridianmusic/"
+  ],
+  "ids_already_stored": {
+   "beatport": "https://www.beatport.com/artist/vridian/615674"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ },
+ {
+  "slug": "weird-sounding-dude",
+  "name": "WEIRD SOUNDING DUDE",
+  "kind": "musician",
+  "based_city": "Bengaluru, India",
+  "from_city": "India",
+  "genres": [
+   "Electronic",
+   "House"
+  ],
+  "spotify": "https://open.spotify.com/artist/7IBheQbrrR0LDE5vSicwiY",
+  "soundcloud": "https://soundcloud.com/weirdsoundingdude",
+  "instagram": "weirdsoundingdude",
+  "website": null,
+  "mix_url": null,
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Indian electronic producer. Echoes of Earth 2024.",
+  "releases_on_record": 68,
+  "release_years": [
+   2014,
+   2026
+  ],
+  "sample_releases": [
+   "Withdraw (2026, Movement Recordings)",
+   "Profound Concept (2026, Armoony Records)",
+   "Jumbo (Jamie Stevens Remix) / Summersault (Weird Sounding Dude Remix) (2026, UV)",
+   "Fluorite (2026, Stripped Recordings)",
+   "Passing Nights (2025, Mango Alley)",
+   "Weightless Moments / Inside Clouds (2025, UV)",
+   "Living Dust (2025, Movement Recordings)",
+   "Nightshift / Patches & Patterns (2025, Mango Alley)"
+  ],
+  "press_urls_already_stored": [
+   "https://electronicgroove.com/eg-artists/eg-spotlight-274-weird-sounding-dude/",
+   "https://balancemusic.com.au/weird-sounding-dude-goes-deep-down-under-on-tour-of-australia-and-new-zealand/",
+   "https://magneticmag.com/2024/08/bangalores-brightest-weird-sounding-dudes-latest-remix-on-where-the-heart-is-makes-waves-on-a-global-scale/"
+  ],
+  "sound_tags_already_stored": [
+   "progressive house",
+   "chuggy grooves, squelchy rhythms, and winding melodies"
+  ],
+  "mix_urls_already_stored": [],
+  "ids_already_stored": {
+   "bandcamp": "https://weirdsoundingdude.bandcamp.com/",
+   "ra": "weirdsoundingdude",
+   "discogs": "3801958",
+   "musicbrainz": "de3c8bdb-36ab-48c4-aaaf-afdca647d63b",
+   "deezer": "6208430",
+   "beatport": "https://www.beatport.com/artist/weird-sounding-dude/363002"
+  },
+  "has_eras": true,
+  "mbid": "de3c8bdb-36ab-48c4-aaaf-afdca647d63b",
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "works-of-intent",
+  "name": "Works Of Intent",
+  "kind": "musician",
+  "based_city": null,
+  "from_city": null,
+  "genres": [
+   "techno",
+   "club",
+   "uk underground"
+  ],
+  "spotify": null,
+  "soundcloud": null,
+  "instagram": null,
+  "website": "https://worksofintent.bandcamp.com",
+  "mix_url": "https://www.youtube.com/watch?v=mrxoEs1RcMs",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Works Of Intent is the UK techno producer Roshan Chauhan, who released as R.O.S.H. on Rekids, Turbo and Monkeytown before changing his name in 2021. His debut album Richer Sound (2023) reworks big room techno with UK breaks, and he is project manager for the South Asian collective DAYTIMERS.",
+  "releases_on_record": 10,
+  "release_years": [
+   2021,
+   2026
+  ],
+  "sample_releases": [
+   "And More (2026)",
+   "Measure Of A Man (2025)",
+   "Atah (2025, Emotional Weaponry)",
+   "Gotta Get That Money (with Gray) (2025)",
+   "Greener View (with K. Monday) (2024, Emotional Weaponry)",
+   "Mother's Genes (2024)",
+   "The Body Remembers (2024)",
+   "Creek (2023)"
+  ],
+  "press_urls_already_stored": [
+   "https://mixmag.net/read/works-of-intent-shares-debut-album-richer-sound-news",
+   "https://909originals.com/2023/10/25/myrecordbag-works-of-intents-top-south-asian-electronica-cuts/",
+   "https://mixmag.net/read/techno-producer-r-o-s-h-has-changed-his-artist-name-news"
+  ],
+  "sound_tags_already_stored": [
+   "Dance music that hurts",
+   "Melancholia turned up loud",
+   "Big tunes for big hearts"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=mrxoEs1RcMs",
+   "https://www.whenwedip.com/2025/02/prima-lux-works-of-intent",
+   "https://www.mixcloud.com/johndigweed/transitions-with-john-digweed-and-works-of-intent-_/",
+   "https://www.mixcloud.com/refugeworldwide/lecken-s-ruston-works-of-intent-11-apr-2023/",
+   "https://www.mixcloud.com/EPM-Music/epm-podcast-153-works-of-intent/",
+   "https://www.mixcloud.com/worldwidefm/first-light-rohan-rakhit-w-works-of-intent-daytimers-alterations-special-24-06-2025/"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://worksofintent.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids",
+   "city"
+  ]
+ },
+ {
+  "slug": "zequenx",
+  "name": "Zequenx",
+  "kind": "musician",
+  "based_city": "New Delhi",
+  "from_city": "Kashmir",
+  "genres": [
+   "techno",
+   "acid",
+   "electro"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/zen_zanan",
+  "instagram": "zequenx",
+  "website": null,
+  "mix_url": "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-188-zequenx-01-06-2022/",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Zequenx is a DJ, producer and Ableton Certified Trainer, born in Kashmir and raised in Chiang Mai, who came up in New Delhi as a member of the collective Coven Code and now works between Goa and New Delhi. Sets run from acid and electro to dark, psychedelic techno, alongside ambient live sets. Releases include tracks on FOL Records, Regenerate and Qilla Records, and festival dates include Boxout W",
+  "releases_on_record": 3,
+  "release_years": [
+   2019,
+   2024
+  ],
+  "sample_releases": [
+   "Retrograde (2024, Qilla Records)",
+   "Tyrbl Tymz (2021, Regenerate)",
+   "Terry's Trips (2019, FOL Records)"
+  ],
+  "press_urls_already_stored": [
+   "https://www.thewildcity.com/news/15545-far-out-left-debuts-fol-records-with-v-a-2019-compilation",
+   "https://www.thewildcity.com/news/18350-regenerate-launches-new-label-with-point-of-view-featuring-oceantied-kohra-zequenx-more",
+   "https://www.thewildcity.com/mixes/20928-wild-city-243-zequenx",
+   "https://djmag.com/listen/premiere-zequenx-retrograde",
+   "https://mixmag.net/read/zequenx-in-the-lab-goa-dj-india-video-stream-dj-lab"
+  ],
+  "sound_tags_already_stored": [
+   "Floaty, hypnotic techno",
+   "Dark, psychedelic soundscapes"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.mixcloud.com/boxoutfm/boxout-wednesdays-188-zequenx-01-06-2022/",
+   "https://www.mixcloud.com/RedLightRadio/zequenx-for-rlr-far-out-left-festival-mumbai-11-15-2019/",
+   "https://www.mixcloud.com/refugeworldwide/club-rani-riva-zequenx-03-jul-2023/",
+   "https://www.youtube.com/watch?v=i6cfuwhodik",
+   "https://soundcloud.com/thewildcity/wild-city-243-zequenx"
+  ],
+  "ids_already_stored": {
+   "ra": "https://ra.co/dj/zequenx"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo"
+  ]
+ },
+ {
+  "slug": "zokhuma",
+  "name": "Zokhuma",
+  "kind": "musician",
+  "based_city": "Mumbai",
+  "from_city": null,
+  "genres": [
+   "progressive",
+   "trance",
+   "techno",
+   "house"
+  ],
+  "spotify": null,
+  "soundcloud": "https://soundcloud.com/zokhuma",
+  "instagram": "zokhuma",
+  "website": null,
+  "mix_url": "https://www.youtube.com/watch?v=a72bjHNVCiA",
+  "labels": null,
+  "members": null,
+  "bio_excerpt": "Zokhuma is the Mumbai-based electronic project of Arman Menzies, formerly the guitarist of progressive metal band Goddess Gagged. He began with melodic downtempo tracks in 2014 and moved toward leftfield club music with IDM and breaks on the 2019 EP Code. He has recorded a Mixmag Asia Radio mix and played The Lab Goa back to back with Dreamstates.",
+  "releases_on_record": 5,
+  "release_years": [
+   2014,
+   2020
+  ],
+  "sample_releases": [
+   "TRICE (2020)",
+   "Code (2019)",
+   "Hearts + Fields. (2018)",
+   "I Choose Myself (2014)",
+   "Tomorrow Will Be Better (2014)"
+  ],
+  "press_urls_already_stored": [
+   "https://homegrown.co.in/homegrown-explore/hgsessions-001-zokhuma",
+   "https://mixmag.net/read/dreamstates-b2b-zokhuma-in-the-lab-goa-dj-lab",
+   "https://mixmag.asia/read/mixmag-asia-radio-zohkuma-exclusive-mixes",
+   "https://www.thewildcity.com/businesses/9108-terra-mayaa",
+   "https://www.thewildcity.com/news/1404-listen-zokhuma-i-choose-myself"
+  ],
+  "sound_tags_already_stored": [
+   "Experimental electronica, breakbeats and disco",
+   "Choppy, afro-influenced percussion"
+  ],
+  "mix_urls_already_stored": [
+   "https://www.youtube.com/watch?v=a72bjHNVCiA",
+   "https://www.youtube.com/watch?v=r-1GDbUJ8nM",
+   "https://soundcloud.com/mixmagasia/mixmag-asia-radio-063-zokhuma"
+  ],
+  "ids_already_stored": {
+   "bandcamp": "https://zokhuma.bandcamp.com"
+  },
+  "has_eras": true,
+  "mbid": null,
+  "gaps": [
+   "photo",
+   "ids"
+  ]
+ }
+]
