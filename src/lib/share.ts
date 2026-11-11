@@ -4,6 +4,7 @@
  */
 import { track } from "@/lib/track";
 import { supabase } from "@/lib/supabase";
+import { myInviteCode } from "@/lib/points";
 
 export type ShareKind = "going" | "night" | "artist" | "tour" | "episode" | "booked" | "beat";
 // Links and card images use the site the visitor is on (previews and production alike); the canonical domain on the server.
@@ -21,8 +22,11 @@ export function shareRef(): string {
 export const cardUrl = (kind: ShareKind, target: string, size: "story" | "link" = "story", extra: Record<string, string> = {}) =>
   `${site()}/api/card/${kind}/${encodeURIComponent(target)}?${new URLSearchParams({ size, ...extra })}`;
 
-export const shareLink = (path: string, kind: ShareKind, target: string) =>
-  `${site()}${path}${path.includes("?") ? "&" : "?"}ref=${shareRef()}&via=${kind}:${encodeURIComponent(target).slice(0, 80)}`;
+// A signed-in member's shares also carry their invite code (&i=), so friends who join from it count as their invite.
+export const shareLink = (path: string, kind: ShareKind, target: string) => {
+  const i = myInviteCode();
+  return `${site()}${path}${path.includes("?") ? "&" : "?"}ref=${shareRef()}&via=${kind}:${encodeURIComponent(target).slice(0, 80)}${i ? `&i=${i}` : ""}`;
+};
 
 export function logShare(kind: ShareKind, target: string, action: "share" | "open", channel?: string) {
   if (action === "share") track("share", { kind, channel: channel ?? null });

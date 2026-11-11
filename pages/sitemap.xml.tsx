@@ -43,6 +43,7 @@ function buildSitemap(artistSlugs: string[], promoterSlugs: string[] = [], night
     url("/for-venues", "0.75", "monthly"),
     url("/promote", "0.7", "monthly"),
     url("/gate", "0.75", "monthly"),
+    url("/points", "0.6", "monthly"),
     url("/for-investors", "0.7", "monthly"),
   ];
 
