@@ -55,15 +55,15 @@ const PromoterCard = ({ p }: { p: Promoter }) => (
     <div className="flex flex-wrap gap-2 pt-1 mt-auto">
       {p.instagram && /^[a-z0-9._]+$/i.test(p.instagram) && (
         <a href={`https://instagram.com/${p.instagram}`} target="_blank" rel="noreferrer"
-           className="text-[11px] font-display bg-ink text-cream px-2 py-1 border-2 border-ink">@{p.instagram}</a>
+           className="inline-flex items-center min-h-[28px] text-[11px] font-display bg-ink text-cream px-2 py-1 border-2 border-ink">@{p.instagram}</a>
       )}
       {ensureUrl(p.website) && (
         <a href={ensureUrl(p.website)!} target="_blank" rel="noreferrer"
-           className="text-[11px] font-display bg-cream text-ink px-2 py-1 border-2 border-ink">Website ↗</a>
+           className="inline-flex items-center min-h-[28px] text-[11px] font-display bg-cream text-ink px-2 py-1 border-2 border-ink">Website ↗</a>
       )}
       {p.booking_email && (
         <a href={`mailto:${p.booking_email}`}
-           className="text-[11px] font-display bg-acid-yellow text-ink px-2 py-1 border-2 border-ink">Book</a>
+           className="inline-flex items-center min-h-[28px] text-[11px] font-display bg-acid-yellow text-ink px-2 py-1 border-2 border-ink">Book</a>
       )}
     </div>
   </article>

@@ -95,7 +95,7 @@ export default function SceneCityPage({ slug }: Props) {
       {/* ── Hero ── */}
       <section className={`${scene.accentColor} border-b-4 border-ink pt-28 pb-16 md:pt-36 md:pb-24`}>
         <div className="container">
-          <Link href="/whats-on" className={`inline-flex items-center gap-1 font-display text-xs uppercase mb-6 ${scene.textColor} opacity-70 hover:opacity-100 transition-opacity`}>
+          <Link href="/whats-on" className={`inline-flex items-center gap-1 min-h-[28px] font-display text-xs uppercase mb-6 ${scene.textColor} opacity-70 hover:opacity-100 transition-opacity`}>
             <ArrowLeft className="w-3 h-3" /> All Cities
           </Link>
           <div className="flex items-start justify-between flex-wrap gap-4">
@@ -142,7 +142,7 @@ export default function SceneCityPage({ slug }: Props) {
             <p className="font-display text-xs uppercase tracking-widest text-ink/50 mb-1">Artists</p>
             <h2 className="font-display text-3xl md:text-4xl uppercase text-ink">From {scene.name}</h2>
           </div>
-          <Link href={`/artists?city=${scene.name}`} className="font-display text-xs uppercase text-magenta hover:underline">
+          <Link href={`/artists?city=${scene.name}`} className="inline-flex items-center min-h-[28px] font-display text-xs uppercase text-magenta hover:underline">
             All artists →
           </Link>
         </div>
@@ -244,7 +244,7 @@ export default function SceneCityPage({ slug }: Props) {
                 </div>
                 {p.instagram && (
                   <a href={`https://instagram.com/${p.instagram}`} target="_blank" rel="noreferrer"
-                    className="inline-flex items-center gap-1 mt-3 font-display text-xs uppercase text-ink hover:text-magenta transition-colors">
+                    className="inline-flex items-center gap-1 min-h-[28px] mt-3 font-display text-xs uppercase text-ink hover:text-magenta transition-colors">
                     @{p.instagram} <ExternalLink className="w-3 h-3" />
                   </a>
                 )}
