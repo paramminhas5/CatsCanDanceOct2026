@@ -35,3 +35,12 @@ export async function memberRpc<T = any>(fn: string, args: Record<string, unknow
   if (data && typeof data === "object" && !Array.isArray(data) && "ok" in (data as any)) return { ...(data as any), data: data as T };
   return { ok: true, data: data as T };
 }
+
+/** Ask the server to send the welcome email right after joining. Fire and forget; the daily run catches misses. */
+export async function sendWelcomeMail() {
+  try {
+    const { data } = await supabase.auth.getSession();
+    const t = data.session?.access_token;
+    if (t) await fetch("/api/mail/welcome", { method: "POST", headers: { Authorization: `Bearer ${t}` } });
+  } catch {}
+}
