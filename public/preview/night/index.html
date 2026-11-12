@@ -1197,6 +1197,62 @@ body.nap .steps li svg{animation-play-state:paused}
   .hudl .clock:not(#ptsPill){display:none}
 }
 @media (max-width:700px){.demo{padding-bottom:0!important}.stage.cbody{padding-bottom:40px}}
+
+/* ===== round 16: phone works like an app ===== */
+#mbar,.mnext,#hero .hslot{display:none}
+@media (max-width:700px){
+  header,.hud .hudl,#laser,.hud .cat,#sndAsk,.layers{display:none!important}
+  #mbar{display:block;position:fixed;left:0;right:0;top:0;z-index:80;background:rgba(12,13,15,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
+  .mrow{display:flex;align-items:center;justify-content:space-between;height:44px;padding:0 16px}
+  .mlogo{display:flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:15px;color:var(--ink)}
+  .mlogo img{width:26px;height:26px;border-radius:50%}
+  .mpts{font-family:var(--mono);font-size:12px;color:var(--mute);padding:6px 10px;border:1px solid var(--line);border-radius:99px}.mpts b{color:var(--lime);font-weight:400}
+  .mtabs{display:flex;gap:6px;padding:2px 12px 10px;overflow-x:auto;scrollbar-width:none}.mtabs::-webkit-scrollbar{display:none}
+  .mtabs a{flex:none;font-size:14px;font-weight:500;padding:7px 14px;border-radius:99px;border:1px solid var(--line);color:#CFCEC8}
+  .mtabs a.on{background:var(--c);border-color:var(--c);color:#0C0D0F}
+  main{padding-top:100px}
+  /* one play button at the bottom */
+  .hud{justify-content:flex-end}
+  /* type: one scale on a phone */
+  .liner h2,.xhead h2,.closer h2{font-size:28px!important;line-height:1.05}
+  .eyebrow{font-size:11px}
+  /* ---- home: five things ---- */
+  body[data-page=home] .chapter,body[data-page=home] #outro{display:none!important}
+  #hero{min-height:0!important;padding-top:20px!important;padding-bottom:32px}
+  #hero .hslot{display:block;width:26vw;aspect-ratio:1;margin:0 0 16px}
+  #hero h1{font-size:38px!important;line-height:1}#hero h1 span{display:inline}
+  #hero .eyebrow{margin-bottom:8px}
+  #hero .lede{font-size:16px;margin:12px 0 20px}
+  #hero .hero-cta{display:none}
+  .doors{margin-top:0;grid-auto-rows:auto;gap:8px;border:0!important}
+  .doors .door{border:1px solid var(--line)!important;border-radius:12px;padding:12px!important;background:var(--panel)}
+  .doors .door::before{display:none}
+  .doors .door .chr{width:40px!important;margin:0 0 8px -2px!important}
+  .doors .door .t{display:none}
+  .door b{font-size:18px;margin:0 0 2px}.door p{font-size:13px;line-height:1.3}.door small{display:none}
+  .mnext{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;padding:14px 16px;border-radius:12px;background:#FF6A3D;color:#1d0a03}
+  .mnext small{display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+  .mnext b{display:block;font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:20px;margin:2px 0}
+  .mnext em{font-style:normal;font-size:13px}
+  .mnext strong{font-family:var(--disp);font-weight:800;font-stretch:125%;font-size:40px;line-height:.9;text-align:right}.mnext strong i{display:block;font-style:normal;font-family:var(--mono);font-size:11px;font-weight:400}
+  /* house rules: one line, then cards you swipe */
+  #why{min-height:0!important;padding-top:24px!important;padding-bottom:32px!important}
+  #why .wslot{display:none!important}
+  #why .why-in{width:100%;min-width:0}
+  #why .say{font-size:20px;line-height:1.25}
+  #why .rl{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:16px -18px 0;padding:0 18px 4px}
+  #why .rl::-webkit-scrollbar{display:none}
+  #why .rl li{flex:0 0 76vw;scroll-snap-align:start;border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--panel)}
+  /* points on home: compact */
+  #pts-sec{padding-top:24px!important}
+}
+@media (max-width:700px){
+  /* app pages: the tabs are the way between apps, so the closing "pick one" blocks go */
+  .closer{display:none!important}
+  .tcard h2{font-size:12vw}
+  .tcard{padding-top:12px!important}
+}
+@media (max-width:700px){.todo>h3{display:none!important}}
 </style>
 </head>
 <body>
@@ -2641,6 +2697,31 @@ document.querySelectorAll('.tcard[data-k]').forEach(t=>{if(t.querySelector('.obj
 window.__ccdObj=()=>({x:cur.x*innerWidth,y:cur.y*innerHeight,k:active&&active.dataset.k,locked:typeof locked!=="undefined"?locked:null});
 /* phone: the open Episode has no place for the object, so it leaves the screen instead of hanging off the edge */
 try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
+
+/* ===== round 16: on a phone the site works like an app (13 Nov, Param: "a bar on top", "mobile first, compact") =====
+   A bar on top with the four apps; each app opens on the product; home is five things; one play button at the bottom. */
+(()=>{const mq=matchMedia('(max-width:700px)'),phone=()=>mq.matches;
+  const TABS=[['home','Home','#F2F1EE'],['nights','Nights','#3B78FF'],['host','Host','#FFE600'],['artists','Artists','#B6EF36'],['school','School','#FF7DAA']];
+  const bar=document.createElement('div');bar.id='mbar';
+  bar.innerHTML=`<div class="mrow"><a class="mlogo" href="#home"><img src="img/logo.png" alt="">Cats Can Dance</a><a class="mpts" href="#points" aria-label="Your points"><b id="mPts">0</b> pts</a></div><nav class="mtabs" aria-label="Apps">${TABS.map(([k,l,c])=>`<a href="#${k}" data-p="${k}" style="--c:${c}">${l}</a>`).join('')}</nav>`;
+  document.body.prepend(bar);
+  const sync=()=>{const p=document.body.dataset.page||'home',cur={episodes:'nights',points:'home',gear:'host'}[p]||p;
+    bar.querySelectorAll('.mtabs a').forEach(a=>{const on=a.dataset.p===cur;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    const pt=document.getElementById('ptsN');if(pt)document.getElementById('mPts').textContent=pt.textContent};
+  sync();addEventListener('hashchange',()=>setTimeout(sync,30));setInterval(sync,800);
+  /* on a phone the doors open the app instead of scrolling the home page */
+  document.addEventListener('click',e=>{if(!phone())return;const a=e.target.closest('[data-go]');if(!a)return;e.stopImmediatePropagation();e.preventDefault();location.hash=a.getAttribute('href')},true);
+  /* no demo that plays itself on a phone: it plays when you press Show me */
+  if(phone())['nights','host','artists','school','gear'].forEach(a=>{toured[a]=1});
+  /* home: the next Episode, under the doors */
+  const nx=typeof EPS!=='undefined'&&EPS.find(e=>e.next),hero=document.getElementById('hero');
+  if(nx&&hero){const d=Math.ceil((new Date('2026-11-25T00:00:00+05:30')-Date.now())/864e5),a=document.createElement('a');a.className='mnext';a.href='#episodes';
+    a.innerHTML=`<span><small>Next Episode</small><b>${nx.d.replace(' 2026','')}</b><em>${nx.v}, Bengaluru</em></span><strong>${d>0?d+'<i>days</i>':'Tonight'}</strong>`;hero.appendChild(a)}
+  /* home: the object sits above the words, in the page */
+  const hs=document.createElement('div');hs.className='objslot hslot';hs.setAttribute('aria-hidden','true');const hin=document.querySelector('#hero .hero-in');if(hin)hin.prepend(hs);
+  /* phone: sections with no place for the object send it off the screen instead of hanging it off an edge */
+  if(phone())Object.keys(STAGES).forEach(k=>{try{STAGES[k].m=[.5,-.45,.2]}catch(e){}});
+})();
 
 })();
 </script>

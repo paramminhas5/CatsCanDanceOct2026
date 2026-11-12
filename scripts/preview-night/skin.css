@@ -530,3 +530,59 @@ body.nap .steps li svg{animation-play-state:paused}
   .hudl .clock:not(#ptsPill){display:none}
 }
 @media (max-width:700px){.demo{padding-bottom:0!important}.stage.cbody{padding-bottom:40px}}
+
+/* ===== round 16: phone works like an app ===== */
+#mbar,.mnext,#hero .hslot{display:none}
+@media (max-width:700px){
+  header,.hud .hudl,#laser,.hud .cat,#sndAsk,.layers{display:none!important}
+  #mbar{display:block;position:fixed;left:0;right:0;top:0;z-index:80;background:rgba(12,13,15,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
+  .mrow{display:flex;align-items:center;justify-content:space-between;height:44px;padding:0 16px}
+  .mlogo{display:flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:15px;color:var(--ink)}
+  .mlogo img{width:26px;height:26px;border-radius:50%}
+  .mpts{font-family:var(--mono);font-size:12px;color:var(--mute);padding:6px 10px;border:1px solid var(--line);border-radius:99px}.mpts b{color:var(--lime);font-weight:400}
+  .mtabs{display:flex;gap:6px;padding:2px 12px 10px;overflow-x:auto;scrollbar-width:none}.mtabs::-webkit-scrollbar{display:none}
+  .mtabs a{flex:none;font-size:14px;font-weight:500;padding:7px 14px;border-radius:99px;border:1px solid var(--line);color:#CFCEC8}
+  .mtabs a.on{background:var(--c);border-color:var(--c);color:#0C0D0F}
+  main{padding-top:100px}
+  /* one play button at the bottom */
+  .hud{justify-content:flex-end}
+  /* type: one scale on a phone */
+  .liner h2,.xhead h2,.closer h2{font-size:28px!important;line-height:1.05}
+  .eyebrow{font-size:11px}
+  /* ---- home: five things ---- */
+  body[data-page=home] .chapter,body[data-page=home] #outro{display:none!important}
+  #hero{min-height:0!important;padding-top:20px!important;padding-bottom:32px}
+  #hero .hslot{display:block;width:26vw;aspect-ratio:1;margin:0 0 16px}
+  #hero h1{font-size:38px!important;line-height:1}#hero h1 span{display:inline}
+  #hero .eyebrow{margin-bottom:8px}
+  #hero .lede{font-size:16px;margin:12px 0 20px}
+  #hero .hero-cta{display:none}
+  .doors{margin-top:0;grid-auto-rows:auto;gap:8px;border:0!important}
+  .doors .door{border:1px solid var(--line)!important;border-radius:12px;padding:12px!important;background:var(--panel)}
+  .doors .door::before{display:none}
+  .doors .door .chr{width:40px!important;margin:0 0 8px -2px!important}
+  .doors .door .t{display:none}
+  .door b{font-size:18px;margin:0 0 2px}.door p{font-size:13px;line-height:1.3}.door small{display:none}
+  .mnext{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;padding:14px 16px;border-radius:12px;background:#FF6A3D;color:#1d0a03}
+  .mnext small{display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+  .mnext b{display:block;font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:20px;margin:2px 0}
+  .mnext em{font-style:normal;font-size:13px}
+  .mnext strong{font-family:var(--disp);font-weight:800;font-stretch:125%;font-size:40px;line-height:.9;text-align:right}.mnext strong i{display:block;font-style:normal;font-family:var(--mono);font-size:11px;font-weight:400}
+  /* house rules: one line, then cards you swipe */
+  #why{min-height:0!important;padding-top:24px!important;padding-bottom:32px!important}
+  #why .wslot{display:none!important}
+  #why .why-in{width:100%;min-width:0}
+  #why .say{font-size:20px;line-height:1.25}
+  #why .rl{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:16px -18px 0;padding:0 18px 4px}
+  #why .rl::-webkit-scrollbar{display:none}
+  #why .rl li{flex:0 0 76vw;scroll-snap-align:start;border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--panel)}
+  /* points on home: compact */
+  #pts-sec{padding-top:24px!important}
+}
+@media (max-width:700px){
+  /* app pages: the tabs are the way between apps, so the closing "pick one" blocks go */
+  .closer{display:none!important}
+  .tcard h2{font-size:12vw}
+  .tcard{padding-top:12px!important}
+}
+@media (max-width:700px){.todo>h3{display:none!important}}

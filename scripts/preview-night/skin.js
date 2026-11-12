@@ -273,3 +273,28 @@ document.querySelectorAll('.tcard[data-k]').forEach(t=>{if(t.querySelector('.obj
 window.__ccdObj=()=>({x:cur.x*innerWidth,y:cur.y*innerHeight,k:active&&active.dataset.k,locked:typeof locked!=="undefined"?locked:null});
 /* phone: the open Episode has no place for the object, so it leaves the screen instead of hanging off the edge */
 try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
+
+/* ===== round 16: on a phone the site works like an app (13 Nov, Param: "a bar on top", "mobile first, compact") =====
+   A bar on top with the four apps; each app opens on the product; home is five things; one play button at the bottom. */
+(()=>{const mq=matchMedia('(max-width:700px)'),phone=()=>mq.matches;
+  const TABS=[['home','Home','#F2F1EE'],['nights','Nights','#3B78FF'],['host','Host','#FFE600'],['artists','Artists','#B6EF36'],['school','School','#FF7DAA']];
+  const bar=document.createElement('div');bar.id='mbar';
+  bar.innerHTML=`<div class="mrow"><a class="mlogo" href="#home"><img src="img/logo.png" alt="">Cats Can Dance</a><a class="mpts" href="#points" aria-label="Your points"><b id="mPts">0</b> pts</a></div><nav class="mtabs" aria-label="Apps">${TABS.map(([k,l,c])=>`<a href="#${k}" data-p="${k}" style="--c:${c}">${l}</a>`).join('')}</nav>`;
+  document.body.prepend(bar);
+  const sync=()=>{const p=document.body.dataset.page||'home',cur={episodes:'nights',points:'home',gear:'host'}[p]||p;
+    bar.querySelectorAll('.mtabs a').forEach(a=>{const on=a.dataset.p===cur;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    const pt=document.getElementById('ptsN');if(pt)document.getElementById('mPts').textContent=pt.textContent};
+  sync();addEventListener('hashchange',()=>setTimeout(sync,30));setInterval(sync,800);
+  /* on a phone the doors open the app instead of scrolling the home page */
+  document.addEventListener('click',e=>{if(!phone())return;const a=e.target.closest('[data-go]');if(!a)return;e.stopImmediatePropagation();e.preventDefault();location.hash=a.getAttribute('href')},true);
+  /* no demo that plays itself on a phone: it plays when you press Show me */
+  if(phone())['nights','host','artists','school','gear'].forEach(a=>{toured[a]=1});
+  /* home: the next Episode, under the doors */
+  const nx=typeof EPS!=='undefined'&&EPS.find(e=>e.next),hero=document.getElementById('hero');
+  if(nx&&hero){const d=Math.ceil((new Date('2026-11-25T00:00:00+05:30')-Date.now())/864e5),a=document.createElement('a');a.className='mnext';a.href='#episodes';
+    a.innerHTML=`<span><small>Next Episode</small><b>${nx.d.replace(' 2026','')}</b><em>${nx.v}, Bengaluru</em></span><strong>${d>0?d+'<i>days</i>':'Tonight'}</strong>`;hero.appendChild(a)}
+  /* home: the object sits above the words, in the page */
+  const hs=document.createElement('div');hs.className='objslot hslot';hs.setAttribute('aria-hidden','true');const hin=document.querySelector('#hero .hero-in');if(hin)hin.prepend(hs);
+  /* phone: sections with no place for the object send it off the screen instead of hanging it off an edge */
+  if(phone())Object.keys(STAGES).forEach(k=>{try{STAGES[k].m=[.5,-.45,.2]}catch(e){}});
+})();
