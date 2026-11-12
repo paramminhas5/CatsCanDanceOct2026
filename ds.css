@@ -1946,3 +1946,66 @@ a.ab-next:hover{border-color:var(--acc)}
 .ab-t .acts{flex-wrap:wrap}
 .ab-vin{right:calc(var(--s2) * -1);bottom:calc(var(--s2) * -1)}
 .ap-shelf{overflow-x:clip;overflow-clip-margin:var(--margin)}
+/* ============ ROUND 9 ============ */
+/* stamps show, and say what they get you */
+.pst{position:relative}
+.pst.got{border-style:solid;border-color:color-mix(in srgb,#B48CFF 55%,transparent);background:color-mix(in srgb,#B48CFF 10%,transparent)}
+.pst.got img{opacity:1!important;filter:brightness(0) invert(1) sepia(1) hue-rotate(210deg) saturate(5)!important}
+.pv-stamps.lit .pst.got img{filter:brightness(0) invert(1) sepia(1) hue-rotate(210deg) saturate(6) drop-shadow(0 0 var(--s1) #B48CFF)!important}
+.pst.goal{border-color:var(--c-artists)}
+.pst em{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:var(--s1);font-style:normal;font-family:var(--f-mono);font-size:var(--fs-label);text-transform:uppercase;color:var(--c-artists);white-space:nowrap}
+.pv-stamps{padding-bottom:calc(var(--s5) + var(--s2))!important;overflow:visible}
+.pv-next{margin-top:var(--s3);color:var(--c-mute)}
+.pv-next b{color:var(--c-ink)}
+.stamps{-webkit-mask:none!important;mask:none!important}
+.stamp img{opacity:.9}
+.spad{min-height:calc(var(--s10) * 1.2)}
+/* who's going: anonymous cat eyes, a small box */
+.room{max-width:calc(var(--s10) * 4.6)}
+.rbox{padding:var(--s4);gap:var(--s4)}
+.rnum b{font-size:var(--fs-h1)}
+.room .rgrid{gap:var(--s2) var(--s1)}
+.room .rgrid i{width:var(--s5);height:var(--s3);border-radius:var(--pill);background:radial-gradient(ellipse 10% 34% at 30% 50%,var(--c-bg) 88%,transparent 100%),radial-gradient(ellipse 10% 34% at 70% 50%,var(--c-bg) 88%,transparent 100%),radial-gradient(circle at 30% 50%,var(--c-mute) 0 26%,transparent 29%),radial-gradient(circle at 70% 50%,var(--c-mute) 0 26%,transparent 29%);opacity:.85;animation:rblink calc(var(--d-scene) * 7) infinite;animation-delay:calc(var(--d-tap) * var(--k,0))}
+.room .rgrid i:nth-child(3n){--k:9}.room .rgrid i:nth-child(4n+1){--k:23}.room .rgrid i:nth-child(5n+2){--k:41}
+.room .rgrid i.me{background:radial-gradient(ellipse 10% 34% at 30% 50%,var(--c-bg) 88%,transparent 100%),radial-gradient(ellipse 10% 34% at 70% 50%,var(--c-bg) 88%,transparent 100%),radial-gradient(circle at 30% 50%,var(--acc) 0 26%,transparent 29%),radial-gradient(circle at 70% 50%,var(--acc) 0 26%,transparent 29%);box-shadow:none;opacity:1}
+@keyframes rblink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+@media (prefers-reduced-motion:reduce){.room .rgrid i{animation:none}}
+/* nights rows say who's playing */
+.pk-list li{border-top:1px solid var(--c-line);padding-bottom:var(--s3)}
+.pk-list li:last-child{border-bottom:1px solid var(--c-line)}
+.pk-list a.pk-main{border:0!important;padding-bottom:var(--s1)}
+.pk-who{display:block;padding-left:calc(var(--s6) + var(--s3));font-size:var(--fs-small);color:var(--c-faint);line-height:1.4}
+.pk-who a,.pk-l a{color:var(--c-ink);text-decoration:none;border-bottom:1px solid var(--c-line-strong)}
+.pk-who a:hover,.pk-l a:hover{color:var(--c-nights);border-color:var(--c-nights)}
+.pk-l{font-size:var(--fs-small);line-height:1.5;color:var(--c-mute)}
+.pk-l .lbl{margin-right:var(--s1)}
+.nmore .ncard[hidden]{display:none}
+/* the paw */
+.paw{position:fixed;left:0;top:0;z-index:var(--z-laser);width:var(--s7);height:var(--s7);margin:calc(var(--s3) * -1) 0 0 calc(var(--s3) * -1);pointer-events:none;opacity:0;transition:transform var(--d-move) var(--e-out),opacity var(--d-base) var(--e-out)}
+.paw.on{opacity:1}
+.paw svg{width:100%;height:100%;fill:var(--c-eyeshine);stroke:var(--c-bg);stroke-width:2.5;filter:drop-shadow(0 var(--s1) var(--s2) rgba(0,0,0,.6));transform:rotate(-18deg)}
+.paw.tap svg{animation:pawtap var(--d-move) var(--e-spring)}
+.paw.tap::after{content:"";position:absolute;left:30%;top:30%;width:40%;height:40%;border-radius:var(--round);border:2px solid var(--acc);animation:pawring var(--d-flip) var(--e-out) forwards}
+@keyframes pawtap{40%{transform:rotate(-18deg) scale(.82)}}
+@keyframes pawring{from{transform:scale(.6);opacity:1}to{transform:scale(2.6);opacity:0}}
+/* mixes that aren't on YouTube still get a tile */
+.ap-vtile{position:absolute;inset:0;display:flex;align-items:flex-end;padding:var(--s3);background:radial-gradient(circle at 70% 30%,color-mix(in srgb,var(--ec) 35%,var(--c-surface-2)),var(--c-surface-1))}
+.ap-vtile b{font-family:var(--f-display);font-weight:800;font-stretch:112%;font-size:var(--fs-h3);color:var(--c-ink)}
+.ap-shows a{color:inherit;text-decoration:none}
+.ap-shows b a:hover{color:var(--ec)}
+.ap-shows .src{color:var(--c-faint);border-bottom:1px solid var(--c-line-strong)}
+.ap-mixmore{display:flex}
+/* nights rows inside the card: title on top, place and who's playing under it */
+.pk-list a.pk-main{grid-template-columns:var(--s6) minmax(0,1fr) auto!important;align-items:baseline!important;padding-block:var(--s3) 0!important}
+.pk-list a.pk-main .pk-n{grid-row:1 / span 2!important}
+.pk-list a.pk-main b{grid-column:2!important;grid-row:1!important}
+.pk-list a.pk-main .pk-d{grid-column:3!important;grid-row:1!important}
+.pk-list a.pk-main .pk-v{grid-column:2 / span 2!important;grid-row:2!important;text-align:left!important}
+.pk-who{padding-left:calc(var(--s6) + var(--s3));margin-top:var(--s1)}
+.pk-list .pk-who a{display:inline!important;padding:0!important;border-top:0!important;border-bottom:1px solid var(--c-line-strong)!important;grid-template-columns:none!important;color:var(--c-ink)}
+.pk-list .pk-who a:hover{color:var(--c-nights);border-bottom-color:var(--c-nights)!important}
+.pst.got img,.pv-stamps.lit .pst.got img{filter:none!important;opacity:1!important;border-radius:var(--round)}
+.pv-stamps.lit .pst.got{box-shadow:0 0 var(--s3) color-mix(in srgb,#B48CFF 60%,transparent)}
+.pst:last-child em{left:auto;right:0;transform:none}
+.pst:first-child em{left:0;transform:none}
+.room .rgrid i{width:var(--s6);height:var(--s4)}

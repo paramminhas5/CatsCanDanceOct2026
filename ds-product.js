@@ -163,14 +163,15 @@ def('points',el=>{const root=el.dataset.root||'';
   [[200,'+1'],[300,'Spot'],[800,'Ticket']].forEach(([v,l],i)=>{const x=pt(v,RR+13);ticks+=`<text x="${x[0]}" y="${x[1]}" text-anchor="middle" font-family="Martian Mono,monospace" font-size="8.5">${l}</text><circle class="lamp" data-v="${v}" cx="${250+i*14}" cy="118" r="4"/>`});
   el.innerHTML=`<div class="pv-top"><div class="pv-tot"><b data-tot></b><span data-tier></span></div>
     <div class="vu"><svg viewBox="0 0 300 128" role="img" aria-label="Points meter">${ticks}<text x="16" y="120" font-family="Martian Mono,monospace" font-size="8">POINTS</text><g class="ndl"><line x1="150" y1="168" x2="150" y2="34" stroke="#0C0D0F" stroke-width="2"/></g><circle cx="150" cy="168" r="50" fill="#0C0D0F"/></svg></div></div>
-    <div class="pv-grid"><div><span class="lbl">Your stamps · one a night out · move the light over them</span><div class="pv-stamps"></div>
+    <div class="pv-grid"><div><span class="lbl">Your stamps · one a night out · each one is +100 points</span><div class="pv-stamps"></div><p class="pv-next t-small"></p>
       <span class="lbl" style="display:block;margin-top:var(--s5)">What it gets you</span><ul class="perks">${PERKS.map(([v,l])=>`<li data-v="${v}"><b>${l}</b><span>${v<0?(-v)+' nights out':v>1e8?'Prices soon':v+' points'}</span></li>`).join('')}</ul></div>
     <div><span class="lbl">How you earn · tap one</span><div class="earn">${EARN.map((x,i)=>`<button data-e="${i}" style="--c:var(--c-${x[0]})"><i></i><span>${x[1]}</span>${x[3]?'<s>example</s>':''}<b>+${x[2]}</b></button>`).join('')}</div></div></div>`;
   const tot=$('[data-tot]',el),tier=$('[data-tier]',el),ndl=$('.ndl',el),st=$('.pv-stamps',el);
   const draw=()=>{const b=CCD.pts.bal,n=CCD.pts.nights;tot.textContent=b.toLocaleString('en-IN');tier.innerHTML=n>=10?'Resident':n>=3?`Regular<br>${n} nights out`:`points<br>${n} night${n===1?'':'s'} out`;
     ndl.style.setProperty('--ang',(-52+Math.min(b,1000)/1000*104)+'deg');$$('.lamp',el).forEach(l=>l.classList.toggle('on',b>=+l.dataset.v));
     $$('.perks li',el).forEach(li=>{const v=+li.dataset.v;li.classList.toggle('on',v<0?n>=-v:b>=v)});
-    st.innerHTML=Array.from({length:10},(_,i)=>`<span class="pst${i<n?' got':''}"><img src="${root}assets/img/logo.png" alt=""></span>`).join('')};
+    st.innerHTML=Array.from({length:10},(_,i)=>`<span class="pst${i<n?' got':''}${i===2||i===9?' goal':''}"><img src="${root}assets/img/logo.png" alt="">${i===2?'<em>Regular</em>':i===9?'<em>Resident</em>':''}</span>`).join('');
+    $('.pv-next',el).innerHTML=n<3?`<b>${3-n} more</b> and you're a Regular: a guaranteed spot at every Episode.`:n<10?`<b>Regular.</b> ${10-n} more nights out and you're a Resident.`:'<b>Resident.</b> Free entry to every Episode.'};
   $$('.earn button',el).forEach(b=>b.addEventListener('click',()=>{const x=EARN[+b.dataset.e];CCD.pts.award(x[2],x[4],b,null,!!x[5]);b.classList.remove('hit');void b.offsetWidth;b.classList.add('hit')}));
   st.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect();st.style.setProperty('--ux',(e.clientX-r.left)+'px');st.style.setProperty('--uy',(e.clientY-r.top)+'px');st.classList.add('lit')});st.addEventListener('pointerleave',()=>st.classList.remove('lit'));
   document.addEventListener('ccd:points',draw);
@@ -185,12 +186,23 @@ def('cbody',el=>{const steps=$$('.steps button',el),tabs=$$('.pbar .ptabs [data-
     steps.forEach(b=>{if(b.dataset.tab==null)return;const t=+b.dataset.tab;b.classList.toggle('done',t<n);b.classList.toggle('on',t===n&&b===steps.find(x=>+x.dataset.tab===n))});CCD.eyes.collect(el)};
   tabs.forEach(t=>t.addEventListener('click',()=>go(+t.dataset.tab)));
   el.addEventListener('click',e=>{const g=e.target.closest('[data-goto]');if(g){go(+g.dataset.goto);$('.panel',el).scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'})}});
-  steps.forEach((b,i)=>b.addEventListener('click',()=>{steps.forEach((x,k)=>{x.classList.toggle('on',k===i);x.classList.toggle('done',k<i)});
-    if(b.dataset.tab!=null)go(+b.dataset.tab);
-    const sel=b.dataset.focus;const t=sel&&$(sel,el);if(t){t.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash')}
-    else $('.panel',el).scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'})}));
+  const inView=r=>r.top>CCD.ms('--header')+8&&r.bottom<innerHeight-8;
+  const show=(i,auto)=>{const b=steps[i];if(!b)return;steps.forEach((x,k)=>{x.classList.toggle('on',k===i);x.classList.toggle('done',k<i)});
+    if(b.dataset.tab!=null&&+b.dataset.tab!==cur)go(+b.dataset.tab);
+    const t=(b.dataset.focus&&[...$$(b.dataset.focus,el)].find(x=>x.offsetParent))||$('.pbody',el);if(!t)return;
+    const point=()=>{CCD.paw(t);t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash')};
+    if(inView(t.getBoundingClientRect()))setTimeout(point,40);else{t.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});setTimeout(point,RM?40:520)}};
+  steps.forEach((b,i)=>b.addEventListener('click',()=>{stopTour();show(i)}));
+  let tour=null;const stopTour=()=>{clearInterval(tour);tour=null;sm&&CCD.setLabel(sm,'Show me')};
+  const sm=$('[data-showme]',el);sm&&sm.addEventListener('click',()=>{if(tour){stopTour();return}let i=0;show(i);CCD.setLabel(sm,'Stop');tour=setInterval(()=>{i++;if(i>=steps.length){stopTour();return}show(i)},1700)});
   el.addEventListener('ccd:held',e=>{if(e.target.closest('.invite')&&vs.length>1)setTimeout(()=>go(1),1400)});
   if(vs.length)go(0)});
+
+/* ================= THE PAW: points at the thing a step is about, and taps it ================= */
+CCD.paw=(()=>{let p=null,hide=null;return t=>{if(!p){p=document.createElement('div');p.className='paw';p.setAttribute('aria-hidden','true');p.innerHTML='<svg viewBox="0 0 64 64"><ellipse cx="32" cy="42" rx="15" ry="13"/><ellipse cx="14" cy="26" rx="6" ry="8"/><ellipse cx="25" cy="16" rx="6" ry="8"/><ellipse cx="39" cy="16" rx="6" ry="8"/><ellipse cx="50" cy="26" rx="6" ry="8"/></svg>';document.body.appendChild(p)}
+  const r=t.getBoundingClientRect();const x=r.left+Math.min(r.width/2,r.width-24),y=r.top+Math.min(r.height/2,r.height-16);p.style.transform=`translate(${x.toFixed(0)}px,${y.toFixed(0)}px)`;p.classList.add('on');p.classList.remove('tap');void p.offsetWidth;setTimeout(()=>p.classList.add('tap'),RM?0:380);
+  clearTimeout(hide);hide=setTimeout(()=>p.classList.remove('on'),2200)}})();
+addEventListener('scroll',()=>{const p=document.querySelector('.paw.on');p&&p.classList.remove('on')},{passive:true});
 
 /* ================= ARTIST BOARD: twelve faces, one in focus ================= */
 def('aboard',el=>{const root=el.dataset.root||'';const M=Object.fromEntries((D.roster||[]).map(r=>[r[0],r]));const f=$('.ab-f',el);
@@ -207,17 +219,18 @@ def('aboard',el=>{const root=el.dataset.root||'';const M=Object.fromEntries((D.r
 /* ================= PICKS: Nights, curated =================
    One pick in the frame. Hover or focus a row and its poster and facts take the frame; leave and the pick comes back.
    City tabs are quiet text. On touch, the first tap on a row shows it in the frame, the second opens the night. */
-def('picks',el=>{const fr=$('.pk-frame',el),img=$('.pk-img img',fr),ia=$('.pk-img',fr),t=$('.pk-t',fr),m=$('.pk-m',fr),l=$('.pk-l',fr),tag=$('.pk-tag',fr),go=$('.pk-go',fr);
+def('picks',el=>{const root=el.dataset.root||'';const fr=$('.pk-frame',el),img=$('.pk-img img',fr),ia=$('.pk-img',fr),t=$('.pk-t',fr),m=$('.pk-m',fr),l=$('.pk-l',fr),tag=$('.pk-tag',fr),go=$('.pk-go',fr);
   const defHref=ia.getAttribute('href');let cur=null,timer=null;
+  const who=json=>{let xs=[];try{xs=JSON.parse(json)}catch(e){}return '<span class="lbl">Playing</span> '+(xs.length?xs.map(([n,k])=>k?`<a href="${root}pages/artist.html#${k}">${esc(n)}</a>`:`<span>${esc(n)}</span>`).join(', '):'<span class="faint">Line-up not announced</span>')};
   const set=a=>{clearTimeout(timer);if(a===cur)return;cur=a;fr.classList.add('swap');
-    timer=setTimeout(()=>{if(a){img.src=a.dataset.img;t.textContent=a.dataset.t;m.textContent=a.dataset.m;l.textContent=a.dataset.l;tag.textContent='Also this week';ia.href=go.href=a.href}
-      else{img.src=img.dataset.def;t.textContent=t.dataset.def;m.textContent=m.dataset.def;l.textContent=l.dataset.def;tag.textContent='Our pick this week';ia.href=go.href=defHref}
+    timer=setTimeout(()=>{if(a){img.src=a.dataset.img;t.textContent=a.dataset.t;m.textContent=a.dataset.m;l.innerHTML=who(a.dataset.l);tag.textContent='Also this week';ia.href=go.href=a.href}
+      else{img.src=img.dataset.def;t.textContent=t.dataset.def;m.textContent=m.dataset.def;l.innerHTML=who(l.dataset.def);tag.textContent='Our pick this week';ia.href=go.href=defHref}
       fr.classList.remove('swap')},ms('--d-quick'))};
-  const list=$('.pk-list ol',el);
-  list.addEventListener('pointerover',e=>{if(e.pointerType==='touch')return;const a=e.target.closest('a');if(a)set(a)});
-  list.addEventListener('focusin',e=>{const a=e.target.closest('a');if(a)set(a)});
+  const list=$('.pk-list ol',el);const rowOf=e=>{const li=e.target.closest('li');return li&&$('.pk-main',li)};
+  list.addEventListener('pointerover',e=>{if(e.pointerType==='touch')return;const a=rowOf(e);if(a)set(a)});
+  list.addEventListener('focusin',e=>{const a=rowOf(e);if(a)set(a)});
   el.addEventListener('pointerleave',e=>{if(e.pointerType!=='touch')set(null)});
-  list.addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;if(matchMedia('(hover:none)').matches&&cur!==a){e.preventDefault();set(a);fr.scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'})}});
+  list.addEventListener('click',e=>{const a=e.target.closest('.pk-main');if(!a)return;if(matchMedia('(hover:none)').matches&&cur!==a){e.preventDefault();set(a);fr.scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'})}});
   const tabs=$('.pk-tabs',el),emp=$('.pk-empty',el);
   tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$$('button',tabs).forEach(x=>x.setAttribute('aria-pressed',x===b));const v=b.dataset.v;let n=0;
     $$('li',list).forEach(li=>{const on=v==='all'||li.dataset.city===v;li.hidden=!on;if(on)n++});emp.hidden=n>0;set(null)})});
@@ -235,7 +248,7 @@ def('nightpage',el=>{const root=el.dataset.root||'';const N=D.nights||[];
     const acts=$('.acts',el);let tk=$('a[href*="http"]',acts);if(n.tk){if(!tk){acts.insertAdjacentHTML('beforeend',`<a class="btn one m" target="_blank" rel="noopener">${EY1}<span class="lab">Tickets</span></a>`);tk=$('a[target]',acts)}tk.href=n.tk;CCD.setLabel(tk,/skillbox/i.test(n.tk)?'Tickets on SkillBox':/district/i.test(n.tk)?'Tickets on District':'Tickets')}else if(tk)tk.remove();
     CCD.eyes.collect(el);
     const crumb=document.querySelector('.subnav .on, .subnav [aria-current]');crumb&&/night/i.test(crumb.textContent)&&(crumb.textContent=n.t);
-    $$('.picks li a').forEach(a=>a.closest('li').hidden=a.getAttribute('href').endsWith('#'+id))}
+    $$('.nmore .ncard').forEach(a=>a.hidden=a.getAttribute('href').endsWith('#'+id))}
   draw();addEventListener('hashchange',()=>{draw();scrollTo({top:0,behavior:RM?'auto':'smooth'})})});
 
 /* ================= ARTIST PAGE: any artist, from the catscandance.com database =================
@@ -255,7 +268,7 @@ def('artistpage',el=>{const root=el.dataset.root||'';const R=(D.roster||[]);
   const fb=JSON.parse(($('.ap-data',el)||{}).textContent||'{}');
   let A=null,ERAS=[],RELS=[],GIGS=[],PRESS=[],VIDS=[],AFF=[],PHOTOS=[];
   const dz=CCD.dz,AU=CCD.audio;let era=-1,focus=null,type='all',now=null;
-  const $h=$('.ap-head',el),$sl=$('.ap-sls',el),$fo=$('.ap-focus',el),$rel=$('.ap-rels',el),$pop=$('.ap-pop',el),$sh=$('.ap-shows',el),$pr=$('.ap-press',el),$vid=$('.ap-vids',el),$con=$('.ap-conn',el),$fans=$('.ap-fans',el);
+  const $h=$('.ap-head',el),$sl=$('.ap-sls',el),$fo=$('.ap-focus',el),$rel=$('.ap-rels',el),$pop=$('.ap-pop',el),$sh=$('.ap-shows',el),$pr=$('.ap-press',el),$vid=$('#watch .ap-vids',el),$con=$('.ap-conn',el),$fans=$('.ap-fans',el);
   const COL=k=>k<0||ERAS.length<2?'var(--c-artists)':`var(--c-${ERACOL[k%ERACOL.length]})`;
   const eraOf=y=>{if(!ERAS.length||!y)return -1;let k=ERAS.findIndex(e=>y>=e.from&&(e.to==null||y<=e.to));return k<0?(y<ERAS[0].from?0:ERAS.length-1):k};
   const art=(r,cls='')=>`<span class="ap-art ${cls}" style="--ec:${COL(r.era)}">${r.dz?`<img src="${dz.cover(r.dz,cls?'big':'medium')}" alt="" loading="lazy" onerror="this.remove()">`:''}<b>${esc(r.t)}</b><em>${r.y||''}</em></span>`;
@@ -263,10 +276,10 @@ def('artistpage',el=>{const root=el.dataset.root||'';const R=(D.roster||[]);
   async function load(){
     try{const [a]=await CCD.sb(`artists?slug=eq.${slug}&select=slug,name,based_city,genres,bio,instagram,spotify,soundcloud,website,photo_url,open_to_bookings,labels`);if(!a)throw 'none';A=a;
       const q=t=>CCD.sb(t).catch(()=>[]);
-      const [er,ds,gg,pr,vd,af,md]=await Promise.all([q(`artist_eras?artist_slug=eq.${slug}&select=from_year,to_year,label,sound,tags,source_name&order=from_year`),q(`artist_discography?artist_slug=eq.${slug}&select=title,release_type,release_date,year,label,bandcamp_url,deezer_album_id,deezer_track_title&order=year.asc.nullsfirst`),q(`artist_gigs?artist_slug=eq.${slug}&select=event_name,venue,city,event_date&order=event_date.desc`),q(`artist_press?artist_slug=eq.${slug}&select=title,publication,url,date_published&order=date_published.desc.nullslast`),q(`artist_videos?artist_slug=eq.${slug}&select=title,url,kind`),q(`artist_affiliations?artist_slug=eq.${slug}&select=name,kind`),q(`artist_media?artist_slug=eq.${slug}&kind=eq.photo&select=url,sort&order=sort`)]);
+      const [er,ds,gg,pr,vd,af,md]=await Promise.all([q(`artist_eras?artist_slug=eq.${slug}&select=from_year,to_year,label,sound,tags,source_name&order=from_year`),q(`artist_discography?artist_slug=eq.${slug}&select=title,release_type,release_date,year,label,bandcamp_url,deezer_album_id,deezer_track_title&order=year.asc.nullsfirst`),q(`artist_gigs?artist_slug=eq.${slug}&select=event_name,venue,city,event_date,source&order=event_date.desc`),q(`artist_press?artist_slug=eq.${slug}&select=title,publication,url,date_published&order=date_published.desc.nullslast`),q(`artist_videos?artist_slug=eq.${slug}&select=title,url,kind,platform`),q(`artist_affiliations?artist_slug=eq.${slug}&select=name,kind`),q(`artist_media?artist_slug=eq.${slug}&kind=eq.photo&select=url,sort&order=sort`)]);
       ERAS=er.map(e=>({from:e.from_year,to:e.to_year,label:e.label||'',sound:e.sound||'',tags:e.tags||[],src:e.source_name||''}));
       RELS=ds.map(r=>({t:r.title,ty:TYPE(r.release_type),y:r.year||(r.release_date?+r.release_date.slice(0,4):null),lab:r.label||'',bc:r.bandcamp_url||'',dz:r.deezer_album_id||'',tr:r.deezer_track_title||''}));
-      GIGS=gg.map(g=>({d:g.event_date,e:g.event_name,v:g.venue||'',c:g.city||''}));PRESS=pr.map(x=>({d:x.date_published||'',p:x.publication||'',t:x.title,u:x.url}));VIDS=vd.map(v=>({id:ytId(v.url),t:v.title,k:v.kind||'',u:v.url}));AFF=af;PHOTOS=md.map(m=>m.url);
+      GIGS=gg.map(g=>({d:g.event_date,e:g.event_name,v:g.venue||'',c:g.city||'',src:g.source||''}));PRESS=pr.map(x=>({d:x.date_published||'',p:x.publication||'',t:x.title,u:x.url}));VIDS=vd.map(v=>({id:ytId(v.url),t:v.title,k:v.kind||'',u:v.url,pl:v.platform||''}));AFF=af;PHOTOS=md.map(m=>m.url);
     }catch(e){if(fb.slug===slug){A=fb.artist;ERAS=fb.eras;RELS=fb.rels;GIGS=fb.gigs;PRESS=fb.press||[];VIDS=fb.vids||[];AFF=fb.aff||[]}else if(me){A={name:me[1],based_city:me[2],genres:me[3]}}else A={name:slug}}
     if(!PHOTOS.length&&(photo(me)||A.photo_url))PHOTOS=[photo(me)||A.photo_url];
     /* no releases in our database: take their catalogue from Deezer */
@@ -326,14 +339,20 @@ def('artistpage',el=>{const root=el.dataset.root||'';const R=(D.roster||[]);
     $('.ap-up',el).innerHTML=nights.length||up.length?`<span class="lbl">Next</span>`+nights.map(n=>`<a class="ap-next" href="${root}pages/night.html#${n.id}"><img src="${root}assets/img/${n.img}.webp" alt=""><span><b>${esc(n.t)}</b><span class="t-small mute">${esc(n.d)}, ${esc(n.v)}, ${esc(n.c)}</span></span></a>`).join('')+up.map(g=>`<div class="ap-next"><span><b>${esc(g.e)}</b><span class="t-small mute">${g.d}, ${esc([g.v,g.c].filter(Boolean).join(', '))}</span></span></div>`).join('')
       :`<span class="lbl">Next</span><b class="t-h3">No dates announced</b><button class="btn one m" data-remind>${EY1}<span class="lab">Tell me when they play</span></button>`;
     const rm=$('[data-remind]',el);rm&&rm.addEventListener('click',()=>{CCD.done(rm,'We\'ll tell you');rm.classList.add('is-done')});CCD.eyes.collect($('.ap-up',el));
-    const past=GIGS.filter(g=>g.d<today&&(era<0||g.era===era));$('.ap-showsn',el).textContent=past.length?`${past.length} past show${past.length===1?'':'s'}`:'';
-    $sh.innerHTML=past.slice(0,12).map(g=>{const d=new Date(g.d);return `<li><span class="t-data">${d.toLocaleString('en-GB',{month:'short'}).toUpperCase()} ${d.getFullYear()}</span><div><b>${esc(g.e)}</b><span class="t-small mute">${esc([g.v,g.c].filter(Boolean).join(', '))}</span></div><button class="btn one s" data-c="iwas" data-key="gig-${slug}-${g.d}">${EY1}<span class="lab">I was there</span></button></li>`}).join('');CCD.init($sh);
+    const past=GIGS.filter(g=>g.d<today&&(era<0||g.era===era));$('.ap-showsn',el).textContent=past.length?`${past.length} shows on record, newest first`:'';
+    $sh.innerHTML=past.slice(0,12).map(g=>{const d=new Date(g.d);return `<li><span class="t-data">${d.toLocaleString('en-GB',{month:'short'}).toUpperCase()} ${d.getFullYear()}</span><div><b>${g.src?`<a href="${esc(g.src)}" target="_blank" rel="noopener">${esc(g.e)}</a>`:esc(g.e)}</b><span class="t-small mute">${esc([g.v,g.c].filter(Boolean).join(', '))}${g.src?` · <a class="src" href="${esc(g.src)}" target="_blank" rel="noopener">${esc(host(g.src))}</a>`:''}</span></div><button class="btn one s" data-c="iwas" data-key="gig-${slug}-${g.d}">${EY1}<span class="lab">I was there</span></button></li>`}).join('');CCD.init($sh);
     $('#shows',el).hidden=!past.length&&!nights.length&&!up.length&&!GIGS.length&&false}
   /* ---------- popular, videos, press, connections, fans ---------- */
   async function drawPop(){const box=$('#popular',el);try{const r=await dz.artistTop(pretty(A.name));const rows=r.tracks.filter(t=>t.preview).slice(0,6);if(!rows.length)throw 0;
       $pop.innerHTML=rows.map((x,i)=>`<li><button data-i="${i}"><span class="tr-n">${String(i+1).padStart(2,'0')}</span><b>${esc(x.title)}</b><span class="t-small mute">${esc(x.album.title)}</span><span class="tr-wave" aria-hidden="true">${CCD.wave(x.title)}</span></button></li>`).join('');
       $$('button',$pop).forEach(b=>b.addEventListener('click',()=>{const x=rows[+b.dataset.i];const rr=RELS.find(q=>q.dz==x.album.id)||{t:x.album.title,ty:'Track',y:'',era:-1,dz:String(x.album.id),tr:x.title};playItem({r:rr,track:x.title,preview:x.preview})}));box.hidden=false}catch(e){box.hidden=true}}
-  function drawVids(){const v=VIDS.filter(x=>x.id).slice(0,8);$('#watch',el).hidden=!v.length;$vid.innerHTML=v.map(x=>`<a class="ap-vid" href="https://www.youtube.com/watch?v=${x.id}" target="_blank" rel="noopener"><span class="ap-vth"><img src="https://img.youtube.com/vi/${x.id}/mqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="ap-vpl" aria-hidden="true"></span></span><b>${esc(x.t)}</b></a>`).join('')}
+  const host=u=>{try{return new URL(u).hostname.replace(/^www\./,'').split('.')[0]}catch(e){return ''}};
+  const PL={youtube:'YouTube',soundcloud:'SoundCloud',mixcloud:'Mixcloud',boilerroom:'Boiler Room',bandcamp:'Bandcamp',instagram:'Instagram'};
+  const vcard=x=>`<a class="ap-vid" href="${esc(x.u)}" target="_blank" rel="noopener"><span class="ap-vth">${x.id?`<img src="https://img.youtube.com/vi/${x.id}/mqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">`:`<span class="ap-vtile"><b>${esc(PL[host(x.u)]||host(x.u)||'Listen')}</b></span>`}<span class="ap-vpl" aria-hidden="true"></span></span><b>${esc(x.t)}</b><span class="t-data faint">${esc(({mix:'MIX',live_set:'LIVE SET',music_video:'VIDEO',interview:'INTERVIEW'}[x.k]||'').toString())}${x.u?' · '+esc((PL[host(x.u)]||host(x.u)).toUpperCase()):''}</span></a>`;
+  function drawVids(){const mixes=VIDS.filter(x=>/mix|live|set|dj/i.test(x.k)&&x.u),vids=VIDS.filter(x=>!/mix|live|set|dj/i.test(x.k)&&x.id);
+    const more=A.soundcloud?`<a class="seeall" href="${esc(A.soundcloud)}" target="_blank" rel="noopener">${EY1}<span class="lab">More on SoundCloud</span></a>`:'';
+    $('#mixes',el).hidden=!mixes.length&&!more;$('.ap-mixes',el).innerHTML=mixes.slice(0,8).map(vcard).join('')||'<p class="t-small mute">No mixes on record yet.</p>';$('.ap-mixmore',el).innerHTML=more;CCD.eyes.collect($('#mixes',el));
+    $('#watch',el).hidden=!vids.length;$vid.innerHTML=vids.slice(0,8).map(vcard).join('')}
   function drawPress(){$('#press',el).hidden=!PRESS.length;$pr.innerHTML=PRESS.slice(0,10).map(x=>`<li><span class="t-data faint">${(x.d||'').slice(0,4)}</span><a href="${esc(x.u)}" target="_blank" rel="noopener"><b>${esc(x.t)}</b><span class="mute t-small">${esc(x.p)}</span></a></li>`).join('')}
   function drawConn(){const by=k=>AFF.filter(a=>a.kind===k).map(a=>a.name);const groups=[['Labels',[...new Set([...(A.labels||[]),...by('label')])]],['Worked with',by('collaborator')],['Crews and bands',by('collective')]].filter(g=>g[1].length);
     $('#connections',el).hidden=!groups.length;$con.innerHTML=groups.map(([t,l])=>`<div><span class="lbl">${t}</span><div class="tags">${l.map(x=>{const hit=R.find(r=>CCD.norm(r[1])===CCD.norm(x));return hit?`<a href="#${hit[0]}" data-go>${esc(pretty(x))}</a>`:`<span>${esc(x)}</span>`}).join('')}</div></div>`).join('')}
