@@ -381,3 +381,7 @@ body.nap .steps li svg{animation-play-state:paused}
   #outro .oslot{display:block;width:62vw;aspect-ratio:1;margin:0 auto 24px}
   #outro{padding-top:96px}
 }
+
+/* host: the back of the card carries the same QR as the ticket */
+#invite .back .code{background:none;width:112px;height:112px}
+#invite .back .code svg{display:block;width:100%;height:100%}

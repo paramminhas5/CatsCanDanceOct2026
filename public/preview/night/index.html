@@ -1048,6 +1048,10 @@ body.nap .steps li svg{animation-play-state:paused}
   #outro .oslot{display:block;width:62vw;aspect-ratio:1;margin:0 auto 24px}
   #outro{padding-top:96px}
 }
+
+/* host: the back of the card carries the same QR as the ticket */
+#invite .back .code{background:none;width:112px;height:112px}
+#invite .back .code svg{display:block;width:100%;height:100%}
 </style>
 </head>
 <body>
@@ -2347,7 +2351,7 @@ window.__ccd={get s(){return {playing,BPM,step,timer:timer!==null,laserOn}}};
 /* host: flip the invite to its back */
 (()=>{const c=document.getElementById('invite');if(!c)return;const b=document.createElement('div');b.className='back';b.innerHTML='<div><small>Entry</small><b></b></div><div class="code" role="img" aria-label="Entry code, example"></div><small>Show this at the door. Example code.</small>';c.appendChild(b);
   const fb=document.createElement('button');fb.className='btn sm';fb.id='flipB';fb.type='button';fb.textContent='Flip the card';c.after(fb);
-  fb.onclick=()=>{const n=document.getElementById('iName');b.querySelector('b').textContent=(n&&n.textContent.trim())||'Your night';const sw=()=>{c.classList.toggle('showback');fb.textContent=c.classList.contains('showback')?'Flip it back':'Flip the card'};
+  fb.onclick=()=>{const n=document.getElementById('iName');b.querySelector('b').textContent=(n&&n.textContent.trim())||'Your night';try{b.querySelector('.code').innerHTML=hQr(((n&&n.textContent.trim())||'Your night')+'|entry')}catch(e){}const sw=()=>{c.classList.toggle('showback');fb.textContent=c.classList.contains('showback')?'Flip it back':'Flip the card'};
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){sw();return}c.classList.add('edge');setTimeout(()=>{sw();c.classList.remove('edge')},210)}})();
 
 /* episodes: days to the next one, and the three posters to pull */
@@ -2403,6 +2407,26 @@ addEventListener('hashchange',()=>setTimeout(()=>document.querySelectorAll('.rv'
 /* ===== round 14 ===== */
 /* phone: the closing object sits in a slot above the words, so it scrolls with them instead of over them */
 (()=>{const o=document.getElementById('outro');if(!o)return;const s=document.createElement('div');s.className='objslot oslot';s.setAttribute('aria-hidden','true');o.prepend(s)})();
+/* the page's own tour (decided 13 Nov): it still plays once when a panel comes into view, but it stops for good
+   the moment you touch that panel, and it never types over something you typed. Its typing used to keep running after it stopped. */
+(()=>{const typers=new Set();
+  const typeC=(inp,txt)=>{if(!inp||inp.dataset.mine)return;inp.value='';let i=0;const t=setInterval(()=>{if(inp.dataset.mine){clearInterval(t);typers.delete(t);return}inp.value=txt.slice(0,++i);inp.dispatchEvent(new Event('input'));if(i>=txt.length){clearInterval(t);typers.delete(t)}},45);typers.add(t)};
+  const end0=endTour;endTour=function(a,i){typers.forEach(clearInterval);typers.clear();return end0(a,i)};
+  TOUR.host[0].run=e=>typeC(e,'Mishti turns 30');
+  TOUR.host[3].run=(e,auto)=>{if(e.id==='iRsvp')e.click();if(auto&&!hMe){const w=$('#iWho');typeC(w,'Ishaan');setTimeout(()=>{if(!hMe&&!iF.hidden&&!w.dataset.mine)iF.requestSubmit()},900)}};
+  /* Artists: the steps now do what their labels say. The auto run points at Play but does not start sound by itself. */
+  IC.play='<path d="M8 5.5v13l10.5-6.5z"/>';
+  TOUR.artists=[{t:'Pick a record',ic:'disc',el:()=>{fanSide();return $$('#aDiscs .ad')[1]},run:e=>e.click()},
+    {t:'Play it. Drag it to scratch.',ic:'play',el:()=>{fanSide();return $('#playA')},run:(e,auto)=>{if(!auto)e.click()}},
+    {t:'Be a fan',ic:'heart',el:()=>{fanSide();return $('#fanB')},run:e=>e.click()},
+    {t:'Book them',ic:'send',el:()=>{fanSide();return $('#bookB')},run:e=>{if(!$('#offer').classList.contains('show'))e.click()}}];
+  stepEls('artists').forEach((b,i)=>{const s=TOUR.artists[i],svg=b.querySelector('svg');if(s&&svg)svg.innerHTML=IC[s.ic]});
+  /* your own input is yours */
+  const mine=e=>{const t=e.target;if(t&&t.matches&&t.matches('input,textarea'))t.dataset.mine='1'};
+  document.addEventListener('keydown',mine,true);document.addEventListener('pointerdown',mine,true);document.addEventListener('paste',mine,true);
+  /* touching a panel in any way ends its tour */
+  $$('.panel[data-tour]').forEach(p=>{const stop=()=>{toured[p.dataset.tour]=1;if(tour&&tour.app===p.dataset.tour)endTour(p.dataset.tour,tour.i-1)};
+    ['keydown','focusin','input'].forEach(ev=>p.addEventListener(ev,e=>{if(e.isTrusted)stop()}))})})();
 
 })();
 </script>
