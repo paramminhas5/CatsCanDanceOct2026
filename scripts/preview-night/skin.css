@@ -482,3 +482,13 @@ body.nap .steps li svg{animation-play-state:paused}
 /* item 16: the one-eye button's dot is an eye, so it is eyeshine white like the two-eye buttons (Param, 12 Nov: same-colour eyes look weird) */
 .btn:not(.solid):not(.acc):not(.ko):not(.menuBtn):not(.hold)::before{background:var(--eyeshine)}
 .fp-btn::before{background:var(--eyeshine)}
+
+/* ===== title-card objects ride with their card (13 Nov). The object used to sit at a fixed screen spot, so with the
+   shorter sections it landed on the section above while that was still on screen. Same spot once the card is in place. */
+.tcard{position:relative}
+.tcard .tslot{position:absolute;top:50%;width:min(72vw,72vh);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none}
+.tcard.right .tslot{left:73%}.tcard.left .tslot{left:27%}
+#ch-episodes .tcard .tslot{left:75%;width:min(68vw,68vh)}
+@media (min-width:1101px){.tcard{min-height:72vh}}
+@media (min-width:701px){#outro .oslot{display:block;position:absolute;left:80%;top:50%;width:min(60vw,60vh);aspect-ratio:1;transform:translate(-50%,-50%);margin:0}#outro{position:relative}}
+@media (max-width:700px){.tcard .tslot,.tcard.right .tslot,.tcard.left .tslot,#ch-episodes .tcard .tslot{left:50%;top:27vh;width:72vw}}
