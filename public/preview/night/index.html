@@ -12,7 +12,7 @@
 @font-face{font-family:'Martian Mono';src:url(fonts/martian.woff2) format('woff2');font-weight:100 800;font-display:swap}
 @property --acc{syntax:'<color>';inherits:true;initial-value:#F2F1EE}
 :root{--bg:#0C0D0F;--ink:#F2F1EE;--mute:#A3A39C;--dim:#6E6E69;--line:rgba(242,241,238,.14);--panel:#14151A;--panel2:#1C1D23;--acc:#F2F1EE;
- --blue:#2563EB;--lime:#B6EF36;--yellow:#FFE600;--pink:#FF4D8D;
+ --blue:#2563EB;--lime:#A98BFF;--yellow:#FFE600;--pink:#FF4D8D;
  --pad:clamp(18px,3.2vw,48px);--ease:cubic-bezier(.2,.8,.2,1);
  --disp:Anybody,'Arial Black',system-ui,sans-serif;--sans:Outfit,system-ui,sans-serif;--mono:'Martian Mono',ui-monospace,monospace;
  transition:--acc .8s}
@@ -477,7 +477,7 @@ footer .fl:hover img{transform:rotate(360deg)}
 .bey{display:inline-flex;align-items:center;justify-content:center;gap:4px;flex:none;width:40px;height:26px;border-radius:99px;background:#0C0D0F;pointer-events:none}
 .btn.solid:has(.bey){padding:6px 18px 6px 6px}.btn.sm.solid:has(.bey){padding:4px 13px 4px 4px}
 .btn.sm .bey{width:34px;height:23px;gap:3px}
-.bey .e{display:block;width:12px;height:9px;border-radius:50%;background:radial-gradient(circle,#F3FFC2,#B6EF36);position:relative;overflow:hidden;animation:blink 6.5s infinite;animation-delay:var(--d,0s)}
+.bey .e{display:block;width:12px;height:9px;border-radius:50%;background:radial-gradient(circle,#EEE8FF,#A98BFF);position:relative;overflow:hidden;animation:blink 6.5s infinite;animation-delay:var(--d,0s)}
 .bey .e::after{content:"";position:absolute;left:50%;top:50%;width:2.6px;height:8px;margin:-4px 0 0 -1.3px;border-radius:50%;background:#06070A;transform:translate(calc(var(--px,0)*3.2px),calc(var(--py,0)*1.3px)) scaleX(var(--pw,1));transition:transform .12s}
 a:hover>.bey,button:hover>.bey{--pw:3.2!important}
 @keyframes pnc{0%{transform:none}24%{transform:translate(calc(var(--px,0)*-3px),calc(var(--py,0)*-2px)) scale(.92)}52%{transform:translate(calc(var(--px,0)*9px),calc(var(--py,0)*6px)) scale(1.16)}100%{transform:none}}
@@ -527,7 +527,7 @@ a:hover>.bey,button:hover>.bey{--pw:3.2!important}
 .scan .ln{position:absolute;left:18px;right:18px;top:18px;height:2px;background:var(--acc);box-shadow:0 0 16px 2px var(--acc);opacity:0}
 .scan.go .ln{opacity:1;animation:scanl .5s linear}
 @keyframes scanl{to{top:calc(100% - 20px)}}
-.scan[data-r=ok]{border-color:#B6EF36;box-shadow:0 0 0 3px rgba(182,239,54,.25)}.scan[data-r=dup]{border-color:#FFB020;box-shadow:0 0 0 3px rgba(255,176,32,.25)}.scan[data-r=no]{border-color:#FF5A4D;box-shadow:0 0 0 3px rgba(255,90,77,.25)}
+.scan[data-r=ok]{border-color:#A98BFF;box-shadow:0 0 0 3px rgba(169,139,255,.25)}.scan[data-r=dup]{border-color:#FFB020;box-shadow:0 0 0 3px rgba(255,176,32,.25)}.scan[data-r=no]{border-color:#FF5A4D;box-shadow:0 0 0 3px rgba(255,90,77,.25)}
 .dres{min-height:2.9em;margin:12px 0 0;text-align:center;font-size:15px;color:#DAD9D3;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
 .dres b{color:var(--ink);font-weight:600}
 .dcount{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
@@ -535,7 +535,7 @@ a:hover>.bey,button:hover>.bey{--pw:3.2!important}
 .dcount .bar{flex:1;min-width:120px;height:8px;border-radius:9px;background:var(--panel2);overflow:hidden}
 .dcount .bar i{display:block;height:100%;width:0;background:var(--acc);border-radius:9px;transition:width .4s var(--ease)}
 .dout{list-style:none;margin:16px 0;padding:0;display:grid;gap:8px}
-.dout li{--c:#B6EF36;display:grid;grid-template-columns:10px 1fr;gap:1px 12px;font-size:13.5px;line-height:1.35;color:var(--mute);border:1px solid var(--line);border-radius:12px;padding:10px 14px;transition:.3s}
+.dout li{--c:#A98BFF;display:grid;grid-template-columns:10px 1fr;gap:1px 12px;font-size:13.5px;line-height:1.35;color:var(--mute);border:1px solid var(--line);border-radius:12px;padding:10px 14px;transition:.3s}
 .dout li::before{content:"";grid-row:1/3;align-self:center;width:10px;height:10px;border-radius:50%;background:var(--c)}
 .dout li b{color:var(--ink);font-weight:600;font-size:14.5px}.dout li span{grid-column:2}
 .dout li.on{border-color:var(--c);background:color-mix(in srgb,var(--c) 11%,transparent);color:#DAD9D3}
@@ -549,7 +549,7 @@ a:hover>.bey,button:hover>.bey{--pw:3.2!important}
 /* eyes in the room */
 .eyes{display:flex;flex-wrap:wrap;align-items:center;gap:9px 14px;margin-top:12px;padding:11px 14px;border-radius:12px;background:#06070A}
 .eyes .pr{display:flex;gap:5px}
-.eyes .e{width:15px;height:11px;border-radius:50%;background:radial-gradient(circle,#F3FFC2,#B6EF36);position:relative;overflow:hidden;animation:blink 5.5s infinite;animation-delay:var(--d,0s)}
+.eyes .e{width:15px;height:11px;border-radius:50%;background:radial-gradient(circle,#EEE8FF,#A98BFF);position:relative;overflow:hidden;animation:blink 5.5s infinite;animation-delay:var(--d,0s)}
 .eyes .e::after{content:"";position:absolute;left:50%;top:50%;width:3px;height:10px;margin:-5px 0 0 -1.5px;border-radius:50%;background:#06070A;transform:translate(calc(var(--px,0)*4px),calc(var(--py,0)*1.5px)) scaleX(var(--pw,1));transition:transform .12s}
 .eyes .pr.me .e{background:radial-gradient(circle,#fff,#7FA7FF)}
 .eyes small{font-family:var(--mono);font-size:10px;text-transform:uppercase;color:var(--mute);margin-left:auto}
@@ -827,7 +827,7 @@ body.nap .steps li svg{animation-play-state:paused}
 /* house rules: same words, louder */
 .rules li b{font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:clamp(20px,1.9vw,28px);line-height:1.1;letter-spacing:-.01em;margin-bottom:6px}
 .rules li{border-top-width:2px}
-.rules li:nth-child(1){border-top-color:#7FA7FF}.rules li:nth-child(2){border-top-color:#FFE600}.rules li:nth-child(3){border-top-color:#B6EF36}.rules li:nth-child(4){border-top-color:#FF7DAA}
+.rules li:nth-child(1){border-top-color:#7FA7FF}.rules li:nth-child(2){border-top-color:#FFE600}.rules li:nth-child(3){border-top-color:#A98BFF}.rules li:nth-child(4){border-top-color:#FF7DAA}
 /* episodes: the line-up is a set of buttons */
 .trk li.pl{cursor:pointer;display:flex;align-items:center;gap:12px;min-height:44px}
 .trk li.pl .pp{margin-left:auto;font-style:normal;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#0C0D0F;background:var(--ink);border-radius:99px;padding:6px 12px}
@@ -1253,6 +1253,89 @@ body.nap .steps li svg{animation-play-state:paused}
   .tcard{padding-top:12px!important}
 }
 @media (max-width:700px){.todo>h3{display:none!important}}
+
+/* ===== round 17: the phone on the live site's patterns, dark ===== */
+@media (max-width:700px){
+  html.ph body{background:#0C0D0F}
+  html.ph #gl,html.ph #fx,html.ph #knobHit{display:none!important}
+  /* the bar: five equal tabs, nothing scrolls sideways */
+  html.ph .mtabs{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:2px 8px 8px;overflow:visible}
+  html.ph .mtabs a{padding:8px 0;text-align:center;font-size:13px;border-radius:8px}
+  html.ph main{padding-top:96px}
+  /* one box style: a light edge and a hard shadow in the block's colour */
+  html.ph .door,html.ph .mweek,html.ph .rl li,html.ph .liner li,html.ph .panel,html.ph .rw,html.ph .epnext,html.ph .pts,html.ph .xcard{border:1.5px solid rgba(242,241,238,.82)!important;border-radius:6px!important;box-shadow:4px 4px 0 var(--c,var(--acc))}
+  html.ph .lbl{display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--c,var(--acc));margin:0 0 6px}
+  html.ph .mh{font-family:var(--disp);font-weight:800;font-stretch:118%;font-size:30px!important;line-height:1.02;letter-spacing:-.02em;margin:0 0 10px}
+  html.ph .mbtn{display:block;width:100%;margin-top:12px;padding:13px 16px;text-align:center;font-weight:600;font-size:15px;border:1.5px solid rgba(242,241,238,.82);border-radius:6px;background:transparent;color:var(--ink)}
+  html.ph .pchr{position:static;display:block;width:100%;height:100%;mix-blend-mode:screen}
+  /* home */
+  html.ph .mnext{display:none!important}
+  html.ph .mtick{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 20px;padding:10px 12px;border-radius:6px;background:#FF6A3D;color:#1d0a03;font-size:14px;font-weight:600}
+  html.ph .mtick small{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;text-transform:uppercase;letter-spacing:.06em}
+  html.ph .mtick b{font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:20px;white-space:nowrap}
+  html.ph #hero{padding-top:12px!important}
+  html.ph #hero .hslot{width:72px;margin:0 0 12px}
+  html.ph #hero h1{font-size:44px!important}
+  html.ph .doors{display:grid;grid-template-columns:1fr;gap:12px;margin-top:4px}
+  html.ph .doors .door{display:grid!important;grid-template-columns:28px 1fr 48px;grid-template-rows:auto auto auto;column-gap:10px;align-items:center;padding:12px 12px 12px 14px!important;background:var(--panel)}
+  html.ph .doors .door .t{display:block!important;grid-row:1/span 3;align-self:start;font-family:var(--mono);font-size:12px;color:var(--c);padding-top:4px}
+  html.ph .doors .door b{grid-column:2;font-size:20px;margin:0}
+  html.ph .doors .door p{grid-column:2;font-size:14px;margin:2px 0 0;color:#CFCEC8}
+  html.ph .doors .door small{display:block!important;grid-column:2;font-family:var(--mono);font-size:11px;color:var(--c);margin-top:6px}
+  html.ph .doors .door .chr{grid-column:3;grid-row:1/span 3;width:48px!important;margin:0!important}
+  html.ph .doors .door .tail{display:none}
+  html.ph .mweek{--c:#7FA7FF;margin-top:28px;padding:16px;background:var(--panel)}
+  html.ph .mrw{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;width:100%;padding:12px 0;border:0;border-top:1px solid var(--line);background:none;color:var(--ink);text-align:left;font:inherit}
+  html.ph .mdt{text-align:center;line-height:1}
+  html.ph .mdt small{display:block;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;color:var(--c,var(--acc))}
+  html.ph .mdt b{font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:22px}
+  html.ph .mtx b{display:block;font-size:15.5px;font-weight:600;line-height:1.25}
+  html.ph .mtx small{display:block;font-size:13px;color:var(--mute);margin-top:2px}
+  html.ph .mrw>i{font-style:normal;color:var(--mute);font-size:18px;width:20px;text-align:center}
+  html.ph .mrw>em{font-style:normal;font-family:var(--mono);font-size:11px;padding:4px 8px;border-radius:99px;background:var(--acc);color:#0C0D0F}
+  /* house rules: a list, top to bottom */
+  html.ph #why .rl{display:grid!important;grid-template-columns:1fr;gap:12px;overflow:visible;margin:16px 0 0;padding:0}
+  html.ph #why .rl li{flex:none;padding:14px;background:var(--panel);display:grid;grid-template-columns:40px 1fr;gap:12px}
+  html.ph #why .rl li svg{width:40px;height:40px;padding:9px}
+  html.ph #why .rl li::after,html.ph #why .rl .tail{display:none}
+  html.ph #why .say{font-family:var(--disp);font-weight:800;font-stretch:118%;font-size:30px;line-height:1.02}
+  /* app pages */
+  html.ph .tcard{padding-top:20px!important;padding-bottom:8px!important}
+  html.ph .tcard .tslot,html.ph .tcard.right .tslot,html.ph .tcard.left .tslot,html.ph #ch-episodes .tcard .tslot{position:absolute!important;right:16px;left:auto;top:16px;width:64px!important;margin:0;transform:none}
+  html.ph .tcard .meta{margin:0}
+  html.ph .tcard h2.mh{max-width:80%}
+  html.ph .tcard .claim{font-size:16px;line-height:1.45;color:#CFCEC8;margin:0}
+  html.ph .tcard .for{display:none}
+  html.ph .todo>.steps,html.ph .todo>.objslot,html.ph .todo>h3{display:none!important}
+  html.ph .todo{display:block}
+  html.ph .todo .row2{margin:12px 0 16px;display:flex;gap:8px}
+  /* Nights: rows you scroll down; the open night shows under its row */
+  html.ph .panel[data-tour=nights] .ngrid{display:none}
+  html.ph #mList{padding:0 14px 14px}
+  html.ph .mri .mrw{padding:12px 0}
+  html.ph .mri.open .mrw>i{transform:rotate(45deg)}
+  html.ph .mri .ndet{display:grid;grid-template-columns:38% 1fr;gap:14px;padding:4px 0 16px;position:static}
+  html.ph .ntools{padding:0 14px}
+  html.ph #nCities{display:flex;flex-wrap:wrap;gap:6px;overflow:visible}
+  /* Episodes: the next one as a box, past ones two across */
+  html.ph .epnext{--c:#FF6A3D;padding:14px;margin-top:16px;background:var(--panel)}
+  html.ph .epnext b{font-size:56px}
+  html.ph .eprow{display:grid!important;grid-template-columns:1fr 1fr;gap:12px;overflow:visible}
+  html.ph .eprow>.mono{display:none}
+  /* what an app does: four cards, the rest on a button */
+  html.ph .liner ol.cut>li:nth-child(n+5){display:none!important}
+  html.ph .liner li{background:var(--panel)}
+  /* nothing else scrolls sideways */
+  html.ph .mrow,html.ph .nlist,html.ph .discs,html.ph .epfan{overflow:visible!important}
+}
+@media (max-width:700px){
+  html.ph .todo .ahead{padding-top:4px}
+  html.ph .aslot{position:absolute;right:0;top:0;width:64px;height:64px}
+  html.ph .ahead h2.mh{max-width:78%}
+  html.ph .ahead .meta{margin:0}
+  html.ph .ahead .claim{font-size:16px;line-height:1.45;color:#CFCEC8;margin:0}
+}
+@media (max-width:700px){html.ph .discs{display:grid!important;grid-template-columns:repeat(4,1fr);gap:12px 8px;overflow:visible!important}html.ph .discs>*{width:auto!important;min-width:0}}
 </style>
 </head>
 <body>
@@ -1327,7 +1410,7 @@ body.nap .steps li svg{animation-play-state:paused}
   <div class="why-in">
     <p class="eyebrow rv">House rules</p>
     <h2 class="say rv">We've spent years on dance floors in this country. <em>This is what we wished we'd had on the way there, at the door, and on the drive home.</em></h2>
-    <ol class="rl"><li tabindex="0" style="--c:#7FA7FF"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><div><small>Nights</small><b>Real nights, real links.</b><p>Every listing goes to the real event and its tickets.</p></div></li><li tabindex="0" style="--c:#FFE600"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4h12v17M3 21h18M14 12h.01"/></svg><div><small>Host</small><b>Your night stays yours.</b><p>Your invite, your guest list, your door. We give you the tools.</p></div></li><li tabindex="0" style="--c:#B6EF36"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7zM15 3v4h4M10 14l2 2 4-4"/></svg><div><small>Artists</small><b>Everything has a source.</b><p>Every record and gig on an artist's page says where it came from.</p></div></li><li tabindex="0" style="--c:#FF7DAA"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><div><small>School</small><b>You learn by playing.</b><p>The school is an instrument, not a video course.</p></div></li></ol>
+    <ol class="rl"><li tabindex="0" style="--c:#7FA7FF"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><div><small>Nights</small><b>Real nights, real links.</b><p>Every listing goes to the real event and its tickets.</p></div></li><li tabindex="0" style="--c:#FFE600"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4h12v17M3 21h18M14 12h.01"/></svg><div><small>Host</small><b>Your night stays yours.</b><p>Your invite, your guest list, your door. We give you the tools.</p></div></li><li tabindex="0" style="--c:#A98BFF"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7zM15 3v4h4M10 14l2 2 4-4"/></svg><div><small>Artists</small><b>Everything has a source.</b><p>Every record and gig on an artist's page says where it came from.</p></div></li><li tabindex="0" style="--c:#FF7DAA"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><div><small>School</small><b>You learn by playing.</b><p>The school is an instrument, not a video course.</p></div></li></ol>
   </div>
 </section>
 
@@ -1658,9 +1741,9 @@ const $=(s,e=document)=>e.querySelector(s), $$=(s,e=document)=>[...e.querySelect
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const hex=h=>{h=h.replace('#','');return [parseInt(h.slice(0,2),16)/255,parseInt(h.slice(2,4),16)/255,parseInt(h.slice(4,6),16)/255]};
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
-const APP={nights:{A:'#3B78FF',B:'#B5CEFF',acc:'#7FA7FF'},host:{A:'#FFE600',B:'#FFF6A8',acc:'#FFE600'},artists:{A:'#B6EF36',B:'#ECFFB0',acc:'#B6EF36'},school:{A:'#FF4D8D',B:'#FFB0CB',acc:'#FF7DAA'},ep:{A:'#F2F1EE',B:'#FF6A3D',acc:'#F2F1EE'}};
+const APP={nights:{A:'#3B78FF',B:'#B5CEFF',acc:'#7FA7FF'},host:{A:'#FFE600',B:'#FFF6A8',acc:'#FFE600'},artists:{A:'#A98BFF',B:'#DCD0FF',acc:'#A98BFF'},school:{A:'#FF4D8D',B:'#FFB0CB',acc:'#FF7DAA'},ep:{A:'#F2F1EE',B:'#FF6A3D',acc:'#F2F1EE'}};
 Object.values(APP).forEach(a=>{a.a=hex(a.A);a.b=hex(a.B)});
-const YC=['#FF4D8D','#FFE600','#B6EF36','#3B78FF'].map(hex);
+const YC=['#FF4D8D','#FFE600','#A98BFF','#3B78FF'].map(hex);
 const R=[.73,.5,.36],L=[.27,.5,.36],DOCK=[.15,.3,.16],MT=[.5,.27,.36],MB=[1,.15,.2];
 const STAGES={
  hero:{d:[.77,.4,.27],m:[.5,.22,.3],s:6,t:'18:00',n:'Sundown',lv:0},
@@ -1678,6 +1761,7 @@ const STAGES={
 };
 
 /* ============ WebGL: one object, six shapes ============ */
+window.__ph=matchMedia('(max-width:700px)').matches;if(window.__ph)document.documentElement.classList.add('ph');
 const canvas=$('#gl');
 const gl=canvas.getContext('webgl',{antialias:false,alpha:false,powerPreference:'high-performance'});
 const VS=`attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
@@ -2200,7 +2284,7 @@ function award(n,label,el,key){if(key){if(awarded.has(key))return;awarded.add(ke
  for(let v=0;v<=1000;v+=50){const a=pt(v,R),b=pt(v,R-(v%100?6:12));t+=`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${v>=800?'#FF3B30':'#0C0D0F'}" stroke-width="${v%100?1:1.8}"/>`}
  [[200,'+1'],[300,'Spot'],[800,'Ticket']].forEach(([v,l],i)=>{const a=pt(v,R+12);t+=`<text x="${a[0]}" y="${a[1]}" text-anchor="middle" font-family="Martian Mono,monospace" font-size="8.5">${l}</text><circle class="lamp" data-v="${v}" cx="${250+i*14}" cy="118" r="4"/>`});
  $('#vu').innerHTML=`<svg viewBox="0 0 300 128" role="img" aria-label="Points meter">${t}<text x="16" y="120" font-family="Martian Mono,monospace" font-size="8">POINTS</text><g id="ndl" data-beat><line x1="150" y1="168" x2="150" y2="34" stroke="#0C0D0F" stroke-width="2"/></g><circle cx="150" cy="168" r="50" fill="#0C0D0F"/></svg>`}
-const EARN=[['#7FA7FF','Check in at a night',100,0,'checked in',1],['#7FA7FF','A friend comes to their first night',150,0,'friend came'],['#7FA7FF','Rate a night',10,0,'rated'],['#7FA7FF','Share a night',20,1,'shared'],['#B6EF36','Be a fan of an artist',50,1,'fan'],['#FFE600','Host a night',50,1,'night hosted'],['#FF7DAA','Finish a lesson',25,1,'lesson done']];
+const EARN=[['#7FA7FF','Check in at a night',100,0,'checked in',1],['#7FA7FF','A friend comes to their first night',150,0,'friend came'],['#7FA7FF','Rate a night',10,0,'rated'],['#7FA7FF','Share a night',20,1,'shared'],['#A98BFF','Be a fan of an artist',50,1,'fan'],['#FFE600','Host a night',50,1,'night hosted'],['#FF7DAA','Finish a lesson',25,1,'lesson done']];
 $('#pEarn').innerHTML=EARN.map((e,i)=>`<button data-e="${i}"><i style="background:${e[0]}"></i><span>${e[1]}</span>${e[3]?'<s>eg</s>':''}<b>+${e[2]}</b></button>`).join('');
 $$('#pEarn button').forEach(b=>b.onclick=()=>{const e=EARN[+b.dataset.e];if(e[5])nightsIn++;award(e[2],e[4],b)});
 pill.onclick=()=>$('#pts-sec').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
@@ -2258,7 +2342,7 @@ if(!reduce&&!window.__noTour){const tio=new IntersectionObserver(es=>es.forEach(
 const PAGES=['home','nights','host','artists','school','gear','episodes','points'],PCOL={gear:'host',episodes:'ep'},mainEl=$('main'),wipe=$('#wipe');let page='home';
 function setPage(p,first){if(!PAGES.includes(p))p='home';const ch=p!==page;page=p;document.body.dataset.page=p;document.title=p==='home'?'Cats Can Dance':'Cats Can Dance · '+p[0].toUpperCase()+p.slice(1);
   if(first||!ch)return;endTour();$('#menu').classList.remove('open');scrollTo({top:0,behavior:'instant'});active=null;
-  if(!reduce){wipe.style.background=APP[PCOL[p]||p]?APP[PCOL[p]||p].A:p==='points'?'#B6EF36':'#F2F1EE';wipe.classList.remove('go');mainEl.classList.remove('flap');void mainEl.offsetWidth;wipe.classList.add('go');mainEl.classList.add('flap')}}
+  if(!reduce){wipe.style.background=APP[PCOL[p]||p]?APP[PCOL[p]||p].A:p==='points'?'#A98BFF':'#F2F1EE';wipe.classList.remove('go');mainEl.classList.remove('flap');void mainEl.offsetWidth;wipe.classList.add('go');mainEl.classList.add('flap')}}
 mainEl.addEventListener('animationend',e=>{if(e.target===mainEl)mainEl.classList.remove('flap')});
 $$('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();$('#'+a.dataset.go).scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}));
 
@@ -2269,7 +2353,7 @@ const LINER={
  artists:["What's on the Artists record",[['Sourced pages','Records, gigs and press, each with where it came from.'],['Always current','Pages update themselves as new things land.'],['Be a fan','Follow someone and hear when they play near you.'],['Book','Send an offer from the page. They answer from their inbox.'],['On tour','Indian acts on the road, and international acts coming to India.'],['Merch','Artists sell from their own page.'],['Claim it','Artists can claim, correct or take down their page.'],['Fans by city','Artists see where their people are.']]],
  school:["What's on the School record",[['Three worlds','Basics, then Producer, then DJ.'],['A real instrument','A drum machine, a synth and decks you play. No diagrams.'],['One song','Every lesson adds a part to a track that is yours.'],['Practice','Short drills for when you just want reps.'],['Studio','Open your track and keep building.'],['Decks','Mix your own track into someone else\'s.'],['To Live','Take what you made into Ableton Live.'],['Free','Everything is free right now.']]],
  gear:["What's in the van",[['Kits by night','House and techno, hip-hop, vinyl, or build your own.'],['Sized to the room','Sound and lights for 100, 200 or 400 people.'],['People included','Engineers, VJs, photographers, someone on lights.'],['Handover handled','We run the drop-off and the pick-up.']]]};
-const WW={nights:['#7FA7FF','Nights','Find a night'],host:['#FFE600','Host','Throw a night'],artists:['#B6EF36','Artists','Know who\'s playing'],school:['#FF7DAA','School','Make the music']};
+const WW={nights:['#7FA7FF','Nights','Find a night'],host:['#FFE600','Host','Throw a night'],artists:['#A98BFF','Artists','Know who\'s playing'],school:['#FF7DAA','School','Make the music']};
 $$('[data-liner]').forEach(el=>{const k=el.dataset.liner,[h,it]=LINER[k],half=Math.ceil(it.length/2);
   el.classList.add('stage');el.dataset.k=k+'-l';STAGES[k+'-l']=Object.assign({},STAGES[k==='gear'?'gear-x':k+'-b']);
   el.innerHTML=`<div class="lh"><h2 class="disp rv">${h}</h2><div class="objslot"></div></div><ol>${it.map((x,i)=>`<li class="rv"><span>${i<half?'A'+(i+1):'B'+(i-half+1)}</span><b>${x[0]}</b><p>${x[1]}</p></li>`).join('')}</ol><div class="ww"><span class="mono" style="color:var(--mute)">Plays well with</span>${Object.keys(WW).filter(a=>a!==k).map(a=>`<a href="#${a}"><i style="background:${WW[a][0]}"></i>${WW[a][1]} · ${WW[a][2]}</a>`).join('')}</div>`});
@@ -2378,14 +2462,14 @@ function frame(now){
   const ax=cx+rpx*.62,ay=cy+rpx*.74,far=Math.hypot(rope[RN-1].x-ax,rope[RN-1].y-ay);
   if(ropeA<.03||far>len*1.6){rope.forEach((p,i)=>{p.x=p.px=ax+Math.sin(i*.5)*6;p.y=p.py=ay+i*len/RN})}
   stepRope(ax,ay,len/RN,kickNow);
-  drawRope(ropeA,css(cur.A),css(cur.B.map(v=>v*.9+.1)),Math.max(3.5,rpx*.034));
+  if(!window.__ph)drawRope(ropeA,css(cur.A),css(cur.B.map(v=>v*.9+.1)),Math.max(3.5,rpx*.034));
   /* knob hit area */
   const showK=[0,1,3,4,6].includes(shape)&&flipT>=1&&rpx>40;
   if(showK){kh.style.display='block';kh.classList.toggle('small',rpx<150);{const tk=shape+'|'+playing;if(kh._t!==tk){kh._t=tk;khTip.textContent=shape===4?'Drag to change the tempo':(shape===3||shape===6)&&playing?'Grab it. Scratch the track.':''}}kh.style.left=(cx-rpx)+'px';kh.style.top=(cy-rpx)+'px';kh.style.width=kh.style.height=(rpx*2)+'px'}else if(kh.style.display!=='none'){kh.style.display='none'}
   if(tour&&tour.el&&tour.el.isConnected){const r=tour.el.getBoundingClientRect();pawT.x=r.left+r.width*.6;pawT.y=r.top+r.height*.6}
   laserTick(rdt);eyeTick(rdt);
   const kp=1-Math.pow(.0006,rdt);pawP.x+=(pawT.x-pawP.x)*kp;pawP.y+=(pawT.y-pawP.y)*kp;paw.style.transform=`translate(${pawP.x.toFixed(1)}px,${pawP.y.toFixed(1)}px)`;
-  if(glOK){
+  if(glOK&&!window.__ph){
     gl.uniform2f(U.uRes,canvas.width,canvas.height);gl.uniform1f(U.uTime,T);
     gl.uniform2f(U.uC,cx*DPR,(H-cy)*DPR);gl.uniform1f(U.uR,Math.max(1,rpx*DPR));
     gl.uniform1f(U.uShape,shape);gl.uniform1f(U.uSq,sq);gl.uniform1f(U.uSpin,spin);gl.uniform1f(U.uPulse,pulse);gl.uniform1f(U.uHat,hatv);
@@ -2701,7 +2785,7 @@ try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
 /* ===== round 16: on a phone the site works like an app (13 Nov, Param: "a bar on top", "mobile first, compact") =====
    A bar on top with the four apps; each app opens on the product; home is five things; one play button at the bottom. */
 (()=>{const mq=matchMedia('(max-width:700px)'),phone=()=>mq.matches;
-  const TABS=[['home','Home','#F2F1EE'],['nights','Nights','#3B78FF'],['host','Host','#FFE600'],['artists','Artists','#B6EF36'],['school','School','#FF7DAA']];
+  const TABS=[['home','Home','#F2F1EE'],['nights','Nights','#3B78FF'],['host','Host','#FFE600'],['artists','Artists','#A98BFF'],['school','School','#FF7DAA']];
   const bar=document.createElement('div');bar.id='mbar';
   bar.innerHTML=`<div class="mrow"><a class="mlogo" href="#home"><img src="img/logo.png" alt="">Cats Can Dance</a><a class="mpts" href="#points" aria-label="Your points"><b id="mPts">0</b> pts</a></div><nav class="mtabs" aria-label="Apps">${TABS.map(([k,l,c])=>`<a href="#${k}" data-p="${k}" style="--c:${c}">${l}</a>`).join('')}</nav>`;
   document.body.prepend(bar);
@@ -2721,6 +2805,55 @@ try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
   const hs=document.createElement('div');hs.className='objslot hslot';hs.setAttribute('aria-hidden','true');const hin=document.querySelector('#hero .hero-in');if(hin)hin.prepend(hs);
   /* phone: sections with no place for the object send it off the screen instead of hanging it off an edge */
   if(phone())Object.keys(STAGES).forEach(k=>{try{STAGES[k].m=[.5,-.45,.2]}catch(e){}});
+})();
+
+/* ===== round 17: the phone, rebuilt on the live site's patterns (13 Nov, Param: scroll down only, objects must keep up,
+   lose the green, use the live site's components and make the copy better).
+   Why the live site reads: every block is a label, one heading, one line and one action; blocks are boxed with a hard edge;
+   real counts; lists instead of carousels; the next Episode is always one tap away. ===== */
+(()=>{if(!window.__ph)return;const N=typeof NIGHTS!=='undefined'?NIGHTS:[];
+  const days=Math.ceil((new Date('2026-11-25T00:00:00+05:30')-Date.now())/864e5);
+  /* objects: the chrome sprites sit in the page and scroll with it natively. They turn as you scroll. */
+  const FORM={nights:'ball',episodes:'ball',host:'stamp','gear-h':'knob',artists:'record',school:'knob'},sp=[];
+  const put=(slot,form,b)=>{if(!slot)return;const c=document.createElement('i');c.className='chr pchr';c.dataset.form=form;c.setAttribute('aria-hidden','true');c._b=b;slot.appendChild(c);sp.push(c)};
+  put(document.querySelector('#hero .hslot'),'logo',14);
+  document.querySelectorAll('.tcard[data-k] .tslot').forEach((s,i)=>put(s,FORM[s.parentElement.dataset.k]||'ball',i*17));
+  put(document.querySelector('#pts-sec .objslot'),'logo',60);
+  let tk=false;const turn=()=>{tk=false;const y=scrollY;for(const c of sp){const f=Math.floor(((c._b+y*.1)%120+120)%120);c.style.setProperty('--cx',f%11);c.style.setProperty('--cy',Math.floor(f/11))}};
+  addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(turn)}},{passive:true});turn();
+  /* home */
+  const hero=document.getElementById('hero');
+  const tick=document.createElement('a');tick.className='mtick';tick.href='#episodes';tick.innerHTML=`<span><small>Next Episode</small>Wed 25 Nov · The Humming Tree</span><b>${days>0?days+' days':'Tonight'}</b>`;hero.prepend(tick);
+  const ey=hero.querySelector('.eyebrow');if(ey)ey.textContent='Bengaluru · since 2025';
+  const le=hero.querySelector('.lede');if(le)le.textContent='Find a night out, throw your own, book the artists and learn to make the music. One place for all of it.';
+  const D=[['Find a night out',N.length+' nights coming up'],['Throw your own','Invite, guest list and door'],['Book the artists','208 artists on file'],['Learn to make it','Free, in your browser']];
+  document.querySelectorAll('.doors .door').forEach((d,i)=>{const p=d.querySelector('p'),s=d.querySelector('small');if(p)p.textContent=D[i][0];if(s)s.textContent=D[i][1]});
+  const row=(n,i)=>{const [dw,dn]=n.d.split(' ');return `<span class="mdt"><small>${dw}</small><b>${dn}</b></span><span class="mtx"><b>${n.t}</b><small>${n.v.split(',')[0]} · ${n.c}</small></span>`};
+  const wk=document.createElement('div');wk.className='mweek';
+  wk.innerHTML=`<p class="lbl">This week</p><h2 class="mh">Where to go.</h2>${N.slice(0,3).map((n,i)=>`<a class="mrw" href="#nights" data-i="${i}">${row(n,i)}<i>→</i></a>`).join('')}<a class="mbtn" href="#nights">See all ${N.length} nights</a>`;
+  document.querySelector('.doors').after(wk);
+  wk.querySelectorAll('.mrw').forEach(a=>a.addEventListener('click',()=>{nsel=+a.dataset.i;city='All';setTimeout(()=>{try{nCities();nList()}catch(e){}},60)}));
+  const why=document.getElementById('why');if(why){const e=why.querySelector('.eyebrow'),h=why.querySelector('.say');if(e)e.textContent='House rules';if(h)h.textContent='Four things we stick to.'}
+  /* app title cards: a label, one heading that says what you do, one line */
+  const COPY={nights:['01 · Nights','Find a night worth going out for.','Every listing is checked and links to the real tickets. Say you’re going and see who else is.'],
+    episodes:['Ours · Bengaluru','Episodes.','The nights we throw. House, breaks, UKG and bass, with residents Merman and Sartdawg.'],
+    host:['02 · Host','Throw a party from your phone.','Make the invite, keep the guest list, check people in at the door. Free.'],
+    artists:['03 · Artists','Hear them. Follow them. Book them.','Pages for South Asian electronic artists. Every fact links to where we found it.'],
+    school:['04 · School','Learn music by making it.','Make a beat in your browser, change it, then take it into Ableton. Free.']};
+  document.querySelectorAll('.tcard[data-k]').forEach(t=>{const c=COPY[t.dataset.k];if(!c)return;const m=t.querySelector('.meta'),h=t.querySelector('h2'),cl=t.querySelector('.claim');if(m)m.innerHTML=`<span class="lbl">${c[0]}</span>`;if(h){h.textContent=c[1];h.classList.add('mh')}if(cl)cl.textContent=c[2]});
+  document.querySelectorAll('.todo .ahead').forEach(a=>{const k=a.dataset.pg,c=COPY[k];a.style.position='relative';const sl=document.createElement('div');sl.className='aslot';sl.setAttribute('aria-hidden','true');a.prepend(sl);put(sl,FORM[k]||(k==='gear'?'knob':'ball'),k.length*13);
+    if(!c)return;const m=a.querySelector('.meta'),h=a.querySelector('h2'),cl=a.querySelector('.claim');if(m)m.innerHTML=`<span class="lbl">${c[0]}</span>`;if(h){h.textContent=c[1];h.classList.add('mh')}if(cl)cl.textContent=c[2]});turn();
+  /* Nights: the listing is a list you scroll down. Tap a night and it opens under its row. */
+  const pan=document.querySelector('.panel[data-tour=nights]'),det=document.getElementById('nDet');
+  if(pan&&det){const ml=document.createElement('div');ml.id='mList';pan.querySelector('.ngrid').before(ml);let all=false;
+    const render=()=>{const f=N.map((n,i)=>[n,i]).filter(([n])=>city==='All'||n.c===city);let vis=all?f:f.slice(0,5);if(!vis.some(([,i])=>i===nsel)){const s=f.find(([,i])=>i===nsel);if(s)vis=vis.concat([s])}
+      ml.innerHTML=vis.map(([n,i])=>`<div class="mri${i===nsel?' open':''}" data-i="${i}"><button class="mrw" type="button" aria-expanded="${i===nsel}">${row(n,i)}${going.has(i)?'<em>Going</em>':'<i>+</i>'}</button></div>`).join('')+(f.length>5?`<button class="mbtn" type="button" id="mAll">${all?'Show fewer':'See all '+f.length+' nights'}</button>`:'');
+      ml.querySelectorAll('.mrw').forEach(b=>b.onclick=()=>{nsel=+b.parentElement.dataset.i;nList();b.parentElement.scrollIntoView({block:'nearest',behavior:'smooth'})});
+      const a=document.getElementById('mAll');if(a)a.onclick=()=>{all=!all;render()};
+      const o=ml.querySelector('.mri.open');if(o)o.appendChild(det)};
+    const nl0=nList;nList=function(){nl0();render()};render()}
+  /* what each app does: four cards, the rest behind one button */
+  document.querySelectorAll('.liner ol').forEach(ol=>{if(ol.children.length<=4)return;ol.classList.add('cut');const b=document.createElement('button');b.type='button';b.className='mbtn';b.textContent='See all '+ol.children.length;b.onclick=()=>{ol.classList.toggle('cut');b.textContent=ol.classList.contains('cut')?'See all '+ol.children.length:'Show fewer'};ol.after(b)});
 })();
 
 })();

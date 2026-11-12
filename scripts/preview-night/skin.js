@@ -277,7 +277,7 @@ try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
 /* ===== round 16: on a phone the site works like an app (13 Nov, Param: "a bar on top", "mobile first, compact") =====
    A bar on top with the four apps; each app opens on the product; home is five things; one play button at the bottom. */
 (()=>{const mq=matchMedia('(max-width:700px)'),phone=()=>mq.matches;
-  const TABS=[['home','Home','#F2F1EE'],['nights','Nights','#3B78FF'],['host','Host','#FFE600'],['artists','Artists','#B6EF36'],['school','School','#FF7DAA']];
+  const TABS=[['home','Home','#F2F1EE'],['nights','Nights','#3B78FF'],['host','Host','#FFE600'],['artists','Artists','#A98BFF'],['school','School','#FF7DAA']];
   const bar=document.createElement('div');bar.id='mbar';
   bar.innerHTML=`<div class="mrow"><a class="mlogo" href="#home"><img src="img/logo.png" alt="">Cats Can Dance</a><a class="mpts" href="#points" aria-label="Your points"><b id="mPts">0</b> pts</a></div><nav class="mtabs" aria-label="Apps">${TABS.map(([k,l,c])=>`<a href="#${k}" data-p="${k}" style="--c:${c}">${l}</a>`).join('')}</nav>`;
   document.body.prepend(bar);
@@ -297,4 +297,53 @@ try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
   const hs=document.createElement('div');hs.className='objslot hslot';hs.setAttribute('aria-hidden','true');const hin=document.querySelector('#hero .hero-in');if(hin)hin.prepend(hs);
   /* phone: sections with no place for the object send it off the screen instead of hanging it off an edge */
   if(phone())Object.keys(STAGES).forEach(k=>{try{STAGES[k].m=[.5,-.45,.2]}catch(e){}});
+})();
+
+/* ===== round 17: the phone, rebuilt on the live site's patterns (13 Nov, Param: scroll down only, objects must keep up,
+   lose the green, use the live site's components and make the copy better).
+   Why the live site reads: every block is a label, one heading, one line and one action; blocks are boxed with a hard edge;
+   real counts; lists instead of carousels; the next Episode is always one tap away. ===== */
+(()=>{if(!window.__ph)return;const N=typeof NIGHTS!=='undefined'?NIGHTS:[];
+  const days=Math.ceil((new Date('2026-11-25T00:00:00+05:30')-Date.now())/864e5);
+  /* objects: the chrome sprites sit in the page and scroll with it natively. They turn as you scroll. */
+  const FORM={nights:'ball',episodes:'ball',host:'stamp','gear-h':'knob',artists:'record',school:'knob'},sp=[];
+  const put=(slot,form,b)=>{if(!slot)return;const c=document.createElement('i');c.className='chr pchr';c.dataset.form=form;c.setAttribute('aria-hidden','true');c._b=b;slot.appendChild(c);sp.push(c)};
+  put(document.querySelector('#hero .hslot'),'logo',14);
+  document.querySelectorAll('.tcard[data-k] .tslot').forEach((s,i)=>put(s,FORM[s.parentElement.dataset.k]||'ball',i*17));
+  put(document.querySelector('#pts-sec .objslot'),'logo',60);
+  let tk=false;const turn=()=>{tk=false;const y=scrollY;for(const c of sp){const f=Math.floor(((c._b+y*.1)%120+120)%120);c.style.setProperty('--cx',f%11);c.style.setProperty('--cy',Math.floor(f/11))}};
+  addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(turn)}},{passive:true});turn();
+  /* home */
+  const hero=document.getElementById('hero');
+  const tick=document.createElement('a');tick.className='mtick';tick.href='#episodes';tick.innerHTML=`<span><small>Next Episode</small>Wed 25 Nov · The Humming Tree</span><b>${days>0?days+' days':'Tonight'}</b>`;hero.prepend(tick);
+  const ey=hero.querySelector('.eyebrow');if(ey)ey.textContent='Bengaluru · since 2025';
+  const le=hero.querySelector('.lede');if(le)le.textContent='Find a night out, throw your own, book the artists and learn to make the music. One place for all of it.';
+  const D=[['Find a night out',N.length+' nights coming up'],['Throw your own','Invite, guest list and door'],['Book the artists','208 artists on file'],['Learn to make it','Free, in your browser']];
+  document.querySelectorAll('.doors .door').forEach((d,i)=>{const p=d.querySelector('p'),s=d.querySelector('small');if(p)p.textContent=D[i][0];if(s)s.textContent=D[i][1]});
+  const row=(n,i)=>{const [dw,dn]=n.d.split(' ');return `<span class="mdt"><small>${dw}</small><b>${dn}</b></span><span class="mtx"><b>${n.t}</b><small>${n.v.split(',')[0]} · ${n.c}</small></span>`};
+  const wk=document.createElement('div');wk.className='mweek';
+  wk.innerHTML=`<p class="lbl">This week</p><h2 class="mh">Where to go.</h2>${N.slice(0,3).map((n,i)=>`<a class="mrw" href="#nights" data-i="${i}">${row(n,i)}<i>→</i></a>`).join('')}<a class="mbtn" href="#nights">See all ${N.length} nights</a>`;
+  document.querySelector('.doors').after(wk);
+  wk.querySelectorAll('.mrw').forEach(a=>a.addEventListener('click',()=>{nsel=+a.dataset.i;city='All';setTimeout(()=>{try{nCities();nList()}catch(e){}},60)}));
+  const why=document.getElementById('why');if(why){const e=why.querySelector('.eyebrow'),h=why.querySelector('.say');if(e)e.textContent='House rules';if(h)h.textContent='Four things we stick to.'}
+  /* app title cards: a label, one heading that says what you do, one line */
+  const COPY={nights:['01 · Nights','Find a night worth going out for.','Every listing is checked and links to the real tickets. Say you’re going and see who else is.'],
+    episodes:['Ours · Bengaluru','Episodes.','The nights we throw. House, breaks, UKG and bass, with residents Merman and Sartdawg.'],
+    host:['02 · Host','Throw a party from your phone.','Make the invite, keep the guest list, check people in at the door. Free.'],
+    artists:['03 · Artists','Hear them. Follow them. Book them.','Pages for South Asian electronic artists. Every fact links to where we found it.'],
+    school:['04 · School','Learn music by making it.','Make a beat in your browser, change it, then take it into Ableton. Free.']};
+  document.querySelectorAll('.tcard[data-k]').forEach(t=>{const c=COPY[t.dataset.k];if(!c)return;const m=t.querySelector('.meta'),h=t.querySelector('h2'),cl=t.querySelector('.claim');if(m)m.innerHTML=`<span class="lbl">${c[0]}</span>`;if(h){h.textContent=c[1];h.classList.add('mh')}if(cl)cl.textContent=c[2]});
+  document.querySelectorAll('.todo .ahead').forEach(a=>{const k=a.dataset.pg,c=COPY[k];a.style.position='relative';const sl=document.createElement('div');sl.className='aslot';sl.setAttribute('aria-hidden','true');a.prepend(sl);put(sl,FORM[k]||(k==='gear'?'knob':'ball'),k.length*13);
+    if(!c)return;const m=a.querySelector('.meta'),h=a.querySelector('h2'),cl=a.querySelector('.claim');if(m)m.innerHTML=`<span class="lbl">${c[0]}</span>`;if(h){h.textContent=c[1];h.classList.add('mh')}if(cl)cl.textContent=c[2]});turn();
+  /* Nights: the listing is a list you scroll down. Tap a night and it opens under its row. */
+  const pan=document.querySelector('.panel[data-tour=nights]'),det=document.getElementById('nDet');
+  if(pan&&det){const ml=document.createElement('div');ml.id='mList';pan.querySelector('.ngrid').before(ml);let all=false;
+    const render=()=>{const f=N.map((n,i)=>[n,i]).filter(([n])=>city==='All'||n.c===city);let vis=all?f:f.slice(0,5);if(!vis.some(([,i])=>i===nsel)){const s=f.find(([,i])=>i===nsel);if(s)vis=vis.concat([s])}
+      ml.innerHTML=vis.map(([n,i])=>`<div class="mri${i===nsel?' open':''}" data-i="${i}"><button class="mrw" type="button" aria-expanded="${i===nsel}">${row(n,i)}${going.has(i)?'<em>Going</em>':'<i>+</i>'}</button></div>`).join('')+(f.length>5?`<button class="mbtn" type="button" id="mAll">${all?'Show fewer':'See all '+f.length+' nights'}</button>`:'');
+      ml.querySelectorAll('.mrw').forEach(b=>b.onclick=()=>{nsel=+b.parentElement.dataset.i;nList();b.parentElement.scrollIntoView({block:'nearest',behavior:'smooth'})});
+      const a=document.getElementById('mAll');if(a)a.onclick=()=>{all=!all;render()};
+      const o=ml.querySelector('.mri.open');if(o)o.appendChild(det)};
+    const nl0=nList;nList=function(){nl0();render()};render()}
+  /* what each app does: four cards, the rest behind one button */
+  document.querySelectorAll('.liner ol').forEach(ol=>{if(ol.children.length<=4)return;ol.classList.add('cut');const b=document.createElement('button');b.type='button';b.className='mbtn';b.textContent='See all '+ol.children.length;b.onclick=()=>{ol.classList.toggle('cut');b.textContent=ol.classList.contains('cut')?'See all '+ol.children.length:'Show fewer'};ol.after(b)});
 })();

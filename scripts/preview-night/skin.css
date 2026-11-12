@@ -160,7 +160,7 @@ body.nap .steps li svg{animation-play-state:paused}
 /* house rules: same words, louder */
 .rules li b{font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:clamp(20px,1.9vw,28px);line-height:1.1;letter-spacing:-.01em;margin-bottom:6px}
 .rules li{border-top-width:2px}
-.rules li:nth-child(1){border-top-color:#7FA7FF}.rules li:nth-child(2){border-top-color:#FFE600}.rules li:nth-child(3){border-top-color:#B6EF36}.rules li:nth-child(4){border-top-color:#FF7DAA}
+.rules li:nth-child(1){border-top-color:#7FA7FF}.rules li:nth-child(2){border-top-color:#FFE600}.rules li:nth-child(3){border-top-color:#A98BFF}.rules li:nth-child(4){border-top-color:#FF7DAA}
 /* episodes: the line-up is a set of buttons */
 .trk li.pl{cursor:pointer;display:flex;align-items:center;gap:12px;min-height:44px}
 .trk li.pl .pp{margin-left:auto;font-style:normal;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#0C0D0F;background:var(--ink);border-radius:99px;padding:6px 12px}
@@ -586,3 +586,86 @@ body.nap .steps li svg{animation-play-state:paused}
   .tcard{padding-top:12px!important}
 }
 @media (max-width:700px){.todo>h3{display:none!important}}
+
+/* ===== round 17: the phone on the live site's patterns, dark ===== */
+@media (max-width:700px){
+  html.ph body{background:#0C0D0F}
+  html.ph #gl,html.ph #fx,html.ph #knobHit{display:none!important}
+  /* the bar: five equal tabs, nothing scrolls sideways */
+  html.ph .mtabs{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:2px 8px 8px;overflow:visible}
+  html.ph .mtabs a{padding:8px 0;text-align:center;font-size:13px;border-radius:8px}
+  html.ph main{padding-top:96px}
+  /* one box style: a light edge and a hard shadow in the block's colour */
+  html.ph .door,html.ph .mweek,html.ph .rl li,html.ph .liner li,html.ph .panel,html.ph .rw,html.ph .epnext,html.ph .pts,html.ph .xcard{border:1.5px solid rgba(242,241,238,.82)!important;border-radius:6px!important;box-shadow:4px 4px 0 var(--c,var(--acc))}
+  html.ph .lbl{display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--c,var(--acc));margin:0 0 6px}
+  html.ph .mh{font-family:var(--disp);font-weight:800;font-stretch:118%;font-size:30px!important;line-height:1.02;letter-spacing:-.02em;margin:0 0 10px}
+  html.ph .mbtn{display:block;width:100%;margin-top:12px;padding:13px 16px;text-align:center;font-weight:600;font-size:15px;border:1.5px solid rgba(242,241,238,.82);border-radius:6px;background:transparent;color:var(--ink)}
+  html.ph .pchr{position:static;display:block;width:100%;height:100%;mix-blend-mode:screen}
+  /* home */
+  html.ph .mnext{display:none!important}
+  html.ph .mtick{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 20px;padding:10px 12px;border-radius:6px;background:#FF6A3D;color:#1d0a03;font-size:14px;font-weight:600}
+  html.ph .mtick small{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;text-transform:uppercase;letter-spacing:.06em}
+  html.ph .mtick b{font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:20px;white-space:nowrap}
+  html.ph #hero{padding-top:12px!important}
+  html.ph #hero .hslot{width:72px;margin:0 0 12px}
+  html.ph #hero h1{font-size:44px!important}
+  html.ph .doors{display:grid;grid-template-columns:1fr;gap:12px;margin-top:4px}
+  html.ph .doors .door{display:grid!important;grid-template-columns:28px 1fr 48px;grid-template-rows:auto auto auto;column-gap:10px;align-items:center;padding:12px 12px 12px 14px!important;background:var(--panel)}
+  html.ph .doors .door .t{display:block!important;grid-row:1/span 3;align-self:start;font-family:var(--mono);font-size:12px;color:var(--c);padding-top:4px}
+  html.ph .doors .door b{grid-column:2;font-size:20px;margin:0}
+  html.ph .doors .door p{grid-column:2;font-size:14px;margin:2px 0 0;color:#CFCEC8}
+  html.ph .doors .door small{display:block!important;grid-column:2;font-family:var(--mono);font-size:11px;color:var(--c);margin-top:6px}
+  html.ph .doors .door .chr{grid-column:3;grid-row:1/span 3;width:48px!important;margin:0!important}
+  html.ph .doors .door .tail{display:none}
+  html.ph .mweek{--c:#7FA7FF;margin-top:28px;padding:16px;background:var(--panel)}
+  html.ph .mrw{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;width:100%;padding:12px 0;border:0;border-top:1px solid var(--line);background:none;color:var(--ink);text-align:left;font:inherit}
+  html.ph .mdt{text-align:center;line-height:1}
+  html.ph .mdt small{display:block;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;color:var(--c,var(--acc))}
+  html.ph .mdt b{font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:22px}
+  html.ph .mtx b{display:block;font-size:15.5px;font-weight:600;line-height:1.25}
+  html.ph .mtx small{display:block;font-size:13px;color:var(--mute);margin-top:2px}
+  html.ph .mrw>i{font-style:normal;color:var(--mute);font-size:18px;width:20px;text-align:center}
+  html.ph .mrw>em{font-style:normal;font-family:var(--mono);font-size:11px;padding:4px 8px;border-radius:99px;background:var(--acc);color:#0C0D0F}
+  /* house rules: a list, top to bottom */
+  html.ph #why .rl{display:grid!important;grid-template-columns:1fr;gap:12px;overflow:visible;margin:16px 0 0;padding:0}
+  html.ph #why .rl li{flex:none;padding:14px;background:var(--panel);display:grid;grid-template-columns:40px 1fr;gap:12px}
+  html.ph #why .rl li svg{width:40px;height:40px;padding:9px}
+  html.ph #why .rl li::after,html.ph #why .rl .tail{display:none}
+  html.ph #why .say{font-family:var(--disp);font-weight:800;font-stretch:118%;font-size:30px;line-height:1.02}
+  /* app pages */
+  html.ph .tcard{padding-top:20px!important;padding-bottom:8px!important}
+  html.ph .tcard .tslot,html.ph .tcard.right .tslot,html.ph .tcard.left .tslot,html.ph #ch-episodes .tcard .tslot{position:absolute!important;right:16px;left:auto;top:16px;width:64px!important;margin:0;transform:none}
+  html.ph .tcard .meta{margin:0}
+  html.ph .tcard h2.mh{max-width:80%}
+  html.ph .tcard .claim{font-size:16px;line-height:1.45;color:#CFCEC8;margin:0}
+  html.ph .tcard .for{display:none}
+  html.ph .todo>.steps,html.ph .todo>.objslot,html.ph .todo>h3{display:none!important}
+  html.ph .todo{display:block}
+  html.ph .todo .row2{margin:12px 0 16px;display:flex;gap:8px}
+  /* Nights: rows you scroll down; the open night shows under its row */
+  html.ph .panel[data-tour=nights] .ngrid{display:none}
+  html.ph #mList{padding:0 14px 14px}
+  html.ph .mri .mrw{padding:12px 0}
+  html.ph .mri.open .mrw>i{transform:rotate(45deg)}
+  html.ph .mri .ndet{display:grid;grid-template-columns:38% 1fr;gap:14px;padding:4px 0 16px;position:static}
+  html.ph .ntools{padding:0 14px}
+  html.ph #nCities{display:flex;flex-wrap:wrap;gap:6px;overflow:visible}
+  /* Episodes: the next one as a box, past ones two across */
+  html.ph .epnext{--c:#FF6A3D;padding:14px;margin-top:16px;background:var(--panel)}
+  html.ph .epnext b{font-size:56px}
+  html.ph .eprow{display:grid!important;grid-template-columns:1fr 1fr;gap:12px;overflow:visible}
+  html.ph .eprow>.mono{display:none}
+  /* what an app does: four cards, the rest on a button */
+  html.ph .liner ol.cut>li:nth-child(n+5){display:none!important}
+  html.ph .liner li{background:var(--panel)}
+  /* nothing else scrolls sideways */
+  html.ph .mrow,html.ph .nlist,html.ph .discs,html.ph .epfan{overflow:visible!important}
+}
+@media (max-width:700px){
+  html.ph .todo .ahead{padding-top:4px}
+  html.ph .aslot{position:absolute;right:0;top:0;width:64px;height:64px}
+  html.ph .ahead h2.mh{max-width:78%}
+  html.ph .ahead .meta{margin:0}
+  html.ph .ahead .claim{font-size:16px;line-height:1.45;color:#CFCEC8;margin:0}
+}
+@media (max-width:700px){html.ph .discs{display:grid!important;grid-template-columns:repeat(4,1fr);gap:12px 8px;overflow:visible!important}html.ph .discs>*{width:auto!important;min-width:0}}

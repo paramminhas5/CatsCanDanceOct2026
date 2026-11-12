@@ -12,7 +12,7 @@
 @font-face{font-family:'Martian Mono';src:url(fonts/martian.woff2) format('woff2');font-weight:100 800;font-display:swap}
 @property --acc{syntax:'<color>';inherits:true;initial-value:#F2F1EE}
 :root{--bg:#0C0D0F;--ink:#F2F1EE;--mute:#A3A39C;--dim:#6E6E69;--line:rgba(242,241,238,.14);--panel:#14151A;--panel2:#1C1D23;--acc:#F2F1EE;
- --blue:#2563EB;--lime:#B6EF36;--yellow:#FFE600;--pink:#FF4D8D;
+ --blue:#2563EB;--lime:#A98BFF;--yellow:#FFE600;--pink:#FF4D8D;
  --pad:clamp(18px,3.2vw,48px);--ease:cubic-bezier(.2,.8,.2,1);
  --disp:Anybody,'Arial Black',system-ui,sans-serif;--sans:Outfit,system-ui,sans-serif;--mono:'Martian Mono',ui-monospace,monospace;
  transition:--acc .8s}
@@ -477,7 +477,7 @@ footer .fl:hover img{transform:rotate(360deg)}
 .bey{display:inline-flex;align-items:center;justify-content:center;gap:4px;flex:none;width:40px;height:26px;border-radius:99px;background:#0C0D0F;pointer-events:none}
 .btn.solid:has(.bey){padding:6px 18px 6px 6px}.btn.sm.solid:has(.bey){padding:4px 13px 4px 4px}
 .btn.sm .bey{width:34px;height:23px;gap:3px}
-.bey .e{display:block;width:12px;height:9px;border-radius:50%;background:radial-gradient(circle,#F3FFC2,#B6EF36);position:relative;overflow:hidden;animation:blink 6.5s infinite;animation-delay:var(--d,0s)}
+.bey .e{display:block;width:12px;height:9px;border-radius:50%;background:radial-gradient(circle,#EEE8FF,#A98BFF);position:relative;overflow:hidden;animation:blink 6.5s infinite;animation-delay:var(--d,0s)}
 .bey .e::after{content:"";position:absolute;left:50%;top:50%;width:2.6px;height:8px;margin:-4px 0 0 -1.3px;border-radius:50%;background:#06070A;transform:translate(calc(var(--px,0)*3.2px),calc(var(--py,0)*1.3px)) scaleX(var(--pw,1));transition:transform .12s}
 a:hover>.bey,button:hover>.bey{--pw:3.2!important}
 @keyframes pnc{0%{transform:none}24%{transform:translate(calc(var(--px,0)*-3px),calc(var(--py,0)*-2px)) scale(.92)}52%{transform:translate(calc(var(--px,0)*9px),calc(var(--py,0)*6px)) scale(1.16)}100%{transform:none}}
@@ -527,7 +527,7 @@ a:hover>.bey,button:hover>.bey{--pw:3.2!important}
 .scan .ln{position:absolute;left:18px;right:18px;top:18px;height:2px;background:var(--acc);box-shadow:0 0 16px 2px var(--acc);opacity:0}
 .scan.go .ln{opacity:1;animation:scanl .5s linear}
 @keyframes scanl{to{top:calc(100% - 20px)}}
-.scan[data-r=ok]{border-color:#B6EF36;box-shadow:0 0 0 3px rgba(182,239,54,.25)}.scan[data-r=dup]{border-color:#FFB020;box-shadow:0 0 0 3px rgba(255,176,32,.25)}.scan[data-r=no]{border-color:#FF5A4D;box-shadow:0 0 0 3px rgba(255,90,77,.25)}
+.scan[data-r=ok]{border-color:#A98BFF;box-shadow:0 0 0 3px rgba(169,139,255,.25)}.scan[data-r=dup]{border-color:#FFB020;box-shadow:0 0 0 3px rgba(255,176,32,.25)}.scan[data-r=no]{border-color:#FF5A4D;box-shadow:0 0 0 3px rgba(255,90,77,.25)}
 .dres{min-height:2.9em;margin:12px 0 0;text-align:center;font-size:15px;color:#DAD9D3;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
 .dres b{color:var(--ink);font-weight:600}
 .dcount{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
@@ -535,7 +535,7 @@ a:hover>.bey,button:hover>.bey{--pw:3.2!important}
 .dcount .bar{flex:1;min-width:120px;height:8px;border-radius:9px;background:var(--panel2);overflow:hidden}
 .dcount .bar i{display:block;height:100%;width:0;background:var(--acc);border-radius:9px;transition:width .4s var(--ease)}
 .dout{list-style:none;margin:16px 0;padding:0;display:grid;gap:8px}
-.dout li{--c:#B6EF36;display:grid;grid-template-columns:10px 1fr;gap:1px 12px;font-size:13.5px;line-height:1.35;color:var(--mute);border:1px solid var(--line);border-radius:12px;padding:10px 14px;transition:.3s}
+.dout li{--c:#A98BFF;display:grid;grid-template-columns:10px 1fr;gap:1px 12px;font-size:13.5px;line-height:1.35;color:var(--mute);border:1px solid var(--line);border-radius:12px;padding:10px 14px;transition:.3s}
 .dout li::before{content:"";grid-row:1/3;align-self:center;width:10px;height:10px;border-radius:50%;background:var(--c)}
 .dout li b{color:var(--ink);font-weight:600;font-size:14.5px}.dout li span{grid-column:2}
 .dout li.on{border-color:var(--c);background:color-mix(in srgb,var(--c) 11%,transparent);color:#DAD9D3}
@@ -549,7 +549,7 @@ a:hover>.bey,button:hover>.bey{--pw:3.2!important}
 /* eyes in the room */
 .eyes{display:flex;flex-wrap:wrap;align-items:center;gap:9px 14px;margin-top:12px;padding:11px 14px;border-radius:12px;background:#06070A}
 .eyes .pr{display:flex;gap:5px}
-.eyes .e{width:15px;height:11px;border-radius:50%;background:radial-gradient(circle,#F3FFC2,#B6EF36);position:relative;overflow:hidden;animation:blink 5.5s infinite;animation-delay:var(--d,0s)}
+.eyes .e{width:15px;height:11px;border-radius:50%;background:radial-gradient(circle,#EEE8FF,#A98BFF);position:relative;overflow:hidden;animation:blink 5.5s infinite;animation-delay:var(--d,0s)}
 .eyes .e::after{content:"";position:absolute;left:50%;top:50%;width:3px;height:10px;margin:-5px 0 0 -1.5px;border-radius:50%;background:#06070A;transform:translate(calc(var(--px,0)*4px),calc(var(--py,0)*1.5px)) scaleX(var(--pw,1));transition:transform .12s}
 .eyes .pr.me .e{background:radial-gradient(circle,#fff,#7FA7FF)}
 .eyes small{font-family:var(--mono);font-size:10px;text-transform:uppercase;color:var(--mute);margin-left:auto}
@@ -739,7 +739,7 @@ a:hover>.bey,button:hover>.bey{--pw:3.2!important}
   <div class="why-in">
     <p class="eyebrow rv">House rules</p>
     <h2 class="say rv">We've spent years on dance floors in this country. <em>This is what we wished we'd had on the way there, at the door, and on the drive home.</em></h2>
-    <ol class="rl"><li tabindex="0" style="--c:#7FA7FF"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><div><small>Nights</small><b>Real nights, real links.</b><p>Every listing goes to the real event and its tickets.</p></div></li><li tabindex="0" style="--c:#FFE600"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4h12v17M3 21h18M14 12h.01"/></svg><div><small>Host</small><b>Your night stays yours.</b><p>Your invite, your guest list, your door. We give you the tools.</p></div></li><li tabindex="0" style="--c:#B6EF36"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7zM15 3v4h4M10 14l2 2 4-4"/></svg><div><small>Artists</small><b>Everything has a source.</b><p>Every record and gig on an artist's page says where it came from.</p></div></li><li tabindex="0" style="--c:#FF7DAA"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><div><small>School</small><b>You learn by playing.</b><p>The school is an instrument, not a video course.</p></div></li></ol>
+    <ol class="rl"><li tabindex="0" style="--c:#7FA7FF"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><div><small>Nights</small><b>Real nights, real links.</b><p>Every listing goes to the real event and its tickets.</p></div></li><li tabindex="0" style="--c:#FFE600"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4h12v17M3 21h18M14 12h.01"/></svg><div><small>Host</small><b>Your night stays yours.</b><p>Your invite, your guest list, your door. We give you the tools.</p></div></li><li tabindex="0" style="--c:#A98BFF"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7zM15 3v4h4M10 14l2 2 4-4"/></svg><div><small>Artists</small><b>Everything has a source.</b><p>Every record and gig on an artist's page says where it came from.</p></div></li><li tabindex="0" style="--c:#FF7DAA"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><div><small>School</small><b>You learn by playing.</b><p>The school is an instrument, not a video course.</p></div></li></ol>
   </div>
 </section>
 
@@ -1070,9 +1070,9 @@ const $=(s,e=document)=>e.querySelector(s), $$=(s,e=document)=>[...e.querySelect
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const hex=h=>{h=h.replace('#','');return [parseInt(h.slice(0,2),16)/255,parseInt(h.slice(2,4),16)/255,parseInt(h.slice(4,6),16)/255]};
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
-const APP={nights:{A:'#3B78FF',B:'#B5CEFF',acc:'#7FA7FF'},host:{A:'#FFE600',B:'#FFF6A8',acc:'#FFE600'},artists:{A:'#B6EF36',B:'#ECFFB0',acc:'#B6EF36'},school:{A:'#FF4D8D',B:'#FFB0CB',acc:'#FF7DAA'},ep:{A:'#F2F1EE',B:'#FF6A3D',acc:'#F2F1EE'}};
+const APP={nights:{A:'#3B78FF',B:'#B5CEFF',acc:'#7FA7FF'},host:{A:'#FFE600',B:'#FFF6A8',acc:'#FFE600'},artists:{A:'#A98BFF',B:'#DCD0FF',acc:'#A98BFF'},school:{A:'#FF4D8D',B:'#FFB0CB',acc:'#FF7DAA'},ep:{A:'#F2F1EE',B:'#FF6A3D',acc:'#F2F1EE'}};
 Object.values(APP).forEach(a=>{a.a=hex(a.A);a.b=hex(a.B)});
-const YC=['#FF4D8D','#FFE600','#B6EF36','#3B78FF'].map(hex);
+const YC=['#FF4D8D','#FFE600','#A98BFF','#3B78FF'].map(hex);
 const R=[.73,.5,.36],L=[.27,.5,.36],DOCK=[.15,.3,.16],MT=[.5,.27,.36],MB=[1,.15,.2];
 const STAGES={
  hero:{d:[.77,.4,.27],m:[.5,.22,.3],s:6,t:'18:00',n:'Sundown',lv:0},
@@ -1090,6 +1090,7 @@ const STAGES={
 };
 
 /* ============ WebGL: one object, six shapes ============ */
+window.__ph=matchMedia('(max-width:700px)').matches;if(window.__ph)document.documentElement.classList.add('ph');
 const canvas=$('#gl');
 const gl=canvas.getContext('webgl',{antialias:false,alpha:false,powerPreference:'high-performance'});
 const VS=`attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
@@ -1612,7 +1613,7 @@ function award(n,label,el,key){if(key){if(awarded.has(key))return;awarded.add(ke
  for(let v=0;v<=1000;v+=50){const a=pt(v,R),b=pt(v,R-(v%100?6:12));t+=`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${v>=800?'#FF3B30':'#0C0D0F'}" stroke-width="${v%100?1:1.8}"/>`}
  [[200,'+1'],[300,'Spot'],[800,'Ticket']].forEach(([v,l],i)=>{const a=pt(v,R+12);t+=`<text x="${a[0]}" y="${a[1]}" text-anchor="middle" font-family="Martian Mono,monospace" font-size="8.5">${l}</text><circle class="lamp" data-v="${v}" cx="${250+i*14}" cy="118" r="4"/>`});
  $('#vu').innerHTML=`<svg viewBox="0 0 300 128" role="img" aria-label="Points meter">${t}<text x="16" y="120" font-family="Martian Mono,monospace" font-size="8">POINTS</text><g id="ndl" data-beat><line x1="150" y1="168" x2="150" y2="34" stroke="#0C0D0F" stroke-width="2"/></g><circle cx="150" cy="168" r="50" fill="#0C0D0F"/></svg>`}
-const EARN=[['#7FA7FF','Check in at a night',100,0,'checked in',1],['#7FA7FF','A friend comes to their first night',150,0,'friend came'],['#7FA7FF','Rate a night',10,0,'rated'],['#7FA7FF','Share a night',20,1,'shared'],['#B6EF36','Be a fan of an artist',50,1,'fan'],['#FFE600','Host a night',50,1,'night hosted'],['#FF7DAA','Finish a lesson',25,1,'lesson done']];
+const EARN=[['#7FA7FF','Check in at a night',100,0,'checked in',1],['#7FA7FF','A friend comes to their first night',150,0,'friend came'],['#7FA7FF','Rate a night',10,0,'rated'],['#7FA7FF','Share a night',20,1,'shared'],['#A98BFF','Be a fan of an artist',50,1,'fan'],['#FFE600','Host a night',50,1,'night hosted'],['#FF7DAA','Finish a lesson',25,1,'lesson done']];
 $('#pEarn').innerHTML=EARN.map((e,i)=>`<button data-e="${i}"><i style="background:${e[0]}"></i><span>${e[1]}</span>${e[3]?'<s>eg</s>':''}<b>+${e[2]}</b></button>`).join('');
 $$('#pEarn button').forEach(b=>b.onclick=()=>{const e=EARN[+b.dataset.e];if(e[5])nightsIn++;award(e[2],e[4],b)});
 pill.onclick=()=>$('#pts-sec').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
@@ -1670,7 +1671,7 @@ if(!reduce&&!window.__noTour){const tio=new IntersectionObserver(es=>es.forEach(
 const PAGES=['home','nights','host','artists','school','gear','episodes','points'],PCOL={gear:'host',episodes:'ep'},mainEl=$('main'),wipe=$('#wipe');let page='home';
 function setPage(p,first){if(!PAGES.includes(p))p='home';const ch=p!==page;page=p;document.body.dataset.page=p;document.title=p==='home'?'Cats Can Dance':'Cats Can Dance · '+p[0].toUpperCase()+p.slice(1);
   if(first||!ch)return;endTour();$('#menu').classList.remove('open');scrollTo({top:0,behavior:'instant'});active=null;
-  if(!reduce){wipe.style.background=APP[PCOL[p]||p]?APP[PCOL[p]||p].A:p==='points'?'#B6EF36':'#F2F1EE';wipe.classList.remove('go');mainEl.classList.remove('flap');void mainEl.offsetWidth;wipe.classList.add('go');mainEl.classList.add('flap')}}
+  if(!reduce){wipe.style.background=APP[PCOL[p]||p]?APP[PCOL[p]||p].A:p==='points'?'#A98BFF':'#F2F1EE';wipe.classList.remove('go');mainEl.classList.remove('flap');void mainEl.offsetWidth;wipe.classList.add('go');mainEl.classList.add('flap')}}
 mainEl.addEventListener('animationend',e=>{if(e.target===mainEl)mainEl.classList.remove('flap')});
 $$('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();$('#'+a.dataset.go).scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}));
 
@@ -1681,7 +1682,7 @@ const LINER={
  artists:["What's on the Artists record",[['Sourced pages','Records, gigs and press, each with where it came from.'],['Always current','Pages update themselves as new things land.'],['Be a fan','Follow someone and hear when they play near you.'],['Book','Send an offer from the page. They answer from their inbox.'],['On tour','Indian acts on the road, and international acts coming to India.'],['Merch','Artists sell from their own page.'],['Claim it','Artists can claim, correct or take down their page.'],['Fans by city','Artists see where their people are.']]],
  school:["What's on the School record",[['Three worlds','Basics, then Producer, then DJ.'],['A real instrument','A drum machine, a synth and decks you play. No diagrams.'],['One song','Every lesson adds a part to a track that is yours.'],['Practice','Short drills for when you just want reps.'],['Studio','Open your track and keep building.'],['Decks','Mix your own track into someone else\'s.'],['To Live','Take what you made into Ableton Live.'],['Free','Everything is free right now.']]],
  gear:["What's in the van",[['Kits by night','House and techno, hip-hop, vinyl, or build your own.'],['Sized to the room','Sound and lights for 100, 200 or 400 people.'],['People included','Engineers, VJs, photographers, someone on lights.'],['Handover handled','We run the drop-off and the pick-up.']]]};
-const WW={nights:['#7FA7FF','Nights','Find a night'],host:['#FFE600','Host','Throw a night'],artists:['#B6EF36','Artists','Know who\'s playing'],school:['#FF7DAA','School','Make the music']};
+const WW={nights:['#7FA7FF','Nights','Find a night'],host:['#FFE600','Host','Throw a night'],artists:['#A98BFF','Artists','Know who\'s playing'],school:['#FF7DAA','School','Make the music']};
 $$('[data-liner]').forEach(el=>{const k=el.dataset.liner,[h,it]=LINER[k],half=Math.ceil(it.length/2);
   el.classList.add('stage');el.dataset.k=k+'-l';STAGES[k+'-l']=Object.assign({},STAGES[k==='gear'?'gear-x':k+'-b']);
   el.innerHTML=`<div class="lh"><h2 class="disp rv">${h}</h2><div class="objslot"></div></div><ol>${it.map((x,i)=>`<li class="rv"><span>${i<half?'A'+(i+1):'B'+(i-half+1)}</span><b>${x[0]}</b><p>${x[1]}</p></li>`).join('')}</ol><div class="ww"><span class="mono" style="color:var(--mute)">Plays well with</span>${Object.keys(WW).filter(a=>a!==k).map(a=>`<a href="#${a}"><i style="background:${WW[a][0]}"></i>${WW[a][1]} · ${WW[a][2]}</a>`).join('')}</div>`});
@@ -1790,14 +1791,14 @@ function frame(now){
   const ax=cx+rpx*.62,ay=cy+rpx*.74,far=Math.hypot(rope[RN-1].x-ax,rope[RN-1].y-ay);
   if(ropeA<.03||far>len*1.6){rope.forEach((p,i)=>{p.x=p.px=ax+Math.sin(i*.5)*6;p.y=p.py=ay+i*len/RN})}
   stepRope(ax,ay,len/RN,kickNow);
-  drawRope(ropeA,css(cur.A),css(cur.B.map(v=>v*.9+.1)),Math.max(3.5,rpx*.034));
+  if(!window.__ph)drawRope(ropeA,css(cur.A),css(cur.B.map(v=>v*.9+.1)),Math.max(3.5,rpx*.034));
   /* knob hit area */
   const showK=[0,1,3,4,6].includes(shape)&&flipT>=1&&rpx>40;
   if(showK){kh.style.display='block';kh.classList.toggle('small',rpx<150);{const tk=shape+'|'+playing;if(kh._t!==tk){kh._t=tk;khTip.textContent=shape===4?'Drag to change the tempo':(shape===3||shape===6)&&playing?'Grab it. Scratch the track.':''}}kh.style.left=(cx-rpx)+'px';kh.style.top=(cy-rpx)+'px';kh.style.width=kh.style.height=(rpx*2)+'px'}else if(kh.style.display!=='none'){kh.style.display='none'}
   if(tour&&tour.el&&tour.el.isConnected){const r=tour.el.getBoundingClientRect();pawT.x=r.left+r.width*.6;pawT.y=r.top+r.height*.6}
   laserTick(rdt);eyeTick(rdt);
   const kp=1-Math.pow(.0006,rdt);pawP.x+=(pawT.x-pawP.x)*kp;pawP.y+=(pawT.y-pawP.y)*kp;paw.style.transform=`translate(${pawP.x.toFixed(1)}px,${pawP.y.toFixed(1)}px)`;
-  if(glOK){
+  if(glOK&&!window.__ph){
     gl.uniform2f(U.uRes,canvas.width,canvas.height);gl.uniform1f(U.uTime,T);
     gl.uniform2f(U.uC,cx*DPR,(H-cy)*DPR);gl.uniform1f(U.uR,Math.max(1,rpx*DPR));
     gl.uniform1f(U.uShape,shape);gl.uniform1f(U.uSq,sq);gl.uniform1f(U.uSpin,spin);gl.uniform1f(U.uPulse,pulse);gl.uniform1f(U.uHat,hatv);
