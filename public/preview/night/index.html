@@ -881,6 +881,32 @@ body.nap .steps li svg{animation-play-state:paused}
 .doors .door{padding-top:14px}
 .doors .door .chr{width:clamp(64px,6.2vw,92px);margin:0 0 6px -6px}
 @media (min-width:701px) and (max-height:960px){#hero .lede{margin:14px 0 14px}}
+
+/* ===== round 9: one size system. Titles 20 to 30, body 16, tiles 48, radius 12, hairlines 1px, gaps 16 and 24 ===== */
+.rl{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,3vw,48px);margin-top:24px;border-bottom:0}
+.rl li{grid-template-columns:48px 1fr;gap:16px;align-items:start;padding:20px 0;border-top:0;border-bottom:1px solid var(--line)}
+.rl li svg{width:48px;height:48px;padding:11px;box-sizing:border-box;border-radius:12px;background:var(--panel2);color:var(--c);fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.rl b{font-size:clamp(20px,2vw,30px);margin:4px 0 6px}
+.rl p{font-size:16px}
+.rl li:hover,.rl li:focus-visible{border-top-color:transparent;border-bottom-color:var(--c)}
+@media (max-width:700px){.rl{grid-template-columns:1fr}}
+/* doors: the app's line sits under each door */
+.doors{border-top:0;border-bottom:1px solid var(--line)}
+.doors .door{padding-top:0;padding-bottom:14px}
+.doors .door::before{top:auto;bottom:-1px;height:2px}
+/* the colour wash goes behind the page, so nothing on top of it is tinted or softened */
+#hovwash{z-index:-1;mix-blend-mode:normal}
+#hovwash.on{opacity:.3}
+/* sizes pulled into line */
+.epnext b{font-size:clamp(56px,6vw,88px)}
+.epnext span{font-size:16px}
+.epfan button{width:clamp(80px,8vw,116px)}
+.panel{border-radius:16px}
+.liner li{border-radius:12px}
+.liner li span{width:56px;height:56px;font-size:11px}
+.liner li{grid-template-columns:56px 1fr;gap:2px 16px}
+.liner li b{font-size:18px}.liner li p{font-size:15px}
+@media (min-width:1001px){.steps button{grid-template-columns:40px 1fr 28px;font-size:17px;padding:10px 0;gap:12px}.steps svg{width:40px;height:40px;padding:9px;border-radius:12px}}
 </style>
 </head>
 <body>
@@ -955,31 +981,11 @@ body.nap .steps li svg{animation-play-state:paused}
   <div class="why-in">
     <p class="eyebrow rv">House rules</p>
     <h2 class="say rv">We've spent years on dance floors in this country. <em>This is what we wished we'd had on the way there, at the door, and on the drive home.</em></h2>
-    <ol class="rl"><li tabindex="0" style="--c:#7FA7FF"><i class="chr" data-form="ball" aria-hidden="true"></i><div><small>Nights</small><b>Picked by hand.</b><p>If we wouldn't go ourselves, it isn't listed.</p></div></li><li tabindex="0" style="--c:#FFE600"><i class="chr" data-form="logo" aria-hidden="true"></i><div><small>Everywhere</small><b>No Bollywood nights. No filler.</b><p>Electronic music, taken seriously.</p></div></li><li tabindex="0" style="--c:#B6EF36"><i class="chr" data-form="record" aria-hidden="true"></i><div><small>Artists</small><b>Everything has a source.</b><p>Every record and gig on an artist's page says where it came from.</p></div></li><li tabindex="0" style="--c:#FF7DAA"><i class="chr" data-form="knob" aria-hidden="true"></i><div><small>School</small><b>You learn by playing.</b><p>The school is an instrument, not a video course.</p></div></li></ol>
+    <ol class="rl"><li tabindex="0" style="--c:#7FA7FF"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><div><small>Nights</small><b>Real nights, real links.</b><p>Every listing goes to the real event and its tickets.</p></div></li><li tabindex="0" style="--c:#FFE600"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4h12v17M3 21h18M14 12h.01"/></svg><div><small>Host</small><b>Your night stays yours.</b><p>Your invite, your guest list, your door. We give you the tools.</p></div></li><li tabindex="0" style="--c:#B6EF36"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7zM15 3v4h4M10 14l2 2 4-4"/></svg><div><small>Artists</small><b>Everything has a source.</b><p>Every record and gig on an artist's page says where it came from.</p></div></li><li tabindex="0" style="--c:#FF7DAA"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><div><small>School</small><b>You learn by playing.</b><p>The school is an instrument, not a video course.</p></div></li></ol>
   </div>
 </section>
 
 <!-- NIGHTS -->
-<section class="chapter" id="ch-episodes" data-pg="home nights episodes">
-  <div class="tcard stage right" data-k="episodes">
-    <div class="tc rv">
-      <p class="meta"><span class="time">Ours</span><span>Bengaluru</span></p>
-      <h2 class="disp" data-beat>Episodes</h2>
-      <p class="claim">The nights we throw ourselves.</p>
-      <p class="for">House, breaks, UKG and bass. Residents: Merman and Sartdawg.</p>
-    </div>
-  </div>
-  <div class="eprow stage" data-k="episodes-b">
-    <p class="mono" style="grid-column:1/-1;color:var(--mute);margin:0">Tap a poster to see who played</p>
-    <div class="ep rv"><div class="art"><span class="mono">Apr 2025</span><b>Ep<br>01</b></div><p>Episode 1<small>Bar Wild</small></p></div>
-    <div class="ep rv"><div class="art"><img src="img/ep2.webp" alt="Episode 2 poster" loading="lazy"></div><p>Episode 2<small>28 Jun 2026 · Indiranagar Social</small></p></div>
-    <div class="ep rv"><div class="art"><img src="img/ep3.webp" alt="Episode 3 poster" loading="lazy"></div><p>Episode 3<small>16 Aug 2026 · Indiranagar Social</small></p></div>
-    <div class="ep rv"><div class="art"><img src="img/ep4.webp" alt="Episode 4 poster" loading="lazy"></div><p>Episode 4<small>26 Sep 2026 · Bar Wild</small></p></div>
-    <div class="ep next rv"><div class="art"><span class="mono">Next</span><b>Ep<br>05</b></div><p>Episode 5<small>25 Nov 2026 · The Humming Tree</small></p></div>
-  </div>
-</section>
-
-<!-- POINTS -->
 <section class="chapter" id="ch-nights" data-pg="home nights">
   <div class="tcard stage right" data-k="nights" data-pg="home">
     <div class="tc rv">
@@ -1008,6 +1014,26 @@ body.nap .steps li svg{animation-play-state:paused}
 </section>
 
 <!-- HOST -->
+<section class="chapter" id="ch-episodes" data-pg="home nights episodes">
+  <div class="tcard stage right" data-k="episodes">
+    <div class="tc rv">
+      <p class="meta"><span class="time">Ours</span><span>Bengaluru</span></p>
+      <h2 class="disp" data-beat>Episodes</h2>
+      <p class="claim">The nights we throw ourselves.</p>
+      <p class="for">House, breaks, UKG and bass. Residents: Merman and Sartdawg.</p>
+    </div>
+  </div>
+  <div class="eprow stage" data-k="episodes-b">
+    <p class="mono" style="grid-column:1/-1;color:var(--mute);margin:0">Tap a poster to see who played</p>
+    <div class="ep rv"><div class="art"><span class="mono">Apr 2025</span><b>Ep<br>01</b></div><p>Episode 1<small>Bar Wild</small></p></div>
+    <div class="ep rv"><div class="art"><img src="img/ep2.webp" alt="Episode 2 poster" loading="lazy"></div><p>Episode 2<small>28 Jun 2026 · Indiranagar Social</small></p></div>
+    <div class="ep rv"><div class="art"><img src="img/ep3.webp" alt="Episode 3 poster" loading="lazy"></div><p>Episode 3<small>16 Aug 2026 · Indiranagar Social</small></p></div>
+    <div class="ep rv"><div class="art"><img src="img/ep4.webp" alt="Episode 4 poster" loading="lazy"></div><p>Episode 4<small>26 Sep 2026 · Bar Wild</small></p></div>
+    <div class="ep next rv"><div class="art"><span class="mono">Next</span><b>Ep<br>05</b></div><p>Episode 5<small>25 Nov 2026 · The Humming Tree</small></p></div>
+  </div>
+</section>
+
+<!-- POINTS -->
 <section class="chapter" id="ch-host" data-pg="home host">
   <div class="tcard stage left" data-k="host" data-pg="home">
     <div class="tc rv">
