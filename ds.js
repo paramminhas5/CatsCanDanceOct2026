@@ -325,7 +325,7 @@ CCD.def('story',el=>{const box=$('.story-obj',el),cv=$('canvas',box),clk=$('.ncl
 
 /* ================= LOGO STAMP under UV light ================= */
 CCD.def('stamps',el=>{const pad=$('.spad',el);pad.addEventListener('pointermove',e=>{const r=pad.getBoundingClientRect();pad.style.setProperty('--ux',(e.clientX-r.left)+'px');pad.style.setProperty('--uy',(e.clientY-r.top)+'px');pad.classList.add('lit')});pad.addEventListener('pointerleave',()=>pad.classList.remove('lit'));
-  const b=$('[data-stamp]',el);b&&b.addEventListener('click',()=>{CCD.pts&&CCD.pts.award(100,'checked in',b,'stamp-'+b.dataset.stamp,true);const s=document.createElement('span');s.className='stamp new';s.style.setProperty('--r',(Math.random()*30-15)+'deg');s.innerHTML='<img src="'+(el.dataset.root||'')+'assets/img/logo.png" alt=""><em>'+esc(b.dataset.stamp)+'</em>';$('.stamps',el).appendChild(s);pad.classList.add('thunk');vib(25);setTimeout(()=>pad.classList.remove('thunk'),ms('--d-move'));setTimeout(()=>s.classList.remove('new'),ms('--d-scene')*2);b.setAttribute('aria-disabled','true');b.classList.add('is-done');CCD.setLabel(b,'Stamped')})});
+  const b=$('[data-stamp]',el);b&&b.addEventListener('click',()=>{CCD.pts&&CCD.pts.award(100,'checked in',b,'stamp-'+b.dataset.stamp,true);const s=document.createElement('span');s.className='ink new';s.style.setProperty('--r',(Math.random()*30-15)+'deg');s.innerHTML='<i></i><em>'+esc(b.dataset.stamp)+'</em>';$('.stamps',el).appendChild(s);pad.classList.add('thunk');vib(25);setTimeout(()=>pad.classList.remove('thunk'),ms('--d-move'));setTimeout(()=>s.classList.remove('new'),ms('--d-scene')*2);b.setAttribute('aria-disabled','true');b.classList.add('is-done');CCD.setLabel(b,'Stamped')})});
 
 /* ================= WHISKERS: a count that fills the room ================= */
 CCD.def('whiskers',el=>{const n=$('.wn',el),cap=+el.dataset.cap||40;CCD.whisk=CCD.whisk||{};const set=v=>{v=Math.max(0,Math.min(cap,v));el.dataset.v=v;el.style.setProperty('--f',v/cap);n.textContent=v;el.classList.toggle('full',v>=cap);const s=$('.wcap',el);if(s)s.textContent=v>=cap?'Full':`${cap-v} left`};el._set=set;set(+el.dataset.v||0);
@@ -377,16 +377,18 @@ CCD.def('flyers',el=>{$$('.flyer',el).forEach((f,i)=>{f.style.setProperty('--r',
 const PRETTY=n=>n&&n===n.toUpperCase()&&/[A-Z]/.test(n)?n.split(' ').map(w=>w.length>2||/^[A-Z]+$/.test(w)&&w.length>1?w[0]+w.slice(1).toLowerCase():w).join(' '):n;CCD.pretty=PRETTY;
 const CITY=c=>{c=String(c||'').split('(')[0].split(',')[0].trim();return c==='Delhi'||c==='Noida'||c==='Gurgaon'||c==='Gurugram'?'New Delhi':c};CCD.city=CITY;
 const RPH=(r,root)=>r[4]==='L'?`${root}assets/img/a-${r[0]}.webp`:r[4];CCD.rphoto=RPH;
-CCD.def('spines',el=>{const root=el.dataset.root||'';const shelf=$('.shelf',el),det=$('.sdetail',el);const R=(D.roster||[]).filter(r=>r[4]);
-  const by={};R.forEach(r=>{const c=CITY(r[2])||'Elsewhere';(by[c]=by[c]||[]).push(r)});const order=Object.keys(by).sort((a,b)=>by[b].length-by[a].length);
+/* order for browsing: played Cats Can Dance first, then open to bookings, then the rest, with cities dealt round so no one city fills the top */
+CCD.mix=R=>{const score=r=>(r[4]?4:0)+(r[6]?2:0)+(r[4]==='L'?1:0);const by={};R.forEach(r=>{const k=score(r)+'|'+(CITY(r[2])||'x');(by[k]=by[k]||[]).push(r)});const out=[];
+  [7,6,5,4,3,2,1,0].forEach(sc=>{const qs=Object.keys(by).filter(k=>+k.split('|')[0]===sc).map(k=>by[k].slice().sort((a,b)=>a[1].localeCompare(b[1])));let more=true;while(more){more=false;qs.forEach(q=>{if(q.length){out.push(q.shift());more=true}})}});return out};
+CCD.def('spines',el=>{const root=el.dataset.root||'';const shelf=$('.shelf',el),det=$('.sdetail',el);const R=CCD.mix((D.roster||[]).filter(r=>r[4]));
   const M=Object.fromEntries(R.map(r=>[r[0],r]));
-  shelf.innerHTML=order.map(c=>`<span class="divider" aria-hidden="true">${esc(c)}</span>`+by[c].map(r=>`<a class="spine" href="${root}pages/artist.html#${r[0]}" data-a="${r[0]}" style="--img:url(${RPH(r,root)})"><span>${esc(PRETTY(r[1]))}</span></a>`).join('')).join('');
-  const show=b=>{$$('.spine',shelf).forEach(s=>s.classList.toggle('out',s===b));const r=M[b.dataset.a];det.innerHTML=`<img src="${RPH(r,root)}" alt=""><div><span class="lbl">${esc(CITY(r[2]))}</span><b class="t-h3">${esc(PRETTY(r[1]))}</b><span class="tags">${r[3].slice(0,3).map(g=>`<span class="tag">${esc(g)}</span>`).join('')}</span><a class="seeall" href="${root}pages/artist.html#${r[0]}">${EY1}<span class="lab">Open page</span></a></div>`;collect(det)};
+  shelf.innerHTML=R.map(r=>`<a class="spine" href="${root}pages/artist.html#${r[0]}" data-a="${r[0]}" style="--img:url(${RPH(r,root)})"><span>${esc(PRETTY(r[1]))}</span></a>`).join('');
+  const show=b=>{$$('.spine',shelf).forEach(s=>s.classList.toggle('out',s===b));const r=M[b.dataset.a];det.innerHTML=`<img src="${RPH(r,root)}" alt=""><div><span class="lbl">${esc(CITY(r[2])||'')}</span><b class="t-h3">${esc(PRETTY(r[1]))}</b><span class="tags">${r[3].slice(0,3).map(g=>`<span class="tag">${esc(g)}</span>`).join('')}</span><a class="seeall" href="${root}pages/artist.html#${r[0]}">${EY1}<span class="lab">Open page</span></a></div>`;collect(det)};
   shelf.addEventListener('pointerover',e=>{const b=e.target.closest('.spine');if(b)show(b)});shelf.addEventListener('focusin',e=>{const b=e.target.closest('.spine');if(b)show(b)});
   const f=$('.spine',shelf);f&&show(f)});
 
 /* the roster: all of them, searchable */
-CCD.def('roster',el=>{const root=el.dataset.root||'';const R=(D.roster||[]).slice().sort((a,b)=>(!!b[4]-!!a[4])||a[1].localeCompare(b[1]));
+CCD.def('roster',el=>{const root=el.dataset.root||'';const R=CCD.mix(D.roster||[]);
   const q=$('input',el),ch=$('.rchips',el),grid=$('.rgrid',el),cnt=$('.rcount',el),more=$('.rmore',el);let f='all',lim=48;
   const cities=['New Delhi','Mumbai','Bengaluru','Goa'];const genres=['Techno','House','Ambient','Bass'];
   ch.innerHTML=[['all','All'],['open','Open to bookings'],['ccd','Played Cats Can Dance'],...cities.map(c=>['c:'+c,c]),...genres.map(g=>['g:'+g,g])].map(([v,n])=>`<button class="chip" data-v="${v}" aria-pressed="${v==='all'}">${n}</button>`).join('');
@@ -416,8 +418,8 @@ CCD.def('chrome',el=>{const N=36;let f=0,v=0,hov=false,drag=null,shown=-1,last=p
   (function tick(now){const dt=Math.min(.05,(now-last)/1000);last=now;if(!drag){const want=hov&&!RM?22:0;if(hov)v+=(want-v)*(1-Math.pow(.05,dt));else v*=Math.pow(.08,dt);if(Math.abs(v)<.05)v=0;f+=v*dt;if(!hov&&v===0){const r=Math.round(f);f+=(r-f)*(1-Math.pow(.001,dt))}paint()}requestAnimationFrame(tick)})(last)});
 
 /* ================= EYES IN THE ROOM ================= */
-CCD.def('room',el=>{const n=+el.dataset.n||12;const g=$('.rgrid',el);g.innerHTML=Array.from({length:n},()=>'<i></i>').join('');
-  const b=$('[data-going]',el),c=$('.rcount',el);b&&b.addEventListener('click',()=>{const on=!el.classList.contains('you');el.classList.toggle('you',on);if(on){const me=document.createElement('i');me.className='me';g.prepend(me);CCD.done(b,'You\'re going')}else{const me=$('.me',g);me&&me.remove();b.classList.remove('is-done');CCD.setLabel(b,'I\'m going')}c.textContent=n+(on?1:0)})});
+CCD.def('room',el=>{const n=+el.dataset.n||12;const g=$('.rgrid2,.rgrid',el);const pair=c=>`<span class="eyes${c?' '+c:''}"><i class="eye"></i><i class="eye"></i></span>`;g.innerHTML=Array.from({length:n},()=>pair('')).join('');collect(g);
+  const b=$('[data-going]',el),c=$('.rcount',el);b&&b.addEventListener('click',()=>{const on=!el.classList.contains('you');el.classList.toggle('you',on);if(on){g.insertAdjacentHTML('afterbegin',pair('me'));collect(g);pounce($('.me',g));CCD.done(b,'You\'re going')}else{const me=$('.me',g);me&&me.remove();b.classList.remove('is-done');CCD.setLabel(b,'I\'m going')}c.textContent=n+(on?1:0)})});
 
 /* ================= CHROME OBJECTS: upright and still until you point at them =================
    Every .cobj stands still. Point at it (or at the card it sits in) and it turns once, lifts, and a light runs across the chrome.

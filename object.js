@@ -2,7 +2,7 @@
 (()=>{
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const ms=n=>parseFloat(getComputedStyle(document.documentElement).getPropertyValue(n));
-const COL={shared:'#F2F1EE',nights:'#3B78FF',host:'#FFE600',artists:'#B6EF36',school:'#FF4D8D'};
+const COL={ink:'#1b1b20',shared:'#F2F1EE',nights:'#3B78FF',host:'#FFE600',artists:'#A07BFF',school:'#FF4D8D'};
 
 const FS=`precision highp float;
 uniform vec2 uC;uniform float uTime,uR,uShape,uSq,uSpin,uPulse,uHue,uKnob,uTex;uniform vec3 uA,uB,uBg;uniform sampler2D uLogo;

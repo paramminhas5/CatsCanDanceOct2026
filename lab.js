@@ -6,8 +6,8 @@ const css=getComputedStyle(document.documentElement);
 const tok=n=>css.getPropertyValue(n).trim();
 const ms=n=>parseFloat(tok(n));
 const body=document.body;
-const COL={shared:'#F2F1EE',nights:'#3B78FF',host:'#FFE600',artists:'#B6EF36',school:'#FF4D8D'};
-const NAME={shared:'Shared · ink',nights:'Nights · #3B78FF',host:'Host · #FFE600',artists:'Artists · #B6EF36',school:'School · #FF4D8D'};
+const COL={shared:'#F2F1EE',nights:'#3B78FF',host:'#FFE600',artists:'#A07BFF',school:'#FF4D8D'};
+const NAME={shared:'Shared · ink',nights:'Nights · #3B78FF',host:'Host · #FFE600',artists:'Artists · #A07BFF',school:'School · #FF4D8D'};
 const FORM_OF={shared:'coin',nights:'ball',artists:'record',host:'stamp',school:'dial'};
 let world='shared',lastApp='nights',eyeOpt='a',font='outfit';
 const store={get(k){try{return localStorage.getItem('ccdlab.'+k)}catch(e){return null}},set(k,v){try{localStorage.setItem('ccdlab.'+k,v)}catch(e){}}};
@@ -46,7 +46,7 @@ document.addEventListener('click',e=>{const f=e.target.closest('[data-font]');if
 /* ---------- contrast table ---------- */
 function lum(h){h=h.replace('#','');const c=[0,2,4].map(i=>parseInt(h.substr(i,2),16)/255).map(x=>x<=.03928?x/12.92:Math.pow((x+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]}
 function cr(a,b){const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)}
-const CT=[['Nights','#3B78FF','nights'],['Host','#FFE600','host'],['Artists','#B6EF36','artists'],['School','#FF4D8D','school'],['Red','#FF4438',''],['Mute','#A3A39C',''],['Faint','#86867F',''],['Rest','#6E6E69','']];
+const CT=[['Nights','#3B78FF','nights'],['Host','#FFE600','host'],['Artists','#A07BFF','artists'],['School','#FF4D8D','school'],['Red','#FF4438',''],['Mute','#A3A39C',''],['Faint','#86867F',''],['Rest','#6E6E69','']];
 function cell(v,need=4.5){const ok=v>=need;return `<td class="m ${ok?'pass':'fail'}">${v.toFixed(2)} ${ok?'pass':'no'}</td>`}
 function paintContrast(){$('#contrast tbody').innerHTML=CT.map(([n,h,w])=>`<tr style="${w===world?'background:color-mix(in srgb,var(--acc) 8%,transparent)':''}"><td><span class="chipdot" style="--c:${h}"></span>${n}</td>${cell(cr(h,'#0C0D0F'))}${cell(cr(h,'#F2F1EE'))}</tr>`).join('')}
 
