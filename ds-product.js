@@ -177,6 +177,33 @@ def('points',el=>{const root=el.dataset.root||'';
   document.addEventListener('ccd:step',e=>{if(e.detail<0)return;const p=CCD.pageTrack&&CCD.pageTrack.pat('kick');if(p&&p[e.detail]){el.classList.add('kick');setTimeout(()=>el.classList.remove('kick'),90)}});
   draw()});
 
+/* ================= WORK BLOCK: how it works beside one product card =================
+   The steps on the left drive the card: a step with a tab opens that tab, a step with a target scrolls to it and lights it.
+   Tabs in the card's bar switch its views. [data-goto] buttons move to a tab. Making the invite moves Host to the guest list. */
+def('cbody',el=>{const steps=$$('.steps button',el),tabs=$$('.pbar .ptabs [data-tab]',el),vs=$$('.pbody > .hv',el);let cur=0;
+  const go=n=>{if(!vs.length)return;cur=n;tabs.forEach(t=>t.setAttribute('aria-selected',+t.dataset.tab===n));vs.forEach(v=>{v.hidden=+v.dataset.v!==n;if(!v.hidden){v.classList.remove('in');void v.offsetWidth;v.classList.add('in')}});
+    steps.forEach(b=>{if(b.dataset.tab==null)return;const t=+b.dataset.tab;b.classList.toggle('done',t<n);b.classList.toggle('on',t===n&&b===steps.find(x=>+x.dataset.tab===n))});CCD.eyes.collect(el)};
+  tabs.forEach(t=>t.addEventListener('click',()=>go(+t.dataset.tab)));
+  el.addEventListener('click',e=>{const g=e.target.closest('[data-goto]');if(g){go(+g.dataset.goto);$('.panel',el).scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'})}});
+  steps.forEach((b,i)=>b.addEventListener('click',()=>{steps.forEach((x,k)=>{x.classList.toggle('on',k===i);x.classList.toggle('done',k<i)});
+    if(b.dataset.tab!=null)go(+b.dataset.tab);
+    const sel=b.dataset.focus;const t=sel&&$(sel,el);if(t){t.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash')}
+    else $('.panel',el).scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'})}));
+  el.addEventListener('ccd:held',e=>{if(e.target.closest('.invite')&&vs.length>1)setTimeout(()=>go(1),1400)});
+  if(vs.length)go(0)});
+
+/* ================= ARTIST BOARD: twelve faces, one in focus ================= */
+def('aboard',el=>{const root=el.dataset.root||'';const M=Object.fromEntries((D.roster||[]).map(r=>[r[0],r]));const f=$('.ab-f',el);
+  const nightsOf=slug=>{const nm=CCD.norm(CCD.pretty(M[slug][1]));return (D.nights||[]).filter(n=>n.l.some(l=>CCD.norm(l.replace(/\s*\(live\)/i,''))===nm))};
+  function show(slug){const r=M[slug];if(!r)return;$$('.ab-av',el).forEach(b=>b.setAttribute('aria-pressed',b.dataset.slug===slug));const nm=CCD.pretty(r[1]),ph=CCD.rphoto(r,root),n=nightsOf(slug)[0];
+    f.innerHTML=`<div class="ab-ph"><img src="${ph}" alt="${esc(nm)}"><button class="vinyl ab-vin" data-c="vinyl" data-a="${slug}" data-n="${esc(nm)}" aria-label="${esc(nm)}. Tap to play, drag to scratch."><img src="${ph}" alt=""></button></div>
+      <div class="ab-t"><span class="t-data faint">${esc((CCD.city(r[2])||'').toUpperCase())}</span><b class="ab-n">${esc(nm)}</b><span class="tags">${r[3].slice(0,3).map(g=>`<span>${esc(g)}</span>`).join('')}</span>
+      ${n?`<a class="ab-next" href="${root}pages/night.html#${n.id}"><i></i>Next: ${esc(n.d)}, ${esc(n.t)}</a>`:`<span class="ab-next none">No date announced</span>`}
+      <div class="vinfo"></div><div class="acts"><a class="btn two m" href="${root}pages/artist.html#${slug}">${EY2}<span class="lab">Open their page</span></a><button class="btn one m" data-follow="${esc(nm)}" aria-pressed="false">${EY1}<span class="lab">Follow</span></button></div></div>`;
+    f.classList.remove('in');void f.offsetWidth;f.classList.add('in');CCD.init(f)}
+  el.addEventListener('click',e=>{const b=e.target.closest('.ab-av');if(b)show(b.dataset.slug)});
+  show(($('.ab-av',el)||{}).dataset?.slug)});
+
 /* ================= PICKS: Nights, curated =================
    One pick in the frame. Hover or focus a row and its poster and facts take the frame; leave and the pick comes back.
    City tabs are quiet text. On touch, the first tap on a row shows it in the frame, the second opens the night. */
@@ -250,16 +277,19 @@ def('artistpage',el=>{const root=el.dataset.root||'';const R=(D.roster||[]);
   function paint(){const name=pretty(A.name);document.title=name+' · Cats Can Dance';
     const city=(A.based_city||'').split('(')[0].replace(/, (India|USA)$/,'');const g=(A.genres||[]).slice(0,3).join(', ');
     const links=[A.spotify&&['Spotify',A.spotify],A.soundcloud&&['SoundCloud',A.soundcloud],A.instagram&&['Instagram',/^http/.test(A.instagram)?A.instagram:'https://instagram.com/'+A.instagram.replace('@','')],A.website&&['Website',A.website]].filter(Boolean);
+    const yrs=[...RELS.map(r=>r.y),...ERAS.map(e=>e.from)].filter(Boolean);const span=yrs.length?`${Math.min(...yrs)} to now`:'';
+    const nm0=CCD.norm(name);const nn=(D.nights||[]).find(n=>n.l.some(l=>CCD.norm(l.replace(/\s*\(live\)/i,''))===nm0));
     $h.innerHTML=`<div class="ap-photo">${PHOTOS[0]?`<img src="${PHOTOS[0]}" alt="${esc(name)}" data-photo>`:`<span class="ap-ini">${esc(name[0]||'?')}</span>`}</div>
-      <div class="ap-id"><span class="lbl">${esc([city,g].filter(Boolean).join(' · '))}</span><h1 class="ap-name">${esc(name)}</h1>
+      <div class="ap-id"><span class="lbl">${esc([city,g,span].filter(Boolean).join(' · '))}</span><h1 class="ap-name">${esc(name)}</h1>
+      ${nn?`<a class="ab-next" href="${root}pages/night.html#${nn.id}"><i></i>Next: ${esc(nn.d)}, ${esc(nn.t)}</a>`:`<span class="ab-next none">No date near you yet. Follow to hear first.</span>`}
       <p class="ap-line" data-line></p>
       <div class="ap-acts"><button class="btn two l" data-start>${EY2}<span class="lab">${ERAS.length>1?'Start here':'Play'}</span></button><button class="btn one m" data-follow="${esc(name)}" aria-pressed="false">${EY1}<span class="lab">Follow</span></button><a class="btn one m" href="#book">${EY1}<span class="lab">Book</span></a><button class="btn one m" data-share>${EY1}<span class="lab">Share</span></button></div>
       ${links.length?`<div class="ap-links">${links.map(([n,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${n}</a>`).join('')}</div>`:''}</div>`;
     CCD.init($h);CCD.eyes.collect($h);
     /* eras as sleeves */
     $('.ap-eras',el).hidden=ERAS.length<2;
-    $sl.innerHTML=ERAS.length<2?'':`<button class="ap-sl all" data-era="-1" aria-pressed="true"><span class="sl"><span class="sl-face"><b>All</b><em>${ERAS[0].from} to now</em></span><span class="sl-rec" aria-hidden="true"><i></i></span></span><span class="sl-t"><b>Everything</b><span class="t-data faint">${RELS.length} RELEASES</span></span></button>`+
-      ERAS.map((e,k)=>{const nr=RELS.filter(r=>r.era===k).length;return `<button class="ap-sl" data-era="${k}" aria-pressed="false" style="--ec:${COL(k)}"><span class="sl">${PHOTOS.length?`<img src="${PHOTOS[k%PHOTOS.length]}" alt="" style="object-position:center ${20+k*25}%">`:'<span class="sl-face"></span>'}<span class="sl-band">${e.from}</span><span class="sl-rec" aria-hidden="true"><i></i></span></span><span class="sl-t"><span class="lbl">${e.from} to ${e.to||'now'}</span><b>${esc(e.label||e.sound.split(',')[0])}</b><span class="t-data faint">${nr} RELEASE${nr===1?'':'S'}</span></span></button>`}).join('');
+    $sl.innerHTML=ERAS.length<2?'':`<button class="ap-sl ap-band all" data-era="-1" aria-pressed="true"><i></i><b>Everything</b><span class="t-data faint">${RELS.length} RECORDS</span></button>`+
+      ERAS.map((e,k)=>{const nr=RELS.filter(r=>r.era===k).length;return `<button class="ap-sl ap-band" data-era="${k}" aria-pressed="false" style="--ec:${COL(k)};--w:${Math.max(1,(e.to||new Date().getFullYear())-e.from+1)}"><i></i><b>${esc(e.label||e.sound.split(',')[0])}</b><span class="t-data faint">${e.from} TO ${e.to||'NOW'} · ${nr}</span></button>`}).join('');
     $$('.ap-sl',el).forEach(b=>b.addEventListener('click',()=>setEra(+b.dataset.era,'click')));
     drawPop();drawVids();drawPress();drawConn();drawFans();
     $('[data-start]',el).addEventListener('click',startHere);$('[data-share]',el).addEventListener('click',e=>share(e.currentTarget));
@@ -286,10 +316,10 @@ def('artistpage',el=>{const root=el.dataset.root||'';const R=(D.roster||[]);
     if(!deck.isPlaying()){setNow({r});deck.reset()}}
   /* ---------- releases ---------- */
   function drawRels(){const list=RELS.filter(r=>(era<0||r.era===era)&&(type==='all'||r.ty===type)).slice().reverse();$('.ap-reln',el).textContent=`${list.length}${list.length!==RELS.length?' OF '+RELS.length:''}`;
-    $rel.innerHTML=list.map(r=>`<button class="ap-rel${focus&&focus.t===r.t?' on':''}" data-t="${esc(r.t)}">${art(r)}<span class="ap-rt"><b>${esc(r.t)}</b><span class="t-data faint">${esc(r.ty.toUpperCase())}${r.y?' · '+r.y:''}</span></span></button>`).join('')||'<p class="t-small mute">Nothing on record for these years.</p>';
-    const ch=$('.ap-types',el);if(!ch.dataset.done){ch.dataset.done=1;const types=[...new Set(RELS.map(r=>r.ty))];ch.hidden=types.length<2;ch.innerHTML=['all',...types].map(v=>`<button class="chip" aria-pressed="${v===type}" data-v="${v}">${EY1}${v==='all'?'All':v+(v.endsWith('s')?'':'s')}</button>`).join('');CCD.eyes.collect(ch)}}
+    $rel.innerHTML=list.map(r=>`<button class="ap-rel shv${focus&&focus.t===r.t?' on':''}" data-t="${esc(r.t)}" style="--ec:${COL(r.era)}"><span class="shv-s"><span class="shv-rec" aria-hidden="true"></span>${art(r)}</span><span class="ap-rt"><b>${esc(r.t)}</b><span class="t-data faint">${esc(r.ty.toUpperCase())}${r.y?' · '+r.y:''}</span></span></button>`).join('')||'<p class="t-small mute">Nothing on record for these years.</p>';
+    const ch=$('.ap-types',el);if(!ch.dataset.done){ch.dataset.done=1;const types=[...new Set(RELS.map(r=>r.ty))];ch.hidden=types.length<2;ch.innerHTML=['all',...types].map(v=>`<button class="chip" aria-pressed="${v===type}" data-v="${v}">${EY1}${v==='all'?'All':({Remix:'Remixes',Mix:'Mixes'}[v]||v+(v.endsWith('s')?'':'s'))}</button>`).join('');CCD.eyes.collect(ch)}}
   $('.ap-types',el).addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;type=b.dataset.v;$$('.chip',b.parentElement).forEach(x=>x.setAttribute('aria-pressed',x===b));drawRels()});
-  $rel.addEventListener('click',e=>{const b=e.target.closest('.ap-rel');if(!b)return;setFocus(RELS.find(x=>x.t===b.dataset.t),'tile');$fo.scrollIntoView({behavior:CCD.RM?'auto':'smooth',block:'center'})});
+  $rel.addEventListener('click',e=>{const b=e.target.closest('.ap-rel');if(!b)return;const r=RELS.find(x=>x.t===b.dataset.t);setFocus(r,'tile');if(r.dz||r.bc)playItem({r})});
   /* ---------- shows ---------- */
   function drawShows(){const today=new Date().toISOString().slice(0,10);const up=GIGS.filter(g=>g.d>=today);
     const name=pretty(A.name).toLowerCase();const nights=(D.nights||[]).filter(n=>n.l.some(l=>l.toLowerCase().replace(/\s*\(live\)/,'')===name));

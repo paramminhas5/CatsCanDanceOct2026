@@ -199,7 +199,7 @@ CCD.deck=(el,rec,opt={})=>{let buf=null,playing=false,src=null,startAt=0,offset=
 CCD.def('scratch',el=>{const btn=$('[data-play]',el);const d=CCD.deck(el,$('.rec',el),{onPlay:on=>{if(btn){btn.setAttribute('aria-pressed',on);CCD.setLabel(btn,on?'Stop':'Play')}}});btn&&btn.addEventListener('click',()=>d.toggle())});
 
 /* ================= ARTIST VINYL: tap to play, drag to scratch, and what's on it ================= */
-CCD.def('vinyl',el=>{const a=(D.artists||[]).find(x=>x.id===el.dataset.a)||{id:el.dataset.a,n:el.dataset.n||'',g:[]};const info=el.parentElement.querySelector('.vinfo');let file=null,real=null;
+CCD.def('vinyl',el=>{const a=(D.artists||[]).find(x=>x.id===el.dataset.a)||{id:el.dataset.a,n:el.dataset.n||'',g:[]};const info=el.parentElement.querySelector('.vinfo')||(el.closest('[data-vhost]')&&el.closest('[data-vhost]').querySelector('.vinfo'));let file=null,real=null;
   const lat=a.latest&&a.latest[0];const bc=`https://bandcamp.com/search?q=${encodeURIComponent(a.n+(lat?' '+lat[0]:''))}`;
   const show=on=>{if(!info)return;info.classList.toggle('on',on);if(!on){info.innerHTML=`<span class="lbl">Tap to play · drag to scratch</span>`;return}
     const bpm=(A.loops[a.id]&&A.loops[a.id].bpm)||GENRE_BPM(a.g);
@@ -254,8 +254,11 @@ CCD.def('story',el=>{const box=$('.story-obj',el),cv=$('canvas',box),clk=$('.ncl
   const css=n=>parseFloat(getComputedStyle(document.documentElement).getPropertyValue(n))||0;
   const pos={x:innerWidth*.75,y:innerHeight*.45,s:0},BASE=()=>Math.round(Math.min(560,Math.max(innerWidth,innerHeight)*.42));
   box.style.width=box.style.height=BASE()+'px';addEventListener('resize',()=>{box.style.width=box.style.height=BASE()+'px'});
-  const target=()=>{const c=chs[cur];const vw=innerWidth,vh=innerHeight;const sl=c&&$('.objslot',c);
-    if(sl&&sl.offsetParent){const r=sl.getBoundingClientRect();if(r.bottom>css('--header')&&r.top<vh*.92&&r.width>8)return{x:r.left+r.width/2,y:r.top+r.height/2,s:r.width,slot:1}}
+  /* v7: the object lands in whichever slot is on screen, nearest the middle: big beside a section's name, small beside its steps */
+  const slots=$$('.objslot',el);
+  const target=()=>{const vw=innerWidth,vh=innerHeight,hd=css('--header');let best=null,bd=1e9;
+    slots.forEach(sl=>{if(!sl.offsetParent)return;const r=sl.getBoundingClientRect();if(r.width<8||r.bottom<hd+r.height*.35||r.top>vh-r.height*.35)return;const d=Math.abs(r.top+r.height/2-vh*.46);if(d<bd){bd=d;best=r}});
+    if(best)return{x:best.left+best.width/2,y:best.top+best.height/2,s:best.width,slot:1};
     const ps=$('.spill-slot');if(ps&&ps.offsetParent){const r=ps.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2,s:r.width*1.15,slot:0}}
     const sz=css('--s7');return{x:vw-css('--margin'),y:vh-css('--s8'),s:sz,slot:0}};
   let last=performance.now();
