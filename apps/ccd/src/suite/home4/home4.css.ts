@@ -127,6 +127,34 @@ export const CSS = `
 @media (max-width:760px){.h4-feats,.h4-feats.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.h4-feats,.h4-feats.four{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px;padding:0 24px 8px}.h4-feat{flex:0 0 78%;scroll-snap-align:start}}
 
+/* journey: the app's steps in the order of the night */
+.h4-jr{position:relative}
+.h4-jr ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n),minmax(150px,1fr));gap:12px;overflow-x:auto;scrollbar-width:none}
+.h4-jr ol::-webkit-scrollbar{display:none}
+.h4-jr-line{position:absolute;left:0;right:0;top:41px;height:2px;background:var(--k-hair);pointer-events:none}
+.h4-jr-line i{position:absolute;inset:0;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform 1.4s var(--k-ease)}
+.h4-jr.seen .h4-jr-line i{transform:scaleX(1)}
+.h4-jr li{opacity:0;transform:translateY(12px);transition:opacity .5s var(--k-ease),transform .5s var(--k-ease);transition-delay:calc(var(--i) * .15s)}
+.h4-jr.seen li{opacity:1;transform:none}
+.h4-jr a{display:flex;flex-direction:column;gap:6px;color:var(--k-tx);text-decoration:none;min-width:0}
+.h4-jr-when{display:flex;align-items:baseline;gap:8px;height:22px;font:600 12px var(--k-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--k-t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.h4-jr-when em{font-style:normal;color:var(--acc)}
+.h4-jr-dot{position:relative;z-index:1;width:14px;height:14px;margin:4px 0 10px;border-radius:50%;background:var(--k-bg,#0a0a0b);border:2px solid var(--acc);box-shadow:0 0 0 4px var(--k-bg,#0a0a0b);transition:background .3s}
+.h4-jr.seen .h4-jr-dot{background:var(--acc);transition-delay:calc(var(--i) * .15s + .3s)}
+.h4-jr-pic{position:relative;display:block;height:200px;border-radius:18px;overflow:hidden;background:radial-gradient(80% 90% at 50% 100%,color-mix(in srgb,var(--acc) 26%,transparent),transparent 70%),var(--k-raised);border:1px solid var(--k-hair);transition:transform .3s var(--k-ease),border-color .3s}
+.h4-jr-pic img{position:absolute;left:50%;top:16px;width:64%;border-radius:18px;border:5px solid #0a0a0c;box-shadow:0 24px 40px -18px rgba(0,0,0,.6);transform:translateX(-50%);transition:transform .45s var(--k-ease)}
+.h4-jr a:hover .h4-jr-pic{border-color:color-mix(in srgb,var(--acc) 60%,transparent);transform:translateY(-3px)}
+.h4-jr a:hover .h4-jr-pic img{transform:translateX(-50%) translateY(-8px)}
+.h4-jr b{margin-top:8px;font-family:var(--k-display);font-size:18px;letter-spacing:-.015em}
+.h4-jr-line2{color:var(--k-t2);font-size:13px;line-height:1.45}
+.art-club{gap:10px}
+.art-club img{width:90px;animation:h4bob 1.4s ease-in-out infinite alternate}
+.art-club i{position:absolute;bottom:0;width:30%;height:70%;background:conic-gradient(from 200deg at 50% 100%,transparent 0 40%,color-mix(in srgb,var(--acc) 45%,transparent) 50%,transparent 60% 100%);transform-origin:50% 100%;animation:artbeam 3s ease-in-out infinite alternate}
+.art-club i:nth-of-type(1){left:5%;animation-delay:-.6s}.art-club i:nth-of-type(2){left:35%}.art-club i:nth-of-type(3){left:65%;animation-delay:-1.2s}
+@keyframes artbeam{from{transform:rotate(-18deg)}to{transform:rotate(18deg)}}
+@media (max-width:760px){.h4-jr ol{grid-template-columns:repeat(var(--n),68%);scroll-snap-type:x mandatory}.h4-jr li{scroll-snap-align:start}.h4-jr-line{right:auto;width:calc(var(--n) * 70%)}}
+@media (prefers-reduced-motion:reduce){.h4-jr li,.h4-jr-line i{transition:none;opacity:1;transform:none}}
+
 /* artists: play here, then dig in */
 .h4-people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .h4-person{position:relative;display:flex;flex-direction:column;gap:4px}

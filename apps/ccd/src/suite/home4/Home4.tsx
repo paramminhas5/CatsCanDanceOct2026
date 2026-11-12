@@ -41,7 +41,7 @@ const LOOKS: Record<string, { bg: string; ink: string; label: string }> = {
 };
 
 type Stage = { eye: string; h: string; line: string; cta: [string, string]; ghost: [string, string]; glance: [string, string][]; shots: [string, string]; cat: string };
-type Feature = { t: string; line: string; href: string; shot?: string; art?: "wave" | "pads" | "live" };
+type Step = { when: string; t: string; line: string; href: string; shot?: string; art?: "wave" | "pads" | "live" | "club" };
 
 /* One shared audio element for every Play on the page. */
 type Now = { id: string; title: string; artist: string; img: string | null; href: string };
@@ -106,37 +106,41 @@ export default function Home4(d: HomeData) {
     learn: { eye: "School", h: "Make the track. Then hear it in the club.", line: "Short lessons on a real instrument in your browser. Each one adds a part to a track that's yours.", cta: ["Start lesson 1", productLink("school", "/learn")], ghost: ["How School works", productLink("school", "/")], glance: [["Free", "first lesson"], ["0", "downloads"], ["Yours", "the track you make"]], shots: ["W35-Lesson", "W35-Lesson"], cat: "pink" },
   };
 
-  const FEATURES: Record<Tab, Feature[]> = {
-    go: [
-      { t: "What's on", line: "Every night this week worth leaving the house for.", href: "/whats-on", shot: "S34-Discover" },
-      { t: "Who's going", line: "See who's in, and which of them you know.", href: "/nights", shot: "S34-Night" },
-      { t: "Crews", line: "Going alone? Meet three to six people first.", href: "/nights", shot: "S34-Crew" },
-      { t: "Get in", line: "Tickets or the list, in two taps.", href: next ? `/nights/${next.slug}` : "/whats-on", shot: "S34-GetIn" },
-      { t: "Your tickets", line: "Bought here or anywhere else, all in one place.", href: "/me", shot: "S34-Ticket" },
-      { t: "Every night, kept", line: "The stub lands on your page the morning after.", href: "/me", shot: "S34-BeenTo" },
-    ],
-    artists: [
-      { t: "Find an artist", line: "By name, city, sound or label.", href: productLink("artists", "/artists"), shot: "F38-A-Find" },
-      { t: "Book for a date", line: "See who's free and send an offer in their range.", href: productLink("artists", "/artists?mode=book"), shot: "A39-AllBook" },
-      { t: "Contracts", line: "Agreed in one thread, signed by both sides.", href: productLink("artists", "/bookings"), shot: "F38-A-Contract" },
-      { t: "On tour", line: "Who's coming to India, and who's in your city.", href: productLink("artists", "/tour"), shot: "F38-A-Tour" },
-      { t: "Their page", line: "Every era, record, show and video in one place.", href: productLink("artists", "/artists"), shot: "A40-Artist" },
-      { t: "Claim your page", line: "It's already made. Make it yours.", href: productLink("artists", "/claim"), shot: "F38-A-Page" },
-    ],
-    host: [
-      { t: "Make the invite", line: "A page in your colours, live in a minute.", href: productLink("gate", "/make"), shot: "H39-Make" },
-      { t: "RSVPs", line: "Going, maybe, plus-ones. Yes to all in one tap.", href: productLink("gate", "/guests"), shot: "H39-RSVP" },
-      { t: "Book the lineup", line: "Artists free on your date.", href: productLink("gate", "/book"), shot: "H39-BookArtists" },
-      { t: "Gear", line: "Decks, sound and lights from people near you.", href: productLink("gate", "/gear"), shot: "H39-Gear" },
-      { t: "The door", line: "Any phone scans, even with no signal.", href: productLink("gate", "/door"), shot: "H39-Door" },
-      { t: "The report", line: "Who came, when it filled, who was new.", href: productLink("gate", "/parties"), shot: "H39-Report" },
-    ],
-    learn: [
-      { t: "Lesson 1", line: "Start with a kick drum. It's free.", href: productLink("school", "/learn"), shot: "W35-Lesson" },
-      { t: "Your track", line: "Every lesson adds a part. Save it, change it.", href: productLink("school", "/learn"), art: "wave" },
-      { t: "The studio", line: "Play the instrument freely, outside lessons.", href: productLink("school", "/studio"), art: "pads" },
-      { t: "Take it to Live", line: "Export what you made and keep going in Ableton.", href: productLink("school", "/"), art: "live" },
-    ],
+  // How it goes, in order (Param, 13 Nov 2026: "it should explain according to how the night progresses and what you
+  // do with it, visually"). Each step: when it happens, what you do, the real screen, and a link to that screen.
+  const JOURNEY: Record<Tab, { eye: string; h: string; steps: Step[] }> = {
+    go: { eye: "How a night goes", h: "From Monday to the morning after.", steps: [
+      { when: "Monday", t: "Pick a night", line: "This week's nights, picked by people who go out.", href: "/whats-on", shot: "S34-Discover" },
+      { when: "Tuesday", t: "See who's going", line: "Who's in, and which of them you know.", href: "/nights", shot: "S34-Night" },
+      { when: "Wednesday", t: "Get in", line: "A ticket or the list, in two taps.", href: next ? `/nights/${next.slug}` : "/whats-on", shot: "S34-GetIn" },
+      { when: "Thursday", t: "Find your crew", line: "Going solo? Meet three to six people first.", href: "/nights", shot: "S34-Crew" },
+      { when: "Saturday, 10 pm", t: "Walk in", line: "Your ticket on your phone. Scanned, you're in.", href: "/me", shot: "S34-Ticket" },
+      { when: "Sunday morning", t: "Keep it", line: "The stub lands on your page. Points too.", href: "/me", shot: "S34-BeenTo" },
+    ] },
+    artists: { eye: "How a booking goes", h: "From finding them to the gig.", steps: [
+      { when: "Start", t: "Find them", line: "Search by city, sound or label.", href: productLink("artists", "/artists"), shot: "F38-A-Find" },
+      { when: "Listen", t: "Hear their story", line: "Every era and record on one page.", href: "/artists/sandunes", shot: "A40-Artist" },
+      { when: "Your date", t: "Check who's free", line: "Everyone open on your date, in range.", href: productLink("artists", "/artists?mode=book"), shot: "A39-AllBook" },
+      { when: "Offer", t: "Send an offer", line: "Date, room, set and fee, in one ask.", href: productLink("artists", "/artists?mode=book"), shot: "F38-A-Offer" },
+      { when: "Agreed", t: "Both sign", line: "A contract in the thread, deposit included.", href: productLink("artists", "/bookings"), shot: "F38-A-Contract" },
+      { when: "Gig night", t: "They play", line: "Set times, contacts and the balance, in one place.", href: productLink("artists", "/bookings"), shot: "F38-A-Bookings" },
+    ] },
+    host: { eye: "How a party goes", h: "From an idea to the report.", steps: [
+      { when: "Two weeks out", t: "Make the invite", line: "Name, date, place and your colours.", href: productLink("gate", "/make"), shot: "H39-Make" },
+      { when: "Same day", t: "Send it", line: "One link to the group chat.", href: productLink("gate", "/make"), shot: "H39-Invite" },
+      { when: "All week", t: "Watch the list", line: "Going, maybe, plus-ones. Yes to all.", href: productLink("gate", "/guests"), shot: "H39-RSVP" },
+      { when: "Lineup", t: "Book the DJs", line: "Artists free on your date.", href: productLink("gate", "/book"), shot: "H39-BookArtists" },
+      { when: "The day before", t: "Sort the gear", line: "Decks, sound and lights, delivered.", href: productLink("gate", "/gear"), shot: "H39-Gear" },
+      { when: "On the night", t: "Run the door", line: "Any phone scans, even with no signal.", href: productLink("gate", "/door"), shot: "H39-Door" },
+      { when: "Next morning", t: "Read the report", line: "Who came, when it filled, who was new.", href: productLink("gate", "/parties"), shot: "H39-Report" },
+    ] },
+    learn: { eye: "How a track gets made", h: "From one kick to the club.", steps: [
+      { when: "Lesson 1", t: "A kick drum", line: "Press a pad, hear it. That's your start.", href: productLink("school", "/learn"), shot: "W35-Lesson" },
+      { when: "Lessons 2 to 10", t: "Drums and bass", line: "Each lesson adds a part to your track.", href: productLink("school", "/learn"), art: "pads" },
+      { when: "Lessons 11 to 30", t: "Build the drop", line: "Chords, a lead, the arrangement.", href: productLink("school", "/learn"), art: "wave" },
+      { when: "When it's ready", t: "Take it to Live", line: "Export it and keep going in Ableton.", href: productLink("school", "/"), art: "live" },
+      { when: "Episode night", t: "Hear it out", line: "The best tracks play at our Episodes.", href: next ? `/nights/${next.slug}` : "/nights", art: "club" },
+    ] },
   };
 
   const colour = BG(tab);
@@ -221,20 +225,7 @@ export default function Home4(d: HomeData) {
           {tab === "host" && <InviteMaker today={d.today} />}
           {tab === "learn" && <BeatMaker />}
 
-          <section className="h4-wrap h4-sec">
-            <Head eye={`What ${PRODUCTS[ID[tab]].navLabel} does`} h={tab === "go" ? "Everything for a night out." : tab === "artists" ? "For fans, and for bookers." : tab === "host" ? "Everything a party needs." : "Learn by making."} />
-            <div className={`h4-feats${FEATURES[tab].length === 4 ? " four" : ""}`}>
-              {FEATURES[tab].map((f) => (
-                <a key={f.t} className="h4-feat" href={f.href}>
-                  <span className="h4-feat-pic">
-                    {f.shot ? <img src={`/shots/${f.shot}.webp`} alt="" loading="lazy" /> : <Art kind={f.art!} />}
-                  </span>
-                  <span className="h4-feat-t"><b>{f.t}</b><span>{f.line}</span></span>
-                  <i aria-hidden="true">→</i>
-                </a>
-              ))}
-            </div>
-          </section>
+          <Journey eye={JOURNEY[tab].eye} h={JOURNEY[tab].h} steps={JOURNEY[tab].steps} />
         </div>
 
         <section className="h4-wrap h4-sec">
@@ -283,7 +274,42 @@ function Fx({ k, posters, cover }: { k: Tab; posters: string[]; cover: string | 
   return <span className="fx fx-pads">{Array.from({ length: 16 }, (_, i) => <i key={i} style={{ ["--i" as string]: i }} />)}</span>;
 }
 
-function Art({ kind }: { kind: "wave" | "pads" | "live" }) {
+/* The steps of the app in the order you'd use them, on a line that draws as the section comes into view. */
+function Journey({ eye, h, steps }: { eye: string; h: string; steps: Step[] }) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [seen, setSeen] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setSeen(true); io.disconnect(); } }, { threshold: 0.25 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <section className="h4-wrap h4-sec">
+      <Head eye={eye} h={h} />
+      <div ref={ref} className={`h4-jr${seen ? " seen" : ""}`} style={{ ["--n" as string]: steps.length }}>
+        <span className="h4-jr-line" aria-hidden="true"><i /></span>
+        <ol>
+          {steps.map((st, i) => (
+            <li key={st.t} style={{ ["--i" as string]: i }}>
+              <a href={st.href}>
+                <span className="h4-jr-when"><em>{String(i + 1).padStart(2, "0")}</em>{st.when}</span>
+                <span className="h4-jr-dot" aria-hidden="true" />
+                <span className="h4-jr-pic">{st.shot ? <img src={`/shots/${st.shot}.webp`} alt="" loading="lazy" /> : <Art kind={st.art!} />}</span>
+                <b>{st.t}</b>
+                <span className="h4-jr-line2">{st.line}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+function Art({ kind }: { kind: "wave" | "pads" | "live" | "club" }) {
+  if (kind === "club") return <span className="art art-club"><img src="/cats/dance.webp" alt="" /><i /><i /><i /></span>;
   if (kind === "wave") return <span className="art art-wave">{Array.from({ length: 32 }, (_, i) => <i key={i} style={{ height: `${18 + ((i * 37) % 70)}%`, animationDelay: `${i * 0.05}s` }} />)}</span>;
   if (kind === "pads") return <span className="art art-pads">{Array.from({ length: 16 }, (_, i) => <i key={i} style={{ animationDelay: `${(i * 0.37) % 2.4}s` }} />)}</span>;
   return <span className="art art-live"><b>Your track.wav</b><span>→</span><b>Ableton Live</b></span>;
