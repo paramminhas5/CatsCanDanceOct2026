@@ -113,9 +113,9 @@ export default function Home4(d: HomeData) {
   const JOURNEY: Record<Tab, { eye: string; h: string; steps: Step[] }> = {
     go: { eye: "How a night goes", h: "From Monday to the morning after.", steps: [
       { when: "Monday", t: "Pick a night", line: "This week's nights, picked by people who go out.", href: "/whats-on", shot: "S34-Discover" },
-      { when: "Tuesday", t: "See who's going", line: "Who's in, and which of them you know.", href: "/nights", shot: "S34-Night" },
-      { when: "Wednesday", t: "Get in", line: "A ticket or the list, in two taps.", href: next ? `/nights/${next.slug}` : "/whats-on", shot: "S34-GetIn" },
-      { when: "Thursday", t: "Find your crew", line: "Going solo? Meet three to six people first.", href: "/nights", shot: "S34-Crew" },
+      { when: "Tuesday", t: "See who's going", line: "Who's in, and which of them you know.", href: next ? `/nights/${next.slug}#going` : "/whats-on", shot: "S34-Night" },
+      { when: "Wednesday", t: "Get in", line: "A ticket or the list, in two taps.", href: next ? `/nights/${next.slug}#tickets` : "/whats-on", shot: "S34-GetIn" },
+      { when: "Thursday", t: "Find your crew", line: "Going solo? Meet three to six people first.", href: next ? `/nights/${next.slug}#going` : "/whats-on", shot: "S34-Crew" },
       { when: "Saturday, 10 pm", t: "Walk in", line: "Your ticket on your phone. Scanned, you're in.", href: "/me", shot: "S34-Ticket" },
       { when: "Sunday morning", t: "Keep it", line: "The stub lands on your page. Points too.", href: "/me", shot: "S34-BeenTo" },
     ] },
@@ -141,7 +141,7 @@ export default function Home4(d: HomeData) {
       { when: "Lessons 2 to 10", t: "Drums and bass", line: "Each lesson adds a part to your track.", href: productLink("school", "/learn"), art: "pads" },
       { when: "Lessons 11 to 30", t: "Build the drop", line: "Chords, a lead, the arrangement.", href: productLink("school", "/learn"), art: "wave" },
       { when: "When it's ready", t: "Take it to Live", line: "Export it and keep going in Ableton.", href: productLink("school", "/"), art: "live" },
-      { when: "Episode night", t: "Hear it out", line: "The best tracks play at our Episodes.", href: next ? `/nights/${next.slug}` : "/nights", art: "club" },
+      { when: "Episode night", t: "Hear it out", line: "The best tracks play at our Episodes.", href: next ? `/nights/${next.slug}` : "/whats-on", art: "club" },
     ] },
   };
 
@@ -291,7 +291,6 @@ function Journey({ eye, h, steps }: { eye: string; h: string; steps: Step[] }) {
   const sref = useRef<HTMLDivElement | null>(null);
   const [seen, setSeen] = useState(false);
   const [active, setActive] = useState(0);
-  const [prog, setProg] = useState(0);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -311,7 +310,6 @@ function Journey({ eye, h, steps }: { eye: string; h: string; steps: Step[] }) {
         const r = el.getBoundingClientRect();
         const run = r.height - window.innerHeight;
         const p = run > 0 ? Math.min(1, Math.max(0, -r.top / run)) : 0;
-        setProg(p);
         setActive(Math.min(steps.length - 1, Math.floor(p * steps.length * 0.999)));
       });
     };
@@ -388,13 +386,12 @@ function Journey({ eye, h, steps }: { eye: string; h: string; steps: Step[] }) {
               <span>{st.line}</span>
             </div>
             <div className="h4-jrs-acts">
-              <a href={st.href} className="h4-jrs-open">Open it</a>
+              <a href={st.href} className="h4-jrs-open">Open it<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg></a>
               {active < n - 1
-                ? <button type="button" className="h4-jrs-next" onClick={() => jump(active + 1)}>Next: {steps[active + 1].t}<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg></button>
-                : <button type="button" className="h4-jrs-next" onClick={after}>Done. Keep going<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg></button>}
+                ? <button type="button" className="h4-jrs-next" onClick={() => jump(active + 1)}>Next step<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg></button>
+                : <button type="button" className="h4-jrs-next" onClick={after}>Keep going<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg></button>}
             </div>
           </div>
-          <span className="h4-jrs-bar" aria-hidden="true"><i style={{ transform: `scaleX(${prog})` }} /></span>
         </div>
       </div>
     </section>

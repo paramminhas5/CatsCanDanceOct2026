@@ -345,13 +345,11 @@ html{scroll-behavior:smooth}
   @keyframes jrsin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   .h4-jrs-txt b{font-family:var(--k-display);font-size:24px;letter-spacing:-.02em;line-height:1.05}
   .h4-jrs-txt span{color:var(--k-t2);font-size:14px;line-height:1.4}
-  .h4-jrs-acts{display:flex;gap:8px}
-  .h4-jrs-open{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--k-hair);color:var(--k-tx);font:600 14px var(--k-ui);text-decoration:none}
-  .h4-jrs-next{appearance:none;border:0;cursor:pointer;flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 14px;border-radius:999px;background:var(--acc);color:var(--on);font:700 14px var(--k-ui);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .h4-jrs-acts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .h4-jrs-open{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:16px;background:var(--acc);color:var(--on);font:700 16px var(--k-ui);text-decoration:none}
+  .h4-jrs-next{appearance:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:16px;background:transparent;border:1.5px solid var(--k-hair2,rgba(255,255,255,.22));color:var(--k-tx);font:700 16px var(--k-ui);white-space:nowrap}
   .h4-jrs-next svg{flex:none;animation:jrsnudge 1.4s ease-in-out infinite}
   @keyframes jrsnudge{0%,100%{transform:translateY(-1px)}50%{transform:translateY(2px)}}
-  .h4-jrs-bar{position:relative;height:2px;border-radius:2px;background:var(--k-hair);overflow:hidden}
-  .h4-jrs-bar i{position:absolute;inset:0;background:var(--acc);transform-origin:left}
 }
 
 /* The closer: one thing to pass on, at the end of every app */

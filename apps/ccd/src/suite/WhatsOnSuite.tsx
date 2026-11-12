@@ -14,7 +14,10 @@ import { city } from "@/suite/bits";
 const WHEN = [["tonight", "Tonight"], ["weekend", "This weekend"], ["week", "This week"], ["all", "Everything"]] as const;
 type When = (typeof WHEN)[number][0];
 const add = (iso: string, n: number) => { const d = new Date(`${iso}T00:00:00Z`); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+const SHORT: Partial<Record<When, string>> = { weekend: "Weekend", week: "Week", all: "All" };
 const HEAD: Record<When, string> = { tonight: "Tonight.", weekend: "This weekend.", week: "This week.", all: "Everything on." };
+
+const dayLabel = (d: string | null | undefined, today: string) => !d ? "" : d === today ? "Tonight" : new Date(`${d}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" });
 
 export default function WhatsOnSuite({ events, ours, updated }: FindProps) {
   const router = useRouter();
@@ -23,6 +26,7 @@ export default function WhatsOnSuite({ events, ours, updated }: FindProps) {
   const want = typeof query.city === "string" ? query.city : "";
   const [q, setQ] = useState("");
   const [view, setView] = useState<"grid" | "list">("grid");
+  const [sheet, setSheet] = useState(false);
   // The filter bar sticks just under the suite nav, whatever height the nav is at this width.
   useEffect(() => {
     const fit = () => {
@@ -82,7 +86,7 @@ export default function WhatsOnSuite({ events, ours, updated }: FindProps) {
       <section className="k-wrap wo-hero">
         <div><span className="wo-eye">{want || "India"} · {list.length} {list.length === 1 ? "night" : "nights"}</span><h1>{HEAD[when]}</h1></div>
         <div className="wo-hero-r">
-          <p>Every night here has someone you can trust behind it. Tap a poster to get in, or grab a crew and go together.</p>
+          <p className="wo-blurb">Every night here has someone you can trust behind it. Tap a poster to get in, or grab a crew and go together.</p>
           {ours && <ButtonLink variant="key" size="s" href={`/nights/${ours.slug}`}>Ours: {ours.title}</ButtonLink>}
         </div>
       </section>
@@ -94,7 +98,7 @@ export default function WhatsOnSuite({ events, ours, updated }: FindProps) {
             const dt = new Date(`${d}T00:00:00Z`);
             return (
               <div key={d} id={`d-${d}`} className="wo-day">
-                <div className="wo-dcol"><span>{d === updated ? "Tonight" : d === "later" ? "Later" : dt.toLocaleDateString("en-GB", { weekday: "long", timeZone: "UTC" })}</span><b>{d === "later" ? "·" : dt.getUTCDate()}</b><em>{rows.length} {rows.length === 1 ? "night" : "nights"}</em></div>
+                <div className="wo-dcol"><span>{d === updated ? "Tonight" : d === "later" ? "Later" : dt.toLocaleDateString("en-GB", { weekday: "long", timeZone: "UTC" })}</span><b>{d === "later" ? "·" : dt.getUTCDate()}</b><em>{rows.length} {rows.length === 1 ? "night" : "nights"}</em>{view === "grid" && rows.length > 1 && <i className="wo-swipe" aria-hidden="true">Swipe →</i>}</div>
                 <ul className={view === "grid" ? "wo-grid" : "wo-list"}>
                   {rows.map((e) => {
                     const lineup = (e.lineup ?? []).filter(Boolean);
@@ -105,8 +109,8 @@ export default function WhatsOnSuite({ events, ours, updated }: FindProps) {
                     return (
                       <li key={e.id}>
                         <a href={href} target={e.night_key ? undefined : "_blank"} rel="noopener" className="wo-card">
-                          <span className="wo-poster">{art}{(e.featured || e.presenter) && <span className="wo-tag">{e.presenter ? `By ${e.presenter}` : "Our pick"}</span>}{view === "grid" && <span className="wo-go">Get in</span>}</span>
-                          <span className="wo-txt"><b>{e.title}</b><span className="wo-meta">{meta}{view === "list" && city(e.city) ? ` · ${city(e.city)}` : ""}</span>{view === "list" && names.length > 0 && <span className="wo-line">{names.slice(0, 5).join(", ")}</span>}</span>
+                          <span className="wo-poster">{art}{(e.featured || e.presenter) && <span className="wo-tag">{e.presenter ? `By ${e.presenter}` : "Our pick"}</span>}{view === "grid" && <span className="wo-go">Get in →</span>}</span>
+                          <span className="wo-txt"><b>{e.title}</b>{view === "grid" && <span className="wo-day-m">{dayLabel(e.event_date, updated)}</span>}<span className="wo-meta">{meta}{view === "list" && city(e.city) ? ` · ${city(e.city)}` : ""}</span>{view === "list" && names.length > 0 && <span className="wo-line">{names.slice(0, 5).join(", ")}</span>}</span>
                           {view === "list" && <span className="wo-go2">Get in</span>}
                         </a>
                       </li>
@@ -151,6 +155,31 @@ export default function WhatsOnSuite({ events, ours, updated }: FindProps) {
           </div>
         </div>
       </section>
+      {/* Phone: everything you change sits at the bottom, under your thumb (Param, 13 Nov 2026: "I need to use this with one thumb"). */}
+      <div className="wo-dock" role="group" aria-label="Filter nights">
+        <div className="wo-dock-when">
+          {WHEN.map(([k, l]) => <button key={k} type="button" aria-pressed={k === when} onClick={() => { go({ when: k }); window.scrollTo({ top: 0, behavior: "smooth" }); }}>{SHORT[k] ?? l}</button>)}
+        </div>
+        <button type="button" className={`wo-dock-more${want || q ? " on" : ""}`} onClick={() => setSheet(true)} aria-label="City and search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4" /></svg>
+          <span>{want || "City"}</span>
+        </button>
+      </div>
+      {sheet && (
+        <div className="wo-sheet" role="dialog" aria-modal="true" aria-label="City and search" onClick={(e) => { if (e.target === e.currentTarget) setSheet(false); }}>
+          <div className="wo-sheet-in">
+            <span className="wo-grab" aria-hidden="true" />
+            <b className="wo-sheet-h">Where?</b>
+            <div className="wo-sheet-cities">
+              <button type="button" aria-pressed={!want} onClick={() => go({ city: "" })}>Every city<em>{count(when, "")}</em></button>
+              {cities.map((c) => <button key={c} type="button" aria-pressed={want === c} onClick={() => go({ city: c })}>{c}<em>{count(when, c)}</em></button>)}
+            </div>
+            <b className="wo-sheet-h">Looking for someone?</b>
+            <label className="wo-search wo-search-big"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg><span className="sr-only">Search</span><input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Artist, venue, promoter" /></label>
+            <button type="button" className="wo-sheet-go" onClick={() => { setSheet(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Show {list.length} {list.length === 1 ? "night" : "nights"}</button>
+          </div>
+        </div>
+      )}
     </Shell>
   );
 }
@@ -241,4 +270,56 @@ const WO_CSS = `
 .wo-stubs .drop{animation:wo-drop 6s infinite both}
 @keyframes wo-drop{0%,10%{transform:translateY(-240px) rotate(-8deg);opacity:0}30%,90%{transform:translateY(0) rotate(6deg);opacity:1}100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.wo-moments *,.wo-card{animation:none !important}}
+
+/* ── Phone: one thumb. Filters live in a dock at the bottom, each day is one swipe row, nothing to dig through. ── */
+.wo-dock,.wo-sheet{display:none}
+.wo-swipe,.wo-day-m{display:none}
+@media (max-width:700px){
+  .wo-bar{display:none}
+  .k-root{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+  .wo-hero{padding-top:18px;padding-bottom:4px;gap:10px}
+  .wo-hero h1{font-size:44px;margin-top:6px}
+  .wo-blurb{display:none}
+  .wo-days-list{gap:8px;padding-top:4px;padding-bottom:24px}
+  .wo-day{padding-top:14px;gap:10px}
+  .wo-dcol b{font-size:30px}
+  .wo-swipe{display:inline;margin-left:auto;font:600 11px var(--k-mono);font-style:normal;letter-spacing:.06em;text-transform:uppercase;color:var(--k-t3)}
+  .wo-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--k-inset,20px) * -1);padding:0 var(--k-inset,20px) 4px;scroll-padding:0 var(--k-inset,20px);scrollbar-width:none}
+  .wo-grid::-webkit-scrollbar{display:none}
+  .wo-grid>li{flex:0 0 64%;scroll-snap-align:start}
+  .wo-grid .wo-txt b{font-size:16px}
+  .wo-grid .wo-go{padding:10px 14px;font-size:14px}
+  .wo-list .wo-card{grid-template-columns:56px minmax(0,1fr) auto;gap:12px;padding:8px 0}
+  .wo-list .wo-poster{width:56px;height:70px}
+  .wo-list .wo-txt b{font-size:16px}.wo-list .wo-meta{font-size:13px}.wo-list .wo-line{display:none}
+  .wo-go2{padding:12px 16px;font-size:14px}
+  .wo-moments{padding-top:36px}
+  .wo-moments h2{font-size:30px;margin-bottom:16px}
+  .wo-mgrid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(var(--k-inset,20px) * -1);padding:0 var(--k-inset,20px);scrollbar-width:none}
+  .wo-mgrid::-webkit-scrollbar{display:none}
+  .wo-m{flex:0 0 82%;scroll-snap-align:start;padding:20px;border-radius:22px}
+  .wo-m>b{font-size:24px}
+  .wo-crewbox,.wo-door,.wo-stubs{height:170px}
+  .wo-qr{width:120px;height:120px}
+  .wo-dock{display:flex;gap:8px;position:fixed;z-index:60;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));padding:6px;border-radius:22px;background:rgba(18,18,21,.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 18px 40px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.08)}
+  .wo-dock-when{flex:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+  .wo-dock button{appearance:none;border:0;cursor:pointer;min-height:52px;border-radius:16px;background:transparent;color:var(--k-t2);font:700 14px var(--k-ui);white-space:nowrap;padding:0 4px}
+  .wo-dock-when button[aria-pressed=true]{background:#2563eb;color:#fff}
+  .wo-dock-more{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:68px;flex:none;background:#1f1f24 !important;color:var(--k-tx) !important;font-size:11px !important;overflow:hidden}
+  .wo-dock-more span{max-width:60px;overflow:hidden;text-overflow:ellipsis}
+  .wo-dock-more.on{box-shadow:inset 0 0 0 2px #2563eb}
+  .wo-sheet{display:flex;align-items:flex-end;position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.55);animation:wo-fade .2s both}
+  .wo-sheet-in{width:100%;display:flex;flex-direction:column;gap:12px;padding:10px 18px calc(18px + env(safe-area-inset-bottom));border-radius:26px 26px 0 0;background:#141417;box-shadow:0 -1px 0 rgba(255,255,255,.08);animation:wo-up .28s var(--k-ease) both}
+  .wo-grab{align-self:center;width:40px;height:5px;border-radius:5px;background:rgba(255,255,255,.2);margin-bottom:4px}
+  .wo-sheet-h{font-family:var(--k-display);font-size:20px;letter-spacing:-.01em}
+  .wo-sheet-cities{display:flex;flex-wrap:wrap;gap:8px}
+  .wo-sheet-cities button{appearance:none;border:0;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:48px;padding:0 16px;border-radius:14px;background:#1f1f24;color:var(--k-tx);font:600 15px var(--k-ui)}
+  .wo-sheet-cities button em{font-style:normal;font:600 11px var(--k-mono);opacity:.6}
+  .wo-sheet-cities button[aria-pressed=true]{background:var(--k-paper);color:var(--k-ink)}
+  .wo-search-big{min-height:52px;border-radius:14px}
+  .wo-search-big input{width:100%;font-size:16px}
+  .wo-sheet-go{appearance:none;border:0;cursor:pointer;min-height:56px;border-radius:16px;background:#2563eb;color:#fff;font:700 17px var(--k-ui);margin-top:4px}
+}
+@keyframes wo-fade{from{opacity:0}to{opacity:1}}
+@keyframes wo-up{from{transform:translateY(100%)}to{transform:none}}
 `;

@@ -156,13 +156,13 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
         <Nav forceDark={!upcoming} />
 
         {/* HERO */}
-        <section className={`pt-28 md:pt-32 pb-10 md:pb-14 border-b-4 border-ink ${heroTone}`}>
+        <section className={`pt-24 md:pt-32 pb-8 md:pb-14 border-b-4 border-ink ${heroTone}`}>
           <div className="container">
-            <Breadcrumbs light={upcoming} items={[{ label: "Home", to: "/" }, { label: "Episodes", to: "/nights" }, { label: event.title }]} />
+            <div className="hidden md:block"><Breadcrumbs light={upcoming} items={[{ label: "Home", to: "/" }, { label: "Episodes", to: "/nights" }, { label: event.title }]} /></div>
 
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-14 items-end">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-14 items-end">
               {/* Poster */}
-              <div className="order-2 lg:order-1 w-full max-w-sm lg:max-w-none">
+              <div className={`order-2 lg:order-1 w-3/5 sm:w-full max-w-sm lg:max-w-none ${poster && !posterError ? "" : "hidden sm:block"}`}>
                 {poster && !posterError ? (
                   <div className="relative aspect-[3/4] border-4 border-ink chunk-shadow-lg overflow-hidden bg-ink">
                     <Image src={poster} alt={`${event.title} poster`} fill priority sizes="(max-width: 1024px) 90vw, 320px" className="object-cover" onError={() => setPosterError(true)} />
@@ -181,12 +181,12 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
                   {event.pet_friendly && <span className="inline-block text-xs font-bold px-3 py-1 border-2 border-ink bg-electric-blue text-cream">Pet-friendly</span>}
                 </div>
 
-                <h1 className="font-display text-[3.4rem] sm:text-7xl md:text-8xl xl:text-9xl leading-[0.82] mb-6 break-words"
+                <h1 className="font-display text-[2.9rem] sm:text-7xl md:text-8xl xl:text-9xl leading-[0.82] mb-6 break-words"
                   style={{ filter: `drop-shadow(6px 6px 0 hsl(var(--${upcoming ? "ink" : "magenta"})))` }}>
                   {event.title.toUpperCase()}
                 </h1>
 
-                <dl className="grid gap-1 text-lg md:text-2xl font-bold leading-snug mb-6">
+                <dl className="grid gap-1 text-base md:text-2xl font-bold leading-snug mb-6">
                   <div><dt className="sr-only">When</dt><dd>{when}</dd></div>
                   <div><dt className="sr-only">Where</dt><dd>{event.venue}{event.city ? `, ${event.city}` : ""}</dd></div>
                   {upcoming && buzz >= 10 && <div><dt className="sr-only">Going</dt><dd className={upcoming ? "text-acid-yellow" : "text-magenta"}>{buzz} people are going</dd></div>}
@@ -226,7 +226,7 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
               onTiers={setTiers}
             />
             {upcoming && (
-              <div className="mt-6"><Going variant="panel" nightKey={slug} title={event.title} crowd={crowd} onChange={() => loadCrowd([slug]).then((c) => setCrowd(c[slug]))} /></div>
+              <div id="going" className="mt-6 scroll-mt-24"><Going variant="panel" nightKey={slug} title={event.title} crowd={crowd} onChange={() => loadCrowd([slug]).then((c) => setCrowd(c[slug]))} /></div>
             )}
             {upcoming && event.ticket_url && <div className="mt-6"><OutsideTicket slug={slug} title={event.title} /></div>}
           </aside>
@@ -239,9 +239,9 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
                 {content.narrative ?? event.blurb}
               </p>
               {content.vibe_pillars && content.vibe_pillars.length > 0 && (
-                <ul className="mt-8 grid sm:grid-cols-3 gap-4">
+                <ul className="mt-8 -mx-4 px-4 flex gap-3 overflow-x-auto snap-x snap-mandatory sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:overflow-visible [scrollbar-width:none]">
                   {content.vibe_pillars.slice(0, 3).map((p, i) => (
-                    <li key={p.label} className={`border-4 border-ink p-5 ${["bg-magenta text-cream", "bg-electric-blue text-cream", "bg-acid-yellow text-ink"][i % 3]}`}>
+                    <li key={p.label} className={`shrink-0 w-[72%] snap-start sm:w-auto border-4 border-ink p-5 ${["bg-magenta text-cream", "bg-electric-blue text-cream", "bg-acid-yellow text-ink"][i % 3]}`}>
                       <p className="text-3xl mb-2" aria-hidden>{p.icon}</p>
                       <h3 className="font-display text-xl leading-none mb-2">{p.label}</h3>
                       <p className="font-medium leading-snug">{p.desc}</p>
@@ -374,10 +374,14 @@ const EventDetail = ({ event, slug }: EventDetailProps) => {
               <p className="font-display text-base leading-tight truncate">{event.title}</p>
               <p className="text-sm text-cream/80 truncate">{priceText ?? displayDate(event)}</p>
             </div>
+            <div className="flex gap-2 shrink-0">
+            <button type="button" tabIndex={boxVisible ? -1 : 0} onClick={() => document.getElementById("going")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+              className="bg-transparent text-cream font-display text-base px-4 py-3 border-4 border-cream/40 whitespace-nowrap">Who's going</button>
             <button type="button" tabIndex={boxVisible ? -1 : 0} onClick={scrollToBox}
               className="bg-acid-yellow text-ink font-display text-base px-5 py-3 border-4 border-cream whitespace-nowrap">
-              {tiers && tiers.length > 0 && tiers.every((t) => t.sold_out) ? "Join waiting list" : tiers && tiers.length === 0 && event.rsvp_open ? "RSVP" : "Get tickets"}
+              {tiers && tiers.length > 0 && tiers.every((t) => t.sold_out) ? "Waiting list" : tiers && tiers.length === 0 && event.rsvp_open ? "RSVP" : "Get in"}
             </button>
+            </div>
           </div>
         </div>
       )}

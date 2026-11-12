@@ -45,14 +45,14 @@ export default function Me() {
       <SEO title="Your account · Cats Can Dance" description="Your tickets, the nights you are going to and your crew." path="/me" noindex />
       <main className="bg-background text-ink min-h-screen">
         <Nav />
-        <section className="bg-ink text-cream pt-28 md:pt-36 pb-8">
+        <section className="bg-ink text-cream pt-24 md:pt-36 pb-6 md:pb-8">
           <div className="container">
-            <p className="font-bold text-acid-yellow mb-3">Your account</p>
-            <h1 className="font-display text-6xl md:text-8xl leading-[0.85]">YOUR ACCOUNT.</h1>
-            <p className="mt-4 text-lg max-w-[48ch]">Your tickets, the nights you're going to, your crew, your booking requests and the artists you follow, in one place.</p>
+            <p className="hidden md:block font-bold text-acid-yellow mb-3">Your account</p>
+            <h1 className="font-display text-4xl md:text-8xl leading-[0.85]">YOUR ACCOUNT.</h1>
+            <p className="mt-3 md:mt-4 text-base md:text-lg max-w-[48ch]">Your tickets, the nights you're going to, your crew, your booking requests and the artists you follow, in one place.</p>
           </div>
         </section>
-        <div className="container py-10 md:py-14 max-w-3xl">
+        <div className="container py-6 md:py-14 max-w-3xl">
           {loading ? <p>Loading…</p>
             : !signedIn ? <SignIn />
             : !member ? <QuickJoin onDone={reload} />

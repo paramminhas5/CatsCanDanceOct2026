@@ -234,7 +234,7 @@ const Nav = ({ forceDark = false }: { forceDark?: boolean }) => {
 
         <div className="lg:hidden flex items-center gap-1.5 sm:gap-2 relative">
           <DiscoMute />
-          <div className="relative"><DiscoButton compact /><DiscoHint /></div>
+          <div className="relative"><DiscoButton compact /><span className="hidden sm:contents"><DiscoHint /></span></div>
           <button
             aria-label="Toggle menu"
             aria-expanded={open}
