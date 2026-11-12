@@ -252,3 +252,18 @@ textarea.k-field { padding: 14px 18px; border-radius: 18px; min-height: 120px; r
 .k-tile[aria-current="page"], .k-tile[aria-pressed="true"] { background: var(--c); color: var(--on); box-shadow: 0 14px 40px -14px var(--c); }
 .k-tile[aria-current="page"] i, .k-tile[aria-pressed="true"] i { background: var(--on); box-shadow: none; }
 @media (max-width: 1100px) { .k-tile small { display: none; } .k-tile b { font-size: 17px; } .k-tile { min-height: 54px; padding: 0 14px; } }
+
+/* Footer on a phone (Param, 13 Nov 2026: the footer was a long list). Two columns, the work-with-us
+   links as one wrapped row, no host names, tighter gaps: about a third of the height it was. */
+@media (max-width: 639px) {
+  .k-footer { margin-top: 56px; }
+  .k-footer__grid { grid-template-columns: 1fr 1fr; gap: 24px 16px; padding-top: 28px; padding-bottom: 28px; }
+  .k-footer__grid > div:first-child { grid-column: 1 / -1; }
+  .k-footer__grid > div:first-child ul { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .k-footer__grid > div:first-child ul a { display: inline-flex; align-items: center; min-height: 34px; padding: 0 12px; border: 1px solid var(--k-hair); border-radius: 999px; font-size: 13px; }
+  .k-footer .k-m { display: none; }
+  .k-footer ul { margin-top: 10px; gap: 8px; }
+  .k-footer ul a { font-size: 13px; }
+  .k-footer__brand { font-size: 17px; }
+  .k-footer p, .k-footer a.k-b { font-size: 13px; margin-top: 6px; }
+}

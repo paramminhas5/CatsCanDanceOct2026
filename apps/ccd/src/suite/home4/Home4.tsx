@@ -101,7 +101,7 @@ export default function Home4(d: HomeData) {
   const cover = d.covers[0]?.img ?? null;
 
   const STAGE: Record<Tab, Stage> = {
-    go: { eye: "Nights", h: "Every good night in your city.", line: "Nights picked by people who go out, who else is going, and a crew if you're going solo.", cta: ["See what's on", "/whats-on"], ghost: ["How it works", "/nights"], glance: [[String(d.weekCount), "nights this week"], ["3 to 6", "people per crew"], ["1", "place for your tickets"]], shots: ["S34-Discover", "S34-Night"], cat: "dance" },
+    go: { eye: "Nights", h: "Every good night in your city.", line: "Nights picked by people who go out, who else is going, and a crew if you're going solo.", cta: ["See what's on", "/whats-on"], ghost: ["How it works", "#how"], glance: [[String(d.weekCount), "nights this week"], ["3 to 6", "people per crew"], ["1", "place for your tickets"]], shots: ["S34-Discover", "S34-Night"], cat: "dance" },
     artists: { eye: "Artists", h: "Every artist worth knowing, on one page.", line: `${d.artistCount} South Asian artists. Every record you can play, every show with a source, and booking with a contract.`, cta: ["Find an artist", productLink("artists", "/artists")], ghost: ["Book for a date", productLink("artists", "/artists?mode=book")], glance: [[String(d.artistCount), "artists"], ["Every", "record playable"], ["Signed", "by both sides"]], shots: ["A40-Artist", "F38-A-Page"], cat: "dj" },
     host: { eye: "Host", h: "Throw the party people talk about on Monday.", line: "Make the invite, send the RSVP link, watch the list fill and run the door. The door works with no signal.", cta: ["Make an invite", "#try"], ghost: ["Everything it does", productLink("gate", "/")], glance: [["60s", "to a live invite"], ["0", "bars of signal needed"], ["₹0", "for free parties"]], shots: ["H39-Make", "H39-Door"], cat: "yellow" },
     learn: { eye: "School", h: "Make the track. Then hear it in the club.", line: "Short lessons on a real instrument in your browser. Each one adds a part to a track that's yours.", cta: ["Start lesson 1", productLink("school", "/learn")], ghost: ["How School works", productLink("school", "/")], glance: [["Free", "first lesson"], ["0", "downloads"], ["Yours", "the track you make"]], shots: ["W35-Lesson", "W35-Lesson"], cat: "pink" },
@@ -286,7 +286,10 @@ function Fx({ k, posters, cover }: { k: Tab; posters: string[]; cover: string | 
 /* The steps of the app in the order you'd use them, on a line that draws as the section comes into view. */
 function Journey({ eye, h, steps }: { eye: string; h: string; steps: Step[] }) {
   const ref = useRef<HTMLDivElement | null>(null);
+  const sref = useRef<HTMLDivElement | null>(null);
   const [seen, setSeen] = useState(false);
+  const [active, setActive] = useState(0);
+  const [prog, setProg] = useState(0);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -294,24 +297,77 @@ function Journey({ eye, h, steps }: { eye: string; h: string; steps: Step[] }) {
     io.observe(el);
     return () => io.disconnect();
   }, []);
+  // Phone: the panel holds still while you scroll, and each stretch of scrolling moves it to the next step
+  // (Param, 13 Nov 2026: "people on mobile don't like to scroll, tie that component to scrolling down").
+  useEffect(() => {
+    let raf = 0;
+    const on = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const el = sref.current;
+        if (!el || el.offsetParent === null) return;
+        const r = el.getBoundingClientRect();
+        const run = r.height - window.innerHeight;
+        const p = run > 0 ? Math.min(1, Math.max(0, -r.top / run)) : 0;
+        setProg(p);
+        setActive(Math.min(steps.length - 1, Math.floor(p * steps.length)));
+      });
+    };
+    on();
+    window.addEventListener("scroll", on, { passive: true });
+    window.addEventListener("resize", on);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("scroll", on); window.removeEventListener("resize", on); };
+  }, [steps.length]);
+  const n = steps.length;
   return (
-    <section className="h4-wrap h4-sec">
-      <Head eye={eye} h={h} />
-      <div ref={ref} className={`h4-jr${seen ? " seen" : ""}`} style={{ ["--n" as string]: steps.length }}>
-        <span className="h4-jr-line" aria-hidden="true"><i /></span>
-        <ol>
-          {steps.map((st, i) => (
-            <li key={st.t} style={{ ["--i" as string]: i }}>
-              <a href={st.href}>
-                <span className="h4-jr-when"><em>{String(i + 1).padStart(2, "0")}</em>{st.when}</span>
-                <span className="h4-jr-dot" aria-hidden="true" />
-                <span className="h4-jr-pic">{st.shot ? <img src={`/shots/${st.shot}.webp`} alt="" loading="lazy" /> : <Art kind={st.art!} />}</span>
+    <section className="h4-wrap h4-sec" id="how">
+      <div className="h4-jr-desk">
+        <Head eye={eye} h={h} />
+        <div ref={ref} className={`h4-jr${seen ? " seen" : ""}`} style={{ ["--n" as string]: n }}>
+          <span className="h4-jr-line" aria-hidden="true"><i /></span>
+          <ol>
+            {steps.map((st, i) => (
+              <li key={st.t} style={{ ["--i" as string]: i }}>
+                <a href={st.href}>
+                  <span className="h4-jr-when"><em>{String(i + 1).padStart(2, "0")}</em>{st.when}</span>
+                  <span className="h4-jr-dot" aria-hidden="true" />
+                  <span className="h4-jr-pic">{st.shot ? <img src={`/shots/${st.shot}.webp`} alt="" loading="lazy" /> : <Art kind={st.art!} />}</span>
+                  <b>{st.t}</b>
+                  <span className="h4-jr-line2">{st.line}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+
+      <div ref={sref} className="h4-jrs" style={{ ["--n" as string]: n }}>
+        <div className="h4-jrs-pin">
+          <div className="h4-jrs-top">
+            <span className="h4-eye" style={{ color: "var(--acc)" }}>{eye}</span>
+            <span className="h4-jrs-count">{String(active + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}</span>
+          </div>
+          <div className="h4-jrs-bar" aria-hidden="true">
+            {steps.map((st, i) => <i key={st.t} style={{ ["--f" as string]: Math.min(1, Math.max(0, prog * n - i)) }} />)}
+          </div>
+          <div className="h4-jrs-stage" aria-hidden="true">
+            {steps.map((st, i) => (
+              <span key={st.t} className={`h4-jrs-pic${i === active ? " on" : i < active ? " gone" : ""}`}>
+                {st.shot ? <img src={`/shots/${st.shot}.webp`} alt="" loading="lazy" /> : <Art kind={st.art!} />}
+              </span>
+            ))}
+          </div>
+          <div className="h4-jrs-copy" aria-live="polite">
+            {steps.map((st, i) => (
+              <a key={st.t} href={st.href} className={`h4-jrs-txt${i === active ? " on" : ""}`} tabIndex={i === active ? 0 : -1} aria-hidden={i !== active}>
+                <span className="h4-jrs-when">{st.when}</span>
                 <b>{st.t}</b>
-                <span className="h4-jr-line2">{st.line}</span>
+                <span>{st.line}</span>
               </a>
-            </li>
-          ))}
-        </ol>
+            ))}
+          </div>
+          <span className={`h4-jrs-hint${active === n - 1 ? " end" : ""}`}>{active === n - 1 ? "That's the night." : "Keep scrolling"}</span>
+        </div>
       </div>
     </section>
   );
