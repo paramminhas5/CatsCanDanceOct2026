@@ -1,0 +1,1 @@
+Standalone host for the home preview (Vercel project `ccd-home-preview`). The build copies `public/preview/night/` into `public/`, and `api/deezer/find.js` is the song lookup. Used while catscandance-v2 was rate-limited on 13 Nov 2026.
