@@ -477,6 +477,9 @@ html,body{overflow-x:visible!important}
   .ap .a2-relgrid>*{flex:0 0 44%;scroll-snap-align:start;min-width:0}
   .ap .a2-congrid{display:flex!important;overflow-x:auto;gap:10px!important;margin:0 -16px;padding:0 16px 8px;scrollbar-width:none}
   .ap .a2-congrid>*{flex:0 0 78%}
+  .ap .a2-pressgrid{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:0 0 8px;scrollbar-width:none}
+  .ap .a2-pressgrid::-webkit-scrollbar{display:none}
+  .ap .a2-pressgrid>*{flex:0 0 80%;scroll-snap-align:start;border:1px solid rgba(244,239,228,.14);border-radius:14px;padding:12px 14px!important}
   .ap .a2-h2{font-size:18px}
   .ap .a2-heroname{letter-spacing:-.02em}
 }
@@ -818,7 +821,7 @@ html,body{overflow-x:visible!important}
 
                 {press.length > 0 && (
                   <Section title="Press" note={`${press.length} stories${era ? ` · ${short(era)}` : ""}`}>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", columnGap: 32 }}>
+                    <div className="a2-pressgrid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", columnGap: 32 }}>
                       {press.slice(0, 12).map((x) => (
                         <a key={x.url} href={x.url} target="_blank" rel="noreferrer" className="a2-hl" style={{ display: "flex", flexDirection: "column", gap: 4, padding: "14px 0", borderTop: `1px solid ${RULE}` }}>
                           <span className="a2-lab" style={{ color: MUTE, display: "flex", alignItems: "center", gap: 6 }}><span style={dot(x.y)} />{x.publication}{x.date ? ` · ${x.date}` : ""}</span>
