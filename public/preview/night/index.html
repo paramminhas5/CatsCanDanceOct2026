@@ -835,6 +835,38 @@ body.nap .steps li svg{animation-play-state:paused}
 .trk li.on{color:#FF6A3D}.trk li.on .pp{background:#FF6A3D}
 .trk li.pl:focus-visible{outline:2px solid #FF6A3D;outline-offset:2px}
 .epnote{min-height:20px}
+
+/* ===== round 7 ===== */
+.built{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.bcard{display:grid;grid-template-columns:clamp(96px,9.5vw,148px) 1fr;gap:24px;align-items:center;padding:24px;border-radius:16px;background:var(--panel);border:1px solid var(--line);transition:border-color .24s,transform .24s cubic-bezier(.2,.8,.2,1)}
+.bcard .chr{width:100%;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.bcard b{display:block;font-family:var(--disp);font-weight:800;font-stretch:125%;font-size:clamp(24px,2.2vw,34px);letter-spacing:-.02em;line-height:1;margin-bottom:8px;transition:color .24s}
+.bcard p{margin:0;font-size:16px;line-height:1.45;color:#CFCEC8}
+.bcard:hover,.bcard:focus-visible{border-color:var(--c);transform:translateY(-4px)}
+.bcard:hover .chr,.bcard:focus-visible .chr{transform:scale(1.1) rotate(-4deg)}
+.bcard:hover b,.bcard:focus-visible b{color:var(--c)}
+@media (max-width:820px){.built{grid-template-columns:1fr;gap:16px}.bcard{padding:16px;gap:16px}}
+#hovwash{position:fixed;inset:0 0 auto 0;height:70vh;z-index:0;pointer-events:none;opacity:0;transition:opacity .4s;background:linear-gradient(var(--hc,#000),rgba(0,0,0,0));mix-blend-mode:screen}
+#hovwash.on{opacity:.28}
+/* how it works, as picture tiles: each one moves in its own way */
+@keyframes s1{0%,60%,100%{transform:none}75%{transform:translateY(-10px)}88%{transform:translateY(0) scale(1.08,.92)}}
+@keyframes s2{0%,55%{transform:rotate(0)}85%,100%{transform:rotate(360deg)}}
+@keyframes s3{0%,60%,100%{transform:none}78%{transform:translateX(10px) rotate(8deg)}}
+@keyframes s4{0%,60%,100%{transform:scale(1)}72%{transform:scale(1.22)}84%{transform:scale(.94)}}
+@keyframes s5{0%,60%,100%{transform:none}72%{transform:rotate(-14deg)}86%{transform:rotate(10deg)}}
+@media (min-width:1001px){
+  .steps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .steps li:last-child:nth-child(odd){grid-column:1/-1}
+  .steps button{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:12px;position:relative;min-height:148px;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--panel);font-size:17px;line-height:1.25;text-align:left}
+  .steps svg{order:-1;width:64px;height:64px;padding:14px;margin-bottom:auto}
+  .steps .n{position:absolute;right:12px;top:12px;order:0}
+  .steps li:nth-child(1) svg{animation:s1 2.6s cubic-bezier(.34,1.56,.64,1) infinite}
+  .steps li:nth-child(2) svg{animation:s2 3.2s cubic-bezier(.65,0,.35,1) infinite;animation-delay:.4s}
+  .steps li:nth-child(3) svg{animation:s3 2.8s cubic-bezier(.34,1.56,.64,1) infinite;animation-delay:.8s}
+  .steps li:nth-child(4) svg{animation:s4 2.6s cubic-bezier(.34,1.56,.64,1) infinite;animation-delay:1.2s}
+  .steps li:nth-child(5) svg{animation:s5 3s cubic-bezier(.34,1.56,.64,1) infinite;animation-delay:1.6s}
+}
+@media (prefers-reduced-motion:reduce){.steps li svg{animation:none!important}}
 </style>
 </head>
 <body>
@@ -909,12 +941,7 @@ body.nap .steps li svg{animation-play-state:paused}
   <div class="why-in">
     <p class="eyebrow rv">House rules</p>
     <h2 class="say rv">We've spent years on dance floors in this country. <em>This is what we wished we'd had on the way there, at the door, and on the drive home.</em></h2>
-    <ol class="rules">
-      <li class="rv"><b>Picked by hand.</b>If we wouldn't go ourselves, it isn't listed.</li>
-      <li class="rv"><b>No Bollywood nights. No filler.</b>Electronic music, taken seriously.</li>
-      <li class="rv"><b>Everything has a source.</b>Every record and gig on an artist's page says where it came from.</li>
-      <li class="rv"><b>You learn by playing.</b>The school is an instrument, not a video course.</li>
-    </ol>
+    <div class="built"><a class="bcard" href="#nights" data-go="ch-nights" style="--c:#7FA7FF"><i class="chr" data-form="ball" aria-hidden="true"></i><span><b>Nights</b><p>Every good electronic night in five cities, picked by a person. Say you're going, find a crew, check in at the door.</p></span></a><a class="bcard" href="#host" data-go="ch-host" style="--c:#FFE600"><i class="chr" data-form="stamp" aria-hidden="true"></i><span><b>Host</b><p>Throw your own night. One invite link, a guest list that fills itself, a door you run from your phone.</p></span></a><a class="bcard" href="#artists" data-go="ch-artists" style="--c:#B6EF36"><i class="chr" data-form="record" aria-hidden="true"></i><span><b>Artists</b><p>A page for every artist, built from their real records and gigs. Follow them, or book them with one ask.</p></span></a><a class="bcard" href="#school" data-go="ch-school" style="--c:#FF7DAA"><i class="chr" data-form="knob" aria-hidden="true"></i><span><b>School</b><p>Learn to make the music by playing it. Start with a beat and take it into your own tools.</p></span></a></div>
   </div>
 </section>
 
@@ -2043,7 +2070,9 @@ window.__ccd={setPlaying,buildExport,nap(){napping=true;document.body.classList.
   /* real audio first: the artist's own 30 second preview from Deezer. If this page is not allowed to reach it, the generated sound plays and the note says so. */
   const au=new Audio();au.loop=true;au.preload='none';let mode='synth',lastNote='',scr=false,scrT=0;const pv={};
   const note=t=>{lastNote=t;const n=document.getElementById('aNote');if(n)n.textContent=t};
-  function preview(a,cb){if(a.n in pv)return cb(pv[a.n]);const fn='__dz'+hash(a.n),sc=document.createElement('script');let done=false;
+  /* on the real site the server asks Deezer (same as the artist pages do). Elsewhere it falls back. */
+  function preview(a,cb){if(a.n in pv)return cb(pv[a.n]);const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),4500);fetch('/api/deezer/find?q='+encodeURIComponent(a.n),{signal:ctl.signal}).then(r=>r.ok?r.json():null).then(j=>{clearTimeout(t);if(j&&j.url){pv[a.n]={url:j.url,title:j.title};cb(pv[a.n])}else previewJ(a,cb)}).catch(()=>{clearTimeout(t);previewJ(a,cb)})}
+  function previewJ(a,cb){if(a.n in pv)return cb(pv[a.n]);const fn='__dz'+hash(a.n),sc=document.createElement('script');let done=false;
     const fin=v=>{if(done)return;done=true;pv[a.n]=v;try{delete window[fn]}catch(e){}sc.remove();cb(v)};
     window[fn]=r=>{const t=((r&&r.data)||[]).find(x=>x.preview&&x.artist&&x.artist.name.toLowerCase()===a.n.toLowerCase());fin(t?{url:t.preview,title:t.title}:null)};
     sc.src='https://api.deezer.com/search?q='+encodeURIComponent('artist:"'+a.n+'"')+'&limit=8&output=jsonp&callback='+fn;sc.onerror=()=>fin(null);document.head.appendChild(sc);setTimeout(()=>fin(null),3500)}
@@ -2131,6 +2160,15 @@ window.__ccd={get s(){return {playing,BPM,step,timer:timer!==null,laserOn}}};
 /* points: a line with the rewards on it, filled as you earn */
 (()=>{const v=document.getElementById('vu'),t=document.getElementById('pTot');if(!v||!t)return;const R=[[200,'+1'],[300,'Spot'],[800,'Ticket']];const d=document.createElement('div');d.className='ptrack';d.setAttribute('role','img');d.innerHTML='<i class="fill"></i>'+R.map(([n,l])=>`<span style="--p:${n/8}%"><b>${l}</b>${n}</span>`).join('');v.after(d);
   const up=()=>{const p=parseInt(t.textContent.replace(/\D/g,''))||0;d.style.setProperty('--w',Math.min(100,p/8)+'%');d.setAttribute('aria-label',p+' points. Rewards at 200, 300 and 800.');[...d.querySelectorAll('span')].forEach((s,i)=>s.classList.toggle('got',p>=R[i][0]))};up();setInterval(up,400)})();
+
+/* what we built: big chrome objects. Point at one and the page takes its colour. */
+(()=>{const rm=matchMedia('(prefers-reduced-motion: reduce)').matches,root=document.documentElement;const w=document.createElement('div');w.id='hovwash';w.setAttribute('aria-hidden','true');document.body.appendChild(w);
+  const setF=(el,f)=>{f=((f%120)+120)%120;el._f=f;const i=Math.floor(f);el.style.setProperty('--cx',i%11);el.style.setProperty('--cy',Math.floor(i/11))};let prev=null;
+  document.querySelectorAll('.bcard,.doors .door').forEach(d=>{const c=d.querySelector('.chr'),col=getComputedStyle(d).getPropertyValue('--c').trim();if(c&&c._f==null)setF(c,14);
+    let on=false,v=0,run=false,last=0;const tick=n=>{const dt=Math.min(50,n-last);last=n;v+=((on?24:0)-v)*.07;if(c&&Math.abs(v)>.05)setF(c,c._f+v*dt/1000);if(on||Math.abs(v)>.05)requestAnimationFrame(tick);else run=false};
+    const go=s=>{if(s){if(prev===null)prev=root.style.getPropertyValue('--acc');root.style.setProperty('--acc',col);w.style.setProperty('--hc',col);w.classList.add('on')}else{if(prev!==null){root.style.setProperty('--acc',prev);prev=null}w.classList.remove('on')}
+      if(d.classList.contains('bcard')){on=s&&!rm;if(on&&!run){run=true;last=performance.now();requestAnimationFrame(tick)}}};
+    d.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')go(true)});d.addEventListener('pointerleave',()=>go(false));d.addEventListener('focus',()=>go(true));d.addEventListener('blur',()=>go(false))})})();
 
 })();
 </script>
