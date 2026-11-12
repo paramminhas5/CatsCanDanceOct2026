@@ -20,6 +20,7 @@ import { dayLabel, city } from "@/suite/bits";
 import Carousel3D, { type RingNight } from "@/suite/home2/Carousel3D";
 import { CSS as RING_CSS } from "@/suite/home2/home2.css";
 import { CSS } from "./home4.css";
+import { shareLink, logShare, type ShareKind } from "@/lib/share";
 
 type Tab = "go" | "artists" | "host" | "learn";
 const ORDER: Tab[] = ["go", "artists", "host", "learn"];
@@ -227,6 +228,7 @@ export default function Home4(d: HomeData) {
           {tab === "learn" && <BeatMaker />}
 
           <Journey eye={JOURNEY[tab].eye} h={JOURNEY[tab].h} steps={JOURNEY[tab].steps} />
+          <Closer tab={tab} colour={BG(tab)} on={ON(tab)} cat={STAGE[tab].cat} next={next?.slug ?? null} />
         </div>
 
         <section className="h4-wrap h4-sec h4-more-apps">
@@ -297,8 +299,8 @@ function Journey({ eye, h, steps }: { eye: string; h: string; steps: Step[] }) {
     io.observe(el);
     return () => io.disconnect();
   }, []);
-  // Phone: the panel holds still while you scroll, and each stretch of scrolling moves it to the next step
-  // (Param, 13 Nov 2026: "people on mobile don't like to scroll, tie that component to scrolling down").
+  // Phone: the panel holds still while you scroll, and each short stretch of scrolling moves it a step
+  // (Param, 13 Nov 2026: tie it to scrolling, make it clearly steps, scroll less, show when to keep going).
   useEffect(() => {
     let raf = 0;
     const on = () => {
@@ -310,7 +312,7 @@ function Journey({ eye, h, steps }: { eye: string; h: string; steps: Step[] }) {
         const run = r.height - window.innerHeight;
         const p = run > 0 ? Math.min(1, Math.max(0, -r.top / run)) : 0;
         setProg(p);
-        setActive(Math.min(steps.length - 1, Math.floor(p * steps.length)));
+        setActive(Math.min(steps.length - 1, Math.floor(p * steps.length * 0.999)));
       });
     };
     on();
@@ -319,6 +321,20 @@ function Journey({ eye, h, steps }: { eye: string; h: string; steps: Step[] }) {
     return () => { cancelAnimationFrame(raf); window.removeEventListener("scroll", on); window.removeEventListener("resize", on); };
   }, [steps.length]);
   const n = steps.length;
+  // Tap a step (or Next) to scroll straight to it.
+  const jump = (i: number) => {
+    const el = sref.current;
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    const run = el.offsetHeight - window.innerHeight;
+    window.scrollTo({ top: top + run * ((Math.min(i, n - 1) + 0.15) / n), behavior: "smooth" });
+  };
+  const after = () => {
+    const el = sref.current;
+    if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY + el.offsetHeight - 40, behavior: "smooth" });
+  };
+  const st = steps[active];
   return (
     <section className="h4-wrap h4-sec" id="how">
       <div className="h4-jr-desk">
@@ -326,14 +342,14 @@ function Journey({ eye, h, steps }: { eye: string; h: string; steps: Step[] }) {
         <div ref={ref} className={`h4-jr${seen ? " seen" : ""}`} style={{ ["--n" as string]: n }}>
           <span className="h4-jr-line" aria-hidden="true"><i /></span>
           <ol>
-            {steps.map((st, i) => (
-              <li key={st.t} style={{ ["--i" as string]: i }}>
-                <a href={st.href}>
-                  <span className="h4-jr-when"><em>{String(i + 1).padStart(2, "0")}</em>{st.when}</span>
+            {steps.map((s2, i) => (
+              <li key={s2.t} style={{ ["--i" as string]: i }}>
+                <a href={s2.href}>
+                  <span className="h4-jr-when"><em>{String(i + 1).padStart(2, "0")}</em>{s2.when}</span>
                   <span className="h4-jr-dot" aria-hidden="true" />
-                  <span className="h4-jr-pic">{st.shot ? <img src={`/shots/${st.shot}.webp`} alt="" loading="lazy" /> : <Art kind={st.art!} />}</span>
-                  <b>{st.t}</b>
-                  <span className="h4-jr-line2">{st.line}</span>
+                  <span className="h4-jr-pic">{s2.shot ? <img src={`/shots/${s2.shot}.webp`} alt="" loading="lazy" /> : <Art kind={s2.art!} />}</span>
+                  <b>{s2.t}</b>
+                  <span className="h4-jr-line2">{s2.line}</span>
                 </a>
               </li>
             ))}
@@ -345,29 +361,87 @@ function Journey({ eye, h, steps }: { eye: string; h: string; steps: Step[] }) {
         <div className="h4-jrs-pin">
           <div className="h4-jrs-top">
             <span className="h4-eye" style={{ color: "var(--acc)" }}>{eye}</span>
-            <span className="h4-jrs-count">{String(active + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}</span>
+            <b className="h4-jrs-h">{h}</b>
           </div>
-          <div className="h4-jrs-bar" aria-hidden="true">
-            {steps.map((st, i) => <i key={st.t} style={{ ["--f" as string]: Math.min(1, Math.max(0, prog * n - i)) }} />)}
-          </div>
+          {/* The steps, numbered, always in view: done ones ticked, the current one lit. Tap to jump. */}
+          <ol className="h4-jrs-steps" style={{ ["--p" as string]: n > 1 ? active / (n - 1) : 1 }}>
+            <span className="h4-jrs-track" aria-hidden="true"><i /></span>
+            {steps.map((s2, i) => (
+              <li key={s2.t} className={i < active ? "done" : i === active ? "on" : ""}>
+                <button type="button" onClick={() => jump(i)} aria-label={`Step ${i + 1}: ${s2.t}`} aria-current={i === active ? "step" : undefined}>
+                  {i < active ? <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 5 8.5l4.5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg> : i + 1}
+                </button>
+              </li>
+            ))}
+          </ol>
           <div className="h4-jrs-stage" aria-hidden="true">
-            {steps.map((st, i) => (
-              <span key={st.t} className={`h4-jrs-pic${i === active ? " on" : i < active ? " gone" : ""}`}>
-                {st.shot ? <img src={`/shots/${st.shot}.webp`} alt="" loading="lazy" /> : <Art kind={st.art!} />}
+            {steps.map((s2, i) => (
+              <span key={s2.t} className={`h4-jrs-pic${i === active ? " on" : i < active ? " gone" : ""}`}>
+                {s2.shot ? <img src={`/shots/${s2.shot}.webp`} alt="" loading="lazy" /> : <Art kind={s2.art!} />}
               </span>
             ))}
+            <span className="h4-jrs-when" key={`w-${active}`}>{st.when}</span>
           </div>
           <div className="h4-jrs-copy" aria-live="polite">
-            {steps.map((st, i) => (
-              <a key={st.t} href={st.href} className={`h4-jrs-txt${i === active ? " on" : ""}`} tabIndex={i === active ? 0 : -1} aria-hidden={i !== active}>
-                <span className="h4-jrs-when">{st.when}</span>
-                <b>{st.t}</b>
-                <span>{st.line}</span>
-              </a>
-            ))}
+            <div className="h4-jrs-txt" key={active}>
+              <b>{st.t}</b>
+              <span>{st.line}</span>
+            </div>
+            <div className="h4-jrs-acts">
+              <a href={st.href} className="h4-jrs-open">Open it</a>
+              {active < n - 1
+                ? <button type="button" className="h4-jrs-next" onClick={() => jump(active + 1)}>Next: {steps[active + 1].t}<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg></button>
+                : <button type="button" className="h4-jrs-next" onClick={after}>Done. Keep going<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg></button>}
+            </div>
           </div>
-          <span className={`h4-jrs-hint${active === n - 1 ? " end" : ""}`}>{active === n - 1 ? "That's the night." : "Keep scrolling"}</span>
+          <span className="h4-jrs-bar" aria-hidden="true"><i style={{ transform: `scaleX(${prog})` }} /></span>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* Every app ends with something to pass on (Param, 13 Nov 2026: "there should be some viral CTA or action
+   for everything"). The link carries ?ref= so shares and the visits they bring are counted (log_share). */
+function Closer({ tab, colour, on, cat, next }: { tab: Tab; colour: string; on: string; cat: string; next: string | null }) {
+  const [copied, setCopied] = useState(false);
+  const C: Record<Tab, { eye: string; h: string; line: string; share: [string, string, string, ShareKind]; main: [string, string] }> = {
+    go: { eye: "Bring your people", h: "Nights are better with your crew.", line: "Send this week to the group chat. When they say they're going, you'll see it.", share: ["Send to the group", "/whats-on", "This week's nights on Cats Can Dance. Who's in?", "night"], main: ["See what's on", "/whats-on"] },
+    artists: { eye: "Pass it on", h: "Know someone who'd love this artist?", line: "Send a page. They hear the records, you get to say you told them first.", share: ["Send an artist", "/artists/sandunes", "Listen to Sandunes on Cats Can Dance", "artist"], main: ["Is it you? Claim your page", productLink("artists", "/claim")] },
+    host: { eye: "Fill the room", h: "The invite is the party's first impression.", line: "Make it in a minute, send one link, and watch the list fill.", share: ["Tell a friend who throws parties", "/?for=host", "Throwing something? Make the invite and run the door from your phone, free.", "night"], main: ["Make the invite", "#try"] },
+    learn: { eye: "Make one, send one", h: "Made a beat? Send it to a friend.", line: "Start lesson 1, then challenge someone to beat your first track.", share: ["Challenge a friend", "/?for=learn", "I'm learning to make music on Cats Can Dance. Make a beat and send me yours.", "beat"], main: ["Start lesson 1", productLink("school", "/learn")] },
+  };
+  const c = C[tab];
+  const send = async () => {
+    const [, path, text, kind] = c.share;
+    const url = shareLink(path, kind, tab);
+    logShare(kind, tab, "share", "home-closer");
+    if (navigator.share) { try { await navigator.share({ text, url }); return; } catch { /* closed */ } }
+    window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`, "_blank", "noopener");
+  };
+  const copy = async () => {
+    const [, path, , kind] = c.share;
+    try { await navigator.clipboard.writeText(shareLink(path, kind, tab)); setCopied(true); setTimeout(() => setCopied(false), 1800); } catch { /* blocked */ }
+    logShare(kind, tab, "share", "copy");
+  };
+  return (
+    <section className="h4-wrap h4-sec">
+      <div className="h4-close" style={{ ["--c" as string]: colour, ["--on" as string]: on }}>
+        <div className="h4-close-copy">
+          <span className="h4-eye">{c.eye}</span>
+          <h2>{c.h}</h2>
+          <p>{c.line}</p>
+          <div className="h4-close-acts">
+            <button type="button" className="h4-close-main" onClick={() => void send()}>
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              {c.share[0]}
+            </button>
+            <button type="button" className="h4-close-ghost" onClick={() => void copy()}>{copied ? "Link copied" : "Copy the link"}</button>
+          </div>
+          <a className="h4-close-link" href={c.main[1]}>{c.main[0]} →</a>
+          {tab === "go" && next && <span className="h4-close-note">Our next Episode is on the list too.</span>}
+        </div>
+        <img className="h4-close-cat" src={`/cats/${cat}.webp`} alt="" loading="lazy" />
       </div>
     </section>
   );

@@ -20,7 +20,7 @@ export function SuiteNav({ current, account, cta, sub }: { current: ProductId; a
   return (
     <header className="k-nav">
       <div className="k-wrap k-nav__row">
-        <a href={productUrl("ccd")} className="k-nav__brand"><CatGlyph />Cats Can Dance</a>
+        <a href={productUrl("ccd")} className="k-nav__brand"><CcdMark />Cats Can Dance</a>
         <details className="k-switch-m">
           <summary style={{ ["--c" as string]: here.colour, ["--on" as string]: on(current) }} aria-label={`${here.verb}. Switch app`}>
             {here.verb}<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
@@ -65,8 +65,14 @@ export const TILE_LINE: Record<ProductId, string> = {
   school: "School · make music on a real instrument",
 };
 
-/** The white cat, reduced to a mark: ears, head, a wink. */
-function CatGlyph() {
+/** The Cats Can Dance logo: the black and white circle (Param, 11 Nov 2026: "the CCD logo is the circle, not the cat").
+ *  Served from the CCD site so every app shows the same file; inverted to read white on the dark bar. */
+function CcdMark() {
+  return <img src={`${productUrl("ccd")}/ccd-logo.png`} alt="" width={26} height={26} className="k-nav__cat" style={{ objectFit: "contain", filter: "invert(1)", verticalAlign: "middle", marginRight: 8 }} />;
+}
+
+/** The white cat, reduced to a mark: ears, head, a wink. Kept for places that want the cat. */
+export function CatGlyph() {
   return (
     <svg width="22" height="22" viewBox="0 0 16 16" aria-hidden="true" className="k-nav__cat">
       <path fill="currentColor" d="M2 2.2 5 5h6l3-2.8V9.5A5.5 5.5 0 0 1 8.5 15h-1A5.5 5.5 0 0 1 2 9.5Z" />
