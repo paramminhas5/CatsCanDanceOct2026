@@ -907,6 +907,32 @@ body.nap .steps li svg{animation-play-state:paused}
 .liner li{grid-template-columns:56px 1fr;gap:2px 16px}
 .liner li b{font-size:18px}.liner li p{font-size:15px}
 @media (min-width:1001px){.steps button{grid-template-columns:40px 1fr 28px;font-size:17px;padding:10px 0;gap:12px}.steps svg{width:40px;height:40px;padding:9px;border-radius:12px}}
+
+/* ===== round 10: lighter page ===== */
+#hovwash{display:none}
+.steps li svg{animation:none!important}
+/* the chrome sprites blend inside their own door, not against the moving canvas. This was the scroll cost. */
+.doors .door{background:#0C0D0F;isolation:isolate}
+.doors .door .chr{width:clamp(76px,7.4vw,112px)}
+/* the app's line draws in when you scroll, and ends in a tail */
+.doors .door::before{transform:scaleX(0);transform-origin:0 50%;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.doors .door.in::before{transform:scaleX(1)}
+.doors .door:nth-child(2)::before{transition-delay:.12s}.doors .door:nth-child(3)::before{transition-delay:.24s}.doors .door:nth-child(4)::before{transition-delay:.36s}
+.tail{position:absolute;right:-1px;bottom:-1px;width:14px;height:14px;border:solid var(--c);border-width:0 2px 2px 0;border-radius:0 0 12px 0;opacity:0;transform:scale(.4);transform-origin:100% 100%;transition:opacity .2s .8s,transform .4s .8s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.in>.tail{opacity:1;transform:none}
+.rl li{position:relative}
+.rl li::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--c);transform:scaleX(0);transform-origin:0 50%;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.rl li.in::after{transform:scaleX(1)}
+.rl li:hover,.rl li:focus-visible{border-bottom-color:var(--line)}
+/* the opening line lights up word by word as you scroll */
+.say .w{transition:opacity .3s}
+/* what's on the record: say what the two sides are */
+.liner ol::before,.liner ol::after{grid-column:1/-1;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);padding-top:8px}
+.liner ol::before{content:"Side A · what it does";order:0}
+.liner li{order:1}
+.liner ol::after{content:"Side B · what you can add to it";order:2}
+.liner li:nth-child(n+5){order:3}
+@media (prefers-reduced-motion:reduce){.doors .door::before,.rl li::after{transition:none}}
 </style>
 </head>
 <body>
@@ -2209,6 +2235,16 @@ window.__ccd={get s(){return {playing,BPM,step,timer:timer!==null,laserOn}}};
     const go=s=>{if(s){if(prev===null)prev=root.style.getPropertyValue('--acc');root.style.setProperty('--acc',col);w.style.setProperty('--hc',col);w.classList.add('on')}else{if(prev!==null){root.style.setProperty('--acc',prev);prev=null}w.classList.remove('on')}
       if(d.matches('.rl li')){on=s&&!rm;if(on&&!run){run=true;last=performance.now();requestAnimationFrame(tick)}}};
     d.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')go(true)});d.addEventListener('pointerleave',()=>go(false));d.addEventListener('focus',()=>go(true));d.addEventListener('blur',()=>go(false))})})();
+/* round 10: lines draw on scroll with a tail, and the opening line lights up as you scroll */
+(()=>{const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const doors=[...document.querySelectorAll('.doors .door')],rules=[...document.querySelectorAll('.rl li')];
+  [...doors,...rules].forEach(el=>{const t=document.createElement('i');t.className='tail';t.setAttribute('aria-hidden','true');el.appendChild(t)});
+  if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('in',e.isIntersecting)),{threshold:.7});rules.forEach(r=>io.observe(r))}else rules.forEach(r=>r.classList.add('in'));
+  const h=document.querySelector('#why .say');let ws=[];
+  if(h&&!rm){const wrap=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(p=>{if(!p)return;if(/^\s+$/.test(p)){f.appendChild(document.createTextNode(p));return}const s=document.createElement('span');s.className='w';s.textContent=p;f.appendChild(s)});c.replaceWith(f)}else if(c.nodeType===1)wrap(c)})};wrap(h);ws=[...h.querySelectorAll('.w')]}
+  let tk=false;const up=()=>{tk=false;const on=scrollY>8;doors.forEach(d=>d.classList.toggle('in',on));
+    if(ws.length){const r=h.getBoundingClientRect(),vh=innerHeight,p=Math.max(0,Math.min(1,(vh*.9-r.top)/(vh*.5+r.height))),n=p*ws.length;for(let i=0;i<ws.length;i++)ws[i].style.opacity=i<n?1:.2}};
+  addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(up)}},{passive:true});up()})();
 
 })();
 </script>
