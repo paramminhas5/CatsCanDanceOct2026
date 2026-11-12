@@ -39,7 +39,7 @@ def('invite',el=>{const f=k=>$(`[name=${k}]`,el),card=$('.inv-card',el),out=$('.
   el.addEventListener('ccd:held',async()=>{const v=vals();id=newId();const s=await CCD.store();const body={...v,host:s&&s.uid||'me',t:Date.now()};let live=false;
     if(s){try{await s.db.doc('invites/'+id).set(body);if(s.uid)await s.db.doc('data/users/'+s.uid+'/host').set({last:id});live=true}catch(e){live=false}}
     const all=LS.get('inv')||{};all[id]=body;LS.set('inv',all);LS.set('last',id);
-    showOut(CCD.SITE+'#i-'+id,live);CCD.pts.award(50,'night hosted',card,'host-'+id);unsub&&unsub();unsub=await CCD.watchReplies(id,rs=>{const n=rs.filter(r=>r.s!=='no').reduce((a,r)=>a+1+(r.plus?1:0),0);going.textContent=n+' going';
+    const base=live?CCD.SITE:location.href.split('#')[0].replace(/\/pages\/[^/]*$/,'/pages/rsvp').replace(/\/(index\.html)?$/,'/pages/rsvp');showOut(base+'#i-'+id,live);CCD.pts.award(50,'night hosted',card,'host-'+id);unsub&&unsub();unsub=await CCD.watchReplies(id,rs=>{const n=rs.filter(r=>r.s!=='no').reduce((a,r)=>a+1+(r.plus?1:0),0);going.textContent=n+' going';
       const ul=$('.inv-replies',out);if(ul)ul.innerHTML=rs.map(r=>`<li><span class="gdot g-${esc(r.s)}"></span><b>${esc(r.name||'Someone')}${r.plus?' +1':''}</b><span class="mute">${r.s==='going'?'Going':r.s==='maybe'?'Maybe':'Can\'t make it'}</span></li>`).join('')})});
   const rs=el.querySelector('[data-c=hold]');el.addEventListener('ccd:held',()=>setTimeout(()=>rs&&rs._reset&&rs._reset(),2500))});
 
