@@ -1,0 +1,353 @@
+
+/* ===== new components, 12 Nov. Laid over the page. Nothing here changes layout, scroll, sound or pages. ===== */
+@font-face{font-family:"Instrument Sans";src:url(fonts/instrument.woff2) format("woff2");font-weight:400 700;font-stretch:75% 100%;font-display:swap}
+:root{--sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--eyeshine:#F3F1E4;--s3:#26272E}
+/* eyes: always white, round, with a round pupil that goes to a slit when you point at the button */
+.bey .e,.eyes .e{background:var(--eyeshine);border-radius:50%;overflow:visible}
+.bey .e{width:12px;height:12px}
+.eyes .e{width:14px;height:14px}
+.eyes .pr.me .e{background:var(--eyeshine);box-shadow:0 0 0 2px var(--acc)}
+.bey .e::after{left:3px;top:3px;width:6px;height:6px;margin:0;border-radius:50%;background:#0C0D0F;transform:translate(calc(var(--px,0)*2.4px),calc(var(--py,0)*2.4px)) scale(var(--sx,1),var(--sy,1));transition:transform .16s cubic-bezier(.2,.8,.2,1)}
+.eyes .e::after{left:3.5px;top:3.5px;width:7px;height:7px;margin:0;border-radius:50%;background:#0C0D0F;transform:translate(calc(var(--px,0)*2.8px),calc(var(--py,0)*2.8px));transition:transform .16s cubic-bezier(.2,.8,.2,1)}
+a:hover>.bey,button:hover>.bey{--sx:.3;--sy:1.5}
+.btn.sm .bey .e{width:10px;height:10px}
+.btn.sm .bey .e::after{left:2.5px;top:2.5px;width:5px;height:5px}
+/* two-eye button: ink on shared pages, the app's colour inside an app */
+.btn.solid,.more{background:var(--acc);border-color:var(--acc);color:#0C0D0F}
+.btn.solid:hover,.more:hover{background:var(--acc);border-color:var(--acc);filter:brightness(1.08)}
+.more::after{content:none}
+/* one-dot button: a plain dot in the app's colour that becomes a slit. It does not follow you. */
+.btn:not(.solid):not(.acc):not(.ko):not(.menuBtn):not(.hold)::before{content:"";width:10px;height:10px;flex:none;border-radius:50%;background:var(--acc);transition:transform .16s cubic-bezier(.2,.8,.2,1)}
+.btn.sm:not(.solid):not(.acc):not(.ko):not(.menuBtn):not(.hold)::before{width:8px;height:8px}
+.btn:not(.solid):not(.acc):not(.ko):not(.menuBtn):not(.hold):hover{background:var(--panel2);color:var(--ink);border-color:rgba(242,241,238,.4)}
+.btn:not(.solid):not(.acc):not(.ko):not(.menuBtn):not(.hold):hover::before{transform:scale(.3,1.3)}
+/* purr: a dark pill that fills with the app's colour while you hold it */
+.btn.hold{background:var(--s3);border-color:var(--s3);color:var(--ink)}
+.btn.hold:hover{background:var(--s3);border-color:var(--s3);color:var(--ink)}
+.hold::after{display:none}
+.hold .fc{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:inherit;background:var(--acc);color:#0C0D0F;clip-path:inset(0 100% 0 0);transition:clip-path .24s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.hold.holding .fc{clip-path:inset(0 0 0 0);transition:clip-path .76s linear}
+.btn.hold:disabled{background:var(--acc);border-color:var(--acc);color:#0C0D0F;opacity:1}
+/* chrome objects on the four doors. Placed in the corner so the doors keep their size. */
+.chr{--z:1;aspect-ratio:1;background-image:var(--src);background-repeat:no-repeat;background-size:calc(1100%*var(--z)) calc(1100%*var(--z));background-position:calc((var(--cx,0)*var(--z) + (var(--z) - 1)/2)/(11*var(--z) - 1)*100%) calc((var(--cy,0)*var(--z) + (var(--z) - 1)/2)/(11*var(--z) - 1)*100%);mix-blend-mode:screen}
+.chr[data-form="ball"]{--src:url(img/c-ball.webp);--z:1.4}
+.chr[data-form="stamp"]{--src:url(img/c-stamp.webp);--z:1.06}
+.chr[data-form="record"]{--src:url(img/c-record.webp)}
+.chr[data-form="knob"]{--src:url(img/c-knob.webp);--z:1.6}
+.door .chr{position:absolute;right:14px;top:10px;width:clamp(40px,4.4vw,60px);pointer-events:none;transition:transform .35s var(--ease)}
+.door:hover .chr{transform:translateY(-4px) scale(1.1)}
+@media (prefers-reduced-motion:reduce){.hold.holding .fc{transition:none}}
+
+/* ===== round 2: Artists panel, laser cat, bigger chrome ===== */
+.door .chr{width:clamp(48px,5vw,72px);top:8px}
+/* the crossfader, full width under the panel title */
+[data-tour="artists"] .pbar{flex-wrap:wrap;row-gap:12px}
+#aSide{order:3;width:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;padding:6px;border-radius:99px}
+#aSide button{padding:12px 20px;font-size:16px;font-weight:500}
+#aSide button.on{background:var(--acc);color:#0C0D0F}
+#aSide #xf{-webkit-appearance:none;appearance:none;width:100%;height:36px;margin:0;background:linear-gradient(90deg,var(--line) 0 100%) center/100% 2px no-repeat,repeating-linear-gradient(90deg,rgba(242,241,238,.3) 0 1px,transparent 1px 10%) center/100% 12px no-repeat;cursor:grab}
+#aSide #xf::-webkit-slider-runnable-track{background:none;height:36px}
+#aSide #xf::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:36px;margin:0;border:0;border-radius:6px;background:linear-gradient(90deg,transparent 9px,#0C0D0F 9px 13px,transparent 13px),var(--ink);box-shadow:0 4px 12px rgba(0,0,0,.5)}
+#aSide #xf::-moz-range-track{background:none}
+#aSide #xf::-moz-range-thumb{width:22px;height:36px;border:0;border-radius:6px;background:linear-gradient(90deg,transparent 9px,#0C0D0F 9px 13px,transparent 13px),var(--ink)}
+@media (max-width:700px){#aSide{gap:8px}#aSide button{padding:10px 12px;font-size:14px}}
+/* fan side: crate on the left, a record player on the right. Gaps are 12, 16 and 24 only. */
+.agrid{gap:24px;padding:24px}
+.discs{gap:16px 12px}
+.adet .tt{position:relative;width:100%;aspect-ratio:16/11;border-radius:12px;background:var(--panel2);display:grid;place-items:center;overflow:hidden}
+.plat{position:relative;height:86%;aspect-ratio:1;border-radius:50%;cursor:grab;touch-action:none;-webkit-tap-highlight-color:transparent}
+.plat:active{cursor:grabbing}
+.plat .rec{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,transparent 0 3%,#0C0D0F 3.4%) ,repeating-radial-gradient(circle,#0b0b0d 0 1.5px,#26272e 1.5px 3px);box-shadow:0 12px 32px rgba(0,0,0,.5);transform:rotate(var(--rot,0deg))}
+.plat .rec::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 20deg,transparent 0 8%,rgba(255,255,255,.09) 12%,transparent 18% 50%,rgba(255,255,255,.07) 56%,transparent 62%)}
+.plat .rec img{position:absolute;inset:31%;width:38%;height:38%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px var(--acc)}
+.plat .rec::after{content:"";position:absolute;left:50%;top:50%;width:4%;height:4%;margin:-2% 0 0 -2%;border-radius:50%;background:var(--panel2);z-index:1}
+.tt .arm{position:absolute;right:9%;top:8%;width:5px;height:62%;border-radius:4px;background:linear-gradient(#D9D8D3,#8B8B85);transform-origin:50% 6%;transform:rotate(-8deg);transition:transform .4s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.tt .arm::before{content:"";position:absolute;left:-8px;top:-9px;width:21px;height:21px;border-radius:50%;background:#8B8B85}
+.tt .arm::after{content:"";position:absolute;left:-5px;bottom:-4px;width:15px;height:24px;border-radius:3px;background:var(--ink)}
+.tt.on .arm{transform:rotate(17deg)}
+.tt .hint{position:absolute;left:12px;bottom:10px;font-family:var(--mono);font-size:11.5px;color:var(--mute);pointer-events:none}
+.adet .ph{display:none}
+.adet h4{margin-top:16px}
+/* what is on file, as a crate you can count */
+.crate{display:flex;align-items:flex-end;gap:3px;height:44px;margin-top:12px}
+.crate i{flex:1;max-width:14px;border-radius:2px 2px 0 0;background:var(--panel2);box-shadow:inset 0 0 0 1px var(--line)}
+.crate i.c{background:var(--acc);box-shadow:none}
+.adet .recs{margin-top:8px}
+.acts{gap:12px;margin-top:16px}
+/* artist side: three plain blocks */
+.dash{gap:24px;padding:24px}
+.dash h5{font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:20px;letter-spacing:-.01em;margin:0 0 8px;text-transform:none}
+.dash .rowi{padding:12px 0}
+.dash .bars div{grid-template-columns:96px 1fr;font-size:14px;margin-bottom:12px}
+.dash .bars i{height:12px;border-radius:2px}
+.dash .desk-top{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.dash .desk-top b{font-family:var(--disp);font-weight:800;font-stretch:125%;font-size:clamp(22px,2.2vw,32px);letter-spacing:-.02em}
+/* the laser's cat */
+#lzcat{position:fixed;left:0;top:0;z-index:74;width:76px;height:76px;margin:-64px 0 0 -38px;pointer-events:none;display:none;transform-origin:50% 90%;filter:drop-shadow(0 6px 10px rgba(0,0,0,.6))}
+#lzcat img{width:100%;height:100%;object-fit:contain;display:block;transform:scaleX(var(--face,1)) rotate(var(--tilt,0deg));transition:transform .16s}
+#lzcat.run img{animation:lzrun .28s ease-in-out infinite alternate}
+#lzcat.sit img{animation:lzwig .9s ease-in-out infinite alternate}
+#lzcat.jump img{animation:lzjump .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes lzrun{from{translate:0 0}to{translate:0 -7px}}
+@keyframes lzwig{from{rotate:-4deg}to{rotate:4deg}}
+@keyframes lzjump{0%{translate:0 0;scale:1}35%{translate:0 -34px;scale:1.08 .92}70%{translate:0 0;scale:1.14 .84}100%{translate:0 0;scale:1}}
+#laser[aria-pressed="true"]{box-shadow:0 0 0 2px #FF3B30}
+@media (prefers-reduced-motion:reduce){#lzcat img{animation:none!important}}
+
+/* ===== round 3 ===== */
+.door .chr{width:clamp(60px,6.6vw,100px);top:4px;right:10px}
+@media (min-width:701px){.door p,.door small{padding-right:clamp(64px,7vw,104px)}}
+/* how it works: a picture tile first, bigger words, the number last */
+.steps svg{transition:transform .24s cubic-bezier(.34,1.56,.64,1)}
+.steps button:hover svg{transform:rotate(-8deg) scale(1.1)}
+@media (min-width:1001px){
+  .steps button{grid-template-columns:44px 1fr 28px;gap:16px;padding:12px 0;font-size:19px;line-height:1.25}
+  .steps svg{order:-1;width:44px;height:44px;padding:10px;box-sizing:border-box;border-radius:12px;background:var(--panel2);color:var(--acc)}
+  .steps .n{order:3;border:0;color:var(--mute);justify-self:end}
+}
+.bat{animation:bat .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes bat{30%{transform:rotate(-7deg) translateY(-5px)}62%{transform:rotate(5deg)}}
+#invite{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .24s cubic-bezier(.2,.8,.2,1),background .5s;box-shadow:0 12px 32px rgba(0,0,0,.5)}
+
+/* ===== round 4 ===== */
+/* how it works: each picture moves in turn */
+@keyframes tile{0%,80%,100%{transform:none}87%{transform:translateY(-5px) rotate(-9deg)}94%{transform:rotate(6deg)}}
+.steps li svg{animation:tile 4.8s cubic-bezier(.34,1.56,.64,1) infinite}
+.steps li:nth-child(2) svg{animation-delay:.6s}.steps li:nth-child(3) svg{animation-delay:1.2s}.steps li:nth-child(4) svg{animation-delay:1.8s}.steps li:nth-child(5) svg{animation-delay:2.4s}
+body.nap .steps li svg{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.steps li svg{animation:none}}
+/* one inset and one gap inside every panel on tablet and desktop: 24. The panel bar is 16 by 24. */
+@media (min-width:701px){.pbar{padding:16px 24px}.ngrid,.hgrid,.sgrid{gap:24px;padding:24px}}
+/* host: the invite flips to show the entry code */
+#invite{position:relative}
+#invite .back{position:absolute;inset:0;z-index:2;border-radius:inherit;background:var(--ib);color:var(--if);padding:20px;display:none;flex-direction:column;justify-content:space-between}
+#invite.showback .back{display:flex}
+#invite.edge{transform:perspective(900px) rotateY(90deg)!important;transition:transform .2s ease-in!important}
+#invite .back small{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em}
+#invite .back b{display:block;font-family:var(--disp);font-weight:800;font-stretch:125%;font-size:28px;line-height:1.05;letter-spacing:-.02em;margin-top:8px}
+#invite .back .code{width:112px;height:112px;background:repeating-conic-gradient(var(--if) 0 25%,transparent 0 50%) 0 0/16px 16px}
+#flipB{display:flex;margin:12px auto 0}
+
+/* ===== round 5 ===== */
+.mini-ep{display:none}
+.epnext{display:flex;align-items:flex-end;gap:16px;margin-top:24px}
+.epnext b{font-family:var(--disp);font-weight:800;font-stretch:125%;font-size:clamp(72px,9vw,136px);line-height:.82;letter-spacing:-.03em;color:#FF6A3D}
+.epnext span{font-size:18px;line-height:1.3;padding-bottom:6px}
+.epnext small{display:block;font-family:var(--mono);font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
+.epfan{display:flex;margin-top:24px;padding-left:12px}
+.epfan button{width:clamp(92px,11vw,150px);aspect-ratio:1;margin-left:-12px;border-radius:4px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.5);transform:rotate(var(--r));transition:transform .24s cubic-bezier(.34,1.56,.64,1)}
+.epfan button:hover,.epfan button:focus-visible{transform:rotate(0deg) translateY(-12px) scale(1.06);z-index:2}
+.epfan img{width:100%;height:100%;object-fit:cover;display:block}
+.epgo{margin-top:24px}
+/* points: the count, and a line with the three rewards on it */
+#vu{display:none}
+.ptrack{position:relative;height:76px;margin:20px 0 8px}
+.ptrack::before{content:"";position:absolute;left:0;right:0;top:20px;height:12px;border-radius:2px;background:var(--panel2);box-shadow:inset 0 0 0 1px var(--line)}
+.ptrack .fill{position:absolute;left:0;top:20px;height:12px;border-radius:2px;background:var(--lime);width:var(--w,0%);transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.ptrack span{position:absolute;left:var(--p);top:10px;transform:translateX(-50%);padding-top:34px;font-family:var(--mono);font-size:12px;color:var(--mute);text-align:center;white-space:nowrap}
+.ptrack span::before{content:"";position:absolute;left:50%;top:0;width:2px;height:32px;margin-left:-1px;background:var(--ink)}
+.ptrack span b{display:block;color:var(--ink);font-family:var(--sans);font-size:14px;font-weight:600}
+.ptrack span:last-child{transform:translateX(-100%);text-align:right}.ptrack span:last-child::before{left:auto;right:0}
+.ptrack span.got b{color:var(--lime)}
+/* host: the invite gets a sun, rays and a checked edge in the look you picked */
+#invite,#invite .back{background:radial-gradient(circle at 84% 12%,rgba(255,255,255,.75) 0 12%,transparent 12.5%),repeating-conic-gradient(from 0deg at 84% 12%,rgba(0,0,0,.1) 0 7deg,transparent 7deg 14deg),repeating-linear-gradient(90deg,var(--if) 0 14px,transparent 14px 28px) left bottom/100% 10px no-repeat,var(--ib)}
+
+/* ===== round 6 ===== */
+/* chrome objects sit inside their door, on the title's line */
+.door .chr{width:clamp(44px,4.6vw,68px);top:14px;right:18px}
+.door:last-child .chr{right:4px}
+@media (min-width:701px){.door p,.door small{padding-right:clamp(52px,5.4vw,80px)}}
+/* house rules: same words, louder */
+.rules li b{font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:clamp(20px,1.9vw,28px);line-height:1.1;letter-spacing:-.01em;margin-bottom:6px}
+.rules li{border-top-width:2px}
+.rules li:nth-child(1){border-top-color:#7FA7FF}.rules li:nth-child(2){border-top-color:#FFE600}.rules li:nth-child(3){border-top-color:#B6EF36}.rules li:nth-child(4){border-top-color:#FF7DAA}
+/* episodes: the line-up is a set of buttons */
+.trk li.pl{cursor:pointer;display:flex;align-items:center;gap:12px;min-height:44px}
+.trk li.pl .pp{margin-left:auto;font-style:normal;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#0C0D0F;background:var(--ink);border-radius:99px;padding:6px 12px}
+.trk li.pl:hover .pp,.trk li.pl:focus-visible .pp{background:#FF6A3D}
+.trk li.on{color:#FF6A3D}.trk li.on .pp{background:#FF6A3D}
+.trk li.pl:focus-visible{outline:2px solid #FF6A3D;outline-offset:2px}
+.epnote{min-height:20px}
+
+/* ===== round 7 ===== */
+.built{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.bcard{display:grid;grid-template-columns:clamp(96px,9.5vw,148px) 1fr;gap:24px;align-items:center;padding:24px;border-radius:16px;background:var(--panel);border:1px solid var(--line);transition:border-color .24s,transform .24s cubic-bezier(.2,.8,.2,1)}
+.bcard .chr{width:100%;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.bcard b{display:block;font-family:var(--disp);font-weight:800;font-stretch:125%;font-size:clamp(24px,2.2vw,34px);letter-spacing:-.02em;line-height:1;margin-bottom:8px;transition:color .24s}
+.bcard p{margin:0;font-size:16px;line-height:1.45;color:#CFCEC8}
+.bcard:hover,.bcard:focus-visible{border-color:var(--c);transform:translateY(-4px)}
+.bcard:hover .chr,.bcard:focus-visible .chr{transform:scale(1.1) rotate(-4deg)}
+.bcard:hover b,.bcard:focus-visible b{color:var(--c)}
+@media (max-width:820px){.built{grid-template-columns:1fr;gap:16px}.bcard{padding:16px;gap:16px}}
+#hovwash{position:fixed;inset:0 0 auto 0;height:70vh;z-index:0;pointer-events:none;opacity:0;transition:opacity .4s;background:linear-gradient(var(--hc,#000),rgba(0,0,0,0));mix-blend-mode:screen}
+#hovwash.on{opacity:.28}
+
+
+/* ===== round 8 ===== */
+.chr[data-form="logo"]{--src:url(img/c-logo.webp)}
+/* house rules: four rules, each a strip with its big chrome object */
+.rl{list-style:none;margin:32px 0 0;padding:0;border-bottom:1px solid var(--line)}
+.rl li{display:grid;grid-template-columns:clamp(88px,9vw,136px) 1fr;gap:24px;align-items:center;padding:16px 0;border-top:1px solid var(--line);transition:border-color .24s;outline:0}
+.rl .chr{width:100%;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.rl small{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--c)}
+.rl b{display:block;font-family:var(--disp);font-weight:800;font-stretch:125%;font-size:clamp(26px,3vw,46px);line-height:1;letter-spacing:-.02em;margin:6px 0 8px;transition:color .24s}
+.rl p{margin:0;font-size:18px;line-height:1.4;color:#CFCEC8;max-width:34em}
+.rl li:hover,.rl li:focus-visible{border-top-color:var(--c)}
+.rl li:hover b,.rl li:focus-visible b{color:var(--c)}
+.rl li:hover .chr,.rl li:focus-visible .chr{transform:scale(1.1) rotate(-5deg)}
+@media (max-width:700px){.rl li{grid-template-columns:72px 1fr;gap:16px}.rl p{font-size:16px}}
+/* hero doors: big chrome object on top, the app's line always on */
+.doors .door{display:flex;flex-direction:column;align-items:flex-start;padding-top:20px}
+.doors .door::before{transform:scaleX(1);height:3px}
+.doors .door .chr{position:static;order:-1;width:clamp(84px,8.4vw,128px);margin:0 0 12px -8px}
+.doors .door p,.doors .door small{padding-right:0}
+/* what's on the record: every track is a small record with its number on the label */
+.liner ol{border-top:0;gap:16px clamp(24px,3vw,48px);margin-top:24px}
+.liner li{grid-template-columns:72px 1fr;gap:2px 20px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--panel);transition:border-color .24s,transform .24s cubic-bezier(.2,.8,.2,1)}
+.liner li:hover{padding-left:16px;border-color:var(--acc);transform:translateY(-3px)}
+.liner li span{grid-row:1/span 2;width:72px;height:72px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:500;color:#0C0D0F;background:radial-gradient(circle,var(--acc) 0 40%,transparent 40.5%),repeating-radial-gradient(circle,#0b0b0d 0 1.5px,#26272e 1.5px 3px);box-shadow:0 6px 16px rgba(0,0,0,.5);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.liner li:hover span{transform:rotate(360deg)}
+.liner li b{font-size:20px;align-self:end}
+.liner li p{align-self:start}
+/* keep the doors in the first screen */
+.doors{margin-top:0}
+.doors .door{padding-top:14px}
+.doors .door .chr{width:clamp(64px,6.2vw,92px);margin:0 0 6px -6px}
+@media (min-width:701px) and (max-height:960px){#hero .lede{margin:14px 0 14px}}
+
+/* ===== round 9: one size system. Titles 20 to 30, body 16, tiles 48, radius 12, hairlines 1px, gaps 16 and 24 ===== */
+.rl{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,3vw,48px);margin-top:24px;border-bottom:0}
+.rl li{grid-template-columns:48px 1fr;gap:16px;align-items:start;padding:20px 0;border-top:0;border-bottom:1px solid var(--line)}
+.rl li svg{width:48px;height:48px;padding:11px;box-sizing:border-box;border-radius:12px;background:var(--panel2);color:var(--c);fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.rl b{font-size:clamp(20px,2vw,30px);margin:4px 0 6px}
+.rl p{font-size:16px}
+.rl li:hover,.rl li:focus-visible{border-top-color:transparent;border-bottom-color:var(--c)}
+@media (max-width:700px){.rl{grid-template-columns:1fr}}
+/* doors: the app's line sits under each door */
+.doors{border-top:0;border-bottom:1px solid var(--line)}
+.doors .door{padding-top:0;padding-bottom:14px}
+.doors .door::before{top:auto;bottom:-1px;height:2px}
+/* the colour wash goes behind the page, so nothing on top of it is tinted or softened */
+#hovwash{z-index:-1;mix-blend-mode:normal}
+#hovwash.on{opacity:.3}
+/* sizes pulled into line */
+.epnext b{font-size:clamp(56px,6vw,88px)}
+.epnext span{font-size:16px}
+.epfan button{width:clamp(80px,8vw,116px)}
+.panel{border-radius:16px}
+.liner li{border-radius:12px}
+.liner li span{width:56px;height:56px;font-size:11px}
+.liner li{grid-template-columns:56px 1fr;gap:2px 16px}
+.liner li b{font-size:18px}.liner li p{font-size:15px}
+@media (min-width:1001px){.steps button{grid-template-columns:40px 1fr 28px;font-size:17px;padding:10px 0;gap:12px}.steps svg{width:40px;height:40px;padding:9px;border-radius:12px}}
+
+/* ===== round 10: lighter page ===== */
+#hovwash{display:none}
+.steps li svg{animation:none!important}
+/* the chrome sprites blend inside their own door, not against the moving canvas. This was the scroll cost. */
+.doors .door{background:#0C0D0F;isolation:isolate}
+.doors .door .chr{width:clamp(76px,7.4vw,112px)}
+/* the app's line draws in when you scroll, and ends in a tail */
+.doors .door::before{transform:scaleX(0);transform-origin:0 50%;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.doors .door.in::before{transform:scaleX(1)}
+.doors .door:nth-child(2)::before{transition-delay:.12s}.doors .door:nth-child(3)::before{transition-delay:.24s}.doors .door:nth-child(4)::before{transition-delay:.36s}
+.tail{position:absolute;right:-1px;bottom:-1px;width:14px;height:14px;border:solid var(--c);border-width:0 2px 2px 0;border-radius:0 0 12px 0;opacity:0;transform:scale(.4);transform-origin:100% 100%;transition:opacity .2s .8s,transform .4s .8s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.in>.tail{opacity:1;transform:none}
+.rl li{position:relative}
+.rl li::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--c);transform:scaleX(0);transform-origin:0 50%;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.rl li.in::after{transform:scaleX(1)}
+.rl li:hover,.rl li:focus-visible{border-bottom-color:var(--line)}
+/* the opening line lights up word by word as you scroll */
+.say .w{transition:opacity .3s}
+/* what's on the record: say what the two sides are */
+.liner ol::before,.liner ol::after{grid-column:1/-1;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);padding-top:8px}
+.liner ol::before{content:"Side A · what it does";order:0}
+.liner li{order:1}
+.liner ol::after{content:"Side B · what you can add to it";order:2}
+.liner li:nth-child(n+5){order:3}
+@media (prefers-reduced-motion:reduce){.doors .door::before,.rl li::after{transition:none}}
+
+/* ===== round 11 ===== */
+/* lines: drawn dim on scroll. They light up and the tail curls only when you point. A press flicks it. */
+.doors .door::before,.rl li::after{opacity:.4;transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.doors .door:hover::before,.doors .door:focus-visible::before,.rl li:hover::after,.rl li:focus-visible::after{opacity:1}
+.in>.tail{opacity:0;transform:scale(.4)}
+.doors .door:hover>.tail,.doors .door:focus-visible>.tail,.rl li:hover>.tail,.rl li:focus-visible>.tail{opacity:1;transform:none;transition:opacity .16s,transform .3s cubic-bezier(.34,1.56,.64,1)}
+@keyframes flick{0%{transform:none}35%{transform:scale(1.9) rotate(-28deg)}100%{transform:none}}
+@keyframes hop{0%,100%{transform:none}40%{transform:translateY(-10px) rotate(-8deg)}}
+.hit>.tail{opacity:1;animation:flick .45s cubic-bezier(.34,1.56,.64,1)}
+.hit .chr,.hit svg{animation:hop .45s cubic-bezier(.34,1.56,.64,1)}
+/* home: room between the buttons and the four doors */
+.doors{margin-top:32px}
+/* text sizes: titles 22 to 28, step labels 18 bold, body 15, notes 12 mono */
+.rl b{font-size:clamp(20px,1.8vw,26px)}
+.rl p{font-size:15px;line-height:1.45}
+@media (min-width:1001px){.steps button{font-size:18px;font-weight:600}}
+.bcard p,.epnext span{font-size:15px}
+/* what's on the record: three examples, said properly. No sides, no codes. */
+.liner ol::before,.liner ol::after{content:none}
+.liner ol{grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:ex}
+.liner li{order:0;display:block;padding:24px;counter-increment:ex}
+.liner li:nth-child(n+4){display:none}
+.liner li span{display:none}
+.liner li::before{content:counter(ex);display:block;font-family:var(--disp);font-weight:800;font-stretch:125%;font-size:56px;line-height:1;color:var(--acc);margin-bottom:16px}
+.liner li b{display:block;font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:clamp(20px,1.8vw,26px);letter-spacing:-.01em;line-height:1.1;margin-bottom:8px}
+.liner li p{font-size:15px;line-height:1.45}
+@media (max-width:820px){.liner ol{grid-template-columns:1fr;gap:16px}}
+/* points: the count and three ways to earn. Nothing else. */
+.ptrack,#vu,.pts h5,.pts .stamps{display:none}
+#pEarn>*:nth-child(n+4){display:none}
+/* keep each chrome object inside its door so no black edge shows */
+.doors .door{padding-top:16px;overflow:hidden}
+.doors .door .chr{margin:0 0 8px 0}
+.doors .door:hover .chr{transform:none}
+
+/* ===== round 12: one scale across the whole page =====
+   type: display stays; lead 20 to 26, body 16, small 14, mono notes 12. space: 16, 24, 32, 48. lines 1px. corners 12, panels 16. */
+.claim{font-size:clamp(20px,1.9vw,26px);line-height:1.25}
+.for,.sub{font-size:16px;line-height:1.5}
+.lede{font-size:clamp(17px,1.4vw,20px);line-height:1.45}
+.note{font-size:14px;line-height:1.45}
+.rowi{font-size:15px;padding:12px 0}
+.rowi small{font-size:13px}
+.chip{font-size:13.5px}
+.pbar{font-size:13px}
+.eyebrow,.meta,.mono{font-size:12px;letter-spacing:.04em}
+.todo h3{font-size:12px;letter-spacing:.04em;margin-bottom:8px}
+.demo{padding-top:10vh;padding-bottom:12vh}
+.liner{padding-top:8vh;padding-bottom:10vh}
+.offer,.adet .tt,.claimbox{border-radius:12px}
+.invite{border-radius:16px}
+.acts,.hero-cta{gap:12px}
+.hero-cta{display:flex;flex-wrap:wrap}
+@media (min-width:701px){.pbar{padding:16px 24px}.ngrid,.hgrid,.sgrid,.agrid,.dash{gap:24px;padding:24px}}
+@media (max-width:700px){.demo{padding-top:24px;padding-bottom:10vh}}
+/* what an app does: every feature, as plain cards with the app's mark. No numbers, no sides. */
+.liner ol{grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:none}
+.liner li,.liner li:nth-child(n+4){display:block;order:0;padding:20px;border-radius:12px}
+.liner li::before{content:"";display:block;width:24px;height:3px;border-radius:2px;background:var(--acc);margin-bottom:16px;font-size:0}
+.liner li b{font-family:var(--sans);font-weight:600;font-stretch:100%;font-size:18px;letter-spacing:0;line-height:1.25;margin-bottom:6px}
+.liner li p{font-size:14.5px;line-height:1.45}
+@media (max-width:1100px){.liner ol{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.liner ol{grid-template-columns:1fr}}
+
+/* ===== round 13 ===== */
+/* switching pages: no flash */
+#wipe{display:none!important}
+/* episodes: the posters live once, in the row below */
+.epfan{display:none}
+/* how it works: bigger words */
+@media (min-width:1001px){.steps button{font-size:20px}}
+/* points: rewards you unlock */
+.rewards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+.rw{position:relative;padding:20px;border-radius:12px;background:var(--panel2);border:1px solid var(--line);overflow:hidden;transition:border-color .3s}
+.rw svg{width:28px;height:28px;fill:none;stroke:var(--mute);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:16px;transition:stroke .3s}
+.rw b{display:block;font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:20px;line-height:1.1;letter-spacing:-.01em}
+.rw span{display:block;font-family:var(--mono);font-size:12px;color:var(--mute);margin-top:8px}
+.rw i{position:absolute;left:0;bottom:0;height:4px;width:var(--w,0%);background:var(--lime);transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.rw.got{border-color:var(--lime)}.rw.got svg{stroke:var(--lime)}.rw.got span{color:var(--lime)}
+@media (max-width:700px){.rewards{grid-template-columns:1fr}}
+
+/* ===== 13 Nov: Bandcamp and SoundCloud play in their own player under the note ===== */
+.emb{margin-top:12px;border-radius:12px;overflow:hidden;background:var(--panel2);border:1px solid var(--line)}
+.emb iframe{display:block;width:100%;border:0}

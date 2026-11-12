@@ -1014,6 +1014,10 @@ body.nap .steps li svg{animation-play-state:paused}
 .rw i{position:absolute;left:0;bottom:0;height:4px;width:var(--w,0%);background:var(--lime);transition:width .8s cubic-bezier(.2,.8,.2,1)}
 .rw.got{border-color:var(--lime)}.rw.got svg{stroke:var(--lime)}.rw.got span{color:var(--lime)}
 @media (max-width:700px){.rewards{grid-template-columns:1fr}}
+
+/* ===== 13 Nov: Bandcamp and SoundCloud play in their own player under the note ===== */
+.emb{margin-top:12px;border-radius:12px;overflow:hidden;background:var(--panel2);border:1px solid var(--line)}
+.emb iframe{display:block;width:100%;border:0}
 </style>
 </head>
 <body>
@@ -2218,25 +2222,47 @@ window.__ccd={setPlaying,buildExport,nap(){napping=true;document.body.classList.
   const au=new Audio();au.loop=true;au.preload='none';let mode='synth',lastNote='',scr=false,scrT=0;const pv={};
   const note=t=>{lastNote=t;const n=document.getElementById('aNote');if(n)n.textContent=t};
   /* on the real site the server asks Deezer (same as the artist pages do). Elsewhere it falls back. */
-  function preview(a,cb){if(a.n in pv)return cb(pv[a.n]);const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),4500);fetch('/api/deezer/find?q='+encodeURIComponent(a.n),{signal:ctl.signal}).then(r=>r.ok?r.json():null).then(j=>{clearTimeout(t);if(j&&j.url){pv[a.n]={url:j.url,title:j.title};cb(pv[a.n])}else previewJ(a,cb)}).catch(()=>{clearTimeout(t);previewJ(a,cb)})}
+  /* on the real site the server looks the artist up in our own data (their checked Deezer tracks, then Bandcamp, then SoundCloud).
+     It answers "nothing on file" for a CCD artist with no music, and we never guess a namesake for them. If the server cannot be reached
+     (the claude.ai copy of this page), Deezer is asked directly, then the stand-in plays and says so. */
+  const emb=p=>p.kind==='bandcamp'?{embed:'Bandcamp',title:p.title,h:42,src:'https://bandcamp.com/EmbeddedPlayer/'+p.type+'='+p.id+'/size=small/bgcol=0c0d0f/linkcol=f3f1e4/transparent=true/'}
+    :{embed:'SoundCloud',title:'',h:120,src:'https://w.soundcloud.com/player/?url='+encodeURIComponent(p.url)+'&auto_play=true&visual=false&show_comments=false&show_teaser=false&color=%23f3f1e4'};
+  function preview(a,cb){if(a.n in pv)return cb(pv[a.n]);const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),8000);
+    fetch('/api/deezer/find?q='+encodeURIComponent(a.n),{signal:ctl.signal}).then(r=>r.json().then(j=>({ok:r.ok,st:r.status,j}))).then(({ok,st,j})=>{clearTimeout(t);
+      if(ok&&j&&j.url){pv[a.n]={url:j.url,title:j.title};cb(pv[a.n])}
+      else if(ok&&j&&(j.kind==='bandcamp'||j.kind==='soundcloud')){pv[a.n]=emb(j);cb(pv[a.n])}
+      else if(st===404&&j&&j.error){pv[a.n]={none:true};cb(pv[a.n])}
+      else previewJ(a,cb)}).catch(()=>{clearTimeout(t);previewJ(a,cb)})}
   function previewJ(a,cb){if(a.n in pv)return cb(pv[a.n]);const fn='__dz'+hash(a.n),sc=document.createElement('script');let done=false;
     const fin=v=>{if(done)return;done=true;pv[a.n]=v;try{delete window[fn]}catch(e){}sc.remove();cb(v)};
     window[fn]=r=>{const t=((r&&r.data)||[]).find(x=>x.preview&&x.artist&&x.artist.name.toLowerCase()===a.n.toLowerCase());fin(t?{url:t.preview,title:t.title}:null)};
     sc.src='https://api.deezer.com/search?q='+encodeURIComponent('artist:"'+a.n+'"')+'&limit=8&output=jsonp&callback='+fn;sc.onerror=()=>fin(null);document.head.appendChild(sc);setTimeout(()=>fin(null),3500)}
-  const isOn=()=>artOn===asel&&(mode==='real'?(!au.paused||scr):playing);
+  const isOn=()=>artOn===asel&&(mode==='real'?(!au.paused||scr):mode==='embed'?true:playing);
   /* the big record behind the page takes the artist's photo as its label */
   let artTex=null,logoTex=null,uArt=null;
   function setLabel(i){if(typeof glOK==='undefined'||!glOK)return;try{if(uArt===null)uArt=gl.getUniformLocation(gl.getParameter(gl.CURRENT_PROGRAM),'uArt');if(!logoTex)logoTex=gl.getParameter(gl.TEXTURE_BINDING_2D);
     if(i<0){if(logoTex)gl.bindTexture(gl.TEXTURE_2D,logoTex);gl.uniform1f(uArt,0);return}
     const im=new Image();im.onload=()=>{if(artOn!==i)return;if(!artTex)artTex=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,artTex);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,im);[gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER].forEach(k=>gl.texParameteri(gl.TEXTURE_2D,k,gl.LINEAR));[gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T].forEach(k=>gl.texParameteri(gl.TEXTURE_2D,k,gl.CLAMP_TO_EDGE));gl.uniform1f(uArt,1)};im.src='img/'+ARTISTS[i].img+'.webp'}catch(e){}}
   function fallback(){mode='synth';loadSound(asel);artOn=asel;if(playing){step=0}else setPlaying(true);note('No preview could load on this page, so this is a stand-in beat in their style.')}
-  function stopArtist(){au.pause();if(mode==='synth'&&playing&&artOn>=0)setPlaying(false);unload();artOn=-1;scr=false;setLabel(-1);note('')}
-  function playArtist(on){if(!on){stopArtist();return}const a=ARTISTS[asel];au.pause();unload();artOn=asel;setLabel(asel);note('Finding their preview.');
+  /* Bandcamp and SoundCloud play in their own small player, put right under the note */
+  function dropEmbed(){document.querySelectorAll('.emb').forEach(e=>e.remove())}
+  function putEmbed(after,p){dropEmbed();if(!after)return;const w=document.createElement('div');w.className='emb';const f=document.createElement('iframe');f.src=p.src;f.height=p.h;f.title=p.embed+' player';f.loading='lazy';f.allow='autoplay; encrypted-media';f.setAttribute('seamless','');w.appendChild(f);after.after(w)}
+  const embNote=p=>p.embed==='Bandcamp'?'Their newest release'+(p.title?', “'+p.title+'”,':'')+' is on Bandcamp. Press play below.':'Their SoundCloud is below. Press play if it has not started.';
+  const noneNote=n=>'We do not have a track of '+n+'’s to play yet.';
+  function stopArtist(){au.pause();dropEmbed();if(mode==='synth'&&playing&&artOn>=0)setPlaying(false);unload();artOn=-1;scr=false;mode='synth';setLabel(-1);note('')}
+  function playArtist(on){if(!on){stopArtist();return}const a=ARTISTS[asel];au.pause();dropEmbed();unload();artOn=asel;setLabel(asel);note('Finding their track.');
     preview(a,p=>{if(artOn!==asel||ARTISTS[asel]!==a)return;
-      if(p){mode='real';if(playing)setPlaying(false);au.src=p.url;au.play().then(()=>note('Playing “'+p.title+'”. A 30 second preview from Deezer.')).catch(fallback)}else fallback()})}
-  /* anyone on an Episode line-up can be played the same way */
-  window.__ccdPlay=(n,say)=>{const a={n,g:['House','Breaks']};au.pause();if(mode==='synth'&&playing&&artOn!==-1)setPlaying(false);unload();artOn=-2;setLabel(-1);say('Finding their preview.');const fb=()=>{mode='synth';loadSound(-2,a);if(playing){step=0}else setPlaying(true);say('No preview could load here. This is a stand-in beat, not their track.')};
-    preview(a,p=>{if(artOn!==-2)return;if(p){mode='real';if(playing)setPlaying(false);au.src=p.url;au.play().then(()=>say('Playing “'+p.title+'”. A 30 second preview from Deezer.')).catch(fb)}else fb()})};
+      if(p&&p.url){mode='real';if(playing)setPlaying(false);au.src=p.url;au.play().then(()=>note('Playing “'+p.title+'”. A 30 second preview from Deezer.')).catch(fallback)}
+      else if(p&&p.embed){mode='embed';if(playing)setPlaying(false);putEmbed(document.getElementById('aNote'),p);note(embNote(p))}
+      else if(p&&p.none){mode='synth';artOn=-1;setLabel(-1);note(noneNote(a.n))}
+      else fallback()})}
+  /* anyone on an Episode line-up can be played the same way. off() is called when there is nothing to play. */
+  window.__ccdPlay=(n,say,host,off)=>{const a={n,g:['House','Breaks']};au.pause();dropEmbed();if(mode==='synth'&&playing&&artOn!==-1)setPlaying(false);unload();artOn=-2;setLabel(-1);say('Finding their track.');const fb=()=>{mode='synth';loadSound(-2,a);if(playing){step=0}else setPlaying(true);say('No preview could load here. This is a stand-in beat, not their track.')};
+    preview(a,p=>{if(artOn!==-2)return;
+      if(p&&p.url){mode='real';if(playing)setPlaying(false);au.src=p.url;au.play().then(()=>say('Playing “'+p.title+'”. A 30 second preview from Deezer.')).catch(fb)}
+      else if(p&&p.embed){mode='embed';if(playing)setPlaying(false);putEmbed(host,p);say(embNote(p))}
+      else if(p&&p.none){mode='synth';artOn=-1;say(noneNote(n));if(off)off()}
+      else fb()})};
   window.__ccdStop=()=>stopArtist();
   function aScrub(da){if(mode!=='real'||artOn<0)return;if(!scr){scr=true;au.pause()}try{au.currentTime=Math.max(0,Math.min((au.duration||30)-.3,au.currentTime+da*.4))}catch(e){}au.play().catch(()=>{});clearTimeout(scrT);scrT=setTimeout(()=>au.pause(),80)}
   function aRelease(){if(scr){scr=false;clearTimeout(scrT);au.play().catch(()=>{})}}
@@ -2301,7 +2327,7 @@ window.__ccd={get s(){return {playing,BPM,step,timer:timer!==null,laserOn}}};
   /* the line-up plays: tap a name */
   let cur=null;const epR0=epR;epR=function(){epR0();cur=null;const box=document.querySelector('#ch-episodes .epi');if(!box)return;const note=document.createElement('p');note.className='note epnote';note.setAttribute('aria-live','polite');const ol=box.querySelector('.trk');if(!ol)return;ol.after(note);
     ol.querySelectorAll('li').forEach(li=>{const sp=li.querySelector('span'),name=li.textContent.replace(sp?sp.textContent:'','').trim();if(!name||/open decks/i.test(name))return;li.classList.add('pl');li.tabIndex=0;li.setAttribute('role','button');li.setAttribute('aria-label','Play '+name);const pp=document.createElement('i');pp.className='pp';pp.textContent='Play';li.appendChild(pp);
-      const tog=()=>{ol.querySelectorAll('li.on').forEach(x=>{x.classList.remove('on');x.querySelector('.pp').textContent='Play'});if(cur===name){cur=null;window.__ccdStop();note.textContent='';return}cur=name;li.classList.add('on');pp.textContent='Stop';window.__ccdPlay(name,t=>{if(cur===name)note.textContent=t})};
+      const tog=()=>{ol.querySelectorAll('li.on').forEach(x=>{x.classList.remove('on');x.querySelector('.pp').textContent='Play'});if(cur===name){cur=null;window.__ccdStop();note.textContent='';return}cur=name;li.classList.add('on');pp.textContent='Stop';window.__ccdPlay(name,t=>{if(cur===name)note.textContent=t},note,()=>{if(cur!==name)return;cur=null;li.classList.remove('on');pp.textContent='Play'})};
       li.addEventListener('click',tog);li.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tog()}})})};epR();
   if(nx){const a=document.createElement('button');a.type='button';a.className='btn solid epgo';a.textContent='See Episode '+nx.n;a.onclick=()=>go(EPS.indexOf(nx));tc.appendChild(a)}})();
 /* points: a line with the rewards on it, filled as you earn */
