@@ -351,3 +351,4 @@ body.nap .steps li svg{animation-play-state:paused}
 /* ===== 13 Nov: Bandcamp and SoundCloud play in their own player under the note ===== */
 .emb{margin-top:12px;border-radius:12px;overflow:hidden;background:var(--panel2);border:1px solid var(--line)}
 .emb iframe{display:block;width:100%;border:0}
+.epi .emb{max-width:360px}
