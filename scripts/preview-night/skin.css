@@ -352,3 +352,32 @@ body.nap .steps li svg{animation-play-state:paused}
 .emb{margin-top:12px;border-radius:12px;overflow:hidden;background:var(--panel2);border:1px solid var(--line)}
 .emb iframe{display:block;width:100%;border:0}
 .epi .emb{max-width:360px}
+
+/* ===== round 14: one grid line for every panel, less empty space =====
+   Desktop: every panel starts on the second column of the Nights/Host/Artists/School grid (480 at 1440).
+   Body sections are as tall as what is in them, with 48 above and 96 below. */
+:root{--colL:minmax(250px,29%);--colG:clamp(20px,3vw,48px)}
+@media (min-width:1101px){
+  .stage.cbody{min-height:0;padding-top:48px;padding-bottom:96px}
+  .eprow{min-height:0;padding-top:48px;padding-bottom:96px}
+  .epx{grid-template-columns:var(--colL) 1fr;gap:var(--colG);align-items:start}
+  .epx .sleeve.sq{width:100%;max-width:none}
+  .sleeve.out .rec{transform:translateX(11%) rotate(220deg)}
+  .epi{position:relative;z-index:1}
+  .epi .trk,.epi .emb{max-width:480px}
+  #pts-sec{grid-template-columns:var(--colL) 1fr;gap:var(--colG);align-items:start;min-height:0;padding-top:96px;padding-bottom:96px}
+  #pts-sec h2{font-size:clamp(40px,4.4vw,64px)}
+  .tcard{min-height:66vh}
+  #why{min-height:0;padding-top:96px;padding-bottom:96px}
+}
+#outro .oslot{display:none}
+/* phone: three reward tiles across, and the closing object scrolls with its section */
+@media (max-width:700px){
+  .rewards{grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}
+  .rw{padding:12px}
+  .rw svg{width:20px;height:20px;margin-bottom:8px}
+  .rw b{font-family:var(--sans);font-stretch:100%;font-weight:600;font-size:14px;letter-spacing:0;line-height:1.2}
+  .rw span{font-size:11px;margin-top:4px}
+  #outro .oslot{display:block;width:62vw;aspect-ratio:1;margin:0 auto 24px}
+  #outro{padding-top:96px}
+}

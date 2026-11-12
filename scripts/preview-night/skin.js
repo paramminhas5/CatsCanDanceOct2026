@@ -183,3 +183,7 @@ addEventListener('hashchange',()=>setTimeout(()=>document.querySelectorAll('.rv'
   const g=document.createElement('div');g.className='rewards';g.innerHTML=R.map(([n,l])=>`<div class="rw"><svg viewBox="0 0 24 24" aria-hidden="true">${L}</svg><b>${l}</b><span></span><i></i></div>`).join('');t.closest('.tot').after(g);
   const old=[...box.querySelectorAll('*')].find(e=>!e.children.length&&/Bring a \+1/.test(e.textContent)&&!g.contains(e));if(old){let c=old;while(c.parentElement&&c.parentElement!==box)c=c.parentElement;if(c!==g&&c.parentElement===box)c.style.display='none'}
   const up=()=>{const p=parseInt(t.textContent.replace(/\D/g,''))||0;[...g.children].forEach((el,i)=>{const n=R[i][0],ok=p>=n;el.classList.toggle('got',ok);el.querySelector('svg').innerHTML=ok?U:L;el.querySelector('span').textContent=ok?'Unlocked':(n-p)+' points to go';el.querySelector('i').style.setProperty('--w',Math.min(100,p/n*100)+'%')})};up();setInterval(up,400)})();
+
+/* ===== round 14 ===== */
+/* phone: the closing object sits in a slot above the words, so it scrolls with them instead of over them */
+(()=>{const o=document.getElementById('outro');if(!o)return;const s=document.createElement('div');s.className='objslot oslot';s.setAttribute('aria-hidden','true');o.prepend(s)})();
