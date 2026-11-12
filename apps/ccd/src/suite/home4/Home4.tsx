@@ -1,12 +1,13 @@
 /**
- * catscandance.com v4 (Param, 10 Nov 2026, evening: "the home page can be so much better, take inspiration from
- * when we designed common homepages for all 4 rotating pages"; "explain visually, not text heavy").
- * The four apps rotate through one colour stage (like the v34 and W35 product landings): verb headline, one line,
- * the main action, three glance facts and two real screens with the white cat. The tiles on top switch it and
- * stop the rotation. Then this week's nights on the 3D ring, then the app's features as a grid of small moving
- * cards (one short title, one short line, a visual each), one night across four apps, and the other three apps.
+ * catscandance.com home, v4.1 (Param, 12 Nov 2026, night: "the artist thing shows up on every product when I click,
+ * it should only be the product"; "the bento gets confusing"; "make it nice and clean and beautiful").
+ *
+ * Picking an app changes everything below the tiles. Each app gets: its colour stage, one thing you can use right
+ * there (Nights: our next Episode and this week's ring; Artists: real artist pages and records; Host: a live invite
+ * you type into; School: a beat you can program), then six features as one clean list where every row opens the
+ * real screen. No made-up people, no example tags. The other three apps close the page.
  */
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { posterSvg } from "@ccd/ui";
 import { PRODUCTS, productLink, type ProductId } from "@ccd/brand";
 import type { HomeData } from "@/lib/home";
@@ -20,11 +21,12 @@ type Tab = "go" | "artists" | "host" | "learn";
 const ORDER: Tab[] = ["go", "artists", "host", "learn"];
 const ID: Record<Tab, ProductId> = { go: "ccd", artists: "artists", host: "gate", learn: "school" };
 const ON = (k: Tab) => (k === "go" ? "#fff" : "#0a0a0c");
-const SUB: Record<Tab, string> = { go: "Nights · what's on, crews, tickets", artists: "Artists · every record, every era", host: "Host · page, tickets, door, report", learn: "School · make music on a real instrument" };
+const SUB: Record<Tab, string> = { go: "What's on, crews, tickets", artists: "Every record, every show", host: "Page, tickets, door, report", learn: "Make music on a real instrument" };
 const DAY = (iso: string | null | undefined) => (iso ? new Date(`${iso.slice(0, 10)}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : "");
 const DAYS_TO = (iso: string | null | undefined, today: string) => (iso ? Math.round((Date.parse(`${iso.slice(0, 10)}T00:00:00Z`) - Date.parse(`${today}T00:00:00Z`)) / 864e5) : null);
 
 type Stage = { eye: string; h: string; line: string; cta: [string, string]; ghost: [string, string]; glance: [string, string][]; shots: [string, string]; cat: string };
+type Feature = [title: string, line: string, href: string];
 
 export default function Home4(d: HomeData) {
   const [tab, setTab] = useState<Tab>("go");
@@ -50,29 +52,60 @@ export default function Home4(d: HomeData) {
   const next = d.next;
   const nextDate = next?.event_date ?? null;
   const until = DAYS_TO(nextDate, d.today);
-  const ring: RingNight[] = [];
-  if (next) ring.push({ key: `ccd-${next.slug}`, title: next.title, href: `/nights/${next.slug}`, external: false, img: next.poster_url ?? null, poster: posterSvg({ title: next.title, lineup: d.nextLineup.map((l) => l.name), venue: next.venue, city: next.city, date: nextDate, time: next.start_time }), day: DAY(nextDate), venue: next.venue ?? "", city: city(next.city), lineup: d.nextLineup.map((l) => l.name), tag: "Ours", when: dayLabel(nextDate) });
-  for (const n of d.week.slice(0, 12)) {
+  // This week's ring holds only nights in the next seven days. Our own next Episode gets its own card above it.
+  const ring: RingNight[] = d.week.slice(0, 12).map((n) => {
     const lineup = (n.lineup ?? []).filter(Boolean);
     const names = lineup.length ? lineup : n.artists.map((a) => a.name);
-    ring.push({ key: n.id, title: n.title, href: n.ticket_url ?? n.url, external: true, img: n.image_url ?? null, poster: posterSvg({ title: n.title, lineup: names, venue: n.venue, city: city(n.city), date: n.event_date, time: n.event_time }), day: DAY(n.event_date), venue: n.venue ?? "", city: city(n.city), lineup: names, tag: n.event_date === d.today ? "Tonight" : (n.genres ?? [])[0] ?? null, when: dayLabel(n.event_date) });
-  }
-  const posters = d.week.map((w) => w.image_url).filter(Boolean).slice(0, 3) as string[];
-  const covers = d.covers.slice(0, 6);
+    return { key: n.id, title: n.title, href: n.ticket_url ?? n.url, external: true, img: n.image_url ?? null, poster: posterSvg({ title: n.title, lineup: names, venue: n.venue, city: city(n.city), date: n.event_date, time: n.event_time }), day: DAY(n.event_date), venue: n.venue ?? "", city: city(n.city), lineup: names, tag: n.event_date === d.today ? "Tonight" : (n.genres ?? [])[0] ?? null, when: dayLabel(n.event_date) };
+  });
 
   const STAGE: Record<Tab, Stage> = {
-    go: { eye: "Go out · Nights", h: "Every good night in your city. And people to go with.", line: "Picked nights, who's going, a crew if you're solo, and every ticket you own in one place.", cta: ["See what's on", "/whats-on"], ghost: ["How Nights works", "/nights"], glance: [[String(d.weekCount), "nights this week"], ["3 to 6", "people per crew"], ["1", "place for every ticket"]], shots: ["S34-Discover", "S34-Night"], cat: "dance" },
-    artists: { eye: "Book artists · Artists", h: "Every artist worth knowing. All of it, on one page.", line: `${d.artistCount} South Asian artists. Every record playable, every show sourced, and booking with a contract.`, cta: ["Dig in", productLink("artists", "/artists")], ghost: ["Book for a date", productLink("artists", "/artists?mode=book")], glance: [[String(d.artistCount), "artists"], ["Every", "record playable"], ["Signed", "by both sides"]], shots: ["A40-Artist", "F38-A-Page"], cat: "dj" },
-    host: { eye: "Host a party · Host", h: "Throw the party everyone talks about on Monday.", line: "Your page, tickets, lineup, door and numbers, in one app that keeps working with no signal.", cta: ["Make a party, free", productLink("gate", "/make")], ghost: ["Everything it does", productLink("gate", "/")], glance: [["60s", "to a live page"], ["0", "bars of signal needed"], ["₹0", "for free parties"]], shots: ["H39-Make", "H39-Door"], cat: "yellow" },
-    learn: { eye: "Learn · School", h: "Make the track. Then hear it in the club.", line: "Short lessons on a real instrument in your browser. Every one adds a piece to a track that's yours.", cta: ["Start lesson 1", productLink("school", "/learn")], ghost: ["How School works", productLink("school", "/")], glance: [["Free", "first lesson"], ["0", "downloads"], ["Yours", "the track you make"]], shots: ["W35-Lesson", "W35-Lesson"], cat: "pink" },
+    go: { eye: "Nights", h: "Every good night in your city.", line: "Nights picked by people who go out, who else is going, and a crew if you're going solo.", cta: ["See what's on", "/whats-on"], ghost: ["How it works", "/nights"], glance: [[String(d.weekCount), "nights this week"], ["3 to 6", "people per crew"], ["1", "place for your tickets"]], shots: ["S34-Discover", "S34-Night"], cat: "dance" },
+    artists: { eye: "Artists", h: "Every artist worth knowing, on one page.", line: `${d.artistCount} South Asian artists. Every record you can play, every show with a source, and booking with a contract.`, cta: ["Find an artist", productLink("artists", "/artists")], ghost: ["Book for a date", productLink("artists", "/artists?mode=book")], glance: [[String(d.artistCount), "artists"], ["Every", "record playable"], ["Signed", "by both sides"]], shots: ["A40-Artist", "F38-A-Page"], cat: "dj" },
+    host: { eye: "Host", h: "Throw the party people talk about on Monday.", line: "Your page, tickets, lineup, door and numbers in one app. The door works with no signal.", cta: ["Make a party, free", productLink("gate", "/make")], ghost: ["Everything it does", productLink("gate", "/")], glance: [["60s", "to a live page"], ["0", "bars of signal needed"], ["₹0", "for free parties"]], shots: ["H39-Make", "H39-Door"], cat: "yellow" },
+    learn: { eye: "School", h: "Make the track. Then hear it in the club.", line: "Short lessons on a real instrument in your browser. Each one adds a part to a track that's yours.", cta: ["Start lesson 1", productLink("school", "/learn")], ghost: ["How School works", productLink("school", "/")], glance: [["Free", "first lesson"], ["0", "downloads"], ["Yours", "the track you make"]], shots: ["W35-Lesson", "W35-Lesson"], cat: "pink" },
   };
+
+  const FEATURES: Record<Tab, Feature[]> = {
+    go: [
+      ["What's on", "Every night this week worth leaving the house for, by day.", "/whats-on"],
+      ["Who's going", "See who's in, and which of them you know.", "/nights"],
+      ["Crews", "Going alone? Meet three to six people before the night.", "/nights"],
+      ["Your tickets", "Bought here or anywhere else. All of them in one place.", "/me"],
+      ["Our Episodes", "The nights we throw ourselves, and every one so far.", next ? `/nights/${next.slug}` : "/nights"],
+      ["The club", "Members get first entry, the founding pass and points.", "/club"],
+    ],
+    artists: [
+      ["Find an artist", "Search by name, city, sound or label.", productLink("artists", "/artists")],
+      ["Book for a date", "See who's free, send an offer in their range.", productLink("artists", "/artists?mode=book")],
+      ["Contracts", "Drafted in the thread, signed by both sides, deposit included.", productLink("artists", "/bookings")],
+      ["On tour", "Artists coming to India, and Indian artists in your city.", productLink("artists", "/tour")],
+      ["Follow", "Hear first when they announce a date near you.", productLink("artists", "/following")],
+      ["Claim your page", "Is it you? Your page is already made. Make it yours.", productLink("artists", "/claim")],
+    ],
+    host: [
+      ["Make a party", "A page that looks like your night, live in a minute.", productLink("gate", "/make")],
+      ["Guest list", "RSVPs, plus-ones and regulars, approved in one tap.", productLink("gate", "/guests")],
+      ["Book the lineup", "Find artists free on your date and book them.", productLink("gate", "/book")],
+      ["Gear", "Decks, sound and lights from people near you.", productLink("gate", "/gear")],
+      ["The door", "Any phone scans tickets, even with no signal.", productLink("gate", "/door")],
+      ["Promote", "Your promoter page and every party you've thrown.", productLink("gate", "/promote")],
+    ],
+    learn: [
+      ["Lesson 1", "Start with a kick drum. It's free.", productLink("school", "/learn")],
+      ["Your track", "Every lesson adds a part. Save it, change it, start another.", productLink("school", "/learn")],
+      ["The studio", "Play the instrument freely, outside the lessons.", productLink("school", "/studio")],
+      ["Take it to Live", "Export what you made and keep going in Ableton.", productLink("school", "/")],
+    ],
+  };
+
   const s = STAGE[tab];
   const colour = PRODUCTS[ID[tab]].colour;
 
   const nav = (
     <header className="k-nav">
       <div className="k-wrap k-nav__row">
-        <a href="/" className="k-nav__brand"><img src="/cats/dance.webp" alt="" width={30} height={30} style={{ objectFit: "contain" }} />Cats Can Dance</a>
+        <a href="/" className="k-nav__brand"><img src="/ccd-logo.png" alt="" width={30} height={30} style={{ objectFit: "contain" }} />Cats Can Dance</a>
         <span className="k-nav__gap" />
         <a href="/me" className="k-btn k-btn--ghost k-btn--s">Your account</a>
       </div>
@@ -111,54 +144,55 @@ export default function Home4(d: HomeData) {
           </div>
         </section>
 
-        {ring.length > 2 && (
-          <section className="h4-wrap h4-week">
-            <div className="h4-head"><div><span className="h4-eye" style={{ color: PRODUCTS.ccd.colour }}>On this week · {d.weekCount} nights</span><h2>Where everyone's going.</h2></div><a className="h4-ghost" href="/whats-on">Everything on →</a></div>
-            <div className="h2x h4-ring"><Carousel3D nights={ring} allHref="/whats-on" allLabel={`All ${d.weekCount} nights this week`} /></div>
-          </section>
-        )}
+        <div className="h4-body" key={`b-${tab}`}>
+          {tab === "go" && (
+            <>
+              {next && (
+                <section className="h4-wrap h4-sec">
+                  <a href={`/nights/${next.slug}`} className="h4-ep">
+                    <span className="h4-ep-poster">{next.poster_url ? <img src={next.poster_url} alt="" /> : <span dangerouslySetInnerHTML={{ __html: posterSvg({ title: next.title, lineup: d.nextLineup.map((l) => l.name), venue: next.venue, city: next.city, date: nextDate, time: next.start_time }) }} />}</span>
+                    <span className="h4-ep-copy">
+                      <span className="h4-eye">Our next Episode · {dayLabel(nextDate)}{until != null && until > 0 ? ` · in ${until} days` : ""}</span>
+                      <b>{next.title}</b>
+                      <span className="h4-ep-where">{[next.venue, city(next.city)].filter(Boolean).join(", ")}</span>
+                      {d.nextLineup.length > 0 && <span className="h4-ep-line">{d.nextLineup.map((l) => l.name).join(" · ")}</span>}
+                      <span className="h4-ep-go">{d.nextHasTickets ? "Get tickets" : "See the night"} →</span>
+                    </span>
+                  </a>
+                </section>
+              )}
+              {ring.length > 2 && (
+                <section className="h4-wrap h4-sec">
+                  <Head eye={`This week · ${d.weekCount} nights`} h="Where everyone's going." link={["Everything on", "/whats-on"]} />
+                  <div className="h2x h4-ring"><Carousel3D nights={ring} allHref="/whats-on" allLabel={`All ${d.weekCount} nights this week`} /></div>
+                </section>
+              )}
+            </>
+          )}
 
-        {tab === "go" && next && (
-          <section className="h4-wrap">
-            <a href={`/nights/${next.slug}`} className="h4-ep">
-              <span className="h4-eye">We throw our own too · {dayLabel(nextDate)}{until != null && until >= 0 ? ` · in ${until} days` : ""}</span>
-              <b>{next.title}</b><span>{[next.venue, city(next.city)].filter(Boolean).join(", ")}</span>
-              <span className="h4-ep-go">{d.nextHasTickets ? "Get tickets" : "See the night"}</span>
-            </a>
-          </section>
-        )}
+          {tab === "artists" && <ArtistsShow d={d} />}
+          {tab === "host" && <InviteMaker today={d.today} />}
+          {tab === "learn" && <BeatMaker />}
 
-        <section className="h4-wrap h4-feats" key={`f-${tab}`}>
-          <div className="h4-head"><div><span className="h4-eye" style={{ color: "var(--acc)" }}>{PRODUCTS[ID[tab]].navLabel}</span><h2>{tab === "go" ? "Everything that makes a night out easier." : tab === "artists" ? "Everything a fan or a booker wants to know." : tab === "host" ? "Everything a party needs. In one place." : "Learn the way you'd actually use it."}</h2></div></div>
-          <div className="h4-bento">{BENTO[tab](posters, covers)}</div>
-        </section>
-
-        <section className="h4-wrap h4-lane-sec">
-          <div className="h4-lane-box">
-            <div className="h4-head"><div><span className="h4-eye" style={{ color: "var(--k-t3)" }}>One sign-in · four apps</span><h2>One night. Four apps. Zero friction.</h2></div><p>Follow the white dot. That's you, moving through a night without signing in twice.</p></div>
-            <div className="h4-lane">
-              <span className="h4-tok" aria-hidden="true" />
-              {([["artists", "A40-Artist", "You follow an artist.", "They post a date in your city. You hear first."], ["ccd", "S34-Crew", "You get in, and get a crew.", "A ticket, then a few people to meet before."], ["gate", "H39-Door", "The door scans you green.", "The host sees you arrive. No list, no queue."], ["school", "W35-Lesson", "You go home and make one.", "Lesson 1 is free. The best tracks play at our Episodes."]] as const).map(([id, shot, t, line], i) => (
-                <div key={id} className={`h4-stop s${i + 1}`} style={{ ["--c" as string]: PRODUCTS[id].colour }}>
-                  <span className="h4-eye" style={{ color: PRODUCTS[id].colour }}>{PRODUCTS[id].navLabel}</span>
-                  <div className="h4-stop-shot"><img src={`/shots/${shot}.webp`} alt="" loading="lazy" /></div>
-                  <b>{t}</b><span>{line}</span>
-                </div>
+          <section className="h4-wrap h4-sec">
+            <Head eye={`What ${PRODUCTS[ID[tab]].navLabel} does`} h={tab === "go" ? "Everything for a night out." : tab === "artists" ? "For fans, and for bookers." : tab === "host" ? "Everything a party needs." : "Learn by making."} />
+            <ol className="h4-list">
+              {FEATURES[tab].map(([t, line, href], i) => (
+                <li key={t}><a href={href}><em>{String(i + 1).padStart(2, "0")}</em><b>{t}</b><span>{line}</span><i aria-hidden="true">→</i></a></li>
               ))}
-            </div>
-          </div>
-        </section>
+            </ol>
+          </section>
+        </div>
 
-        <section className="h4-wrap h4-others">
-          <div className="h4-head"><div><span className="h4-eye" style={{ color: "var(--k-t3)" }}>Same sign-in</span><h2>Three more ways in.</h2></div></div>
+        <section className="h4-wrap h4-sec h4-others">
+          <Head eye="Same sign-in" h="Three more ways in." />
           <div className="h4-other-grid">
             {ORDER.filter((k) => k !== tab).map((k) => {
               const p = PRODUCTS[ID[k]];
               const st = STAGE[k];
               return (
                 <button key={k} type="button" className="h4-other" onClick={() => pick(k, true)} style={{ ["--c" as string]: p.colour, ["--on" as string]: ON(k) }}>
-                  <span className="h4-other-copy"><span className="h4-eye">{p.verb}</span><b>{st.h}</b><em>{st.cta[0]} →</em></span>
-                  <span className="h4-other-shot"><img src={`/shots/${st.shots[0]}.webp`} alt="" loading="lazy" /></span>
+                  <span className="h4-eye">{p.verb}</span><b>{st.h}</b><em>{st.cta[0]} →</em>
                 </button>
               );
             })}
@@ -169,58 +203,161 @@ export default function Home4(d: HomeData) {
   );
 }
 
-/* ── The feature grids: a title of a few words, one short line, and a small moving picture. ── */
-const Tile = ({ cls = "", art, t, s }: { cls?: string; art: ReactNode; t: string; s: string }) => (
-  <div className={`h4-b ${cls}`}><div className="h4-art" aria-hidden="true">{art}</div><h3>{t}</h3><p>{s}</p></div>
-);
-const Faces = ({ n = 4 }: { n?: number }) => (
-  <span className="h4-faces">{["#2563eb", "#b6ef36", "#ffe600", "#ff4d8d", "#f2efe7"].slice(0, n).map((c, i) => <i key={c} style={{ background: c, animationDelay: `${i * 0.25}s` }}>{["A", "R", "K", "P", "S"][i]}</i>)}</span>
-);
-const Ex = () => <span className="h4-ex">Example</span>;
+function Head({ eye, h, link }: { eye: string; h: string; link?: [string, string] }) {
+  return (
+    <div className="h4-head">
+      <div><span className="h4-eye" style={{ color: "var(--acc)" }}>{eye}</span><h2>{h}</h2></div>
+      {link && <a className="h4-more" href={link[1]}>{link[0]} →</a>}
+    </div>
+  );
+}
 
-const BENTO: Record<Tab, (posters: string[], covers: HomeData["covers"]) => ReactNode> = {
-  go: (posters) => (
-    <>
-      <Tile cls="w2 h2 blue" t="Only nights worth leaving the house for" s="Every one has a real lineup, a promoter we trust or a room that cares. Nothing sponsored." art={<span className="h4-fan">{posters.map((p, i) => <img key={p} src={p} alt="" style={{ ["--i" as string]: i - 1 }} />)}</span>} />
-      <Tile t="See who's going" s="And which of them you know." art={<span className="h4-row"><Faces /><span className="h4-mono">128 going · 3 you know</span></span>} />
-      <Tile t="Never go alone" s="Solo? Meet a crew of 3 to 6 first." art={<span className="h4-card"><Faces n={5} /><b>Meet 9:15 · near the venue</b><Ex /></span>} />
-      <Tile cls="w2" t="Hear first when they play your city" s="Follow an artist. The day they post a date near you, you know." art={<span className="h4-toast"><i /><span><b>Sandunes just announced Bengaluru</b><em>Sat 6 Dec · tickets open now</em></span><Ex /></span>} />
-      <Tile t="Every ticket in one place" s="Bought on District or BookMyShow? Add it here." art={<span className="h4-chips"><span>District</span><span>BookMyShow</span><span>Skillbox</span><span className="qr" /></span>} />
-      <Tile t="Plans changed? Pass it on" s="Send your ticket to a friend at face value." art={<span className="h4-pass"><span className="tk">1 ticket</span><span className="arrow">→</span><span className="to">Rohan</span></span>} />
-      <Tile t="Reminders that actually help" s="Doors, travel time, where your crew meets." art={<span className="h4-glance-mini"><span><em>Doors</em><b>9 pm</b></span><span><em>Away</em><b>12 min</b></span><span><em>Crew</em><b>9:15</b></span></span>} />
-      <Tile t="Every night, kept" s="The stub lands on your page the morning after." art={<span className="h4-stubs">{posters.slice(0, 3).map((p, i) => <img key={p} src={p} alt="" style={{ ["--i" as string]: i }} />)}</span>} />
-    </>
-  ),
-  artists: (_p, covers) => (
-    <>
-      <Tile cls="w2 h2 lime" t="Every record, from the first one" s="Albums, EPs, singles and remixes in order. Tap any of them to hear it." art={<span className="h4-covers">{covers.map((c, i) => <img key={c.img} src={c.img} alt="" style={{ animationDelay: `${i * 0.3}s` }} />)}</span>} />
-      <Tile t="Their eras" s="How the sound changed, one track from each." art={<span className="h4-eras"><i style={{ background: "#2563eb", flex: 5 }} /><i style={{ background: "#dc2626", flex: 3 }} /><i style={{ background: "#b6ef36", flex: 3 }} /></span>} />
-      <Tile t="What's next" s="Their next show and their latest release, up top." art={<span className="h4-mono-card"><em>Next show</em><b>Sat 6 Dec · Bengaluru</b><Ex /></span>} />
-      <Tile cls="w2" t="Book them, properly" s="Who's free on your date, an offer in their range, and a contract you both sign." art={<span className="h4-sign"><span><em>Artist</em><b className="sig">Signed</b></span><span><em>You</em><b className="sig sig2">Signed</b></span></span>} />
-      <Tile t="A wall for the fans" s="Leave a note. The artist pins the best." art={<span className="h4-note">“That clarinet. Still thinking about it.”<Ex /></span>} />
-      <Tile t="Their card, ready to share" s="Every era on one image, made for a story." art={<span className="h4-minicard"><b>Sandunes</b><i /><i /><i /></span>} />
-      <Tile t="Follow, and hear first" s="When they play near you, you know." art={<span className="h4-toast small"><i /><span><b>New date near you</b></span></span>} />
-      <Tile t="Is this you?" s="Claim your page. It's already made." art={<span className="h4-chips"><span>Claim your page</span></span>} />
-    </>
-  ),
-  host: () => (
-    <>
-      <Tile cls="w2 h2 yellow" t="A page that looks like your party" s="Name it, pick your colours, drop a poster. Live and shareable in a minute." art={<span className="h4-phone-xs"><img src="/shots/H39-Make.webp" alt="" /></span>} />
-      <Tile t="Tickets that sell themselves" s="Tiers open and close on their own." art={<span className="h4-chips"><span>Early bird · sold out</span><span>General · ₹799</span></span>} />
-      <Tile t="The list, in one tap" s="Regulars marked. Yes to all at once." art={<span className="h4-yn"><span>Aditi · regular <b>Yes</b></span><span>Rohan +1 <b>Yes</b></span></span>} />
-      <Tile t="Book the lineup" s="See who's free on your date." art={<span className="h4-row"><Faces n={3} /></span>} />
-      <Tile t="Gear on request" s="Decks, sound and lights near you." art={<span className="h4-chips"><span>2x CDJ-3000</span><span>DJM-900</span><span>PA</span></span>} />
-      <Tile cls="w2 cream" t="A door that never goes down" s="Any phone scans. No signal, no problem. Outside tickets on the same list." art={<span className="h4-door"><span className="sig"><i /><span className="sigt" /></span><span className="scan">✓</span></span>} />
-      <Tile t="Walk-ins and UPI" s="Pass-outs and undo too." art={<span className="h4-chips"><span>Walk-in · ₹999 UPI</span><span>Undo</span></span>} />
-      <Tile t="The whole night by 9 am" s="Who came, when it filled, who was new." art={<span className="h4-bars">{[20, 42, 70, 100, 80, 40, 18].map((h, i) => <i key={i} style={{ height: `${h}%`, animationDelay: `${i / 10}s` }} />)}</span>} />
-    </>
-  ),
-  learn: () => (
-    <>
-      <Tile cls="w2 pink" t="A real instrument, in your browser" s="No downloads, no theory first. Press a key, hear it." art={<span className="h4-keys">{Array.from({ length: 8 }, (_, i) => <i key={i} style={{ animationDelay: `${i * 0.35}s` }} />)}</span>} />
-      <Tile cls="w2" t="Every lesson builds your track" s="Kick, bass, a drop. By the end it's a track that's yours." art={<span className="h4-wave">{Array.from({ length: 28 }, (_, i) => <i key={i} style={{ height: `${20 + ((i * 37) % 70)}%`, animationDelay: `${i * 0.05}s` }} />)}</span>} />
-      <Tile t="Lesson 1 is free" s="Start now, no card." art={<span className="h4-chips"><span>Lesson 1 · free</span></span>} />
-      <Tile t="The best ones play out" s="Top tracks play at our Episodes." art={<span className="h4-chips"><span>Played at Episode 05</span></span>} />
-    </>
-  ),
-};
+/* ── Artists: real artist pages up top, then a wall of their records. ── */
+function ArtistsShow({ d }: { d: HomeData }) {
+  const people = d.featured.slice(0, 4);
+  const covers = d.covers.slice(0, 12);
+  return (
+    <section className="h4-wrap h4-sec">
+      <Head eye="On Artists now" h="Pick one. Hear everything." link={[`All ${d.artistCount} artists`, productLink("artists", "/artists")]} />
+      {people.length > 0 && (
+        <div className="h4-people">
+          {people.map((a) => (
+            <a key={a.slug} className="h4-person" href={productLink("artists", `/${a.slug}`)}>
+              <span className="h4-person-img"><img src={a.photo} alt="" loading="lazy" /></span>
+              <b>{a.name}</b>
+              <span>{[a.city, a.genres[0]].filter(Boolean).join(" · ")}</span>
+              {a.latest[0] && <em>Latest: {a.latest[0].title}</em>}
+            </a>
+          ))}
+        </div>
+      )}
+      {covers.length > 0 && (
+        <div className="h4-records">
+          {covers.map((c) => (
+            <a key={c.img} href={productLink("artists", `/${c.slug}`)} title={`${c.title} · ${c.artist}`}>
+              <img src={c.img} alt={`${c.title} by ${c.artist}`} loading="lazy" />
+              <span><b>{c.title}</b>{c.artist}</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
+/* ── Host: type into it and the invite builds itself. Make it real hands over to Host. ── */
+function nextSaturday(today: string) {
+  const t = new Date(`${today}T00:00:00Z`);
+  t.setUTCDate(t.getUTCDate() + ((6 - t.getUTCDay() + 7) % 7 || 7));
+  return t.toISOString().slice(0, 10);
+}
+function InviteMaker({ today }: { today: string }) {
+  const [name, setName] = useState("Rooftop on Saturday");
+  const [date, setDate] = useState(() => nextSaturday(today));
+  const [place, setPlace] = useState("Indiranagar, Bengaluru");
+  const [entry, setEntry] = useState<"free" | "paid">("free");
+  const svg = useMemo(() => posterSvg({ title: name || "Your party", lineup: [], venue: place.split(",")[0]?.trim() || null, city: place.split(",")[1]?.trim() || null, date, time: "21:00" }), [name, date, place]);
+  return (
+    <section className="h4-wrap h4-sec">
+      <Head eye="Try it" h="Your invite, as you type." />
+      <div className="h4-try">
+        <form className="h4-form" onSubmit={(e) => e.preventDefault()}>
+          <label><span>Name</span><input value={name} maxLength={40} onChange={(e) => setName(e.target.value)} /></label>
+          <label><span>When</span><input type="date" value={date} onChange={(e) => setDate(e.target.value)} /></label>
+          <label><span>Where</span><input value={place} maxLength={60} onChange={(e) => setPlace(e.target.value)} /></label>
+          <div className="h4-seg" role="radiogroup" aria-label="Entry">
+            <button type="button" role="radio" aria-checked={entry === "free"} onClick={() => setEntry("free")}>Free, RSVP</button>
+            <button type="button" role="radio" aria-checked={entry === "paid"} onClick={() => setEntry("paid")}>Tickets</button>
+          </div>
+          <a className="h4-cta" href={productLink("gate", "/make")}>Make it real, free →</a>
+          <p className="h4-fine">{entry === "free" ? "Free parties stay free." : "5% on paid tickets only."} Publish with one email.</p>
+        </form>
+        <div className="h4-invite">
+          <div className="h4-invite-card">
+            <span className="h4-invite-art" dangerouslySetInnerHTML={{ __html: svg }} />
+            <div className="h4-invite-foot"><b>{name || "Your party"}</b><span>{DAY(date)} · 9 pm · {place || "Somewhere good"}</span><em>{entry === "free" ? "RSVP" : "Get tickets"}</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── School: a 16-step beat you can program and play, made in the browser like the lessons. ── */
+const ROWS = ["Kick", "Clap", "Hat", "Bass"] as const;
+const START: boolean[][] = [
+  [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+  [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+  [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1],
+  [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0],
+].map((r) => r.map(Boolean));
+function BeatMaker() {
+  const [grid, setGrid] = useState(START);
+  const [step, setStep] = useState(-1);
+  const [playing, setPlaying] = useState(false);
+  const ctx = useRef<AudioContext | null>(null);
+  const g = useRef(grid);
+  g.current = grid;
+
+  useEffect(() => {
+    if (!playing) { setStep(-1); return; }
+    const ac = (ctx.current ??= new AudioContext());
+    let i = 0;
+    const t = setInterval(() => {
+      const now = ac.currentTime;
+      g.current.forEach((row, r) => { if (row[i]) hit(ac, r, now); });
+      setStep(i);
+      i = (i + 1) % 16;
+    }, 60000 / 122 / 4);
+    return () => clearInterval(t);
+  }, [playing]);
+
+  const toggle = (r: number, c: number) => setGrid((x) => x.map((row, ri) => (ri === r ? row.map((v, ci) => (ci === c ? !v : v)) : row)));
+  return (
+    <section className="h4-wrap h4-sec">
+      <Head eye="Try it" h="Make a beat. Right here." />
+      <div className="h4-beat">
+        <div className="h4-beat-top">
+          <button type="button" className="h4-play" onClick={() => setPlaying((p) => !p)} aria-pressed={playing}>{playing ? "Stop" : "Play"}</button>
+          <span className="h4-beat-meta">122 BPM · tap the steps</span>
+          <button type="button" className="h4-clear" onClick={() => setGrid(ROWS.map(() => Array(16).fill(false)))}>Clear</button>
+        </div>
+        <div className="h4-grid" role="grid" aria-label="Step sequencer">
+          {ROWS.map((name, r) => (
+            <div className="h4-gridrow" role="row" key={name}>
+              <span className="h4-rowname">{name}</span>
+              {grid[r].map((on, c) => (
+                <button key={c} type="button" role="gridcell" aria-pressed={on} aria-label={`${name} step ${c + 1}`} className={`${c % 4 === 0 ? "bar " : ""}${step === c ? "now" : ""}`} onClick={() => toggle(r, c)} />
+              ))}
+            </div>
+          ))}
+        </div>
+        <p className="h4-fine">This is how lesson 1 starts. In School, the beat you make becomes the first part of your track.</p>
+      </div>
+    </section>
+  );
+}
+function hit(ac: AudioContext, row: number, t: number) {
+  const out = ac.createGain();
+  out.connect(ac.destination);
+  if (row === 0) {
+    const o = ac.createOscillator();
+    o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(42, t + 0.12);
+    out.gain.setValueAtTime(0.9, t); out.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
+    o.connect(out); o.start(t); o.stop(t + 0.3);
+  } else if (row === 1 || row === 2) {
+    const len = row === 1 ? 0.18 : 0.05;
+    const b = ac.createBuffer(1, Math.floor(ac.sampleRate * len), ac.sampleRate);
+    const ch = b.getChannelData(0);
+    for (let i = 0; i < ch.length; i++) ch[i] = Math.random() * 2 - 1;
+    const src = ac.createBufferSource(); src.buffer = b;
+    const f = ac.createBiquadFilter(); f.type = row === 1 ? "bandpass" : "highpass"; f.frequency.value = row === 1 ? 1500 : 7000;
+    out.gain.setValueAtTime(row === 1 ? 0.5 : 0.22, t); out.gain.exponentialRampToValueAtTime(0.001, t + len);
+    src.connect(f); f.connect(out); src.start(t);
+  } else {
+    const o = ac.createOscillator(); o.type = "sawtooth"; o.frequency.value = 55;
+    const f = ac.createBiquadFilter(); f.type = "lowpass"; f.frequency.setValueAtTime(900, t); f.frequency.exponentialRampToValueAtTime(120, t + 0.2);
+    out.gain.setValueAtTime(0.35, t); out.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+    o.connect(f); f.connect(out); o.start(t); o.stop(t + 0.25);
+  }
+}
