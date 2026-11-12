@@ -109,6 +109,22 @@ export default function MakeParty({ signedIn }: { signedIn: boolean }) {
     setDone({ slug, review: who === "listed" });
   }
 
+  // Arriving from the Cats Can Dance home with an invite already started: fill it in (?title=&date=&time=&city=&where=&look=&entry=).
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    if (!q.get("title") || readDraft()) return;
+    const clip = (k: string, n: number) => (q.get(k) ?? "").slice(0, n);
+    queueMicrotask(() => {
+      setName(clip("title", 120));
+      const d = clip("date", 10); if (/^\d{4}-\d{2}-\d{2}$/.test(d)) { setDate(d); setOtherDay(true); }
+      const t = clip("time", 5); if (/^\d{2}:\d{2}$/.test(t)) { setTime(t); if (!TIMES.includes(t)) setOtherTime(true); }
+      const c = clip("city", 60); if (c) { setCity(c); if (!QUICK_CITIES.includes(c)) setOtherCity(true); }
+      setWhere(clip("where", 120));
+      const l = clip("look", 12); if (l in LOOKS) setLook(l);
+      if (q.get("entry") === "tickets") setEntry("tickets");
+    });
+  }, []);
+
   // Bring back a draft made before signing in, and publish it straight away once signed in.
   useEffect(() => {
     const d = readDraft();

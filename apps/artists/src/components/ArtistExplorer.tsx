@@ -36,7 +36,6 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
   const nowY = Number(today.slice(0, 4));
 
   const [eraId, setEraId] = useState("all");
-  const [drawer, setDrawer] = useState(true);
   const [type, setType] = useState("all");
   const [focus, setFocus] = useState<Focus>(null);
   const [allRels, setAllRels] = useState(false);
@@ -383,53 +382,44 @@ export default function ArtistExplorer({ a, name, today, rate, head, wall, side 
       </section>
 
       {/* ── The library: eras on the left, the right side changes (v3 canvas board Artist; Param, 10 Nov 2026) ── */}
-      <div className={`k-wrap ax-body${hasEras ? (drawer ? "" : " mini") : " solo"}${side ? " has-side" : ""}`}>
-        {hasEras && drawer && (
-          <aside className="ax-side" aria-label="Eras">
-            <div className="ax-side-top"><div><b className="k-d">Eras</b><span className="k-m">Now: {era ? era.label : "Every era"}</span></div><button type="button" className="k-pill" onClick={() => setDrawer(false)}>Hide</button></div>
-            <button type="button" aria-pressed={!era} className={`ax-ec${!era ? " on" : ""}`} onClick={() => pickEra("all")} style={{ ["--ea" as string]: "var(--k-tx)" } as CSSProperties}>
-              <span className="k-m">Every era · {eras[0].from} to now</span>
-              <b>{eras.length} eras, {a.releases.length} records, {a.moments.filter((m) => m.kind === "show").length} shows</b>
-              <span className="ax-ec-bar" style={{ background: `linear-gradient(90deg, ${eras.map((e) => e.accent).join(", ")})` }} />
-            </button>
-            {eras.map((e) => {
-              const on = era?.id === e.id;
-              const items = eraItems(e);
-              return (
-                <div key={e.id}>
-                  <button type="button" aria-pressed={on} className={`ax-ec${on ? " on" : ""}`} onClick={() => pickEra(e.id)} style={{ ["--ea" as string]: e.accent } as CSSProperties}>
+      <div className="k-wrap ax-body ax-body--wide">
+        {/* ── The eras lead, across the top (Param, 13 Nov 2026: "the eras are not visible first", "we don't need three columns, use space") ── */}
+        {hasEras && (
+          <section className="ax-strip" aria-label="Eras">
+            <div className="ax-strip-head">
+              <div><span className="k-m">Their eras</span><b className="k-d">{era ? era.label : `${eras.length} eras, ${eras[0].from} to now`}</b>{era?.sound && <p className="k-b">{era.sound}</p>}</div>
+              {tour.length > 1 && <button type="button" className="k-btn k-btn--key ax-start" onClick={startHere}><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>Start here, one track an era</button>}
+            </div>
+            <div className="ax-strip-cards" style={{ ["--n" as string]: eras.length + 1 } as CSSProperties}>
+              <button type="button" aria-pressed={!era} className={`ax-ec ax-ec--all${!era ? " on" : ""}`} onClick={() => pickEra("all")} style={{ ["--ea" as string]: "var(--k-tx)" } as CSSProperties}>
+                <span className="k-m">Every era</span>
+                <b className="k-d">All of it</b>
+                <span className="ax-ec-sound">{a.releases.length} records, {a.moments.filter((m) => m.kind === "show").length} shows</span>
+                <span className="ax-ec-bar" style={{ background: `linear-gradient(90deg, ${eras.map((e) => e.accent).join(", ")})` }} />
+              </button>
+              {eras.map((e) => {
+                const on = era?.id === e.id;
+                return (
+                  <button key={e.id} type="button" aria-pressed={on} className={`ax-ec${on ? " on" : ""}`} onClick={() => pickEra(e.id)} style={{ ["--ea" as string]: e.accent } as CSSProperties}>
                     <span className="ax-ec-covers" aria-hidden="true">{eraCovers(e).map((c) => <img key={c} src={c} alt="" loading="lazy" />)}</span>
-                    <span className="ax-ec-row"><span className="k-m">{short(e)}</span><span className="k-m">{items.length} moments</span></span>
+                    <span className="k-m">{short(e)}</span>
                     <b className="k-d">{e.label}</b>
                     {e.sound && <span className="ax-ec-sound">{e.sound}</span>}
+                    <span className="ax-ec-bar" style={{ background: e.accent }} />
                   </button>
-                  {(on || !era) && items.length > 0 && (
-                    <ol className="ax-tl">
-                      {items.map((it) => (
-                        <li key={it.id}><button type="button" onClick={it.go}><span className="k-m">{it.y}</span><i className={`k${it.k}`} style={{ ["--ea" as string]: e.accent } as CSSProperties} /><span><b>{it.t}</b>{it.sub ? ` · ${it.sub}` : ""}</span></button></li>
-                      ))}
-                    </ol>
-                  )}
-                </div>
-              );
-            })}
-            {tour.length > 1 && <button type="button" className="k-btn k-btn--key k-btn--s ax-start" onClick={startHere}><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>Start here, one track an era</button>}
-          </aside>
-        )}
-        {hasEras && !drawer && (
-          <aside className="ax-side ax-side--mini" aria-label="Eras">
-            <button type="button" className="k-pill" onClick={() => setDrawer(true)} aria-label="Show the eras">Eras</button>
-            {eras.map((e) => <button key={e.id} type="button" className="ax-dot" title={e.label} aria-label={e.label} onClick={() => { pickEra(e.id); setDrawer(true); }} style={{ background: e.accent }} />)}
-          </aside>
+                );
+              })}
+            </div>
+            {era && eraItems(era).length > 0 && (
+              <ol className="ax-tl ax-tl--row">
+                {eraItems(era).map((it) => (
+                  <li key={it.id}><button type="button" onClick={it.go}><span className="k-m">{it.y}</span><i className={`k${it.k}`} style={{ ["--ea" as string]: era.accent } as CSSProperties} /><span><b>{it.t}</b>{it.sub ? ` · ${it.sub}` : ""}</span></button></li>
+                ))}
+              </ol>
+            )}
+          </section>
         )}
         <div className="ax-main" key={era?.id ?? "all"}>
-          {hasEras && (
-            <div className="ax-eh">
-              <span className="k-m">{era ? short(era) : `${eras[0].from} to now`}</span>
-              <h2 className="k-d">{era ? era.label : "Every era"}</h2>
-              {era?.sound ? <p className="k-b">{era.sound}</p> : !era ? <p className="k-b">Pick an era to hear how the sound changed. Or press Start here.</p> : null}
-            </div>
-          )}
           {allPanels.length > 1 && (
             <div className="ax-tabs" role="tablist" aria-label="Sections" ref={tabsRef}>
               {allPanels.map((x) => (

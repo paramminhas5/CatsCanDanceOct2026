@@ -94,6 +94,13 @@ export default async function ArtistPage({ params }: Props) {
               <ShareProfile slug={slug} name={p.name} />
               {(fee || a.bookable) && <ButtonLink size="l" href="#ask" aria-label={`Book ${p.name}`}><Icon name="inbox" size={17} /><span className="sp-lbl">Book</span></ButtonLink>}
             </div>
+            {/* ── Everywhere they are: every link, up top (Param, 13 Nov 2026: "link all the videos, Spotify and everything") ── */}
+            {(a.links.length > 0 || a.videos.length > 0) && (
+              <div className="ap-links" aria-label={`${p.name} elsewhere`}>
+                {a.links.map((l) => <a key={l.url} className="ap-link" href={l.url} target="_blank" rel="noopener"><i style={{ background: linkColour(l.label) }} aria-hidden="true" />{l.label}</a>)}
+                {a.videos.length > 0 && <a className="ap-link" href="#watch"><i style={{ background: "#FF4D4D" }} aria-hidden="true" />{a.videos.length} videos and sets</a>}
+              </div>
+            )}
             {/* ── For fans: the three things a fan wants first (Param, 10 Nov 2026: "latest release, where she's playing next, what to look out for") ── */}
             <div className="ap-fan">
               {latest && (
@@ -200,6 +207,9 @@ function Avatar({ name, img }: { name: string; img: string | null }) {
   const initials = name.split(/\s+/).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
   return <span aria-hidden="true" className="grid h-14 w-14 flex-none place-items-center rounded-full font-bold text-[#0a0a0b]" style={{ background: "var(--k-pc)", fontFamily: "var(--k-display)", fontSize: 20 }}>{initials}</span>;
 }
+
+const LINK_COLOURS: [RegExp, string][] = [[/spotify/i, "#1DB954"], [/apple/i, "#FA2D48"], [/soundcloud/i, "#FF5500"], [/bandcamp/i, "#1DA0C3"], [/youtube/i, "#FF0000"], [/instagram/i, "#E1306C"], [/mixcloud/i, "#5000FF"], [/beatport/i, "#A8E00F"], [/resident|ra\b/i, "#F2F2F2"]];
+const linkColour = (label: string) => LINK_COLOURS.find(([r]) => r.test(label))?.[1] ?? "var(--k-t3)";
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const TYPES: Record<string, string> = { album: "Album", ep: "EP", single: "Single", remix: "Remix", compilation: "Compilation", mix: "Mix" };

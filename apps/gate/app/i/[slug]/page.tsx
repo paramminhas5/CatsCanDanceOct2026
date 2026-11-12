@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function Invite({ params }: { params: Promise<{ slug: string }> }) {
   const p = await load((await params).slug);
   if (!p) notFound();
-  const look = p.is_party ? lookOf(p.look) : { bg: YELLOW, ink: "#0A0A0A" };
+  const look = p.is_party ? lookOf(p.look) : { bg: YELLOW, solid: YELLOW, ink: "#0A0A0A" };
   const dark = look.ink !== "#FFFFFF" && look.ink !== "#F2F0EB";
   const lineup = (p.lineup ?? []).filter(Boolean);
   const full = p.capacity != null && p.going >= p.capacity;
@@ -37,7 +37,7 @@ export default async function Invite({ params }: { params: Promise<{ slug: strin
     return href ? <a href={href} className="rw rise" style={{ padding: "13px 0" }}>{inner}</a> : <div className="rw rise" style={{ padding: "13px 0" }}>{inner}</div>;
   };
   return (
-    <HostApp dock={false} pc={look.bg} ink={look.ink}>
+    <HostApp dock={false} pc={look.solid} ink={look.ink}>
       <div style={{ position: "relative", minHeight: 300, background: look.bg, color: look.ink, padding: "72px 22px 24px", boxSizing: "border-box", overflow: "hidden" }}>
         {p.poster_url && <img src={p.poster_url} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.35, mixBlendMode: "multiply" }} />}
         <div className="row" style={{ position: "absolute", left: 16, right: 16, top: 14 }}>
@@ -63,7 +63,7 @@ export default async function Invite({ params }: { params: Promise<{ slug: strin
         {p.ticket_url ? (
           <a className="key" href={p.ticket_url} target="_blank" rel="noopener" style={{ width: "100%", boxSizing: "border-box" }}>Get tickets</a>
         ) : p.rsvp_open ? (
-          <Going slug={p.slug} look={look.bg} ink={look.ink} />
+          <Going slug={p.slug} look={look.solid} ink={look.ink} />
         ) : (
           <div className="b" style={{ textAlign: "center" }}>{full ? "It is full." : "The guest list is closed."}</div>
         )}

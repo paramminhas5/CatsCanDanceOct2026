@@ -575,3 +575,32 @@ a.ap-fc:hover .ap-fc-art i { transform: scale(1.12); }
   .ap-fan::-webkit-scrollbar { display: none; }
   .ap-fan .ap-fc { flex: none; width: 82vw; scroll-snap-align: start; }
 }
+
+/* ── Artist page, 13 Nov 2026: the eras lead across the top, one wide column, every link up top ── */
+.ax-body.ax-body--wide { display: block !important; max-width: 1280px; padding-bottom: 120px; }
+.ax-body--wide .ax-main { max-width: none; }
+.ax-strip { margin: 8px 0 36px; }
+.ax-strip-head { display: flex; justify-content: space-between; align-items: end; gap: 16px 24px; flex-wrap: wrap; margin-bottom: 16px; }
+.ax-strip-head b { display: block; font-size: clamp(26px, 3vw, 38px); letter-spacing: -.02em; line-height: 1; margin-top: 6px; }
+.ax-strip-head p { margin: 8px 0 0; max-width: 60ch; }
+.ax-strip-cards { display: grid; grid-template-columns: repeat(var(--n), minmax(220px, 1fr)); gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; scrollbar-width: none; }
+.ax-strip-cards::-webkit-scrollbar { display: none; }
+.ax-strip .ax-ec { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 190px; padding: 18px 18px 22px; border-radius: 22px; background: var(--k-raised); border: 1px solid var(--k-hair); color: var(--k-tx); cursor: pointer; scroll-snap-align: start; overflow: hidden; transition: transform .25s, border-color .25s, background .25s; }
+.ax-strip .ax-ec:hover { transform: translateY(-3px); }
+.ax-strip .ax-ec.on { border-color: var(--ea); background: color-mix(in srgb, var(--ea) 14%, var(--k-raised)); }
+.ax-strip .ax-ec b { font-size: 24px; letter-spacing: -.02em; line-height: 1.02; }
+.ax-strip .ax-ec-sound { font-size: 13px; line-height: 1.4; color: var(--k-t2); }
+.ax-strip .ax-ec-covers { display: flex; margin-bottom: 8px; }
+.ax-strip .ax-ec-covers img { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; margin-right: -14px; box-shadow: 0 0 0 2px var(--k-raised); }
+.ax-strip .ax-ec-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; }
+.ax-strip .ax-ec--all b { margin-top: auto; }
+.ax-tl.ax-tl--row { display: flex; gap: 8px; overflow-x: auto; list-style: none; margin: 14px 0 0; padding: 0 0 6px; scrollbar-width: none; }
+.ax-tl--row li { flex: none; }
+.ax-tl--row button { display: flex; align-items: center; gap: 8px; white-space: nowrap; padding: 10px 14px; border-radius: 999px; background: var(--k-raised); border: 1px solid var(--k-hair); color: var(--k-tx); font-size: 13px; cursor: pointer; }
+.ax-tl--row button:hover { border-color: var(--ax); }
+.ax-body--wide .ax-right { position: static; max-height: none; overflow: visible; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 40px; }
+.ap-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.ap-link { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 999px; background: var(--k-raised); border: 1px solid var(--k-hair); color: var(--k-tx); font: 600 14px var(--k-ui); text-decoration: none; transition: border-color .2s, transform .2s; }
+.ap-link:hover { border-color: var(--k-t2); transform: translateY(-1px); }
+.ap-link i { width: 10px; height: 10px; border-radius: 50%; }
+@media (max-width: 760px) { .ax-strip-cards { grid-template-columns: repeat(var(--n), 76%); } }

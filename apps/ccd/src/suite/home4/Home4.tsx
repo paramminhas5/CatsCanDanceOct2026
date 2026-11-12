@@ -1,11 +1,15 @@
 /**
- * catscandance.com home, v4.1 (Param, 12 Nov 2026, night: "the artist thing shows up on every product when I click,
- * it should only be the product"; "the bento gets confusing"; "make it nice and clean and beautiful").
+ * catscandance.com home, v4.2 (Param, 13 Nov 2026, 00:13: "switching is slow", "the homepage is just text, it can be
+ * more fun", "party colours should be cool and fun, I should be able to make an RSVP from there", "I should be able to
+ * listen to artists and browse from there", "don't use red for highlight", "everything should be cohesive").
  *
- * Picking an app changes everything below the tiles. Each app gets: its colour stage, one thing you can use right
- * there (Nights: our next Episode and this week's ring; Artists: real artist pages and records; Host: a live invite
- * you type into; School: a beat you can program), then six features as one clean list where every row opens the
- * real screen. No made-up people, no example tags. The other three apps close the page.
+ * - The four stages are all on the page at once and cross-fade, so a switch is instant. Each stage has its own
+ *   moving piece behind the real screens: posters drifting (Nights), a record spinning with a real cover (Artists),
+ *   an invite floating in a party look (Host), pads lighting up (School).
+ * - Under the stage, the app you picked: Nights shows our next Episode and this week's ring; Artists lets you play
+ *   their records right here; Host makes an invite in fun looks and hands it to Host to publish as an RSVP; School
+ *   lets you program a beat.
+ * - Features are cards with the real screen on each, and every card opens that screen.
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 import { posterSvg } from "@ccd/ui";
@@ -21,12 +25,48 @@ type Tab = "go" | "artists" | "host" | "learn";
 const ORDER: Tab[] = ["go", "artists", "host", "learn"];
 const ID: Record<Tab, ProductId> = { go: "ccd", artists: "artists", host: "gate", learn: "school" };
 const ON = (k: Tab) => (k === "go" ? "#fff" : "#0a0a0c");
-const SUB: Record<Tab, string> = { go: "What's on, crews, tickets", artists: "Every record, every show", host: "Page, tickets, door, report", learn: "Make music on a real instrument" };
+const SUB: Record<Tab, string> = { go: "What's on, crews, tickets", artists: "Every record, every show", host: "Invite, list, door", learn: "Make music on a real instrument" };
 const DAY = (iso: string | null | undefined) => (iso ? new Date(`${iso.slice(0, 10)}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : "");
 const DAYS_TO = (iso: string | null | undefined, today: string) => (iso ? Math.round((Date.parse(`${iso.slice(0, 10)}T00:00:00Z`) - Date.parse(`${today}T00:00:00Z`)) / 864e5) : null);
 
+/** The same five looks Host saves (apps/gate LOOKS); the keys are what the database stores. */
+const LOOKS: Record<string, { bg: string; ink: string; label: string }> = {
+  pink: { bg: "linear-gradient(140deg,#FF4D8D 0%,#FF8A5B 100%)", ink: "#0A0A0B", label: "Bubblegum" },
+  yellow: { bg: "linear-gradient(165deg,#FFE600 0%,#FF9F1C 58%,#FF4D8D 100%)", ink: "#0A0A0A", label: "Sunset" },
+  lime: { bg: "linear-gradient(140deg,#C8F542 0%,#2EE6A6 100%)", ink: "#0A0A0C", label: "Acid" },
+  blue: { bg: "radial-gradient(110% 80% at 85% 0%,#8B5CF6 0%,transparent 60%),linear-gradient(165deg,#2563EB 0%,#0B1A4F 100%)", ink: "#FFFFFF", label: "Laser" },
+  ink: { bg: "radial-gradient(55% 45% at 25% 18%,rgba(255,77,141,.55),transparent 70%),radial-gradient(55% 45% at 82% 85%,rgba(37,99,235,.6),transparent 70%),radial-gradient(40% 35% at 70% 30%,rgba(182,239,54,.25),transparent 70%),#0E0E12", ink: "#F2F0EB", label: "Disco" },
+};
+
 type Stage = { eye: string; h: string; line: string; cta: [string, string]; ghost: [string, string]; glance: [string, string][]; shots: [string, string]; cat: string };
-type Feature = [title: string, line: string, href: string];
+type Feature = { t: string; line: string; href: string; shot?: string; art?: "wave" | "pads" | "live" };
+
+/* One shared audio element for every Play on the page. */
+type Now = { id: string; title: string; artist: string; img: string | null; href: string };
+function usePlayer() {
+  const el = useRef<HTMLAudioElement | null>(null);
+  const [now, setNow] = useState<Now | null>(null);
+  const [state, setState] = useState<"idle" | "loading" | "playing" | "none">("idle");
+  const [prog, setProg] = useState(0);
+  useEffect(() => () => { el.current?.pause(); }, []);
+  const play = async (n: Now) => {
+    const a = (el.current ??= new Audio());
+    if (now?.id === n.id && state === "playing") { a.pause(); setState("idle"); return; }
+    a.pause(); setNow(n); setState("loading"); setProg(0);
+    try {
+      const r = await fetch(`/api/preview/${n.id}`);
+      const j = await r.json();
+      if (!r.ok || !j.preview) { setState("none"); return; }
+      a.src = j.preview;
+      a.ontimeupdate = () => setProg(a.duration ? a.currentTime / a.duration : 0);
+      a.onended = () => { setState("idle"); setProg(0); };
+      await a.play();
+      setState("playing");
+    } catch { setState("none"); }
+  };
+  const stop = () => { el.current?.pause(); setState("idle"); };
+  return { now, state, prog, play, stop };
+}
 
 export default function Home4(d: HomeData) {
   const [tab, setTab] = useState<Tab>("go");
@@ -35,10 +75,9 @@ export default function Home4(d: HomeData) {
     const f = new URLSearchParams(window.location.search).get("for");
     if (f === "artists" || f === "host" || f === "learn") { setTab(f); setAuto(false); }
   }, []);
-  // The stage rotates through the four apps until someone picks one.
   useEffect(() => {
     if (!auto || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = setTimeout(() => setTab((x) => ORDER[(ORDER.indexOf(x) + 1) % 4]), 8000);
+    const t = setTimeout(() => setTab((x) => ORDER[(ORDER.indexOf(x) + 1) % 4]), 6000);
     return () => clearTimeout(t);
   }, [auto, tab]);
   const pick = (k: Tab, scroll = false) => {
@@ -48,58 +87,59 @@ export default function Home4(d: HomeData) {
     window.history.replaceState(null, "", u.toString());
     if (scroll) window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  const player = usePlayer();
 
   const next = d.next;
   const nextDate = next?.event_date ?? null;
   const until = DAYS_TO(nextDate, d.today);
-  // This week's ring holds only nights in the next seven days. Our own next Episode gets its own card above it.
   const ring: RingNight[] = d.week.slice(0, 12).map((n) => {
     const lineup = (n.lineup ?? []).filter(Boolean);
     const names = lineup.length ? lineup : n.artists.map((a) => a.name);
     return { key: n.id, title: n.title, href: n.ticket_url ?? n.url, external: true, img: n.image_url ?? null, poster: posterSvg({ title: n.title, lineup: names, venue: n.venue, city: city(n.city), date: n.event_date, time: n.event_time }), day: DAY(n.event_date), venue: n.venue ?? "", city: city(n.city), lineup: names, tag: n.event_date === d.today ? "Tonight" : (n.genres ?? [])[0] ?? null, when: dayLabel(n.event_date) };
   });
+  const posters = d.week.map((w) => w.image_url).filter(Boolean).slice(0, 3) as string[];
+  const cover = d.covers[0]?.img ?? null;
 
   const STAGE: Record<Tab, Stage> = {
     go: { eye: "Nights", h: "Every good night in your city.", line: "Nights picked by people who go out, who else is going, and a crew if you're going solo.", cta: ["See what's on", "/whats-on"], ghost: ["How it works", "/nights"], glance: [[String(d.weekCount), "nights this week"], ["3 to 6", "people per crew"], ["1", "place for your tickets"]], shots: ["S34-Discover", "S34-Night"], cat: "dance" },
     artists: { eye: "Artists", h: "Every artist worth knowing, on one page.", line: `${d.artistCount} South Asian artists. Every record you can play, every show with a source, and booking with a contract.`, cta: ["Find an artist", productLink("artists", "/artists")], ghost: ["Book for a date", productLink("artists", "/artists?mode=book")], glance: [[String(d.artistCount), "artists"], ["Every", "record playable"], ["Signed", "by both sides"]], shots: ["A40-Artist", "F38-A-Page"], cat: "dj" },
-    host: { eye: "Host", h: "Throw the party people talk about on Monday.", line: "Your page, tickets, lineup, door and numbers in one app. The door works with no signal.", cta: ["Make a party, free", productLink("gate", "/make")], ghost: ["Everything it does", productLink("gate", "/")], glance: [["60s", "to a live page"], ["0", "bars of signal needed"], ["₹0", "for free parties"]], shots: ["H39-Make", "H39-Door"], cat: "yellow" },
+    host: { eye: "Host", h: "Throw the party people talk about on Monday.", line: "Make the invite, send the RSVP link, watch the list fill and run the door. The door works with no signal.", cta: ["Make an invite", "#try"], ghost: ["Everything it does", productLink("gate", "/")], glance: [["60s", "to a live invite"], ["0", "bars of signal needed"], ["₹0", "for free parties"]], shots: ["H39-Make", "H39-Door"], cat: "yellow" },
     learn: { eye: "School", h: "Make the track. Then hear it in the club.", line: "Short lessons on a real instrument in your browser. Each one adds a part to a track that's yours.", cta: ["Start lesson 1", productLink("school", "/learn")], ghost: ["How School works", productLink("school", "/")], glance: [["Free", "first lesson"], ["0", "downloads"], ["Yours", "the track you make"]], shots: ["W35-Lesson", "W35-Lesson"], cat: "pink" },
   };
 
   const FEATURES: Record<Tab, Feature[]> = {
     go: [
-      ["What's on", "Every night this week worth leaving the house for, by day.", "/whats-on"],
-      ["Who's going", "See who's in, and which of them you know.", "/nights"],
-      ["Crews", "Going alone? Meet three to six people before the night.", "/nights"],
-      ["Your tickets", "Bought here or anywhere else. All of them in one place.", "/me"],
-      ["Our Episodes", "The nights we throw ourselves, and every one so far.", next ? `/nights/${next.slug}` : "/nights"],
-      ["The club", "Members get first entry, the founding pass and points.", "/club"],
+      { t: "What's on", line: "Every night this week worth leaving the house for.", href: "/whats-on", shot: "S34-Discover" },
+      { t: "Who's going", line: "See who's in, and which of them you know.", href: "/nights", shot: "S34-Night" },
+      { t: "Crews", line: "Going alone? Meet three to six people first.", href: "/nights", shot: "S34-Crew" },
+      { t: "Get in", line: "Tickets or the list, in two taps.", href: next ? `/nights/${next.slug}` : "/whats-on", shot: "S34-GetIn" },
+      { t: "Your tickets", line: "Bought here or anywhere else, all in one place.", href: "/me", shot: "S34-Ticket" },
+      { t: "Every night, kept", line: "The stub lands on your page the morning after.", href: "/me", shot: "S34-BeenTo" },
     ],
     artists: [
-      ["Find an artist", "Search by name, city, sound or label.", productLink("artists", "/artists")],
-      ["Book for a date", "See who's free, send an offer in their range.", productLink("artists", "/artists?mode=book")],
-      ["Contracts", "Drafted in the thread, signed by both sides, deposit included.", productLink("artists", "/bookings")],
-      ["On tour", "Artists coming to India, and Indian artists in your city.", productLink("artists", "/tour")],
-      ["Follow", "Hear first when they announce a date near you.", productLink("artists", "/following")],
-      ["Claim your page", "Is it you? Your page is already made. Make it yours.", productLink("artists", "/claim")],
+      { t: "Find an artist", line: "By name, city, sound or label.", href: productLink("artists", "/artists"), shot: "F38-A-Find" },
+      { t: "Book for a date", line: "See who's free and send an offer in their range.", href: productLink("artists", "/artists?mode=book"), shot: "A39-AllBook" },
+      { t: "Contracts", line: "Agreed in one thread, signed by both sides.", href: productLink("artists", "/bookings"), shot: "F38-A-Contract" },
+      { t: "On tour", line: "Who's coming to India, and who's in your city.", href: productLink("artists", "/tour"), shot: "F38-A-Tour" },
+      { t: "Their page", line: "Every era, record, show and video in one place.", href: productLink("artists", "/artists"), shot: "A40-Artist" },
+      { t: "Claim your page", line: "It's already made. Make it yours.", href: productLink("artists", "/claim"), shot: "F38-A-Page" },
     ],
     host: [
-      ["Make a party", "A page that looks like your night, live in a minute.", productLink("gate", "/make")],
-      ["Guest list", "RSVPs, plus-ones and regulars, approved in one tap.", productLink("gate", "/guests")],
-      ["Book the lineup", "Find artists free on your date and book them.", productLink("gate", "/book")],
-      ["Gear", "Decks, sound and lights from people near you.", productLink("gate", "/gear")],
-      ["The door", "Any phone scans tickets, even with no signal.", productLink("gate", "/door")],
-      ["Promote", "Your promoter page and every party you've thrown.", productLink("gate", "/promote")],
+      { t: "Make the invite", line: "A page in your colours, live in a minute.", href: productLink("gate", "/make"), shot: "H39-Make" },
+      { t: "RSVPs", line: "Going, maybe, plus-ones. Yes to all in one tap.", href: productLink("gate", "/guests"), shot: "H39-RSVP" },
+      { t: "Book the lineup", line: "Artists free on your date.", href: productLink("gate", "/book"), shot: "H39-BookArtists" },
+      { t: "Gear", line: "Decks, sound and lights from people near you.", href: productLink("gate", "/gear"), shot: "H39-Gear" },
+      { t: "The door", line: "Any phone scans, even with no signal.", href: productLink("gate", "/door"), shot: "H39-Door" },
+      { t: "The report", line: "Who came, when it filled, who was new.", href: productLink("gate", "/parties"), shot: "H39-Report" },
     ],
     learn: [
-      ["Lesson 1", "Start with a kick drum. It's free.", productLink("school", "/learn")],
-      ["Your track", "Every lesson adds a part. Save it, change it, start another.", productLink("school", "/learn")],
-      ["The studio", "Play the instrument freely, outside the lessons.", productLink("school", "/studio")],
-      ["Take it to Live", "Export what you made and keep going in Ableton.", productLink("school", "/")],
+      { t: "Lesson 1", line: "Start with a kick drum. It's free.", href: productLink("school", "/learn"), shot: "W35-Lesson" },
+      { t: "Your track", line: "Every lesson adds a part. Save it, change it.", href: productLink("school", "/learn"), art: "wave" },
+      { t: "The studio", line: "Play the instrument freely, outside lessons.", href: productLink("school", "/studio"), art: "pads" },
+      { t: "Take it to Live", line: "Export what you made and keep going in Ableton.", href: productLink("school", "/"), art: "live" },
     ],
   };
 
-  const s = STAGE[tab];
   const colour = PRODUCTS[ID[tab]].colour;
 
   const nav = (
@@ -127,20 +167,30 @@ export default function Home4(d: HomeData) {
     <Shell nav={nav} title="Cats Can Dance: go out, book artists, throw a party, learn" description="Every good night in your city and people to go with, every South Asian artist on one page, the party app that runs the whole night, and lessons where you make the music. One sign-in.">
       <style dangerouslySetInnerHTML={{ __html: RING_CSS + CSS }} />
       <div className="h4" style={{ ["--acc" as string]: colour, ["--on" as string]: ON(tab) }}>
+        {/* All four stages sit on top of each other and cross-fade, so switching is instant. */}
         <section className="h4-wrap">
-          <div className="h4-stage" key={tab}>
-            <div className="h4-copy">
-              <span className="h4-eye">{s.eye}</span>
-              <h1>{s.h}</h1>
-              <p>{s.line}</p>
-              <div className="h4-btns"><a className="h4-key" href={s.cta[1]}>{s.cta[0]}</a><a className="h4-ghost" href={s.ghost[1]}>{s.ghost[0]}</a></div>
-              <div className="h4-glance">{s.glance.map(([v, l]) => <span key={l}><b>{v}</b><em>{l}</em></span>)}</div>
-            </div>
-            <div className={`h4-phones${s.shots[0] === s.shots[1] ? " solo" : ""}`} aria-hidden="true">
-              {s.shots[0] !== s.shots[1] && <div className="h4-phone h4-phone--back"><img src={`/shots/${s.shots[0]}.webp`} alt="" /></div>}
-              <div className="h4-phone h4-phone--front"><img src={`/shots/${s.shots[1]}.webp`} alt="" /></div>
-              <img className="h4-cat" src={`/cats/${s.cat}.webp`} alt="" />
-            </div>
+          <div className="h4-stage">
+            {ORDER.map((k) => {
+              const s = STAGE[k];
+              const on = k === tab;
+              return (
+                <div key={k} className={`h4-layer${on ? " on" : ""}`} aria-hidden={!on} style={{ ["--on" as string]: ON(k), ["--acc" as string]: PRODUCTS[ID[k]].colour }}>
+                  <div className="h4-copy">
+                    <span className="h4-eye">{s.eye}</span>
+                    <h1>{s.h}</h1>
+                    <p>{s.line}</p>
+                    <div className="h4-btns"><a className="h4-key" href={s.cta[1]} tabIndex={on ? 0 : -1}>{s.cta[0]}</a><a className="h4-ghost" href={s.ghost[1]} tabIndex={on ? 0 : -1}>{s.ghost[0]}</a></div>
+                    <div className="h4-glance">{s.glance.map(([v, l]) => <span key={l}><b>{v}</b><em>{l}</em></span>)}</div>
+                  </div>
+                  <div className="h4-phones" aria-hidden="true">
+                    <Fx k={k} posters={posters} cover={cover} />
+                    {s.shots[0] !== s.shots[1] && <div className="h4-phone h4-phone--back"><img src={`/shots/${s.shots[0]}.webp`} alt="" /></div>}
+                    <div className={`h4-phone h4-phone--front${s.shots[0] === s.shots[1] ? " solo" : ""}`}><img src={`/shots/${s.shots[1]}.webp`} alt="" /></div>
+                    <img className="h4-cat" src={`/cats/${s.cat}.webp`} alt="" />
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
@@ -169,22 +219,27 @@ export default function Home4(d: HomeData) {
               )}
             </>
           )}
-
-          {tab === "artists" && <ArtistsShow d={d} />}
+          {tab === "artists" && <ArtistsShow d={d} player={player} />}
           {tab === "host" && <InviteMaker today={d.today} />}
           {tab === "learn" && <BeatMaker />}
 
           <section className="h4-wrap h4-sec">
             <Head eye={`What ${PRODUCTS[ID[tab]].navLabel} does`} h={tab === "go" ? "Everything for a night out." : tab === "artists" ? "For fans, and for bookers." : tab === "host" ? "Everything a party needs." : "Learn by making."} />
-            <ol className="h4-list">
-              {FEATURES[tab].map(([t, line, href], i) => (
-                <li key={t}><a href={href}><em>{String(i + 1).padStart(2, "0")}</em><b>{t}</b><span>{line}</span><i aria-hidden="true">→</i></a></li>
+            <div className={`h4-feats${FEATURES[tab].length === 4 ? " four" : ""}`}>
+              {FEATURES[tab].map((f) => (
+                <a key={f.t} className="h4-feat" href={f.href}>
+                  <span className="h4-feat-pic">
+                    {f.shot ? <img src={`/shots/${f.shot}.webp`} alt="" loading="lazy" /> : <Art kind={f.art!} />}
+                  </span>
+                  <span className="h4-feat-t"><b>{f.t}</b><span>{f.line}</span></span>
+                  <i aria-hidden="true">→</i>
+                </a>
               ))}
-            </ol>
+            </div>
           </section>
         </div>
 
-        <section className="h4-wrap h4-sec h4-others">
+        <section className="h4-wrap h4-sec">
           <Head eye="Same sign-in" h="Three more ways in." />
           <div className="h4-other-grid">
             {ORDER.filter((k) => k !== tab).map((k) => {
@@ -192,12 +247,22 @@ export default function Home4(d: HomeData) {
               const st = STAGE[k];
               return (
                 <button key={k} type="button" className="h4-other" onClick={() => pick(k, true)} style={{ ["--c" as string]: p.colour, ["--on" as string]: ON(k) }}>
-                  <span className="h4-eye">{p.verb}</span><b>{st.h}</b><em>{st.cta[0]} →</em>
+                  <span className="h4-other-copy"><span className="h4-eye">{p.verb}</span><b>{st.h}</b><em>{st.cta[0]} →</em></span>
+                  <img className="h4-other-cat" src={`/cats/${st.cat}.webp`} alt="" loading="lazy" />
                 </button>
               );
             })}
           </div>
         </section>
+
+        {player.now && player.state !== "idle" && (
+          <div className="h4-dock" role="region" aria-label="Now playing">
+            {player.now.img && <img src={player.now.img} alt="" className={player.state === "playing" ? "spin" : ""} />}
+            <span className="h4-dock-t"><b>{player.state === "none" ? "No preview for this one" : player.now.title}</b><span>{player.now.artist}</span><i style={{ transform: `scaleX(${player.prog})` }} /></span>
+            <a href={player.now.href} className="h4-dock-go">Their page →</a>
+            <button type="button" onClick={player.stop} aria-label="Stop">■</button>
+          </div>
+        )}
       </div>
     </Shell>
   );
@@ -212,70 +277,127 @@ function Head({ eye, h, link }: { eye: string; h: string; link?: [string, string
   );
 }
 
-/* ── Artists: real artist pages up top, then a wall of their records. ── */
-function ArtistsShow({ d }: { d: HomeData }) {
+/* The moving piece behind each stage's screens. */
+function Fx({ k, posters, cover }: { k: Tab; posters: string[]; cover: string | null }) {
+  if (k === "go") return <span className="fx fx-posters">{posters.map((p, i) => <img key={p} src={p} alt="" style={{ ["--i" as string]: i }} />)}</span>;
+  if (k === "artists") return <span className="fx fx-record"><span className="fx-disc">{cover && <img src={cover} alt="" />}</span></span>;
+  if (k === "host") return <span className="fx fx-invite"><span className="fx-card" style={{ background: LOOKS.pink.bg }}><b>Rooftop<br />Saturday</b><em>RSVP</em></span>{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ ["--i" as string]: i }} />)}</span>;
+  return <span className="fx fx-pads">{Array.from({ length: 16 }, (_, i) => <i key={i} style={{ ["--i" as string]: i }} />)}</span>;
+}
+
+function Art({ kind }: { kind: "wave" | "pads" | "live" }) {
+  if (kind === "wave") return <span className="art art-wave">{Array.from({ length: 32 }, (_, i) => <i key={i} style={{ height: `${18 + ((i * 37) % 70)}%`, animationDelay: `${i * 0.05}s` }} />)}</span>;
+  if (kind === "pads") return <span className="art art-pads">{Array.from({ length: 16 }, (_, i) => <i key={i} style={{ animationDelay: `${(i * 0.37) % 2.4}s` }} />)}</span>;
+  return <span className="art art-live"><b>Your track.wav</b><span>→</span><b>Ableton Live</b></span>;
+}
+
+/* ── Artists: play their records right here, then go to their page. ── */
+function ArtistsShow({ d, player }: { d: HomeData; player: ReturnType<typeof usePlayer> }) {
   const people = d.featured.slice(0, 4);
   const covers = d.covers.filter((c, i, all) => all.findIndex((x) => x.img === c.img || x.title === c.title) === i).slice(0, 12);
+  const playing = (id: string | null) => !!id && player.now?.id === id && (player.state === "playing" || player.state === "loading");
   return (
     <section className="h4-wrap h4-sec">
-      <Head eye="On Artists now" h="Pick one. Hear everything." link={[`All ${d.artistCount} artists`, productLink("artists", "/artists")]} />
+      <Head eye="Press play" h="Hear them. Then dig in." link={[`All ${d.artistCount} artists`, productLink("artists", "/artists")]} />
       {people.length > 0 && (
         <div className="h4-people">
-          {people.map((a) => (
-            <a key={a.slug} className="h4-person" href={productLink("artists", `/${a.slug}`)}>
-              <span className="h4-person-img"><img src={a.photo} alt="" loading="lazy" /></span>
-              <b>{a.name}</b>
-              <span>{[a.city, a.genres[0]].filter(Boolean).join(" · ")}</span>
-              {a.latest[0] && <em>Latest: {a.latest[0].title}</em>}
-            </a>
-          ))}
+          {people.map((a) => {
+            const t = a.latest.find((x) => x.deezer);
+            const href = productLink("artists", `/${a.slug}`);
+            return (
+              <div key={a.slug} className="h4-person">
+                <a className="h4-person-img" href={href}><img src={a.photo} alt="" loading="lazy" /></a>
+                {t && (
+                  <button type="button" className={`h4-pbtn${playing(t.deezer) ? " on" : ""}`} aria-label={`Play ${t.title} by ${a.name}`} onClick={() => void player.play({ id: t.deezer!, title: t.title, artist: a.name, img: a.photo, href })}>
+                    {playing(t.deezer) ? <span className="eq"><i /><i /><i /></span> : <svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>}
+                  </button>
+                )}
+                <a href={href} className="h4-person-t"><b>{a.name}</b><span>{[a.city, a.genres[0]].filter(Boolean).join(" · ")}</span>{t && <em>{t.title}</em>}</a>
+              </div>
+            );
+          })}
         </div>
       )}
       {covers.length > 0 && (
         <div className="h4-records">
-          {covers.map((c) => (
-            <a key={c.img} href={productLink("artists", `/${c.slug}`)} title={`${c.title} · ${c.artist}`}>
-              <img src={c.img} alt={`${c.title} by ${c.artist}`} loading="lazy" onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
-              <span><b>{c.title}</b>{c.artist}</span>
-            </a>
-          ))}
+          {covers.map((c) => {
+            const href = productLink("artists", `/${c.slug}`);
+            const on = playing(c.track);
+            return (
+              <div key={c.img} className={`h4-rec${on ? " on" : ""}`}>
+                <button type="button" onClick={() => { if (c.track) void player.play({ id: c.track, title: c.title, artist: c.artist, img: c.img, href }); else window.location.href = href; }} aria-label={c.track ? `Play ${c.title} by ${c.artist}` : `${c.title} by ${c.artist}`}>
+                  <img src={c.img} alt="" loading="lazy" onError={(e) => { (e.currentTarget.closest(".h4-rec") as HTMLElement).style.display = "none"; }} />
+                  {c.track && <span className="h4-rec-pl" aria-hidden="true">{on ? <span className="eq"><i /><i /><i /></span> : <svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>}</span>}
+                </button>
+                <a href={href}><b>{c.title}</b><span>{c.artist}</span></a>
+              </div>
+            );
+          })}
         </div>
       )}
     </section>
   );
 }
 
-/* ── Host: type into it and the invite builds itself. Make it real hands over to Host. ── */
+/* ── Host: make the invite in a party look, then publish it as an RSVP in Host with everything filled in. ── */
 function nextSaturday(today: string) {
   const t = new Date(`${today}T00:00:00Z`);
   t.setUTCDate(t.getUTCDate() + ((6 - t.getUTCDay() + 7) % 7 || 7));
   return t.toISOString().slice(0, 10);
 }
+const CITIES = ["Bengaluru", "Mumbai", "Delhi NCR", "Goa"];
 function InviteMaker({ today }: { today: string }) {
   const [name, setName] = useState("Rooftop on Saturday");
   const [date, setDate] = useState(() => nextSaturday(today));
-  const [place, setPlace] = useState("Indiranagar, Bengaluru");
-  const [entry, setEntry] = useState<"free" | "paid">("free");
-  const svg = useMemo(() => posterSvg({ title: name || "Your party", lineup: [], venue: place.split(",")[0]?.trim() || null, city: place.split(",")[1]?.trim() || null, date, time: "21:00" }), [name, date, place]);
+  const [time, setTime] = useState("21:00");
+  const [cityName, setCity] = useState("Bengaluru");
+  const [where, setWhere] = useState("Indiranagar");
+  const [look, setLook] = useState("yellow");
+  const [entry, setEntry] = useState<"rsvp" | "tickets">("rsvp");
+  const L = LOOKS[look];
+  const handOver = useMemo(() => {
+    const q = new URLSearchParams({ title: name.trim() || "My party", date, time, city: cityName, where, look, entry });
+    return productLink("gate", `/make?${q.toString()}`);
+  }, [name, date, time, cityName, where, look, entry]);
+  const pretty = date ? new Date(`${date}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : "";
+  const darkInk = L.ink === "#FFFFFF" || L.ink === "#F2F0EB";
   return (
-    <section className="h4-wrap h4-sec">
-      <Head eye="Try it" h="Your invite, as you type." />
+    <section className="h4-wrap h4-sec" id="try">
+      <Head eye="Try it" h="Make the invite. Send the RSVP." />
       <div className="h4-try">
-        <form className="h4-form" onSubmit={(e) => e.preventDefault()}>
-          <label><span>Name</span><input value={name} maxLength={40} onChange={(e) => setName(e.target.value)} /></label>
-          <label><span>When</span><input type="date" value={date} onChange={(e) => setDate(e.target.value)} /></label>
-          <label><span>Where</span><input value={place} maxLength={60} onChange={(e) => setPlace(e.target.value)} /></label>
-          <div className="h4-seg" role="radiogroup" aria-label="Entry">
-            <button type="button" role="radio" aria-checked={entry === "free"} onClick={() => setEntry("free")}>Free, RSVP</button>
-            <button type="button" role="radio" aria-checked={entry === "paid"} onClick={() => setEntry("paid")}>Tickets</button>
+        <form className="h4-form" onSubmit={(e) => { e.preventDefault(); window.location.href = handOver; }}>
+          <label><span>Name it</span><input value={name} maxLength={60} onChange={(e) => setName(e.target.value)} /></label>
+          <div className="h4-two">
+            <label><span>Day</span><input type="date" value={date} min={today} onChange={(e) => setDate(e.target.value)} /></label>
+            <label><span>Doors</span><input type="time" value={time} onChange={(e) => setTime(e.target.value)} /></label>
           </div>
-          <a className="h4-cta" href={productLink("gate", "/make")}>Make it real, free →</a>
-          <p className="h4-fine">{entry === "free" ? "Free parties stay free." : "5% on paid tickets only."} Publish with one email.</p>
+          <div className="h4-chips" role="radiogroup" aria-label="City">
+            {CITIES.map((c) => <button key={c} type="button" role="radio" aria-checked={cityName === c} onClick={() => setCity(c)}>{c}</button>)}
+          </div>
+          <label><span>Where</span><input value={where} maxLength={80} placeholder="The venue, or the area" onChange={(e) => setWhere(e.target.value)} /></label>
+          <div>
+            <span className="h4-lbl">Your colours</span>
+            <div className="h4-looks" role="radiogroup" aria-label="Look">
+              {Object.entries(LOOKS).map(([k, l]) => (
+                <button key={k} type="button" role="radio" aria-checked={look === k} aria-label={l.label} onClick={() => setLook(k)} style={{ background: l.bg, color: l.ink }}><b>{l.label}</b></button>
+              ))}
+            </div>
+          </div>
+          <div className="h4-seg" role="radiogroup" aria-label="How people get in">
+            <button type="button" role="radio" aria-checked={entry === "rsvp"} onClick={() => setEntry("rsvp")}>Free, RSVP</button>
+            <button type="button" role="radio" aria-checked={entry === "tickets"} onClick={() => setEntry("tickets")}>Tickets</button>
+          </div>
+          <button type="submit" className="h4-cta">Make the RSVP →</button>
+          <p className="h4-fine">Opens Host with all of this filled in. Publish with one email and you get the link to send.</p>
         </form>
         <div className="h4-invite">
-          <div className="h4-invite-card">
-            <span className="h4-invite-art" dangerouslySetInnerHTML={{ __html: svg }} />
-            <div className="h4-invite-foot"><b>{name || "Your party"}</b><span>{DAY(date)} · 9 pm · {place || "Somewhere good"}</span><em>{entry === "free" ? "RSVP" : "Get tickets"}</em></div>
+          <div className="h4-invite-glow" style={{ background: L.bg }} aria-hidden="true" />
+          <div className="h4-invite-card" style={{ background: L.bg, color: L.ink }}>
+            <span className="h4-inv-top"><span>You're invited</span><img src="/ccd-logo.png" alt="" style={{ filter: darkInk ? "invert(1)" : "none" }} /></span>
+            <b className="h4-inv-name">{name || "Your party"}</b>
+            <span className="h4-inv-meta">{[pretty, time].filter(Boolean).join(" · ")}<br />{[where, cityName].filter(Boolean).join(", ")}</span>
+            <img src="/cats/dance.webp" alt="" className="h4-inv-cat" />
+            <span className="h4-inv-btns"><em style={{ background: L.ink, color: darkInk ? "#0A0A0B" : "#fff" }}>{entry === "rsvp" ? "Going" : "Get tickets"}</em>{entry === "rsvp" && <em className="ghost">Maybe</em>}</span>
           </div>
         </div>
       </div>
@@ -283,7 +405,7 @@ function InviteMaker({ today }: { today: string }) {
   );
 }
 
-/* ── School: a 16-step beat you can program and play, made in the browser like the lessons. ── */
+/* ── School: a 16-step beat you can program and play, like the start of lesson 1. ── */
 const ROWS = ["Kick", "Clap", "Hat", "Bass"] as const;
 const START: boolean[][] = [
   [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
@@ -298,10 +420,10 @@ function BeatMaker() {
   const ctx = useRef<AudioContext | null>(null);
   const g = useRef(grid);
   g.current = grid;
-
   useEffect(() => {
     if (!playing) { setStep(-1); return; }
     const ac = (ctx.current ??= new AudioContext());
+    void ac.resume();
     let i = 0;
     const t = setInterval(() => {
       const now = ac.currentTime;
@@ -311,7 +433,6 @@ function BeatMaker() {
     }, 60000 / 122 / 4);
     return () => clearInterval(t);
   }, [playing]);
-
   const toggle = (r: number, c: number) => setGrid((x) => x.map((row, ri) => (ri === r ? row.map((v, ci) => (ci === c ? !v : v)) : row)));
   return (
     <section className="h4-wrap h4-sec">
