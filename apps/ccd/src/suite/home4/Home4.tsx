@@ -24,15 +24,17 @@ import { CSS } from "./home4.css";
 type Tab = "go" | "artists" | "host" | "learn";
 const ORDER: Tab[] = ["go", "artists", "host", "learn"];
 const ID: Record<Tab, ProductId> = { go: "ccd", artists: "artists", host: "gate", learn: "school" };
-const ON = (k: Tab) => (k === "go" ? "#fff" : "#0a0a0c");
+const ON = (k: Tab) => (k === "go" || k === "learn" ? "#fff" : "#0a0a0c");
+/** Black on pink reads badly (Param, 13 Nov 2026), so School's stage is a deeper pink with white type. */
+const BG = (k: Tab) => (k === "learn" ? "#D6246A" : PRODUCTS[ID[k]].colour);
 const SUB: Record<Tab, string> = { go: "What's on, crews, tickets", artists: "Every record, every show", host: "Invite, list, door", learn: "Make music on a real instrument" };
 const DAY = (iso: string | null | undefined) => (iso ? new Date(`${iso.slice(0, 10)}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : "");
 const DAYS_TO = (iso: string | null | undefined, today: string) => (iso ? Math.round((Date.parse(`${iso.slice(0, 10)}T00:00:00Z`) - Date.parse(`${today}T00:00:00Z`)) / 864e5) : null);
 
 /** The same five looks Host saves (apps/gate LOOKS); the keys are what the database stores. */
 const LOOKS: Record<string, { bg: string; ink: string; label: string }> = {
-  pink: { bg: "linear-gradient(140deg,#FF4D8D 0%,#FF8A5B 100%)", ink: "#0A0A0B", label: "Bubblegum" },
-  yellow: { bg: "linear-gradient(165deg,#FFE600 0%,#FF9F1C 58%,#FF4D8D 100%)", ink: "#0A0A0A", label: "Sunset" },
+  pink: { bg: "linear-gradient(140deg,#D6246A 0%,#9B2BD1 100%)", ink: "#FFFFFF", label: "Bubblegum" },
+  yellow: { bg: "linear-gradient(165deg,#FFE600 0%,#FFB000 55%,#FF7A1A 100%)", ink: "#0A0A0A", label: "Sunset" },
   lime: { bg: "linear-gradient(140deg,#C8F542 0%,#2EE6A6 100%)", ink: "#0A0A0C", label: "Acid" },
   blue: { bg: "radial-gradient(110% 80% at 85% 0%,#8B5CF6 0%,transparent 60%),linear-gradient(165deg,#2563EB 0%,#0B1A4F 100%)", ink: "#FFFFFF", label: "Laser" },
   ink: { bg: "radial-gradient(55% 45% at 25% 18%,rgba(255,77,141,.55),transparent 70%),radial-gradient(55% 45% at 82% 85%,rgba(37,99,235,.6),transparent 70%),radial-gradient(40% 35% at 70% 30%,rgba(182,239,54,.25),transparent 70%),#0E0E12", ink: "#F2F0EB", label: "Disco" },
@@ -70,18 +72,12 @@ function usePlayer() {
 
 export default function Home4(d: HomeData) {
   const [tab, setTab] = useState<Tab>("go");
-  const [auto, setAuto] = useState(true);
   useEffect(() => {
     const f = new URLSearchParams(window.location.search).get("for");
-    if (f === "artists" || f === "host" || f === "learn") { setTab(f); setAuto(false); }
+    if (f === "artists" || f === "host" || f === "learn") setTab(f);
   }, []);
-  useEffect(() => {
-    if (!auto || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = setTimeout(() => setTab((x) => ORDER[(ORDER.indexOf(x) + 1) % 4]), 6000);
-    return () => clearTimeout(t);
-  }, [auto, tab]);
   const pick = (k: Tab, scroll = false) => {
-    setTab(k); setAuto(false);
+    setTab(k);
     const u = new URL(window.location.href);
     if (k === "go") u.searchParams.delete("for"); else u.searchParams.set("for", k);
     window.history.replaceState(null, "", u.toString());
@@ -140,7 +136,7 @@ export default function Home4(d: HomeData) {
     ],
   };
 
-  const colour = PRODUCTS[ID[tab]].colour;
+  const colour = BG(tab);
 
   const nav = (
     <header className="k-nav">
@@ -153,9 +149,8 @@ export default function Home4(d: HomeData) {
         {ORDER.map((k) => {
           const p = PRODUCTS[ID[k]];
           return (
-            <button key={k} type="button" className="k-tile" onClick={() => pick(k)} aria-pressed={tab === k} style={{ ["--c" as string]: p.colour, ["--on" as string]: ON(k) }}>
+            <button key={k} type="button" className="k-tile" onClick={() => pick(k)} aria-pressed={tab === k} style={{ ["--c" as string]: BG(k), ["--on" as string]: ON(k) }}>
               <i aria-hidden="true" /><span><b>{p.verb}</b><small>{SUB[k]}</small></span>
-              {tab === k && auto && <em className="h4-tick" key={`t-${k}`} aria-hidden="true" />}
             </button>
           );
         })}
@@ -174,7 +169,7 @@ export default function Home4(d: HomeData) {
               const s = STAGE[k];
               const on = k === tab;
               return (
-                <div key={k} className={`h4-layer${on ? " on" : ""}`} aria-hidden={!on} style={{ ["--on" as string]: ON(k), ["--acc" as string]: PRODUCTS[ID[k]].colour }}>
+                <div key={k} className={`h4-layer${on ? " on" : ""}`} aria-hidden={!on} style={{ ["--on" as string]: ON(k), ["--acc" as string]: BG(k) }}>
                   <div className="h4-copy">
                     <span className="h4-eye">{s.eye}</span>
                     <h1>{s.h}</h1>
@@ -246,7 +241,7 @@ export default function Home4(d: HomeData) {
               const p = PRODUCTS[ID[k]];
               const st = STAGE[k];
               return (
-                <button key={k} type="button" className="h4-other" onClick={() => pick(k, true)} style={{ ["--c" as string]: p.colour, ["--on" as string]: ON(k) }}>
+                <button key={k} type="button" className="h4-other" onClick={() => pick(k, true)} style={{ ["--c" as string]: BG(k), ["--on" as string]: ON(k) }}>
                   <span className="h4-other-copy"><span className="h4-eye">{p.verb}</span><b>{st.h}</b><em>{st.cta[0]} →</em></span>
                   <img className="h4-other-cat" src={`/cats/${st.cat}.webp`} alt="" loading="lazy" />
                 </button>
@@ -281,7 +276,7 @@ function Head({ eye, h, link }: { eye: string; h: string; link?: [string, string
 function Fx({ k, posters, cover }: { k: Tab; posters: string[]; cover: string | null }) {
   if (k === "go") return <span className="fx fx-posters">{posters.map((p, i) => <img key={p} src={p} alt="" style={{ ["--i" as string]: i }} />)}</span>;
   if (k === "artists") return <span className="fx fx-record"><span className="fx-disc">{cover && <img src={cover} alt="" />}</span></span>;
-  if (k === "host") return <span className="fx fx-invite"><span className="fx-card" style={{ background: LOOKS.pink.bg }}><b>Rooftop<br />Saturday</b><em>RSVP</em></span>{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ ["--i" as string]: i }} />)}</span>;
+  if (k === "host") return <span className="fx fx-invite"><span className="fx-card" style={{ background: LOOKS.pink.bg, color: "#fff" }}><b>Rooftop<br />Saturday</b><em>RSVP</em></span>{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ ["--i" as string]: i }} />)}</span>;
   return <span className="fx fx-pads">{Array.from({ length: 16 }, (_, i) => <i key={i} style={{ ["--i" as string]: i }} />)}</span>;
 }
 
@@ -303,7 +298,7 @@ function ArtistsShow({ d, player }: { d: HomeData; player: ReturnType<typeof use
         <div className="h4-people">
           {people.map((a) => {
             const t = a.latest.find((x) => x.deezer);
-            const href = productLink("artists", `/${a.slug}`);
+            const href = `/artists/${a.slug}`;
             return (
               <div key={a.slug} className="h4-person">
                 <a className="h4-person-img" href={href}><img src={a.photo} alt="" loading="lazy" /></a>
@@ -321,7 +316,7 @@ function ArtistsShow({ d, player }: { d: HomeData; player: ReturnType<typeof use
       {covers.length > 0 && (
         <div className="h4-records">
           {covers.map((c) => {
-            const href = productLink("artists", `/${c.slug}`);
+            const href = `/artists/${c.slug}`;
             const on = playing(c.track);
             return (
               <div key={c.img} className={`h4-rec${on ? " on" : ""}`}>

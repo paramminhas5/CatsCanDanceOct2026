@@ -114,8 +114,8 @@ export const dayLong = (d: string | null | undefined) => (d ? new Date(`${d.slic
 /** Party looks. The keys are what the database stores (063 accepts these five), so new looks reuse them.
  *  bg can be a gradient; solid is the one colour for buttons, glows and anything that needs a flat colour. */
 export const LOOKS: Record<string, { bg: string; solid: string; ink: string; label: string }> = {
-  pink: { bg: "linear-gradient(140deg,#FF4D8D 0%,#FF8A5B 100%)", solid: "#FF4D8D", ink: "#0A0A0B", label: "Bubblegum" },
-  yellow: { bg: "linear-gradient(165deg,#FFE600 0%,#FF9F1C 58%,#FF4D8D 100%)", solid: "#FFE600", ink: "#0A0A0A", label: "Sunset" },
+  pink: { bg: "linear-gradient(140deg,#D6246A 0%,#9B2BD1 100%)", solid: "#D6246A", ink: "#FFFFFF", label: "Bubblegum" },
+  yellow: { bg: "linear-gradient(165deg,#FFE600 0%,#FFB000 55%,#FF7A1A 100%)", solid: "#FFE600", ink: "#0A0A0A", label: "Sunset" },
   lime: { bg: "linear-gradient(140deg,#C8F542 0%,#2EE6A6 100%)", solid: "#B6EF36", ink: "#0A0A0C", label: "Acid" },
   blue: { bg: "radial-gradient(110% 80% at 85% 0%,#8B5CF6 0%,transparent 60%),linear-gradient(165deg,#2563EB 0%,#0B1A4F 100%)", solid: "#2563EB", ink: "#FFFFFF", label: "Laser" },
   ink: { bg: "radial-gradient(55% 45% at 25% 18%,rgba(255,77,141,.55),transparent 70%),radial-gradient(55% 45% at 82% 85%,rgba(37,99,235,.6),transparent 70%),radial-gradient(40% 35% at 70% 30%,rgba(182,239,54,.25),transparent 70%),#0E0E12", solid: "#16161A", ink: "#F2F0EB", label: "Disco" },

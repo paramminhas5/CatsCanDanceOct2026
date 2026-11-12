@@ -101,7 +101,6 @@ const nextConfig = {
 
       // Artists (working name Headliner): pages, booking desk, On tour, claims. Short URLs there: /<slug>.
       { source: "/artists", destination: `${ARTISTS_URL}/artists`, permanent: true },
-      { source: "/artists/:slug", destination: `${ARTISTS_URL}/:slug`, permanent: true },
       { source: "/artists/:slug/epk", destination: `${ARTISTS_URL}/:slug/epk`, permanent: true },
       { source: "/litter", destination: `${ARTISTS_URL}/artists`, permanent: true },
       { source: "/litter/:slug", destination: `${ARTISTS_URL}/:slug`, permanent: true },
