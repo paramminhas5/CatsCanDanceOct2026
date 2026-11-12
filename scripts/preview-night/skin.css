@@ -492,3 +492,41 @@ body.nap .steps li svg{animation-play-state:paused}
 @media (min-width:1101px){.tcard{min-height:72vh}}
 @media (min-width:701px){#outro .oslot{display:block;position:absolute;left:80%;top:50%;width:min(60vw,60vh);aspect-ratio:1;transform:translate(-50%,-50%);margin:0}#outro{position:relative}}
 @media (max-width:700px){.tcard .tslot,.tcard.right .tslot,.tcard.left .tslot,#ch-episodes .tcard .tslot{left:50%;top:27vh;width:72vw}}
+
+/* ===== round 15: phone, compact and in one flow (13 Nov, after Param opened it on his phone) =====
+   Title cards: the object sits above the words in the flow, no half-empty screen.
+   How it works: a row of step chips you can swipe, under a small object, then straight into the product. */
+@media (max-width:700px){
+  .tcard{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;min-height:0!important;padding-top:76px;padding-bottom:16px}
+  .tcard .tc,#ch-episodes .tcard .tc{padding-top:0!important;width:auto}
+  .tcard .tslot,.tcard.right .tslot,.tcard.left .tslot,#ch-episodes .tcard .tslot{position:relative;left:auto;top:auto;transform:none;width:46vw;margin:0 0 16px;order:-1}
+  .tcard h2{font-size:15vw}
+  .stage.cbody{padding-top:8px;padding-bottom:48px}
+  .todo{padding:0!important;grid-template-columns:44px 1fr;column-gap:12px;align-items:center}
+  .todo>.objslot{grid-row:auto;width:44px!important;height:44px;margin:0}
+  .todo>h3{grid-column:2;margin:0;align-self:center}
+  .todo>.ahead{grid-column:1/-1}
+  .todo>.steps{grid-column:1/-1;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:12px -18px 12px;padding:0 18px 2px}
+  .todo>.steps::-webkit-scrollbar{display:none}
+  .todo .steps li{flex:none}
+  .todo .steps button{display:flex;align-items:center;gap:8px;width:auto;padding:7px 12px 7px 7px;border:1px solid var(--line);border-radius:99px;font-size:14px;white-space:nowrap}
+  .todo .steps .n{width:22px;height:22px;font-size:10px}
+  .todo .steps svg{display:none}
+  .todo>.row2{grid-column:1/-1;margin-bottom:16px}
+  .demo{padding-top:0!important}
+  .eprow{padding-top:8px;padding-bottom:48px;min-height:0}
+  .epx{gap:16px}.epx .sleeve.sq{max-width:62vw}
+  #pts-sec{padding-top:56px}
+  #pts-sec .objslot{width:56px!important;height:56px;margin-bottom:12px!important}
+  #pts-sec h2{font-size:12vw}
+  #why{padding-top:56px}
+  #why .wslot{width:30vw}
+  .liner{padding-top:48px;padding-bottom:48px}
+  /* hero doors: tighter */
+  .doors .door{padding:12px 10px 14px 0!important}
+  .doors .door .chr{width:56px!important;margin:0 0 6px -4px}
+  .door b{font-size:20px}.door p{font-size:13.5px}.door small{font-size:12px}
+  /* the floating bar: just points and play */
+  .hudl .clock:not(#ptsPill){display:none}
+}
+@media (max-width:700px){.demo{padding-bottom:0!important}.stage.cbody{padding-bottom:40px}}

@@ -1364,7 +1364,7 @@ if(gl){
 if(!glOK){canvas.style.display='none';$('#noGl').style.display='block'}
 const fx=$('#fx'),c2=fx.getContext('2d');
 let W=0,H=0,DPR=1;
-function resize(){W=innerWidth;H=innerHeight;{const de=document.documentElement.style,m=Math.min(W,H);de.setProperty('--tcpad',Math.round(.27*H+.36*m+26)+'px');de.setProperty('--heropad',Math.round(.22*H+.3*m+30)+'px')}DPR=Math.min(devicePixelRatio||1,W<700?1.3:1.5);canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);if(glOK)gl.viewport(0,0,canvas.width,canvas.height);
+function resize(){W=innerWidth;H=innerHeight;if(!resize.w||resize.w!==W||Math.abs(H-resize.h)>160){resize.w=W;resize.h=H;const de=document.documentElement.style,m=Math.min(W,H);de.setProperty('--tcpad',Math.round(.27*H+.36*m+26)+'px');de.setProperty('--heropad',Math.round(.22*H+.3*m+30)+'px')}DPR=Math.min(devicePixelRatio||1,W<700?1.3:1.5);canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);if(glOK)gl.viewport(0,0,canvas.width,canvas.height);
   const d2=Math.min(devicePixelRatio||1,2);fx.width=Math.round(W*d2);fx.height=Math.round(H*d2);c2.setTransform(d2,0,0,d2,0,0)}
 resize();addEventListener('resize',resize);
 const isM=()=>innerWidth<=700;
@@ -1741,7 +1741,7 @@ const css=c=>`rgb(${c.map(v=>Math.round(clamp(v,0,1)*255)).join(',')})`;
 /* ============ main loop ============ */
 const stages=$$('.stage');let active=null;
 const cur={x:.75,y:.46,r:.0,A:YC[0].slice(),B:YC[1].slice()};
-let shape=6,flipT=1,flipTo=0,spin=0,pulse=0,hatv=0,hue=0,hueT=0,yi=0,beatN=0,rip=[1,1],ripI=0,ropeA=0,lastScroll=scrollY,last=performance.now(),T=0,knobShow=1;
+let stT=0,locked=false,shape=6,flipT=1,flipTo=0,spin=0,pulse=0,hatv=0,hue=0,hueT=0,yi=0,beatN=0,rip=[1,1],ripI=0,ropeA=0,lastScroll=scrollY,last=performance.now(),T=0,knobShow=1;
 let beatEls=$$('[data-beat]');const eqs=$$('#sndBtn .eq u'),root=document.documentElement,navL=$$('nav.top a.nl');
 function pick(){const mid=H*.5;let best=stages[0],bd=1e9;for(const s of stages){if(!s.offsetParent)continue;const r=s.getBoundingClientRect();if(r.top<=mid&&r.bottom>mid)return s;const d=Math.min(Math.abs(r.top-mid),Math.abs(r.bottom-mid));if(d<bd){bd=d;best=s}}return best}
 function onStage(st){if(page==='gear'&&st===STAGES['host-x'])st=STAGES['gear-x'];$('#ckT').textContent=st.t;$('#ckN').textContent=st.n;root.style.setProperty('--acc',st.app?APP[st.app].acc:'#F2F1EE');
@@ -1749,9 +1749,11 @@ function onStage(st){if(page==='gear'&&st===STAGES['host-x'])st=STAGES['gear-x']
   level=st.lv;muffled=!owned&&st.lv===0;applyMix();showLayers()}
 function frame(now){
   const raw=Math.max(0,(now-last)/1000);last=now;const dt=Math.min(.05,raw),rdt=Math.min(.3,raw);T+=dt*(reduce?.25:1);
-  const el=pick();if(el!==active){active=el;onStage(STAGES[el.dataset.k])}
-  const st=STAGES[page==='gear'&&active.dataset.k==='host-x'?'gear-x':active.dataset.k],mn=Math.min(W,H);let pos=isM()?st.m:st.d;{const sl=active.querySelector('.objslot');if(sl&&sl.offsetParent){const r=sl.getBoundingClientRect();pos=[(r.left+r.width/2)/W,(r.top+r.height/2)/H,r.width/2/mn]}else if(active.dataset.k==='hero')pos=[pos[0],pos[1]+active.getBoundingClientRect().top/H,pos[2]]}
-  const k=1-Math.pow(.002,rdt);
+  const el=pick();if(el!==active){active=el;onStage(STAGES[el.dataset.k]);stT=now}
+  let slotted=false;const st=STAGES[page==='gear'&&active.dataset.k==='host-x'?'gear-x':active.dataset.k],mn=Math.min(W,H);let pos=isM()?st.m:st.d;{const sl=active.querySelector('.objslot');if(sl&&sl.offsetParent){const r=sl.getBoundingClientRect();pos=[(r.left+r.width/2)/W,(r.top+r.height/2)/H,r.width/2/mn];slotted=true}else if(active.dataset.k==='hero'){pos=[pos[0],pos[1]+active.getBoundingClientRect().top/H,pos[2]];slotted=true}}
+  /* in flight between sections it eases; once it has arrived it stays locked to its spot as the page scrolls */
+  const away=Math.abs(pos[0]-cur.x)+Math.abs(pos[1]-cur.y)+Math.abs(pos[2]-cur.r);if(slotted&&(now-stT>650||away<.02))locked=true;if(!slotted||now-stT<60)locked=false;
+  const k=locked?1:1-Math.pow(.0005,rdt);
   cur.x+=(pos[0]-cur.x)*k;cur.y+=(pos[1]-cur.y)*k;cur.r+=(pos[2]-cur.r)*k;
   /* flip between shapes */
   if(flipT>=1&&st.s!==shape){if(reduce){shape=st.s}else{flipT=0;flipTo=st.s}}

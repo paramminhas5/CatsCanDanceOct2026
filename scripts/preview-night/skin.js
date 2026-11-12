@@ -270,3 +270,6 @@ addEventListener('hashchange',()=>setTimeout(()=>document.querySelectorAll('.rv'
 (()=>{const c=document.getElementById('invite');if(!c)return;const s=document.createElement('i');s.className='sheen';s.setAttribute('aria-hidden','true');c.appendChild(s);
   c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--gx',((e.clientX-r.left)/r.width*100).toFixed(0)+'%');c.style.setProperty('--gy',((e.clientY-r.top)/r.height*100).toFixed(0)+'%')})})();
 document.querySelectorAll('.tcard[data-k]').forEach(t=>{if(t.querySelector('.objslot'))return;const s=document.createElement('div');s.className='objslot tslot';s.setAttribute('aria-hidden','true');t.appendChild(s)});
+window.__ccdObj=()=>({x:cur.x*innerWidth,y:cur.y*innerHeight,k:active&&active.dataset.k,locked:typeof locked!=="undefined"?locked:null});
+/* phone: the open Episode has no place for the object, so it leaves the screen instead of hanging off the edge */
+try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
