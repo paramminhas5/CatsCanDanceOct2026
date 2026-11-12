@@ -43,7 +43,7 @@
     :{embed:'SoundCloud',title:'',h:120,src:'https://w.soundcloud.com/player/?url='+encodeURIComponent(p.url)+'&auto_play=true&visual=false&show_comments=false&show_teaser=false&color=%23f3f1e4'};
   function preview(a,cb){if(a.n in pv)return cb(pv[a.n]);const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),8000);
     fetch('/api/deezer/find?q='+encodeURIComponent(a.n),{signal:ctl.signal}).then(r=>r.json().then(j=>({ok:r.ok,st:r.status,j}))).then(({ok,st,j})=>{clearTimeout(t);
-      if(ok&&j&&j.url){pv[a.n]={url:j.url,title:j.title};cb(pv[a.n])}
+      if(ok&&j&&j.url&&(!j.kind||j.kind==='audio')){pv[a.n]={url:j.url,title:j.title};cb(pv[a.n])}
       else if(ok&&j&&(j.kind==='bandcamp'||j.kind==='soundcloud')){pv[a.n]=emb(j);cb(pv[a.n])}
       else if(st===404&&j&&j.error){pv[a.n]={none:true};cb(pv[a.n])}
       else previewJ(a,cb)}).catch(()=>{clearTimeout(t);previewJ(a,cb)})}
