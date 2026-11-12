@@ -7,6 +7,9 @@
 import type { GetServerSideProps } from "next";
 import Head from "next/head";
 import ArtistPage from "@/components/artist-v2/ArtistPage";
+import Shell from "@/suite/Shell";
+import { SuiteNav } from "@ccd/ui";
+import { productLink } from "@ccd/brand";
 import { getArtistV2, coverUrl, displayName, type ArtistV2 } from "@/lib/artist-v2";
 
 type Props = { a: ArtistV2 };
@@ -44,7 +47,11 @@ export default function ArtistSlugPage({ a }: Props) {
         <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </Head>
-      <ArtistPage a={a} />
+      <Shell title={`${name}: shows, music and booking | Cats Can Dance`} description={desc}
+        nav={<SuiteNav current="artists" account={{ href: "/me", label: "Your account" }} cta={{ href: productLink("artists", `/${a.slug}/book`), label: `Book ${name}` }}
+          sub={[{ href: productLink("artists", "/artists"), label: "All artists" }, { href: productLink("artists", "/tour"), label: "On tour" }, { href: productLink("artists", "/claim"), label: "Claim your page" }]} />}>
+        <ArtistPage a={a} />
+      </Shell>
     </>
   );
 }
