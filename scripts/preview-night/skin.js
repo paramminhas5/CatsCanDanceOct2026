@@ -124,7 +124,7 @@
     else if(was){was=false;cat.style.display='none'}
     requestAnimationFrame(chase)})(lastC2);
 })();
-window.__ccd={get s(){return {playing,BPM,step,timer:timer!==null,laserOn}}};
+window.__ccd={get s(){return {playing,BPM,step,timer:timer!==null,laserOn}},get mix(){try{return E?ROWS.map(([k])=>k+' '+E.G[k].gain.value.toFixed(2)).join(', '):'no audio yet'}catch(e){return String(e)}}};
 /* host: the invite tilts like a card in your hand */
 (()=>{const c=document.getElementById('invite');if(!c||matchMedia('(prefers-reduced-motion: reduce)').matches)return;c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--ry',(((e.clientX-r.left)/r.width-.5)*14).toFixed(1)+'deg');c.style.setProperty('--rx',((.5-(e.clientY-r.top)/r.height)*10).toFixed(1)+'deg')});c.addEventListener('pointerleave',()=>{c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')})})();
 
@@ -170,7 +170,7 @@ window.__ccd={get s(){return {playing,BPM,step,timer:timer!==null,laserOn}}};
 (()=>{document.querySelectorAll('.doors .door,.rl li').forEach(el=>el.addEventListener('pointerdown',()=>{el.classList.remove('hit');void el.offsetWidth;el.classList.add('hit');setTimeout(()=>el.classList.remove('hit'),480)}));
   try{const L={episodes:2,'episodes-b':2,host:3,'host-b':3,'host-x':3,'gear-h':3,'gear-x':3,artists:4,'artists-b':4,'artists-x':4};Object.keys(L).forEach(k=>{if(STAGES[k])STAGES[k].lv=L[k]})}catch(e){}
   let wet=null;setInterval(()=>{try{if(!E||!actx)return;if(!wet){const d=actx.createDelay(1),fb=actx.createGain();wet=actx.createGain();d.delayTime.value=60/BPM*.75;fb.gain.value=.35;wet.gain.value=0;E.filt.connect(d);d.connect(fb);fb.connect(d);d.connect(wet);wet.connect(an)}
-    const k=active?String(active.dataset.k):'';wet.gain.setTargetAtTime(k==='points'||k==='outro'?.45:0,actx.currentTime,.3)}catch(e){}},500)})();
+    const k=active?String(active.dataset.k):'';window.__ccdWet=wet;wet.gain.setTargetAtTime(k==='points'||k==='outro'?.45:0,actx.currentTime,.3)}catch(e){}},500)})();
 /* round 12: plain heading for the feature list, and the logo goes home */
 (()=>{const fix=()=>document.querySelectorAll('.liner h2').forEach(h=>{const m=h.textContent.match(/on the (.+) record/i);if(m)h.textContent='What '+m[1].trim()+' does'});fix();addEventListener('hashchange',()=>setTimeout(fix,80));
   const im=document.querySelector('nav.top img[src*="logo"],header img[src*="logo"],nav img[src*="logo"]');const lg=im&&(im.closest('a,button')||im.parentElement);
@@ -207,3 +207,11 @@ addEventListener('hashchange',()=>setTimeout(()=>document.querySelectorAll('.rv'
   /* touching a panel in any way ends its tour */
   $$('.panel[data-tour]').forEach(p=>{const stop=()=>{toured[p.dataset.tour]=1;if(tour&&tour.app===p.dataset.tour)endTour(p.dataset.tour,tour.i-1)};
     ['keydown','focusin','input'].forEach(ev=>p.addEventListener(ev,e=>{if(e.isTrusted)stop()}))})})();
+/* scroll: the page asked every section for its box on every frame, which forces layout each frame.
+   Section positions are now kept and measured again only when the layout changes (or once a second). */
+(()=>{const absTop=el=>{let t=0;while(el){t+=el.offsetTop;el=el.offsetParent}return t};let cache=null,ct=0;
+  const build=()=>{cache=stages.filter(s=>s.offsetParent).map(s=>{const t=absTop(s);return {s,t,b:t+s.offsetHeight}});ct=performance.now()};
+  const drop=()=>{cache=null};let bh=0;setInterval(()=>{const h=document.body.scrollHeight;if(h!==bh){bh=h;drop()}},300);
+  addEventListener('resize',drop);addEventListener('hashchange',drop);
+  pick=function(){if(!cache||performance.now()-ct>1000)build();if(!cache.length)return stages[0];const mid=scrollY+innerHeight*.5;let best=cache[0].s,bd=1e9;
+    for(const c of cache){if(c.t<=mid&&c.b>mid)return c.s;const d=Math.min(Math.abs(c.t-mid),Math.abs(c.b-mid));if(d<bd){bd=d;best=c.s}}return best}})();
