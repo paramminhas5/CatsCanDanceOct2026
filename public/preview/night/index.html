@@ -997,6 +997,23 @@ body.nap .steps li svg{animation-play-state:paused}
 .liner li p{font-size:14.5px;line-height:1.45}
 @media (max-width:1100px){.liner ol{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.liner ol{grid-template-columns:1fr}}
+
+/* ===== round 13 ===== */
+/* switching pages: no flash */
+#wipe{display:none!important}
+/* episodes: the posters live once, in the row below */
+.epfan{display:none}
+/* how it works: bigger words */
+@media (min-width:1001px){.steps button{font-size:20px}}
+/* points: rewards you unlock */
+.rewards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+.rw{position:relative;padding:20px;border-radius:12px;background:var(--panel2);border:1px solid var(--line);overflow:hidden;transition:border-color .3s}
+.rw svg{width:28px;height:28px;fill:none;stroke:var(--mute);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:16px;transition:stroke .3s}
+.rw b{display:block;font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:20px;line-height:1.1;letter-spacing:-.01em}
+.rw span{display:block;font-family:var(--mono);font-size:12px;color:var(--mute);margin-top:8px}
+.rw i{position:absolute;left:0;bottom:0;height:4px;width:var(--w,0%);background:var(--lime);transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.rw.got{border-color:var(--lime)}.rw.got svg{stroke:var(--lime)}.rw.got span{color:var(--lime)}
+@media (max-width:700px){.rewards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -2320,6 +2337,12 @@ window.__ccd={get s(){return {playing,BPM,step,timer:timer!==null,laserOn}}};
   if(lg){lg.style.cursor='pointer';lg.setAttribute('aria-label','Cats Can Dance, home');lg.addEventListener('click',e=>{e.preventDefault();if(location.hash&&location.hash!=='#')location.hash='';setTimeout(()=>scrollTo({top:0,behavior:'smooth'}),60)})}})();
 /* after switching pages, nothing waits hidden for a scroll */
 addEventListener('hashchange',()=>setTimeout(()=>document.querySelectorAll('.rv').forEach(e=>{if(e.offsetParent)e.classList.add('in')}),320));
+/* round 13: points as three rewards that unlock */
+(()=>{const t=document.getElementById('pTot'),box=t&&t.closest('.pts');if(!box)return;const R=[[200,'Bring a +1'],[300,'Guaranteed spot'],[800,'Free ticket']];
+  const L='<path d="M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5z"/>',U='<path d="M7 11V8a5 5 0 0 1 9.6-2M5 11h14v10H5z"/>';
+  const g=document.createElement('div');g.className='rewards';g.innerHTML=R.map(([n,l])=>`<div class="rw"><svg viewBox="0 0 24 24" aria-hidden="true">${L}</svg><b>${l}</b><span></span><i></i></div>`).join('');t.closest('.tot').after(g);
+  const old=[...box.querySelectorAll('*')].find(e=>!e.children.length&&/Bring a \+1/.test(e.textContent)&&!g.contains(e));if(old){let c=old;while(c.parentElement&&c.parentElement!==box)c=c.parentElement;if(c!==g&&c.parentElement===box)c.style.display='none'}
+  const up=()=>{const p=parseInt(t.textContent.replace(/\D/g,''))||0;[...g.children].forEach((el,i)=>{const n=R[i][0],ok=p>=n;el.classList.toggle('got',ok);el.querySelector('svg').innerHTML=ok?U:L;el.querySelector('span').textContent=ok?'Unlocked':(n-p)+' points to go';el.querySelector('i').style.setProperty('--w',Math.min(100,p/n*100)+'%')})};up();setInterval(up,400)})();
 
 })();
 </script>
