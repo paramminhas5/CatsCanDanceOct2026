@@ -180,7 +180,7 @@ addEventListener('hashchange',()=>setTimeout(()=>document.querySelectorAll('.rv'
 /* round 13: points as three rewards that unlock */
 (()=>{const t=document.getElementById('pTot'),box=t&&t.closest('.pts');if(!box)return;const R=[[200,'Bring a +1'],[300,'Guaranteed spot'],[800,'Free ticket']];
   const L='<path d="M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5z"/>',U='<path d="M7 11V8a5 5 0 0 1 9.6-2M5 11h14v10H5z"/>';
-  const g=document.createElement('div');g.className='rewards';g.innerHTML=R.map(([n,l])=>`<div class="rw"><svg viewBox="0 0 24 24" aria-hidden="true">${L}</svg><b>${l}</b><span></span><i></i></div>`).join('');t.closest('.tot').after(g);
+  const g=document.createElement('div');g.className='rewards';g.innerHTML=R.map(([n,l])=>`<div class="rw"><svg viewBox="0 0 24 24" aria-hidden="true">${L}</svg><b>${l.replace('+1','<em class="pl1">+1</em>')}</b><span></span><i></i></div>`).join('');t.closest('.tot').after(g);
   const old=[...box.querySelectorAll('*')].find(e=>!e.children.length&&/Bring a \+1/.test(e.textContent)&&!g.contains(e));if(old){let c=old;while(c.parentElement&&c.parentElement!==box)c=c.parentElement;if(c!==g&&c.parentElement===box)c.style.display='none'}
   const up=()=>{const p=parseInt(t.textContent.replace(/\D/g,''))||0;[...g.children].forEach((el,i)=>{const n=R[i][0],ok=p>=n;el.classList.toggle('got',ok);el.querySelector('svg').innerHTML=ok?U:L;el.querySelector('span').textContent=ok?'Unlocked':(n-p)+' points to go';el.querySelector('i').style.setProperty('--w',Math.min(100,p/n*100)+'%')})};up();setInterval(up,400)})();
 
@@ -215,3 +215,49 @@ addEventListener('hashchange',()=>setTimeout(()=>document.querySelectorAll('.rv'
   addEventListener('resize',drop);addEventListener('hashchange',drop);
   pick=function(){if(!cache||performance.now()-ct>1000)build();if(!cache.length)return stages[0];const mid=scrollY+innerHeight*.5;let best=cache[0].s,bd=1e9;
     for(const c of cache){if(c.t<=mid&&c.b>mid)return c.s;const d=Math.min(Math.abs(c.t-mid),Math.abs(c.b-mid));if(d<bd){bd=d;best=c.s}}return best}})();
+(()=>{const w=document.getElementById('why');if(!w)return;const s=document.createElement('div');s.className='objslot wslot';s.setAttribute('aria-hidden','true');(w.querySelector('.why-in')||w).prepend(s)})();
+/* item 14: a picture on every feature card, made from the product itself (real posters, photos, School screens, the chrome objects, the real buttons) */
+(()=>{const im=(f,c='')=>`<img src="img/${f}.webp" alt="" loading="lazy" class="${c}">`,av=f=>`<img src="img/a-${f}.webp" alt="" loading="lazy" class="fp-av">`,
+  chr=(f,x)=>`<i class="chr fp-chr" data-form="${f}" style="--cx:${x%11};--cy:${Math.floor(x/11)}"></i>`,eye='<span class="fp-ey"><i></i><i></i></span>',
+  qr=s=>{try{return hQr(s)}catch(e){return ''}},sv=d=>`<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`,
+  R={vj:sv('<rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/>'),snd:sv('<rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="14" r="3.5"/><circle cx="12" cy="7.5" r="1.5"/>'),ph:sv('<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>'),lt:sv('<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z"/>')};
+  const P={
+   nights:[`<div class="fp-fan">${im('n00')}${im('n08')}${im('n03')}</div>`,
+     `<div class="fp-chips">${['Bengaluru','Mumbai','Delhi NCR','Goa','Hyderabad'].map((c,i)=>`<span class="${i?'':'on'}">${c}</span>`).join('')}</div>`,
+     `<div class="fp-rows"><div>${av('sandunes')}<span>Sandunes</span><u>↗</u></div><div>${av('kohra')}<span>Kohra</span><u>↗</u></div></div>`,
+     `<div class="fp-mid"><span class="fp-btn solid">${eye}I'm going</span><small>+ 8 others</small></div>`,
+     `<div class="fp-eyes">${Array.from({length:9},(_,i)=>`<span class="fp-ey${i===4?' me':''}"><i></i><i></i></span>`).join('')}</div>`,
+     `<div class="fp-mid"><div class="fp-tix"><b>Fri 13 Nov</b><span>Entry · 1</span></div></div>`,
+     `<div class="fp-mid">${chr('stamp',14)}</div>`,
+     `<div class="fp-fan sq">${im('ep4')}${im('ep2')}</div>`],
+   host:[`<div class="fp-mid"><div class="fp-inv"><small>You're invited</small><b>Rooftop<br>thing</b></div></div>`,
+     `<div class="fp-mid"><div class="fp-seg"><span class="on">Free, RSVP</span><span>Tickets</span></div></div>`,
+     `<div class="fp-rows"><div><span>Aditi</span><em class="on">Going</em></div><div><span>Rohan +1</span><em class="on">Going</em></div><div><span>Zoya</span><em>Maybe</em></div></div>`,
+     `<div class="fp-mid"><div class="fp-qr">${qr('door')}</div><small class="ok">Aditi is in</small></div>`,
+     `<div class="fp-mid">${chr('record',30)}${chr('knob',60)}</div>`,
+     `<div class="fp-chips roles"><span>${R.vj}VJ</span><span>${R.snd}Sound</span><span>${R.ph}Photo</span></div>`,
+     `<div class="fp-mid">${av('nikki-nair')}<span class="fp-btn hold">Send offer</span></div>`,
+     `<div class="fp-mid"><div class="fp-post">${im('n10')}<span>Live on Nights</span></div></div>`],
+   artists:[`<div class="fp-rows src"><div><span>A release</span><u>Source ↗</u></div><div><span>A gig</span><u>Source ↗</u></div><div><span>A press piece</span><u>Source ↗</u></div></div>`,
+     `<div class="fp-mid">${av('sandunes')}<span class="fp-live"><i></i>New release · today</span></div>`,
+     `<div class="fp-mid"><span class="fp-btn">Be a fan</span><span class="fp-btn on">Fan ✓</span></div>`,
+     `<div class="fp-mid"><div class="fp-offer"><b>Sat 5 Dec · Bengaluru</b><span>Club night, 2 hour set</span></div></div>`,
+     `<div class="fp-route"><span>Goa</span><i></i><span>Mumbai</span><i></i><span>Delhi</span></div>`,
+     `<div class="fp-mid"><svg class="fp-tee" viewBox="0 0 64 56" aria-hidden="true"><path d="M20 4l-16 9 6 11 6-3v31h32V21l6 3 6-11-16-9c-2 5-6 8-12 8s-10-3-12-8z"/></svg><small>From their page</small></div>`,
+     `<div class="fp-mid"><span class="fp-btn solid">${eye}Claim your page</span></div>`,
+     `<div class="fp-bars">${[['Bengaluru',92],['Mumbai',70],['Delhi',54],['Goa',30]].map(([c,v])=>`<div><span>${c}</span><i style="width:${v}%"></i></div>`).join('')}</div>`],
+   school:[`<div class="fp-fan sq">${im('s_learn')}${im('s_studio')}${im('s_dj')}</div>`,
+     `<div class="fp-pads">${Array.from({length:16},(_,i)=>`<i class="${[0,4,8,12,6,14].includes(i)?'on':''}"></i>`).join('')}</div>`,
+     `<div class="fp-layers">${['Kick','Hats','Clap','Bass','Lead'].map((l,i)=>`<div><span>${l}</span><i style="width:${30+i*14}%"></i></div>`).join('')}</div>`,
+     `<div class="fp-chips">${['Find the one','Count it in','Four on the floor'].map(c=>`<span>${c}</span>`).join('')}</div>`,
+     `<div class="fp-shot">${im('s_studio')}</div>`,
+     `<div class="fp-shot">${im('s_dj')}</div>`,
+     `<div class="fp-chips files"><span>loop.wav</span><span>drums.mid</span><span>bass.mid</span><span>lead.mid</span></div>`,
+     `<div class="fp-mid"><b class="fp-free">₹0</b></div>`],
+   gear:[`<div class="fp-chips">${['House & techno','Hip-hop','Vinyl','Your own'].map((c,i)=>`<span class="${i?'':'on'}">${c}</span>`).join('')}</div>`,
+     `<div class="fp-bars">${[['100',34],['200',62],['400',96]].map(([c,v])=>`<div><span>${c} people</span><i style="width:${v}%"></i></div>`).join('')}</div>`,
+     `<div class="fp-chips roles"><span>${R.snd}Engineer</span><span>${R.vj}VJ</span><span>${R.ph}Photo</span><span>${R.lt}Lights</span></div>`,
+     `<div class="fp-mid">${chr('record',30)}</div>`]};
+  $$('[data-liner]').forEach(el=>{const k=el.dataset.liner,pics=P[k];if(!pics)return;el.querySelectorAll('ol li').forEach((li,i)=>{if(!pics[i]||li.querySelector('.fp'))return;const d=document.createElement('div');d.className='fp';d.setAttribute('aria-hidden','true');d.innerHTML=pics[i];li.prepend(d);li.classList.add('haspic')})})})();
+(()=>{const c=document.getElementById('invite');if(!c)return;const s=document.createElement('i');s.className='sheen';s.setAttribute('aria-hidden','true');c.appendChild(s);
+  c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--gx',((e.clientX-r.left)/r.width*100).toFixed(0)+'%');c.style.setProperty('--gy',((e.clientY-r.top)/r.height*100).toFixed(0)+'%')})})();

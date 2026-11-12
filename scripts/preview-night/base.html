@@ -440,9 +440,9 @@ footer .fl:hover img{transform:rotate(360deg)}
 .liner ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(24px,5vw,80px);border-top:1px solid var(--line)}
 .liner li{display:grid;grid-template-columns:44px 1fr;gap:4px 10px;align-items:baseline;border-bottom:1px solid var(--line);padding:15px 0;transition:padding .3s var(--ease)}
 .liner li:hover{padding-left:10px}
-.liner li span{font-family:var(--mono);font-size:11px;color:var(--acc)}
-.liner li b{font-size:19px;font-weight:600}
-.liner li p{grid-column:2;margin:0;font-size:15.5px;color:#BDBCB6;line-height:1.4}
+.liner li > span{font-family:var(--mono);font-size:11px;color:var(--acc)}
+.liner li > b{font-size:19px;font-weight:600}
+.liner li > p{grid-column:2;margin:0;font-size:15.5px;color:#BDBCB6;line-height:1.4}
 .ww{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:26px}
 .ww a{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:99px;padding:10px 14px;font-size:15px;transition:.25s}
 .ww a:hover{border-color:var(--ink)}
@@ -674,7 +674,7 @@ a:hover>.bey,button:hover>.bey{--pw:3.2!important}
 <div id="wipe" aria-hidden="true"></div>
 <div id="ldot" aria-hidden="true"></div>
 <div id="paw" aria-hidden="true"><img src="img/logo.png" alt=""></div>
-<div id="knobHit" aria-hidden="true"><span class="knobtip">Drag to filter the track</span></div>
+<div id="knobHit" aria-hidden="true"><span class="knobtip">Drag to change the tempo</span></div>
 
 <header>
   <a class="logo" href="#home" aria-label="Cats Can Dance, back to top"><img src="img/logo.png" alt="">Cats Can Dance</a>
@@ -975,7 +975,7 @@ a:hover>.bey,button:hover>.bey{--pw:3.2!important}
     </aside>
     <div class="demo">
       <div class="panel rv" data-beat>
-        <div class="pbar"><b><i></i>Studio</b><span>Drag the big knob to filter</span></div>
+        <div class="pbar"><b><i></i>Studio</b><span>Drag the big knob to change the tempo</span></div>
         <div class="stu">
           <div id="seq2"></div>
           <div class="transport">
@@ -1370,7 +1370,7 @@ resize();addEventListener('resize',resize);
 const isM=()=>innerWidth<=700;
 
 /* ============ Audio: one track for the whole page ============ */
-const STEPS=16;let BPM=122;const spb=()=>60/BPM/4;
+const STEPS=16;let BPM=122,tOff=0;const spb=()=>60/Math.max(60,BPM+tOff)/4;
 const ROWS=[['kick','Kick'],['hat','Hats'],['clap','Clap'],['bass','Bass'],['lead','Lead']];
 const PAT0={kick:[1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0],hat:[0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,1],clap:[0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0],bass:[0,0,0,1,0,0,1,0,0,0,0,1,0,0,1,0],lead:[1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0]};
 const pat=JSON.parse(JSON.stringify(PAT0)),mute={};
@@ -1433,18 +1433,19 @@ $('#swing').oninput=e=>swing=e.target.value/100;
 $('#shuf').onclick=()=>{const pr={hat:.4,bass:.28,lead:.3};Object.keys(pr).forEach(k=>{for(let i=0;i<STEPS;i++){pat[k][i]=Math.random()<pr[k]?1:0;syncPad(k,i)}});hist.length=0;if(!owned){owned=true;muffled=false;applyMix()}};
 $('#toStudio').onclick=()=>$('#studio').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
 const kh=$('#knobHit');let kd=null;
-const khTip=$('.knobtip',kh);
+const khTip=$('.knobtip',kh);let khT=0;
+function setTempo(v){v=Math.round(clamp(v,100,140));const t=$('#tempo');if(+t.value!==v){t.value=v;t.oninput({target:t})}khTip.textContent=v+' BPM';clearTimeout(khT);khT=setTimeout(()=>{khTip.textContent='Drag to change the tempo'},1400)}
 function scrub(dir,v){const t=actx.currentTime+.004;playStep(step,t);
   const src=actx.createBufferSource(),fl=actx.createBiquadFilter(),g=actx.createGain(),f=clamp(900+v*14000,900,5200);src.buffer=E.nb;fl.type='bandpass';fl.Q.value=2.4;
   fl.frequency.setValueAtTime(dir>0?f*.6:f,t);fl.frequency.exponentialRampToValueAtTime(dir>0?f:f*.6,t+.07);
   g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(muffled?.07:.2,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+.085);
   src.connect(fl);fl.connect(g);g.connect(an);src.start(t);src.stop(t+.12)}
 function unscratch(){if(kd&&kd.scr&&playing&&!timer){nextT=actx.currentTime+.05;timer=setInterval(sched,25)}kd=null}
-kh.addEventListener('pointerdown',e=>{kd={y:e.clientY,x:e.clientX,v:knob,s:spin,a:Math.atan2(e.clientY-lastC.y,e.clientX-lastC.x),acc:0,scr:false};
+kh.addEventListener('pointerdown',e=>{kd={y:e.clientY,x:e.clientX,v:knob,b:BPM,s:spin,a:Math.atan2(e.clientY-lastC.y,e.clientX-lastC.x),acc:0,scr:false};
   if((shape===3||shape===6)&&playing&&E){kd.scr=true;clearInterval(timer);timer=null;evq.length=0}
   kh.setPointerCapture(e.pointerId);e.preventDefault()});
 kh.addEventListener('pointermove',e=>{if(!kd)return;
-  if(shape===4){setKnob(kd.v+((kd.y-e.clientY)+(e.clientX-kd.x))/220);return}
+  if(shape===4){setTempo(kd.b+((kd.y-e.clientY)+(e.clientX-kd.x))/220*40);return}
   if(shape!==3&&shape!==6){spin=kd.s+(e.clientX-kd.x)*.014+(e.clientY-kd.y)*.006;return}
   const a=Math.atan2(e.clientY-lastC.y,e.clientX-lastC.x);let da=a-kd.a;if(da>Math.PI)da-=2*Math.PI;if(da<-Math.PI)da+=2*Math.PI;kd.a=a;spin+=da;
   if(kd.scr){kd.acc+=da;const q=Math.PI/8,v=Math.abs(da);let n=0;
@@ -1771,8 +1772,8 @@ function frame(now){
   const kc=1-Math.pow(.02,rdt);for(let j=0;j<3;j++){cur.A[j]+=(A[j]-cur.A[j])*kc;cur.B[j]+=(B[j]-cur.B[j])*kc}
   /* spin */
   const sd=scrollY-lastScroll;lastScroll=scrollY;
-  {let kt=0;if(shape===4&&!kd&&active.dataset.k==='school'){const r=active.getBoundingClientRect();kt=-knob*Math.sin(Math.PI*clamp((H*.5-r.top)/Math.max(1,r.height),0,1))}kOff+=(kt-kOff)*(1-Math.pow(.0005,rdt))}const kEff=clamp(knob+kOff,0,1);
-  if(E&&!muffled&&Math.abs(kOff)>.003)E.filt.frequency.setTargetAtTime(200*Math.pow(2,kEff*6.6),actx.currentTime,.03);
+  /* the School dial is the tempo: it dips as you scroll past and comes back, and the track slows with it */
+  {let kt=0;const kv=clamp((BPM-100)/40,0,1);if(shape===4&&!kd&&active.dataset.k==='school'){const r=active.getBoundingClientRect();kt=-kv*Math.sin(Math.PI*clamp((H*.5-r.top)/Math.max(1,r.height),0,1))}kOff+=(kt-kOff)*(1-Math.pow(.0005,rdt));tOff=Math.abs(kOff)>.003?kOff*40:0}const kEff=clamp(clamp((BPM-100)/40,0,1)+kOff,0,1);
   clk.t=Math.min(1,clk.t+rdt/1.1);lean.x*=Math.pow(.008,rdt);lean.y*=Math.pow(.008,rdt);
   const sp=[playing?.9:.35,.7,.6,playing?3.46:.9,0,0,playing?.5:.16][shape];
   spinKick*=Math.pow(.02,dt);if(!(kd&&shape!==4))spin+=dt*(sp*(napping?.08:1)+spinKick)*(reduce?.3:1)+sd*.004;
@@ -1790,7 +1791,7 @@ function frame(now){
   drawRope(ropeA,css(cur.A),css(cur.B.map(v=>v*.9+.1)),Math.max(3.5,rpx*.034));
   /* knob hit area */
   const showK=[0,1,3,4,6].includes(shape)&&flipT>=1&&rpx>40;
-  if(showK){kh.style.display='block';kh.classList.toggle('small',rpx<150);{const tk=shape+'|'+playing;if(kh._t!==tk){kh._t=tk;khTip.textContent=shape===4?'Drag to filter the track':(shape===3||shape===6)&&playing?'Grab it. Scratch the track.':''}}kh.style.left=(cx-rpx)+'px';kh.style.top=(cy-rpx)+'px';kh.style.width=kh.style.height=(rpx*2)+'px'}else if(kh.style.display!=='none'){kh.style.display='none'}
+  if(showK){kh.style.display='block';kh.classList.toggle('small',rpx<150);{const tk=shape+'|'+playing;if(kh._t!==tk){kh._t=tk;khTip.textContent=shape===4?'Drag to change the tempo':(shape===3||shape===6)&&playing?'Grab it. Scratch the track.':''}}kh.style.left=(cx-rpx)+'px';kh.style.top=(cy-rpx)+'px';kh.style.width=kh.style.height=(rpx*2)+'px'}else if(kh.style.display!=='none'){kh.style.display='none'}
   if(tour&&tour.el&&tour.el.isConnected){const r=tour.el.getBoundingClientRect();pawT.x=r.left+r.width*.6;pawT.y=r.top+r.height*.6}
   laserTick(rdt);eyeTick(rdt);
   const kp=1-Math.pow(.0006,rdt);pawP.x+=(pawT.x-pawP.x)*kp;pawP.y+=(pawT.y-pawP.y)*kp;paw.style.transform=`translate(${pawP.x.toFixed(1)}px,${pawP.y.toFixed(1)}px)`;
