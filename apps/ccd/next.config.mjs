@@ -1,6 +1,13 @@
-// CCD.SCHOOL lives in its own app (repo: paramminhas5/Ableton-Final-Next).
-// Switch this to https://learn.catscandance.com once that DNS record is live.
-const SCHOOL_URL = process.env.NEXT_PUBLIC_SCHOOL_URL || "https://ableton-final-next-ccd-school.vercel.app";
+import { createRequire } from "node:module";
+import { dirname } from "node:path";
+const require = createRequire(import.meta.url);
+// Cats Can Dance, apps/ccd in the platform monorepo (docs/platform-split.md).
+// The other products live at their own URLs. Each one reads an env override so Vercel
+// previews can point at previews, and falls back to the production URL. The same values
+// live in packages/brand (productUrl); this file cannot import TypeScript, so they are repeated here.
+const ARTISTS_URL = (process.env.NEXT_PUBLIC_ARTISTS_URL || "https://artists.catscandance.com").replace(/\/$/, "");
+const GATE_URL = (process.env.NEXT_PUBLIC_GATE_URL || "https://gate.catscandance.com").replace(/\/$/, "");
+const SCHOOL_URL = (process.env.NEXT_PUBLIC_SCHOOL_URL || "https://school.catscandance.com").replace(/\/$/, "");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,6 +20,8 @@ const nextConfig = {
   reactStrictMode: true,
   // Enable gzip/brotli compression and reduce JS payload
   compress: true,
+  // Workspace packages ship TypeScript source; Next compiles them with the app.
+  transpilePackages: ["@ccd/brand", "@ccd/banner", "@ccd/db", "@ccd/auth", "@ccd/ui", "@ccd/mail"],
   // Tree-shake barrel imports from large packages (experimental in Next 14)
   experimental: {
     optimizePackageImports: [
@@ -40,7 +49,7 @@ const nextConfig = {
       { protocol: "https", hostname: "img.youtube.com" },
       { protocol: "https", hostname: "catscandance.com" },
       { protocol: "https", hostname: "res.cloudinary.com" },
-      // Behold.so CDN — Instagram feed images
+      // Behold.so CDN: Instagram feed images
       { protocol: "https", hostname: "pictures.behold.so" },
       { protocol: "https", hostname: "**.behold.so" },
       // Catch-all for any other HTTPS image sources
@@ -50,10 +59,16 @@ const nextConfig = {
   // Produce smaller output by enabling SWC minification (default in Next 14+)
   swcMinify: true,
   webpack(config) {
+    // Shared packages (@ccd/ui) are compiled here; make them use this app's React 18, not the React 19 the other apps use.
+    // Scoped to files inside packages/ui so the App Router (/ops), which runs Next's own React, is untouched.
+    config.module.rules.push({
+      test: /[\\/]packages[\\/]ui[\\/]/,
+      resolve: { alias: { react: dirname(require.resolve("react/package.json")), "react-dom": dirname(require.resolve("react-dom/package.json")) } },
+    });
     return config;
   },
   // Suite names serve the existing page files (no duplicate code).
-  // Plain names (3 Nov 2026): /nights, /whats-on, /artists, /tour, /shop, /listen, /adopt.
+  // Plain names (3 Nov 2026): /nights, /whats-on, /shop, /listen, /adopt.
   // Nicknames (Gig guide, Strays, Crew, Episodes, Nine Lives) live in page copy, not URLs.
   async rewrites() {
     return [
@@ -65,15 +80,15 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Gear is booked inside Host (board F38-Gear): reachable, not front and centre.
+      { source: "/gear", destination: `${GATE_URL}/gear`, permanent: false },
+      // Old names for pages that still live here.
       { source: "/events", destination: "/nights", permanent: true },
       { source: "/events/:slug", destination: "/nights/:slug", permanent: true },
       { source: "/episodes", destination: "/nights", permanent: true },
       { source: "/episodes/:slug", destination: "/nights/:slug", permanent: true },
       { source: "/prowl", destination: "/whats-on", permanent: true },
       { source: "/discover", destination: "/whats-on", permanent: true },
-      { source: "/litter", destination: "/artists", permanent: true },
-      { source: "/litter/:slug", destination: "/artists/:slug", permanent: true },
-      { source: "/litter/:slug/epk", destination: "/artists/:slug/epk", permanent: true },
       { source: "/scratch", destination: "/shop", permanent: true },
       { source: "/catwalk", destination: "/listen", permanent: true },
       { source: "/playlists", destination: "/listen", permanent: true },
@@ -83,6 +98,32 @@ const nextConfig = {
       { source: "/blog/:slug", destination: "/journal/:slug", permanent: true },
       { source: "/ccdxsocial", destination: "/playbook", permanent: true },
       { source: "/ccdxsocial/:path*", destination: "/playbook", permanent: true },
+
+      // Artists (working name Headliner): pages, booking desk, On tour, claims. Short URLs there: /<slug>.
+      { source: "/artists", destination: `${ARTISTS_URL}/artists`, permanent: true },
+      { source: "/artists/:slug/epk", destination: `${ARTISTS_URL}/:slug/epk`, permanent: true },
+      { source: "/litter", destination: `${ARTISTS_URL}/artists`, permanent: true },
+      { source: "/litter/:slug", destination: `${ARTISTS_URL}/:slug`, permanent: true },
+      { source: "/litter/:slug/epk", destination: `${ARTISTS_URL}/:slug/epk`, permanent: true },
+      { source: "/talent", destination: `${ARTISTS_URL}/artists`, permanent: true },
+      { source: "/talent/:slug", destination: `${ARTISTS_URL}/:slug`, permanent: true },
+      { source: "/tour", destination: `${ARTISTS_URL}/tour`, permanent: true },
+      { source: "/book", destination: `${ARTISTS_URL}/artists`, permanent: true },
+      { source: "/bookings", destination: `${ARTISTS_URL}/bookings`, permanent: true },
+      { source: "/bookings/:path*", destination: `${ARTISTS_URL}/bookings/:path*`, permanent: true },
+      { source: "/club/artist", destination: `${ARTISTS_URL}/bookings`, permanent: true },
+      { source: "/claim/:token", destination: `${ARTISTS_URL}/claim/:token`, permanent: true },
+
+      // Gate: the host side. Promoter dashboard, the door, event submission.
+      { source: "/door", destination: `${GATE_URL}/door`, permanent: true },
+      { source: "/door/:path*", destination: `${GATE_URL}/door/:path*`, permanent: true },
+      { source: "/gate", destination: `${GATE_URL}/`, permanent: true },
+      { source: "/promote", destination: `${GATE_URL}/promote`, permanent: true },
+      { source: "/promote/:path*", destination: `${GATE_URL}/promote/:path*`, permanent: true },
+      { source: "/submit-event", destination: `${GATE_URL}/submit`, permanent: true },
+      { source: "/submit-event/:path*", destination: `${GATE_URL}/submit`, permanent: true },
+
+      // School (working name Ustad) has its own app and repo.
       { source: "/school", destination: SCHOOL_URL, permanent: false },
       { source: "/school/:path*", destination: `${SCHOOL_URL}/:path*`, permanent: false },
     ];

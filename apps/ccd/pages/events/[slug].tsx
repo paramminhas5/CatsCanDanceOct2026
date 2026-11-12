@@ -13,6 +13,7 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
 import { getStaticEventRow, EVENT_ROWS } from "@/content/events";
 import { createClient } from "@supabase/supabase-js";
+import { productLink } from "@ccd/brand";
 import { getSupabaseAdmin } from "@/lib/supabase-server";
 import type { EventRow } from "@/types/events";
 import EventDetailPage from "@/pages/EventDetail";
@@ -52,6 +53,10 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
         .select("*")
         .eq("slug", slug)
         .maybeSingle();
+      // A party made on Host (migration 063) is not a CCD night: send people to its invite on Host.
+      if (data && (data as any).host_id) {
+        return { redirect: { destination: productLink("gate", `/i/${slug}`), permanent: false }, revalidate: 60 };
+      }
       if (data && (data as any).published !== false) event = data as EventRow;
       // A promoter's night: fetch their look and whether CCD tickets are on, and render it in their colours.
       if (data && (data as any).published !== false && (data as any).promoter_id) {

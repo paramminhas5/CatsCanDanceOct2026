@@ -1,11 +1,12 @@
 /**
  * What we are building: one line on the platform, then a tile per product.
- * Each tile jumps to its section below. Cats hop when you hover or scroll.
+ * Nights jumps to its section below; Artists and School open those products. Cats hop when you hover or scroll.
  */
 import catCap from "@/assets/cat-cap.png";
 import catHandstand from "@/assets/cat-handstand.png";
 import catHeadphones from "@/assets/cat-headphones.png";
 import { imgUrl } from "@/lib/img";
+import { LINKS, productLink, productUrl } from "@ccd/brand";
 
 type Props = { weekCount: number; artistCount: number };
 
@@ -57,12 +58,12 @@ export default function Overview({ weekCount, artistCount }: Props) {
             live={`${weekCount} nights this week`} color="bg-electric-blue" dot="bg-electric-blue" cat={imgUrl(catCap)}
           />
           <Tile
-            href="#artists-product" n="02" name="Artists" delay="ccd-d2"
+            href={productLink("artists", LINKS.artists.index)} n="02" name="Artists" delay="ccd-d2"
             line="South Asian electronic artists. Listen, read up, send a booking request."
             live={`${artistCount} on the roster`} color="bg-acid-yellow" dot="bg-acid-yellow border-2 border-ink" cat={imgUrl(catHandstand)}
           />
           <Tile
-            href="#school" n="03" name="School" delay="ccd-d3"
+            href={productUrl("school")} n="03" name="School" delay="ccd-d3"
             line="Learn to produce and DJ on a real instrument. Free for now."
             live="In your browser" color="bg-magenta" dot="bg-magenta" cat={imgUrl(catHeadphones)}
           />

@@ -13,8 +13,14 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ScrollToTop from "@/components/ScrollToTop";
 import "@/index.css";
 import "@/pages/ccd.css";
+// The suite look (@ccd/ui): only k- prefixed classes and --k- variables, so live-look pages are untouched.
+import "@ccd/ui/kit.css";
+import "@ccd/ui/board.css";
+import "@ccd/ui/w35.css";
 import React from "react";
 import { logOpenFromRef } from "@/lib/share";
+import { sessionShouldEnd, forgetChoice } from "@ccd/auth/signin";
+import { supabase } from "@/lib/supabase";
 
 function makeQueryClient() {
   return new QueryClient({
@@ -80,6 +86,8 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   // A visit from a shared card counts as an open for that card (src/lib/share.ts).
   useEffect(() => { logOpenFromRef(); }, []);
+  // "Remember me" off: end the session once the browser has been closed (@ccd/auth signin.ts).
+  useEffect(() => { if (sessionShouldEnd()) { forgetChoice(); void supabase.auth.signOut(); } }, []);
   const queryClient = getQueryClient();
 
   return (

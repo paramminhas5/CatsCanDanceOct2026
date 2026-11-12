@@ -8,14 +8,16 @@ import DiscoHint from "@/components/DiscoHint";
 import ccdLogo from "@/assets/ccd-logo.png";
 import { imgUrl } from "@/lib/img";
 import { useMe } from "@/lib/plans";
+import { LINKS, productLink, productUrl } from "@ccd/brand";
 
 // Plain names lead; nicknames (hints) show in the mobile menu and on the pages themselves.
-const primaryLinks = [
+// Artists, On tour and School are other products in the suite (@ccd/brand), so they are plain links.
+const primaryLinks: { to: string; label: string; hint: string; external?: boolean }[] = [
   { to: "/nights",   label: "Nights",    hint: "Our Episodes" },
   { to: "/whats-on", label: "What's on", hint: "Gig guide" },
-  { to: "/artists",  label: "Artists",   hint: "Book an artist" },
-  { to: "/tour",     label: "On tour",   hint: "Strays" },
-  { to: "/school",   label: "School",    hint: "CCD.SCHOOL" },
+  { to: productLink("artists", LINKS.artists.index), label: "Artists", hint: "Book an artist", external: true },
+  { to: productLink("artists", LINKS.artists.tour),  label: "On tour", hint: "Strays", external: true },
+  { to: productUrl("school"), label: "School", hint: "Learn by making", external: true },
 ];
 
 const partnersLinks = [
@@ -198,17 +200,23 @@ const Nav = ({ forceDark = false }: { forceDark?: boolean }) => {
         <ul className="hidden lg:flex items-baseline gap-4">
           {primaryLinks.map((l) => (
             <li key={l.to}>
-              <RouterNavLink
-                to={l.to}
-                title={l.hint}
-                className={({ isActive }) =>
-                  `font-display text-base hover:${activeColor} transition-colors ${
-                    isActive ? activeColor : baseColor
-                  }`
-                }
-              >
-                {l.label}
-              </RouterNavLink>
+              {l.external ? (
+                <a href={l.to} title={l.hint} className={`font-display text-base hover:${activeColor} transition-colors ${baseColor}`}>
+                  {l.label}
+                </a>
+              ) : (
+                <RouterNavLink
+                  to={l.to}
+                  title={l.hint}
+                  className={({ isActive }) =>
+                    `font-display text-base hover:${activeColor} transition-colors ${
+                      isActive ? activeColor : baseColor
+                    }`
+                  }
+                >
+                  {l.label}
+                </RouterNavLink>
+              )}
             </li>
           ))}
         </ul>
@@ -242,7 +250,11 @@ const Nav = ({ forceDark = false }: { forceDark?: boolean }) => {
         <div className="lg:hidden bg-cream border-t-4 border-ink max-h-[85vh] overflow-y-auto">
           <div className="container py-4 space-y-1">
             {/* ── Primary navigation ── */}
-            {primaryLinks.map((l) => (
+            {primaryLinks.map((l) => l.external ? (
+              <a key={l.to} href={l.to} className="block font-display text-xl text-ink py-2 border-b border-ink/10">
+                {l.label} <span className="font-medium text-base text-ink/50">{l.hint}</span>
+              </a>
+            ) : (
               <RouterNavLink
                 key={l.to}
                 to={l.to}

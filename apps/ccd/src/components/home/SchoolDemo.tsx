@@ -8,7 +8,7 @@ import { track } from "@/lib/track";
 import { useEffect, useRef, useState } from "react";
 import catHpDance from "@/assets/cat-headphones-dance.png";
 import { imgUrl } from "@/lib/img";
-import { SCHOOL_URL } from "@/lib/ccd-db";
+import { productUrl } from "@ccd/brand";
 
 type RowKey = "kick" | "clap" | "hat";
 const SCREENS = [
@@ -176,7 +176,7 @@ export default function SchoolDemo() {
             />
           </div>
           <div className="flex flex-wrap items-center gap-5 mt-9">
-            <a href={SCHOOL_URL} onClick={() => track("open_school")} className="bg-magenta text-cream font-display px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">Open the school</a>
+            <a href={productUrl("school")} onClick={() => track("open_school")} className="bg-magenta text-cream font-display px-5 py-3 border-4 border-ink chunk-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">Open the school</a>
             <span className="text-sm font-semibold text-ink/70">Free for now · works in your browser</span>
           </div>
         </div>

@@ -1,10 +1,10 @@
 import type { GetStaticProps } from "next";
-import Index from "@/pages/Index";
+import Home4 from "@/suite/home4/Home4";
 import { getHomeData, type HomeData } from "@/lib/home";
 
-export default Index;
+// The home v4 (round 3, 10 Nov 2026): rotating colour stage, the week ring, visual feature grids. Home3 and Home2 stay for parts they share.
+export default Home4;
 
-// The home ships with real data in the HTML: next Episode, this week's nights, the roster, the tour.
 export const getStaticProps: GetStaticProps<HomeData> = async () => {
   const data = await getHomeData();
   return { props: data, revalidate: 600 };

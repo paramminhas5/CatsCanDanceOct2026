@@ -125,9 +125,20 @@ export async function applyPending(): Promise<string | null> {
   return r.ok ? p.key : null;
 }
 
+/** Emails a 6-digit code (and a link, for the same phone). Type the code with SignInCode. */
 export async function sendSignInLink(email: string, next: string): Promise<{ ok: boolean; error?: string }> {
   const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: `${window.location.origin}${next}` } });
-  return error ? { ok: false, error: "Could not send the link. Try again in a minute." } : { ok: true };
+  return error ? { ok: false, error: "Could not send the code. Try again in a minute." } : { ok: true };
+}
+
+/** Signs in with the code from the email. No link, no switching apps. */
+export async function verifySignInCode(email: string, code: string): Promise<{ ok: boolean; error?: string }> {
+  const token = code.replace(/\D/g, "");
+  if (token.length < 6) return { ok: false, error: "The code is 6 digits." };
+  const { error } = await supabase.auth.verifyOtp({ email: email.trim().toLowerCase(), token, type: "email" });
+  if (error) return { ok: false, error: /expired/i.test(error.message) ? "That code has expired. Send a new one." : "That code did not work. Check it and try again." };
+  await refreshMe();
+  return { ok: true };
 }
 
 /** Session, member and my plans, shared by every Going button on a page. */

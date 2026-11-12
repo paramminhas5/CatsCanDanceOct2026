@@ -8,7 +8,8 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { rpc } from "@/lib/ccd-db";
-import { accentOf, nightPath, type Accent } from "@/lib/promoters";
+import { accentOf, nightPath, type Accent } from "@/lib/promoter-look";
+import { productLink } from "@ccd/brand";
 import { todayIST } from "@/lib/nights";
 
 type P = { id: string; slug: string; name: string; city: string | null; genres: string[] | null; blurb: string | null; tagline: string | null;
@@ -98,7 +99,7 @@ export default function PromoterPage({ p, nights, scene }: Props) {
             <ul className="mt-4 grid gap-4 grid-cols-2 md:grid-cols-4">{past.slice(0, 12).map(card)}</ul>
           </div>
         )}
-        <p className="text-sm text-ink/70 border-t-4 border-ink pt-4">Promoters run their own nights on CCD. <Link href="/promote" className="underline font-bold">Run yours</Link>.</p>
+        <p className="text-sm text-ink/70 border-t-4 border-ink pt-4">Promoters run their nights with Gate and they show here. <a href={productLink("gate", "/promote")} className="underline font-bold">Run yours</a>.</p>
       </section>
       <Footer />
     </main>

@@ -6,6 +6,7 @@ import PageHero from "@/components/PageHero";
 import SEO from "@/components/SEO";
 import { supabase } from "@/lib/supabase";
 import { useMember, memberRpc } from "@/lib/member";
+import AuthBox from "@/components/AuthBox";
 
 const CITIES = ["Bengaluru", "Mumbai", "Delhi NCR", "Goa", "Pune", "Hyderabad", "Chennai", "Kolkata"];
 const GENRES = ["Techno", "House", "Disco", "Drum & Bass", "Jungle", "Garage", "Ambient", "Hip-Hop", "Experimental"];
@@ -29,7 +30,7 @@ export default function Join() {
     e.preventDefault();
     setMsg("");
     const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: `${window.location.origin}/join` } });
-    if (error) setMsg("Could not send the link. Try again in a minute."); else setSent(true);
+    if (error) setMsg("Could not send the code. Try again in a minute."); else setSent(true);
   }
 
   const [pw, setPw] = useState("");
@@ -92,22 +93,8 @@ export default function Join() {
               <button className="font-display uppercase px-5 py-3 border-4 border-ink bg-acid-yellow text-ink">Join</button>
               {msg && <p className="text-sm text-red-600">{msg}</p>}
             </form>
-          ) : sent ? (
-            <p className="border-4 border-ink p-6 font-display uppercase">Check your email for the sign in link.</p>
           ) : (
-            <form onSubmit={sendLink} className="grid gap-4 border-4 border-ink p-6 bg-cream chunk-shadow">
-              <input className={inp} type="email" required placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <button className="font-display uppercase px-5 py-3 border-4 border-ink bg-acid-yellow text-ink">Email me a sign in link</button>
-              <p className="text-xs text-ink/60">No password. We only use your email to sign you in and to tell you about nights you asked for.</p>
-              {msg && <p className="text-sm text-red-600">{msg}</p>}
-              <details className="text-sm">
-                <summary className="cursor-pointer font-display uppercase">CCD team sign in</summary>
-                <div className="grid gap-2 mt-3">
-                  <input className={inp} type="password" placeholder="Password (team accounts only)" value={pw} onChange={(e) => setPw(e.target.value)} />
-                  <button type="button" onClick={signInPw} className="font-display uppercase px-4 py-2 border-4 border-ink bg-cream text-ink">Sign in with password</button>
-                </div>
-              </details>
-            </form>
+            <div className="border-4 border-ink p-6 bg-cream chunk-shadow"><AuthBox next="/join" onDone={() => reload()} /></div>
           )}
         </section>
         <Footer />

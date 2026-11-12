@@ -1,0 +1,11 @@
+{
+  "name": "@ccd/mail",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Every Cats Can Dance email: one layout (dark header in the product colour, the white cat, one button, the four apps) and a template per email. Plain strings, so every app renders them the same.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": { ".": "./src/index.ts" },
+  "files": ["src"]
+}

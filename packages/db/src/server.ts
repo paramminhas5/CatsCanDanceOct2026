@@ -1,6 +1,5 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { createClient } from "@supabase/supabase-js";
-import type { Database } from "./types";
 import { supabaseEnv } from "./env";
 
 type CookieStore = {
@@ -17,7 +16,7 @@ type CookieStore = {
  */
 export function supabaseServer(cookieStore: CookieStore) {
   const { url, key } = supabaseEnv();
-  return createServerClient<Database>(url, key, {
+  return createServerClient(url, key, {
     cookies: {
       getAll() {
         return cookieStore.getAll();
@@ -39,7 +38,7 @@ export function supabaseServer(cookieStore: CookieStore) {
  */
 export function supabaseAnon() {
   const { url, key } = supabaseEnv();
-  return createClient<Database>(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+  return createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
 }
 
 /**

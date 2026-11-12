@@ -2,17 +2,17 @@
  * Artists on the home: six featured artists with the most complete sourced pages.
  * Moves on its own every few seconds and steps through each artist's eras; swipe,
  * click a thumbnail, an era or a connection to take over. Play streams the real
- * 30 second Deezer preview through /api/deezer/track. The DJ cat grooves while it plays
+ * 30 second Deezer preview through /api/preview. The DJ cat grooves while it plays
  * and the cat on the thumbnails walks to whoever is on.
  */
 import { useOnScreen } from "@/lib/useOnScreen";
 import { track } from "@/lib/track";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import Link from "next/link";
 import heroCenter from "@/assets/hero-center.svg";
 import catCap from "@/assets/cat-cap.png";
 import { imgUrl } from "@/lib/img";
 import type { FeaturedArtist } from "@/lib/home";
+import { LINKS, productLink } from "@ccd/brand";
 
 type Props = { artists: FeaturedArtist[]; count: number };
 
@@ -84,7 +84,7 @@ export default function ArtistsCarousel({ artists, count }: Props) {
     const id = a.latest.find((r) => r.deezer)?.deezer;
     if (!id) return;
     try {
-      const r = await fetch(`/api/deezer/track/${id}`);
+      const r = await fetch(`/api/preview/${id}`);
       if (!r.ok) return;
       const j = await r.json();
       const el = audio.current ?? new Audio();
@@ -209,8 +209,8 @@ export default function ArtistsCarousel({ artists, count }: Props) {
                         {isPlaying ? "■ Stop" : "▶ Play"}
                       </button>
                     )}
-                    <Link href={`/artists/${a.slug}#book`} tabIndex={on ? 0 : -1} className="bg-magenta text-cream font-display text-sm px-4 py-2.5 border-4 border-ink shadow-[4px_4px_0_0_hsl(var(--ink))] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">Book</Link>
-                    <Link href={`/artists/${a.slug}`} tabIndex={on ? 0 : -1} className="inline-block py-1 font-bold underline underline-offset-4 decoration-2 text-sm">Full page →</Link>
+                    <a href={productLink("artists", LINKS.artists.book(a.slug))} tabIndex={on ? 0 : -1} className="bg-magenta text-cream font-display text-sm px-4 py-2.5 border-4 border-ink shadow-[4px_4px_0_0_hsl(var(--ink))] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-transform">Book</a>
+                    <a href={productLink("artists", LINKS.artists.artist(a.slug))} tabIndex={on ? 0 : -1} className="inline-block py-1 font-bold underline underline-offset-4 decoration-2 text-sm">Full page →</a>
                     {a.conn && (
                       <button type="button" tabIndex={on ? 0 : -1} onClick={() => go(artists.findIndex((x) => x.slug === a.conn!.to))} className="md:ml-auto border-2 border-cream/45 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider hover:border-cream max-w-full truncate">
                         ↔ {a.conn.label}
@@ -249,8 +249,8 @@ export default function ArtistsCarousel({ artists, count }: Props) {
         <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
           <span className="text-sm text-cream/60 max-w-[32ch] md:text-right">Touring artists post their dates under On tour, so you can book them while they're in your city.</span>
           <div className="flex gap-3">
-            <Link href="/tour" className="border-4 border-cream text-cream font-display px-4 py-3 hover:bg-cream hover:text-ink transition-colors">On tour</Link>
-            <Link href="/artists" className="bg-acid-yellow text-ink font-display px-5 py-3 border-4 border-ink shadow-[5px_5px_0_0_hsl(var(--cream))] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">All {count} artists →</Link>
+            <a href={productLink("artists", LINKS.artists.tour)} className="border-4 border-cream text-cream font-display px-4 py-3 hover:bg-cream hover:text-ink transition-colors">On tour</a>
+            <a href={productLink("artists", LINKS.artists.index)} className="bg-acid-yellow text-ink font-display px-5 py-3 border-4 border-ink shadow-[5px_5px_0_0_hsl(var(--cream))] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform">All {count} artists →</a>
           </div>
         </div>
       </div>

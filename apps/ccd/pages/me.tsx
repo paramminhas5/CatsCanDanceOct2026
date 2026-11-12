@@ -3,7 +3,8 @@
  *   Signed out      email sign-in link (ticket buyers get one after checkout)
  *   Not joined yet  first name and city, one step
  *   Member          Tonight (crew, meet point, set times, I'm in, ticket), coming up (crew status, ticket proof),
- *                   past (rate the night, go again with your crew)
+ *                   past (rate the night, go again with your crew), then reminders, bookings (Artists), follows,
+ *                   School, the door and your nights (both in Gate). Cross-product links come from @ccd/brand.
  */
 import { track } from "@/lib/track";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -11,6 +12,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import AuthBox from "@/components/AuthBox";
 import SEO from "@/components/SEO";
 import { supabase } from "@/lib/supabase";
 import { memberRpc, useMember } from "@/lib/member";
@@ -18,15 +20,11 @@ import { memberTickets, type PassTicket } from "@/lib/booking";
 import { directionsUrl, todayIST } from "@/lib/nights";
 import {
   applyPending, type CrewCard, isScene, joinCrew, leaveCrew, loadCrewCard, loadMyPlans, type Mate, type MyPlan,
-  refreshMe, sendSignInLink, setPlan,
+  refreshMe, setPlan,
 } from "@/lib/plans";
-import { loadMyThreads, type ThreadRow } from "@/lib/booking-desk";
-import { StagePill } from "@/components/booking/StageTrack";
-import { dayShort, inrShort } from "@/lib/desk";
-import { artistPath, threadPath } from "@/lib/routes";
-import { SCHOOL_URL } from "@/lib/ccd-db";
-import { fetchNights, type NightRow } from "@/lib/door";
-import { accentOf, myPromoters, type MyPromoter } from "@/lib/promoters";
+import { LINKS, productLink, productUrl } from "@ccd/brand";
+import { loadMyBookings, type BookingRow } from "@/lib/account-bookings";
+import { accentOf } from "@/lib/promoter-look";
 import TicketPass from "@/components/tickets/TicketPass";
 import { shareCard } from "@/lib/share";
 import { disablePush, enablePush, pushSupported, VAPID } from "@/lib/push";
@@ -68,24 +66,11 @@ export default function Me() {
 
 function SignIn() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
-  const [err, setErr] = useState("");
-  useEffect(() => { try { const b = JSON.parse(localStorage.getItem("ccd:buyer") ?? "null"); if (b?.email) setEmail(b.email); } catch {} }, []);
-  if (sent) return <Box title="Check your email."><p>Open the link on this device to see your nights.</p></Box>;
+  const n = typeof router.query.n === "string" ? `?n=${encodeURIComponent(router.query.n)}` : "";
   return (
     <Box title="Sign in">
-      <form className="grid gap-3" onSubmit={async (e) => {
-        e.preventDefault(); setErr("");
-        const n = typeof router.query.n === "string" ? `?n=${encodeURIComponent(router.query.n)}` : "";
-        const r = await sendSignInLink(email, `/me${n}`);
-        if (r.ok) setSent(true); else setErr(r.error ?? "");
-      }}>
-        <input className={inp} type="email" required placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" />
-        <button className={`${btn} bg-acid-yellow`}>Email me a sign in link</button>
-        <p className="text-xs text-ink/65">Bought a ticket? Use the same email and your tickets show up here.</p>
-        {err && <p className="text-sm text-magenta font-bold">{err}</p>}
-      </form>
+      <AuthBox next={`/me${n}`} onDone={() => window.location.assign(`/me${n}`)} />
+      <p className="mt-3 text-xs text-ink/65">Bought a ticket? Your account is made. Tap Forgot it with the same email to set a password.</p>
     </Box>
   );
 }
@@ -274,23 +259,23 @@ function RemindersBlock() {
   );
 }
 
-/** Booking requests you sent and, if you own an artist page, the ones sent to you. Same data as /bookings. */
+/** Booking requests you sent and, if you own an artist page, the ones sent to you. The desk itself is in the Artists product. */
 function BookingsBlock() {
-  const [rows, setRows] = useState<ThreadRow[] | null>(null);
-  useEffect(() => { loadMyThreads(true).then((r) => setRows(r.rows)).catch(() => setRows([])); }, []);
+  const [rows, setRows] = useState<BookingRow[] | null>(null);
+  useEffect(() => { loadMyBookings().then(setRows).catch(() => setRows([])); }, []);
   const open = (rows ?? []).filter((r) => !["declined", "cancelled"].includes(r.stage));
   const yourMove = open.filter((r) => (r.role === "artist" && ["sent", "seen"].includes(r.stage)) || (r.role === "requester" && ["interested", "countered"].includes(r.stage) && r.last_actor === "artist")).length;
   return (
     <section aria-labelledby="bookings" className="grid gap-4">
       <div className="flex items-end justify-between gap-3">
         <h2 id="bookings" className="font-display text-3xl md:text-4xl leading-none">BOOKINGS</h2>
-        {rows && rows.length > 0 && <Link href="/bookings" className="text-sm font-bold underline underline-offset-4">All requests →</Link>}
+        {rows && rows.length > 0 && <a href={productLink("artists", LINKS.artists.bookings)} className="text-sm font-bold underline underline-offset-4">All requests →</a>}
       </div>
       {rows === null ? <div className="h-20 border-4 border-ink/20 bg-ink/5" aria-busy="true" />
         : rows.length === 0 ? (
           <div className="border-4 border-ink bg-cream p-5 grid gap-3">
             <p>Booking an artist for your night? Send one brief to up to three artists. Their replies, fee and the confirmation land here.</p>
-            <div><Link href="/book" className={`${btn} bg-acid-yellow inline-block`}>Book an artist</Link></div>
+            <div><a href={productLink("artists", LINKS.artists.index)} className={`${btn} bg-acid-yellow inline-block`}>Book an artist</a></div>
           </div>
         ) : (
           <ul className="grid gap-3">
@@ -300,13 +285,13 @@ function BookingsBlock() {
               const facts = [r.event_date && dayShort(r.event_date), r.city, r.fee_inr ? `Fee ${inrShort(r.fee_inr)}` : r.budget_band].filter(Boolean).join(" · ");
               return (
                 <li key={r.id}>
-                  <Link href={threadPath(r.id, r.key)} className="flex items-center gap-3 border-4 border-ink bg-cream p-3 hover:bg-acid-yellow/40 transition-colors">
-                    <StagePill stage={r.stage} />
+                  <a href={productLink("artists", `${LINKS.artists.bookings}/${r.id}${r.key ? `?k=${r.key}` : ""}`)} className="flex items-center gap-3 border-4 border-ink bg-cream p-3 hover:bg-acid-yellow/40 transition-colors">
+                    <span className={`inline-block text-xs font-bold px-2 py-0.5 border-2 border-ink ${STAGE_TONE[r.stage] ?? "bg-cream"}`}>{STAGE_LABEL[r.stage] ?? r.stage}</span>
                     <span className="min-w-0 flex-1">
                       <b className="font-display font-normal text-lg leading-tight block truncate">{r.role === "artist" ? "For you: " : ""}{who}</b>
                       <span className="text-sm text-ink/70">{facts}</span>
                     </span>
-                  </Link>
+                  </a>
                 </li>
               );
             })}
@@ -315,6 +300,12 @@ function BookingsBlock() {
     </section>
   );
 }
+
+const STAGE_LABEL: Record<string, string> = { sent: "Sent", seen: "Seen", interested: "Interested", countered: "Counter offer", declined: "Declined", accepted: "Accepted", confirmed: "Confirmed", cancelled: "Withdrawn" };
+const STAGE_TONE: Record<string, string> = { sent: "bg-cream", seen: "bg-cream", interested: "bg-acid-yellow", countered: "bg-acid-yellow", declined: "bg-ink/10 text-ink/70", accepted: "bg-electric-blue text-cream", confirmed: "bg-magenta text-cream", cancelled: "bg-ink/10 text-ink/70" };
+const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const dayShort = (iso: string) => { const d = new Date(`${iso}T00:00:00Z`); return `${d.getUTCDate()} ${MON[d.getUTCMonth()]}`; };
+const inrShort = (n: number) => n >= 100000 ? `₹${(n / 100000).toFixed(n % 100000 === 0 ? 0 : 1)}L` : n >= 1000 ? `₹${Math.round(n / 1000)}K` : `₹${n}`;
 
 /** Artists you follow, newest first. */
 function FollowsBlock() {
@@ -336,17 +327,17 @@ function FollowsBlock() {
         : list.length === 0 ? (
           <div className="border-4 border-ink bg-cream p-5 grid gap-3">
             <p>Follow an artist from their page and they show up here.</p>
-            <div><Link href="/artists" className={`${btn} bg-acid-yellow inline-block`}>Browse artists</Link></div>
+            <div><a href={productLink("artists", LINKS.artists.index)} className={`${btn} bg-acid-yellow inline-block`}>Browse artists</a></div>
           </div>
         ) : (
           <ul className="grid grid-cols-3 sm:grid-cols-4 gap-3">
             {list.map((a) => (
               <li key={a.slug}>
-                <Link href={artistPath(a.slug)} className="block border-4 border-ink bg-cream hover:-translate-y-1 transition-transform">
+                <a href={productLink("artists", LINKS.artists.artist(a.slug))} className="block border-4 border-ink bg-cream hover:-translate-y-1 transition-transform">
                   {a.photo_url ? <img src={a.photo_url} alt="" className="w-full aspect-square object-cover border-b-4 border-ink" loading="lazy" />
                     : <span className="w-full aspect-square grid place-items-center bg-electric-blue text-cream font-display text-3xl border-b-4 border-ink">{a.name.slice(0, 1)}</span>}
                   <span className="block font-display text-sm leading-tight p-2 truncate">{a.name}</span>
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -361,27 +352,29 @@ function SchoolBlock() {
       <h2 id="school" className="font-display text-3xl md:text-4xl leading-none">SCHOOL</h2>
       <div className="border-4 border-ink bg-magenta text-cream p-5 grid gap-3">
         <p>Your lessons, the tracks you are making and your streak live in School. Use the same email.</p>
-        <div><a href={SCHOOL_URL} onClick={() => track("open_school")} className={`${btn} bg-cream text-ink inline-block`}>Open School</a></div>
+        <div><a href={productUrl("school")} onClick={() => track("open_school")} className={`${btn} bg-cream text-ink inline-block`}>Open School</a></div>
       </div>
     </section>
   );
 }
 
-/** Promoters this person runs on CCD (migration 056). Hidden when there are none. */
+/** Promoters this person runs (migration 056). The dashboard is in Gate. Hidden when there are none. */
+type MyPromoter = { slug: string; name: string; status: string; city: string | null; accent: string; role: string; nights: number };
 function PromoterBlock() {
   const [rows, setRows] = useState<MyPromoter[]>([]);
-  useEffect(() => { myPromoters().then(setRows); }, []);
+  useEffect(() => { memberRpc<{ promoters: MyPromoter[] }>("my_promoters").then((r) => { if (r.ok) setRows((r.data as any)?.promoters ?? []); }); }, []);
   if (!rows.length) return null;
   return (
     <section aria-labelledby="promoters" className="grid gap-4">
-      <h2 id="promoters" className="font-display text-3xl md:text-4xl leading-none">YOUR NIGHTS ON CCD</h2>
+      <h2 id="promoters" className="font-display text-3xl md:text-4xl leading-none">YOUR NIGHTS</h2>
+      <p className="text-sm text-ink/70">Your nights, tickets, free list and door live in Gate. Same sign-in.</p>
       <ul className="grid gap-3 sm:grid-cols-2">
         {rows.map((p) => (
           <li key={p.slug}>
-            <Link href={`/promote/${p.slug}`} className={`block border-4 border-ink ${accentOf(p.accent).bg} ${accentOf(p.accent).on} p-4`}>
+            <a href={productLink("gate", LINKS.gate.promoter(p.slug))} className={`block border-4 border-ink ${accentOf(p.accent).bg} ${accentOf(p.accent).on} p-4`}>
               <b className="font-display font-normal text-xl">{p.name}</b>
               <span className="block text-sm">{p.status === "approved" ? `${p.nights} night${p.nights === 1 ? "" : "s"}` : p.status === "pending" ? "Waiting for CCD" : "Not approved"}</span>
-            </Link>
+            </a>
           </li>
         ))}
       </ul>
@@ -389,14 +382,15 @@ function PromoterBlock() {
   );
 }
 
-/** Nights this person can run the door for (CCD team, hosts, or a night's door team). Hidden for everyone else. */
+/** Nights this person can run the door for (CCD team, hosts, or a night's door team). The door itself is Gate. Hidden for everyone else. */
+type DoorNight = { slug: string; title: string; event_date: string | null; date: string | null; lead?: boolean };
 function DoorBlock() {
-  const [nights, setNights] = useState<NightRow[]>([]);
+  const [nights, setNights] = useState<DoorNight[]>([]);
   useEffect(() => {
-    fetchNights().then((r) => {
+    memberRpc<{ nights: DoorNight[] }>("door_nights").then((r) => {
       if (!r.ok) return;
       const today = todayIST();
-      setNights((r.nights ?? []).filter((n) => (n.event_date ?? "") >= today).sort((a, b) => (a.event_date ?? "").localeCompare(b.event_date ?? "")).slice(0, 3));
+      setNights(((r.data as any)?.nights ?? []).filter((n: DoorNight) => (n.event_date ?? "") >= today).sort((a: DoorNight, b: DoorNight) => (a.event_date ?? "").localeCompare(b.event_date ?? "")).slice(0, 3));
     });
   }, []);
   if (!nights.length) return null;
@@ -404,16 +398,17 @@ function DoorBlock() {
     <section aria-labelledby="door" className="grid gap-4">
       <h2 id="door" className="font-display text-3xl md:text-4xl leading-none">THE DOOR</h2>
       <div className="border-4 border-ink bg-ink text-cream p-5 grid gap-3">
-        <p>You are on the door for {nights.length === 1 ? "this night" : "these nights"}. Open it on the phone you will scan with, before doors, while there is signal.</p>
+        <p>You are on the door for {nights.length === 1 ? "this night" : "these nights"}. The door runs in Gate: open it on the phone you will scan with, before doors, while there is signal.</p>
         <ul className="grid gap-2">
           {nights.map((n) => (
             <li key={n.slug} className="flex flex-wrap items-center gap-3">
               <span className="flex-1 min-w-0"><b className="font-display font-normal">{n.title}</b> <span className="text-cream/70 text-sm">{n.date ?? n.event_date}</span></span>
-              <Link href={`/door/${n.slug}`} className={`${btn} bg-acid-yellow text-ink`}>Open door</Link>
-              {n.lead && <Link href={`/door/${n.slug}/setup`} className="underline text-sm">Setup</Link>}
+              <a href={productLink("gate", LINKS.gate.doorNight(n.slug))} className={`${btn} bg-acid-yellow text-ink`}>Open door</a>
+              {n.lead && <a href={productLink("gate", `${LINKS.gate.doorNight(n.slug)}/setup`)} className="underline text-sm">Setup</a>}
             </li>
           ))}
         </ul>
+        <a href={productLink("gate", LINKS.gate.door)} className="text-sm underline underline-offset-4 justify-self-start">All your doors in Gate</a>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 name: nightly-tests
 # Runs the database suites (they roll back, safe on live) and the web checks every night, and on demand.
+# The scripts live in apps/ccd/scripts/tests and run from that folder.
 # Needs repository secrets: SUPABASE_ACCESS_TOKEN (for the database suites) and optionally DUMMY_PASSWORD.
 # BASE_URL defaults to the live site; set the repository variable BASE_URL to test a preview instead.
 on:
@@ -9,10 +10,19 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/ccd
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        # Reads the pnpm version from "packageManager" in the root package.json.
       - uses: actions/setup-node@v4
-        with: { node-version: 20 }
+        with:
+          node-version: 22
+      - name: Install
+        run: pnpm install
+        working-directory: .
       - name: Database suites
         if: ${{ secrets.SUPABASE_ACCESS_TOKEN != '' }}
         env:

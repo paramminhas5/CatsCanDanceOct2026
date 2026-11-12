@@ -10,8 +10,8 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import Going from "@/components/going/Going";
 import RsvpDialog from "@/components/RsvpDialog";
-import OutsideTicket from "@/components/door/OutsideTicket";
-import { accentOf, promoterPath, type Accent } from "@/lib/promoters";
+import OutsideTicket from "@/components/tickets/OutsideTicket";
+import { accentOf, promoterPath, type Accent } from "@/lib/promoter-look";
 import { directionsUrl, displayTime, todayIST } from "@/lib/nights";
 import { shareCard } from "@/lib/share";
 
