@@ -469,6 +469,17 @@ html,body{overflow-x:visible!important}
 .ap aside.a2-rail button{border-radius:14px}
 .ap #book{border-radius:20px}
 .ap .a2-h2{font-size:20px;text-transform:none;letter-spacing:-.01em}
+
+/* Phone first (13 Nov 2026): long grids become rows you swipe, so the page stays short on a phone */
+@media (max-width:767px){
+  .ap .a2-relgrid{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px!important;margin:0 -16px;padding:0 16px 8px;scrollbar-width:none}
+  .ap .a2-relgrid::-webkit-scrollbar{display:none}
+  .ap .a2-relgrid>*{flex:0 0 44%;scroll-snap-align:start;min-width:0}
+  .ap .a2-congrid{display:flex!important;overflow-x:auto;gap:10px!important;margin:0 -16px;padding:0 16px 8px;scrollbar-width:none}
+  .ap .a2-congrid>*{flex:0 0 78%}
+  .ap .a2-h2{font-size:18px}
+  .ap .a2-heroname{letter-spacing:-.02em}
+}
 `;
 
   const Section = ({ title, note, children, right }: { title: string; note?: string; children: ReactNode; right?: ReactNode }) => (
@@ -712,7 +723,7 @@ html,body{overflow-x:visible!important}
                       })}
                     </div>
                   ) : undefined}>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: "24px 18px" }}>
+                    <div className="a2-relgrid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: "24px 18px" }}>
                       {(allRels ? releases : releases.slice(0, 12)).map((r) => {
                         const e = eraOfY(r.undated ? null : r.y);
                         const on = isFoc("rel", r.id);
@@ -824,7 +835,7 @@ html,body{overflow-x:visible!important}
                       {tabs.map((t) => <button key={t.id} role="tab" aria-selected={tabId === t.id} onClick={() => setTab(t.id)} style={chipStyle(tabId === t.id)}>{t.label} {t.n}</button>)}
                     </div>
                   }>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 }}>
+                    <div className="a2-congrid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 }}>
                       {(tabId === "labels" || tabId === "crews") && a.groups.filter((g) => g.kind === (tabId === "labels" ? "label" : "collective")).map((g) => (
                         <ConnCard key={g.name} name={g.name} what={g.kind === "label" ? (g.releases ? `Label · ${g.releases} release${g.releases === 1 ? "" : "s"}` : "Label") : "Crew or band"} years={g.years} url={g.url} accent={accent}
                           peers={g.peers} />

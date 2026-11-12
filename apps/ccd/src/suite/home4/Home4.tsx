@@ -27,6 +27,7 @@ const ID: Record<Tab, ProductId> = { go: "ccd", artists: "artists", host: "gate"
 const ON = (k: Tab) => (k === "go" || k === "learn" ? "#fff" : "#0a0a0c");
 /** Black on pink reads badly (Param, 13 Nov 2026), so School's stage is a deeper pink with white type. */
 const BG = (k: Tab) => (k === "learn" ? "#D6246A" : PRODUCTS[ID[k]].colour);
+const TAB_LABEL: Record<Tab, string> = { go: "Go out", artists: "Artists", host: "Host", learn: "Learn" };
 const SUB: Record<Tab, string> = { go: "What's on, crews, tickets", artists: "Every record, every show", host: "Invite, list, door", learn: "Make music on a real instrument" };
 const DAY = (iso: string | null | undefined) => (iso ? new Date(`${iso.slice(0, 10)}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : "");
 const DAYS_TO = (iso: string | null | undefined, today: string) => (iso ? Math.round((Date.parse(`${iso.slice(0, 10)}T00:00:00Z`) - Date.parse(`${today}T00:00:00Z`)) / 864e5) : null);
@@ -146,7 +147,7 @@ export default function Home4(d: HomeData) {
   const colour = BG(tab);
 
   const nav = (
-    <header className="k-nav">
+    <header className="k-nav h4-nav">
       <div className="k-wrap k-nav__row">
         <a href="/" className="k-nav__brand"><img src="/ccd-logo.png" alt="" width={30} height={30} style={{ objectFit: "contain", filter: "invert(1)" }} />Cats Can Dance</a>
         <span className="k-nav__gap" />
@@ -228,7 +229,7 @@ export default function Home4(d: HomeData) {
           <Journey eye={JOURNEY[tab].eye} h={JOURNEY[tab].h} steps={JOURNEY[tab].steps} />
         </div>
 
-        <section className="h4-wrap h4-sec">
+        <section className="h4-wrap h4-sec h4-more-apps">
           <Head eye="Same sign-in" h="Three more ways in." />
           <div className="h4-other-grid">
             {ORDER.filter((k) => k !== tab).map((k) => {
@@ -244,6 +245,14 @@ export default function Home4(d: HomeData) {
           </div>
         </section>
 
+        {/* Phone: the four apps live in a bar at the bottom of the screen, where a thumb reaches them. */}
+        <nav className="h4-tabbar" aria-label="Apps">
+          {ORDER.map((k) => (
+            <button key={k} type="button" onClick={() => pick(k, true)} aria-pressed={tab === k} style={{ ["--c" as string]: BG(k), ["--on" as string]: ON(k) }}>
+              <i aria-hidden="true" />{TAB_LABEL[k]}
+            </button>
+          ))}
+        </nav>
         {player.now && player.state !== "idle" && (
           <div className="h4-dock" role="region" aria-label="Now playing">
             {player.now.img && <img src={player.now.img} alt="" className={player.state === "playing" ? "spin" : ""} />}

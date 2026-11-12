@@ -255,4 +255,66 @@ export const CSS = `
 .h4-other-cat{position:absolute;right:-6px;bottom:-8px;width:84px;transition:transform .35s var(--k-ease)}
 .h4-other:hover .h4-other-cat{transform:translateY(-8px) rotate(-6deg)}
 @media (max-width:860px){.h4-other-grid{grid-template-columns:1fr}.h4-other{min-height:0}}
+
+/* ── Phone first (Param, 13 Nov 2026: "it needs to be mobile first, different views for desktop and mobile") ── */
+.h4-tabbar{display:none}
+@media (max-width:760px){
+  .h4-nav{position:relative}
+  .h4-nav .h4-tiles{display:none}
+  .h4-tabbar{position:fixed;left:0;right:0;bottom:0;z-index:70;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(10,10,11,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid var(--k-hair)}
+  .h4-tabbar button{appearance:none;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:14px;background:transparent;color:var(--k-t2);font:600 12px var(--k-ui);transition:background .2s,color .2s}
+  .h4-tabbar button i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+  .h4-tabbar button[aria-pressed="true"]{background:var(--c);color:var(--on)}
+  .h4-tabbar button[aria-pressed="true"] i{background:var(--on)}
+  .k-root{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  .h4-dock{bottom:calc(84px + env(safe-area-inset-bottom))}
+  .h4-more-apps{display:none}
+  .h4-wrap{padding:0 16px}
+  .h4-sec{padding-top:44px}
+  .h4 h2{font-size:24px}
+  .h4-head{margin-bottom:14px}
+  .h4-stage{margin-top:8px;border-radius:22px}
+  .h4-layer{padding:24px 20px 0;gap:8px}
+  .h4-copy{gap:12px}
+  .h4-copy h1{font-size:31px;line-height:1}
+  .h4-copy p{font-size:15px}
+  .h4-btns{flex-wrap:nowrap}
+  .h4-btns a{flex:1;justify-content:center;min-height:44px;padding:0 12px;font-size:14px;white-space:nowrap}
+  .h4-glance{padding-top:12px;margin-top:2px}
+  .h4-glance b{font-size:20px}
+  .h4-glance em{font-size:11px}
+  .h4-phones{min-height:230px}
+  .h4-phone{width:142px;border-radius:24px;padding:6px;bottom:-70px}.h4-phone img{border-radius:19px}
+  .h4-phone--front,.h4-phone--front.solo{right:calc(50% - 71px)}
+  .h4-cat{width:62px;top:0;right:2px}
+  .fx-posters img{width:36%;top:8%}
+  .fx-record .fx-disc{width:62%;right:19%;top:2%}
+  .fx-invite .fx-card{width:40%;top:6%}
+  .fx-invite .fx-card b{font-size:18px}
+  .fx-pads{width:40%;bottom:24%;gap:6px}
+  .h4-ep{grid-template-columns:88px 1fr;gap:14px;padding:12px;border-radius:20px}
+  .h4-ep-copy b{font-size:22px}
+  .h4-ep-copy .h4-eye{font-size:10px}
+  .h4-ep-where{font-size:14px}
+  .h4-ep-go{min-height:38px;padding:0 16px;font-size:14px}
+  .h4-people{gap:10px}
+  .h4-person-t b{font-size:17px}
+  .h4-pbtn{width:44px;height:44px;top:calc(100% - 100px);right:8px}
+  .h4-records{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:22px -16px 0;padding:0 16px 6px;scrollbar-width:none}
+  .h4-records::-webkit-scrollbar{display:none}
+  .h4-rec{flex:0 0 38%;scroll-snap-align:start}
+  .h4-rec-pl{opacity:1;transform:none;width:34px;height:34px}
+  .h4-jr ol{grid-template-columns:repeat(var(--n),74%);margin:0 -16px;padding:0 16px 6px;scroll-padding:16px}
+  .h4-jr-line{display:none}
+  .h4-jr li{position:relative}
+  .h4-jr li::before{content:"";position:absolute;left:0;right:-10px;top:39px;height:2px;background:var(--acc);opacity:.55}
+  .h4-jr-pic{height:230px}
+  .h4-jr-pic img{width:58%}
+  .h4-form{padding:16px;border-radius:20px}
+  .h4-invite{padding:22px;border-radius:20px}
+  .h4-invite-card{width:min(250px,100%)}
+  .h4-looks{gap:6px}
+  .h4-beat{padding:14px;border-radius:20px;gap:14px}
+  .h4-gridrow button{height:26px}
+}
 `;
