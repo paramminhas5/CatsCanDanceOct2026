@@ -322,7 +322,7 @@ try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
   document.querySelectorAll('.doors .door').forEach((d,i)=>{const p=d.querySelector('p'),s=d.querySelector('small');if(p)p.textContent=D[i][0];if(s)s.textContent=D[i][1]});
   const row=(n,i)=>{const [dw,dn]=n.d.split(' ');return `<span class="mdt"><small>${dw}</small><b>${dn}</b></span><span class="mtx"><b>${n.t}</b><small>${n.v.split(',')[0]} · ${n.c}</small></span>`};
   const wk=document.createElement('div');wk.className='mweek';
-  wk.innerHTML=`<p class="lbl">This week</p><h2 class="mh">Where to go.</h2>${N.slice(0,3).map((n,i)=>`<a class="mrw" href="#nights" data-i="${i}">${row(n,i)}<i>→</i></a>`).join('')}<a class="mbtn" href="#nights">See all ${N.length} nights</a>`;
+  wk.innerHTML=`<p class="mlb">This week</p><h2 class="mh">Where to go.</h2>${N.slice(0,3).map((n,i)=>`<a class="mrw" href="#nights" data-i="${i}">${row(n,i)}<i>→</i></a>`).join('')}<a class="mbtn" href="#nights">See all ${N.length} nights</a>`;
   document.querySelector('.doors').after(wk);
   wk.querySelectorAll('.mrw').forEach(a=>a.addEventListener('click',()=>{nsel=+a.dataset.i;city='All';setTimeout(()=>{try{nCities();nList()}catch(e){}},60)}));
   const why=document.getElementById('why');if(why){const e=why.querySelector('.eyebrow'),h=why.querySelector('.say');if(e)e.textContent='House rules';if(h)h.textContent='Four things we stick to.'}
@@ -332,9 +332,9 @@ try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
     host:['02 · Host','Throw a party from your phone.','Make the invite, keep the guest list, check people in at the door. Free.'],
     artists:['03 · Artists','Hear them. Follow them. Book them.','Pages for South Asian electronic artists. Every fact links to where we found it.'],
     school:['04 · School','Learn music by making it.','Make a beat in your browser, change it, then take it into Ableton. Free.']};
-  document.querySelectorAll('.tcard[data-k]').forEach(t=>{const c=COPY[t.dataset.k];if(!c)return;const m=t.querySelector('.meta'),h=t.querySelector('h2'),cl=t.querySelector('.claim');if(m)m.innerHTML=`<span class="lbl">${c[0]}</span>`;if(h){h.textContent=c[1];h.classList.add('mh')}if(cl)cl.textContent=c[2]});
+  document.querySelectorAll('.tcard[data-k]').forEach(t=>{const c=COPY[t.dataset.k];if(!c)return;const m=t.querySelector('.meta'),h=t.querySelector('h2'),cl=t.querySelector('.claim');if(m)m.innerHTML=`<span class="mlb">${c[0]}</span>`;if(h){h.textContent=c[1];h.classList.add('mh')}if(cl)cl.textContent=c[2]});
   document.querySelectorAll('.todo .ahead').forEach(a=>{const k=a.dataset.pg,c=COPY[k];a.style.position='relative';const sl=document.createElement('div');sl.className='aslot';sl.setAttribute('aria-hidden','true');a.prepend(sl);put(sl,FORM[k]||(k==='gear'?'knob':'ball'),k.length*13);
-    if(!c)return;const m=a.querySelector('.meta'),h=a.querySelector('h2'),cl=a.querySelector('.claim');if(m)m.innerHTML=`<span class="lbl">${c[0]}</span>`;if(h){h.textContent=c[1];h.classList.add('mh')}if(cl)cl.textContent=c[2]});turn();
+    if(!c)return;const m=a.querySelector('.meta'),h=a.querySelector('h2'),cl=a.querySelector('.claim');if(m)m.innerHTML=`<span class="mlb">${c[0]}</span>`;if(h){h.textContent=c[1];h.classList.add('mh')}if(cl)cl.textContent=c[2]});turn();
   /* Nights: the listing is a list you scroll down. Tap a night and it opens under its row. */
   const pan=document.querySelector('.panel[data-tour=nights]'),det=document.getElementById('nDet');
   if(pan&&det){const ml=document.createElement('div');ml.id='mList';pan.querySelector('.ngrid').before(ml);let all=false;
@@ -346,4 +346,87 @@ try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
     const nl0=nList;nList=function(){nl0();render()};render()}
   /* what each app does: four cards, the rest behind one button */
   document.querySelectorAll('.liner ol').forEach(ol=>{if(ol.children.length<=4)return;ol.classList.add('cut');const b=document.createElement('button');b.type='button';b.className='mbtn';b.textContent='See all '+ol.children.length;b.onclick=()=>{ol.classList.toggle('cut');b.textContent=ol.classList.contains('cut')?'See all '+ol.children.length:'Show fewer'};ol.after(b)});
+})();
+
+/* ===== round 18 (13 Nov, Param): Artists opens on Karan Kanchan and links to his real page.
+   Phone home explains everything the way catscandance.com does, section by section, with real content and fewer boxes. ===== */
+(()=>{
+  /* Artists: Karan Kanchan first, and every artist links to their page on catscandance.com */
+  try{const kk=ARTISTS.findIndex(a=>a.n==='Karan Kanchan');if(kk>=0){asel=kk;aRender()}
+    AHEAD.artists[3]='https://catscandance.com/artists/karan-kanchan';
+    document.querySelectorAll('.todo .row2 a[href="https://catscandance.com/artists"]').forEach(a=>{a.href=AHEAD.artists[3];a.lastChild&&(a.lastChild.textContent=a.lastChild.textContent)});
+    document.querySelectorAll('a[href="https://catscandance.com/artists"]').forEach(a=>{if(a.closest('.todo'))a.href=AHEAD.artists[3]});
+    const r0=aRender;aRender=function(){r0();const a=ARTISTS[asel],acts=document.querySelector('#aDet .acts');if(acts&&!acts.querySelector('.pg')){const l=document.createElement('a');l.className='btn sm pg';l.target='_blank';l.rel='noopener';l.href='https://catscandance.com/artists/'+a.img.replace(/^a-/,'');l.textContent='Full page ↗';acts.appendChild(l)}};aRender();
+  }catch(e){}
+})();
+(()=>{if(!window.__ph)return;const N=typeof NIGHTS!=='undefined'?NIGHTS:[];
+  const MON={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+  const when=n=>{const p=n.d.split(' ');const last=n.d.split(' to ').pop().split(' ');return new Date(2026,MON[last[2]]??10,+last[1]||+p[1],23,59)};
+  const up=N.map((n,i)=>[n,i]).filter(([n])=>when(n)>=Date.now());
+  const art=typeof ARTISTS!=='undefined'?ARTISTS.find(a=>a.n==='Karan Kanchan'):null;
+  const EP=typeof EPS!=='undefined'?EPS:[];
+  const steps=(c,list)=>`<ol class="hs" style="--c:${c}">${list.map(([b,p],i)=>`<li><span>0${i+1}</span><div><b>${b}</b><p>${p}</p></div></li>`).join('')}</ol>`;
+  const row=(n,i)=>{const [dw,dn,mo]=n.d.split(' ');return `<a class="hr" href="#nights" data-i="${i}"><span class="hd"><small>${dw}</small><b>${dn}</b><small>${(mo||'').slice(0,3)}</small></span><span class="ht"><small>${n.h?n.h+' · ':''}${n.g&&n.g[0]?n.g[0]:'Club night'}</small><b>${n.t}</b><em>${n.v.split(',')[0]}, ${n.c}</em></span></a>`};
+  const el=document.createElement('section');el.id='mhome';el.dataset.pg='home';
+  el.innerHTML=`
+  <div class="hx"><p class="mlb">What this site does</p><h2 class="mh">Four apps for a night out.</h2>
+    <p class="hp">Each one does one job. Use one or all four, and your points and your nights carry across.</p>
+    <nav class="apps">${[['#nights','Nights','Find a night across India and see who else is going.',up.length+' nights coming up','#7FA7FF','ball',14],['#host','Host','Throw your own. Invite, guest list and door, from your phone.','Free','#FFE600','stamp',40],['#artists','Artists','Hear South Asian electronic artists and book them.','208 artists on file','#A98BFF','record',70],['#school','School','Learn to produce and DJ, in your browser.','Free for now','#FF7DAA','knob',96]].map(([h,n,p,c,col,f,x],i)=>`<a href="${h}" style="--c:${col}"><span class="an">0${i+1}</span><span class="at"><b>${n}</b><p>${p}</p><small>${c}</small></span><i class="chr" data-form="${f}" style="--cx:${x%11};--cy:${Math.floor(x/11)}"></i></a>`).join('')}</nav></div>
+
+  <div class="hx band" style="--bg:#2F5BFF;--fg:#fff;--c:#fff">
+    <p class="mlb">01 · Nights</p><h2 class="mh">Find a night. Go with people.</h2>
+    <p class="hp">Underground nights across India, checked by us before they go up. Say you're going and we'll put you in a crew of 3 to 6 people from your city.</p>
+    ${steps('#fff',[['Pick a night','Filter by city. Every listing links to the real tickets.'],['Say you’re going','See who else is, or ask us to find you a crew.'],['Check in at the door','You get points that turn into a +1, a guaranteed spot or a free ticket.']])}
+    <div class="wk"><p class="mlb">This week</p>${up.slice(0,4).map(([n,i])=>row(n,i)).join('')}<a class="hb" href="#nights">See all ${up.length} nights</a>
+    <p class="note2">Every night here has an artist or promoter we trust behind it.</p></div>
+  </div>
+
+  <div class="hx band" style="--bg:#FF6A3D;--fg:#1d0a03;--c:#1d0a03">
+    <p class="mlb">Ours · the Episodes</p><h2 class="mh">Our own nights.</h2>
+    <p class="hp">We throw them in Bengaluru. House, breaks, UKG and bass, with residents Merman and Sartdawg and guests.</p>
+    <div class="nx"><div><small>Next up · Episode 5</small><b>Wed 25 Nov</b><span>The Humming Tree, Bengaluru</span></div><div class="cd" id="mCd"></div><a class="hb solid" href="https://catscandance.com/nights" target="_blank" rel="noopener">Get tickets ↗</a></div>
+    <p class="mlb" style="margin-top:28px">Every Episode so far</p>
+    <div class="eps">${EP.filter(e=>!e.next).slice().reverse().map(e=>`<a href="#episodes" class="epc">${e.img?`<img src="img/${e.img}.webp" alt="Episode ${e.n} poster" loading="lazy">`:`<span class="ph">EP0${e.n}</span>`}<b>Episode ${e.n}</b><small>${e.d.replace(' 2026','').replace(' 2025',' 2025')} · ${e.v}</small>${e.l&&e.l.length?`<em>${e.l.filter(x=>!/open decks/i.test(x)).join(' · ')}</em>`:''}</a>`).join('')}</div>
+  </div>
+
+  <div class="hx" style="--c:#FFE600">
+    <p class="mlb">02 · Host</p><h2 class="mh">Throw a party from your phone.</h2>
+    <p class="hp">House party, rooftop, a night at a bar. Make the invite, share one link, and run the door on the night. Free.</p>
+    <div class="inv"><small>You're invited</small><b>Rooftop thing</b><span>Sat 21 Nov, 8 pm<br>Indiranagar, Bengaluru</span><em>RSVP</em></div>
+    ${steps('#FFE600',[['Make the invite','Name, date, place and a look. Takes a minute.'],['Share one link','People RSVP or buy a ticket. You see who’s coming.'],['Run the door','Scan people in from your phone. It keeps working offline.']])}
+    <a class="hb" href="#host">Make an invite</a>
+  </div>
+
+  <div class="hx band" style="--bg:#A98BFF;--fg:#160d33;--c:#160d33">
+    <p class="mlb">03 · Artists</p><h2 class="mh">Hear them. Book them.</h2>
+    <p class="hp">Pages for South Asian electronic artists. Every gig, release and press piece links to where we found it.</p>
+    ${art?`<div class="ac"><img src="img/${art.img}.webp" alt="${art.n}"><div><small>${art.c} · ${art.g.join(', ')}</small><b>${art.n}</b><span>${art.r} records on file</span></div>
+      <div class="aa"><button type="button" class="hb solid" id="mPlay">▶ Play</button><a class="hb" href="https://catscandance.com/artists/karan-kanchan" target="_blank" rel="noopener">His page ↗</a></div><p class="note2" id="mPn" aria-live="polite"></p></div>`:''}
+    <p class="mlb" style="margin-top:24px">If you're an artist</p>
+    <p class="hp">Your page fills itself in. Gigs we find get added with tickets, new releases show up the week they're out, and booking requests arrive as a brief: date, room, set length and budget.</p>
+    <a class="hb" href="#artists">Find your page</a>
+  </div>
+
+  <div class="hx" style="--c:#FF7DAA">
+    <p class="mlb">04 · School</p><h2 class="mh">Learn music by making it.</h2>
+    <p class="hp">Lessons you play instead of watch. Start with rhythm on a drum machine, then build a track and mix it on two decks. Runs in your browser, free for now.</p>
+    <img class="shot" src="img/s_learn.webp" alt="A School lesson" loading="lazy">
+    ${steps('#FF7DAA',[['Lessons','Rhythm, melody and harmony, one short lesson at a time.'],['Studio','Build a track from drums, bass and lead. Export it to Ableton.'],['Decks','Two decks and a mixer. Play your track into someone else’s.']])}
+    <a class="hb" href="#school">Open School</a>
+  </div>
+
+  <div class="hx" style="--c:#A98BFF">
+    <p class="mlb">Points</p><h2 class="mh">Go out. Get in free.</h2>
+    <p class="hp">You earn points in all four apps. They turn into things that matter on the night.</p>
+    <div class="pl"><i style="--w:0%"></i>${[[200,'A +1'],[300,'Guaranteed spot'],[800,'Free ticket']].map(([n,l],i)=>`<span style="--p:${[33.3,66.6,100][i]}%"><b>${l}</b>${n} pts</span>`).join('')}</div>
+    <ul class="ern">${[['Check in at a night','+100'],['Bring a friend to their first night','+150'],['Rate a night','+10'],['Follow an artist','+50']].map(([a,b])=>`<li><span>${a}</span><b>${b}</b></li>`).join('')}</ul>
+    <a class="hb" href="#points">See your points</a>
+  </div>`;
+  const hero=document.getElementById('hero');hero.after(el);
+  const le=hero.querySelector('.lede');if(le)le.textContent='We throw dance music nights in Bengaluru. This is where we keep everything else: nights across India worth going to, the artists playing them, a way to throw your own, and a school to learn the music.';
+  const cta=hero.querySelector('.hero-cta');if(cta){cta.innerHTML=`<a class="hb solid" href="#nights">What's on this week</a><a class="hb" href="#episodes">Episode 5 tickets</a>`}
+  el.querySelectorAll('.hr').forEach(a=>a.addEventListener('click',()=>{nsel=+a.dataset.i;city='All';setTimeout(()=>{try{nCities();nList()}catch(e){}},60)}));
+  const cd=document.getElementById('mCd'),T=new Date('2026-11-25T21:00:00+05:30');const tickCd=()=>{let s=Math.max(0,Math.floor((T-Date.now())/1000));const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);s%=60;cd.innerHTML=[[d,'days'],[h,'hrs'],[m,'min'],[s,'sec']].map(([v,l])=>`<span><b>${String(v).padStart(2,'0')}</b>${l}</span>`).join('')};tickCd();setInterval(tickCd,1000);
+  const pb=document.getElementById('mPlay');if(pb){let on=false;const pn=document.getElementById('mPn');pb.onclick=()=>{if(on){on=false;window.__ccdStop();pb.textContent='▶ Play';pn.textContent='';return}on=true;pb.textContent='■ Stop';window.__ccdPlay('Karan Kanchan',t=>{if(on)pn.textContent=t},pn,()=>{on=false;pb.textContent='▶ Play'})}}
+  const pt=document.getElementById('pTot'),pl=el.querySelector('.pl');const pu=()=>{const p=pt?parseInt(pt.textContent.replace(/\D/g,''))||0:0;const w=p<=200?p/200*33.3:p<=300?33.3+(p-200)/100*33.3:Math.min(100,66.6+(p-300)/500*33.4);pl.querySelector('i').style.setProperty('--w',w+'%');pl.querySelectorAll('span').forEach((s,i)=>s.classList.toggle('got',p>=[200,300,800][i]))};pu();setInterval(pu,1000);
 })();
