@@ -150,7 +150,7 @@ export const CSS = `
 .eq i{width:3px;background:currentColor;border-radius:1px;animation:eqb .8s ease-in-out infinite alternate}
 .eq i:nth-child(2){animation-delay:.2s}.eq i:nth-child(3){animation-delay:.4s}
 @keyframes eqb{from{height:3px}to{height:14px}}
-.h4-dock{position:fixed;left:50%;bottom:20px;z-index:60;transform:translateX(-50%);display:flex;align-items:center;gap:14px;width:min(560px,calc(100vw - 32px));box-sizing:border-box;padding:10px 12px 10px 10px;border-radius:999px;background:rgba(20,20,22,.92);backdrop-filter:blur(14px);border:1px solid var(--k-hair);box-shadow:0 20px 50px -20px rgba(0,0,0,.8);animation:h4in .3s var(--k-ease) both}
+.h4-dock{position:fixed;left:0;right:0;margin:0 auto;bottom:20px;z-index:60;display:flex;align-items:center;gap:14px;width:min(560px,calc(100vw - 32px));box-sizing:border-box;padding:10px 12px 10px 10px;border-radius:999px;background:rgba(20,20,22,.92);backdrop-filter:blur(14px);border:1px solid var(--k-hair);box-shadow:0 20px 50px -20px rgba(0,0,0,.8);animation:h4in .3s var(--k-ease) both}
 .h4-dock img{width:44px;height:44px;border-radius:50%;object-fit:cover}
 .h4-dock img.spin{animation:fxspin 3s linear infinite}
 .h4-dock-t{position:relative;flex:1;min-width:0;display:flex;flex-direction:column}
