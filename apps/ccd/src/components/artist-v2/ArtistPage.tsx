@@ -513,7 +513,7 @@ html,body{overflow-x:visible!important}
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
                 {rail && <span style={{ display: "flex", flexDirection: "column", lineHeight: 1.2 }}><span className="a2-disp" style={{ fontSize: 15 }}>ERAS</span><span className="a2-lab" style={{ color: accent }}>{era ? `Now: ${era.label}` : "Now: every era"}</span></span>}
                 <button onClick={toggleRail} aria-expanded={rail} aria-label={rail ? "Close the eras" : "Open the eras"} title={rail ? "Tuck the eras away" : "Open the eras"} className="a2-railtog"
-                  style={{ width: rail ? 84 : 44, height: 44, flex: "0 0 auto", border: `2px solid ${CREAM}`, background: accent, color: INK, cursor: "pointer", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, boxShadow: `3px 3px 0 ${CREAM}` }}>
+                  style={{ width: rail ? 84 : 44, height: 44, flex: "0 0 auto", border: `2px solid ${CREAM}`, background: CREAM, color: INK, cursor: "pointer", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, boxShadow: `3px 3px 0 ${CREAM}` }}>
                   <span className="a2-chev" aria-hidden="true" style={{ fontSize: 20, lineHeight: 1 }}>{rail ? "«" : "»"}</span>
                   {rail && <span style={{ fontSize: 12, letterSpacing: ".06em" }}>HIDE</span>}
                 </button>
@@ -623,7 +623,7 @@ html,body{overflow-x:visible!important}
                   {a.bookable && (
                     <BookButton artist={{ slug: a.slug, name, photo_url: a.photo, city: a.city, sound: a.genres.slice(0, 2).join(", ") || undefined }}
                       label={`Book ${name}`} className="a2-btn"
-                      style={{ height: 44, padding: "0 18px", background: accent, color: INK, border: `2px solid ${accent}`, fontWeight: 700, cursor: "pointer", fontSize: 14 }} />
+                      style={{ height: 44, padding: "0 18px", background: CREAM, color: INK, border: `2px solid ${CREAM}`, fontWeight: 700, cursor: "pointer", fontSize: 14 }} />
                   )}
                 </div>
                 {a.links.length > 0 && (
@@ -876,7 +876,7 @@ html,body{overflow-x:visible!important}
                     {/* The booking desk drawer. Opens itself on ?book=1&date=&city= links from On tour. */}
                     <BookButton fromQuery artist={{ slug: a.slug, name, photo_url: a.photo, city: a.city, sound: a.genres.slice(0, 2).join(", ") || undefined }}
                       label="Ask for a date" className="a2-btn"
-                      style={{ height: 44, background: accent, color: INK, border: `2px solid ${accent}`, fontWeight: 700, cursor: "pointer", fontSize: 14 }} />
+                      style={{ height: 44, background: CREAM, color: INK, border: `2px solid ${CREAM}`, fontWeight: 700, cursor: "pointer", fontSize: 14 }} />
                     <a href={productLink("artists", `/${a.slug}`)} style={{ fontSize: 13, fontWeight: 700, display: "inline-block", lineHeight: "24px" }}>Press kit ↗</a>
                   </div>
                 )}
@@ -916,7 +916,7 @@ html,body{overflow-x:visible!important}
               <span style={{ fontWeight: 700, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{track.t}</span>
               <span style={{ color: MUTE, fontSize: 12, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{audioErr ?? track.sub}</span>
             </span>
-            <button aria-label={playing ? "Pause" : `Play ${track.t}`} onClick={() => toggle(track)} style={{ width: 42, height: 42, flex: "0 0 42px", borderRadius: "50%", border: 0, background: accent, color: INK, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>{playIcon(playing, 16)}</button>
+            <button aria-label={playing ? "Pause" : `Play ${track.t}`} onClick={() => toggle(track)} style={{ width: 42, height: 42, flex: "0 0 42px", borderRadius: "50%", border: 0, background: CREAM, color: INK, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>{playIcon(playing, 16)}</button>
             {queue && (
               <span style={{ display: "flex", alignItems: "center", gap: 8, flex: "0 0 auto" }}>
                 <span className="a2-lab" style={{ color: accent, whiteSpace: "nowrap" }}><span className="a2-dk">Start here&nbsp;</span>{queue.i + 1} of {queue.list.length}</span>
