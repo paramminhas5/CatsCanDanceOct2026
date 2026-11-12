@@ -105,7 +105,7 @@ export default function Home4(d: HomeData) {
   const nav = (
     <header className="k-nav">
       <div className="k-wrap k-nav__row">
-        <a href="/" className="k-nav__brand"><img src="/ccd-logo.png" alt="" width={30} height={30} style={{ objectFit: "contain" }} />Cats Can Dance</a>
+        <a href="/" className="k-nav__brand"><img src="/ccd-logo.png" alt="" width={30} height={30} style={{ objectFit: "contain", filter: "invert(1)" }} />Cats Can Dance</a>
         <span className="k-nav__gap" />
         <a href="/me" className="k-btn k-btn--ghost k-btn--s">Your account</a>
       </div>
@@ -215,7 +215,7 @@ function Head({ eye, h, link }: { eye: string; h: string; link?: [string, string
 /* ── Artists: real artist pages up top, then a wall of their records. ── */
 function ArtistsShow({ d }: { d: HomeData }) {
   const people = d.featured.slice(0, 4);
-  const covers = d.covers.slice(0, 12);
+  const covers = d.covers.filter((c, i, all) => all.findIndex((x) => x.img === c.img || x.title === c.title) === i).slice(0, 12);
   return (
     <section className="h4-wrap h4-sec">
       <Head eye="On Artists now" h="Pick one. Hear everything." link={[`All ${d.artistCount} artists`, productLink("artists", "/artists")]} />
@@ -235,7 +235,7 @@ function ArtistsShow({ d }: { d: HomeData }) {
         <div className="h4-records">
           {covers.map((c) => (
             <a key={c.img} href={productLink("artists", `/${c.slug}`)} title={`${c.title} · ${c.artist}`}>
-              <img src={c.img} alt={`${c.title} by ${c.artist}`} loading="lazy" />
+              <img src={c.img} alt={`${c.title} by ${c.artist}`} loading="lazy" onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
               <span><b>{c.title}</b>{c.artist}</span>
             </a>
           ))}
