@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CCD layout skeleton</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="frame.css">
+</head>
+<body>
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="assets/img/logo.png" alt=""><b class="only-td">Cats Can Dance</b></a>
+    <nav class="apps only-td" aria-label="Apps">
+      <a class="on" href="#" style="--c:var(--c-nights)"><i></i>Nights</a>
+      <a href="#" style="--c:var(--c-artists)"><i></i>Artists</a>
+      <a href="#" style="--c:var(--c-host)"><i></i>Host</a>
+      <a href="#" style="--c:var(--c-school)"><i></i>School</a>
+    </nav>
+    <div class="right">
+      <button class="icon only-d" aria-label="Search"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg></button>
+      <button class="icon laser only-td" aria-label="Laser"><i></i></button>
+      <span class="pts"><img src="assets/img/logo.png" alt="">350</span>
+      <a class="ghost only-d" href="#">Sign in</a>
+      <button class="icon only-p" aria-label="Menu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h12M2 11h12"/></svg></button>
+      <button class="icon only-t" aria-label="Account"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="6" r="3"/><path d="M2.5 14c1-3 3-4 5.5-4s4.5 1 5.5 4"/></svg></button>
+    </div>
+  </div>
+</header>
+<nav class="sub" aria-label="Nights">
+  <div class="wrap">
+    <a class="chip on" href="#">This week</a><a class="chip" href="#">Episodes</a><a class="chip" href="#">Near me</a><a class="chip" href="#">Saved</a><a class="chip" href="#">Going</a>
+  </div>
+</nav>
+
+<main>
+  <section class="wrap grid hero">
+    <div class="txt">
+      <p class="lbl"><i></i>Nights</p>
+      <h1 class="h1">Every night worth leaving the house for.</h1>
+      <p class="lead">Picked by people who go. Posters, line-ups, and who else is going.</p>
+      <div class="acts">
+        <a class="btn2" href="#"><span class="eyes"><b></b><b></b></span>I'm going</a>
+        <a class="btn1" href="#"><b></b>Share</a>
+      </div>
+    </div>
+    <div class="prod">
+      <div class="week" id="week"></div>
+      <div class="feat">
+        <img id="fimg" src="assets/img/n00.webp" alt="">
+        <div class="meta">
+          <span class="data" id="fdate">THU 12 NOV · 9 PM</span>
+          <h3 class="h3" id="ftitle">Phil Berg</h3>
+          <span class="small" id="fvenue">antiSOCIAL, Mumbai</span>
+          <ul class="lineup" id="flineup"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <div class="head"><h2 class="h2">This weekend</h2><a class="more" href="#"><span class="eyes"><b></b><b></b></span>All nights</a></div>
+    <div class="rail nights" id="nights"></div>
+  </section>
+
+  <section class="wrap sec">
+    <div class="head"><h2 class="h2">Playing this month</h2><a class="more" href="#"><span class="eyes"><b></b><b></b></span>All artists</a></div>
+    <div class="rail artists" id="artists"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap grid">
+    <div class="col"><b>Apps</b><a href="#">Nights</a><a href="#">Artists</a><a href="#">Host</a><a href="#">School</a></div>
+    <div class="col"><b>Inside Host</b><a href="#">Gear</a><a href="#">The door</a></div>
+    <div class="col"><b>Inside Nights</b><a href="#">Episodes</a><a href="#">Points</a></div>
+    <div class="col"><b>Cats Can Dance</b><a href="#">Instagram</a><a href="#">Contact</a></div>
+  </div>
+</footer>
+
+<nav class="tabs" aria-label="Apps">
+  <a class="on" href="#" style="--c:var(--c-nights)"><i><b></b><b></b></i>Nights</a>
+  <a href="#" style="--c:var(--c-artists)"><i><b></b><b></b></i>Artists</a>
+  <a href="#" style="--c:var(--c-host)"><i><b></b><b></b></i>Host</a>
+  <a href="#" style="--c:var(--c-school)"><i><b></b><b></b></i>School</a>
+</nav>
+
+<div class="gov" id="gov" aria-hidden="true"><div class="wrap"><div class="grid" id="govg"></div></div><span class="tag" id="gtag"></span></div>
+
+<script>
+const N=[
+ {d:'THU',n:12,img:'n00',t:'Phil Berg',v:'antiSOCIAL, Mumbai',time:'9 PM',l:['Phil Berg']},
+ {d:'FRI',n:13,img:'n03',t:'Victor Ruiz',v:'antiSOCIAL, Mumbai',time:'9 PM',l:['Victor Ruiz']},
+ {d:'FRI',n:13,img:'n06',t:'Senses: Colyn',v:'Room XO, Gurugram',time:'',l:['Colyn']},
+ {d:'FRI',n:13,img:'n02',t:'DGTL Bengaluru',v:'The Lalit Ashok, Bengaluru',time:'',l:['Nina Kraviz','Colyn','Phil Berg','Sheral']},
+ {d:'SAT',n:14,img:'n10',t:'Danza Drome',v:'Room XO, Gurgaon',time:'10 PM',l:['Anyasa','Browncoat b2b Nikhil Chinapa','Arjunn']},
+ {d:'SAT',n:14,img:'n08',t:'DGTL Goa',v:'W Goa, Goa',time:'',l:['Nina Kraviz','Sitara','Blu Attic']},
+];
+const W=[['THU',12,2],['FRI',13,6],['SAT',14,4],['SUN',15,4],['MON',16,0],['TUE',17,1],['WED',18,0]];
+const $=s=>document.querySelector(s);
+$('#week').innerHTML=W.map((w,i)=>`<button class="${i?'':'on'}" data-i="${i}" aria-label="${w[0]} ${w[1]}, ${w[2]} nights"><span style="height:${Math.max(6,w[2]/6*100)}%"></span><em>${w[0]}</em></button>`).join('');
+function feat(n){$('#fimg').src=`assets/img/${n.img}.webp`;$('#fdate').textContent=`${n.d} ${n.n} NOV${n.time?' · '+n.time:''}`;$('#ftitle').textContent=n.t;$('#fvenue').textContent=n.v;
+ $('#flineup').innerHTML=n.l.map((a,i)=>`<li><span>${'AB'[i>>1]}${i%2+1}</span>${a}</li>`).join('')}
+feat(N[0]);
+$('#week').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#week button').forEach(x=>x.classList.toggle('on',x===b));const w=W[+b.dataset.i];const n=N.find(x=>x.n===w[1]);if(n)feat(n)});
+$('#nights').innerHTML=N.slice(1).map(n=>`<a class="card" href="#"><img src="assets/img/${n.img}.webp" alt="" loading="lazy"><span class="t"><span class="data">${n.d} ${n.n} NOV</span><b class="h3">${n.t}</b><span class="small">${n.v}</span></span></a>`).join('');
+const A=[['kohra','Kohra','New Delhi'],['sandunes','Sandunes','Mumbai'],['nikki-nair','Nikki Nair','Bengaluru'],['karan-kanchan','Karan Kanchan','Mumbai'],['komorebi','Komorebi','New Delhi'],['lost-stories','Lost Stories','Mumbai']];
+$('#artists').innerHTML=A.map(a=>`<a class="art" href="#"><img src="assets/img/a-${a[0]}.webp" alt="" loading="lazy"><b class="small" style="color:var(--c-ink)">${a[1]}</b><span class="data">${a[2]}</span></a>`).join('');
+const bar=$('#bar');addEventListener('scroll',()=>bar.classList.toggle('scrolled',scrollY>4),{passive:true});
+function govBuild(){const c=getComputedStyle(document.documentElement).getPropertyValue('--cols').trim();$('#govg').innerHTML='<i></i>'.repeat(+c);
+ const r=getComputedStyle(document.documentElement);$('#gtag').textContent=`${innerWidth}px · ${c} cols · margin ${r.getPropertyValue('--margin').trim()} · gutter ${r.getPropertyValue('--gutter').trim()}`}
+govBuild();addEventListener('resize',govBuild);
+function setGrid(on){$('#gov').classList.toggle('on',on)}
+addEventListener('keydown',e=>{if(e.key==='g'||e.key==='G'){setGrid(!$('#gov').classList.contains('on'));parent!==window&&parent.postMessage({grid:$('#gov').classList.contains('on')},'*')}});
+addEventListener('message',e=>{const m=e.data||{};if('grid' in m)setGrid(m.grid);if(m.font)document.documentElement.classList.toggle('f-instrument',m.font==='instrument');if(m.acc){document.body.style.setProperty('--acc',`var(--c-${m.acc})`);document.body.style.setProperty('--acc-rgb',`var(--c-${m.acc}-rgb)`)}});
+</script>
+</body>
+</html>

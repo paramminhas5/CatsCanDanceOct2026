@@ -39,7 +39,7 @@ def('invite',el=>{const f=k=>$(`[name=${k}]`,el),card=$('.inv-card',el),out=$('.
   el.addEventListener('ccd:held',async()=>{const v=vals();id=newId();const s=await CCD.store();const body={...v,host:s&&s.uid||'me',t:Date.now()};let live=false;
     if(s){try{await s.db.doc('invites/'+id).set(body);if(s.uid)await s.db.doc('data/users/'+s.uid+'/host').set({last:id});live=true}catch(e){live=false}}
     const all=LS.get('inv')||{};all[id]=body;LS.set('inv',all);LS.set('last',id);
-    showOut(CCD.SITE+'#i-'+id,live);unsub&&unsub();unsub=await CCD.watchReplies(id,rs=>{const n=rs.filter(r=>r.s!=='no').reduce((a,r)=>a+1+(r.plus?1:0),0);going.textContent=n+' going';
+    showOut(CCD.SITE+'#i-'+id,live);CCD.pts.award(50,'night hosted',card,'host-'+id);unsub&&unsub();unsub=await CCD.watchReplies(id,rs=>{const n=rs.filter(r=>r.s!=='no').reduce((a,r)=>a+1+(r.plus?1:0),0);going.textContent=n+' going';
       const ul=$('.inv-replies',out);if(ul)ul.innerHTML=rs.map(r=>`<li><span class="gdot g-${esc(r.s)}"></span><b>${esc(r.name||'Someone')}${r.plus?' +1':''}</b><span class="mute">${r.s==='going'?'Going':r.s==='maybe'?'Maybe':'Can\'t make it'}</span></li>`).join('')})});
   const rs=el.querySelector('[data-c=hold]');el.addEventListener('ccd:held',()=>setTimeout(()=>rs&&rs._reset&&rs._reset(),2500))});
 
@@ -130,7 +130,7 @@ def('instrument',el=>{const grid=$('.igrid',el);let pat=ROWS.map((r,i)=>Array.fr
   /* export: four bars rendered to a WAV you can drop into Live */
   const ex=$('[data-export]',el),exo=$('.iexport',el);ex&&ex.addEventListener('click',async()=>{const c=CCD.audio.ctx();if(!c)return;ex.classList.add('is-loading');CCD.setLabel(ex,'Rendering');const sd=60/bpm/4,len=sd*64+.5;const oc=new OfflineAudioContext(2,Math.ceil(len*44100),44100);const fl=oc.createBiquadFilter();fl.type='lowpass';fl.frequency.value=200+Math.pow(cut,2)*14000;fl.connect(oc.destination);
     for(let s=0;s<64;s++){const k=s%16,t=s*sd+(k%2?swing*sd*.5:0);ROWS.forEach((r,i)=>{if(pat[i][k]&&!mute[i])CCD.audio.voice(oc,fl,r,t,{f:[55,55,65.4,49][Math.floor(k/4)],cut:300+cut*900})})}
-    const buf=await oc.startRendering();const wav=toWav(buf);const url=URL.createObjectURL(new Blob([wav],{type:'audio/wav'}));const name=`ccd-school-${bpm}bpm.wav`;
+    const buf=await oc.startRendering();const wav=toWav(buf);CCD.pts.award(25,'lesson done',ex,'lesson-export');const url=URL.createObjectURL(new Blob([wav],{type:'audio/wav'}));const name=`ccd-school-${bpm}bpm.wav`;
     exo.innerHTML=`<audio controls src="${url}"></audio><a class="seeall" href="${url}" download="${name}">${EY1}<span class="lab">${name}</span><span class="cnt">${(wav.byteLength/1024|0)} KB</span></a><span class="t-small faint">Four bars at ${bpm} BPM, 44.1 kHz WAV. Drag it into an Ableton Live clip slot.</span>`;CCD.eyes.collect(exo);CCD.done(ex,'Exported')});
   function toWav(b){const ch=b.numberOfChannels,n=b.length,o=new ArrayBuffer(44+n*ch*2),v=new DataView(o);const w=(p,s)=>{for(let i=0;i<s.length;i++)v.setUint8(p+i,s.charCodeAt(i))};w(0,'RIFF');v.setUint32(4,36+n*ch*2,true);w(8,'WAVEfmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,ch,true);v.setUint32(24,b.sampleRate,true);v.setUint32(28,b.sampleRate*ch*2,true);v.setUint16(32,ch*2,true);v.setUint16(34,16,true);w(36,'data');v.setUint32(40,n*ch*2,true);let p=44;const d=[...Array(ch)].map((_,i)=>b.getChannelData(i));for(let i=0;i<n;i++)for(let c=0;c<ch;c++){const s=Math.max(-1,Math.min(1,d[c][i]));v.setInt16(p,s<0?s*0x8000:s*0x7FFF,true);p+=2}return o}});
 
@@ -163,17 +163,109 @@ def('episodes',el=>{const root=el.dataset.root||'';const E=D.eps||[];const stage
   stage.addEventListener('pointermove',e=>{const p=$('.ep-art',stage);if(!p||RM)return;const r=p.getBoundingClientRect();p.style.setProperty('--tx',((e.clientX-r.left)/r.width-.5).toFixed(3));p.style.setProperty('--ty',((e.clientY-r.top)/r.height-.5).toFixed(3))});
   stage.addEventListener('pointerleave',()=>{const p=$('.ep-art',stage);p&&p.style.setProperty('--tx',0);p&&p.style.setProperty('--ty',0)});
   show((E.find(x=>x.next)||E[E.length-1]).no)});
-def('iwas',el=>el.addEventListener('click',()=>{CCD.done(el,'Stamped. +100');el.classList.add('is-done')}));
+def('iwas',el=>el.addEventListener('click',()=>{if(el.classList.contains('is-done'))return;CCD.done(el,'Stamped');el.classList.add('is-done');CCD.pts.award(100,'stamped',el,el.dataset.key||null,true)}));
 
-/* ================= POINTS: three ideas to replace the meter ================= */
-def('points',el=>{const E=D.earn||[],RW=D.rewards||[];let bal=+el.dataset.bal||350;const card=$('.pcard',el),tab=$('.ptab',el),crate=$('.pcrate',el),hist=[['Check in at a night',100,'Ep 04, Bar Wild'],['A friend comes to their first night',150,'Kabir, Ep 04'],['Be a fan of an artist',50,'Kohra'],['Rate a night',10,'Danza Drome'],['Share a night',20,'Somad Lab'],['Finish a lesson',25,'Drums, lesson 3']];
-  const nextR=()=>RW.find(r=>r[0]>bal)||RW[RW.length-1];
-  const draw=()=>{const nr=nextR();
-    if(card){const slots=8,filled=Math.min(slots,Math.floor(bal/100));card.innerHTML=`<div class="pc-head"><span class="lbl">Your card</span><b class="t-h2">${bal}</b></div><div class="pc-grid">${Array.from({length:slots},(_,i)=>`<span class="pc-slot${i<filled?' on':''}${(i+1)*100===nr[0]?' goal':''}">${i<filled?'<img src="'+(el.dataset.root||'')+'assets/img/logo.png" alt="">':(i+1)*100===nr[0]?'<em>'+nr[0]+'</em>':''}</span>`).join('')}</div><p class="t-small mute">${nr[0]>bal?`${nr[0]-bal} to your next reward`:'Reward ready'}</p>`}
-    if(tab){tab.innerHTML=`<div class="pt-paper"><span class="lbl">Cats Can Dance · your tab</span>${hist.map(h=>`<div class="pt-line"><span>${esc(h[2])}</span><span class="dots"></span><b>+${h[1]}</b></div>`).join('')}<div class="pt-total"><span>Total</span><b>${bal}</b></div><div class="pt-menu">${RW.map(r=>`<div class="pt-line ${r[0]<=bal?'can':''}"><span>${esc(r[1])}</span><span class="dots"></span><b>${r[0]}</b></div>`).join('')}</div></div>`}
-    if(crate){const n=Math.min(12,Math.round(bal/50));crate.innerHTML=`<div class="cr-box">${Array.from({length:12},(_,i)=>`<span class="cr-rec${i<n?' on':''}" style="--i:${i}"></span>`).join('')}</div><div><b class="t-h2">${bal}</b><p class="t-small mute">Every 50 adds a record. A full crate is ${RW[RW.length-1][0]}.</p></div>`}};
-  $$('[data-earn]',el).forEach(b=>b.addEventListener('click',()=>{const e=E[+b.dataset.earn];bal+=e[1];hist.unshift([e[0],e[1],'Just now']);hist.length=Math.min(hist.length,7);draw();const pop=document.createElement('span');pop.className='ppop';pop.textContent='+'+e[1];b.appendChild(pop);setTimeout(()=>pop.remove(),900)}));
+/* ================= POINTS: the meter, your stamps under the light, how you earn, what it gets you =================
+   Back to the v7 design. Every row you tap really adds to the balance in the header, and so does everything
+   you do elsewhere (check in, I was there, follow, make an invite, finish a loop). */
+def('points',el=>{const root=el.dataset.root||'';
+  const EARN=[['nights','Check in at a night',100,0,'checked in',1],['nights','A friend comes to their first night',150,0,'friend came'],['nights','Rate a night',10,0,'rated'],['nights','Share a night',20,1,'shared'],['artists','Be a fan of an artist',50,1,'fan'],['host','Host a night',50,1,'night hosted'],['school','Finish a lesson',25,1,'lesson done']];
+  const PERKS=[[200,'Bring a +1'],[300,'Guaranteed spot'],[-3,'Regular'],[800,'Free ticket'],[-10,'Resident'],[1e9,'Merch']];
+  const P0=[150,168],RR=140,pt=(v,r)=>{const an=(-52+Math.min(v,1000)/1000*104-90)*Math.PI/180;return[(P0[0]+r*Math.cos(an)).toFixed(1),(P0[1]+r*Math.sin(an)).toFixed(1)]};
+  let ticks='';for(let v=0;v<=1000;v+=50){const x=pt(v,RR),y=pt(v,RR-(v%100?6:12));ticks+=`<line x1="${x[0]}" y1="${x[1]}" x2="${y[0]}" y2="${y[1]}" stroke="${v>=800?'#FF3B30':'#0C0D0F'}" stroke-width="${v%100?1:1.8}"/>`}
+  [[200,'+1'],[300,'Spot'],[800,'Ticket']].forEach(([v,l],i)=>{const x=pt(v,RR+13);ticks+=`<text x="${x[0]}" y="${x[1]}" text-anchor="middle" font-family="Martian Mono,monospace" font-size="8.5">${l}</text><circle class="lamp" data-v="${v}" cx="${250+i*14}" cy="118" r="4"/>`});
+  el.innerHTML=`<div class="pv-top"><div class="pv-tot"><b data-tot></b><span data-tier></span></div>
+    <div class="vu"><svg viewBox="0 0 300 128" role="img" aria-label="Points meter">${ticks}<text x="16" y="120" font-family="Martian Mono,monospace" font-size="8">POINTS</text><g class="ndl"><line x1="150" y1="168" x2="150" y2="34" stroke="#0C0D0F" stroke-width="2"/></g><circle cx="150" cy="168" r="50" fill="#0C0D0F"/></svg></div></div>
+    <div class="pv-grid"><div><span class="lbl">Your stamps · one a night out · move the light over them</span><div class="pv-stamps"></div>
+      <span class="lbl" style="display:block;margin-top:var(--s5)">What it gets you</span><ul class="perks">${PERKS.map(([v,l])=>`<li data-v="${v}"><b>${l}</b><span>${v<0?(-v)+' nights out':v>1e8?'Prices soon':v+' points'}</span></li>`).join('')}</ul></div>
+    <div><span class="lbl">How you earn · tap one</span><div class="earn">${EARN.map((x,i)=>`<button data-e="${i}" style="--c:var(--c-${x[0]})"><i></i><span>${x[1]}</span>${x[3]?'<s>example</s>':''}<b>+${x[2]}</b></button>`).join('')}</div></div></div>`;
+  const tot=$('[data-tot]',el),tier=$('[data-tier]',el),ndl=$('.ndl',el),st=$('.pv-stamps',el);
+  const draw=()=>{const b=CCD.pts.bal,n=CCD.pts.nights;tot.textContent=b.toLocaleString('en-IN');tier.innerHTML=n>=10?'Resident':n>=3?`Regular<br>${n} nights out`:`points<br>${n} night${n===1?'':'s'} out`;
+    ndl.style.setProperty('--ang',(-52+Math.min(b,1000)/1000*104)+'deg');$$('.lamp',el).forEach(l=>l.classList.toggle('on',b>=+l.dataset.v));
+    $$('.perks li',el).forEach(li=>{const v=+li.dataset.v;li.classList.toggle('on',v<0?n>=-v:b>=v)});
+    st.innerHTML=Array.from({length:10},(_,i)=>`<span class="pst${i<n?' got':''}"><img src="${root}assets/img/logo.png" alt=""></span>`).join('')};
+  $$('.earn button',el).forEach(b=>b.addEventListener('click',()=>{const x=EARN[+b.dataset.e];CCD.pts.award(x[2],x[4],b,null,!!x[5]);b.classList.remove('hit');void b.offsetWidth;b.classList.add('hit')}));
+  st.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect();st.style.setProperty('--ux',(e.clientX-r.left)+'px');st.style.setProperty('--uy',(e.clientY-r.top)+'px');st.classList.add('lit')});st.addEventListener('pointerleave',()=>st.classList.remove('lit'));
+  document.addEventListener('ccd:points',draw);
+  document.addEventListener('ccd:step',e=>{if(e.detail<0)return;const p=CCD.pageTrack&&CCD.pageTrack.pat('kick');if(p&&p[e.detail]){el.classList.add('kick');setTimeout(()=>el.classList.remove('kick'),90)}});
   draw()});
+
+/* ================= ARTIST PAGE: eras as sleeves, a record in focus, a player at the bottom =================
+   Pull a sleeve: the record slides out, the page takes that era's colour, photo and sound line, and the releases and shows narrow to it.
+   Any release, popular track or "Start here" goes to the player. Real 30 second previews come from Deezer when the network allows;
+   otherwise the player makes a stand-in loop and says so. Bandcamp-only records open on Bandcamp. */
+def('artistpage',el=>{const D_=JSON.parse($('.ap-data',el).textContent),root=el.dataset.root||'';const ERAS=D_.eras,RELS=D_.rels,GIGS=D_.gigs;
+  const dz=CCD.dz,A=CCD.audio;let era=-1,focus=null,type='all',queue=null,qi=0;
+  const pl=$('.ap-player',el),rec=$('.ap-rec',pl),cov=$('.ap-cov',pl),pt=$('.ap-pt',pl),pp=$('.ap-pp',pl),src=$('.ap-src',pl),nxt=$('.ap-next',pl),prog=$('.ap-prog i',pl);
+  const COL=k=>k<0?'var(--c-artists)':`var(--c-${ERAS[k].col})`;
+  const cover=r=>r&&r.dz?`https://api.deezer.com/album/${r.dz}/image?size=medium`:'';
+  const sleeveArt=(r,cls='')=>`<span class="ap-art ${cls}" style="--ec:${COL(r.era)}">${r.dz?`<img src="${cover(r)}" alt="" loading="lazy" onerror="this.remove()">`:''}<b>${esc(r.t)}</b><em>${r.y}</em></span>`;
+  const yrs=k=>k<0?'2012 to now':`${ERAS[k].from} to ${ERAS[k].to||'now'}`;
+  /* --- player --- */
+  let now=null,nowKey='';const deck=CCD.deck(pl,rec,{load:()=>loadNow(),onPlay:on=>{pp.setAttribute('aria-pressed',on);pp.setAttribute('aria-label',on?'Pause':'Play');el.classList.toggle('is-playing',on)}});
+  async function bufFor(item){/* item: {r, track?} */const r=item.r;
+    try{if(item.preview)return{b:await dz.buf(item.preview),real:1};if(!r.dz)throw 'nodz';const al=await dz.album(r.dz);const ts=(al.tracks&&al.tracks.data)||[];const t=ts.find(x=>x.title===r.tr)||ts.find(x=>x.preview);if(!t||!t.preview)throw 'none';item.track=t.title;return{b:await dz.buf(t.preview),real:1}}
+    catch(e){return{b:await A.artistLoop({id:'sand-'+(item.track||r.t),g:[r.era===1?'house':'downtempo']}),real:0}}}
+  async function loadNow(){if(!now)setNow({r:focus||RELS.filter(x=>x.dz).pop()});const it=now;pl.classList.add('loading');const o=await bufFor(it);pl.classList.remove('loading');it.real=o.real;paintNow();return o.b}
+  function setNow(it){now=it;nowKey=(it.r.t+'|'+(it.track||''));paintNow()}
+  function paintNow(){if(!now)return;const r=now.r;cov.innerHTML=r.dz?`<img src="${cover(r)}" alt="" onerror="this.remove()">`:'';pl.style.setProperty('--ec',COL(r.era));
+    $('b',pt).textContent=now.track||r.tr||r.t;$('.t-data',pt).textContent=`SANDUNES · ${r.t.toUpperCase()} · ${r.y}`+(now.real===0?' · STAND-IN LOOP':now.real?' · 30 SEC PREVIEW':'');
+    const bcOnly=!r.dz&&r.bc;src.textContent=bcOnly?'On Bandcamp':r.dz?'Deezer':'';src.href=bcOnly?r.bc:r.dz?`https://www.deezer.com/album/${r.dz}`:'#';src.hidden=!(r.dz||r.bc)}
+  async function playItem(it){if(!it.r.dz&&it.r.bc&&!it.preview){setNow(it);window.open(it.r.bc,'_blank','noopener');return}setNow(it);pl.classList.add('loading');const o=await bufFor(it);pl.classList.remove('loading');it.real=o.real;paintNow();deck.setBuffer(o.b,true)}
+  pp.addEventListener('click',()=>deck.toggle());
+  (function pr(){const p=parseFloat(getComputedStyle(pl).getPropertyValue('--prog'))||0;prog.style.width=(p*100).toFixed(1)+'%';requestAnimationFrame(pr)})();
+  /* --- eras --- */
+  const sound=$('.ap-sound',el),photo=$('[data-photo]',el);
+  function setEra(k,from){era=k;el.style.setProperty('--ec',COL(k));$$('.ap-sl',el).forEach(b=>b.setAttribute('aria-pressed',+b.dataset.era===k));
+    if(k>=0){const x=ERAS[k];photo.style.objectPosition=x.pos;sound.innerHTML=`<span class="lbl">${yrs(k)} · the sound</span><b class="t-h3">${esc(x.sound)}.</b><div class="tags">${x.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div><span class="t-data faint">SOURCE: ${esc(x.src.toUpperCase())}</span>`}
+    else{photo.style.objectPosition='center 40%';sound.innerHTML=`<span class="lbl">2012 to now · three eras</span><b class="t-h3">${ERAS.map(x=>esc(x.label)).join(', then ')}.</b><span class="t-data faint">PULL A SLEEVE TO HEAR ONE</span>`}
+    drawRels();drawShows();if(from!=='focus'){const r=k<0?RELS.filter(x=>x.dz).pop():RELS.find(x=>x.era===k&&D_.start.includes(x.t))||RELS.filter(x=>x.era===k&&x.dz).pop()||RELS.filter(x=>x.era===k).pop();setFocus(r,'era')}
+    if(from==='click'&&k>=0){CCD.fx&&0}history.replaceState(null,'',k<0?location.pathname:'#era-'+(k+1))}
+  $$('.ap-sl',el).forEach(b=>b.addEventListener('click',()=>setEra(+b.dataset.era,'click')));
+  /* --- focus --- */
+  const fo=$('.ap-focus',el);
+  function setFocus(r,from){if(!r)return;focus=r;if(from!=='era'&&era>=0&&r.era!==era)setEra(r.era,'focus');
+    fo.style.setProperty('--ec',COL(r.era));
+    fo.innerHTML=`<div class="apf-art">${sleeveArt(r,'big')}<span class="apf-rec" aria-hidden="true"></span></div><div class="apf-t"><span class="lbl">${esc(r.ty)} · ${r.y}${r.lab?' · '+esc(r.lab):''}</span><b class="t-h1">${esc(r.t)}</b>
+      <div class="apf-acts"><button class="btn two m" data-fplay>${EY2}<span class="lab">${!r.dz&&r.bc?'Play on Bandcamp':'Play'}</span></button>${r.bc?`<a class="btn one s" href="${r.bc}" target="_blank" rel="noopener">${EY1}<span class="lab">Bandcamp</span></a>`:''}${r.dz?`<a class="btn one s" href="https://www.deezer.com/album/${r.dz}" target="_blank" rel="noopener">${EY1}<span class="lab">Deezer</span></a>`:''}<button class="btn one s" data-fshare>${EY1}<span class="lab">Share</span></button></div>
+      <ol class="apf-tracks"><li class="mute t-small">${r.dz?'Loading the tracklist':'This one lives on Bandcamp. Open it there to hear it.'}</li></ol></div>`;
+    CCD.eyes.collect(fo);$('[data-fplay]',fo).addEventListener('click',()=>playItem({r}));
+    $('[data-fshare]',fo).addEventListener('click',e=>share(e.currentTarget,r.t));
+    $$('.ap-rel',el).forEach(t=>t.classList.toggle('on',t.dataset.t===r.t));
+    if(r.dz)dz.album(r.dz).then(al=>{if(focus!==r)return;const ts=(al.tracks&&al.tracks.data)||[];const ol=$('.apf-tracks',fo);
+        ol.innerHTML=ts.slice(0,12).map((t,i)=>`<li><button data-i="${i}"${t.preview?'':' disabled'}><span class="tr-n">${String(i+1).padStart(2,'0')}</span><b>${esc(t.title)}</b><span class="t-data faint">${Math.floor(t.duration/60)}:${String(t.duration%60).padStart(2,'0')}</span></button></li>`).join('')+(ts.length>12?`<li class="t-small faint">${ts.length-12} more on Deezer</li>`:'');
+        $$('button',ol).forEach(b=>b.addEventListener('click',()=>{const t=ts[+b.dataset.i];playItem({r,track:t.title,preview:t.preview})}))})
+      .catch(()=>{if(focus!==r)return;$('.apf-tracks',fo).innerHTML=`<li class="t-small mute">The tracklist comes from Deezer and can't load here.${r.tr?' The player starts on '+esc(r.tr)+'.':''}</li>`});
+    if(!deck.isPlaying()){setNow({r});deck.reset()}}
+  /* --- releases --- */
+  const relg=$('.ap-rels',el),reln=$('.ap-reln',el);
+  function drawRels(){const list=RELS.filter(r=>(era<0||r.era===era)&&(type==='all'||r.ty===type)).slice().reverse();reln.textContent=`${list.length} OF ${RELS.length}`;
+    relg.innerHTML=list.map(r=>`<button class="ap-rel${focus&&focus.t===r.t?' on':''}" data-t="${esc(r.t)}">${sleeveArt(r)}<span class="ap-rt"><b>${esc(r.t)}</b><span class="t-data faint">${esc(r.ty.toUpperCase())} · ${r.y}</span></span></button>`).join('')||'<p class="t-small mute">None of these in this era.</p>'}
+  relg.addEventListener('click',e=>{const b=e.target.closest('.ap-rel');if(!b)return;const r=RELS.find(x=>x.t===b.dataset.t);setFocus(r,'tile');fo.scrollIntoView({behavior:CCD.RM?'auto':'smooth',block:'center'})});
+  el.addEventListener('ccd:chips',e=>{type=e.detail[0]||'all';drawRels()});
+  /* --- shows --- */
+  const sh=$('.ap-shows',el),shn=$('.ap-showsn',el);
+  function drawShows(){const list=GIGS.filter(g=>era<0||g.era===era);shn.textContent=`${list.length} past show${list.length===1?'':'s'}${era<0?'':' · '+yrs(era)}`;
+    sh.innerHTML=list.map(g=>{const d=new Date(g.d);return `<li><span class="t-data">${d.toLocaleString('en-GB',{month:'short'}).toUpperCase()} ${d.getFullYear()}</span><div><b>${esc(g.e)}</b><span class="t-small mute">${esc([g.v,g.c].filter(Boolean).join(', '))}</span></div><button class="btn one s" data-c="iwas" data-key="gig-${g.d}">${EY1}<span class="lab">I was there</span></button></li>`}).join('')||'<li class="t-small mute">No shows on record in these years.</li>';CCD.init(sh)}
+  /* --- popular --- */
+  const pop=$('.ap-pop',el);const FALL=[['Eleven Eleven','11:11'],['Tree of Life','Spaven x Sandunes'],['Love It Less','Spare Some Time'],['The Surge','The Ground Beneath Her Feet'],['Pelican Dance','Pelican Dance']];
+  const drawPop=(rows)=>{pop.innerHTML=rows.map((x,i)=>`<li><button data-i="${i}"><span class="tr-n">${String(i+1).padStart(2,'0')}</span><b>${esc(x.t)}</b><span class="t-small mute">${esc(x.al)}</span><span class="tr-wave" aria-hidden="true">${CCD.wave(x.t)}</span></button></li>`).join('');
+    $$('button',pop).forEach(b=>b.addEventListener('click',()=>{const x=rows[+b.dataset.i];const r=RELS.find(q=>q.t===x.al||q.tr===x.t)||{t:x.al,ty:'Track',y:'',era:Math.max(0,era),dz:'',tr:x.t};playItem({r,track:x.t,preview:x.p})}))};
+  drawPop(FALL.map(([t,al])=>({t,al})));dz.artistTop('Sandunes').then(r=>{const rows=r.tracks.filter(t=>t.preview).slice(0,6).map(t=>({t:t.title,al:t.album.title,p:t.preview}));if(rows.length)drawPop(rows)}).catch(()=>{});
+  /* --- start here: one record per era, oldest first --- */
+  const startQ=D_.start.map(t=>RELS.find(r=>r.t===t)).filter(Boolean);
+  const runQ=i=>{qi=(i+startQ.length)%startQ.length;const r=startQ[qi];setEra(r.era,'start');setFocus(r,'start');playItem({r})};
+  $('[data-start]',el).addEventListener('click',()=>runQ(0));
+  nxt.addEventListener('click',()=>{const cur=now?now.r.era:era;const k=((cur<0?-1:cur)+1)%ERAS.length;const r=startQ.find(x=>x.era===k)||RELS.find(x=>x.era===k);setEra(k,'start');setFocus(r,'start');playItem({r})});
+  /* --- share, remind --- */
+  async function share(b,what){const url=location.href.split('#')[0]+(era>=0?'#era-'+(era+1):'');try{if(navigator.share){await navigator.share({title:'Sandunes'+(what?', '+what:''),url});return}await navigator.clipboard.writeText(url);CCD.setLabel(b,'Link copied')}catch(e){CCD.setLabel(b,'Copy the address bar')}setTimeout(()=>CCD.setLabel(b,'Share'),2000)}
+  $('[data-share]',el).addEventListener('click',e=>share(e.currentTarget));
+  const rm=$('[data-remind]',el);rm&&rm.addEventListener('click',()=>{CCD.done(rm,'We\'ll tell you');rm.classList.add('is-done')});
+  /* --- start --- */
+  const h=/^#era-(\d)$/.exec(location.hash);setEra(h?Math.min(ERAS.length-1,+h[1]-1):-1,'init')});
+
+/* sleeves on their own (the lab card): pull one, the record slides out and the rail takes its colour */
+def('sleeves',el=>{el.addEventListener('click',e=>{const b=e.target.closest('.ap-sl');if(!b)return;$$('.ap-sl',el).forEach(x=>x.setAttribute('aria-pressed',x===b));el.style.setProperty('--ec',b.style.getPropertyValue('--ec')||'var(--c-artists)')})});
 
 document.addEventListener('DOMContentLoaded',()=>CCD.init());
 })();

@@ -140,6 +140,18 @@ A.loop=async()=>{if(A._loop)return A._loop;const c=A.ctx();if(!c)return null;con
   for(let i=0;i<32;i++){const t=i*step;if(i%4===0)A.voice(oc,m,'kick',t);if(i%8===4)A.voice(oc,m,'clap',t);if(i%2===1)A.voice(oc,m,'hat',t);if([2,6,10,14,18,22,27,30].includes(i))A.voice(oc,m,'bass',t,{f:[55,55,65.4,49][Math.floor(i/8)]})}
   A._loop=await oc.startRendering();return A._loop};
 
+/* ================= DEEZER: real 30 second previews, fetched when you press play =================
+   The API is read with JSONP (it has no CORS), the previews themselves allow any origin, so they decode into the deck and scratch.
+   Where the network is closed (the claude.ai preview), every caller falls back to a loop we make. */
+const DZ=CCD.dz={c:{}};
+DZ.jsonp=path=>DZ.c[path]||(DZ.c[path]=new Promise((res,rej)=>{const cb='dz'+Math.random().toString(36).slice(2);const sc=document.createElement('script');let to;const clean=()=>{clearTimeout(to);try{delete window[cb]}catch(_){window[cb]=undefined}sc.remove()};
+  to=setTimeout(()=>{clean();rej('timeout')},5000);window[cb]=d=>{clean();d&&!d.error?res(d):rej('error')};sc.onerror=()=>{clean();rej('blocked')};
+  sc.src='https://api.deezer.com/'+path+(path.includes('?')?'&':'?')+'output=jsonp&callback='+cb;document.head.appendChild(sc)}).catch(e=>{delete DZ.c[path];throw e}));
+const norm=x=>String(x||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+DZ.album=id=>DZ.jsonp('album/'+id);
+DZ.artistTop=async name=>{const s_=await DZ.jsonp('search/artist?q='+encodeURIComponent(name)+'&limit=3');const ar=(s_.data||[]).find(x=>norm(x.name)===norm(name));if(!ar)throw 'none';const t=await DZ.jsonp('artist/'+ar.id+'/top?limit=10');return{artist:ar,tracks:t.data||[]}};
+DZ.buf=async url=>{const c=A.ctx();const r=await fetch(url);if(!r.ok)throw 'http';return await c.decodeAudioData(await r.arrayBuffer())};
+
 /* ================= DECK: one engine for every record you can play and scratch =================
    Tap to play or stop. Drag round the record to scratch, forwards and backwards. Drop an audio file on it to scratch that. */
 const GENRE_BPM=g=>{g=(g||[]).join(' ').toLowerCase();return /drum|dnb|jungle/.test(g)?172:/techno/.test(g)?128:/bass|dubstep|grime/.test(g)?140:/hip|rap|drill/.test(g)?92:/ambient|experimental|downtempo|live/.test(g)?104:/house|disco|garage/.test(g)?122:120};
@@ -161,7 +173,7 @@ CCD.deck=(el,rec,opt={})=>{let buf=null,playing=false,src=null,startAt=0,offset=
   async function play(){const c=A.ctx();if(!c)return;await getBuf();CCD.decks.forEach(d=>d!==D_&&d.stop());if(CCD.pageTrack&&CCD.pageTrack.on)CCD.pageTrack.stop();
     stopSrc();src=c.createBufferSource();src.buffer=buf;src.loop=true;g=c.createGain();g.gain.value=.9;src.connect(g);g.connect(c.destination);offset=offset%buf.duration;startAt=c.currentTime;src.start(0,offset);playing=true;CCD.decks.add(D_);el.classList.add('playing');opt.onPlay&&opt.onPlay(true)}
   function stop(){if(!playing)return;offset=pos();stopSrc();playing=false;el.classList.remove('playing');opt.onPlay&&opt.onPlay(false)}
-  D_.stop=stop;D_.toggle=()=>playing?stop():play();D_.setBuffer=b=>{const was=playing;stop();buf=b;rev=null;offset=0;if(was||true)play()};
+  D_.stop=stop;D_.toggle=()=>playing?stop():play();D_.setBuffer=(b,auto=true)=>{stop();buf=b;rev=null;offset=0;if(auto)play()};D_.isPlaying=()=>playing;D_.play=play;D_.reset=()=>{stop();buf=null;rev=null;offset=0};
   function grain(at,rate){const c=AC;if(!c||!buf)return;let b=buf,o=at;if(rate<0){if(!rev){rev=c.createBuffer(buf.numberOfChannels,buf.length,buf.sampleRate);for(let ch=0;ch<buf.numberOfChannels;ch++){const s=buf.getChannelData(ch),d=rev.getChannelData(ch);for(let i=0;i<s.length;i++)d[i]=s[s.length-1-i]}}b=rev;o=buf.duration-at}
     const gg=c.createGain(),s=c.createBufferSource();s.buffer=b;s.playbackRate.value=Math.min(3,Math.max(.25,Math.abs(rate)));gg.gain.setValueAtTime(.9,c.currentTime);gg.gain.linearRampToValueAtTime(0,c.currentTime+.075);s.connect(gg);gg.connect(c.destination);s.start(0,Math.max(0,o%b.duration),.085)}
   const center=()=>{const r=rec.getBoundingClientRect();return[r.left+r.width/2,r.top+r.height/2]};
@@ -182,14 +194,15 @@ CCD.deck=(el,rec,opt={})=>{let buf=null,playing=false,src=null,startAt=0,offset=
 CCD.def('scratch',el=>{const btn=$('[data-play]',el);const d=CCD.deck(el,$('.rec',el),{onPlay:on=>{if(btn){btn.setAttribute('aria-pressed',on);CCD.setLabel(btn,on?'Stop':'Play')}}});btn&&btn.addEventListener('click',()=>d.toggle())});
 
 /* ================= ARTIST VINYL: tap to play, drag to scratch, and what's on it ================= */
-CCD.def('vinyl',el=>{const a=(D.artists||[]).find(x=>x.id===el.dataset.a)||{id:el.dataset.a,n:el.dataset.n||'',g:[]};const info=el.parentElement.querySelector('.vinfo');let file=null;
+CCD.def('vinyl',el=>{const a=(D.artists||[]).find(x=>x.id===el.dataset.a)||{id:el.dataset.a,n:el.dataset.n||'',g:[]};const info=el.parentElement.querySelector('.vinfo');let file=null,real=null;
   const lat=a.latest&&a.latest[0];const bc=`https://bandcamp.com/search?q=${encodeURIComponent(a.n+(lat?' '+lat[0]:''))}`;
   const show=on=>{if(!info)return;info.classList.toggle('on',on);if(!on){info.innerHTML=`<span class="lbl">Tap to play · drag to scratch</span>`;return}
     const bpm=(A.loops[a.id]&&A.loops[a.id].bpm)||GENRE_BPM(a.g);
-    info.innerHTML=`<div class="vnow"><span class="veq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><div><span class="lbl">On the record</span><b>${esc(file||a.n)}</b><span class="t-data faint">${file?'Your file':(lat?esc(lat[0])+' · '+lat[1]:esc((a.g||[]).slice(0,2).join(' · ')))}</span></div></div>`+
-      `<a class="seeall" href="${bc}" target="_blank" rel="noopener">${EY1}<span class="lab">${lat?'Get it on Bandcamp':'Their music on Bandcamp'}</span></a>`+
-      (file?'':`<p class="t-small faint">Our loop at ${bpm} BPM stands in here. On catscandance.com this plays their 30 second preview. Drop an audio file on the record to scratch it.</p>`);collect(info)};
-  CCD.deck(el,el,{load:()=>A.artistLoop(a),onPlay:show,onFile:n=>{file=n||null}});show(false)});
+    const line=file?'Your file':real?esc(real.al):(lat?esc(lat[0])+' · '+lat[1]:esc((a.g||[]).slice(0,2).join(' · ')));
+    info.innerHTML=`<div class="vnow"><span class="veq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><div><span class="lbl">On the record</span><b>${esc(file||(real?real.t:a.n))}</b><span class="t-data faint">${line}</span></div></div>`+
+      `<a class="seeall" href="${real?real.link:bc}" target="_blank" rel="noopener">${EY1}<span class="lab">${real?'Open in Deezer':(lat?'Get it on Bandcamp':'Their music on Bandcamp')}</span></a>`+
+      (file||real?'':`<p class="t-small faint">Their preview could not load here, so our loop at ${bpm} BPM stands in.</p>`);collect(info)};
+  CCD.deck(el,el,{load:async()=>{el.classList.add('loading');try{const r=await DZ.artistTop(a.n);const t=r.tracks.find(x=>x.preview);if(!t)throw 0;const b=await DZ.buf(t.preview);real={t:t.title,al:t.album&&t.album.title||'',link:t.link};return b}catch(e){real=null;return A.artistLoop(a)}finally{el.classList.remove('loading')}},onPlay:show,onFile:n=>{file=n||null}});show(false)});
 
 /* ================= NEEDLE DROP: eras as bands on the record ================= */
 CCD.def('needle',el=>{const bands=$$('.nband',el),arm=$('.narm',el),rec=$('.nrec',el),sleeves=$$('[data-era]',el.closest('[data-eras]')||el),out=$$('[data-era-panel]',el.closest('[data-eras]')||el);const n=bands.length;let cur=n-1,drag=false;
@@ -224,7 +237,7 @@ function pageEngine(c){const E={G:{}};E.bus=c.createGain();E.bus.gain.value=.8;E
     lead(t,i){const o=c.createOscillator(),fl=c.createBiquadFilter(),g=c.createGain();o.type='triangle';o.frequency.value=220*Math.pow(2,(LN[i]||12)/12);fl.type='lowpass';fl.frequency.setValueAtTime(3200,t);fl.frequency.exponentialRampToValueAtTime(700,t+.2);env(g,t,.004,.2,.22);o.connect(fl);fl.connect(g);g.connect(E.G.lead);g.connect(E.dly);o.start(t);o.stop(t+.3)}};
   return E}
 CCD.def('story',el=>{const box=$('.story-obj',el),cv=$('canvas',box),clk=$('.nclock',el),dots=$$('.storydots a',el),fxc=$('.story-fx',el);
-  const W=['shared','nights','host','artists','school'],FORM={shared:'coin',nights:'ball',host:'stamp',artists:'record',school:'dial'};
+  const W=['shared','nights','host','artists','school'],FORM={shared:'coin',nights:'coin',host:'coin',artists:'coin',school:'coin'};/* one object, the coin. Every section has its own chrome object in its head, so the coin stays a coin and lives in the player when it has no slot */
   const home=!!$('[data-ch]',el);const world0=W.find(w=>document.body.classList.contains('w-'+w))||'shared';
   /* on app pages every section is a chapter: same colour, the app's object, and the track adds a part each section */
   const chs=home?$$('[data-ch]',el):$$(':scope > main > section, :scope > section',el);
@@ -238,7 +251,8 @@ CCD.def('story',el=>{const box=$('.story-obj',el),cv=$('canvas',box),clk=$('.ncl
   box.style.width=box.style.height=BASE()+'px';addEventListener('resize',()=>{box.style.width=box.style.height=BASE()+'px'});
   const target=()=>{const c=chs[cur];const vw=innerWidth,vh=innerHeight;const sl=c&&$('.objslot',c);
     if(sl&&sl.offsetParent){const r=sl.getBoundingClientRect();if(r.bottom>css('--header')&&r.top<vh*.92&&r.width>8)return{x:r.left+r.width/2,y:r.top+r.height/2,s:r.width,slot:1}}
-    const m=css('--margin')||24;const sz=ph.matches?css('--s8'):Math.max(m*1.5,Math.min(96,vw*.05));return{x:vw-(ph.matches?sz*.5+m*.25:m*.5+sz*.2),y:css('--header')+(home?css('--s5'):css('--s7'))+sz*.6,s:sz,slot:0}};
+    const ps=$('.spill-slot');if(ps&&ps.offsetParent){const r=ps.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2,s:r.width*1.15,slot:0}}
+    const sz=css('--s7');return{x:vw-css('--margin'),y:vh-css('--s8'),s:sz,slot:0}};
   let last=performance.now();
   (function follow(now){const dt=Math.min(.1,(now-last)/1000);last=now;const t=target();const k=RM?1:1-Math.pow(.0015,dt);pos.x+=(t.x-pos.x)*k;pos.y+=(t.y-pos.y)*k;pos.s+=(t.s-pos.s)*k;
     const b=BASE(),sc=pos.s/b;box.style.transform=`translate(${(pos.x-b/2).toFixed(1)}px,${(pos.y-b/2).toFixed(1)}px) scale(${sc.toFixed(4)})`;
@@ -303,7 +317,7 @@ CCD.def('story',el=>{const box=$('.story-obj',el),cv=$('canvas',box),clk=$('.ncl
 
 /* ================= LOGO STAMP under UV light ================= */
 CCD.def('stamps',el=>{const pad=$('.spad',el);pad.addEventListener('pointermove',e=>{const r=pad.getBoundingClientRect();pad.style.setProperty('--ux',(e.clientX-r.left)+'px');pad.style.setProperty('--uy',(e.clientY-r.top)+'px');pad.classList.add('lit')});pad.addEventListener('pointerleave',()=>pad.classList.remove('lit'));
-  const b=$('[data-stamp]',el);b&&b.addEventListener('click',()=>{const s=document.createElement('span');s.className='stamp new';s.style.setProperty('--r',(Math.random()*30-15)+'deg');s.innerHTML='<img src="'+(el.dataset.root||'')+'assets/img/logo.png" alt=""><em>'+esc(b.dataset.stamp)+'</em>';$('.stamps',el).appendChild(s);pad.classList.add('thunk');vib(25);setTimeout(()=>pad.classList.remove('thunk'),ms('--d-move'));setTimeout(()=>s.classList.remove('new'),ms('--d-scene')*2);b.setAttribute('aria-disabled','true');b.classList.add('is-done');CCD.setLabel(b,'Stamped')})});
+  const b=$('[data-stamp]',el);b&&b.addEventListener('click',()=>{CCD.pts&&CCD.pts.award(100,'checked in',b,'stamp-'+b.dataset.stamp,true);const s=document.createElement('span');s.className='stamp new';s.style.setProperty('--r',(Math.random()*30-15)+'deg');s.innerHTML='<img src="'+(el.dataset.root||'')+'assets/img/logo.png" alt=""><em>'+esc(b.dataset.stamp)+'</em>';$('.stamps',el).appendChild(s);pad.classList.add('thunk');vib(25);setTimeout(()=>pad.classList.remove('thunk'),ms('--d-move'));setTimeout(()=>s.classList.remove('new'),ms('--d-scene')*2);b.setAttribute('aria-disabled','true');b.classList.add('is-done');CCD.setLabel(b,'Stamped')})});
 
 /* ================= WHISKERS: a count that fills the room ================= */
 CCD.def('whiskers',el=>{const n=$('.wn',el),cap=+el.dataset.cap||40;CCD.whisk=CCD.whisk||{};const set=v=>{v=Math.max(0,Math.min(cap,v));el.dataset.v=v;el.style.setProperty('--f',v/cap);n.textContent=v;el.classList.toggle('full',v>=cap);const s=$('.wcap',el);if(s)s.textContent=v>=cap?'Full':`${cap-v} left`};el._set=set;set(+el.dataset.v||0);
@@ -369,6 +383,42 @@ CCD.def('chrome',el=>{const N=36;let f=0,drag=null,last=0;const set=v=>{f=((Math
 /* ================= EYES IN THE ROOM ================= */
 CCD.def('room',el=>{const n=+el.dataset.n||12;const g=$('.rgrid',el);g.innerHTML=Array.from({length:n},()=>'<i></i>').join('');
   const b=$('[data-going]',el),c=$('.rcount',el);b&&b.addEventListener('click',()=>{const on=!el.classList.contains('you');el.classList.toggle('you',on);if(on){const me=document.createElement('i');me.className='me';g.prepend(me);CCD.done(b,'You\'re going')}else{const me=$('.me',g);me&&me.remove();b.classList.remove('is-done');CCD.setLabel(b,'I\'m going')}c.textContent=n+(on?1:0)})});
+
+/* ================= CHROME OBJECTS: each one turns, follows you and jumps on the kick =================
+   Every .cobj on screen is driven here (CSS keyframes are only the fallback). It turns on its own, scrolling spins it,
+   it tilts toward the pointer, it jumps on the kick when the track is on, and a tap sends it round once with a chirp. */
+(()=>{const live=new Set();let sv=0,ly=scrollY,px=0,py=0,kick=0;document.documentElement.classList.add('js-cobj');
+  const io=new IntersectionObserver(es=>es.forEach(en=>{en.isIntersecting?live.add(en.target):live.delete(en.target)}),{rootMargin:'80px'});
+  const add=root=>$$('.cobj',root).forEach(o=>{if(o._co)return;o._co={ph:(hashS(o.innerHTML)%628)/100,spin:0,v:0};io.observe(o);
+    o.addEventListener('click',e=>{o._co.v+=Math.PI*2*3.2;o.classList.remove('pop');void o.offsetWidth;o.classList.add('pop');const c=A.ctx();if(c){const t=c.currentTime,os=c.createOscillator(),g=c.createGain();os.type='triangle';os.frequency.setValueAtTime(900,t);os.frequency.exponentialRampToValueAtTime(1700,t+.08);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+.14);os.connect(g);g.connect(c.destination);os.start(t);os.stop(t+.16)}
+      const r=o.getBoundingClientRect();CCD.fx&&CCD.fx.burst(r.left+r.width/2,r.top+r.height/2)})});
+  CCD.cobj=add;add(document);
+  addEventListener('scroll',()=>{sv+=scrollY-ly;ly=scrollY},{passive:true});
+  addEventListener('pointermove',e=>{px=e.clientX/innerWidth-.5;py=e.clientY/innerHeight-.5},{passive:true});
+  document.addEventListener('ccd:step',e=>{const s_=e.detail;if(s_>=0&&CCD.pagePat!==undefined){const p=(CCD.pageTrack&&CCD.pageTrack.pat)?CCD.pageTrack.pat('kick'):null;if(p&&p[s_])kick=1}});
+  let last=performance.now();
+  (function tick(now){const dt=Math.min(.05,(now-last)/1000);last=now;const t=now/1000;sv*=Math.pow(.02,dt);kick*=Math.pow(.0005,dt);
+    live.forEach(o=>{const c=o._co,img=o.firstElementChild;if(!img)return;c.v*=Math.pow(.25,dt);c.spin+=c.v*dt+(RM?0:.55*dt)+sv*.0009;
+      const r=o.getBoundingClientRect(),cx=(r.left+r.width/2)/innerWidth-.5,cy=(r.top+r.height/2)/innerHeight-.5;
+      const ry=Math.sin(c.spin)*28+(px-cx)*30,rx=(cy-py)*16+(RM?0:Math.sin(t*.9+c.ph)*4),bob=RM?0:Math.sin(t*1.3+c.ph)*4,sc=1+kick*.07;
+      img.style.transform=`translateY(${(bob-kick*6).toFixed(1)}px) rotateX(${rx.toFixed(1)}deg) rotateY(${ry.toFixed(1)}deg) rotateZ(${(Math.sin(c.spin*.5+c.ph)*4).toFixed(1)}deg) scale(${sc.toFixed(3)})`});
+    requestAnimationFrame(tick)})(last);
+  const mo=new MutationObserver(ms_=>ms_.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)add(n.parentNode||n)})));mo.observe(document.body,{childList:true,subtree:true})})();
+
+/* ================= POINTS: one balance, and everything you do in any app adds to it =================
+   Kept in this browser. The header pill, the Points component and every action share it. */
+const PT=CCD.pts=(()=>{const K='ccd.points.v2';let st;try{st=JSON.parse(localStorage.getItem(K))}catch(e){}st=st||{bal:350,nights:3,keys:[]};
+  const save=()=>{try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}};
+  const paint=()=>{$$('.nav-top .pts').forEach(p=>{const img=p.querySelector('img');p.textContent='';img&&p.appendChild(img);p.append(st.bal.toLocaleString('en-IN'));p.setAttribute('aria-label','Points, '+st.bal)});document.dispatchEvent(new CustomEvent('ccd:points',{detail:st}))};
+  const fly=(n,label,from)=>{const pill=$('.nav-top .pts');const r=(from&&from.isConnected?from:pill||document.body).getBoundingClientRect();const f=document.createElement('div');f.className='ptfly';f.textContent=`+${n} ${label||''}`.trim();f.style.left=Math.max(8,Math.min(innerWidth-180,r.left+r.width/2-60))+'px';f.style.top=Math.max(64,r.top-8)+'px';document.body.appendChild(f);setTimeout(()=>f.remove(),1500);
+    if(pill){pill.classList.remove('bump');void pill.offsetWidth;pill.classList.add('bump')}};
+  const P={get bal(){return st.bal},get nights(){return st.nights},
+    award(n,label,from,key,night){if(key){if(st.keys.includes(key))return false;st.keys.push(key)}st.bal+=n;if(night)st.nights++;save();fly(n,label,from);paint();return true},
+    reset(){st={bal:350,nights:3,keys:[]};save();paint()}};
+  document.addEventListener('DOMContentLoaded',paint);return P})();
+
+/* follow buttons anywhere: [data-follow="Name"] */
+document.addEventListener('click',e=>{const b=e.target.closest('[data-follow]');if(!b)return;const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);const l=b.querySelector('.lab');if(l)CCD.setLabel(b,on?'Following':'Follow '+b.dataset.follow);if(on)CCD.pts.award(50,'fan',b,'fan-'+b.dataset.follow)});
 
 /* ================= small helpers used by pages ================= */
 /* a track row: a little record, the title, a waveform drawn from the title, and its number or year */

@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opus · CCD design system</title>
+<link rel="icon" href="assets/img/logo.png">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="ds.css">
+<link rel="stylesheet" href="lab.css">
+</head>
+<body class="w-shared eye-a">
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#foundations"><img src="assets/img/logo.png" alt=""><span><b>Opus</b><small>CCD design system</small></span></a>
+    <nav class="tabs" aria-label="Lab">
+      <a href="#foundations" data-v="foundations" class="on"><em>01</em>Foundations</a>
+      <a href="#components" data-v="components"><em>02</em>Components</a>
+      <a href="#pages" data-v="pages"><em>03</em>Pages</a>
+      <a href="#handoff" data-v="handoff"><em>04</em>Handoff</a>
+    </nav>
+    <div class="worlds" role="group" aria-label="World">
+      <span class="lbl">World</span>
+      <button class="wd shared" data-w="shared" aria-pressed="true" aria-label="Shared pages"></button>
+      <button class="wd" data-w="nights" style="--c:var(--c-nights)" aria-pressed="false" aria-label="Nights"></button>
+      <button class="wd" data-w="artists" style="--c:var(--c-artists)" aria-pressed="false" aria-label="Artists"></button>
+      <button class="wd" data-w="host" style="--c:var(--c-host)" aria-pressed="false" aria-label="Host"></button>
+      <button class="wd" data-w="school" style="--c:var(--c-school)" aria-pressed="false" aria-label="School"></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- =================== FOUNDATIONS =================== -->
+<div class="view on" id="v-foundations">
+
+<section class="wrap grid hero">
+  <div class="txt">
+    <p class="num">Opus · Foundations</p>
+    <h1 class="t-hero">Foundations</h1>
+    <p class="t-lead">Every colour, size, gap and timing a Cats Can Dance page is allowed to use. If it isn't on this page, it doesn't go on a page.</p>
+    <div class="status lbl">
+      <span><i></i>Foundations</span><span class="now"><i></i>Components</span><span><i></i>Pages</span><span><i></i>Handoff</span>
+    </div>
+    <nav class="toc" aria-label="Sections" id="toc"></nav>
+  </div>
+  <div class="obj">
+    <div class="stage" id="heroStage" role="button" tabindex="0" aria-label="The object. Press to change form.">
+      <canvas id="heroGl"></canvas>
+      <span class="hint lbl" id="heroHint">Coin · tap to flip</span>
+    </div>
+  </div>
+</section>
+
+<!-- 01 COLOUR -->
+<section class="sec" id="colour" data-toc="Colour">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">01</p>
+      <h2 class="t-h1">Colour</h2>
+      <p class="t-lead">One dark room, four lights. Each app is a colour, and the page takes that colour when you're inside it.</p>
+      <ul class="rules">
+        <li><span><b>One product colour per screen.</b> Shared pages (home, points, sign in) stay ink, with only the eyes in colour.</span></li>
+        <li><span><b>Black text on every colour.</b> Ink on yellow or lime can't be read.</span></li>
+        <li><span><b>Lines, not boxes.</b> Hairlines separate things. A surface is for something you hold, like a ticket or a sheet.</span></li>
+        <li><span><b>Red does two jobs only:</b> the laser dot, and stop.</span></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="block">
+        <div class="bhead"><h3>Pick a world</h3><span class="lbl">The whole page changes</span></div>
+        <div class="worldpick" id="worldpick">
+          <button class="wp shared" data-w="shared" aria-pressed="true" style="--c:var(--c-ink)"><div class="sw"><span class="eyes"><i class="eye"></i><i class="eye"></i></span></div><span><b>Shared</b><span class="lbl">Ink</span></span></button>
+          <button class="wp" data-w="nights" aria-pressed="false" style="--c:var(--c-nights)"><div class="sw"><span class="eyes"><i class="eye"></i><i class="eye"></i></span></div><span><b>Nights</b><span class="lbl">#3B78FF</span></span></button>
+          <button class="wp" data-w="artists" aria-pressed="false" style="--c:var(--c-artists)"><div class="sw"><span class="eyes"><i class="eye"></i><i class="eye"></i></span></div><span><b>Artists</b><span class="lbl">#B6EF36</span></span></button>
+          <button class="wp" data-w="host" aria-pressed="false" style="--c:var(--c-host)"><div class="sw"><span class="eyes"><i class="eye"></i><i class="eye"></i></span></div><span><b>Host</b><span class="lbl">#FFE600</span></span></button>
+          <button class="wp" data-w="school" aria-pressed="false" style="--c:var(--c-school)"><div class="sw"><span class="eyes"><i class="eye"></i><i class="eye"></i></span></div><span><b>School</b><span class="lbl">#FF4D8D</span></span></button>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="bhead"><h3>The room</h3><span class="lbl">Base colours</span></div>
+        <div class="ramp">
+          <div style="--c:var(--c-bg)"><b>bg</b><span>#0C0D0F</span><p>The page. Never pure black.</p></div>
+          <div style="--c:var(--c-surface-1)"><b>surface 1</b><span>#131418</span><p>Header backing, sheets.</p></div>
+          <div style="--c:var(--c-surface-2)"><b>surface 2</b><span>#1A1B20</span><p>Fields, hover.</p></div>
+          <div style="--c:var(--c-surface-3)"><b>surface 3</b><span>#23242A</span><p>Pressed, selected.</p></div>
+          <div style="--c:var(--c-ink);--fg:var(--c-on)"><b>ink</b><span>#F2F1EE</span><p>Headings and body.</p></div>
+          <div style="--c:var(--c-mute);--fg:var(--c-on)"><b>mute</b><span>#A3A39C</span><p>Second line of text.</p></div>
+          <div style="--c:var(--c-faint);--fg:var(--c-on)"><b>faint</b><span>#86867F</span><p>Labels. Lowest grey for text.</p></div>
+          <div style="--c:var(--c-rest)"><b>rest</b><span>#6E6E69</span><p>Not for text. Borders, idle dots.</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="bhead"><h3>What the colour does</h3><span class="lbl" id="roleName">Shared · ink</span></div>
+        <div class="roles">
+          <div class="role"><div class="ex"><span class="fillbtn"><span class="eyes"><i class="eye"></i><i class="eye"></i></span>Get tickets</span></div><p><b>Fill.</b> The one important action on a screen. Black text and black eye housing on top.</p></div>
+          <div class="role"><div class="ex glow"><span class="lbl acc">Top of a section</span></div><p><b>Glow, 16%.</b> Soft light at the top of a section and behind the object. Never a flat colour block.</p></div>
+          <div class="role"><div class="ex"><span class="row"><i></i>Selected night</span></div><p><b>Tint, 8%.</b> A selected row, hover on a list.</p></div>
+          <div class="role"><div class="ex"><span class="ring">Focused</span></div><p><b>Focus ring.</b> 2px in the product colour, 2px away from the edge.</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="bhead"><h3>Contrast, checked</h3><span class="lbl">AA needs 4.5 for text</span></div>
+        <div class="scrollx">
+        <table class="tbl" id="contrast">
+          <thead><tr><th>Colour</th><th>With the page colour</th><th>With ink</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="bhead"><h3>Red</h3><span class="lbl">#FF4438</span></div>
+        <div class="reds">
+          <div><span class="lbl">Job 1 · the laser</span><span class="dot"></span><p class="mute t-small">The dot the cat goes for. Nothing else on the page is this red and this small.</p></div>
+          <div><span class="lbl">Job 2 · stop</span><span class="stop"><i>✕</i>Not on the list</span><span class="stop"><i>!</i>That card didn't go through</span><p class="mute t-small">Always with a word and a shape, never colour alone.</p></div>
+        </div>
+      </div>
+
+      <div class="block" id="eyeopts">
+        <div class="bhead"><h3>Eye colour</h3><span class="tag good">Picked 12 Nov</span></div>
+        <div class="opts">
+          <div class="opt o-a" aria-pressed="true"><span class="pair"><span class="eyes"><i class="eye"></i><i class="eye"></i></span></span><b>Shared pages: eyeshine</b><p>Home, points, sign in. A pale warm white, the colour real cat eyes throw back in the dark. The four app colours stay special.</p></div>
+          <div class="opt o-b"><span class="pair"><span class="eyes"><i class="eye"></i><i class="eye"></i></span></span><b>Inside an app: its colour</b><p>Nights blue, Artists lime, Host yellow, School pink. The eyes are the first thing that tells you where you are.</p></div>
+          <div class="opt o-c"><span class="pair"><span class="fakebtn"><span class="eyes"><i class="eye"></i><i class="eye"></i></span>Send it</span></span><b>On a coloured button</b><p>The eyes sit in a black housing, so they read on any fill, even the app's own colour.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 TYPE -->
+<section class="sec" id="type" data-toc="Type">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">02</p>
+      <h2 class="t-h1">Type</h2>
+      <p class="t-lead">Three faces with three jobs. Anybody shouts, the text face talks, Martian Mono labels.</p>
+      <ul class="rules">
+        <li><span><b>Three scales, not one fluid scale.</b> Each device gets its own sizes, so tablet is never a stretched phone.</span></li>
+        <li><span><b>Anybody is for display only.</b> It narrows on smaller screens so long words fit: hero is width 100 on phone, 112 on tablet, 118 on desktop. It goes past 125 only for a moment, like Stretch.</span></li>
+        <li><span><b>Mono is always uppercase and never a sentence.</b> Dates, counts, codes, labels.</span></li>
+        <li><span><b>Line length:</b> body up to 64 characters, lead up to 40.</span></li>
+        <li><span><b>Nothing under 11px.</b> Nothing in mono under 11px either.</span></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="block" id="faceopts">
+        <div class="bhead"><h3>The text face: Instrument Sans</h3><span class="tag good">Picked 12 Nov</span></div>
+        <div class="face" aria-pressed="true">
+          <span class="big">Doors at 9. Kohra plays at 1.</span>
+          <span class="para">Say you're going and you'll see who else is. Your ticket shows up here and at the door.</span>
+          <span class="why"><b>Why it won.</b> Tighter and more editorial than Outfit, with a clear a, e and g at 14px in dense screens like the guest list. It keeps out of Anybody's way, so the display face and the objects carry the fun.</span>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="bhead"><h3>The scale</h3>
+          <div class="seg" role="group" aria-label="Preview size" id="dvseg"><button data-dv="phone" aria-pressed="false">Phone</button><button data-dv="tablet" aria-pressed="false">Tablet</button><button data-dv="desktop" aria-pressed="true">Desktop</button></div>
+        </div>
+        <div class="specimen dv-desktop" id="specimen"></div>
+      </div>
+
+      <div class="block">
+        <div class="bhead"><h3>Anybody's width</h3><span class="lbl">One axis, 50 to 150</span></div>
+        <div class="stretch">
+          <div class="w" id="wword">Danza in the City</div>
+          <div class="range"><input type="range" min="50" max="150" value="112" id="wrange" aria-label="Width"><output id="wout">wdth 112</output></div>
+          <div class="marks" id="wmarks"><button data-w="100">Phone hero 100</button><button data-w="118">Hero 118</button><button data-w="112">H1 112</button><button data-w="108">H2 108</button><button data-w="104">H3 104</button><button data-w="150">Stretch peak 150</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 SPACING -->
+<section class="sec" id="spacing" data-toc="Spacing">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">03</p>
+      <h2 class="t-h1">Spacing</h2>
+      <p class="t-lead">Ten steps, one scale, everywhere. This is what makes a page feel compact and still breathe.</p>
+      <ul class="rules">
+        <li><span><b>Inside a component:</b> s1 to s3. Label to its content: s3.</span></li>
+        <li><span><b>Parts of one component:</b> s4. Components side by side: the gutter.</span></li>
+        <li><span><b>Components in a section, and a chapter head to its body:</b> s6. An extra block in a chapter: s7.</span></li>
+        <li><span><b>Between sections:</b> the section value, 48 on phone, 72 on tablet, 96 on desktop. A chapter gets half above and half below, so two chapters sit one section apart.</span></li>
+        <li><span><b>One container:</b> 1240 wide plus margins. Laptops from 1100 to 1536 use the desktop grid; only the hero type grows with the screen.</span></li>
+        <li><span><b>No in-between values.</b> If 24 is too much and 16 too little, the layout is wrong, not the scale.</span></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="block">
+        <div class="bhead"><h3>The scale</h3><span class="lbl">Hover to find it on the card</span></div>
+        <div class="bars" id="bars"></div>
+      </div>
+      <div class="specs">
+        <div class="ncwrap"><div class="ncard show" id="ncard">
+          <img src="assets/img/n18.webp" alt="Danza in the City Vol 121 poster">
+          <div class="t" data-g="s4" style="--g:var(--s4)">
+            <em>FRI 20 NOV · 8 PM</em>
+            <b data-g="s1" style="--g:var(--s1)">Danza in the City Vol 121</b>
+            <span data-g="s1" style="--g:var(--s1)">Bianco, New Delhi</span>
+          </div>
+          <div class="go" data-g="s4" style="--g:var(--s4)"><span class="b2"><span class="eyes"><i class="eye"></i><i class="eye"></i></span>I'm going</span></div>
+        </div></div>
+        <div class="block">
+          <div class="zones">
+            <div class="zone"><b>Inside</b><p>s1 between a title and its line. s3 poster to text. s4 card padding.</p></div>
+            <div class="zone"><b>Between</b><p>s5 between a heading and what it heads. s6 between cards in a row on desktop.</p></div>
+            <div class="zone"><b>Sections</b><p>64, 96, 128. The pause before the next idea.</p></div>
+          </div>
+          <button class="b1" id="gapsBtn" aria-pressed="true"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span>Show the gaps</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 SCREENS -->
+<section class="sec wide" id="screens" data-toc="Screens">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">04</p>
+      <h2 class="t-h1">Three screens</h2>
+      <p class="t-lead">The same Nights page, live, at 390, 820 and 1440, drawn to scale. Scroll inside any of them. Press <span class="kbd">G</span> for the grid.</p>
+    </div>
+    <div class="demo">
+      <div class="bhead"><span class="lbl">Real posters and artists, layout only. Components come in round 2.</span><button class="b1" id="gridBtn" aria-pressed="false"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span>Grid</button></div>
+      <div class="devices" id="devices"></div>
+      <div class="scrollx"><table class="tbl" id="devtbl"><thead><tr><th></th><th>Phone</th><th>Tablet</th><th>Desktop</th></tr></thead><tbody>
+        <tr><td>Range</td><td class="m">under 600</td><td class="m">600 to 1099</td><td class="m">1100 and up</td></tr>
+        <tr><td>Designed at</td><td class="m">390 × 844</td><td class="m">820 × 1180</td><td class="m">1440 × 900</td></tr>
+        <tr><td>Columns</td><td class="m">4</td><td class="m">8</td><td class="m">12</td></tr>
+        <tr><td>Margin</td><td class="m">24</td><td class="m">32</td><td class="m">64</td></tr>
+        <tr><td>Gutter</td><td class="m">12</td><td class="m">24</td><td class="m">24</td></tr>
+        <tr><td>Content width</td><td class="m">fluid</td><td class="m">fluid</td><td class="m">max 1312</td></tr>
+        <tr><td>Top bar</td><td class="m">56</td><td class="m">64 + 48</td><td class="m">72 + 48</td></tr>
+        <tr><td>Section gap</td><td class="m">64</td><td class="m">96</td><td class="m">128</td></tr>
+        <tr><td>Object</td><td class="m">240</td><td class="m">360</td><td class="m">520</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 NAV AND STACKING -->
+<section class="sec" id="nav" data-toc="Nav and stacking">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">05</p>
+      <h2 class="t-h1">Nav, and what stacks</h2>
+      <p class="t-lead">Phone is for one thumb. Tablet is for two hands and keeps the side-by-side. Desktop has room for everything in one bar.</p>
+      <ul class="rules">
+        <li><span><b>The four apps are always one tap away.</b> On a phone they live in the bottom bar.</span></li>
+        <li><span><b>Gear, Episodes, the door and Points are never in the top bar.</b> They live inside their app and in the footer.</span></li>
+        <li><span><b>The product comes first.</b> On a phone it sits above its words, never below.</span></li>
+        <li><span><b>Text and its visual share a top line</b> wherever they sit side by side.</span></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="navs">
+        <div class="nv"><div class="sk" style="height:calc(var(--s10) * 1.7)"><div class="hb"><i class="lg"></i><span class="sp1"></span><i></i><i></i></div><div class="bd"><i style="height:var(--s9)"></i><i></i><i style="width:60%"></i></div><div class="tb"><i style="--c:var(--c-nights)"></i><i style="--c:var(--c-artists)"></i><i style="--c:var(--c-host)"></i><i style="--c:var(--c-school)"></i></div></div><b>Phone · 56 + 64</b><p>Top bar: logo, points, menu. Four apps in a bottom bar with the open app's eyes lit. Laser and sign in in the menu.</p></div>
+        <div class="nv"><div class="sk" style="height:calc(var(--s10) * 1.4)"><div class="hb"><i class="lg"></i><i class="app" style="--c:var(--c-nights)"></i><i class="app" style="--c:var(--c-artists)"></i><i class="app" style="--c:var(--c-host)"></i><i class="app" style="--c:var(--c-school)"></i><span class="sp1"></span><i></i><i></i></div><div class="sb"><i></i><i></i><i></i><i></i></div><div class="bd" style="grid-template-columns:1fr 1fr"><i style="height:var(--s7)"></i><i style="height:var(--s9)"></i></div></div><b>Tablet · 64 + 48</b><p>Apps in the top bar. The app's own sections in a second sticky row. Side by side comes back at 4 and 4 columns.</p></div>
+        <div class="nv"><div class="sk" style="height:var(--s10)"><div class="hb"><i class="lg"></i><i></i><span class="sp1"></span><i class="app" style="--c:var(--c-nights)"></i><i class="app" style="--c:var(--c-artists)"></i><i class="app" style="--c:var(--c-host)"></i><i class="app" style="--c:var(--c-school)"></i><span class="sp1"></span><i></i><i></i><i></i></div><div class="sb"><i></i><i></i><i></i><i></i></div><div class="bd" style="grid-template-columns:5fr 7fr"><i style="height:var(--s7)"></i><i style="height:var(--s8)"></i></div></div><b>Desktop · 72 + 48</b><p>Logo left, apps centred, search, laser, points and sign in right. 5 and 7 columns.</p></div>
+      </div>
+      <div class="block">
+        <div class="bhead"><h3>What happens at each size</h3></div>
+        <div class="scrollx">
+        <table class="tbl stack">
+          <thead><tr><th>Pattern</th><th>Phone</th><th>Tablet</th><th>Desktop</th></tr></thead>
+          <tbody>
+            <tr><td>Text and its product</td><td>Stacked, product on top</td><td>Side by side, 4 + 4, text sticks</td><td>Side by side, 5 + 7, text sticks</td></tr>
+            <tr><td>Night posters</td><td>Swipe rail, 1.3 showing</td><td>Swipe rail, 2.6 showing</td><td>Grid, 4 across</td></tr>
+            <tr><td>Artist photos</td><td>Swipe rail, 2.3 showing</td><td>Swipe rail, 4.5 showing</td><td>Grid, 6 across</td></tr>
+            <tr><td>The four apps on home</td><td>2 by 2</td><td>4 across, compact</td><td>4 across</td></tr>
+            <tr><td>Filters</td><td>One chip row, the rest in a sheet</td><td>Chip row in the second bar</td><td>Chip row in the second bar</td></tr>
+            <tr><td>Sheets and menus</td><td>From the bottom, full width</td><td>From the bottom, 6 columns wide</td><td>Panel from the right</td></tr>
+            <tr><td>Footer</td><td>2 columns</td><td>2 columns</td><td>4 columns</td></tr>
+            <tr><td>The object</td><td>240, above the title</td><td>360, right of the title</td><td>520, right of the title</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 RADII -->
+<section class="sec" id="radii" data-toc="Radii">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">06</p>
+      <h2 class="t-h1">Corners</h2>
+      <p class="t-lead">Four radii and two shapes. Paper is nearly square, things you press are round.</p>
+      <ul class="rules">
+        <li><span><b>Posters and photos are r1.</b> They're prints, not app icons.</span></li>
+        <li><span><b>Anything you press is a pill.</b> Anything that spins is a circle.</span></li>
+        <li><span><b>Nested corners shrink.</b> Inner radius is outer radius minus the padding.</span></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="radii">
+        <div class="rd"><div class="shape"><img src="assets/img/n10.webp" alt="" style="height:calc(var(--s9) - var(--s2));border-radius:var(--r1)"></div><div class="k"><b>r1 · 4</b><span>Posters, photos, tags</span></div></div>
+        <div class="rd"><div class="shape"><span style="width:70%;height:var(--s7);border-radius:var(--r2);border:1px solid var(--c-line-strong);display:flex;align-items:center;padding-inline:var(--s3);font-size:var(--fs-small);color:var(--c-faint)">Your name</span></div><div class="k"><b>r2 · 8</b><span>Fields, thumbs</span></div></div>
+        <div class="rd"><div class="shape"><span style="width:70%;height:var(--s9);border-radius:var(--r3)"></span></div><div class="k"><b>r3 · 12</b><span>Panels, the ticket</span></div></div>
+        <div class="rd"><div class="shape" style="align-items:flex-end;overflow:hidden"><span style="width:80%;height:var(--s8);border-radius:var(--r4) var(--r4) 0 0"></span></div><div class="k"><b>r4 · 24</b><span>Sheets, top only</span></div></div>
+        <div class="rd"><div class="shape"><span class="b2" style="background:var(--c-ink)"><span class="eyes"><i class="eye"></i><i class="eye"></i></span>Book</span></div><div class="k"><b>pill</b><span>Buttons, chips</span></div></div>
+        <div class="rd"><div class="shape"><img src="assets/img/logo.png" alt="" style="width:var(--s9);border-radius:var(--round)"></div><div class="k"><b>round</b><span>Logo, records, dials</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LAYERS -->
+<section class="sec" id="layers" data-toc="Layers">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">07</p>
+      <h2 class="t-h1">Layers</h2>
+      <p class="t-lead">Eleven fixed layers. Nothing makes up its own. The cat is always on top, because it's a cat.</p>
+      <ul class="rules">
+        <li><span><b>The header always has a backing</b> once anything can scroll under it: surface 1 at 82%, blurred, with a hairline.</span></li>
+        <li><span><b>Only one thing floats over content at a time:</b> a sheet or a prompt, never both.</span></li>
+        <li><span><b>The object sits under the header and over the page.</b> It never covers text.</span></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="layers">
+        <div class="stack3d" id="stack3d"><div class="rig" id="rig"></div></div>
+        <div class="block">
+          <table class="tbl ltable" id="ltable"><thead><tr><th>Layer</th><th>z</th><th>What lives there</th></tr></thead><tbody></tbody></table>
+          <button class="b1" id="flatBtn" aria-pressed="false"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span>Flatten</button>
+        </div>
+      </div>
+      <div class="block">
+        <div class="bhead"><h3>The header backing</h3><span class="lbl">Scroll inside both</span></div>
+        <div class="backing">
+          <figure class="mini" id="m1"><div class="mh"><img src="assets/img/logo.png" alt="">Cats Can Dance</div><div class="ms"></div><figcaption><span class="tag bad">No backing</span></figcaption></figure>
+          <figure class="mini on" id="m2"><div class="mh"><img src="assets/img/logo.png" alt="">Cats Can Dance</div><div class="ms"></div><figcaption><span class="tag good">Backing</span></figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 MOTION -->
+<section class="sec" id="motion" data-toc="Motion">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">08</p>
+      <h2 class="t-h1">Motion</h2>
+      <p class="t-lead">Six speeds, four curves. Things arrive fast and settle soft, like a cat landing.</p>
+      <ul class="rules">
+        <li><span><b>Motion follows the music.</b> When a track plays, loops lock to its tempo. Nothing else pulses on its own.</span></li>
+        <li><span><b>Spring is a treat:</b> pounces, stamps landing, the object flipping. Not every hover.</span></li>
+        <li><span><b>Sound never starts by itself.</b> It's offered after a little scrolling, and only plays after a tap.</span></li>
+        <li><span><b>Reduced motion keeps the meaning and drops the travel.</b></span></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="block">
+        <div class="bhead"><h3>Speeds</h3><button class="b1" id="playAll"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span>Play all</button></div>
+        <div class="mrows" id="mrows"></div>
+      </div>
+      <div class="block">
+        <div class="bhead"><h3>Curves</h3><span class="lbl">Tap one to feel it</span></div>
+        <div class="eases" id="eases"></div>
+      </div>
+      <div class="block">
+        <div class="bhead"><h3>How eyes move</h3><span class="lbl">They're watching your pointer now</span></div>
+        <div class="eyelab">
+          <div class="el"><div class="box"><span class="eyes lg"><i class="eye"></i><i class="eye"></i></span></div><b>Follow</b><p>The pupil eases 18% of the way to the pointer every frame. On touch, eyes look around slowly.</p></div>
+          <div class="el"><div class="box slit"><span class="eyes lg"><i class="eye"></i><i class="eye"></i></span></div><b>Slit on hover</b><p>Round at rest. A slit when you're about to press. 160ms.</p></div>
+          <div class="el"><div class="box"><span class="eyes lg" style="--bd:-5.6s"><i class="eye" style="--bd:-5.6s"></i><i class="eye" style="--bd:-5.6s"></i></span></div><b>Blink</b><p>Every 4 to 7 seconds, never in step with the pair next to it.</p></div>
+          <button class="el" id="pounceBox"><div class="box"><span class="eyes lg" id="pounceEyes"><i class="eye"></i><i class="eye"></i></span></div><b>Pounce</b><p>Every 6 to 10 seconds, one pair crouches and lunges at the pointer. Tap to see it.</p></button>
+        </div>
+      </div>
+      <div class="block">
+        <div class="bhead"><h3>When someone asks for less motion</h3></div>
+        <div class="reduce">
+          <div><span class="lbl">Stays</span><ul><li>Colour changes, as a 160ms fade</li><li>Eyes follow the pointer</li><li>The object changes form, as a fade</li><li>Every state and every word</li></ul></div>
+          <div><span class="lbl">Goes</span><ul><li>Pounces, spins, the laser cat's run</li><li>Scroll-linked turning</li><li>Anything that travels more than s4</li><li>Eye colour drift</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 OBJECT -->
+<section class="sec" id="object" data-toc="The object">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">09</p>
+      <h2 class="t-h1">The object</h2>
+      <p class="t-lead">The logo as a coin. It is the page's player: it sits in the home hero, and everywhere else it lives in the player pill at the bottom. Every section also has its own chrome object, from the registry below.</p>
+      <ul class="rules">
+        <li><span><b>The coin stays a coin.</b> Tap it to play the page's track, grab it to scratch the track.</span></li>
+        <li><span><b>One chrome object per meaning.</b> Nights is the mirror ball, Host the wristband, Artists the record, School the dial, Gear the speaker, Episodes the cassette, Points the stamp. Nothing is used for two things.</span></li>
+        <li><span><b>Sizes:</b> a chapter head 120 / 144 / 168, a flow card 64 then 96 on desktop, an app tile 64 then 96.</span></li>
+        <li><span><b>They move:</b> turn on their own, spin with scroll, tilt toward the pointer, jump on the kick, and a tap sends one round with a chirp. With less motion they only follow the pointer and scroll.</span></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="objlab">
+        <div class="stage" id="objStage" role="button" tabindex="0" aria-label="The object"><canvas id="objGl"></canvas></div>
+        <div class="forms" id="forms">
+          <button class="b1" data-f="coin" aria-pressed="true" style="--c:var(--c-ink)"><i></i>Coin</button>
+          <button class="b1" data-f="ball" aria-pressed="false" style="--c:var(--c-nights)"><i></i>Mirror ball</button>
+          <button class="b1" data-f="record" aria-pressed="false" style="--c:var(--c-artists)"><i></i>Record</button>
+          <button class="b1" data-f="stamp" aria-pressed="false" style="--c:var(--c-host)"><i></i>Stamp</button>
+          <button class="b1" data-f="dial" aria-pressed="false" style="--c:var(--c-school)"><i></i>Dial</button>
+        </div>
+      </div>
+      <div class="slots">
+        <div class="slot"><div class="sk" style="aspect-ratio:390/844">
+          <div class="hd"></div>
+          <div class="cs" style="left:12%;top:12%;width:76%"></div><div class="co" style="left:21%;top:16.5%;width:58%"></div>
+          <div class="keep" style="left:0;right:0;top:0;height:8%"></div>
+          <div class="tx" style="left:8%;right:8%;top:56%"><i style="width:80%"></i><i></i><i style="width:60%"></i></div>
+        </div><b>Phone</b><p>240, centred above the title. Title starts below its clear space.</p></div>
+        <div class="slot"><div class="sk" style="aspect-ratio:820/1180">
+          <div class="hd"></div>
+          <div class="keep" style="left:0;right:0;top:0;height:5.4%"></div>
+          <div class="tx" style="left:6%;width:48%;top:14%"><i style="width:90%"></i><i></i><i style="width:70%"></i></div>
+          <div class="co" style="right:6%;top:12%;width:36%"></div>
+        </div><b>Tablet</b><p>360, right of the title, top lines shared.</p></div>
+        <div class="slot"><div class="sk" style="aspect-ratio:1440/900">
+          <div class="hd"></div>
+          <div class="keep" style="left:0;right:0;top:0;height:8%"></div>
+          <div class="tx" style="left:4.4%;width:50%;top:30%"><i style="width:85%"></i><i></i><i style="width:55%"></i></div>
+          <div class="co" style="left:63%;top:16%;width:30%"></div>
+        </div><b>Desktop</b><p>520 in columns 8 to 12, centred on the title block.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 COPY -->
+<section class="sec" id="copy" data-toc="Copy">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">10</p>
+      <h2 class="t-h1">Words</h2>
+      <p class="t-lead">Write like someone who's been to a thousand of these nights and still gets excited about the next one.</p>
+      <ul class="rules">
+        <li><span><b>Say what happens</b>, not how the site works.</span></li>
+        <li><span><b>No slogans, no em dashes, no exclamation marks</b> unless a person would shout it.</span></li>
+        <li><span><b>Buttons are verbs you'd say out loud:</b> I'm going, Book, Send it.</span></li>
+        <li><span><b>Real names and real places.</b> If a number is an example, the page says so.</span></li>
+        <li><span><b>Nothing about founders.</b> No Bollywood.</span></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="pairs">
+        <div class="pair2"><div><span class="lbl">Not</span><s>Check in, earn 100</s></div><div><span class="lbl">Yes</span><span>Check in at the door. The night goes on your card.</span></div><p class="why">Points are a side effect, not the reason to go.</p></div>
+        <div class="pair2"><div><span class="lbl">Not</span><s>Turn the sound on</s></div><div><span class="lbl">Yes</span><span>Hear it?</span></div><p class="why">Offered after a little scrolling, never as the first button.</p></div>
+        <div class="pair2"><div><span class="lbl">Not</span><s>Adding hi-hats to your track…</s></div><div><span class="lbl">Yes</span><span>(nothing)</span></div><p class="why">Don't narrate what the product is doing under the hood.</p></div>
+        <div class="pair2"><div><span class="lbl">Not</span><s>You go, they play, you make.</s></div><div><span class="lbl">Yes</span><span>Every night worth leaving the house for.</span></div><p class="why">Say the thing. Nobody repeats a slogan to a friend.</p></div>
+        <div class="pair2"><div><span class="lbl">Not</span><s>Submit RSVP</s></div><div><span class="lbl">Yes</span><span>I'm going</span></div><p class="why">Buttons are what you'd say.</p></div>
+        <div class="pair2"><div><span class="lbl">Not</span><s>Oops! Something went wrong.</s></div><div><span class="lbl">Yes</span><span>That didn't go through. Your card wasn't charged. Try again?</span></div><p class="why">Say what happened, what didn't happen, and what to do.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="end">
+  <div class="wrap grid">
+    <div class="askme">
+      <p class="num">Settled</p>
+      <h2 class="t-h1">Picked so far</h2>
+      <ol>
+        <li><em>01</em><div><b>Text face: Instrument Sans.</b><p>Picked 12 Nov.</p></div></li>
+        <li><em>02</em><div><b>Eyes on shared pages: eyeshine.</b><p>Inside an app, the eyes take its colour.</p></div></li>
+        <li><em>03</em><div><b>Still open from this round:</b><p>the tablet split (4 + 4), and red as the only signal colour. Silence counts as yes once the components use them.</p></div></li>
+      </ol>
+      <a class="b2" href="#components"><span class="eyes"><i class="eye"></i><i class="eye"></i></span>See the eye buttons</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- =================== COMPONENTS =================== -->
+<div class="view" id="v-components">
+
+<section class="wrap grid hero cx">
+  <div class="txt">
+    <p class="num">Opus · 38 components</p>
+    <h1 class="t-hero">Components</h1>
+    <p class="t-lead">Every button is a cat. It watches you, narrows its eyes when you're about to press, and its eyes say what's happening when words would be slow. Every component below is live and is the same code the pages use.</p>
+    <div class="status lbl"><span class="now"><i></i>Foundations</span><span class="now"><i></i>Components</span><span class="now"><i></i>Pages</span><span class="now"><i></i>Handoff</span></div>
+    <nav class="toc" aria-label="Components">
+      <button data-to="c-two"><em>A.01</em>Two-eye button</button><button data-to="c-one"><em>A.02</em>Outline button</button><button data-to="c-see"><em>A.03</em>See-all pill</button><button data-to="c-next"><em>A.04+</em>Next in batch A</button>
+    </nav>
+  </div>
+  <div class="obj">
+    <div class="moods" aria-hidden="true">
+      <span class="mood"><span class="eyes lg"><i class="eye"></i><i class="eye"></i></span><em>Watching</em></span>
+      <span class="mood is-hover"><span class="eyes lg"><i class="eye"></i><i class="eye"></i></span><em>Ready</em></span>
+      <span class="mood is-loading"><span class="eyes lg"><i class="eye"></i><i class="eye"></i></span><em>Working</em></span>
+      <span class="mood is-done"><span class="eyes lg"><i class="eye"></i><i class="eye"></i></span><em>Done</em></span>
+      <span class="mood is-error"><span class="eyes lg"><i class="eye"></i><i class="eye"></i></span><em>No</em></span>
+      <span class="mood is-disabled"><span class="eyes lg"><i class="eye"></i><i class="eye"></i></span><em>Asleep</em></span>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec" id="picks">
+  <div class="wrap grid">
+    <div class="side"><p class="num">Your picks</p><h2 class="t-h1">Five calls for you</h2><p class="t-lead">Each one is built so you can try it. Pages use the first option until you choose.</p></div>
+    <div class="demo"><div class="pickgrid">
+      <div class="pick"><span class="lbl">01 · The laser's cat</span><b>Where it comes from</b><ol><li><em>A</em><span><b>The nearest edge.</b> It always arrives from the side closest to the dot, so it feels like it was there all along.</span></li><li><em>B</em><span><b>From under the bar.</b> It drops down from behind the header. The most surprising, and it ties the cat to the nav.</span></li><li><em>C</em><span><b>Out of the object.</b> The cat steps out of the coin on home. The best story, but only works where the object is on screen.</span></li></ol><a class="seeall" href="#b03"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">Try all three</span></a></div>
+      <div class="pick"><span class="lbl">02 · Points</span><b>What replaces the meter</b><ol><li><em>A</em><span><b>The card.</b> A stamp card. Each 100 is the logo stamped on. Simple and ties to the door stamp.</span></li><li><em>B</em><span><b>The tab.</b> A bar receipt of what you did, with rewards like a menu. Says why you have the points.</span></li><li><em>C</em><span><b>The crate.</b> Every 50 adds a record. Most music, least exact.</span></li></ol><a class="seeall" href="#c11"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">Try all three</span></a></div>
+      <div class="pick"><span class="lbl">03 · The chrome logo cat</span><b>Where it lives</b><ol><li><em>A</em><span><b>The footer, at rest.</b> Half below the edge on every page. Always there, never in the way. Built now.</span></li><li><em>B</em><span><b>Loading and 404.</b> It turns while things load and when a page is lost. Rare, so it stays special.</span></li><li><em>C</em><span><b>On your points card.</b> A small chrome seal that turns when you earn. Makes the card feel like a thing you own.</span></li></ol><a class="seeall" href="#b15"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">See the chrome objects</span></a></div>
+      <div class="pick"><span class="lbl">04 · Episodes</span><b>How our nights are shown</b><ol><li><em>A</em><span><b>Sleeves on a shelf.</b> Pull one for its line-up. Almost no text.</span></li><li><em>B</em><span><b>The flyer wall.</b> Our posters pasted at angles. Loudest.</span></li><li><em>C</em><span><b>Door stamps.</b> Your Episodes as stamps under the light. Most personal, needs you to have been.</span></li></ol><a class="seeall" href="#c10"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">See Episodes</span></a></div>
+      <div class="pick"><span class="lbl">05 · Gear</span><b>How it's shown inside Host</b><ol><li><em>A</em><span><b>Build the rig.</b> Pick the crowd and the sound; the room and kit change. Built now.</span></li><li><em>B</em><span><b>Three kit lines under the invite.</b> Quieter, one tap to the full builder.</span></li></ol><a class="seeall" href="#c09"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">See the gear builder</span></a></div>
+    </div></div>
+  </div>
+</section>
+<!-- A.01 TWO-EYE -->
+<section class="sec" id="c-two" data-ctoc="Two-eye button">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">A.01</p>
+      <h2 class="t-h1">Two-eye button</h2>
+      <p class="t-lead">The one thing you came to this screen to do. I'm going, Book, Send it.</p>
+      <ul class="rules">
+        <li><span><b>One per screen.</b> If two things feel equally important, one of them isn't.</span></li>
+        <li><span><b>Filled.</b> Ink on shared pages, the app's colour inside an app. Black words, black eye housing.</span></li>
+        <li><span><b>The label is what you'd say out loud,</b> one to three words. It changes to what happened: I'm going, then You're going.</span></li>
+        <li><span><b>Never goes grey without a reason.</b> A sleeping button always tells you why when you reach for it.</span></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="block">
+        <div class="bhead"><h3>Try it</h3><span class="lbl">Hover, Tab to it, press. It works, then it's done.</span></div>
+        <div class="playground">
+          <div class="pg-row">
+            <button class="btn two m" id="liveGo" data-label="I'm going" data-done="You're going" data-busy="Saving"><span class="eyes"><i class="eye"></i><i class="eye"></i></span><span class="lab">I'm going</span></button>
+            <button class="btn two m is-disabled" aria-disabled="true" id="liveSleep" data-why="Pick a ticket first" aria-describedby="sleepWhy"><span class="eyes"><i class="eye"></i><i class="eye"></i></span><span class="lab">Book</span></button>
+          </div>
+          <p class="btnmsg" id="goMsg" aria-live="polite"></p>
+          <p class="btnmsg quiet" id="sleepWhy" aria-live="polite"></p>
+          <div class="pg-foot">
+            <button class="btn one s" id="failToggle" aria-pressed="false"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">Make the next tap fail</span></button>
+            <span class="lbl" id="worldNote">Wearing: shared</span>
+          </div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="bhead"><h3>Every state</h3><span class="lbl">Each one is a cat behaviour</span></div>
+        <div class="states" id="st-two"></div>
+      </div>
+      <div class="block">
+        <div class="bhead"><h3>Sizes</h3></div>
+        <div class="sizes">
+          <div class="sz"><button class="btn two s"><span class="eyes"><i class="eye"></i><i class="eye"></i></span><span class="lab">Book</span></button><b>S · 32</b><p>Inside dense rows: a guest list, an offer. Eyes 12. Hit area grows to 48.</p></div>
+          <div class="sz"><button class="btn two m"><span class="eyes"><i class="eye"></i><i class="eye"></i></span><span class="lab">I'm going</span></button><b>M · 48</b><p>The default on tablet and desktop. Eyes 16.</p></div>
+          <div class="sz"><button class="btn two l"><span class="eyes"><i class="eye"></i><i class="eye"></i></span><span class="lab">Get tickets</span></button><b>L · 64</b><p>Phone action bar, and the home hero. Eyes 24.</p></div>
+        </div>
+      </div>
+      <div class="split2">
+        <div class="block">
+          <div class="bhead"><h3>On a phone</h3></div>
+          <div class="phonemock">
+            <div class="pm-top"><img src="assets/img/logo.png" alt=""><span class="lbl">Nights</span></div>
+            <img class="pm-img" src="assets/img/n26.webp" alt="Somad Lab poster">
+            <div class="pm-txt"><span class="t-data faint">SUN 22 NOV · 8 PM</span><b>Somad Lab</b><span class="mute">The Humming Tree, Bengaluru</span></div>
+            <div class="pm-bar"><button class="btn one m sq" aria-label="Share"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span></button><button class="btn two l grow"><span class="eyes"><i class="eye"></i><i class="eye"></i></span><span class="lab">I'm going</span></button></div>
+          </div>
+          <p class="note">The screen's two-eye button lives in a bar at the bottom, full width, size L, in thumb reach. With no pointer, the eyes look around slowly, and after a tap they look at where you touched.</p>
+        </div>
+        <div class="block">
+          <div class="bhead"><h3>Spec</h3></div>
+          <table class="tbl spec"><tbody>
+            <tr><td>Height</td><td class="m">32 / 48 / 64</td></tr>
+            <tr><td>Eyes</td><td class="m">12 / 16 / 24, gap 4 / 8 / 8</td></tr>
+            <tr><td>Housing</td><td class="m">height minus 8, padding 12</td></tr>
+            <tr><td>Padding</td><td class="m">4 left, 24 right</td></tr>
+            <tr><td>Label</td><td class="m">button 16, L uses lead</td></tr>
+            <tr><td>Fill</td><td class="m">ink shared · acc in an app</td></tr>
+            <tr><td>Radius</td><td class="m">pill</td></tr>
+            <tr><td>Hit area</td><td class="m">48 minimum</td></tr>
+            <tr><td>Neighbour gap</td><td class="m">s3, 12</td></tr>
+          </tbody></table>
+          <div class="kv">
+            <div><span class="lbl">Keyboard</span><p>Tab to focus, Enter or Space to press. While it works, focus stays and it says "Saving". A sleeping button stays focusable, so the reason is read out.</p></div>
+            <div><span class="lbl">Less motion</span><p>No blink, no pounce, no chase while loading. The slow blink becomes a soft half-close. Eyes still follow.</p></div>
+            <div><span class="lbl">Why it exists</span><p>It's the smallest place the brand can live. One glance tells you what to press, and the eyes tell you what happened before you read a word.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- A.02 ONE-EYE -->
+<section class="sec" id="c-one" data-ctoc="Outline button">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">A.02</p>
+      <h2 class="t-h1">Outline button</h2>
+      <p class="t-lead">Everything else you might press. Share, Save, Filter, Maybe. One round eye where a dot would go.</p>
+      <ul class="rules">
+        <li><span><b>The eye is the dot.</b> Round pupil at rest, a slit when your pointer arrives.</span></li>
+        <li><span><b>Outline by default.</b> Quiet (no outline) inside toolbars and lists.</span></li>
+        <li><span><b>Toggles keep their eye open.</b> Pressed on, the eye flips to ink on black, like a cat that's made up its mind.</span></li>
+        <li><span><b>Icon-only is allowed</b> when the eye says enough. It still has a name for screen readers.</span></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="block">
+        <div class="bhead"><h3>Try it</h3><span class="lbl">Watch the pupil when your pointer arrives</span></div>
+        <div class="playground">
+          <div class="pg-row">
+            <button class="btn one m" data-toggle><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">Save</span></button>
+            <button class="btn one m"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">Share</span></button>
+            <button class="btn one m quiet"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">Filter</span></button>
+            <button class="btn one m sq" aria-label="Maybe"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span></button>
+            <button class="btn one m is-disabled" aria-disabled="true" data-why="Sign in to save nights" aria-describedby="oneWhy"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">Save</span></button>
+          </div>
+          <p class="btnmsg quiet" id="oneWhy" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="bhead"><h3>Every state</h3></div>
+        <div class="states" id="st-one"></div>
+      </div>
+      <div class="split2">
+        <div class="block">
+          <div class="bhead"><h3>Kinds</h3></div>
+          <div class="kinds">
+            <div><button class="btn one m"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">Share</span></button><p><b>Outline.</b> The default.</p></div>
+            <div><button class="btn one m quiet"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">Filter</span></button><p><b>Quiet.</b> Toolbars, list rows.</p></div>
+            <div><button class="btn one m is-on"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">Saved</span></button><p><b>Toggle, on.</b> Ink fill, eye in ink.</p></div>
+            <div><button class="btn one m sq" aria-label="Share"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span></button><p><b>Eye only.</b> 48 square.</p></div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="bhead"><h3>Spec</h3></div>
+          <table class="tbl spec"><tbody>
+            <tr><td>Height</td><td class="m">32 / 48</td></tr>
+            <tr><td>Eye</td><td class="m">12 / 16, pupil 44%, slit 16 × 80%</td></tr>
+            <tr><td>Padding</td><td class="m">12 left, 16 right</td></tr>
+            <tr><td>Border</td><td class="m">1px line-strong, ink on hover</td></tr>
+            <tr><td>Hit area</td><td class="m">48 minimum</td></tr>
+          </tbody></table>
+          <div class="kv">
+            <div><span class="lbl">Keyboard</span><p>Same as the two-eye button. Toggles say "pressed" or "not pressed".</p></div>
+            <div><span class="lbl">Why it exists</span><p>The dot you'd put on a button anyway, given a job. It keeps every button in the family without shouting.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- A.03 SEE-ALL -->
+<section class="sec" id="c-see" data-ctoc="See-all pill">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="num">A.03</p>
+      <h2 class="t-h1">See-all pill</h2>
+      <p class="t-lead">The way from a few to all of them. It sits at the end of a section heading, on the heading's line.</p>
+      <ul class="rules">
+        <li><span><b>Says what and how many:</b> All nights, 17. The count is real: 17 nights this week.</span></li>
+        <li><span><b>The eye looks where you're going.</b> On hover it turns to the arrow as the arrow slides out.</span></li>
+        <li><span><b>When there's nothing,</b> it says so and the eye looks down. It doesn't go grey.</span></li>
+        <li><span><b>No space after it.</b> The rail or grid starts s5 below the heading line.</span></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="block">
+        <div class="bhead"><h3>In place</h3></div>
+        <div class="seeplay">
+          <div class="shead"><h3 class="t-h2">This week</h3><a class="seeall" href="#c-see" aria-label="All nights, 17"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">All nights</span><span class="cnt">17</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div>
+          <div class="srail"><img src="assets/img/n03.webp" alt=""><img src="assets/img/n06.webp" alt=""><img src="assets/img/n10.webp" alt=""><img src="assets/img/n08.webp" alt=""></div>
+          <div class="shead"><h3 class="t-h2">Saved nights</h3><span class="seeall is-empty"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span><span class="lab">None yet</span></span></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="bhead"><h3>Every state</h3></div>
+        <div class="states" id="st-see"></div>
+      </div>
+      <div class="kv three">
+        <div><span class="lbl">Size</span><p>32 high on desktop, 48 on touch. Label small, count in mono.</p></div>
+        <div><span class="lbl">Keyboard</span><p>A link. Enter opens. Its name includes the count: "All nights, 17".</p></div>
+        <div><span class="lbl">Why it exists</span><p>You asked for a better see-all. This one says how many and looks where it's taking you.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="c-next">
+  <div class="wrap grid">
+    <div class="side"><p class="num">A.04 to A.12</p><h2 class="t-h1">Next in batch A</h2><p class="t-lead">Built the same way once you're happy with the eyes.</p></div>
+    <div class="demo"><div class="rb"><ol><li><em>04</em>Chip</li><li><em>05</em>Field, with the tail underline</li><li><em>06</em>Tabs</li><li><em>07</em>Panel</li><li><em>08</em>Step list</li><li><em>09</em>Prompt ("Hear it?")</li><li><em>10</em>Nav, all three devices</li><li><em>11</em>Menu and sheet</li><li><em>12</em>Footer</li></ol></div>
+    <div class="road"><div class="rb"><span class="lbl acc">B · Signature</span><ol><li><em>01</em>The object and its slots</li><li><em>02</em>Eyes</li><li><em>03</em>The laser and its cat</li><li><em>04</em>Scratch record</li><li><em>05</em>Artist vinyl</li><li><em>06</em>Logo stamp</li><li><em>07</em>Whiskers</li><li><em>08</em>Crossfader</li><li><em>09</em>Hold to send</li><li><em>10</em>Sleeve</li><li><em>11</em>Torch</li><li><em>12</em>Flyer wall</li><li><em>13</em>Spines</li><li><em>14</em>Slivers</li><li><em>15</em>Chrome objects</li></ol></div>
+      <div class="rb"><span class="lbl acc">C · Product pieces</span><ol><li><em>01</em>Night card and detail</li><li><em>02</em>Invite maker</li><li><em>03</em>RSVP card and ticket</li><li><em>04</em>Guest list</li><li><em>05</em>Door scanner</li><li><em>06</em>Artist card and page</li><li><em>07</em>Booking offer</li><li><em>08</em>The instrument, with export</li><li><em>09</em>Gear builder</li><li><em>10</em>Episode sleeve</li><li><em>11</em>The new points display</li></ol></div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- =================== PAGES =================== -->
+<div class="view" id="v-pages">
+  <section class="wrap grid hero cx">
+    <div class="txt"><p class="num">Opus · 25 page templates</p><h1 class="t-hero">Pages</h1><p class="t-lead">Built only from the library. Each one live on a phone, a tablet and a desktop at once. Scroll and tap inside any of them.</p></div>
+  </section>
+  <section class="sec" style="padding-top:0"><div class="wrap grid">
+    <div class="side"><nav class="pglist" id="pglist" aria-label="Pages"></nav></div>
+    <div class="demo"><div id="pgview" class="pgview"></div></div>
+  </div></section>
+</div>
+
+<!-- =================== HANDOFF =================== -->
+<div class="view" id="v-handoff">
+  <section class="sec"><div class="wrap grid">
+    <div class="side"><p class="num">Opus · Handoff</p><h2 class="t-hero">Handoff</h2><p class="t-lead">What the real build needs: stack, components and props, data, budgets, assets, and what's still open.</p></div>
+    <div class="demo prose"><!--HANDOFF--><p>Opus is the Cats Can Dance design system: one set of tokens, 38 components, and 25 page templates, each working on phone, tablet and desktop. This is what the real build needs. The lab is the reference for every behaviour, and its source is in the project under <code>ccd/design-system/</code>.</p>
+<h2>1. What to build with</h2>
+<ul>
+<li><strong>Next.js App Router</strong>, in the CCD repo (<code>paramminhas5/CatsCanDanceOct2026</code>), deployed on Vercel. Supabase stays the one database.</li>
+<li><strong>Tokens as CSS variables.</strong> Ship <code>tokens.css</code> as generated, and generate it from <code>tokens.json</code> in CI with the same <code>build.py</code>, so nobody hand-edits a value. If the repo uses Tailwind, map the theme to the variables (<code>spacing: { s1: 'var(--s1)' … }</code>, <code>colors: { nights: 'var(--c-nights)' … }</code>) and switch off Tailwind's default scale so off-scale classes don't exist.</li>
+<li><strong>The lint goes into CI.</strong> <code>build.py</code> fails on any raw padding, margin, gap, inset, font-size, radius, z-index or duration. Run it on every CSS module and on inline styles in JSX.</li>
+<li><strong>Fonts self-hosted</strong> with <code>next/font/local</code>: Anybody (variable, wdth 50 to 150), Instrument Sans (variable), Martian Mono. <code>font-display: swap</code>, and preload Anybody and Instrument Sans.</li>
+<li><strong>No animation library needed.</strong> Every movement in Opus is CSS transitions and keyframes driven by classes and custom properties, plus <code>requestAnimationFrame</code> for the eyes, the laser cat and the scratch record. Keep it that way; it's why everything respects <code>prefers-reduced-motion</code> in one place.</li>
+</ul>
+<h2>2. File map: lab to repo</h2>
+<table>
+<thead>
+<tr>
+<th>Lab file</th>
+<th>Becomes</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tokens.json</code> → <code>tokens.css</code></td>
+<td><code>styles/tokens.css</code></td>
+<td>Generated. Three device blocks at 600 and 1100.</td>
+</tr>
+<tr>
+<td><code>ds.css</code></td>
+<td><code>styles/opus/*.module.css</code> or one global layer</td>
+<td>Split by component when porting. Class names can stay.</td>
+</tr>
+<tr>
+<td><code>ds.js</code></td>
+<td><code>lib/opus/</code> hooks and small client components</td>
+<td>One <code>useEyes()</code> engine at the app root; see section 4.</td>
+</tr>
+<tr>
+<td><code>object.js</code></td>
+<td><code>components/opus/TheObject.tsx</code></td>
+<td>WebGL, client only, lazy. Fallback is the logo PNG.</td>
+</tr>
+<tr>
+<td><code>ds-product.js</code></td>
+<td><code>components/product/*</code></td>
+<td>Each <code>data-c</code> becomes a component.</td>
+</tr>
+<tr>
+<td><code>data.js</code></td>
+<td>Supabase queries</td>
+<td>The shapes match the tables below.</td>
+</tr>
+<tr>
+<td><code>pages/*.html</code></td>
+<td><code>app/(site)/**/page.tsx</code></td>
+<td>One route per template.</td>
+</tr>
+</tbody>
+</table>
+<h2>3. Components and their props</h2>
+<p>Every component in the lab is wired by a <code>data-c</code> name. In React, each becomes a component with the props below. The states are classes (<code>is-hover</code>, <code>is-focus</code>, <code>is-pressed</code>, <code>is-loading</code>, <code>is-done</code>, <code>is-error</code>, <code>is-disabled</code>, <code>is-empty</code>) so the CSS carries over untouched.</p>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Component</th>
+<th>Props</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.btn.two</code></td>
+<td><code>&lt;Button eyes={2}&gt;</code></td>
+<td><code>size: s\|m\|l</code>, <code>state</code>, <code>why</code> (reason when disabled), <code>onPress</code></td>
+<td>One per screen. Fill is ink on shared pages, the app colour inside an app.</td>
+</tr>
+<tr>
+<td><code>.btn.one</code></td>
+<td><code>&lt;Button eyes={1}&gt;</code></td>
+<td><code>size</code>, <code>variant: outline\|quiet</code>, <code>pressed</code> (toggle), <code>iconOnly</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>.seeall</code></td>
+<td><code>&lt;SeeAll&gt;</code></td>
+<td><code>label</code>, <code>count</code>, <code>href</code></td>
+<td>Empty state when <code>count === 0</code>.</td>
+</tr>
+<tr>
+<td><code>chips</code></td>
+<td><code>&lt;Chips&gt;</code></td>
+<td><code>options</code>, <code>multi</code>, <code>value</code>, <code>onChange</code></td>
+<td>Scrolls sideways on phone.</td>
+</tr>
+<tr>
+<td><code>tail</code></td>
+<td><code>&lt;Field&gt;</code></td>
+<td><code>label</code>, <code>rule</code>, <code>okText</code>, <code>noText</code>, <code>type</code></td>
+<td>The tail SVG path morphs with CSS <code>d:</code>. Safari 17+ supports <code>d</code> in CSS. Older Safari gets a static tail.</td>
+</tr>
+<tr>
+<td><code>tabs</code></td>
+<td><code>&lt;Tabs variant="line\|seg"&gt;</code></td>
+<td><code>tabs</code>, <code>value</code></td>
+<td>Roving tabindex, arrows.</td>
+</tr>
+<tr>
+<td><code>.panel</code></td>
+<td><code>&lt;Panel&gt;</code></td>
+<td><code>title</code></td>
+<td>Only for things you hold.</td>
+</tr>
+<tr>
+<td><code>.steps</code></td>
+<td><code>&lt;Steps&gt;</code></td>
+<td><code>steps</code>, <code>current</code>, <code>row</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>prompt</code></td>
+<td><code>&lt;SoundPrompt&gt;</code></td>
+<td>—</td>
+<td>Shows once per visit after a third of a screen of scroll.</td>
+</tr>
+<tr>
+<td><code>.nav-top</code>, <code>.nav-sub</code>, <code>.tabbar</code></td>
+<td><code>&lt;TopBar&gt;</code>, <code>&lt;AppSections&gt;</code>, <code>&lt;TabBar&gt;</code></td>
+<td><code>app</code>, <code>sections</code>, <code>current</code></td>
+<td>TabBar renders below 600 only.</td>
+</tr>
+<tr>
+<td><code>.sheet</code></td>
+<td><code>&lt;Sheet&gt;</code></td>
+<td><code>open</code>, <code>onClose</code>, <code>title</code></td>
+<td>Bottom on phone and tablet, right panel on desktop. Focus trap.</td>
+</tr>
+<tr>
+<td><code>.foot</code></td>
+<td><code>&lt;Footer&gt;</code></td>
+<td>—</td>
+<td>Holds the chrome logo at rest.</td>
+</tr>
+<tr>
+<td><code>canvas[data-obj]</code></td>
+<td><code>&lt;TheObject&gt;</code></td>
+<td><code>form: coin\|ball\|record\|stamp\|dial</code>, <code>color</code>, <code>slot: stage\|dock\|rest</code>, <code>onCycle</code></td>
+<td>One per screen.</td>
+</tr>
+<tr>
+<td><code>room</code></td>
+<td><code>&lt;EyesInTheRoom&gt;</code></td>
+<td><code>count</code>, <code>going</code>, <code>onGoing</code></td>
+<td>Never shows names without consent.</td>
+</tr>
+<tr>
+<td><code>[data-laser]</code></td>
+<td><code>&lt;Laser&gt;</code> (in the root layout)</td>
+<td><code>entry: edge\|header\|object</code></td>
+<td>The cat sits on the <code>cat</code> layer, z 100, and never takes pointer events.</td>
+</tr>
+<tr>
+<td><code>scratch</code></td>
+<td><code>&lt;ScratchRecord&gt;</code></td>
+<td><code>src</code> (audio buffer URL)</td>
+<td>Web Audio. Grains when scratching, loop when playing.</td>
+</tr>
+<tr>
+<td><code>vinyl</code></td>
+<td><code>&lt;ArtistVinyl&gt;</code></td>
+<td><code>artist</code>, <code>latest</code>, <code>href</code></td>
+<td>Hold 450 ms. Links to the release, or to Bandcamp search when there's no link yet.</td>
+</tr>
+<tr>
+<td><code>stamps</code></td>
+<td><code>&lt;StampCard&gt;</code></td>
+<td><code>stamps</code>, <code>onCheckIn</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>whiskers</code></td>
+<td><code>&lt;Whiskers&gt;</code></td>
+<td><code>value</code>, <code>capacity</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xfader</code></td>
+<td><code>&lt;Crossfader&gt;</code></td>
+<td><code>a</code>, <code>b</code>, <code>value</code>, <code>onChange</code></td>
+<td>Drives <code>--x</code> on the page it controls.</td>
+</tr>
+<tr>
+<td><code>hold</code></td>
+<td><code>&lt;HoldButton&gt;</code></td>
+<td><code>ms</code> (900), <code>onHeld</code>, <code>doneLabel</code></td>
+<td>Vibrates on Android.</td>
+</tr>
+<tr>
+<td><code>sleeve</code></td>
+<td><code>&lt;Sleeve&gt;</code></td>
+<td><code>poster</code>, <code>lineup</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>torch</code></td>
+<td><code>&lt;PosterTorch&gt;</code></td>
+<td><code>nights</code></td>
+<td>Each poster carries its dominant colour from the database.</td>
+</tr>
+<tr>
+<td><code>flyers</code></td>
+<td><code>&lt;FlyerWall&gt;</code></td>
+<td><code>nights</code>, <code>cities</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>spines</code></td>
+<td><code>&lt;ArtistShelf&gt;</code></td>
+<td><code>artistsByCity</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>slivers</code></td>
+<td><code>&lt;Slivers&gt;</code></td>
+<td><code>artists</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>chrome</code></td>
+<td><code>&lt;ChromeTurn&gt;</code></td>
+<td><code>sprite</code>, <code>frames</code> (36)</td>
+<td>6 × 6 WebP sprite.</td>
+</tr>
+<tr>
+<td><code>invite</code></td>
+<td><code>&lt;InviteMaker&gt;</code></td>
+<td><code>onSend</code></td>
+<td>Writes a party, returns the link.</td>
+</tr>
+<tr>
+<td><code>rsvp</code></td>
+<td><code>&lt;RsvpCard&gt;</code></td>
+<td><code>party</code>, <code>onAnswer</code></td>
+<td>Returns a ticket with a signed code.</td>
+</tr>
+<tr>
+<td><code>guests</code></td>
+<td><code>&lt;GuestList&gt;</code></td>
+<td><code>partyId</code></td>
+<td>Realtime from Supabase.</td>
+</tr>
+<tr>
+<td><code>door</code></td>
+<td><code>&lt;DoorScanner&gt;</code></td>
+<td><code>partyId</code></td>
+<td>Camera through <code>BarcodeDetector</code>, a jsQR fallback. Three answers only.</td>
+</tr>
+<tr>
+<td><code>offer</code></td>
+<td><code>&lt;BookingOffer&gt;</code></td>
+<td><code>ask</code>, <code>offer</code>, <code>onSend</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>instrument</code></td>
+<td><code>&lt;Instrument&gt;</code></td>
+<td><code>pattern</code>, <code>bpm</code>, <code>onExport</code></td>
+<td>WAV export through <code>OfflineAudioContext</code>. The real School engine replaces the lab synth.</td>
+</tr>
+<tr>
+<td><code>gear</code></td>
+<td><code>&lt;GearBuilder&gt;</code></td>
+<td><code>kits</code>, <code>crowdSizes</code>, <code>onAsk</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>episodes</code></td>
+<td><code>&lt;EpisodeShelf&gt;</code></td>
+<td><code>episodes</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>points</code></td>
+<td><code>&lt;Points view="card\|tab\|crate"&gt;</code></td>
+<td><code>balance</code>, <code>history</code>, <code>rewards</code></td>
+<td>Pick one view before building.</td>
+</tr>
+</tbody>
+</table>
+<h2>4. The eyes engine</h2>
+<p>One loop at the app root, not one per button.</p>
+<ul>
+<li>An <code>IntersectionObserver</code> tracks which eye elements are on screen. Only those update.</li>
+<li>Each frame, every visible pair eases 18% toward its target and writes <code>--px</code> and <code>--py</code> on its container. The CSS turns those into pupil positions.</li>
+<li>The target depends on the button's state: loading chases a figure-eight, focus looks straight out, empty looks down, the see-all looks at its arrow, the laser overrides everything.</li>
+<li>Every 6 to 10 seconds the nearest pair pounces (every 1 to 2 with the laser on).</li>
+<li>With no pointer for 2.5 seconds, or on touch, eyes look around slowly. After a tap they look at the tap for 1.8 seconds.</li>
+<li>Under reduced motion: no pounce, no blink, no chase. Following stays.</li>
+</ul>
+<h2>5. Data: what the components read</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Table and fields</th>
+<th>Real today</th>
+<th>Example in the lab</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Night card, sleeve, torch, flyers</td>
+<td><code>events</code>: title, date, start time, venue, city, poster, line-up, genres, ticket URL, poster colour</td>
+<td>All except poster colour (taken from the posters by hand)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Week</td>
+<td><code>events</code> grouped by day</td>
+<td>Real counts: Thu 2, Fri 6, Sat 4, Sun 4, Mon 0, Tue 1, Wed 0</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Artist card, spines, slivers, vinyl, page</td>
+<td><code>artists</code>: name, city, genres, photo, era line, eras, latest releases, open to booking</td>
+<td>48 artists with photos. Eras and releases for Kohra only so far</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Episodes</td>
+<td><code>episodes</code>: number, date, venue, poster, line-up</td>
+<td>Episodes 1 to 5</td>
+<td>Episode 5's line-up is not set</td>
+</tr>
+<tr>
+<td>Eyes in the room</td>
+<td><code>rsvps</code> count per event, with consent flag</td>
+<td>—</td>
+<td>Counts</td>
+</tr>
+<tr>
+<td>Invite, RSVP, guest list, door</td>
+<td><code>parties</code>, <code>rsvps</code>, <code>tickets</code>, <code>checkins</code></td>
+<td>—</td>
+<td>All of it</td>
+</tr>
+<tr>
+<td>Booking offer</td>
+<td><code>offers</code>: artist, promoter, date, city, set length, fee, status</td>
+<td>—</td>
+<td>Fees</td>
+</tr>
+<tr>
+<td>Points</td>
+<td><code>points_ledger</code>, <code>rewards</code></td>
+<td>Check in 100, a friend's first night 150, rating 10. Thresholds 200, 300, 800</td>
+<td>Balance, history, sharing 20, fan 50, hosting 50, lessons 25, reward names</td>
+</tr>
+<tr>
+<td>Gear</td>
+<td><code>gear_kits</code>, <code>suppliers</code></td>
+<td>—</td>
+<td>Kits, supplier counts</td>
+</tr>
+</tbody>
+</table>
+<h2>6. Accessibility</h2>
+<ul>
+<li>AA contrast is checked on the foundations page. Product colours always carry near-black text. <code>faint</code> (#86867F) is the lowest grey for text. <code>rest</code> is never text.</li>
+<li>Every control works by keyboard. Disabled buttons use <code>aria-disabled</code> and stay focusable so their reason is read out.</li>
+<li>Live regions: button results, the door's answer, RSVP status, search results.</li>
+<li>Hit areas are at least 48 even when a control looks smaller.</li>
+<li>Reduced motion is one media query per component. It keeps meaning and drops travel.</li>
+</ul>
+<h2>7. Performance budgets</h2>
+<ul>
+<li>Largest Contentful Paint under 2.0 s on a mid-range Android over 4G. The hero text and the first poster are the LCP, never the WebGL object.</li>
+<li>The object loads after first paint and only when on screen. One WebGL context per page.</li>
+<li>Posters in WebP, sized to their slot, lazy below the fold. The torch wall uses thumbnails.</li>
+<li>JS under 120 KB gzipped for a product page before the instrument loads. The instrument and the audio engine load when you first press Play.</li>
+<li>The eyes loop only touches visible elements. The laser cat's loop stops when the cat is gone.</li>
+</ul>
+<h2>8. Assets</h2>
+<ul>
+<li><strong>Fonts:</strong> Anybody, Instrument Sans, Martian Mono (in the lab under <code>assets/fonts</code>).</li>
+<li><strong>Logo:</strong> <code>assets/img/logo.png</code>. It takes a 1px ink ring on dark.</li>
+<li><strong>Chrome renders, from Magnific:</strong></li>
+<li>Logo cat still <code>ov49WtF829</code>, transparent <code>Xmy4UajBfo</code>, spin video <code>N2QFgp76D9</code> (made into the 6 × 6 sprite <code>chrome-spin.webp</code>).</li>
+<li>Record <code>mEiRPfnhJQ</code>, wristband <code>xSeXTgbjfW</code>, knob <code>LwXoM7YswO</code>, mirror ball <code>ksMpWgc16B</code>.</li>
+<li>Make 2× sprites for retina in the real build.</li>
+<li><strong>Posters and artist photos:</strong> from the database. The lab copies are 520 and 480 wide.</li>
+<li><strong>The laser cat</strong> is an inline SVG with CSS animation, about 1 KB.</li>
+</ul>
+<h2>9. Open before building</h2>
+<ol>
+<li>Where the laser's cat comes from: nearest edge, from the bar, or out of the object.</li>
+<li>Points display: the card, the tab, or the crate.</li>
+<li>Where the chrome logo cat lives beyond the footer.</li>
+<li>Episodes: sleeves on a shelf, the flyer wall, or both (both are on the Episodes page now).</li>
+<li>The three proposed pages: tickets, left at your door, settings.</li>
+<li>Real audio for artist vinyls: previews with the artist's permission, or links only.</li>
+</ol>
+<h2>10. How to know it's done</h2>
+<ul>
+<li>Each page matches its three screens in the lab at 390, 820 and 1440, and looks right in between.</li>
+<li>The token lint passes in CI.</li>
+<li>Lighthouse accessibility 100 on every template; axe finds nothing.</li>
+<li>The reduced-motion pass is tested on a real phone.</li>
+<li>The door is tested at a real night with 40 people.</li>
+</ul><!--/HANDOFF--></div>
+  </div></section>
+</div>
+</main>
+
+<aside class="dock" id="dock" aria-label="World">
+  <div class="rows">
+    <div class="rw ph"><span class="lbl">World</span><div class="seg"><button class="wsel" data-w="shared" aria-pressed="true">Shared</button><button class="wsel" data-w="nights" aria-pressed="false">Nights</button><button class="wsel" data-w="artists" aria-pressed="false">Artists</button><button class="wsel" data-w="host" aria-pressed="false">Host</button><button class="wsel" data-w="school" aria-pressed="false">School</button></div></div>
+  </div>
+</aside>
+
+<div class="focus" id="focus" role="dialog" aria-modal="true" aria-label="Device preview">
+  <div class="bar2"><b class="t-h3" id="focusName">Phone</b><button class="b1" id="focusClose"><span class="eyes xs"><i class="eye"></i><i class="eye"></i></span>Close</button></div>
+  <div class="box" id="focusBox"></div>
+</div>
+
+<script src="data.js"></script>
+<script src="ds.js"></script>
+<script src="object.js"></script>
+<script src="ds-product.js"></script>
+<script src="lab.js"></script>
+<script src="comp.js"></script>
+<script src="snips.js"></script>
+<script src="cards.js"></script>
+</body>
+</html>
