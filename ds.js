@@ -144,13 +144,18 @@ A.loop=async()=>{if(A._loop)return A._loop;const c=A.ctx();if(!c)return null;con
    The API is read with JSONP (it has no CORS), the previews themselves allow any origin, so they decode into the deck and scratch.
    Where the network is closed (the claude.ai preview), every caller falls back to a loop we make. */
 const DZ=CCD.dz={c:{}};
-DZ.jsonp=path=>DZ.c[path]||(DZ.c[path]=new Promise((res,rej)=>{const cb='dz'+Math.random().toString(36).slice(2);const sc=document.createElement('script');let to;const clean=()=>{clearTimeout(to);try{delete window[cb]}catch(_){window[cb]=undefined}sc.remove()};
+/* on our own site the server route reads Deezer (it works from any country); elsewhere we try Deezer directly */
+DZ.api=/^https?:/.test(location.protocol)&&!/claude|usercontent|localhost:8765/.test(location.host)?'/api/':null;
+const jsonp=path=>new Promise((res,rej)=>{const cb='dz'+Math.random().toString(36).slice(2);const sc=document.createElement('script');let to;const clean=()=>{clearTimeout(to);try{delete window[cb]}catch(_){window[cb]=undefined}sc.remove()};
   to=setTimeout(()=>{clean();rej('timeout')},5000);window[cb]=d=>{clean();d&&!d.error?res(d):rej('error')};sc.onerror=()=>{clean();rej('blocked')};
-  sc.src='https://api.deezer.com/'+path+(path.includes('?')?'&':'?')+'output=jsonp&callback='+cb;document.head.appendChild(sc)}).catch(e=>{delete DZ.c[path];throw e}));
-const norm=x=>String(x||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+  sc.src='https://api.deezer.com/'+path+(path.includes('?')?'&':'?')+'output=jsonp&callback='+cb;document.head.appendChild(sc)});
+DZ.jsonp=path=>DZ.c[path]||(DZ.c[path]=(async()=>{if(DZ.api){try{const r=await fetch(DZ.api+'dz?p='+encodeURIComponent(path));const j=await r.json();if(j&&!j.error)return j}catch(e){}}return jsonp(path)})().catch(e=>{delete DZ.c[path];throw e}));
+const norm=x=>String(x||'').toLowerCase().replace(/[^a-z0-9]/g,'');CCD.norm=norm;
 DZ.album=id=>DZ.jsonp('album/'+id);
-DZ.artistTop=async name=>{const s_=await DZ.jsonp('search/artist?q='+encodeURIComponent(name)+'&limit=3');const ar=(s_.data||[]).find(x=>norm(x.name)===norm(name));if(!ar)throw 'none';const t=await DZ.jsonp('artist/'+ar.id+'/top?limit=10');return{artist:ar,tracks:t.data||[]}};
-DZ.buf=async url=>{const c=A.ctx();const r=await fetch(url);if(!r.ok)throw 'http';return await c.decodeAudioData(await r.arrayBuffer())};
+DZ.cover=(id,s='medium')=>DZ.api?`${DZ.api}cover?id=${id}&s=${s}`:`https://api.deezer.com/album/${id}/image?size=${s}`;
+DZ.findArtist=async name=>{const s_=await DZ.jsonp('search/artist?q='+encodeURIComponent(name)+'&limit=5');return (s_.data||[]).find(x=>norm(x.name)===norm(name))||null};
+DZ.artistTop=async name=>{const ar=await DZ.findArtist(name);if(!ar)throw 'none';const t=await DZ.jsonp('artist/'+ar.id+'/top?limit=10');return{artist:ar,tracks:t.data||[]}};
+DZ.buf=async url=>{const c=A.ctx();const src=DZ.api?DZ.api+'pv?u='+encodeURIComponent(url):url;const r=await fetch(src);if(!r.ok)throw 'http';return await c.decodeAudioData(await r.arrayBuffer())};
 
 /* ================= DECK: one engine for every record you can play and scratch =================
    Tap to play or stop. Drag round the record to scratch, forwards and backwards. Drop an audio file on it to scratch that. */
@@ -237,12 +242,12 @@ function pageEngine(c){const E={G:{}};E.bus=c.createGain();E.bus.gain.value=.8;E
     lead(t,i){const o=c.createOscillator(),fl=c.createBiquadFilter(),g=c.createGain();o.type='triangle';o.frequency.value=220*Math.pow(2,(LN[i]||12)/12);fl.type='lowpass';fl.frequency.setValueAtTime(3200,t);fl.frequency.exponentialRampToValueAtTime(700,t+.2);env(g,t,.004,.2,.22);o.connect(fl);fl.connect(g);g.connect(E.G.lead);g.connect(E.dly);o.start(t);o.stop(t+.3)}};
   return E}
 CCD.def('story',el=>{const box=$('.story-obj',el),cv=$('canvas',box),clk=$('.nclock',el),dots=$$('.storydots a',el),fxc=$('.story-fx',el);
-  const W=['shared','nights','host','artists','school'],FORM={shared:'coin',nights:'coin',host:'coin',artists:'coin',school:'coin'};/* one object, the coin. Every section has its own chrome object in its head, so the coin stays a coin and lives in the player when it has no slot */
+  const W=['shared','nights','host','artists','school'],FORM={shared:'coin',nights:'ball',host:'ring',artists:'record',school:'dial'};/* one object follows you and changes shape per section (v7). Sub-pages take their app's shape, or the page's own (body data-form) */
   const home=!!$('[data-ch]',el);const world0=W.find(w=>document.body.classList.contains('w-'+w))||'shared';
   /* on app pages every section is a chapter: same colour, the app's object, and the track adds a part each section */
   const chs=home?$$('[data-ch]',el):$$(':scope > main > section, :scope > section',el);
-  if(!home)chs.forEach((c,i)=>{c.dataset.w=c.dataset.w||world0;c.dataset.form=c.dataset.form||FORM[world0];c.dataset.lv=c.dataset.lv||Math.min(4,i+1)});
-  const obj=new CCD.Obj(cv,{root:el.dataset.root||'',form:home?'coin':FORM[world0],color:CCD.COL[home?'shared':world0],onCycle:()=>{}});
+  const pform=document.body.dataset.form||FORM[world0];if(!home)chs.forEach((c,i)=>{c.dataset.w=c.dataset.w||world0;c.dataset.form=c.dataset.form||pform;c.dataset.lv=c.dataset.lv||Math.min(4,i+1)});
+  const obj=new CCD.Obj(cv,{root:el.dataset.root||'',form:home?'coin':pform,color:CCD.COL[home?'shared':world0],onCycle:()=>{}});
   let cur=-1,ph=matchMedia('(max-width:599px)');const lean={x:0,y:0};
   /* the object sits behind the page. It flies into the slot the layout keeps for it, and docks at the top corner when there is none */
   const hit=document.createElement('div');hit.className='obj-hit';hit.setAttribute('aria-hidden','true');el.appendChild(hit);
@@ -365,43 +370,69 @@ CCD.def('flyers',el=>{$$('.flyer',el).forEach((f,i)=>{f.style.setProperty('--r',
     const em=$('.fempty',el);if(em)em.hidden=keep.length>0})});
 
 /* ================= SPINES: every artist on one shelf ================= */
-CCD.def('spines',el=>{const A=Object.fromEntries((D.artists||[]).map(a=>[a.id,a]));const root=el.dataset.root||'';const shelf=$('.shelf',el),det=$('.sdetail',el);
-  shelf.innerHTML=(D.spines||[]).map(([city,ids])=>`<span class="divider" aria-hidden="true">${esc(city)}</span>`+ids.filter(i=>A[i]).map(i=>`<button class="spine" data-a="${i}" style="--img:url(${root}assets/img/a-${i}.webp)"><span>${esc(A[i].n)}</span></button>`).join('')).join('');
-  const show=b=>{$$('.spine',shelf).forEach(s=>s.classList.toggle('out',s===b));const a=A[b.dataset.a];det.innerHTML=`<img src="${root}assets/img/a-${a.id}.webp" alt=""><div><span class="lbl">${esc(a.c)}</span><b class="t-h3">${esc(a.n)}</b><p class="mute t-small">${esc(a.era||a.g.join(', '))}</p><span class="tags">${a.g.map(g=>`<span class="tag">${esc(g)}</span>`).join('')}</span><a class="seeall" href="${root}pages/artist.html">${EY1}<span class="lab">Open page</span></a></div>`;collect(det)};
+/* the shelf: every artist with a photo, by city. Hover or focus pulls a spine out; click opens their page. */
+const PRETTY=n=>n&&n===n.toUpperCase()&&/[A-Z]/.test(n)?n.split(' ').map(w=>w.length>2||/^[A-Z]+$/.test(w)&&w.length>1?w[0]+w.slice(1).toLowerCase():w).join(' '):n;CCD.pretty=PRETTY;
+const CITY=c=>{c=String(c||'').split('(')[0].split(',')[0].trim();return c==='Delhi'||c==='Noida'||c==='Gurgaon'||c==='Gurugram'?'New Delhi':c};CCD.city=CITY;
+const RPH=(r,root)=>r[4]==='L'?`${root}assets/img/a-${r[0]}.webp`:r[4];CCD.rphoto=RPH;
+CCD.def('spines',el=>{const root=el.dataset.root||'';const shelf=$('.shelf',el),det=$('.sdetail',el);const R=(D.roster||[]).filter(r=>r[4]);
+  const by={};R.forEach(r=>{const c=CITY(r[2])||'Elsewhere';(by[c]=by[c]||[]).push(r)});const order=Object.keys(by).sort((a,b)=>by[b].length-by[a].length);
+  const M=Object.fromEntries(R.map(r=>[r[0],r]));
+  shelf.innerHTML=order.map(c=>`<span class="divider" aria-hidden="true">${esc(c)}</span>`+by[c].map(r=>`<a class="spine" href="${root}pages/artist.html#${r[0]}" data-a="${r[0]}" style="--img:url(${RPH(r,root)})"><span>${esc(PRETTY(r[1]))}</span></a>`).join('')).join('');
+  const show=b=>{$$('.spine',shelf).forEach(s=>s.classList.toggle('out',s===b));const r=M[b.dataset.a];det.innerHTML=`<img src="${RPH(r,root)}" alt=""><div><span class="lbl">${esc(CITY(r[2]))}</span><b class="t-h3">${esc(PRETTY(r[1]))}</b><span class="tags">${r[3].slice(0,3).map(g=>`<span class="tag">${esc(g)}</span>`).join('')}</span><a class="seeall" href="${root}pages/artist.html#${r[0]}">${EY1}<span class="lab">Open page</span></a></div>`;collect(det)};
   shelf.addEventListener('pointerover',e=>{const b=e.target.closest('.spine');if(b)show(b)});shelf.addEventListener('focusin',e=>{const b=e.target.closest('.spine');if(b)show(b)});
   const f=$('.spine',shelf);f&&show(f)});
 
+/* the roster: all of them, searchable */
+CCD.def('roster',el=>{const root=el.dataset.root||'';const R=(D.roster||[]).slice().sort((a,b)=>(!!b[4]-!!a[4])||a[1].localeCompare(b[1]));
+  const q=$('input',el),ch=$('.rchips',el),grid=$('.rgrid',el),cnt=$('.rcount',el),more=$('.rmore',el);let f='all',lim=48;
+  const cities=['New Delhi','Mumbai','Bengaluru','Goa'];const genres=['Techno','House','Ambient','Bass'];
+  ch.innerHTML=[['all','All'],['open','Open to bookings'],['ccd','Played Cats Can Dance'],...cities.map(c=>['c:'+c,c]),...genres.map(g=>['g:'+g,g])].map(([v,n])=>`<button class="chip" data-v="${v}" aria-pressed="${v==='all'}">${n}</button>`).join('');
+  const ini=n=>PRETTY(n).split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  const card=r=>`<a class="acard${r[4]?'':' noimg'}" href="${root}pages/artist.html#${r[0]}">${r[4]?`<img src="${RPH(r,root)}" alt="" loading="lazy">`:`<span class="aini" aria-hidden="true">${esc(ini(r[1]))}</span>`}<b>${esc(PRETTY(r[1]))}</b><span class="t-data faint">${esc((CITY(r[2])||r[3][0]||'').toUpperCase())}</span></a>`;
+  function draw(){const t=CCD.norm?CCD.norm(q.value):q.value.toLowerCase();const hit=R.filter(r=>{if(f==='open'&&!r[5])return false;if(f==='ccd'&&!r[6])return false;if(f.startsWith('c:')&&CITY(r[2])!==f.slice(2))return false;if(f.startsWith('g:')&&!r[3].some(g=>g.toLowerCase().includes(f.slice(2).toLowerCase())))return false;
+      if(!t)return true;return (CCD.norm?CCD.norm:(x=>x.toLowerCase()))([r[1],r[2],...r[3]].join(' ')).includes(t)});
+    grid.innerHTML=hit.slice(0,lim).map(card).join('')||'<p class="t-small mute">No one by that name yet.</p>';cnt.textContent=`${hit.length} OF ${R.length} ARTISTS`;more.hidden=hit.length<=lim}
+  q.addEventListener('input',()=>{lim=48;draw()});ch.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;f=b.dataset.v;$$('.chip',ch).forEach(x=>x.setAttribute('aria-pressed',x===b));lim=48;draw()});
+  more.addEventListener('click',()=>{lim+=48;draw()});collect(el);draw()});
+
 /* ================= SLIVERS: a line-up in strips ================= */
-CCD.def('slivers',el=>{const open=s=>$$('.sliver',el).forEach(x=>x.setAttribute('aria-expanded',x===s));el.addEventListener('click',e=>{const s=e.target.closest('.sliver');if(s)open(s)});el.addEventListener('pointerover',e=>{if(e.pointerType==='touch')return;const s=e.target.closest('.sliver');if(s)open(s)});el.addEventListener('focusin',e=>{const s=e.target.closest('.sliver');if(s)open(s)});const f=$('.sliver',el);f&&f.setAttribute('aria-expanded','true')});
+CCD.def('slivers',el=>{const open=s=>$$('.sliver',el).forEach(x=>x.setAttribute('aria-expanded',x===s));
+  el.addEventListener('click',e=>{if(e.target.closest('a'))return;const s=e.target.closest('.sliver');if(!s)return;if(s.getAttribute('aria-expanded')==='true'&&s.dataset.href){location.href=s.dataset.href;return}open(s)});
+  el.addEventListener('keydown',e=>{const s=e.target.closest('.sliver');if(s&&(e.key==='Enter'||e.key===' ')){e.preventDefault();s.getAttribute('aria-expanded')==='true'&&s.dataset.href?location.href=s.dataset.href:open(s)}});
+  el.addEventListener('pointerover',e=>{if(e.pointerType==='touch')return;const s=e.target.closest('.sliver');if(s)open(s)});el.addEventListener('focusin',e=>{const s=e.target.closest('.sliver');if(s)open(s)});collect(el);const f=$('.sliver',el);f&&f.setAttribute('aria-expanded','true')});
 
 /* ================= CHROME: a turning picture from a 6 x 6 sprite ================= */
-CCD.def('chrome',el=>{const N=36;let f=0,drag=null,last=0;const set=v=>{f=((Math.round(v)%N)+N)%N;el.style.backgroundPosition=`${(f%6)*20}% ${Math.floor(f/6)*20}%`;el.setAttribute('aria-valuenow',f)};set(0);
-  el.addEventListener('pointerdown',e=>{drag={x:e.clientX,f};el.setPointerCapture(e.pointerId)});el.addEventListener('pointermove',e=>{if(drag){last=performance.now();set(drag.f+(e.clientX-drag.x)/8)}});el.addEventListener('pointerup',()=>drag=null);
-  el.addEventListener('keydown',e=>{const d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d){e.preventDefault();last=performance.now();set(f+d)}});
-  if(!RM)setInterval(()=>{if(!drag&&performance.now()-last>1500&&el.getBoundingClientRect().top<innerHeight)set(f+1)},110)});
+/* the chrome logo: a 36-frame turntable. Still until you point at it; hover turns it smoothly, drag turns it by hand and lets go with momentum. */
+CCD.def('chrome',el=>{const N=36;let f=0,v=0,hov=false,drag=null,shown=-1,last=performance.now();
+  const paint=()=>{const k=((Math.round(f)%N)+N)%N;if(k===shown)return;shown=k;el.style.backgroundPosition=`${(k%6)*20}% ${Math.floor(k/6)*20}%`;el.setAttribute('aria-valuenow',k)};paint();
+  el.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch')hov=true});el.addEventListener('pointerleave',()=>hov=false);
+  el.addEventListener('pointerdown',e=>{drag={x:e.clientX,f,t:performance.now(),lx:e.clientX};el.setPointerCapture(e.pointerId)});
+  el.addEventListener('pointermove',e=>{if(!drag)return;const now=performance.now();f=drag.f+(e.clientX-drag.x)/7;v=(e.clientX-drag.lx)/7/Math.max(.008,(now-drag.t)/1000);drag.lx=e.clientX;drag.t=now;paint()});
+  const up=()=>{drag=null};el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);
+  el.addEventListener('keydown',e=>{const d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d){e.preventDefault();f+=d;paint()}});
+  (function tick(now){const dt=Math.min(.05,(now-last)/1000);last=now;if(!drag){const want=hov&&!RM?22:0;if(hov)v+=(want-v)*(1-Math.pow(.05,dt));else v*=Math.pow(.08,dt);if(Math.abs(v)<.05)v=0;f+=v*dt;if(!hov&&v===0){const r=Math.round(f);f+=(r-f)*(1-Math.pow(.001,dt))}paint()}requestAnimationFrame(tick)})(last)});
 
 /* ================= EYES IN THE ROOM ================= */
 CCD.def('room',el=>{const n=+el.dataset.n||12;const g=$('.rgrid',el);g.innerHTML=Array.from({length:n},()=>'<i></i>').join('');
   const b=$('[data-going]',el),c=$('.rcount',el);b&&b.addEventListener('click',()=>{const on=!el.classList.contains('you');el.classList.toggle('you',on);if(on){const me=document.createElement('i');me.className='me';g.prepend(me);CCD.done(b,'You\'re going')}else{const me=$('.me',g);me&&me.remove();b.classList.remove('is-done');CCD.setLabel(b,'I\'m going')}c.textContent=n+(on?1:0)})});
 
-/* ================= CHROME OBJECTS: each one turns, follows you and jumps on the kick =================
-   Every .cobj on screen is driven here (CSS keyframes are only the fallback). It turns on its own, scrolling spins it,
-   it tilts toward the pointer, it jumps on the kick when the track is on, and a tap sends it round once with a chirp. */
-(()=>{const live=new Set();let sv=0,ly=scrollY,px=0,py=0,kick=0;document.documentElement.classList.add('js-cobj');
+/* ================= CHROME OBJECTS: upright and still until you point at them =================
+   Every .cobj stands still. Point at it (or at the card it sits in) and it turns once, lifts, and a light runs across the chrome.
+   Tap sends it round faster, with a chirp. On the kick it pulses a little, nothing more. */
+(()=>{const live=new Set();let kick=0;document.documentElement.classList.add('js-cobj');
   const io=new IntersectionObserver(es=>es.forEach(en=>{en.isIntersecting?live.add(en.target):live.delete(en.target)}),{rootMargin:'80px'});
-  const add=root=>$$('.cobj',root).forEach(o=>{if(o._co)return;o._co={ph:(hashS(o.innerHTML)%628)/100,spin:0,v:0};io.observe(o);
-    o.addEventListener('click',e=>{o._co.v+=Math.PI*2*3.2;o.classList.remove('pop');void o.offsetWidth;o.classList.add('pop');const c=A.ctx();if(c){const t=c.currentTime,os=c.createOscillator(),g=c.createGain();os.type='triangle';os.frequency.setValueAtTime(900,t);os.frequency.exponentialRampToValueAtTime(1700,t+.08);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+.14);os.connect(g);g.connect(c.destination);os.start(t);os.stop(t+.16)}
-      const r=o.getBoundingClientRect();CCD.fx&&CCD.fx.burst(r.left+r.width/2,r.top+r.height/2)})});
+  const turn=(o,n=1)=>{const c=o._co;if(RM)return;c.target=Math.ceil((c.ang+.01)/(Math.PI*2))*Math.PI*2+(n-1)*Math.PI*2;c.lift=1;o.classList.remove('shine');void o.offsetWidth;o.classList.add('shine')};
+  const add=root=>$$('.cobj',root).forEach(o=>{if(o._co)return;o._co={ang:0,target:0,lift:0,hov:false};io.observe(o);const img=o.firstElementChild;img&&img.src&&o.style.setProperty('--m',`url("${img.src}")`);
+    const host=o.closest('a,button,.appcol,.fstep,figure,.chead,.ablock,.card')||o;
+    host.addEventListener('pointerenter',e=>{if(e.pointerType==='touch')return;o._co.hov=true;turn(o)});host.addEventListener('pointerleave',()=>{o._co.hov=false});
+    o.addEventListener('click',()=>{turn(o,2);const c=A.ctx();if(c){const t=c.currentTime,os=c.createOscillator(),g=c.createGain();os.type='triangle';os.frequency.setValueAtTime(900,t);os.frequency.exponentialRampToValueAtTime(1700,t+.08);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+.14);os.connect(g);g.connect(c.destination);os.start(t)}})});
   CCD.cobj=add;add(document);
-  addEventListener('scroll',()=>{sv+=scrollY-ly;ly=scrollY},{passive:true});
-  addEventListener('pointermove',e=>{px=e.clientX/innerWidth-.5;py=e.clientY/innerHeight-.5},{passive:true});
-  document.addEventListener('ccd:step',e=>{const s_=e.detail;if(s_>=0&&CCD.pagePat!==undefined){const p=(CCD.pageTrack&&CCD.pageTrack.pat)?CCD.pageTrack.pat('kick'):null;if(p&&p[s_])kick=1}});
+  document.addEventListener('ccd:step',e=>{const s_=e.detail;if(s_>=0){const p=(CCD.pageTrack&&CCD.pageTrack.pat)?CCD.pageTrack.pat('kick'):null;if(p&&p[s_])kick=1}});
   let last=performance.now();
-  (function tick(now){const dt=Math.min(.05,(now-last)/1000);last=now;const t=now/1000;sv*=Math.pow(.02,dt);kick*=Math.pow(.0005,dt);
-    live.forEach(o=>{const c=o._co,img=o.firstElementChild;if(!img)return;c.v*=Math.pow(.25,dt);c.spin+=c.v*dt+(RM?0:.55*dt)+sv*.0009;
-      const r=o.getBoundingClientRect(),cx=(r.left+r.width/2)/innerWidth-.5,cy=(r.top+r.height/2)/innerHeight-.5;
-      const ry=Math.sin(c.spin)*28+(px-cx)*30,rx=(cy-py)*16+(RM?0:Math.sin(t*.9+c.ph)*4),bob=RM?0:Math.sin(t*1.3+c.ph)*4,sc=1+kick*.07;
-      img.style.transform=`translateY(${(bob-kick*6).toFixed(1)}px) rotateX(${rx.toFixed(1)}deg) rotateY(${ry.toFixed(1)}deg) rotateZ(${(Math.sin(c.spin*.5+c.ph)*4).toFixed(1)}deg) scale(${sc.toFixed(3)})`});
+  (function tick(now){const dt=Math.min(.05,(now-last)/1000);last=now;kick*=Math.pow(.0005,dt);
+    live.forEach(o=>{const c=o._co,img=o.firstElementChild;if(!img)return;const k=1-Math.pow(.004,dt);c.ang+=(c.target-c.ang)*k;const want=c.hov?1:0;c.lift+=(want-c.lift)*(1-Math.pow(.02,dt));
+      const settled=Math.abs(c.target-c.ang)<.002&&c.lift<.002&&kick<.002;if(settled){if(c.on){o.style.removeProperty('--tf');c.on=0;c.ang=c.target=0}return}c.on=1;
+      o.style.setProperty('--tf',`translateY(${(-c.lift*5).toFixed(1)}px) rotate(${c.ang.toFixed(4)}rad) scale(${(1+c.lift*.06+kick*.05).toFixed(3)})`)});
     requestAnimationFrame(tick)})(last);
   const mo=new MutationObserver(ms_=>ms_.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)add(n.parentNode||n)})));mo.observe(document.body,{childList:true,subtree:true})})();
 

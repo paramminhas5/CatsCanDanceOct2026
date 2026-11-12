@@ -19,16 +19,33 @@ void stamp(inout vec3 col,vec2 d,float r,float ang,float aa){if(r>1.2)return;flo
 void record(inout vec3 col,vec2 d,float r,float ang,float aa){float a=1.-smoothstep(1.-aa,1.+aa,r);if(a<=0.)return;vec3 rc=vec3(.028,.028,.032);float g=sin(r*uR*1.1)*.5+.5;rc+=g*.02*smoothstep(.38,.42,r);float gaps=0.;gaps+=1.-smoothstep(0.,.005,abs(r-.52));gaps+=1.-smoothstep(0.,.005,abs(r-.64));gaps+=1.-smoothstep(0.,.005,abs(r-.76));gaps+=1.-smoothstep(0.,.005,abs(r-.87));rc*=1.-gaps*.65;float sheen=pow(abs(sin(ang+.75)),16.)+.55*pow(abs(sin(ang-.85)),28.);vec3 irid=mix(uA,uB,smoothstep(.45,.98,r));rc+=sheen*irid*.42*smoothstep(.38,.44,r)*(.55+.45*g);rc+=smoothstep(.965,.995,r)*.09;float lab=1.-smoothstep(.37-aa,.37+aa,r);vec2 luv=(rot(-uSpin)*d)/.36*.5+.5;vec3 lc=vec3(.94,.93,.9);if(uTex>.5){vec4 tx=texture2D(uLogo,vec2(luv.x,1.-luv.y));lc=mix(vec3(.02),tx.rgb,tx.a);}lc=mix(lc,uA,1.-smoothstep(.004,.012,abs(r-.36)));rc=mix(rc,lc,lab);rc=mix(rc,uBg,1.-smoothstep(.016-aa,.016+aa,r));col=mix(col,rc,a);}
 void knob(inout vec3 col,vec2 d,float r,float ang,float aa){if(r>1.1)return;float a0=atan(d.x,d.y);float t=(a0+2.356)/4.712;float sweep=step(-.01,t)*step(t,1.01);float lit=step(t,uKnob+.012);float tk=abs(fract(t*20.+.5)-.5)/20.*4.712*r;float tick=(1.-smoothstep(.006,.006+aa,tk))*(1.-smoothstep(.032,.032+aa,abs(r-.955)))*sweep;col=mix(col,mix(vec3(.3),uA,lit),tick);float arc=(1.-smoothstep(.007,.007+aa,abs(r-.865)))*sweep;col=mix(col,mix(vec3(.17),uA,lit),arc);col+=uA*.1*lit*sweep*exp(-abs(r-.865)*26.);float shd=1.-smoothstep(.6,1.,length(d-vec2(.05,-.09)));col*=1.-.6*shd;float body=1.-smoothstep(.74-aa,.74+aa,r);vec2 dn=d/max(r,.001);float nl=dot(dn,normalize(vec2(-.5,.7)));float kn=.5+.5*sin(ang*80.);vec3 side=mix(vec3(.42,.41,.39),vec3(.78,.77,.74),kn)*(.5+.5*(nl*.5+.5));float capm=1.-smoothstep(.62-aa,.62+aa,r);float sheen=pow(abs(sin(ang-.95)),10.)*.55+pow(abs(sin(ang+.62)),22.)*.4;vec3 cap=vec3(.9,.89,.86)*(.8+.2*sheen);cap-=.07*smoothstep(.25,.62,r);cap+=.012*sin(r*uR*.9);vec3 kb=mix(side,cap,capm);float th=-2.356+4.712*uKnob;float al=dot(d,vec2(sin(th),cos(th))),pe=dot(d,vec2(cos(th),-sin(th)));float ind=(1.-smoothstep(.028-aa,.028+aa,abs(pe)))*smoothstep(.2-aa,.2+aa,al)*(1.-smoothstep(.56-aa,.56+aa,al));kb=mix(kb,uA,ind);col=mix(col,kb,body);}
 void coin(inout vec3 col,vec2 d,float r,float ang,float aa){float a=1.-smoothstep(1.-aa,1.+aa,r);if(a<=0.)return;vec2 dn=d/max(r,.001);float nl=dot(dn,normalize(vec2(-.5,.7)));float sheen=pow(abs(sin(ang+.75+uSpin*.21)),10.)*.6+pow(abs(sin(ang-.9-uSpin*.13)),24.)*.5;float reed=.5+.5*sin(ang*150.);vec3 rim=mix(vec3(.13,.13,.15),vec3(.8,.8,.84),.5+.5*nl)*(.74+.26*reed);rim+=mix(uA,uB,.5+.5*sin(ang*2.+uHue))*sheen*.75;rim+=.2*(1.-smoothstep(0.,.012,abs(r-.985)))*max(nl,0.);vec2 uv=(rot(-uSpin)*d)/.92*.5+.5;vec3 face=vec3(.03,.03,.035);if(uTex>.5){vec4 tx=texture2D(uLogo,vec2(uv.x,1.-uv.y));face=mix(face,mix(vec3(.95,.94,.91),uA,.06),tx.r*tx.a);}face+=vec3(.06)*pow(abs(sin(ang+.75)),14.)*smoothstep(.2,.86,r);vec3 c=mix(face,rim,smoothstep(.885-aa,.885+aa,r));c=mix(c,mix(uA,uB,.5+.5*sin(uHue)),(1.-smoothstep(.003,.011,abs(r-.885)))*.9);col=mix(col,c,a);}
+vec3 chromeEnv(vec3 n){vec3 rf=reflect(vec3(0.,0.,-1.),n);vec3 c=mix(vec3(.035,.038,.05),vec3(.62,.64,.7),smoothstep(-.6,.85,rf.y));c+=vec3(1.)*pow(max(dot(rf,normalize(vec3(-.55,.7,.45))),0.),26.)*1.6;c+=uA*pow(max(dot(rf,normalize(vec3(.75,.15,.6))),0.),14.)*1.4;c+=uB*pow(max(dot(rf,normalize(vec3(.05,-.85,.5))),0.),10.)*.9;c+=.18*smoothstep(.96,1.,abs(rf.x));return c;}
+void ring(inout vec3 col,vec2 d,float r,float ang,float aa){float R0=.78,T=.2;float t=(r-R0)/T;float a=1.-smoothstep(1.-aa/T,1.+aa/T,abs(t));if(a<=0.)return;vec2 dn=d/max(r,.001);float tz=sqrt(max(0.,1.-t*t));vec3 n=normalize(vec3(dn*t,tz));
+  float th=atan(dn.y,dn.x)-uSpin*.5;float cl=abs(mod(th+PI,2.*PI)-PI-1.1);float clasp=1.-smoothstep(.26,.3,cl);
+  float weave=(.5+.5*sin(th*70.))*(.5+.5*sin(t*10.+th*35.));vec3 fab=uA*(.32+.68*pow(tz,1.3))*(.82+.18*weave);fab+=vec3(1.)*pow(max(dot(n,normalize(vec3(-.5,.6,.65))),0.),18.)*.22;fab+=mix(uA,uB,.5)*.08*(1.-tz);
+  vec3 c=mix(fab,chromeEnv(n),clasp);c*=.6+.4*tz;col=mix(col,c,a);}
+void speaker(inout vec3 col,vec2 d,float r,float ang,float aa){float a=1.-smoothstep(1.-aa,1.+aa,r);if(a<=0.)return;float thump=.5+.5*sin(uTime*7.85);thump=pow(thump,6.)*(.4+uPulse);vec2 dn=d/max(r,.001);vec3 c;
+  if(r>.9){float t=(r-.95)/.05;vec3 n=normalize(vec3(dn*t,sqrt(max(0.,1.-t*t))));c=chromeEnv(n)*.85;c+=.02*sin(ang*120.);}
+  else if(r>.8){float t=(r-.85)/.05;vec3 n=normalize(vec3(dn*t*.9,sqrt(max(0.,1.-t*t*.81))));c=vec3(.05,.05,.06)+vec3(.35)*pow(max(dot(n,normalize(vec3(-.5,.6,.6))),0.),6.);}
+  else if(r>.27){float s=(r-.27)/.53;float depth=.55+.45*s;vec3 n=normalize(vec3(-dn*.42,1.));float l=max(dot(n,normalize(vec3(-.45,.55,.7))),0.);c=vec3(.11,.11,.125)*depth*(.6+.8*l);c+=.025*sin(r*uR*.55);c+=.04*smoothstep(.98,1.,sin(s*PI*7.))*l;c*=1.-.25*thump*(1.-s);}
+  else{float z=sqrt(max(0.,1.-(r/.27)*(r/.27)));vec3 n=normalize(vec3(d/.27*(1.-.25*thump),z+.35));c=chromeEnv(n);c=mix(c,c*uA*1.6,.35);}
+  c*=1.-.35*smoothstep(.75,1.,length(d-vec2(-.12,.16)))*step(r,.8);col=mix(col,c,a);col+=uA*.12*thump*exp(-r*r*1.5);}
+void lens(inout vec3 col,vec2 d,float r,float ang,float aa){float a=1.-smoothstep(1.-aa,1.+aa,r);if(a<=0.)return;vec2 dn=d/max(r,.001);vec3 c;float strobe=step(.82,fract(uTime*2.3))*smoothstep(1.,.82,fract(uTime*2.3))+.35*uPulse;
+  if(r>.86){float t=(r-.93)/.07;vec3 n=normalize(vec3(dn*t,sqrt(max(0.,1.-t*t))));c=chromeEnv(n);}
+  else{float k=r/.86;float f=fract(k*9.);float slope=f*.55;vec3 n=normalize(vec3(dn*slope*k,1.));vec3 rf=reflect(vec3(0.,0.,-1.),n);float spec=pow(max(dot(rf,normalize(vec3(-.5+.3*sin(uSpin*.3),.6,.6))),0.),40.);float edge=1.-smoothstep(0.,.08,f)*smoothstep(1.,.92,f);
+    vec3 glass=mix(vec3(.04,.045,.06),uA*.35,.25+.75*pow(1.-k,2.));glass+=mix(uA,uB,f)*edge*.35*(.4+.6*(1.-k));glass+=vec3(1.)*spec*.9;
+    float hot=exp(-k*k*6.)*(.35+1.4*strobe);glass+=mix(uA,vec3(1.),.55)*hot;c=glass;}
+  col=mix(col,c,a);col+=mix(uA,vec3(1.),.4)*strobe*.22*exp(-r*r*.8);}
 void main(){vec2 p=gl_FragCoord.xy;vec2 d0=(p-uC)/uR;float r0=length(d0);
   vec2 d=d0;d.x/=max(uSq,.03);float r=length(d);float ang=atan(d.y,d.x);float aa=1.5/uR;
   vec3 col=uBg;
-  if(r<1.3){if(uShape<1.5)mball(col,d,r,aa);else if(uShape<2.5)stamp(col,d,r,ang,aa);else if(uShape<3.5)record(col,d,r,ang,aa);else if(uShape<4.5)knob(col,d,r,ang,aa);else coin(col,d,r,ang,aa);}
+  if(r<1.3){if(uShape<1.5)mball(col,d,r,aa);else if(uShape<2.5)stamp(col,d,r,ang,aa);else if(uShape<3.5)record(col,d,r,ang,aa);else if(uShape<4.5)knob(col,d,r,ang,aa);else if(uShape<5.5)ring(col,d,r,ang,aa);else if(uShape<6.5)coin(col,d,r,ang,aa);else if(uShape<7.5)speaker(col,d,r,ang,aa);else lens(col,d,r,ang,aa);}
   float cov=1.-smoothstep(1.-aa,1.+aa,r);
   float glow=(.1+.05*uPulse)*exp(-r0*r0*2.4);
   vec3 g=uA*glow;
   gl_FragColor=vec4(col*cov+g*(1.-cov),cov);}`;
-const SHAPE={ball:1,stamp:2,record:3,dial:4,coin:6};
-const FNAME={coin:'Coin',ball:'Mirror ball',record:'Record',stamp:'Stamp',dial:'Dial'};
+const SHAPE={ball:1,stamp:2,record:3,dial:4,ring:5,coin:6,speaker:7,lens:8};
+const FNAME={coin:'Coin',ball:'Mirror ball',record:'Record',stamp:'Stamp',dial:'Dial',ring:'Wristband',speaker:'Speaker',lens:'Strobe'};
 function hex3(h){h=h.replace('#','');return [0,2,4].map(i=>parseInt(h.substr(i,2),16)/255)}
 class Obj{
   constructor(cv,opt={}){this.opt=opt;this.cv=cv;this.hint=opt.hint||null;this.form=opt.form||'coin';this.next=null;this.col=hex3(opt.color||COL.shared);this.tcol=this.col.slice();this.sq=1;this.phase=0;this.spin=0;this.vel=RM?0:.35;this.knob=.6;this.t0=performance.now();this.on=true;
@@ -44,7 +61,7 @@ class Obj{
     cv.addEventListener('pointerup',()=>{if(drag&&!drag.moved)this.cycle();drag=null;if(!RM)this.vel=Math.max(.35,Math.abs(this.vel))});
     cv.parentElement.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();this.cycle()}});
   }
-  cycle(){const order=['coin','ball','record','stamp','dial'];const i=(order.indexOf(this.next||this.form)+1)%order.length;const f=order[i];if(this.opt.onCycle)this.opt.onCycle(f);else this.to(f,COL[{coin:'shared',ball:'nights',record:'artists',stamp:'host',dial:'school'}[f]])}
+  cycle(){const order=['coin','ball','ring','speaker','record','dial','lens','stamp'];const i=(order.indexOf(this.next||this.form)+1)%order.length;const f=order[i];if(this.opt.onCycle)this.opt.onCycle(f);else this.to(f,COL[{coin:'shared',ball:'nights',ring:'host',speaker:'host',record:'artists',dial:'school',lens:'nights',stamp:'host'}[f]])}
   to(f,c){if(f===this.form&&!this.next){this.tcol=hex3(c);return}this.next=f;this.tcol=hex3(c);if(RM){this.form=f;this.next=null;this.col=this.tcol.slice();this.label();return}this.phase=performance.now()}
   label(){if(this.hint)this.hint.textContent=FNAME[this.form]+' · tap to flip'}
   frame(now){const gl=this.gl;if(!gl||!this.on)return;const cv=this.cv;const dpr=Math.min(2,devicePixelRatio||1);const w=Math.round(cv.clientWidth*dpr),h=Math.round(cv.clientHeight*dpr);if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;gl.viewport(0,0,w,h)}

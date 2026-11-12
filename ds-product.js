@@ -82,28 +82,15 @@ def('door',el=>{const res=$('.dres',el),w=$('[data-c=whiskers]',el),log=$('.dlog
 /* ================= BOOKING OFFER: beatmatch the fee =================
    Their row runs at 122 BPM. Your row runs slower the further you are under their ask, so the lights drift apart.
    Meet the ask and your row snaps into phase: the beats land together. "Hear it" plays both kicks, theirs left, yours right. */
-def('offer',el=>{const ask=+el.dataset.ask||60000,stepV=1000;let off=+el.dataset.offer||48000;const rows=$$('.brow',el),gap=$('.ogap',el),val=$('.oval',el),send=$('[data-c=hold]',el),rng=$('input[type=range]',el),hear=$('[data-hear]',el);
+def('offer',el=>{const ask=+el.dataset.ask||60000,stepV=1000;let off=+el.dataset.offer||48000;const gap=$('.ogap',el),val=$('.oval',el),send=$('[data-c=hold]',el),rng=$('input[type=range]',el);
   const fmt=v=>'₹'+v.toLocaleString('en-IN');const askEl=$('.oask',el);if(askEl)askEl.textContent=fmt(ask);
-  const dotsA=$$('.kicks i',rows[0]),dotsB=$$('.kicks i',rows[1]);let phA=0,phB=0,last=performance.now(),lit=[-1,-1];
-  const ratio=()=>Math.max(.5,Math.min(1.25,off/ask));const lock=()=>off===ask;
-  const up=()=>{const d=off-ask;val.textContent=fmt(off);el.classList.toggle('lock',d===0);el.classList.toggle('over',d>0);el.style.setProperty('--gap',Math.min(1,Math.abs(d)/24000));
-    gap.textContent=d===0?'Locked. The beats land together. Send it.':d<0?`${fmt(-d)} under their ask. Your beat is slower, so it drifts.`:`${fmt(d)} over their ask. Your beat is rushing. You can come down.`;
-    if(rng&&+rng.value!==off)rng.value=off;if(d===0){vib(15);phB=phA}
-    if(send){const no=d<-15000;send.classList.toggle('is-disabled',no);send.dataset.why='Get within ₹15,000 of their ask to send';const m=$('.owhy',el);if(m)m.textContent=no?'Get within ₹15,000 of their ask to send.':''}};
-  /* lights: one dot per beat, eight across */
-  const tick=now=>{const dt=Math.min(.1,(now-last)/1000);last=now;const bps=122/60;phA+=dt*bps;phB=lock()?phA:phB+dt*bps*ratio();
-    const ia=Math.floor(phA)%8,ib=Math.floor(phB)%8;if(ia!==lit[0]){dotsA.forEach((x,k)=>x.classList.toggle('hit',k===ia));lit[0]=ia}if(ib!==lit[1]){dotsB.forEach((x,k)=>x.classList.toggle('hit',k===ib));lit[1]=ib}
-    if(hearing)audio();requestAnimationFrame(tick)};
-  /* sound */
-  let hearing=false,nA=0,nB=0,out=null;const c0=()=>CCD.audio.ctx();
-  const kick=(c,t,pan)=>{const p=c.createStereoPanner?c.createStereoPanner():null;const g=c.createGain();if(p){p.pan.value=pan;g.connect(p);p.connect(c.destination)}else g.connect(c.destination);const o=c.createOscillator();o.frequency.setValueAtTime(150,t);o.frequency.exponentialRampToValueAtTime(45,t+.1);g.gain.setValueAtTime(.8,t);g.gain.exponentialRampToValueAtTime(.001,t+.35);o.connect(g);o.start(t);o.stop(t+.4)};
-  const audio=()=>{const c=AC_();if(!c)return;const now=c.currentTime,ia=60/122,ib=ia/ratio();while(nA<now+.12){kick(c,nA,-.7);nA+=ia}if(lock()){nB=nA-ia}else while(nB<now+.12){kick(c,nB,.7);nB+=ib}};
-  const AC_=()=>CCD.audio.ctx();
-  hear&&hear.addEventListener('click',()=>{const c=AC_();if(!c)return;hearing=!hearing;hear.setAttribute('aria-pressed',hearing);CCD.setLabel(hear,hearing?'Stop':'Hear it');if(hearing){nA=nB=c.currentTime+.05}});
+  const up=()=>{const d=off-ask;val.textContent=fmt(off);el.classList.toggle('lock',d===0);el.classList.toggle('over',d>0);if(rng){rng.value=off;rng.style.setProperty('--p',((off-30000)/50000*100).toFixed(1)+'%')}
+    gap.textContent=d===0?'At their ask. These usually get a quick yes.':d<0?`${fmt(-d)} under their ask.`:`${fmt(d)} over their ask.`;
+    const no=d<-15000;send.classList.toggle('is-disabled',no);send.dataset.why='Get within ₹15,000 of their ask to send';if(no)gap.textContent+=' Get within ₹15,000 to send.'};
   $('[data-n="-1"]',el).addEventListener('click',()=>{off=Math.max(30000,off-stepV);up()});$('[data-n="1"]',el).addEventListener('click',()=>{off=Math.min(80000,off+stepV);up()});
-  rng&&rng.addEventListener('input',()=>{off=+rng.value;up()});
-  el.addEventListener('ccd:held',()=>{const r=$('.osent',el);if(r){r.hidden=false;r.innerHTML=`<b>Offer sent: ${fmt(off)}</b><span class="mute t-small">${off===ask?'At their ask, so it usually gets a quick yes.':'They can accept, pass or come back with a number.'}</span>`}hearing&&hear.click()});
-  up();requestAnimationFrame(tick)});
+  rng.addEventListener('input',()=>{off=+rng.value;up()});
+  el.addEventListener('ccd:held',()=>{const r=$('.osent',el);r.hidden=false;r.innerHTML=`<b>Offer sent: ${fmt(off)}</b><span class="mute t-small">${off===ask?'At their ask, so it usually gets a quick yes.':'They can accept, pass or come back with a number.'}</span>`});
+  up()});
 
 /* ================= THE INSTRUMENT: one sequencer, with export ================= */
 const ROWS=['kick','clap','hat','bass'];const START=[[0,4,8,12],[4,12],[2,6,10,14],[0,3,8,11]];
@@ -190,79 +177,158 @@ def('points',el=>{const root=el.dataset.root||'';
   document.addEventListener('ccd:step',e=>{if(e.detail<0)return;const p=CCD.pageTrack&&CCD.pageTrack.pat('kick');if(p&&p[e.detail]){el.classList.add('kick');setTimeout(()=>el.classList.remove('kick'),90)}});
   draw()});
 
-/* ================= ARTIST PAGE: eras as sleeves, a record in focus, a player at the bottom =================
-   Pull a sleeve: the record slides out, the page takes that era's colour, photo and sound line, and the releases and shows narrow to it.
-   Any release, popular track or "Start here" goes to the player. Real 30 second previews come from Deezer when the network allows;
-   otherwise the player makes a stand-in loop and says so. Bandcamp-only records open on Bandcamp. */
-def('artistpage',el=>{const D_=JSON.parse($('.ap-data',el).textContent),root=el.dataset.root||'';const ERAS=D_.eras,RELS=D_.rels,GIGS=D_.gigs;
-  const dz=CCD.dz,A=CCD.audio;let era=-1,focus=null,type='all',queue=null,qi=0;
-  const pl=$('.ap-player',el),rec=$('.ap-rec',pl),cov=$('.ap-cov',pl),pt=$('.ap-pt',pl),pp=$('.ap-pp',pl),src=$('.ap-src',pl),nxt=$('.ap-next',pl),prog=$('.ap-prog i',pl);
-  const COL=k=>k<0?'var(--c-artists)':`var(--c-${ERAS[k].col})`;
-  const cover=r=>r&&r.dz?`https://api.deezer.com/album/${r.dz}/image?size=medium`:'';
-  const sleeveArt=(r,cls='')=>`<span class="ap-art ${cls}" style="--ec:${COL(r.era)}">${r.dz?`<img src="${cover(r)}" alt="" loading="lazy" onerror="this.remove()">`:''}<b>${esc(r.t)}</b><em>${r.y}</em></span>`;
-  const yrs=k=>k<0?'2012 to now':`${ERAS[k].from} to ${ERAS[k].to||'now'}`;
-  /* --- player --- */
-  let now=null,nowKey='';const deck=CCD.deck(pl,rec,{load:()=>loadNow(),onPlay:on=>{pp.setAttribute('aria-pressed',on);pp.setAttribute('aria-label',on?'Pause':'Play');el.classList.toggle('is-playing',on)}});
-  async function bufFor(item){/* item: {r, track?} */const r=item.r;
-    try{if(item.preview)return{b:await dz.buf(item.preview),real:1};if(!r.dz)throw 'nodz';const al=await dz.album(r.dz);const ts=(al.tracks&&al.tracks.data)||[];const t=ts.find(x=>x.title===r.tr)||ts.find(x=>x.preview);if(!t||!t.preview)throw 'none';item.track=t.title;return{b:await dz.buf(t.preview),real:1}}
-    catch(e){return{b:await A.artistLoop({id:'sand-'+(item.track||r.t),g:[r.era===1?'house':'downtempo']}),real:0}}}
-  async function loadNow(){if(!now)setNow({r:focus||RELS.filter(x=>x.dz).pop()});const it=now;pl.classList.add('loading');const o=await bufFor(it);pl.classList.remove('loading');it.real=o.real;paintNow();return o.b}
-  function setNow(it){now=it;nowKey=(it.r.t+'|'+(it.track||''));paintNow()}
-  function paintNow(){if(!now)return;const r=now.r;cov.innerHTML=r.dz?`<img src="${cover(r)}" alt="" onerror="this.remove()">`:'';pl.style.setProperty('--ec',COL(r.era));
-    $('b',pt).textContent=now.track||r.tr||r.t;$('.t-data',pt).textContent=`SANDUNES · ${r.t.toUpperCase()} · ${r.y}`+(now.real===0?' · STAND-IN LOOP':now.real?' · 30 SEC PREVIEW':'');
+/* ================= PICKS: Nights, curated =================
+   One pick in the frame. Hover or focus a row and its poster and facts take the frame; leave and the pick comes back.
+   City tabs are quiet text. On touch, the first tap on a row shows it in the frame, the second opens the night. */
+def('picks',el=>{const fr=$('.pk-frame',el),img=$('.pk-img img',fr),ia=$('.pk-img',fr),t=$('.pk-t',fr),m=$('.pk-m',fr),l=$('.pk-l',fr),tag=$('.pk-tag',fr),go=$('.pk-go',fr);
+  const defHref=ia.getAttribute('href');let cur=null,timer=null;
+  const set=a=>{clearTimeout(timer);if(a===cur)return;cur=a;fr.classList.add('swap');
+    timer=setTimeout(()=>{if(a){img.src=a.dataset.img;t.textContent=a.dataset.t;m.textContent=a.dataset.m;l.textContent=a.dataset.l;tag.textContent='Also this week';ia.href=go.href=a.href}
+      else{img.src=img.dataset.def;t.textContent=t.dataset.def;m.textContent=m.dataset.def;l.textContent=l.dataset.def;tag.textContent='Our pick this week';ia.href=go.href=defHref}
+      fr.classList.remove('swap')},ms('--d-quick'))};
+  const list=$('.pk-list ol',el);
+  list.addEventListener('pointerover',e=>{if(e.pointerType==='touch')return;const a=e.target.closest('a');if(a)set(a)});
+  list.addEventListener('focusin',e=>{const a=e.target.closest('a');if(a)set(a)});
+  el.addEventListener('pointerleave',e=>{if(e.pointerType!=='touch')set(null)});
+  list.addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;if(matchMedia('(hover:none)').matches&&cur!==a){e.preventDefault();set(a);fr.scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'})}});
+  const tabs=$('.pk-tabs',el),emp=$('.pk-empty',el);
+  tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$$('button',tabs).forEach(x=>x.setAttribute('aria-pressed',x===b));const v=b.dataset.v;let n=0;
+    $$('li',list).forEach(li=>{const on=v==='all'||li.dataset.city===v;li.hidden=!on;if(on)n++});emp.hidden=n>0;set(null)})});
+
+/* ================= NIGHT PAGE: night.html#id renders that night ================= */
+def('nightpage',el=>{const root=el.dataset.root||'';const N=D.nights||[];
+  function draw(){const id=location.hash.replace('#','');const n=N.find(x=>x.id===id);if(!n)return;
+    const fh=h=>{if(!h)return'';const [H,M]=h.split(':').map(Number);return `${(H+11)%12+1}${M?':'+String(M).padStart(2,'0'):''} ${H>=12?'PM':'AM'}`};
+    document.title=n.t+' · Cats Can Dance';
+    const sl=$('.sleeve',el);$('.cover img',sl).src=`${root}assets/img/${n.img}.webp`;$('.cover img',sl).alt=n.t+' poster';sl.setAttribute('aria-label',n.t+'. Pull the record for the line-up.');sl.classList.remove('out');sl.setAttribute('aria-expanded','false');
+    const RO=Object.fromEntries((D.roster||[]).map(r=>[CCD.norm(CCD.pretty(r[1])),r[0]]));
+    $('.tracks-wrap',sl).innerHTML='<ol class="tracks">'+(n.l.length?n.l:['Line-up not announced']).map((a,i)=>{const nm=a.replace(/\s*\(live\)/i,'');const hit=RO[CCD.norm(nm)];return `<li class="track"><span class="tr-rec" aria-hidden="true"></span><span class="tr-n">${String.fromCharCode(65+(i>>1))}${i%2+1}</span><b>${hit?`<a href="${root}pages/artist.html#${hit}">${esc(a)}</a>`:esc(a)}</b><span class="tr-wave" aria-hidden="true">${CCD.wave(a)}</span><span class="tr-meta"></span></li>`}).join('')+'</ol>';
+    $('h1',el).textContent=n.t;
+    const dd=$$('.kvs dd',el);dd[0].textContent=n.d+(n.h?', '+fh(n.h):'');dd[1].textContent=n.v+', '+n.c;dd[2].textContent=(n.g||[]).join(', ')||'Not listed';
+    const acts=$('.acts',el);let tk=$('a[href*="http"]',acts);if(n.tk){if(!tk){acts.insertAdjacentHTML('beforeend',`<a class="btn one m" target="_blank" rel="noopener">${EY1}<span class="lab">Tickets</span></a>`);tk=$('a[target]',acts)}tk.href=n.tk;CCD.setLabel(tk,/skillbox/i.test(n.tk)?'Tickets on SkillBox':/district/i.test(n.tk)?'Tickets on District':'Tickets')}else if(tk)tk.remove();
+    CCD.eyes.collect(el);
+    const crumb=document.querySelector('.subnav .on, .subnav [aria-current]');crumb&&/night/i.test(crumb.textContent)&&(crumb.textContent=n.t);
+    $$('.picks li a').forEach(a=>a.closest('li').hidden=a.getAttribute('href').endsWith('#'+id))}
+  draw();addEventListener('hashchange',()=>{draw();scrollTo({top:0,behavior:RM?'auto':'smooth'})})});
+
+/* ================= ARTIST PAGE: any artist, from the catscandance.com database =================
+   artist.html#slug. The artist, their eras, releases, gigs, press and videos come from the live database.
+   Eras are sleeves: pull one and the record slides out, the page takes that era's colour and photo, and releases and shows narrow to it.
+   Releases play real 30 second previews (Deezer, through our server route). Bandcamp-only records open on Bandcamp. */
+const SB='https://jybloszaucgqlbkzquqw.supabase.co/rest/v1/',SBK='sb_publishable_LklrPFlR8TjDoT9ZV8PizA_wkIL9uNR';
+CCD.sb=async q=>{const r=await fetch(SB+q,{headers:{apikey:SBK,Authorization:'Bearer '+SBK}});if(!r.ok)throw 'sb';return r.json()};
+const ERACOL=['nights','school','artists','host'];
+const TYPE=t=>({ep:'EP',lp:'Album',album:'Album',single:'Single',remix:'Remix',compilation:'Compilation',mix:'Mix'}[String(t||'').toLowerCase()]||(t?String(t)[0].toUpperCase()+String(t).slice(1):'Release'));
+const ytId=u=>{const m=String(u||'').match(/(?:v=|youtu\.be\/)([\w-]{11})/);return m?m[1]:null};
+const pretty=n=>n&&n===n.toUpperCase()&&/[A-Z]/.test(n)?n.split(' ').map(w=>w.length>2||/^[A-Z]+$/.test(w)&&w.length>1?w[0]+w.slice(1).toLowerCase():w).join(' '):n;
+def('artistpage',el=>{const root=el.dataset.root||'';const R=(D.roster||[]);
+  const h0=location.hash.replace('#','').split('&')[0].toLowerCase();const slug=R.some(x=>x[0]===h0)?h0:(el.dataset.slug||'sandunes');
+  const me=R.find(x=>x[0]===slug)||R.find(x=>x[0]===el.dataset.slug);
+  const photo=x=>x&&x[4]==='L'?`${root}assets/img/a-${x[0]}.webp`:(x&&x[4])||'';
+  const fb=JSON.parse(($('.ap-data',el)||{}).textContent||'{}');
+  let A=null,ERAS=[],RELS=[],GIGS=[],PRESS=[],VIDS=[],AFF=[],PHOTOS=[];
+  const dz=CCD.dz,AU=CCD.audio;let era=-1,focus=null,type='all',now=null;
+  const $h=$('.ap-head',el),$sl=$('.ap-sls',el),$fo=$('.ap-focus',el),$rel=$('.ap-rels',el),$pop=$('.ap-pop',el),$sh=$('.ap-shows',el),$pr=$('.ap-press',el),$vid=$('.ap-vids',el),$con=$('.ap-conn',el),$fans=$('.ap-fans',el);
+  const COL=k=>k<0||ERAS.length<2?'var(--c-artists)':`var(--c-${ERACOL[k%ERACOL.length]})`;
+  const eraOf=y=>{if(!ERAS.length||!y)return -1;let k=ERAS.findIndex(e=>y>=e.from&&(e.to==null||y<=e.to));return k<0?(y<ERAS[0].from?0:ERAS.length-1):k};
+  const art=(r,cls='')=>`<span class="ap-art ${cls}" style="--ec:${COL(r.era)}">${r.dz?`<img src="${dz.cover(r.dz,cls?'big':'medium')}" alt="" loading="lazy" onerror="this.remove()">`:''}<b>${esc(r.t)}</b><em>${r.y||''}</em></span>`;
+  /* ---------- load ---------- */
+  async function load(){
+    try{const [a]=await CCD.sb(`artists?slug=eq.${slug}&select=slug,name,based_city,genres,bio,instagram,spotify,soundcloud,website,photo_url,open_to_bookings,labels`);if(!a)throw 'none';A=a;
+      const q=t=>CCD.sb(t).catch(()=>[]);
+      const [er,ds,gg,pr,vd,af,md]=await Promise.all([q(`artist_eras?artist_slug=eq.${slug}&select=from_year,to_year,label,sound,tags,source_name&order=from_year`),q(`artist_discography?artist_slug=eq.${slug}&select=title,release_type,release_date,year,label,bandcamp_url,deezer_album_id,deezer_track_title&order=year.asc.nullsfirst`),q(`artist_gigs?artist_slug=eq.${slug}&select=event_name,venue,city,event_date&order=event_date.desc`),q(`artist_press?artist_slug=eq.${slug}&select=title,publication,url,date_published&order=date_published.desc.nullslast`),q(`artist_videos?artist_slug=eq.${slug}&select=title,url,kind`),q(`artist_affiliations?artist_slug=eq.${slug}&select=name,kind`),q(`artist_media?artist_slug=eq.${slug}&kind=eq.photo&select=url,sort&order=sort`)]);
+      ERAS=er.map(e=>({from:e.from_year,to:e.to_year,label:e.label||'',sound:e.sound||'',tags:e.tags||[],src:e.source_name||''}));
+      RELS=ds.map(r=>({t:r.title,ty:TYPE(r.release_type),y:r.year||(r.release_date?+r.release_date.slice(0,4):null),lab:r.label||'',bc:r.bandcamp_url||'',dz:r.deezer_album_id||'',tr:r.deezer_track_title||''}));
+      GIGS=gg.map(g=>({d:g.event_date,e:g.event_name,v:g.venue||'',c:g.city||''}));PRESS=pr.map(x=>({d:x.date_published||'',p:x.publication||'',t:x.title,u:x.url}));VIDS=vd.map(v=>({id:ytId(v.url),t:v.title,k:v.kind||'',u:v.url}));AFF=af;PHOTOS=md.map(m=>m.url);
+    }catch(e){if(fb.slug===slug){A=fb.artist;ERAS=fb.eras;RELS=fb.rels;GIGS=fb.gigs;PRESS=fb.press||[];VIDS=fb.vids||[];AFF=fb.aff||[]}else if(me){A={name:me[1],based_city:me[2],genres:me[3]}}else A={name:slug}}
+    if(!PHOTOS.length&&(photo(me)||A.photo_url))PHOTOS=[photo(me)||A.photo_url];
+    /* no releases in our database: take their catalogue from Deezer */
+    if(!RELS.length){try{const ar=await dz.findArtist(pretty(A.name));if(ar){const al=await dz.jsonp('artist/'+ar.id+'/albums?limit=40');RELS=(al.data||[]).map(x=>({t:x.title,ty:TYPE(x.record_type),y:x.release_date?+x.release_date.slice(0,4):null,lab:'',bc:'',dz:String(x.id),tr:''})).sort((a,b)=>(a.y||0)-(b.y||0));el.classList.add('from-dz')}}catch(e){}}
+    RELS.forEach(r=>r.era=eraOf(r.y));GIGS.forEach(g=>g.era=eraOf(g.d?+g.d.slice(0,4):null));
+    paint()}
+  /* ---------- paint ---------- */
+  function paint(){const name=pretty(A.name);document.title=name+' · Cats Can Dance';
+    const city=(A.based_city||'').split('(')[0].replace(/, (India|USA)$/,'');const g=(A.genres||[]).slice(0,3).join(', ');
+    const links=[A.spotify&&['Spotify',A.spotify],A.soundcloud&&['SoundCloud',A.soundcloud],A.instagram&&['Instagram',/^http/.test(A.instagram)?A.instagram:'https://instagram.com/'+A.instagram.replace('@','')],A.website&&['Website',A.website]].filter(Boolean);
+    $h.innerHTML=`<div class="ap-photo">${PHOTOS[0]?`<img src="${PHOTOS[0]}" alt="${esc(name)}" data-photo>`:`<span class="ap-ini">${esc(name[0]||'?')}</span>`}</div>
+      <div class="ap-id"><span class="lbl">${esc([city,g].filter(Boolean).join(' · '))}</span><h1 class="ap-name">${esc(name)}</h1>
+      <p class="ap-line" data-line></p>
+      <div class="ap-acts"><button class="btn two l" data-start>${EY2}<span class="lab">${ERAS.length>1?'Start here':'Play'}</span></button><button class="btn one m" data-follow="${esc(name)}" aria-pressed="false">${EY1}<span class="lab">Follow</span></button><a class="btn one m" href="#book">${EY1}<span class="lab">Book</span></a><button class="btn one m" data-share>${EY1}<span class="lab">Share</span></button></div>
+      ${links.length?`<div class="ap-links">${links.map(([n,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${n}</a>`).join('')}</div>`:''}</div>`;
+    CCD.init($h);CCD.eyes.collect($h);
+    /* eras as sleeves */
+    $('.ap-eras',el).hidden=ERAS.length<2;
+    $sl.innerHTML=ERAS.length<2?'':`<button class="ap-sl all" data-era="-1" aria-pressed="true"><span class="sl"><span class="sl-face"><b>All</b><em>${ERAS[0].from} to now</em></span><span class="sl-rec" aria-hidden="true"><i></i></span></span><span class="sl-t"><b>Everything</b><span class="t-data faint">${RELS.length} RELEASES</span></span></button>`+
+      ERAS.map((e,k)=>{const nr=RELS.filter(r=>r.era===k).length;return `<button class="ap-sl" data-era="${k}" aria-pressed="false" style="--ec:${COL(k)}"><span class="sl">${PHOTOS.length?`<img src="${PHOTOS[k%PHOTOS.length]}" alt="" style="object-position:center ${20+k*25}%">`:'<span class="sl-face"></span>'}<span class="sl-band">${e.from}</span><span class="sl-rec" aria-hidden="true"><i></i></span></span><span class="sl-t"><span class="lbl">${e.from} to ${e.to||'now'}</span><b>${esc(e.label||e.sound.split(',')[0])}</b><span class="t-data faint">${nr} RELEASE${nr===1?'':'S'}</span></span></button>`}).join('');
+    $$('.ap-sl',el).forEach(b=>b.addEventListener('click',()=>setEra(+b.dataset.era,'click')));
+    drawPop();drawVids();drawPress();drawConn();drawFans();
+    $('[data-start]',el).addEventListener('click',startHere);$('[data-share]',el).addEventListener('click',e=>share(e.currentTarget));
+    const h=/era-(\d)/.exec(location.hash);setEra(h&&ERAS.length?Math.min(ERAS.length-1,+h[1]-1):-1,'init');
+    el.classList.add('ready')}
+  function setEra(k,from){era=k;el.style.setProperty('--ec',COL(k));$$('.ap-sl',el).forEach(b=>b.setAttribute('aria-pressed',+b.dataset.era===k));
+    const line=$('[data-line]',el),ph=$('[data-photo]',el);
+    if(k>=0){const e=ERAS[k];line.innerHTML=`<b>${e.from} to ${e.to||'now'}.</b> ${esc(e.sound)}.${e.src?` <span class="faint">${esc(e.src)}</span>`:''}`;if(ph&&PHOTOS.length)ph.src=PHOTOS[k%PHOTOS.length]}
+    else{line.innerHTML=ERAS.length?esc(ERAS.map(e=>e.label||e.sound.split(',')[0]).join(', then ')):esc(A.bio?A.bio.split('. ')[0]+'.':(A.genres||[]).join(', '));if(ph&&PHOTOS.length)ph.src=PHOTOS[0]}
+    drawRels();drawShows();
+    if(from!=='focus'){const pool=RELS.filter(r=>k<0||r.era===k);const r=pool.filter(x=>x.dz).pop()||pool[pool.length-1];r&&setFocus(r,'era')}
+    if(from==='click')history.replaceState(null,'','#'+slug+(k>=0?'&era-'+(k+1):''))}
+  /* ---------- focus ---------- */
+  function setFocus(r,from){focus=r;if(from==='tile'&&era>=0&&r.era!==era)setEra(r.era,'focus');$fo.style.setProperty('--ec',COL(r.era));
+    $fo.innerHTML=`<div class="apf-art">${art(r,'big')}<span class="apf-rec" aria-hidden="true"></span></div><div class="apf-t"><span class="lbl">${esc(r.ty)}${r.y?' · '+r.y:''}${r.lab?' · '+esc(r.lab):''}</span><b class="apf-title">${esc(r.t)}</b>
+      <div class="apf-acts">${r.dz||r.bc?`<button class="btn two m" data-fplay>${EY2}<span class="lab">${!r.dz?'Play on Bandcamp':'Play'}</span></button>`:''}${r.bc?`<a class="btn one s" href="${r.bc}" target="_blank" rel="noopener">${EY1}<span class="lab">Bandcamp</span></a>`:''}${r.dz?`<a class="btn one s" href="https://www.deezer.com/album/${r.dz}" target="_blank" rel="noopener">${EY1}<span class="lab">Deezer</span></a>`:''}</div>
+      <ol class="apf-tracks"><li class="t-small mute">${r.dz?'Loading the tracklist':r.bc?'This one lives on Bandcamp.':`No streaming link on record for this one.${A.soundcloud?` <a href="${esc(A.soundcloud)}" target="_blank" rel="noopener">Hear them on SoundCloud</a>.`:''}`}</li></ol></div>`;
+    CCD.eyes.collect($fo);const fp=$('[data-fplay]',$fo);fp&&fp.addEventListener('click',()=>playItem({r}));
+    $$('.ap-rel',el).forEach(t=>t.classList.toggle('on',t.dataset.t===r.t));
+    if(r.dz)dz.album(r.dz).then(al=>{if(focus!==r)return;const ts=(al.tracks&&al.tracks.data)||[];if(!r.lab&&al.label)r.lab=al.label;const ol=$('.apf-tracks',$fo);
+        ol.innerHTML=ts.slice(0,12).map((t,i)=>`<li><button data-i="${i}"${t.preview?'':' disabled'}><span class="tr-n">${String(i+1).padStart(2,'0')}</span><b>${esc(t.title)}</b><span class="t-data faint">${Math.floor(t.duration/60)}:${String(t.duration%60).padStart(2,'0')}</span></button></li>`).join('')+(ts.length>12?`<li class="t-small faint">${ts.length-12} more on Deezer</li>`:'');
+        $$('button',ol).forEach(b=>b.addEventListener('click',()=>{const t=ts[+b.dataset.i];playItem({r,track:t.title,preview:t.preview})}))})
+      .catch(()=>{if(focus===r)$('.apf-tracks',$fo).innerHTML='<li class="t-small mute">The tracklist could not load.</li>'});
+    if(!deck.isPlaying()){setNow({r});deck.reset()}}
+  /* ---------- releases ---------- */
+  function drawRels(){const list=RELS.filter(r=>(era<0||r.era===era)&&(type==='all'||r.ty===type)).slice().reverse();$('.ap-reln',el).textContent=`${list.length}${list.length!==RELS.length?' OF '+RELS.length:''}`;
+    $rel.innerHTML=list.map(r=>`<button class="ap-rel${focus&&focus.t===r.t?' on':''}" data-t="${esc(r.t)}">${art(r)}<span class="ap-rt"><b>${esc(r.t)}</b><span class="t-data faint">${esc(r.ty.toUpperCase())}${r.y?' · '+r.y:''}</span></span></button>`).join('')||'<p class="t-small mute">Nothing on record for these years.</p>';
+    const ch=$('.ap-types',el);if(!ch.dataset.done){ch.dataset.done=1;const types=[...new Set(RELS.map(r=>r.ty))];ch.hidden=types.length<2;ch.innerHTML=['all',...types].map(v=>`<button class="chip" aria-pressed="${v===type}" data-v="${v}">${EY1}${v==='all'?'All':v+(v.endsWith('s')?'':'s')}</button>`).join('');CCD.eyes.collect(ch)}}
+  $('.ap-types',el).addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;type=b.dataset.v;$$('.chip',b.parentElement).forEach(x=>x.setAttribute('aria-pressed',x===b));drawRels()});
+  $rel.addEventListener('click',e=>{const b=e.target.closest('.ap-rel');if(!b)return;setFocus(RELS.find(x=>x.t===b.dataset.t),'tile');$fo.scrollIntoView({behavior:CCD.RM?'auto':'smooth',block:'center'})});
+  /* ---------- shows ---------- */
+  function drawShows(){const today=new Date().toISOString().slice(0,10);const up=GIGS.filter(g=>g.d>=today);
+    const name=pretty(A.name).toLowerCase();const nights=(D.nights||[]).filter(n=>n.l.some(l=>l.toLowerCase().replace(/\s*\(live\)/,'')===name));
+    $('.ap-up',el).innerHTML=nights.length||up.length?`<span class="lbl">Next</span>`+nights.map(n=>`<a class="ap-next" href="${root}pages/night.html#${n.id}"><img src="${root}assets/img/${n.img}.webp" alt=""><span><b>${esc(n.t)}</b><span class="t-small mute">${esc(n.d)}, ${esc(n.v)}, ${esc(n.c)}</span></span></a>`).join('')+up.map(g=>`<div class="ap-next"><span><b>${esc(g.e)}</b><span class="t-small mute">${g.d}, ${esc([g.v,g.c].filter(Boolean).join(', '))}</span></span></div>`).join('')
+      :`<span class="lbl">Next</span><b class="t-h3">No dates announced</b><button class="btn one m" data-remind>${EY1}<span class="lab">Tell me when they play</span></button>`;
+    const rm=$('[data-remind]',el);rm&&rm.addEventListener('click',()=>{CCD.done(rm,'We\'ll tell you');rm.classList.add('is-done')});CCD.eyes.collect($('.ap-up',el));
+    const past=GIGS.filter(g=>g.d<today&&(era<0||g.era===era));$('.ap-showsn',el).textContent=past.length?`${past.length} past show${past.length===1?'':'s'}`:'';
+    $sh.innerHTML=past.slice(0,12).map(g=>{const d=new Date(g.d);return `<li><span class="t-data">${d.toLocaleString('en-GB',{month:'short'}).toUpperCase()} ${d.getFullYear()}</span><div><b>${esc(g.e)}</b><span class="t-small mute">${esc([g.v,g.c].filter(Boolean).join(', '))}</span></div><button class="btn one s" data-c="iwas" data-key="gig-${slug}-${g.d}">${EY1}<span class="lab">I was there</span></button></li>`}).join('');CCD.init($sh);
+    $('#shows',el).hidden=!past.length&&!nights.length&&!up.length&&!GIGS.length&&false}
+  /* ---------- popular, videos, press, connections, fans ---------- */
+  async function drawPop(){const box=$('#popular',el);try{const r=await dz.artistTop(pretty(A.name));const rows=r.tracks.filter(t=>t.preview).slice(0,6);if(!rows.length)throw 0;
+      $pop.innerHTML=rows.map((x,i)=>`<li><button data-i="${i}"><span class="tr-n">${String(i+1).padStart(2,'0')}</span><b>${esc(x.title)}</b><span class="t-small mute">${esc(x.album.title)}</span><span class="tr-wave" aria-hidden="true">${CCD.wave(x.title)}</span></button></li>`).join('');
+      $$('button',$pop).forEach(b=>b.addEventListener('click',()=>{const x=rows[+b.dataset.i];const rr=RELS.find(q=>q.dz==x.album.id)||{t:x.album.title,ty:'Track',y:'',era:-1,dz:String(x.album.id),tr:x.title};playItem({r:rr,track:x.title,preview:x.preview})}));box.hidden=false}catch(e){box.hidden=true}}
+  function drawVids(){const v=VIDS.filter(x=>x.id).slice(0,8);$('#watch',el).hidden=!v.length;$vid.innerHTML=v.map(x=>`<a class="ap-vid" href="https://www.youtube.com/watch?v=${x.id}" target="_blank" rel="noopener"><span class="ap-vth"><img src="https://img.youtube.com/vi/${x.id}/mqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="ap-vpl" aria-hidden="true"></span></span><b>${esc(x.t)}</b></a>`).join('')}
+  function drawPress(){$('#press',el).hidden=!PRESS.length;$pr.innerHTML=PRESS.slice(0,10).map(x=>`<li><span class="t-data faint">${(x.d||'').slice(0,4)}</span><a href="${esc(x.u)}" target="_blank" rel="noopener"><b>${esc(x.t)}</b><span class="mute t-small">${esc(x.p)}</span></a></li>`).join('')}
+  function drawConn(){const by=k=>AFF.filter(a=>a.kind===k).map(a=>a.name);const groups=[['Labels',[...new Set([...(A.labels||[]),...by('label')])]],['Worked with',by('collaborator')],['Crews and bands',by('collective')]].filter(g=>g[1].length);
+    $('#connections',el).hidden=!groups.length;$con.innerHTML=groups.map(([t,l])=>`<div><span class="lbl">${t}</span><div class="tags">${l.map(x=>{const hit=R.find(r=>CCD.norm(r[1])===CCD.norm(x));return hit?`<a href="#${hit[0]}" data-go>${esc(pretty(x))}</a>`:`<span>${esc(x)}</span>`}).join('')}</div></div>`).join('')}
+  function drawFans(){const gs=new Set((A.genres||[]).map(x=>x.toLowerCase()));const f=R.filter(x=>x[0]!==slug&&x[4]&&x[3].some(g=>gs.has(g.toLowerCase()))).slice(0,6);const ff=f.length>=4?f:R.filter(x=>x[0]!==slug&&x[4]).slice(0,6);
+    $fans.innerHTML=ff.map(x=>`<a class="acard" href="#${x[0]}" data-go><img src="${photo(x)}" alt="" loading="lazy"><b>${esc(pretty(x[1]))}</b><span class="t-data faint">${esc((x[2]||'').toUpperCase())}</span></a>`).join('')}
+  
+  /* ---------- player ---------- */
+  const pl=$('.ap-player',el),rec=$('.ap-rec',pl),cov=$('.ap-cov',pl),pt=$('.ap-pt',pl),pp=$('.ap-pp',pl),src=$('.ap-src',pl),nxt=$('.ap-next-era',pl),prog=$('.ap-prog i',pl);
+  const deck=CCD.deck(pl,rec,{load:()=>loadNow(),onPlay:on=>{pp.setAttribute('aria-pressed',on);pp.setAttribute('aria-label',on?'Pause':'Play');el.classList.toggle('is-playing',on)}});
+  async function bufFor(it){const r=it.r;try{if(it.preview)return{b:await dz.buf(it.preview),real:1};if(!r.dz)throw 0;const al=await dz.album(r.dz);const ts=(al.tracks&&al.tracks.data)||[];const t=ts.find(x=>x.title===r.tr)||ts.find(x=>x.preview);if(!t||!t.preview)throw 0;it.track=t.title;return{b:await dz.buf(t.preview),real:1}}
+    catch(e){return{b:await AU.artistLoop({id:'a-'+slug+(it.track||r.t),g:A.genres}),real:0}}}
+  async function loadNow(){if(!now)setNow({r:focus||RELS.filter(x=>x.dz).pop()||RELS[0]||{t:A.name,ty:'',era:-1}});const it=now;pl.classList.add('loading');const o=await bufFor(it);pl.classList.remove('loading');it.real=o.real;paintNow();return o.b}
+  function setNow(it){now=it;paintNow()}
+  function paintNow(){if(!now)return;const r=now.r;cov.innerHTML=r.dz?`<img src="${dz.cover(r.dz,'small')}" alt="" onerror="this.remove()">`:'';pl.style.setProperty('--ec',COL(r.era));$('b',pt).textContent=now.track||r.tr||r.t;
+    $('.t-data',pt).textContent=`${pretty(A.name).toUpperCase()} · ${String(r.t).toUpperCase()}${r.y?' · '+r.y:''}${now.real===0?' · PREVIEW COULD NOT LOAD, STAND-IN LOOP':now.real?' · 30 SEC PREVIEW':''}`;
     const bcOnly=!r.dz&&r.bc;src.textContent=bcOnly?'On Bandcamp':r.dz?'Deezer':'';src.href=bcOnly?r.bc:r.dz?`https://www.deezer.com/album/${r.dz}`:'#';src.hidden=!(r.dz||r.bc)}
   async function playItem(it){if(!it.r.dz&&it.r.bc&&!it.preview){setNow(it);window.open(it.r.bc,'_blank','noopener');return}setNow(it);pl.classList.add('loading');const o=await bufFor(it);pl.classList.remove('loading');it.real=o.real;paintNow();deck.setBuffer(o.b,true)}
   pp.addEventListener('click',()=>deck.toggle());
-  (function pr(){const p=parseFloat(getComputedStyle(pl).getPropertyValue('--prog'))||0;prog.style.width=(p*100).toFixed(1)+'%';requestAnimationFrame(pr)})();
-  /* --- eras --- */
-  const sound=$('.ap-sound',el),photo=$('[data-photo]',el);
-  function setEra(k,from){era=k;el.style.setProperty('--ec',COL(k));$$('.ap-sl',el).forEach(b=>b.setAttribute('aria-pressed',+b.dataset.era===k));
-    if(k>=0){const x=ERAS[k];photo.style.objectPosition=x.pos;sound.innerHTML=`<span class="lbl">${yrs(k)} · the sound</span><b class="t-h3">${esc(x.sound)}.</b><div class="tags">${x.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div><span class="t-data faint">SOURCE: ${esc(x.src.toUpperCase())}</span>`}
-    else{photo.style.objectPosition='center 40%';sound.innerHTML=`<span class="lbl">2012 to now · three eras</span><b class="t-h3">${ERAS.map(x=>esc(x.label)).join(', then ')}.</b><span class="t-data faint">PULL A SLEEVE TO HEAR ONE</span>`}
-    drawRels();drawShows();if(from!=='focus'){const r=k<0?RELS.filter(x=>x.dz).pop():RELS.find(x=>x.era===k&&D_.start.includes(x.t))||RELS.filter(x=>x.era===k&&x.dz).pop()||RELS.filter(x=>x.era===k).pop();setFocus(r,'era')}
-    if(from==='click'&&k>=0){CCD.fx&&0}history.replaceState(null,'',k<0?location.pathname:'#era-'+(k+1))}
-  $$('.ap-sl',el).forEach(b=>b.addEventListener('click',()=>setEra(+b.dataset.era,'click')));
-  /* --- focus --- */
-  const fo=$('.ap-focus',el);
-  function setFocus(r,from){if(!r)return;focus=r;if(from!=='era'&&era>=0&&r.era!==era)setEra(r.era,'focus');
-    fo.style.setProperty('--ec',COL(r.era));
-    fo.innerHTML=`<div class="apf-art">${sleeveArt(r,'big')}<span class="apf-rec" aria-hidden="true"></span></div><div class="apf-t"><span class="lbl">${esc(r.ty)} · ${r.y}${r.lab?' · '+esc(r.lab):''}</span><b class="t-h1">${esc(r.t)}</b>
-      <div class="apf-acts"><button class="btn two m" data-fplay>${EY2}<span class="lab">${!r.dz&&r.bc?'Play on Bandcamp':'Play'}</span></button>${r.bc?`<a class="btn one s" href="${r.bc}" target="_blank" rel="noopener">${EY1}<span class="lab">Bandcamp</span></a>`:''}${r.dz?`<a class="btn one s" href="https://www.deezer.com/album/${r.dz}" target="_blank" rel="noopener">${EY1}<span class="lab">Deezer</span></a>`:''}<button class="btn one s" data-fshare>${EY1}<span class="lab">Share</span></button></div>
-      <ol class="apf-tracks"><li class="mute t-small">${r.dz?'Loading the tracklist':'This one lives on Bandcamp. Open it there to hear it.'}</li></ol></div>`;
-    CCD.eyes.collect(fo);$('[data-fplay]',fo).addEventListener('click',()=>playItem({r}));
-    $('[data-fshare]',fo).addEventListener('click',e=>share(e.currentTarget,r.t));
-    $$('.ap-rel',el).forEach(t=>t.classList.toggle('on',t.dataset.t===r.t));
-    if(r.dz)dz.album(r.dz).then(al=>{if(focus!==r)return;const ts=(al.tracks&&al.tracks.data)||[];const ol=$('.apf-tracks',fo);
-        ol.innerHTML=ts.slice(0,12).map((t,i)=>`<li><button data-i="${i}"${t.preview?'':' disabled'}><span class="tr-n">${String(i+1).padStart(2,'0')}</span><b>${esc(t.title)}</b><span class="t-data faint">${Math.floor(t.duration/60)}:${String(t.duration%60).padStart(2,'0')}</span></button></li>`).join('')+(ts.length>12?`<li class="t-small faint">${ts.length-12} more on Deezer</li>`:'');
-        $$('button',ol).forEach(b=>b.addEventListener('click',()=>{const t=ts[+b.dataset.i];playItem({r,track:t.title,preview:t.preview})}))})
-      .catch(()=>{if(focus!==r)return;$('.apf-tracks',fo).innerHTML=`<li class="t-small mute">The tracklist comes from Deezer and can't load here.${r.tr?' The player starts on '+esc(r.tr)+'.':''}</li>`});
-    if(!deck.isPlaying()){setNow({r});deck.reset()}}
-  /* --- releases --- */
-  const relg=$('.ap-rels',el),reln=$('.ap-reln',el);
-  function drawRels(){const list=RELS.filter(r=>(era<0||r.era===era)&&(type==='all'||r.ty===type)).slice().reverse();reln.textContent=`${list.length} OF ${RELS.length}`;
-    relg.innerHTML=list.map(r=>`<button class="ap-rel${focus&&focus.t===r.t?' on':''}" data-t="${esc(r.t)}">${sleeveArt(r)}<span class="ap-rt"><b>${esc(r.t)}</b><span class="t-data faint">${esc(r.ty.toUpperCase())} · ${r.y}</span></span></button>`).join('')||'<p class="t-small mute">None of these in this era.</p>'}
-  relg.addEventListener('click',e=>{const b=e.target.closest('.ap-rel');if(!b)return;const r=RELS.find(x=>x.t===b.dataset.t);setFocus(r,'tile');fo.scrollIntoView({behavior:CCD.RM?'auto':'smooth',block:'center'})});
-  el.addEventListener('ccd:chips',e=>{type=e.detail[0]||'all';drawRels()});
-  /* --- shows --- */
-  const sh=$('.ap-shows',el),shn=$('.ap-showsn',el);
-  function drawShows(){const list=GIGS.filter(g=>era<0||g.era===era);shn.textContent=`${list.length} past show${list.length===1?'':'s'}${era<0?'':' · '+yrs(era)}`;
-    sh.innerHTML=list.map(g=>{const d=new Date(g.d);return `<li><span class="t-data">${d.toLocaleString('en-GB',{month:'short'}).toUpperCase()} ${d.getFullYear()}</span><div><b>${esc(g.e)}</b><span class="t-small mute">${esc([g.v,g.c].filter(Boolean).join(', '))}</span></div><button class="btn one s" data-c="iwas" data-key="gig-${g.d}">${EY1}<span class="lab">I was there</span></button></li>`}).join('')||'<li class="t-small mute">No shows on record in these years.</li>';CCD.init(sh)}
-  /* --- popular --- */
-  const pop=$('.ap-pop',el);const FALL=[['Eleven Eleven','11:11'],['Tree of Life','Spaven x Sandunes'],['Love It Less','Spare Some Time'],['The Surge','The Ground Beneath Her Feet'],['Pelican Dance','Pelican Dance']];
-  const drawPop=(rows)=>{pop.innerHTML=rows.map((x,i)=>`<li><button data-i="${i}"><span class="tr-n">${String(i+1).padStart(2,'0')}</span><b>${esc(x.t)}</b><span class="t-small mute">${esc(x.al)}</span><span class="tr-wave" aria-hidden="true">${CCD.wave(x.t)}</span></button></li>`).join('');
-    $$('button',pop).forEach(b=>b.addEventListener('click',()=>{const x=rows[+b.dataset.i];const r=RELS.find(q=>q.t===x.al||q.tr===x.t)||{t:x.al,ty:'Track',y:'',era:Math.max(0,era),dz:'',tr:x.t};playItem({r,track:x.t,preview:x.p})}))};
-  drawPop(FALL.map(([t,al])=>({t,al})));dz.artistTop('Sandunes').then(r=>{const rows=r.tracks.filter(t=>t.preview).slice(0,6).map(t=>({t:t.title,al:t.album.title,p:t.preview}));if(rows.length)drawPop(rows)}).catch(()=>{});
-  /* --- start here: one record per era, oldest first --- */
-  const startQ=D_.start.map(t=>RELS.find(r=>r.t===t)).filter(Boolean);
-  const runQ=i=>{qi=(i+startQ.length)%startQ.length;const r=startQ[qi];setEra(r.era,'start');setFocus(r,'start');playItem({r})};
-  $('[data-start]',el).addEventListener('click',()=>runQ(0));
-  nxt.addEventListener('click',()=>{const cur=now?now.r.era:era;const k=((cur<0?-1:cur)+1)%ERAS.length;const r=startQ.find(x=>x.era===k)||RELS.find(x=>x.era===k);setEra(k,'start');setFocus(r,'start');playItem({r})});
-  /* --- share, remind --- */
-  async function share(b,what){const url=location.href.split('#')[0]+(era>=0?'#era-'+(era+1):'');try{if(navigator.share){await navigator.share({title:'Sandunes'+(what?', '+what:''),url});return}await navigator.clipboard.writeText(url);CCD.setLabel(b,'Link copied')}catch(e){CCD.setLabel(b,'Copy the address bar')}setTimeout(()=>CCD.setLabel(b,'Share'),2000)}
-  $('[data-share]',el).addEventListener('click',e=>share(e.currentTarget));
-  const rm=$('[data-remind]',el);rm&&rm.addEventListener('click',()=>{CCD.done(rm,'We\'ll tell you');rm.classList.add('is-done')});
-  /* --- start --- */
-  const h=/^#era-(\d)$/.exec(location.hash);setEra(h?Math.min(ERAS.length-1,+h[1]-1):-1,'init')});
+  (function pr_(){const p=parseFloat(getComputedStyle(pl).getPropertyValue('--prog'))||0;prog.style.width=(p*100).toFixed(1)+'%';requestAnimationFrame(pr_)})();
+  function startHere(){if(ERAS.length>1){const k=0;setEra(k,'start');const r=RELS.filter(x=>x.era===k&&x.dz).pop()||RELS.find(x=>x.era===k);r&&(setFocus(r,'start'),playItem({r}))}else{const r=focus||RELS.filter(x=>x.dz).pop();r&&playItem({r})}}
+  nxt.addEventListener('click',()=>{if(ERAS.length<2){const i=RELS.indexOf(now&&now.r);const r=RELS.filter(x=>x.dz)[(RELS.filter(x=>x.dz).indexOf(now&&now.r)+1)%Math.max(1,RELS.filter(x=>x.dz).length)];r&&(setFocus(r,'start'),playItem({r}));return}
+    const cur=now?now.r.era:era;const k=((cur<0?-1:cur)+1)%ERAS.length;setEra(k,'start');const r=RELS.filter(x=>x.era===k&&x.dz).pop()||RELS.find(x=>x.era===k);r&&(setFocus(r,'start'),playItem({r}))});
+  async function share(b){const url=location.href;try{if(navigator.share){await navigator.share({title:pretty(A.name),url});return}await navigator.clipboard.writeText(url);CCD.setLabel(b,'Link copied')}catch(e){CCD.setLabel(b,'Copy the address bar')}setTimeout(()=>CCD.setLabel(b,'Share'),2000)}
+  addEventListener('hashchange',()=>{const s2=location.hash.replace('#','').split('&')[0].toLowerCase();if(s2&&s2!==slug&&R.some(x=>x[0]===s2))location.reload()});
+  load()});
 
 /* sleeves on their own (the lab card): pull one, the record slides out and the rail takes its colour */
 def('sleeves',el=>{el.addEventListener('click',e=>{const b=e.target.closest('.ap-sl');if(!b)return;$$('.ap-sl',el).forEach(x=>x.setAttribute('aria-pressed',x===b));el.style.setProperty('--ec',b.style.getPropertyValue('--ec')||'var(--c-artists)')})});

@@ -1615,3 +1615,147 @@ body:has(.ap) .spill,body:has(.ap) .story-obj,body:has(.ap) .obj-hit,body:has(.a
 .ap-pop button{grid-template-columns:var(--s6) minmax(0,1fr) minmax(0,.9fr)}
 .ap-pop b,.ap-pop .t-small,.apf-tracks b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 @media (min-width:1100px){.ap-pop button{grid-template-columns:var(--s6) minmax(0,1fr) minmax(0,1fr) calc(var(--s10) * 1.4)}}
+/* ============ ROUND 7: ARTIST PAGE, one column, quiet ============ */
+.ap{display:flex;flex-direction:column;gap:0;max-width:calc(var(--s10) * 9);margin-inline:auto}
+.ap-head{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s5);align-items:end;padding-bottom:var(--s6)}
+@media (min-width:600px){.ap-head{grid-template-columns:calc(var(--s10) * 1.6) minmax(0,1fr);gap:var(--s6)}}
+@media (min-width:1100px){.ap-head{grid-template-columns:calc(var(--s10) * 2) minmax(0,1fr)}}
+.ap-head .ap-photo{border-radius:var(--r3);max-width:calc(var(--s10) * 2)}
+.ap-head .ap-photo::after{background:linear-gradient(transparent 55%,color-mix(in srgb,var(--ec) 45%,transparent))}
+.ap-ini{display:grid;place-items:center;width:100%;height:100%;font-family:var(--f-display);font-weight:800;font-size:var(--fs-hero);color:var(--ec);background:radial-gradient(circle at 30% 25%,color-mix(in srgb,var(--ec) 22%,var(--c-surface-2)),var(--c-surface-1))}
+.ap-name{margin:0;font-family:var(--f-display);font-weight:800;font-size:var(--fs-h1);line-height:.95;letter-spacing:-.02em;color:var(--c-ink);overflow-wrap:anywhere}
+.ap-line{margin:0;max-width:60ch;color:var(--c-mute)}
+.ap-line b{color:var(--ec);font-weight:600}
+.ap-id{gap:var(--s3)}
+.ap-id .ap-acts{margin-top:var(--s2)}
+.ap-links{display:flex;flex-wrap:wrap;gap:var(--s4)}
+.ap-links a{font-family:var(--f-mono);font-size:var(--fs-label);text-transform:uppercase;letter-spacing:.06em;color:var(--c-faint);text-decoration:none}
+.ap-links a:hover{color:var(--ec)}
+.skel{display:block;border-radius:var(--r1);background:linear-gradient(90deg,var(--c-surface-1),var(--c-surface-2),var(--c-surface-1));background-size:200% 100%;animation:skel calc(var(--d-scene) * 1.5) linear infinite;color:transparent}
+.ap-name.skel{width:60%;min-height:var(--s8)}
+@keyframes skel{to{background-position:-200% 0}}
+/* eras: a row of sleeves, the record rises out of the one you pull */
+.ap-eras{display:flex;flex-direction:column;gap:var(--s3);padding-block:var(--s5);border-top:1px solid var(--c-line)}
+.ap-eras .ap-sls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4);padding-top:var(--s6)}
+.ap-eras .ap-sl{display:flex;flex-direction:column;gap:var(--s2);align-items:stretch}
+.ap-eras .sl{max-width:calc(var(--s10) * 1.4)}
+.ap-eras .ap-sl:hover .sl-rec{transform:translateY(-14%)}
+.ap-eras .ap-sl[aria-pressed=true] .sl-rec{transform:translateY(-32%)}
+.ap-eras .sl-t .t-data{display:block}
+.ap-eras .sl-t b{font-size:var(--fs-small)}
+@media (min-width:1100px){.ap-eras .sl-t b{font-size:var(--fs-body)}}
+@media (max-width:599px){.ap-eras .ap-sls{grid-template-columns:repeat(4,minmax(calc(var(--s10) * .9),1fr));overflow-x:auto;scrollbar-width:none;margin-inline:calc(var(--margin) * -1);padding-inline:var(--margin)}.ap-eras .sl-t .lbl{display:none}}
+/* the record in focus */
+.ap-focus{margin-block:var(--s2) var(--s4);background:color-mix(in srgb,var(--ec) 6%,var(--c-surface-1));border:1px solid var(--c-line)}
+@media (min-width:1100px){.ap-focus{grid-template-columns:calc(var(--s10) * 2) minmax(0,1fr);gap:var(--s7);padding:var(--s6)}}
+.apf-title{font-family:var(--f-display);font-weight:800;font-size:var(--fs-h2);line-height:1}
+.apf-t{display:flex;flex-direction:column;gap:var(--s3);min-width:0}
+.apf-acts{display:flex;gap:var(--s2);flex-wrap:wrap}
+.apf-tracks{max-height:calc(var(--s10) * 2.4);overflow:auto;scrollbar-width:thin}
+.apf-tracks button[disabled]{opacity:.45;cursor:default}
+/* sections: hairline, small heads */
+.ap .ap-sec{padding-block:var(--s6) 0;gap:var(--s4)}
+.ap .ap-sec>.head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s3);padding-top:var(--s4);border-top:1px solid var(--c-line)}
+.ap .ap-sec[hidden]{display:none}
+.ap-types{margin-bottom:var(--s1)}
+@media (min-width:1100px){.ap-rels{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.ap-rel:hover .ap-art{transform:translateY(calc(var(--s1) * -1))}
+.ap-next{display:grid;grid-template-columns:var(--s9) minmax(0,1fr);gap:var(--s3);align-items:center;width:100%;padding:var(--s3);border-radius:var(--r2);background:var(--c-surface-1);border:1px solid var(--c-line);text-decoration:none;color:var(--c-ink)}
+.ap-next:not(:has(img)){grid-template-columns:minmax(0,1fr)}
+.ap-next img{width:var(--s9);height:var(--s9);border-radius:var(--r1);object-fit:cover}
+.ap-next span{display:flex;flex-direction:column;min-width:0}
+a.ap-next:hover{border-color:var(--ec)}
+.ap-fans{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (min-width:1100px){.ap-fans{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.ap .source{margin-top:var(--s7)}
+/* the roster */
+.roster{display:flex;flex-direction:column;gap:var(--s4)}
+.rsearch{max-width:calc(var(--s10) * 4)}
+.rmore{align-self:center}
+.acard.noimg .aini{display:grid;place-items:center;aspect-ratio:1;width:100%;border-radius:var(--r2);font-family:var(--f-display);font-weight:800;font-size:var(--fs-h2);color:var(--c-artists);background:radial-gradient(circle at 30% 25%,color-mix(in srgb,var(--c-artists) 18%,var(--c-surface-2)),var(--c-surface-1));border:1px solid var(--c-line)}
+.acard.noimg:hover .aini{border-color:var(--c-artists)}
+/* playing soon: the open sliver says where and when, and goes there */
+.sliver .sgo{display:flex;gap:var(--s2);flex-wrap:wrap;margin-top:var(--s2)}
+.sliver{cursor:pointer}
+a.spine{text-decoration:none;color:inherit}
+.ap-eras[hidden],.ap-types[hidden]{display:none}
+/* ============ ROUND 7: PICKS, Nights curated ============ */
+.pg-hero.plain .ptxt{grid-column:1 / -1}
+.pg-hero .pprod:empty{display:none}
+.picks{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s6);align-items:start}
+@media (min-width:820px){.picks{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:var(--s7)}}
+@media (min-width:1100px){.picks{grid-template-columns:calc(var(--s10) * 3.3) minmax(0,1fr)}}
+.pk-frame{margin:0;display:flex;flex-direction:column;gap:var(--s4)}
+@media (min-width:820px){.pk-frame{position:sticky;top:calc(var(--header) + var(--s8))}}
+.pk-img{display:block;aspect-ratio:4/5;border-radius:var(--r2);overflow:hidden;background:var(--c-surface-1)}
+.pk-img img{width:100%;height:100%;object-fit:cover;transition:opacity var(--d-quick) var(--e-out),transform var(--d-move) var(--e-out)}
+.pk-frame.swap .pk-img img{opacity:0;transform:scale(1.015)}
+.pk-frame figcaption{display:flex;flex-direction:column;gap:var(--s1);align-items:flex-start;transition:opacity var(--d-quick) var(--e-out)}
+.pk-frame.swap figcaption>:not(.pk-go){opacity:.35}
+.pk-tag{color:var(--c-nights)}
+.pk-go{margin-top:var(--s3)}
+.pk-tabs{display:flex;flex-wrap:wrap;gap:var(--s1) var(--s4);padding-bottom:var(--s3)}
+.pk-tabs button{font-family:var(--f-mono);font-size:var(--fs-label);text-transform:uppercase;letter-spacing:.06em;color:var(--c-faint);padding-block:var(--s1);border-bottom:1px solid transparent;transition:color var(--d-base) var(--e-out),border-color var(--d-base) var(--e-out)}
+.pk-tabs button:hover{color:var(--c-ink)}
+.pk-tabs button[aria-pressed=true]{color:var(--c-ink);border-color:var(--c-nights)}
+.pk-list ol{list-style:none;margin:0;padding:0;counter-reset:pk}
+.pk-list li[hidden]{display:none}
+.pk-list a{display:grid;grid-template-columns:var(--s6) minmax(0,1fr) auto;column-gap:var(--s3);row-gap:0;align-items:baseline;padding-block:var(--s3);border-top:1px solid var(--c-line);text-decoration:none;color:var(--c-ink)}
+.pk-list li:last-child a{border-bottom:1px solid var(--c-line)}
+.pk-n{grid-row:1 / span 2;font-family:var(--f-mono);font-size:var(--fs-label);color:var(--c-faint)}
+.pk-list b{grid-column:2;font-weight:600;line-height:1.25;transition:color var(--d-base) var(--e-out)}
+.pk-d{grid-column:3;grid-row:1;color:var(--c-faint);white-space:nowrap}
+.pk-v{grid-column:2 / span 2;color:var(--c-mute)}
+.pk-a{display:none}
+.pk-list a:hover b,.pk-list a:focus-visible b{color:var(--c-nights)}
+.pk-list a:hover .pk-n{color:var(--c-nights)}
+@media (min-width:1100px){.pk-list a{grid-template-columns:var(--s6) calc(var(--s10) + var(--s5)) minmax(0,1fr) minmax(0,.8fr);align-items:center;padding-block:var(--s4)}
+  .pk-n{grid-row:auto}.pk-d{grid-column:2;grid-row:auto}.pk-list b{grid-column:3}.pk-v{grid-column:4;text-align:right}}
+.ch-more{margin-top:var(--s5)}
+.ndetail .tracks a{color:inherit;text-decoration:none;border-bottom:1px solid var(--c-line-strong)}
+.ndetail .tracks a:hover{color:var(--c-nights);border-color:var(--c-nights)}
+/* ============ ROUND 7: home tiles, quiet until you point at one ============ */
+.story-hero .appcol{border-top:1px solid var(--c-line);background:none;transition:border-color var(--d-base) var(--e-out),background var(--d-base) var(--e-out)}
+.story-hero .appcol:hover,.story-hero .appcol:focus-visible{border-top-color:var(--c);background:linear-gradient(color-mix(in srgb,var(--c) 8%,transparent),transparent)}
+.story-hero .appcol .aobj{width:var(--s7);height:var(--s7)}
+.story-hero .appcol{grid-template-columns:var(--s7) minmax(0,1fr)}
+@media (min-width:1100px){.story-hero .appcol{grid-template-columns:minmax(0,1fr)}.story-hero .appcol .aobj{width:var(--s7);height:var(--s7);margin:0 0 var(--s1)}}
+.story-hero .appcol .ap-n{transition:color var(--d-base) var(--e-out)}
+.story-hero .appcol:hover .ap-n{color:var(--c)}
+/* ============ ROUND 7: chrome objects stand still; hover turns them and runs a light across ============ */
+.cobj{position:relative}
+.cobj img{will-change:auto}
+.cobj::after{content:"";position:absolute;inset:0;pointer-events:none;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.75) 48%,transparent 60%) no-repeat;background-size:250% 100%;background-position:150% 0;opacity:0;mix-blend-mode:screen}
+.cobj.shine::after{animation:cshine var(--d-flip) var(--e-out)}
+@keyframes cshine{0%{opacity:1;background-position:150% 0}100%{opacity:1;background-position:-60% 0}}
+@media (prefers-reduced-motion:reduce){.cobj.shine::after{animation:none}}
+.js-cobj .cobj img,.js-cobj .cobj::after{transform:var(--tf,none)}
+/* ============ ROUND 7: one solid dot on secondary actions; it narrows to a cat's slit on hover. Two eyes only on primary (.btn.two) ============ */
+.eyes.xs{--dot:calc(var(--s2) + 2px);background:transparent!important;padding:0;gap:0;height:auto;width:var(--dot);min-height:var(--dot);margin-inline:calc(var(--s1) / 2) 0}
+.eyes.xs .eye+.eye{display:none}
+.eyes.xs .eye{width:var(--dot);height:var(--dot);border-radius:var(--pill);background:currentColor!important;box-shadow:none;animation:none!important;transform:none!important;transition:width var(--d-base) var(--e-spring),height var(--d-base) var(--e-spring)}
+.eyes.xs .eye::before,.eyes.xs .eye::after{display:none!important}
+.btn.s .eyes.xs,.seeall .eyes.xs,.chip .eyes.xs{--dot:var(--s2)}
+:is(a,button,.chip,.seeall):hover>.eyes.xs .eye,:is(a,button,.chip,.seeall):focus-visible>.eyes.xs .eye,.chip[aria-pressed=true]>.eyes.xs .eye,.btn.one[aria-pressed=true]>.eyes.xs .eye{width:calc(var(--dot) * .32);height:calc(var(--dot) * 1.45)}
+.is-disabled>.eyes.xs .eye,[disabled]>.eyes.xs .eye{height:2px!important;width:var(--dot)!important}
+.is-done>.eyes.xs .eye{width:var(--dot);height:calc(var(--dot) * .3)}
+@media (prefers-reduced-motion:reduce){.eyes.xs .eye{transition:none}}
+/* ============ ROUND 7: the offer, plain ============ */
+.offer{gap:var(--s4)}
+.onums{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4)}
+.onums>div{display:flex;flex-direction:column;gap:var(--s1);padding:var(--s4);border-radius:var(--r3);background:var(--c-surface-1);border:1px solid var(--c-line)}
+.onums b{font-family:var(--f-display);font-weight:800;font-size:var(--fs-h2);line-height:1}
+.offer .oval{color:var(--acc);transition:color var(--d-base) var(--e-out)}
+.offer.lock .onums>div:last-child{border-color:var(--acc)}
+.ocontrols{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:var(--s3);align-items:center}
+/* ============ ROUND 7: the one object lands in each section head ============ */
+.chapter .chead .ch-slot{width:calc(var(--obj) * 1.15);height:calc(var(--obj) * 1.15);margin-bottom:calc(var(--s3) * -1)}
+@media (max-width:599px){.chapter .chead .ch-slot{width:var(--obj);height:var(--obj);margin:0}}
+.sunrise .sun-slot{width:calc(var(--obj) * 1.4);height:calc(var(--obj) * 1.4);margin-inline:auto;margin-bottom:var(--s5)}
+/* ROUND 7 fixes from the width audit */
+:has(>.door){container-type:inline-size}
+@container (max-width:520px){.door{grid-template-columns:minmax(0,1fr)!important}}
+.door .btn{max-width:100%}
+.door .btn .lab{white-space:normal;text-align:left}
+.roster .chips.scroll{margin-inline:0;padding-inline:0}
+.ap-eras{overflow-x:clip;overflow-clip-margin:var(--margin)}
