@@ -968,6 +968,35 @@ body.nap .steps li svg{animation-play-state:paused}
 .doors .door{padding-top:16px;overflow:hidden}
 .doors .door .chr{margin:0 0 8px 0}
 .doors .door:hover .chr{transform:none}
+
+/* ===== round 12: one scale across the whole page =====
+   type: display stays; lead 20 to 26, body 16, small 14, mono notes 12. space: 16, 24, 32, 48. lines 1px. corners 12, panels 16. */
+.claim{font-size:clamp(20px,1.9vw,26px);line-height:1.25}
+.for,.sub{font-size:16px;line-height:1.5}
+.lede{font-size:clamp(17px,1.4vw,20px);line-height:1.45}
+.note{font-size:14px;line-height:1.45}
+.rowi{font-size:15px;padding:12px 0}
+.rowi small{font-size:13px}
+.chip{font-size:13.5px}
+.pbar{font-size:13px}
+.eyebrow,.meta,.mono{font-size:12px;letter-spacing:.04em}
+.todo h3{font-size:12px;letter-spacing:.04em;margin-bottom:8px}
+.demo{padding-top:10vh;padding-bottom:12vh}
+.liner{padding-top:8vh;padding-bottom:10vh}
+.offer,.adet .tt,.claimbox{border-radius:12px}
+.invite{border-radius:16px}
+.acts,.hero-cta{gap:12px}
+.hero-cta{display:flex;flex-wrap:wrap}
+@media (min-width:701px){.pbar{padding:16px 24px}.ngrid,.hgrid,.sgrid,.agrid,.dash{gap:24px;padding:24px}}
+@media (max-width:700px){.demo{padding-top:24px;padding-bottom:10vh}}
+/* what an app does: every feature, as plain cards with the app's mark. No numbers, no sides. */
+.liner ol{grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:none}
+.liner li,.liner li:nth-child(n+4){display:block;order:0;padding:20px;border-radius:12px}
+.liner li::before{content:"";display:block;width:24px;height:3px;border-radius:2px;background:var(--acc);margin-bottom:16px;font-size:0}
+.liner li b{font-family:var(--sans);font-weight:600;font-stretch:100%;font-size:18px;letter-spacing:0;line-height:1.25;margin-bottom:6px}
+.liner li p{font-size:14.5px;line-height:1.45}
+@media (max-width:1100px){.liner ol{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.liner ol{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -2285,6 +2314,12 @@ window.__ccd={get s(){return {playing,BPM,step,timer:timer!==null,laserOn}}};
   try{const L={episodes:2,'episodes-b':2,host:3,'host-b':3,'host-x':3,'gear-h':3,'gear-x':3,artists:4,'artists-b':4,'artists-x':4};Object.keys(L).forEach(k=>{if(STAGES[k])STAGES[k].lv=L[k]})}catch(e){}
   let wet=null;setInterval(()=>{try{if(!E||!actx)return;if(!wet){const d=actx.createDelay(1),fb=actx.createGain();wet=actx.createGain();d.delayTime.value=60/BPM*.75;fb.gain.value=.35;wet.gain.value=0;E.filt.connect(d);d.connect(fb);fb.connect(d);d.connect(wet);wet.connect(an)}
     const k=active?String(active.dataset.k):'';wet.gain.setTargetAtTime(k==='points'||k==='outro'?.45:0,actx.currentTime,.3)}catch(e){}},500)})();
+/* round 12: plain heading for the feature list, and the logo goes home */
+(()=>{const fix=()=>document.querySelectorAll('.liner h2').forEach(h=>{const m=h.textContent.match(/on the (.+) record/i);if(m)h.textContent='What '+m[1].trim()+' does'});fix();addEventListener('hashchange',()=>setTimeout(fix,80));
+  const im=document.querySelector('nav.top img[src*="logo"],header img[src*="logo"],nav img[src*="logo"]');const lg=im&&(im.closest('a,button')||im.parentElement);
+  if(lg){lg.style.cursor='pointer';lg.setAttribute('aria-label','Cats Can Dance, home');lg.addEventListener('click',e=>{e.preventDefault();if(location.hash&&location.hash!=='#')location.hash='';setTimeout(()=>scrollTo({top:0,behavior:'smooth'}),60)})}})();
+/* after switching pages, nothing waits hidden for a scroll */
+addEventListener('hashchange',()=>setTimeout(()=>document.querySelectorAll('.rv').forEach(e=>{if(e.offsetParent)e.classList.add('in')}),320));
 
 })();
 </script>
