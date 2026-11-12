@@ -51,6 +51,8 @@ export const CSS = `
 .h4-cat{position:absolute;z-index:3;right:-4px;top:12px;width:88px;filter:drop-shadow(0 12px 20px rgba(0,0,0,.25));animation:h4bob 1.8s ease-in-out infinite alternate}
 @keyframes h4bob{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-10px) rotate(3deg)}}
 
+.h4:not(.ready) .h4-stage,.h4:not(.ready) .h4-layer,.h4:not(.ready) .h4-layer *{transition:none!important}
+
 /* the moving piece behind the screens */
 .fx{position:absolute;inset:0;z-index:1;pointer-events:none}
 .fx-posters img{position:absolute;top:14%;left:50%;width:42%;aspect-ratio:4/5;object-fit:cover;border-radius:14px;box-shadow:0 30px 50px -20px rgba(0,0,0,.5);opacity:.9;transform:translateX(calc(-50% + (var(--i) - 1) * 70%)) rotate(calc((var(--i) - 1) * 9deg));animation:fxdrift 5s ease-in-out infinite alternate;animation-delay:calc(var(--i) * -1.4s)}

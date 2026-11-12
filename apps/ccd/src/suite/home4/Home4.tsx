@@ -72,9 +72,12 @@ function usePlayer() {
 
 export default function Home4(d: HomeData) {
   const [tab, setTab] = useState<Tab>("go");
+  const [ready, setReady] = useState(false);
   useEffect(() => {
     const f = new URLSearchParams(window.location.search).get("for");
     if (f === "artists" || f === "host" || f === "learn") setTab(f);
+    // Transitions start after the first frame, so a ?for= link opens on its app without fading through Nights.
+    requestAnimationFrame(() => requestAnimationFrame(() => setReady(true)));
   }, []);
   const pick = (k: Tab, scroll = false) => {
     setTab(k);
@@ -161,7 +164,7 @@ export default function Home4(d: HomeData) {
   return (
     <Shell nav={nav} title="Cats Can Dance: go out, book artists, throw a party, learn" description="Every good night in your city and people to go with, every South Asian artist on one page, the party app that runs the whole night, and lessons where you make the music. One sign-in.">
       <style dangerouslySetInnerHTML={{ __html: RING_CSS + CSS }} />
-      <div className="h4" style={{ ["--acc" as string]: colour, ["--on" as string]: ON(tab) }}>
+      <div className={`h4${ready ? " ready" : ""}`} style={{ ["--acc" as string]: colour, ["--on" as string]: ON(tab) }}>
         {/* All four stages sit on top of each other and cross-fade, so switching is instant. */}
         <section className="h4-wrap">
           <div className="h4-stage">
