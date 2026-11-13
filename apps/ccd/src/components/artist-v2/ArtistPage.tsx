@@ -70,6 +70,7 @@ export default function ArtistPage({ a }: { a: ArtistV2 }) {
   const [copied, setCopied] = useState(false);
   const [allShows, setAllShows] = useState(false);
   const [allRels, setAllRels] = useState(false);
+  const [allWatch, setAllWatch] = useState(false);
   const [navH, setNavH] = useState(76);
 
   const audio = useRef<HTMLAudioElement | null>(null);
@@ -470,18 +471,22 @@ html,body{overflow-x:visible!important}
 .ap #book{border-radius:20px}
 .ap .a2-h2{font-size:20px;text-transform:none;letter-spacing:-.01em}
 
-/* Phone first (13 Nov 2026): long grids become rows you swipe, so the page stays short on a phone */
+/* Phone first (13 Nov 2026): nothing scrolls sideways; grids go to two columns and the filters sit in an even grid */
 @media (max-width:767px){
-  .ap .a2-relgrid{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px!important;margin:0 -16px;padding:0 16px 8px;scrollbar-width:none}
-  .ap .a2-relgrid::-webkit-scrollbar{display:none}
-  .ap .a2-relgrid>*{flex:0 0 44%;scroll-snap-align:start;min-width:0}
-  .ap .a2-congrid{display:flex!important;overflow-x:auto;gap:10px!important;margin:0 -16px;padding:0 16px 8px;scrollbar-width:none}
-  .ap .a2-congrid>*{flex:0 0 78%}
-  .ap .a2-pressgrid{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:0 0 8px;scrollbar-width:none}
-  .ap .a2-pressgrid::-webkit-scrollbar{display:none}
-  .ap .a2-pressgrid>*{flex:0 0 80%;scroll-snap-align:start;border:1px solid rgba(244,239,228,.14);border-radius:14px;padding:12px 14px!important}
-  .ap .a2-h2{font-size:18px}
-  .ap .a2-heroname{letter-spacing:-.02em}
+  .ap .a2-relgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px 12px!important}
+  .ap .a2-congrid{grid-template-columns:1fr!important}
+  .ap .a2-seg{display:none}
+  .ap .a2-chips{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px!important;width:100%;overflow:visible!important}
+  .ap .a2-chips>button{height:42px!important;padding:0 6px!important;font-size:13px!important;text-align:center}
+  .ap .a2-watch{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px!important;overflow:visible!important}
+  .ap .a2-watch>button{flex:none!important;min-width:0}
+  .ap .a2-watch img,.ap .a2-watch>button>span:first-child{width:100%!important}
+  .ap .a2-also{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 10px!important;overflow:visible!important}
+  .ap .a2-also>a{width:auto!important;flex:none!important;min-width:0}
+  .ap .a2-also img{width:88px!important;height:88px!important}
+  .ap .a2-watch:not(.all)>button:nth-child(n+5){display:none!important}
+  .ap .a2-relgrid:not(.all)>*:nth-child(n+7){display:none}
+  .ap .a2-also>a:nth-child(n+7){display:none!important}
 }
 `;
 
@@ -648,21 +653,20 @@ html,body{overflow-x:visible!important}
               </div>
             </section>
 
-            {/* Era cards (phone) */}
+            {/* Eras on a phone: one thin line you tap, not a row to swipe (Param, 13 Nov 2026: "the eras can be a thin line"). */}
             {hasEras && (
-              <div className="a2-erasm" style={{ flexDirection: "column", gap: 10, paddingTop: 18 }}>
-                <span className="a2-disp a2-pad" style={{ fontSize: 15 }}>ERAS</span>
-                <div className="a2-row a2-pad" style={{ display: "flex", gap: 10, overflowX: "auto", paddingBottom: 8 }}>
-                  <button onClick={() => pickEra("all")} style={{ flex: "0 0 112px", textAlign: "left", padding: 10, display: "flex", flexDirection: "column", justifyContent: "flex-end", gap: 2, border: `2px solid ${CREAM}`, background: !era ? CREAM : "transparent", color: !era ? INK : CREAM }}>
-                    <span className="a2-lab">{eras[0].from} to now</span><span className="a2-disp" style={{ fontSize: 16, lineHeight: 1.05 }}>Every era</span>
-                  </button>
+              <div className="a2-erasm a2-pad" style={{ flexDirection: "column", gap: 8, paddingTop: 20 }}>
+                <span className="a2-lab" style={{ color: MUTE }}>Eras · tap one to see that part of the story</span>
+                <div style={{ display: "flex", gap: 3, alignItems: "stretch" }}>
+                  <button onClick={() => pickEra("all")} aria-pressed={!era} style={{ flex: "0 0 auto", minHeight: 44, padding: "0 12px", border: `1.5px solid ${CREAM}`, background: !era ? CREAM : "transparent", color: !era ? INK : CREAM, fontWeight: 700, fontSize: 13, cursor: "pointer" }}>All</button>
                   {eras.map((e) => {
                     const on = era?.id === e.id;
-                    const covers = eraCovers(e);
+                    const span = Math.max(1, (e.to ?? new Date().getFullYear()) - e.from + 1);
                     return (
-                      <button key={e.id} onClick={() => pickEra(e.id)} className="a2-fade" style={{ flex: "0 0 168px", textAlign: "left", padding: 8, display: "flex", flexDirection: "column", gap: 4, border: `2px solid ${e.accent}`, background: on ? e.bg : "#121212", color: on ? e.accent : CREAM, boxShadow: on ? `4px 4px 0 ${e.accent}` : "none" }}>
-                        {covers.length > 0 && <span style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 2 }}>{covers.map((c) => <img key={c} src={c} alt="" loading="lazy" style={{ width: "100%", aspectRatio: "1", objectFit: "cover", display: "block" }} />)}</span>}
-                        <span className="a2-lab">{yearsLong(e)}</span><span className="a2-disp" style={{ fontSize: 16, lineHeight: 1.05 }}>{e.label}</span>
+                      <button key={e.id} onClick={() => pickEra(e.id)} aria-pressed={on} className="a2-fade"
+                        style={{ flex: `${Math.min(span, 8)} 1 0`, minWidth: 0, minHeight: 44, padding: "4px 8px", border: 0, borderBottom: `4px solid ${e.accent}`, background: on ? e.accent : "rgba(244,239,228,.06)", color: on ? INK : CREAM, cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", textAlign: "left", overflow: "hidden" }}>
+                        <span style={{ fontWeight: 700, fontSize: 12, lineHeight: 1.15, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "100%" }}>{e.label}</span>
+                        <span style={{ fontSize: 11, opacity: .7, whiteSpace: "nowrap" }}>{short(e)}</span>
                       </button>
                     );
                   })}
@@ -682,7 +686,7 @@ html,body{overflow-x:visible!important}
                       {era?.src && <> Sound from <a href={era.src} target="_blank" rel="noreferrer" style={{ color: CREAM, textDecoration: "underline" }}>{era.srcName ?? sourceName(era.src)}</a>.</>}
                     </span>
                   </span>
-                  <Seg />
+                  <span className="a2-seg"><Seg /></span>
                 </div>
 
                 {F && <div style={{ marginTop: -24 }}>{F}</div>}
@@ -718,7 +722,7 @@ html,body{overflow-x:visible!important}
 
                 {relEra.length > 0 && (
                   <Section title="Releases" right={types.length > 1 ? (
-                    <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+                    <div className="a2-chips" style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
                       {["all", ...types].map((t) => {
                         const n = relEra.filter((r) => ofType(r, t)).length;
                         const lab = t === "all" ? "All" : t === "ep" ? "EPs" : `${TYPE[t]}s`;
@@ -726,7 +730,7 @@ html,body{overflow-x:visible!important}
                       })}
                     </div>
                   ) : undefined}>
-                    <div className="a2-relgrid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: "24px 18px" }}>
+                    <div className={`a2-relgrid${allRels ? " all" : ""}`} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: "24px 18px" }}>
                       {(allRels ? releases : releases.slice(0, 12)).map((r) => {
                         const e = eraOfY(r.undated ? null : r.y);
                         const on = isFoc("rel", r.id);
@@ -748,7 +752,7 @@ html,body{overflow-x:visible!important}
                         );
                       })}
                     </div>
-                    {releases.length > 12 && <button onClick={() => setAllRels((v) => !v)} style={{ ...chipStyle(false), alignSelf: "flex-start", height: 36 }}>{allRels ? "Fewer" : `All ${releases.length} releases`}</button>}
+                    {releases.length > 6 && <button className={releases.length > 12 ? undefined : "a2-ph"} onClick={() => setAllRels((v) => !v)} style={{ ...chipStyle(false), alignSelf: "flex-start", height: 36 }}>{allRels ? "Fewer" : `All ${releases.length} releases`}</button>}
                     {releases.length === 0 && <p style={{ margin: 0, color: MUTE }}>No {type === "ep" ? "EPs" : `${TYPE[type] ?? ""}s`.toLowerCase()} from these years.</p>}
                   </Section>
                 )}
@@ -769,7 +773,7 @@ html,body{overflow-x:visible!important}
                       </button>
                     )}
                     {watchRow.length > 0 && (
-                      <div className="a2-row" style={{ display: "flex", gap: 16, overflowX: "auto" }}>
+                      <div className={`a2-row a2-watch${allWatch ? " all" : ""}`} style={{ display: "flex", gap: 16, overflowX: "auto" }}>
                         {watchRow.map((w) => (
                           <button key={w.key} onClick={() => (w.mix && (w.mix.tracks.length || !embedFor(w.url)) ? setMixOpen(mixOpen === w.url ? null : w.url) : embedFor(w.url) || ytId(w.url) ? setMedia(w.url) : window.open(w.url, "_blank", "noopener"))}
                             style={{ border: 0, padding: 0, background: "transparent", textAlign: "left", cursor: "pointer", flex: "0 0 210px", display: "flex", flexDirection: "column", gap: 6 }}>
@@ -781,6 +785,7 @@ html,body{overflow-x:visible!important}
                         ))}
                       </div>
                     )}
+                    {watchRow.length > 4 && <button className="a2-ph" onClick={() => setAllWatch((v) => !v)} style={{ ...chipStyle(false), alignSelf: "flex-start", height: 42 }}>{allWatch ? "Fewer" : `All ${watchRow.length} videos and mixes`}</button>}
                     {mixOpen && (() => {
                       const m = a.mixes.find((x) => x.url === mixOpen);
                       return m ? <MixList m={m} onPlay={embedFor(m.url) ? () => setMedia(m.url) : undefined} /> : null;
@@ -834,7 +839,7 @@ html,body{overflow-x:visible!important}
 
                 {tabs.length > 0 && (
                   <Section title="Connections" right={
-                    <div role="tablist" aria-label="Connections" className="a2-row" style={{ display: "flex", gap: 4, overflowX: "auto", maxWidth: "100%" }}>
+                    <div role="tablist" aria-label="Connections" className="a2-row a2-chips" style={{ display: "flex", gap: 4, overflowX: "auto", maxWidth: "100%" }}>
                       {tabs.map((t) => <button key={t.id} role="tab" aria-selected={tabId === t.id} onClick={() => setTab(t.id)} style={chipStyle(tabId === t.id)}>{t.label} {t.n}</button>)}
                     </div>
                   }>
@@ -852,7 +857,7 @@ html,body{overflow-x:visible!important}
 
                 {a.alsoLike.length > 0 && (
                   <Section title="Fans also like" note="On CCD · shared label, bill or scene">
-                    <div className="a2-row" style={{ display: "flex", gap: 22, overflowX: "auto", paddingBottom: 6 }}>
+                    <div className="a2-row a2-also" style={{ display: "flex", gap: 22, overflowX: "auto", paddingBottom: 6 }}>
                       {a.alsoLike.filter((x) => x.img).map((x) => (
                         <a key={x.n} href={x.u ?? "#"} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, width: 132, flex: "0 0 132px", textAlign: "center" }}>
                           <img src={x.img!} alt={displayName(x.n)} loading="lazy" style={{ width: 120, height: 120, borderRadius: "50%", objectFit: "cover", display: "block", border: `2px solid ${CREAM}`, boxShadow: `4px 4px 0 ${accent}` }} />

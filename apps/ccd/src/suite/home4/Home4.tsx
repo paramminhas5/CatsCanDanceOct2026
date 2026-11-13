@@ -117,7 +117,7 @@ export default function Home4(d: HomeData) {
       { when: "Wednesday", t: "Get in", line: "A ticket or the list, in two taps.", href: next ? `/nights/${next.slug}#tickets` : "/whats-on", shot: "S34-GetIn" },
       { when: "Thursday", t: "Find your crew", line: "Going solo? Meet three to six people first.", href: next ? `/nights/${next.slug}#going` : "/whats-on", shot: "S34-Crew" },
       { when: "Saturday, 10 pm", t: "Walk in", line: "Your ticket on your phone. Scanned, you're in.", href: "/me", shot: "S34-Ticket" },
-      { when: "Sunday morning", t: "Keep it", line: "The stub lands on your page. Points too.", href: "/me", shot: "S34-BeenTo" },
+      { when: "Sunday morning", t: "Get points", line: "Going, bringing friends and crews all earn points. Spend them on merch.", href: "/me", shot: "S34-BeenTo" },
     ] },
     artists: { eye: "How a booking goes", h: "From finding them to the gig.", steps: [
       { when: "Start", t: "Find them", line: "Search by city, sound or label.", href: productLink("artists", "/artists"), shot: "F38-A-Find" },
@@ -398,15 +398,15 @@ function Journey({ eye, h, steps }: { eye: string; h: string; steps: Step[] }) {
   );
 }
 
-/* Every app ends with something to pass on (Param, 13 Nov 2026: "there should be some viral CTA or action
-   for everything"). The link carries ?ref= so shares and the visits they bring are counted (log_share). */
+/* Every app ends with the thing you came to do, then a way to pass it on (Param, 13 Nov 2026: "the bottom CTA
+   should be something we can do and is actually useful"). Shares carry ?ref= so they count towards points. */
 function Closer({ tab, colour, on, cat, next }: { tab: Tab; colour: string; on: string; cat: string; next: string | null }) {
-  const [copied, setCopied] = useState(false);
-  const C: Record<Tab, { eye: string; h: string; line: string; share: [string, string, string, ShareKind]; main: [string, string] }> = {
-    go: { eye: "Bring your people", h: "Nights are better with your crew.", line: "Send this week to the group chat. When they say they're going, you'll see it.", share: ["Send to the group", "/whats-on", "This week's nights on Cats Can Dance. Who's in?", "night"], main: ["See what's on", "/whats-on"] },
-    artists: { eye: "Pass it on", h: "Know someone who'd love this artist?", line: "Send a page. They hear the records, you get to say you told them first.", share: ["Send an artist", "/artists/sandunes", "Listen to Sandunes on Cats Can Dance", "artist"], main: ["Is it you? Claim your page", productLink("artists", "/claim")] },
-    host: { eye: "Fill the room", h: "The invite is the party's first impression.", line: "Make it in a minute, send one link, and watch the list fill.", share: ["Tell a friend who throws parties", "/?for=host", "Throwing something? Make the invite and run the door from your phone, free.", "night"], main: ["Make the invite", "#try"] },
-    learn: { eye: "Make one, send one", h: "Made a beat? Send it to a friend.", line: "Start lesson 1, then challenge someone to beat your first track.", share: ["Challenge a friend", "/?for=learn", "I'm learning to make music on Cats Can Dance. Make a beat and send me yours.", "beat"], main: ["Start lesson 1", productLink("school", "/learn")] },
+  const night = next ? `/nights/${next}` : "/whats-on";
+  const C: Record<Tab, { eye: string; h: string; line: string; main: [string, string]; alt: [string, string]; share: [string, string, string, ShareKind] }> = {
+    go: { eye: "Your move", h: next ? "Come to the next Episode." : "Pick a night this week.", line: "Get in now. Going alone? Say so and we'll put you with a crew of 3 to 6.", main: [next ? "Get in" : "See what's on", next ? `${night}#tickets` : "/whats-on"], alt: ["Find a crew", next ? `${night}#going` : "/whats-on"], share: ["Send this week to the group chat", "/whats-on", "This week's nights on Cats Can Dance. Who's in?", "night"] },
+    artists: { eye: "Your move", h: "Find someone to play your night.", line: "Pick a date and see who's free, or just dig for something new to listen to.", main: ["Book for a date", productLink("artists", "/artists?mode=book")], alt: ["Browse artists", productLink("artists", "/artists")], share: ["Send an artist to a friend", "/artists/sandunes", "Listen to Sandunes on Cats Can Dance", "artist"] },
+    host: { eye: "Your move", h: "Throwing something? Start with the invite.", line: "Name, date, place and colours. One link to send. The door runs from your phone.", main: ["Make the invite", "#try"], alt: ["See the door app", productLink("gate", "/door")], share: ["Tell a friend who throws parties", "/?for=host", "Throwing something? Make the invite and run the door from your phone, free.", "night"] },
+    learn: { eye: "Your move", h: "Make your first beat in five minutes.", line: "Lesson 1 is a kick drum. By lesson 10 you have a track you can play to friends.", main: ["Start lesson 1", productLink("school", "/learn")], alt: ["Try the beat maker", "#try"], share: ["Challenge a friend to a beat", "/?for=learn", "I'm learning to make music on Cats Can Dance. Make a beat and send me yours.", "beat"] },
   };
   const c = C[tab];
   const send = async () => {
@@ -416,11 +416,6 @@ function Closer({ tab, colour, on, cat, next }: { tab: Tab; colour: string; on: 
     if (navigator.share) { try { await navigator.share({ text, url }); return; } catch { /* closed */ } }
     window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`, "_blank", "noopener");
   };
-  const copy = async () => {
-    const [, path, , kind] = c.share;
-    try { await navigator.clipboard.writeText(shareLink(path, kind, tab)); setCopied(true); setTimeout(() => setCopied(false), 1800); } catch { /* blocked */ }
-    logShare(kind, tab, "share", "copy");
-  };
   return (
     <section className="h4-wrap h4-sec">
       <div className="h4-close" style={{ ["--c" as string]: colour, ["--on" as string]: on }}>
@@ -429,14 +424,13 @@ function Closer({ tab, colour, on, cat, next }: { tab: Tab; colour: string; on: 
           <h2>{c.h}</h2>
           <p>{c.line}</p>
           <div className="h4-close-acts">
-            <button type="button" className="h4-close-main" onClick={() => void send()}>
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-              {c.share[0]}
-            </button>
-            <button type="button" className="h4-close-ghost" onClick={() => void copy()}>{copied ? "Link copied" : "Copy the link"}</button>
+            <a className="h4-close-main" href={c.main[1]}>{c.main[0]} →</a>
+            <a className="h4-close-ghost" href={c.alt[1]}>{c.alt[0]}</a>
           </div>
-          <a className="h4-close-link" href={c.main[1]}>{c.main[0]} →</a>
-          {tab === "go" && next && <span className="h4-close-note">Our next Episode is on the list too.</span>}
+          <button type="button" className="h4-close-link" onClick={() => void send()}>
+            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            {c.share[0]} · earns points
+          </button>
         </div>
         <img className="h4-close-cat" src={`/cats/${cat}.webp`} alt="" loading="lazy" />
       </div>

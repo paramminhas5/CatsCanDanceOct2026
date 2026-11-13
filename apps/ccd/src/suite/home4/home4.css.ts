@@ -360,10 +360,10 @@ html{scroll-behavior:smooth}
 .h4 .h4-close h2{color:var(--on);font-size:clamp(28px,3vw,42px);margin:0}
 .h4-close p{margin:0;font-size:16px;line-height:1.5;opacity:.85;max-width:48ch}
 .h4-close-acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
-.h4-close-main{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 22px;border-radius:999px;background:var(--on);color:var(--c);font:700 15px var(--k-ui);transition:transform .2s}
+.h4-close-main{text-decoration:none;appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 22px;border-radius:999px;background:var(--on);color:var(--c);font:700 15px var(--k-ui);transition:transform .2s}
 .h4-close-main:hover{transform:translateY(-2px)}
-.h4-close-ghost{appearance:none;cursor:pointer;min-height:50px;padding:0 20px;border-radius:999px;background:transparent;border:1.5px solid currentColor;color:inherit;font:600 15px var(--k-ui);opacity:.9}
-.h4-close-link{color:inherit;font:700 15px var(--k-ui);text-decoration:none;opacity:.9}
+.h4-close-ghost{appearance:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;min-height:50px;padding:0 20px;border-radius:999px;background:transparent;border:1.5px solid currentColor;color:inherit;font:600 15px var(--k-ui);opacity:.9}
+.h4-close-link{appearance:none;border:0;background:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:6px 0;min-height:44px;color:inherit;font:600 14px var(--k-ui);opacity:.85;text-align:left}
 .h4-close-note{font-size:13px;opacity:.7}
 .h4-close-cat{position:relative;z-index:1;width:170px;flex:none;animation:h4bob 1.8s ease-in-out infinite alternate}
 @media (max-width:760px){
@@ -371,9 +371,9 @@ html{scroll-behavior:smooth}
   .h4 .h4-close h2{font-size:26px}
   .h4-close p{font-size:14px}
   .h4-close-acts{width:100%}
-  .h4-close-main{flex:1 1 100%;justify-content:center;min-height:48px;white-space:nowrap}
-  .h4-close-ghost{flex:1 1 100%;min-height:44px}
-  .h4-close-cat{width:110px;align-self:flex-end;margin-top:-30px}
+  .h4-close-acts{display:grid;grid-template-columns:1fr 1fr}
+  .h4-close-main,.h4-close-ghost{min-height:52px;padding:0 10px;justify-content:center}
+  .h4-close-cat{width:84px;align-self:flex-end;margin-top:-8px}
 }
 
 `;
