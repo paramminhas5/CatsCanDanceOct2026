@@ -516,3 +516,14 @@ document.addEventListener('DOMContentLoaded',()=>{const a=document.querySelector
   h&&new IntersectionObserver(e=>{hv=e[0].isIntersecting;up()}).observe(h);t&&new IntersectionObserver(e=>{tv=e[0].isIntersecting;up()},{threshold:.12}).observe(t)});
 document.addEventListener('DOMContentLoaded',()=>CCD.init());
 })();
+/* ===== round 15: things you can do right on the front page ===== */
+CCD.def('going13',el=>{el.addEventListener('click',()=>{const on=el.getAttribute('aria-pressed')!=='true';el.setAttribute('aria-pressed',on);const l=el.querySelector('.lab');if(l)l.textContent=on?'Going ✓':"I'm going";
+  try{const c=CCD.audio.ctx();if(c&&on){const g=c.createGain();g.gain.value=.5;g.connect(c.destination);CCD.audio.voice(c,g,'clap',c.currentTime)}}catch(e){}})});
+CCD.def('miniinv',el=>{const i=el.querySelector('input'),b=el.querySelector('.mi13-card b'),n=el.querySelector('.mi13-card i');let k=0,tm=null;
+  i.addEventListener('input',()=>{b.textContent=i.value.trim()||'Your party';clearTimeout(tm);tm=setTimeout(()=>{k=Math.min(k+1+Math.floor(Math.random()*3),40);n.textContent=k+' going';n.classList.remove('pop');void n.offsetWidth;n.classList.add('pop')},500)})});
+CCD.def('minibeat',el=>{const cells=[...el.querySelectorAll('.mb13-g button')],play=el.querySelector('[data-play]'),names=['kick','clap','hat'];let tm=null,j=0;
+  cells.forEach(c=>c.addEventListener('click',()=>{const on=c.getAttribute('aria-pressed')!=='true';c.setAttribute('aria-pressed',on);if(on&&!tm){const a=CCD.audio.ctx();if(a){const g=a.createGain();g.gain.value=.6;g.connect(a.destination);CCD.audio.voice(a,g,names[+c.dataset.r],a.currentTime)}}}));
+  const stop=()=>{clearInterval(tm);tm=null;cells.forEach(c=>c.classList.remove('now'));play.setAttribute('aria-pressed','false');play.querySelector('.lab').textContent='Play'};
+  play.addEventListener('click',()=>{if(tm)return stop();const a=CCD.audio.ctx();if(!a)return;const g=a.createGain();g.gain.value=.6;g.connect(a.destination);j=0;play.setAttribute('aria-pressed','true');play.querySelector('.lab').textContent='Stop';
+    tm=setInterval(()=>{cells.forEach(c=>c.classList.toggle('now',+c.dataset.j===j));cells.filter(c=>+c.dataset.j===j&&c.getAttribute('aria-pressed')==='true').forEach(c=>CCD.audio.voice(a,g,names[+c.dataset.r],a.currentTime));j=(j+1)%8},60000/122/2)});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&tm)stop()})});

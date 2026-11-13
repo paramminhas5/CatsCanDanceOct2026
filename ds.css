@@ -2756,3 +2756,104 @@ body.r11:has(.ar) .spill,body.r11:has(.ar) .story-obj,body.r11:has(.ar) .obj-hit
 .ar-more>summary span{font-size:var(--fs-small);color:var(--c-mute)}
 @media (min-width:600px){.ar-more>summary{display:none}}
 @media (max-width:599px){.rail{grid-auto-flow:row!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-columns:auto!important;overflow:visible!important;margin-inline:0!important;padding-inline:0!important}}
+/* =====================================================================
+   ROUND 15: every tab opens the app itself. Front page you can play with.
+   Steps are numbered, with a simple icon and one sentence.
+   ===================================================================== */
+.app-nights{--k:var(--c-nights)}.app-host{--k:var(--c-host)}.app-artists{--k:var(--c-artists)}.app-school{--k:var(--c-school)}
+.a13{display:flex;flex-direction:column;gap:var(--s4);padding-top:var(--s5)}
+.a13-h{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:var(--s4)}
+.a13-h>div{display:flex;flex-direction:column;gap:var(--s2);max-width:46rem}
+.a13-h .ph-l{display:flex;align-items:center;gap:var(--s2);color:var(--k);opacity:1}
+.a13-h .ph-l i{width:var(--s2);height:var(--s2);border-radius:50%;background:var(--k)}
+.a13-h h1{font-family:var(--f-display);font-weight:800;font-stretch:108%;font-size:var(--fs-h1);line-height:1.02;margin:0}
+.a13-h p{color:var(--c-mute);font-size:var(--fs-lead);margin:0}
+.a13-h .objslot{width:calc(var(--s10) * 1.6);height:calc(var(--s10) * 1.6)}
+.a13 .t11{display:flex;flex-direction:column;gap:var(--s3)}
+.a13-p{border-radius:var(--r3)}
+/* How it works: one bar that opens to four plain steps */
+.how13{border:1px solid var(--c-line-strong);border-radius:var(--r3);background:var(--c-surface-1)}
+.how13>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:var(--s3);min-height:calc(var(--s7) + var(--s2));padding:0 var(--s4);cursor:pointer;font-weight:700}
+.how13>summary::-webkit-details-marker{display:none}
+.how13>summary em{font-style:normal;font-family:var(--f-mono);font-size:var(--fs-label);color:var(--c-mute);display:flex;align-items:center;gap:var(--s2)}
+.how13>summary em::after{content:"+";font-family:var(--f-display);font-size:var(--fs-h3);color:var(--k);transition:transform var(--d-base) var(--e-spring)}
+.how13[open]>summary em::after{transform:rotate(45deg)}
+.h13{list-style:none;margin:0;padding:0 var(--s3) var(--s3);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s2);counter-reset:none}
+.h13 li{display:flex}
+.h13 button{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:var(--s2);width:100%;padding:var(--s3);border-radius:var(--r2);background:var(--c-surface-2);cursor:pointer;border:1px solid transparent;transition:border-color var(--d-quick) var(--e-out),background var(--d-quick) var(--e-out)}
+.h13 button:hover,.h13 button.on{border-color:var(--k)}
+.h13 button:focus-visible{outline:2px solid var(--k);outline-offset:2px}
+.h13-i{display:grid;place-items:center;width:var(--s8);height:var(--s8);border-radius:var(--r2);background:color-mix(in srgb,var(--k) 16%,transparent);color:var(--k)}
+.h13-i svg{width:var(--s5);height:var(--s5);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.h13-t{display:flex;flex-direction:column;gap:var(--s1)}
+.h13-t b{display:flex;align-items:baseline;gap:var(--s2);font-size:var(--fs-body)}
+.h13-t b em{font-style:normal;font-family:var(--f-mono);font-size:var(--fs-label);color:var(--k)}
+.h13-t span{font-size:var(--fs-small);color:var(--c-mute);line-height:1.4}
+/* the front page: one card per app, each with something to do */
+.hm13s{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4);padding-block:var(--s4)}
+.hm13{display:flex;flex-direction:column;gap:var(--s3);padding:var(--s4);border-radius:var(--r3);background:var(--c-surface-1);border:1px solid var(--c-line);border-top:3px solid var(--k)}
+.hm13-h{display:flex;flex-direction:column;gap:var(--s1)}
+.hm13-h .ph-l{display:flex;align-items:center;gap:var(--s2);color:var(--k);opacity:1}
+.hm13-h .ph-l i{width:var(--s2);height:var(--s2);border-radius:50%;background:var(--k)}
+.hm13-h h2{font-family:var(--f-display);font-weight:800;font-stretch:108%;font-size:var(--fs-h3);line-height:1.1;margin:0}
+.hm13-h p{margin:0;font-size:var(--fs-small);color:var(--c-mute)}
+.hm13-go{margin-top:auto;display:flex;align-items:center;justify-content:space-between;min-height:var(--s8);padding:0 var(--s3);border-radius:var(--r2);background:var(--c-surface-2);color:var(--k);font-weight:700;text-decoration:none}
+.hm13-go .arr{width:var(--s5)}
+.gn13s{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--s2)}
+.gn13{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--s2)}
+.gn13>a{display:grid;grid-template-columns:var(--s9) minmax(0,1fr);gap:var(--s3);align-items:center;color:inherit;text-decoration:none;min-width:0}
+.gn13 img{width:var(--s9);height:var(--s9);object-fit:cover;border-radius:var(--r1)}
+.gn13 a>span{display:flex;flex-direction:column;min-width:0}
+.gn13 b{font-size:var(--fs-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gn13 em{font-style:normal;font-size:var(--fs-small);color:var(--c-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gn13 .btn[aria-pressed=true]{background:var(--c-nights);color:var(--c-on);border-color:var(--c-nights)}
+.ha13s{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3)}
+.ha13{display:flex;flex-direction:column;gap:var(--s2);min-width:0}
+.ha13 .vinyl{width:100%;aspect-ratio:1}
+.ha13>a{display:flex;flex-direction:column;color:inherit;text-decoration:none;min-width:0}
+.ha13>a b{font-size:var(--fs-small);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ha13>a em{font-style:normal;font-size:var(--fs-label);color:var(--c-artists)}
+.ha13 .vinfo{display:none}
+.mi13{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s3);align-items:stretch}
+.mi13-card{display:flex;flex-direction:column;justify-content:flex-end;gap:var(--s1);min-height:calc(var(--s10) * 2);padding:var(--s3);border-radius:var(--r2);background-size:cover;background-position:center;position:relative;overflow:hidden;color:var(--c-ink)}
+.mi13-card::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(0,0,0,.75))}
+.mi13-card>*{position:relative}
+.mi13-card em{font-style:normal;font-family:var(--f-mono);font-size:var(--fs-label);color:var(--c-host)}
+.mi13-card b{font-family:var(--f-display);font-weight:800;font-size:var(--fs-h3);line-height:1.05;overflow-wrap:anywhere}
+.mi13-card span{font-size:var(--fs-small)}
+.mi13-card i{font-style:normal;align-self:flex-start;font-size:var(--fs-label);font-family:var(--f-mono);padding:var(--s1) var(--s2);border-radius:var(--r4);background:var(--c-host);color:var(--c-on)}
+.mi13-card i.pop{animation:mi13pop var(--d-base) var(--e-spring)}
+@keyframes mi13pop{50%{transform:scale(1.18)}}
+.mb13{display:flex;flex-direction:column;gap:var(--s3)}
+.mb13-g{display:grid;grid-template-columns:calc(var(--s9) - var(--s2)) repeat(8,minmax(0,1fr));gap:var(--s1);align-items:center}
+.mb13-r{font-family:var(--f-mono);font-size:var(--fs-label);color:var(--c-mute)}
+.mb13-g button{all:unset;box-sizing:border-box;aspect-ratio:1;min-height:var(--s7);border-radius:var(--r1);background:var(--c-surface-3);cursor:pointer;transition:background var(--d-tap) var(--e-out),transform var(--d-tap) var(--e-out)}
+.mb13-g button:nth-of-type(4n+1){background:var(--c-surface-2);outline:1px solid var(--c-line-strong)}
+.mb13-g button[aria-pressed=true]{background:var(--c-school);outline:0}
+.mb13-g button.now{transform:scale(.88)}
+.mb13-g button.now[aria-pressed=true]{box-shadow:0 0 var(--s4) var(--c-school)}
+.mb13-g button:focus-visible{outline:2px solid var(--c-school)}
+.mb13 .btn{align-self:flex-start}
+@media (max-width:899px){.hm13s{grid-template-columns:minmax(0,1fr)}.h13{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:599px){
+  .a13{padding-top:var(--s3);gap:var(--s3)}
+  .a13-h{grid-template-columns:minmax(0,1fr)}
+  .a13-h .objslot{display:none}
+  .a13-h h1{font-size:var(--fs-h2)}
+  .a13-h p{font-size:var(--fs-body)}
+  .h13{grid-template-columns:minmax(0,1fr)}
+  .h13 button{flex-direction:row;align-items:flex-start;gap:var(--s3)}
+  .h13-i{flex:none}
+  .ha13s{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mi13{grid-template-columns:minmax(0,1fr)}
+  .mi13-card{min-height:calc(var(--s10) * 1.5)}
+  .act12{display:none!important}
+}
+/* on phones the play-the-track pill sits bottom left, clear of the buttons that line up on the right */
+/* on phones the play-the-track button lives in the tab bar, so it never sits on top of a button */
+@media (max-width:599px){
+  .tabs12{padding-right:calc(var(--s9) + var(--s2))}
+  .spill{left:auto;right:var(--s2);bottom:calc(var(--s2) + env(safe-area-inset-bottom))!important;z-index:var(--z-scrim)}
+  .spill .btn .lab,.spill .layers{display:none}
+  .knobtip,.obj-hit.knob::after{display:none!important}
+  }
