@@ -1613,7 +1613,6 @@ header .mmute{margin-right:10px}
   .appfilm .sbox .ntools{padding:0}
   .appfilm .sbox #nCities .chip{font-size:15px;padding:10px 16px}
   .appfilm .sbox #mList{padding:0}
-  html.ph #nDet #goB,html.ph #nDet #crB,html.ph #nDet #ckB{display:none}
   .appfilm .sbox .field{display:block;margin:0 0 14px}
   .appfilm .sbox .hv{display:block!important}
   .appfilm .sbox #invite{margin:16px 0 8px}
@@ -1635,6 +1634,66 @@ header .mmute{margin-right:10px}
   html.ph,html.ph body{overflow-x:clip}
   .appfilm .aint .fh{font-size:min(11vw,46px)}
 }
+
+/* ===== round 21 ===== */
+@media (max-width:700px){
+  /* one size for every big object, always above the words, never behind them */
+  #film{--os:min(54vw,28svh,250px)}
+  #film .stg{justify-content:center;padding-top:104px;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  #film .fob,#film .s-app .fob,#film .s-title .fob,#film .fknob{position:relative!important;left:auto!important;top:auto!important;width:var(--os)!important;margin:0 auto 22px;flex:none;transform:scale(calc(.86 + var(--e,1)*.14))!important}
+  #film .s-title .fob{transform:scale(calc(.9 + var(--e,1)*.1)) rotate(calc(var(--p,0)*-10deg))!important}
+  #film .fknob b{bottom:-14px}
+  /* chrome that shines: more contrast, a sweep of light, a few glints, a brighter key light */
+  .fcv{filter:contrast(1.22) brightness(1.12) saturate(1.2)}
+  .fob .glow{inset:-40%;background:radial-gradient(circle,rgba(255,255,255,.22) 0,color-mix(in srgb,var(--c) 50%,transparent) 22%,color-mix(in srgb,var(--c) 16%,transparent) 45%,transparent 68%)}
+  .sheen2{position:absolute;inset:8%;border-radius:50%;pointer-events:none;mix-blend-mode:overlay;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.85) 46%,rgba(255,255,255,.95) 50%,transparent 64%) 0 0/260% 100% no-repeat;animation:sweep 3.6s cubic-bezier(.5,0,.2,1) infinite;-webkit-mask-image:radial-gradient(circle,#000 58%,transparent 72%);mask-image:radial-gradient(circle,#000 58%,transparent 72%)}
+  @keyframes sweep{0%{background-position:120% 0}55%,100%{background-position:-60% 0}}
+  .gl{position:absolute;width:18px;height:18px;pointer-events:none;opacity:0;filter:drop-shadow(0 0 6px #fff);animation:twinkle 2.8s ease-in-out infinite}
+  .gl svg{width:100%;height:100%;fill:#fff}
+  .gl-a{left:24%;top:20%}.gl-b{right:20%;top:44%;width:12px;height:12px;animation-delay:.9s}.gl-c{left:40%;bottom:18%;width:14px;height:14px;animation-delay:1.8s}
+  @keyframes twinkle{0%,100%{opacity:0;transform:scale(.3) rotate(0)}45%{opacity:1;transform:scale(1) rotate(45deg)}60%{opacity:.2;transform:scale(.6) rotate(60deg)}}
+  #film.beat .gl{animation-duration:calc(120s/var(--bpm))}
+  /* artists slide past */
+  .s-art2 .stg{justify-content:center;gap:0}
+  .arow{display:flex;gap:12px;width:max-content;margin-top:14px;will-change:transform}
+  .arow.r1{transform:translateX(calc(var(--p,0)*-46%))}
+  .arow.r2{transform:translateX(calc(-46% + var(--p,0)*46%))}
+  .acard{display:block;width:118px;flex:none;color:var(--ink);text-decoration:none}
+  .acard img{display:block;width:118px;height:118px;border-radius:14px;object-fit:cover;box-shadow:0 0 0 1px rgba(242,241,238,.12),0 12px 30px rgba(0,0,0,.5)}
+  .acard b{display:block;font-size:14px;font-weight:600;margin-top:8px;line-height:1.2}
+  .acard small{display:block;font-size:12px;color:var(--mute)}
+  .s-art2 .fb{margin-top:20px;align-self:flex-start}
+  .s-art2 .fs{margin-bottom:4px}
+  /* app pages: act on the first screen */
+  .ahd{padding:104px 18px 6px}
+  .ahd-t{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .ahd .fh{font-size:min(10.5vw,44px)!important;margin:0}
+  .ahd .fk{display:inline-flex;align-items:center;gap:8px;padding:5px 11px 5px 9px;border-radius:99px;border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 10%,transparent);color:#F2F1EE;font-size:10.5px;letter-spacing:.1em;margin:0 0 10px;font-family:var(--mono);text-transform:uppercase}
+  .ahd .fk::before,.amore .fk::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}
+  .fob.small{position:relative;width:84px;flex:none;aspect-ratio:1}
+  .fob.small .gl{width:10px;height:10px}
+  .trak{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 4px;padding:0}
+  .trak button{display:inline-flex;align-items:center;gap:7px;padding:6px 12px 6px 6px;border-radius:99px;border:1px solid rgba(242,241,238,.18);background:transparent;color:#CFCEC8;font:inherit;font-size:13.5px;cursor:pointer}
+  .trak span{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(242,241,238,.1);font-size:11px;font-family:var(--mono)}
+  .trak li.now button{border-color:var(--c);color:#F2F1EE;box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 18%,transparent)}
+  .trak li.now span{background:var(--c);color:#0C0D0F}
+  .trak li.done button{color:#F2F1EE}
+  .trak li.done span{background:var(--c);color:#0C0D0F;font-size:0}
+  .trak li.done span::after{content:"✓";font-size:11px}
+  .flash{animation:flashit 1.3s ease-out}
+  @keyframes flashit{0%,40%{box-shadow:0 0 0 3px var(--acc,#fff),0 0 24px var(--acc,#fff)}100%{box-shadow:0 0 0 0 transparent}}
+  html.ph .stage.cbody{padding-top:0!important}
+  html.ph .demo{padding-top:8px!important}
+  .amore{padding:28px 18px 120px}
+  .amore .fk{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#F2F1EE;margin:0 0 10px}
+  .amore a{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 0;border-top:1px solid rgba(242,241,238,.1);color:var(--ink);text-decoration:none}
+  .amore a b{font-size:16px;font-weight:600}
+  .amore a span{grid-column:1;font-size:14px;color:#C9C8C2}
+  .amore a i{grid-column:2;grid-row:1/span 2;align-self:center;font-style:normal;color:var(--c);font-size:18px}
+  html.ph .pagefoot{display:none!important}
+}
+@media (max-width:700px){.fob.small{position:relative!important;left:auto!important;top:auto!important;transform:none!important;margin:0}.ahd .fh{font-size:min(9.4vw,40px)!important}}
+@media (max-width:700px){#film .s-eps .stg{justify-content:flex-end}.s-art2 .fh{font-size:min(10vw,42px)!important}}
 </style>
 </head>
 <body>
@@ -3400,14 +3459,14 @@ window.__CCDA={kohra:['kohra','New Delhi','a-kohra'],sheral:['sheral','New Delhi
     o.size=()=>{const w=host.clientWidth;if(!w)return;const d=Math.min(2.5,devicePixelRatio||1),px=Math.round(w*d);if(cv.width!==px){cv.width=px;cv.height=px;o.draw(true)}};
     o.draw=f=>{const i=o.fi();if(!f&&i===o.last)return;let im=o.imgs[i];if(!im){for(let k=1;k<o.n&&!im;k++)im=o.imgs[(i+k)%o.n]||o.imgs[(i-k+o.n)%o.n]}if(!im)return;o.last=i;o.ctx.drawImage(im,0,0,cv.width,cv.height)};
     objs.push(o);return o};
-  window.__ccdObjs=objs;
+  window.__ccdObjs=objs;window.__ccdMkObj=mkObj;
   /* replace the small sprites in the film with sharp ones */
   document.querySelectorAll('#film .fob').forEach(f=>{const c=f.querySelector('.fchr');if(!c)return;const o=mkObj(f,c.dataset.form,+c.dataset.b*FR[c.dataset.form]/120);c.remove();f._o=o});
   /* the turn follows your scroll: one full turn per 360 px, eased so it never jumps */
   let raf=0;const loop=()=>{raf=0;let more=false;for(const o of objs){if(!o.vis)continue;const d=o.tgt-o.cur;if(Math.abs(d)>.02){o.cur+=d*.32;more=true}else o.cur=o.tgt;o.draw()}if(more)raf=requestAnimationFrame(loop)};
   const kick=()=>{if(!raf)raf=requestAnimationFrame(loop)};
   const vis=()=>{const vh=innerHeight,y=scrollY;for(const o of objs){const r=o.host.getBoundingClientRect();o.vis=r.bottom>-vh*.2&&r.top<vh*1.2&&r.width>0;if(r.bottom>-vh*1.5&&r.top<vh*2.5&&r.width>0)o.load();if(o.vis){o.size();o.tgt=o.base+o.off+y/6*o.n/60}}kick()};
-  addEventListener('scroll',vis,{passive:true});addEventListener('resize',vis);addEventListener('hashchange',()=>setTimeout(vis,200));setTimeout(vis,200);setTimeout(vis,1200);
+  window.__ccdVis=()=>vis();addEventListener('scroll',vis,{passive:true});addEventListener('resize',vis);addEventListener('hashchange',()=>setTimeout(vis,200));setTimeout(vis,200);setTimeout(vis,1200);
   /* the School dial in the film turns the sharp knob */
   const kn=document.getElementById('fKnob');if(kn&&kn._o===undefined){const o=objs.find(x=>x.host===kn);if(o){let d=null;const ang=e=>{const r=kn.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))};
     kn.addEventListener('pointerdown',e=>{d={a:ang(e)}},true);kn.addEventListener('pointermove',e=>{if(!d)return;const a=ang(e);let x=a-d.a;if(x>Math.PI)x-=2*Math.PI;if(x<-Math.PI)x+=2*Math.PI;d.a=a;o.off+=x*o.n/(2*Math.PI);o.tgt+=x*o.n/(2*Math.PI);kick()},true);const u=()=>{d=null};kn.addEventListener('pointerup',u,true);kn.addEventListener('pointercancel',u,true)}}
@@ -3477,6 +3536,64 @@ window.__CCDA={kohra:['kohra','New Delhi','a-kohra'],sheral:['sheral','New Delhi
       const ar=aRender;aRender=function(){ar();sync()};sync()}
     if(app==='school'){const tr=$q('.panel[data-tour=school] .transport');box(0).append($q('#seq2'),$q('#stuPlay'));box(1).append(tr);box(2).append($q('#expBtn'),$q('#expNote'),$q('.panel[data-tour=school] .screens'))}
     setTimeout(vis,100)};
+  /* replaced in round 21: steps live on the first screen, not one screen each */
+})();
+
+/* ===== round 21 (13 Nov, Param): objects all one size and never behind the words, chrome that shines, artists that slide past,
+   and app pages where you act on the first screen: a short header with a step tracker, the product, then what else you can do. ===== */
+(()=>{if(!window.__ph)return;const $q=s=>document.querySelector(s),$a=s=>[...document.querySelectorAll(s)];
+  /* glints on every big object */
+  const GL='<svg viewBox="0 0 24 24"><path d="M12 0c.6 6.4 1.6 9.4 3 10.8 1.5 1.5 4.5 2.5 9 1.2-4.5 1.3-7.5 2.3-9 3.8C13.6 17.2 12.6 20 12 24c-.6-4-1.6-6.8-3-8.2C7.5 14.3 4.5 13.3 0 12c4.5 1.3 7.5.3 9-1.2C10.4 9.4 11.4 6.4 12 0z"/></svg>';
+  const shine=f=>{if(f.querySelector('.gl'))return;['a','b','c'].forEach(k=>{const i=document.createElement('i');i.className='gl gl-'+k;i.setAttribute('aria-hidden','true');i.innerHTML=GL;f.appendChild(i)});const s=document.createElement('i');s.className='sheen2';s.setAttribute('aria-hidden','true');f.appendChild(s)};
+  $a('#film .fob').forEach(shine);
+  /* artists slide past as you scroll */
+  const art=$q('#film .s-art');if(art&&typeof ARTISTS!=='undefined'){const L=ARTISTS.map((a,i)=>({n:a.n,c:a.c,img:a.img,i}));L.push({n:'Sheral',c:'New Delhi',img:'a-sheral',i:-1,slug:'sheral'});
+    const card=a=>`<a class="acard" ${a.i>=0?`href="#artists" data-ai="${a.i}"`:`href="https://catscandance.com/artists/${a.slug}" target="_blank" rel="noopener"`}><img src="img/${a.img}.webp" alt="" loading="lazy"><b>${a.n}</b><small>${a.c}</small></a>`;
+    const h=Math.ceil(L.length/2),r1=L.slice(0,h),r2=L.slice(h);
+    art.classList.add('s-art2');art.style.setProperty('--h','190');
+    art.querySelector('.stg').innerHTML=`<div class="ftx"><p class="fk">03 · Artists</p><h2 class="fh">Hear them. <em>Book them.</em></h2><p class="fs">Pages for South Asian electronic artists. Every fact links to where we found it. Tap one to hear them.</p></div>
+      <div class="arow r1">${r1.map(card).join('')}</div><div class="arow r2">${r2.map(card).join('')}</div><a class="fb" href="#artists">Browse all 208 artists</a>`}
+  document.addEventListener('click',e=>{const a=e.target.closest('a.acard[data-ai]');if(!a)return;e.preventDefault();asel=+a.dataset.ai;try{aRender()}catch(x){}location.hash='artists';setTimeout(()=>{try{document.getElementById('playA').scrollIntoView({block:'center'})}catch(x){}},450)});
+
+  /* app pages: header with a step tracker, then the product, then what else */
+  const APPS={
+   nights:{c:'#3B78FF',f:'ball',k:'01 · Nights',h:['Find a ','night.'],
+     s:[['Pick a night','#mList'],['Say you’re going','#goB'],['Find a crew','#crB'],['Check in','#ckB,#goB']],
+     more:[['#episodes','Our own nights','The Episodes, in Bengaluru. Next one Wed 25 Nov.'],['#host','Not going out?','Throw your own with Host.'],['#points','Points','Check in at nights and they add up to a free ticket.']]},
+   host:{c:'#FFE600',f:'stamp',k:'02 · Host',h:['Throw your ','own.'],
+     s:[['Name it','#hName'],['Pick a look','#hLooks'],['Send it','#hCopy'],['RSVP','#iRsvp'],['Run the door','#hTabs button:nth-child(3)']],
+     more:[['#gear','Need sound or a DJ?','Gear: the rig and the people to run it.'],['#artists','Book an artist','Send a request from Artists.'],['#nights','Rather go out?','See what’s on in Nights.']]},
+   artists:{c:'#A98BFF',f:'record',k:'03 · Artists',h:['Hear them. ','Book them.'],
+     s:[['Pick a record','#aDiscs'],['Play it','#playA'],['Be a fan','#fanB'],['Book them','#bookB']],
+     more:[['https://catscandance.com/artists/karan-kanchan','Every artist has a page','Gigs, releases and press, each with its source.'],['#nights','See them live','Nights with their names on the line-up.'],['#school','Make your own','Learn to produce in School.']]},
+   school:{c:'#FF7DAA',f:'knob',k:'04 · School',h:['Make the ','music.'],
+     s:[['Tap a pad','#seq2'],['Shape the sound','#tempo'],['Take it to Live','#expBtn']],
+     more:[['https://catscandance.com/school','The full School','Lessons, a studio and two decks.'],['#artists','Hear how they do it','Artists, with previews.'],['#nights','Play it out','Find a night with open decks.']]}};
+  const done={nights:[0,0,0,0],host:[0,0,0,0,0],artists:[0,0,0,0],school:[0,0,0]};
+  const built={};
+  const build=app=>{if(built[app])return;const A=APPS[app],ah=$q(`.todo .ahead[data-pg="${app}"]`),sec=ah&&ah.closest('section');if(!sec)return;built[app]=1;
+    const hd=document.createElement('div');hd.className='ahd';hd.dataset.pg=app;hd.style.setProperty('--c',A.c);
+    hd.innerHTML=`<div class="ahd-t"><div><p class="fk">${A.k}</p><h2 class="fh">${A.h[0]}<em>${A.h[1]}</em></h2></div><div class="fob small"><i class="glow"></i></div></div>
+      <ol class="trak">${A.s.map((x,i)=>`<li><button type="button" data-t="${i}"><span>${i+1}</span>${x[0]}</button></li>`).join('')}</ol>`;
+    sec.prepend(hd);
+    const o=window.__ccdMkObj(hd.querySelector('.fob'),A.f,0);shine(hd.querySelector('.fob'));
+    const mo=document.createElement('div');mo.className='amore';mo.dataset.pg=app;mo.style.setProperty('--c',A.c);
+    mo.innerHTML=`<p class="fk">What else you can do</p>${A.more.map(([h,t,p])=>`<a href="${h}"${h.startsWith('http')?' target="_blank" rel="noopener"':''}><b>${t}</b><span>${p}</span><i>${h.startsWith('http')?'↗':'→'}</i></a>`).join('')}`;
+    sec.after(mo);
+    hd.querySelectorAll('.trak button').forEach(b=>b.onclick=()=>{const sel=A.s[+b.dataset.t][1];if(app==='host'&&+b.dataset.t===4){const t=$q('#hTabs button:nth-child(3)');t&&t.click()}else if(app==='host'){const t=$q('#hTabs button:nth-child(1)');t&&t.click()}
+      const el=sel.split(',').map(s=>$q(s)).find(Boolean);if(!el)return;el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1400)});
+    setTimeout(()=>window.__ccdVis&&window.__ccdVis(),120)};
+  /* what counts as done */
+  const mark=(app,i)=>{done[app][i]=1};
+  document.addEventListener('click',e=>{const t=e.target;
+    if(t.closest('#mList .mrw'))mark('nights',0);
+    if(t.closest('#hLooks'))mark('host',1);if(t.closest('#hCopy,#hSend'))mark('host',2);
+    if(t.closest('#aDiscs .ad'))mark('artists',0);if(t.closest('#playA,#plat'))mark('artists',1);if(t.closest('#fanB'))mark('artists',2);if(t.closest('#bookB,#sendB'))mark('artists',3);
+    if(t.closest('#seq2'))mark('school',0);if(t.closest('#shuf,#rew,#stuReset'))mark('school',1);if(t.closest('#expBtn'))mark('school',2)},true);
+  document.addEventListener('input',e=>{const t=e.target;if(t.id==='hName'||t.id==='hWhen'||t.id==='hWhere')mark('host',0);if(['tempo','swing','fSlider2'].includes(t.id))mark('school',1)},true);
+  setInterval(()=>{try{done.nights[1]=going.has(nsel)?1:done.nights[1];done.nights[2]=crewed.has(nsel)?1:done.nights[2];done.nights[3]=checked.has(nsel)?1:done.nights[3]}catch(e){}
+    const gs=$q('#gSum');if(gs&&/^[1-9]/.test(gs.textContent.trim()))done.host[3]=1;const dc=$q('#dCount');if(dc&&/^[1-9]/.test(dc.textContent.trim()))done.host[4]=1;
+    $a('.ahd').forEach(h=>{const d=done[h.dataset.pg];if(!d)return;const first=d.indexOf(0);h.querySelectorAll('.trak li').forEach((li,i)=>{li.classList.toggle('done',!!d[i]);li.classList.toggle('now',i===first)})})},500);
   const go=()=>{const p=document.body.dataset.page;if(APPS[p])build(p)};addEventListener('hashchange',()=>setTimeout(go,60));go();
 })();
 

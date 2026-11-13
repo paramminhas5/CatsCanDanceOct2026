@@ -593,14 +593,14 @@ window.__CCDA={kohra:['kohra','New Delhi','a-kohra'],sheral:['sheral','New Delhi
     o.size=()=>{const w=host.clientWidth;if(!w)return;const d=Math.min(2.5,devicePixelRatio||1),px=Math.round(w*d);if(cv.width!==px){cv.width=px;cv.height=px;o.draw(true)}};
     o.draw=f=>{const i=o.fi();if(!f&&i===o.last)return;let im=o.imgs[i];if(!im){for(let k=1;k<o.n&&!im;k++)im=o.imgs[(i+k)%o.n]||o.imgs[(i-k+o.n)%o.n]}if(!im)return;o.last=i;o.ctx.drawImage(im,0,0,cv.width,cv.height)};
     objs.push(o);return o};
-  window.__ccdObjs=objs;
+  window.__ccdObjs=objs;window.__ccdMkObj=mkObj;
   /* replace the small sprites in the film with sharp ones */
   document.querySelectorAll('#film .fob').forEach(f=>{const c=f.querySelector('.fchr');if(!c)return;const o=mkObj(f,c.dataset.form,+c.dataset.b*FR[c.dataset.form]/120);c.remove();f._o=o});
   /* the turn follows your scroll: one full turn per 360 px, eased so it never jumps */
   let raf=0;const loop=()=>{raf=0;let more=false;for(const o of objs){if(!o.vis)continue;const d=o.tgt-o.cur;if(Math.abs(d)>.02){o.cur+=d*.32;more=true}else o.cur=o.tgt;o.draw()}if(more)raf=requestAnimationFrame(loop)};
   const kick=()=>{if(!raf)raf=requestAnimationFrame(loop)};
   const vis=()=>{const vh=innerHeight,y=scrollY;for(const o of objs){const r=o.host.getBoundingClientRect();o.vis=r.bottom>-vh*.2&&r.top<vh*1.2&&r.width>0;if(r.bottom>-vh*1.5&&r.top<vh*2.5&&r.width>0)o.load();if(o.vis){o.size();o.tgt=o.base+o.off+y/6*o.n/60}}kick()};
-  addEventListener('scroll',vis,{passive:true});addEventListener('resize',vis);addEventListener('hashchange',()=>setTimeout(vis,200));setTimeout(vis,200);setTimeout(vis,1200);
+  window.__ccdVis=()=>vis();addEventListener('scroll',vis,{passive:true});addEventListener('resize',vis);addEventListener('hashchange',()=>setTimeout(vis,200));setTimeout(vis,200);setTimeout(vis,1200);
   /* the School dial in the film turns the sharp knob */
   const kn=document.getElementById('fKnob');if(kn&&kn._o===undefined){const o=objs.find(x=>x.host===kn);if(o){let d=null;const ang=e=>{const r=kn.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))};
     kn.addEventListener('pointerdown',e=>{d={a:ang(e)}},true);kn.addEventListener('pointermove',e=>{if(!d)return;const a=ang(e);let x=a-d.a;if(x>Math.PI)x-=2*Math.PI;if(x<-Math.PI)x+=2*Math.PI;d.a=a;o.off+=x*o.n/(2*Math.PI);o.tgt+=x*o.n/(2*Math.PI);kick()},true);const u=()=>{d=null};kn.addEventListener('pointerup',u,true);kn.addEventListener('pointercancel',u,true)}}
@@ -670,5 +670,63 @@ window.__CCDA={kohra:['kohra','New Delhi','a-kohra'],sheral:['sheral','New Delhi
       const ar=aRender;aRender=function(){ar();sync()};sync()}
     if(app==='school'){const tr=$q('.panel[data-tour=school] .transport');box(0).append($q('#seq2'),$q('#stuPlay'));box(1).append(tr);box(2).append($q('#expBtn'),$q('#expNote'),$q('.panel[data-tour=school] .screens'))}
     setTimeout(vis,100)};
+  /* replaced in round 21: steps live on the first screen, not one screen each */
+})();
+
+/* ===== round 21 (13 Nov, Param): objects all one size and never behind the words, chrome that shines, artists that slide past,
+   and app pages where you act on the first screen: a short header with a step tracker, the product, then what else you can do. ===== */
+(()=>{if(!window.__ph)return;const $q=s=>document.querySelector(s),$a=s=>[...document.querySelectorAll(s)];
+  /* glints on every big object */
+  const GL='<svg viewBox="0 0 24 24"><path d="M12 0c.6 6.4 1.6 9.4 3 10.8 1.5 1.5 4.5 2.5 9 1.2-4.5 1.3-7.5 2.3-9 3.8C13.6 17.2 12.6 20 12 24c-.6-4-1.6-6.8-3-8.2C7.5 14.3 4.5 13.3 0 12c4.5 1.3 7.5.3 9-1.2C10.4 9.4 11.4 6.4 12 0z"/></svg>';
+  const shine=f=>{if(f.querySelector('.gl'))return;['a','b','c'].forEach(k=>{const i=document.createElement('i');i.className='gl gl-'+k;i.setAttribute('aria-hidden','true');i.innerHTML=GL;f.appendChild(i)});const s=document.createElement('i');s.className='sheen2';s.setAttribute('aria-hidden','true');f.appendChild(s)};
+  $a('#film .fob').forEach(shine);
+  /* artists slide past as you scroll */
+  const art=$q('#film .s-art');if(art&&typeof ARTISTS!=='undefined'){const L=ARTISTS.map((a,i)=>({n:a.n,c:a.c,img:a.img,i}));L.push({n:'Sheral',c:'New Delhi',img:'a-sheral',i:-1,slug:'sheral'});
+    const card=a=>`<a class="acard" ${a.i>=0?`href="#artists" data-ai="${a.i}"`:`href="https://catscandance.com/artists/${a.slug}" target="_blank" rel="noopener"`}><img src="img/${a.img}.webp" alt="" loading="lazy"><b>${a.n}</b><small>${a.c}</small></a>`;
+    const h=Math.ceil(L.length/2),r1=L.slice(0,h),r2=L.slice(h);
+    art.classList.add('s-art2');art.style.setProperty('--h','190');
+    art.querySelector('.stg').innerHTML=`<div class="ftx"><p class="fk">03 · Artists</p><h2 class="fh">Hear them. <em>Book them.</em></h2><p class="fs">Pages for South Asian electronic artists. Every fact links to where we found it. Tap one to hear them.</p></div>
+      <div class="arow r1">${r1.map(card).join('')}</div><div class="arow r2">${r2.map(card).join('')}</div><a class="fb" href="#artists">Browse all 208 artists</a>`}
+  document.addEventListener('click',e=>{const a=e.target.closest('a.acard[data-ai]');if(!a)return;e.preventDefault();asel=+a.dataset.ai;try{aRender()}catch(x){}location.hash='artists';setTimeout(()=>{try{document.getElementById('playA').scrollIntoView({block:'center'})}catch(x){}},450)});
+
+  /* app pages: header with a step tracker, then the product, then what else */
+  const APPS={
+   nights:{c:'#3B78FF',f:'ball',k:'01 · Nights',h:['Find a ','night.'],
+     s:[['Pick a night','#mList'],['Say you’re going','#goB'],['Find a crew','#crB'],['Check in','#ckB,#goB']],
+     more:[['#episodes','Our own nights','The Episodes, in Bengaluru. Next one Wed 25 Nov.'],['#host','Not going out?','Throw your own with Host.'],['#points','Points','Check in at nights and they add up to a free ticket.']]},
+   host:{c:'#FFE600',f:'stamp',k:'02 · Host',h:['Throw your ','own.'],
+     s:[['Name it','#hName'],['Pick a look','#hLooks'],['Send it','#hCopy'],['RSVP','#iRsvp'],['Run the door','#hTabs button:nth-child(3)']],
+     more:[['#gear','Need sound or a DJ?','Gear: the rig and the people to run it.'],['#artists','Book an artist','Send a request from Artists.'],['#nights','Rather go out?','See what’s on in Nights.']]},
+   artists:{c:'#A98BFF',f:'record',k:'03 · Artists',h:['Hear them. ','Book them.'],
+     s:[['Pick a record','#aDiscs'],['Play it','#playA'],['Be a fan','#fanB'],['Book them','#bookB']],
+     more:[['https://catscandance.com/artists/karan-kanchan','Every artist has a page','Gigs, releases and press, each with its source.'],['#nights','See them live','Nights with their names on the line-up.'],['#school','Make your own','Learn to produce in School.']]},
+   school:{c:'#FF7DAA',f:'knob',k:'04 · School',h:['Make the ','music.'],
+     s:[['Tap a pad','#seq2'],['Shape the sound','#tempo'],['Take it to Live','#expBtn']],
+     more:[['https://catscandance.com/school','The full School','Lessons, a studio and two decks.'],['#artists','Hear how they do it','Artists, with previews.'],['#nights','Play it out','Find a night with open decks.']]}};
+  const done={nights:[0,0,0,0],host:[0,0,0,0,0],artists:[0,0,0,0],school:[0,0,0]};
+  const built={};
+  const build=app=>{if(built[app])return;const A=APPS[app],ah=$q(`.todo .ahead[data-pg="${app}"]`),sec=ah&&ah.closest('section');if(!sec)return;built[app]=1;
+    const hd=document.createElement('div');hd.className='ahd';hd.dataset.pg=app;hd.style.setProperty('--c',A.c);
+    hd.innerHTML=`<div class="ahd-t"><div><p class="fk">${A.k}</p><h2 class="fh">${A.h[0]}<em>${A.h[1]}</em></h2></div><div class="fob small"><i class="glow"></i></div></div>
+      <ol class="trak">${A.s.map((x,i)=>`<li><button type="button" data-t="${i}"><span>${i+1}</span>${x[0]}</button></li>`).join('')}</ol>`;
+    sec.prepend(hd);
+    const o=window.__ccdMkObj(hd.querySelector('.fob'),A.f,0);shine(hd.querySelector('.fob'));
+    const mo=document.createElement('div');mo.className='amore';mo.dataset.pg=app;mo.style.setProperty('--c',A.c);
+    mo.innerHTML=`<p class="fk">What else you can do</p>${A.more.map(([h,t,p])=>`<a href="${h}"${h.startsWith('http')?' target="_blank" rel="noopener"':''}><b>${t}</b><span>${p}</span><i>${h.startsWith('http')?'↗':'→'}</i></a>`).join('')}`;
+    sec.after(mo);
+    hd.querySelectorAll('.trak button').forEach(b=>b.onclick=()=>{const sel=A.s[+b.dataset.t][1];if(app==='host'&&+b.dataset.t===4){const t=$q('#hTabs button:nth-child(3)');t&&t.click()}else if(app==='host'){const t=$q('#hTabs button:nth-child(1)');t&&t.click()}
+      const el=sel.split(',').map(s=>$q(s)).find(Boolean);if(!el)return;el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1400)});
+    setTimeout(()=>window.__ccdVis&&window.__ccdVis(),120)};
+  /* what counts as done */
+  const mark=(app,i)=>{done[app][i]=1};
+  document.addEventListener('click',e=>{const t=e.target;
+    if(t.closest('#mList .mrw'))mark('nights',0);
+    if(t.closest('#hLooks'))mark('host',1);if(t.closest('#hCopy,#hSend'))mark('host',2);
+    if(t.closest('#aDiscs .ad'))mark('artists',0);if(t.closest('#playA,#plat'))mark('artists',1);if(t.closest('#fanB'))mark('artists',2);if(t.closest('#bookB,#sendB'))mark('artists',3);
+    if(t.closest('#seq2'))mark('school',0);if(t.closest('#shuf,#rew,#stuReset'))mark('school',1);if(t.closest('#expBtn'))mark('school',2)},true);
+  document.addEventListener('input',e=>{const t=e.target;if(t.id==='hName'||t.id==='hWhen'||t.id==='hWhere')mark('host',0);if(['tempo','swing','fSlider2'].includes(t.id))mark('school',1)},true);
+  setInterval(()=>{try{done.nights[1]=going.has(nsel)?1:done.nights[1];done.nights[2]=crewed.has(nsel)?1:done.nights[2];done.nights[3]=checked.has(nsel)?1:done.nights[3]}catch(e){}
+    const gs=$q('#gSum');if(gs&&/^[1-9]/.test(gs.textContent.trim()))done.host[3]=1;const dc=$q('#dCount');if(dc&&/^[1-9]/.test(dc.textContent.trim()))done.host[4]=1;
+    $a('.ahd').forEach(h=>{const d=done[h.dataset.pg];if(!d)return;const first=d.indexOf(0);h.querySelectorAll('.trak li').forEach((li,i)=>{li.classList.toggle('done',!!d[i]);li.classList.toggle('now',i===first)})})},500);
   const go=()=>{const p=document.body.dataset.page;if(APPS[p])build(p)};addEventListener('hashchange',()=>setTimeout(go,60));go();
 })();
