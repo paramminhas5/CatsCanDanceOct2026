@@ -430,3 +430,121 @@ try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
   const pb=document.getElementById('mPlay');if(pb){let on=false;const pn=document.getElementById('mPn');pb.onclick=()=>{if(on){on=false;window.__ccdStop();pb.textContent='▶ Play';pn.textContent='';return}on=true;pb.textContent='■ Stop';window.__ccdPlay('Karan Kanchan',t=>{if(on)pn.textContent=t},pn,()=>{on=false;pb.textContent='▶ Play'})}}
   const pt=document.getElementById('pTot'),pl=el.querySelector('.pl');const pu=()=>{const p=pt?parseInt(pt.textContent.replace(/\D/g,''))||0:0;const w=p<=200?p/200*33.3:p<=300?33.3+(p-200)/100*33.3:Math.min(100,66.6+(p-300)/500*33.4);pl.querySelector('i').style.setProperty('--w',w+'%');pl.querySelectorAll('span').forEach((s,i)=>s.classList.toggle('got',p>=[200,300,800][i]))};pu();setInterval(pu,1000);
 })();
+
+/* ===== round 19: the phone home is a short film (13 Nov, Param: "go for all of it").
+   Nine shots. Each shot is a stage that holds still while you scroll through it, so the object and the words move with
+   the phone's own scrolling. Inside a stage, scroll progress (--p, 0 to 1) turns the object and brings things in.
+   The page stays dark; each app's colour is light. One Sound on tap and the object beats with the track. ===== */
+(()=>{if(!window.__ph)return;
+  const N=typeof NIGHTS!=='undefined'?NIGHTS:[],EP=typeof EPS!=='undefined'?EPS:[];
+  const MON={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+  const when=n=>{const l=n.d.split(' to ').pop().split(' ');return new Date(2026,MON[l[2]]??10,+l[1],23,59)};
+  const up=N.filter(n=>when(n)>=Date.now()),nt=up[0]||N[0];
+  const art=typeof ARTISTS!=='undefined'?ARTISTS.find(a=>a.n==='Karan Kanchan'):null;
+  const cities=[...new Set(N.map(n=>n.c))];
+  const obj=(f,b)=>`<div class="fob"><i class="glow"></i><i class="chr fchr" data-form="${f}" data-b="${b}"></i></div>`;
+  const lines=a=>`<ol class="fl">${a.map((t,i)=>`<li style="--i:${i}">${t}</li>`).join('')}</ol>`;
+  const past=EP.filter(e=>e.img).slice().reverse();
+  const f=document.createElement('div');f.id='film';f.dataset.pg='home';
+  f.innerHTML=`
+  <section class="shot s-title" style="--c:#F2F1EE;--h:170"><div class="stg">
+    ${obj('logo',14)}
+    <div class="ftx"><p class="fk">Bengaluru · since 2025</p><h1 class="ft">Cats<br>Can<br>Dance</h1>
+    <p class="fs">Dance music nights in Bengaluru, and everything around them.</p>
+    <div class="fbtn"><button type="button" class="fb solid" id="fSnd">Sound on</button><span class="fcue">Scroll</span></div></div>
+  </div></section>
+
+  <section class="shot s-next" style="--c:#FF6A3D;--h:150"><div class="stg">
+    ${obj('ball',40)}
+    <div class="ftx"><p class="fk">Next up · Episode 5</p><h2 class="fh">Wed 25 Nov</h2>
+    <p class="fs">The Humming Tree, Bengaluru. Our own night. House, breaks, UKG and bass.</p>
+    <div class="fcd" id="fCd"></div>
+    <a class="fb solid" href="https://catscandance.com/nights" target="_blank" rel="noopener">Get tickets ↗</a></div>
+  </div></section>
+
+  <section class="shot s-app" style="--c:#3B78FF;--h:210"><div class="stg">
+    ${obj('ball',70)}
+    <div class="ftx"><p class="fk">01 · Nights</p><h2 class="fh">Find a night.</h2>
+    ${lines(['Nights across India, checked before they go up.','Say you’re going. See who else is.','Check in at the door and earn your way in free.'])}
+    <a class="fcard" href="#nights" id="fNight"><img src="img/${nt.img}.webp" alt=""><span><small>${nt.d} · ${nt.c}</small><b>${nt.t}</b><em>${nt.v}</em></span></a>
+    <a class="fb" href="#nights">See all ${up.length} nights</a></div>
+  </div></section>
+
+  <section class="shot s-app s-host" style="--c:#FFE600;--h:200"><div class="stg">
+    ${obj('stamp',20)}
+    <div class="ftx"><p class="fk">02 · Host</p><h2 class="fh">Throw your own.</h2>
+    ${lines(['Make the invite in a minute.','Share one link. See who’s coming.','Scan people in at the door.'])}
+    <div class="finv"><small>You're invited</small><b>Rooftop thing</b><span>Sat 21 Nov, 8 pm · Indiranagar</span><em>RSVP</em></div>
+    <a class="fb" href="#host">Make an invite</a></div>
+  </div></section>
+
+  <section class="shot s-art" style="--c:#A98BFF;--h:190"><div class="stg">
+    ${art?`<img class="fbg" src="img/${art.img}.webp" alt="">`:''}<i class="fshade"></i>
+    <div class="ftx"><p class="fk">03 · Artists</p><h2 class="fh">Hear them.<br>Book them.</h2>
+    <p class="fs">${art?`${art.n}. ${art.c}. ${art.g.join(' and ')}. ${art.r} records on file.`:''} Every South Asian electronic artist gets a page, and every fact on it links to where we found it.</p>
+    <div class="fbtn2"><button type="button" class="fb solid" id="fPlay">▶ Play him</button><a class="fb" href="https://catscandance.com/artists/karan-kanchan" target="_blank" rel="noopener">His page ↗</a></div>
+    <p class="fnote" id="fPn" aria-live="polite"></p></div>
+  </div></section>
+
+  <section class="shot s-app s-school" style="--c:#FF7DAA;--h:180"><div class="stg">
+    <div class="fob fknob" id="fKnob" role="slider" aria-label="Tempo" aria-valuemin="100" aria-valuemax="140" tabindex="0"><i class="glow"></i><i class="chr fchr" data-form="knob" data-b="60"></i><b id="fBpm">122</b></div>
+    <div class="ftx"><p class="fk">04 · School</p><h2 class="fh">Make the music.</h2>
+    <p class="fs">Turn the dial. That’s the tempo of what’s playing. School has lessons, a studio and two decks, free in your browser.</p>
+    <a class="fb" href="#school">Open School</a></div>
+  </div></section>
+
+  <section class="shot s-eps" style="--c:#FF6A3D;--h:${past.length*90+40}"><div class="stg">
+    ${past.map((e,i)=>`<img class="fpo" style="--k:${i}" src="img/${e.img}.webp" alt="Episode ${e.n} poster">`).join('')}<i class="fshade"></i>
+    <div class="ftx"><p class="fk">Our nights · the Episodes</p>
+    ${past.map((e,i)=>`<div class="fcap" style="--k:${i}"><h2 class="fh">Episode ${e.n}</h2><p class="fs">${e.d.replace(' 2026','')} · ${e.v}${e.l.length?'<br>'+e.l.filter(x=>!/open decks/i.test(x)).join(' · '):''}</p></div>`).join('')}
+    <a class="fb" href="#episodes">Every Episode</a></div>
+  </div></section>
+
+  <section class="shot s-pts" style="--c:#A98BFF;--h:170"><div class="stg">
+    <div class="ftx"><p class="fk">Points</p><b class="fnum" id="fNum">0</b><h2 class="fh">Go out.<br>Get in free.</h2>
+    <ul class="fms">${[[200,'Bring a +1'],[300,'A guaranteed spot'],[800,'A free ticket']].map(([n,l])=>`<li data-n="${n}"><span>${n}</span>${l}</li>`).join('')}</ul>
+    <p class="fs">Check in at a night, bring a friend, follow an artist. Points from all four apps add up.</p>
+    <a class="fb" href="#points">See your points</a></div>
+  </div></section>
+
+  <section class="shot s-end" style="--c:#F2F1EE;--h:200"><div class="stg"><div class="fcr">
+    <p class="fk">Cats Can Dance</p>
+    <dl><dt>Residents</dt><dd>DJazz · Hedz · Merman · Sartdawg</dd>
+    <dt>Rooms</dt><dd>Bar Wild · Indiranagar Social · The Humming Tree</dd>
+    <dt>Nights listed in</dt><dd>${cities.join(' · ')}</dd>
+    <dt>Artists on file</dt><dd>208</dd>
+    <dt>Made in</dt><dd>Bengaluru</dd></dl>
+    <nav class="flinks">${[['#nights','Nights'],['#host','Host'],['#artists','Artists'],['#school','School'],['#episodes','Episodes'],['#points','Points']].map(([h,l])=>`<a href="${h}">${l}</a>`).join('')}</nav>
+    <p class="fsm"><a href="https://instagram.com/catscandance" target="_blank" rel="noopener">Instagram ↗</a> · <a href="https://catscandance.com" target="_blank" rel="noopener">catscandance.com ↗</a><br>© 2026 Cats Can Dance</p>
+  </div></div></section>`;
+  const main=document.querySelector('main');main.prepend(f);
+  /* scroll progress per shot. The stages are sticky, so the browser moves them; this only turns and reveals. */
+  const shots=[...f.querySelectorAll('.shot')],sp=[...f.querySelectorAll('.fchr')];let tops=[];
+  const measure=()=>{tops=shots.map(s=>{let t=0,e=s;while(e){t+=e.offsetTop;e=e.offsetParent}return [t,s.offsetHeight]})};
+  const num=document.getElementById('fNum'),ms=[...f.querySelectorAll('.fms li')];
+  let tk=false;const frame=()=>{tk=false;if(document.body.dataset.page!=='home')return;const y=scrollY,vh=innerHeight;
+    shots.forEach((s,i)=>{const [t,h]=tops[i]||[0,1];if(y+vh<t-50||y>t+h+50)return;const p=Math.max(0,Math.min(1,(y-t)/Math.max(1,h-vh))),e=Math.max(0,Math.min(1,(y+vh-t)/vh));s.style.setProperty('--p',p.toFixed(3));s.style.setProperty('--e',e.toFixed(3));
+      s.querySelectorAll('.fchr').forEach(c=>{const fr=Math.floor(((+c.dataset.b+p*120+(1-e)*30)%120+120)%120);c.style.setProperty('--cx',fr%11);c.style.setProperty('--cy',Math.floor(fr/11))});
+      if(s.classList.contains('s-eps')){const po=s.querySelectorAll('.fpo'),ca=s.querySelectorAll('.fcap'),n=po.length,x=p*(n-1);po.forEach((im,k)=>{const o=Math.max(0,Math.min(1,1-Math.abs(x-k)*1.6));im.style.opacity=o;im.style.transform='scale('+(1.12-Math.max(0,Math.min(1,x-k+1))*.12)+')';ca[k].style.opacity=o;ca[k].style.transform='translateY('+((1-o)*12)+'px)'})}
+      if(s.classList.contains('s-pts')){const v=Math.round(Math.min(1,p*1.4)*800);num.textContent=v;ms.forEach(li=>li.classList.toggle('on',v>=+li.dataset.n))}})};
+  const kick=()=>{if(!tk){tk=true;requestAnimationFrame(frame)}};
+  addEventListener('scroll',kick,{passive:true});addEventListener('resize',()=>{measure();kick()});addEventListener('hashchange',()=>setTimeout(()=>{measure();kick()},120));
+  addEventListener('load',()=>{measure();kick()});setTimeout(()=>{measure();kick()},300);measure();frame();
+  /* sound: one tap, then the objects beat with the track */
+  const sb=document.getElementById('fSnd');sb.onclick=()=>{try{setPlaying(!playing)}catch(e){document.getElementById('sndBtn').click()}};
+  setInterval(()=>{let on=false,b=122;try{on=playing;b=BPM+(typeof tOff!=='undefined'?tOff:0)}catch(e){}f.classList.toggle('beat',on);f.style.setProperty('--bpm',b);sb.textContent=on?'Sound off':'Sound on';const bp=document.getElementById('fBpm');if(bp)bp.textContent=Math.round(b)},400);
+  /* countdown */
+  const cd=document.getElementById('fCd'),T=new Date('2026-11-25T21:00:00+05:30');const tc=()=>{let s=Math.max(0,Math.floor((T-Date.now())/1000));const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);s%=60;cd.innerHTML=[[d,'days'],[h,'hrs'],[m,'min'],[s,'sec']].map(([v,l])=>`<span><b>${String(v).padStart(2,'0')}</b>${l}</span>`).join('')};tc();setInterval(tc,1000);
+  /* the night card opens that night */
+  const fn=document.getElementById('fNight');fn.addEventListener('click',()=>{nsel=N.indexOf(nt);city='All';setTimeout(()=>{try{nCities();nList()}catch(e){}},60)});
+  /* Karan Kanchan plays */
+  const pb=document.getElementById('fPlay'),pn=document.getElementById('fPn');let on=false;pb.onclick=()=>{if(on){on=false;window.__ccdStop();pb.textContent='▶ Play him';pn.textContent='';return}on=true;pb.textContent='■ Stop';window.__ccdPlay('Karan Kanchan',t=>{if(on)pn.textContent=t},pn,()=>{on=false;pb.textContent='▶ Play him'})};
+  /* the School dial: drag it round and the tempo changes */
+  const kn=document.getElementById('fKnob'),kc=kn.querySelector('.fchr');let drag=null,kf=60;
+  const setK=fr=>{kf=((fr%120)+120)%120;kc.dataset.b=kf;kc.style.setProperty('--cx',Math.floor(kf)%11);kc.style.setProperty('--cy',Math.floor(Math.floor(kf)/11))};
+  const ang=e=>{const r=kn.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))};
+  kn.addEventListener('pointerdown',e=>{drag={a:ang(e)};kn.setPointerCapture(e.pointerId);try{if(!playing)setPlaying(true)}catch(x){}});
+  kn.addEventListener('pointermove',e=>{if(!drag)return;const a=ang(e);let d=a-drag.a;if(d>Math.PI)d-=2*Math.PI;if(d<-Math.PI)d+=2*Math.PI;drag.a=a;setK(kf+d*120/(2*Math.PI));try{setTempo((typeof BPM!=='undefined'?BPM+tOff:122)+d*8)}catch(x){}});
+  const end=()=>{drag=null};kn.addEventListener('pointerup',end);kn.addEventListener('pointercancel',end);
+  kn.addEventListener('keydown',e=>{if(e.key==='ArrowUp'||e.key==='ArrowRight'){try{setTempo(BPM+tOff+2)}catch(x){}}if(e.key==='ArrowDown'||e.key==='ArrowLeft'){try{setTempo(BPM+tOff-2)}catch(x){}}});
+})();
