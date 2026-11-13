@@ -1078,3 +1078,15 @@ header .mmute{margin-right:10px}
   .fcd b{font-family:var(--sans);font-weight:600;font-size:26px;font-stretch:100%;font-variant-numeric:tabular-nums}
   #film .s-next .fb.solid{background:#F2F1EE;border-color:#F2F1EE;color:#0C0D0F}
 }
+
+/* ===== round 23: one screen per shot ===== */
+@media (max-width:700px){
+  #film .shot{height:100svh!important}
+  #film .s-eps{height:150svh!important}
+  #film .s-title .ftx{transform:none;opacity:1}
+  #film .s-title .fob{transform:scale(calc(.9 + var(--e,1)*.1))!important}
+  .arow.r1{transform:translateX(calc(8% - var(--t,0)*50%))}
+  .arow.r2{transform:translateX(calc(-42% + var(--t,0)*50%))}
+  .fcr{transform:translateY(calc((1 - min(1,var(--q,1)*1.15))*30svh))}
+  .fknob{touch-action:pan-y!important}
+}

@@ -526,7 +526,7 @@ try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
     shots.forEach((s,i)=>{const [t,h]=tops[i]||[0,1];if(y+vh<t-50||y>t+h+50)return;const p=Math.max(0,Math.min(1,(y-t)/Math.max(1,h-vh))),e=Math.max(0,Math.min(1,(y+vh-t)/vh));s.style.setProperty('--p',p.toFixed(3));s.style.setProperty('--e',e.toFixed(3));
       s.querySelectorAll('.fchr').forEach(c=>{const fr=Math.floor(((+c.dataset.b+p*120+(1-e)*30)%120+120)%120);c.style.setProperty('--cx',fr%11);c.style.setProperty('--cy',Math.floor(fr/11))});
       if(s.classList.contains('s-eps')){const po=s.querySelectorAll('.fpo'),ca=s.querySelectorAll('.fcap'),n=po.length,x=p*(n-1);po.forEach((im,k)=>{const o=Math.max(0,Math.min(1,1-Math.abs(x-k)*1.6));im.style.opacity=o;im.style.transform='scale('+(1.12-Math.max(0,Math.min(1,x-k+1))*.12)+')';ca[k].style.opacity=o;ca[k].style.transform='translateY('+((1-o)*12)+'px)'})}
-      if(s.classList.contains('s-pts')){const v=Math.round(Math.min(1,p*1.4)*800);num.textContent=v;ms.forEach(li=>li.classList.toggle('on',v>=+li.dataset.n))}})};
+      if(s.classList.contains('s-pts')){const v=Math.round(Math.min(1,e*1.15)*800);num.textContent=v;ms.forEach(li=>li.classList.toggle('on',v>=+li.dataset.n))}})};
   const kick=()=>{if(!tk){tk=true;requestAnimationFrame(frame)}};
   addEventListener('scroll',kick,{passive:true});addEventListener('resize',()=>{measure();kick()});addEventListener('hashchange',()=>setTimeout(()=>{measure();kick()},120));
   addEventListener('load',()=>{measure();kick()});setTimeout(()=>{measure();kick()},300);measure();frame();
@@ -543,8 +543,8 @@ try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
   const kn=document.getElementById('fKnob'),kc=kn.querySelector('.fchr');let drag=null,kf=60;
   const setK=fr=>{kf=((fr%120)+120)%120;kc.dataset.b=kf;kc.style.setProperty('--cx',Math.floor(kf)%11);kc.style.setProperty('--cy',Math.floor(Math.floor(kf)/11))};
   const ang=e=>{const r=kn.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))};
-  kn.addEventListener('pointerdown',e=>{drag={a:ang(e)};kn.setPointerCapture(e.pointerId);try{if(!playing)setPlaying(true)}catch(x){}});
-  kn.addEventListener('pointermove',e=>{if(!drag)return;const a=ang(e);let d=a-drag.a;if(d>Math.PI)d-=2*Math.PI;if(d<-Math.PI)d+=2*Math.PI;drag.a=a;setK(kf+d*120/(2*Math.PI));try{setTempo((typeof BPM!=='undefined'?BPM+tOff:122)+d*8)}catch(x){}});
+  kn.addEventListener('pointerdown',e=>{drag={a:ang(e),m:0,x:e.clientX,y:e.clientY}});
+  kn.addEventListener('pointermove',e=>{if(!drag)return;if(!drag.m){const dx=Math.abs(e.clientX-drag.x),dy=Math.abs(e.clientY-drag.y);if(dx<14||dx<dy*1.2){drag.a=ang(e);return}drag.m=1;try{if(!playing)setPlaying(true)}catch(x){}}const dx=e.clientX-(drag.lx??e.clientX);drag.lx=e.clientX;const o=(window.__ccdObjs||[]).find(z=>z.host===kn);if(o){o.off+=dx/4;o.tgt+=dx/4}try{setTempo((typeof BPM!=='undefined'?BPM+tOff:122)+dx*.12)}catch(x){}});
   const end=()=>{drag=null};kn.addEventListener('pointerup',end);kn.addEventListener('pointercancel',end);
   kn.addEventListener('keydown',e=>{if(e.key==='ArrowUp'||e.key==='ArrowRight'){try{setTempo(BPM+tOff+2)}catch(x){}}if(e.key==='ArrowDown'||e.key==='ArrowLeft'){try{setTempo(BPM+tOff-2)}catch(x){}}});
 })();
@@ -603,7 +603,7 @@ window.__CCDA={kohra:['kohra','New Delhi','a-kohra'],sheral:['sheral','New Delhi
   window.__ccdVis=()=>vis();addEventListener('scroll',vis,{passive:true});addEventListener('resize',vis);addEventListener('hashchange',()=>setTimeout(vis,200));setTimeout(vis,200);setTimeout(vis,1200);
   /* the School dial in the film turns the sharp knob */
   const kn=document.getElementById('fKnob');if(kn&&kn._o===undefined){const o=objs.find(x=>x.host===kn);if(o){let d=null;const ang=e=>{const r=kn.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))};
-    kn.addEventListener('pointerdown',e=>{d={a:ang(e)}},true);kn.addEventListener('pointermove',e=>{if(!d)return;const a=ang(e);let x=a-d.a;if(x>Math.PI)x-=2*Math.PI;if(x<-Math.PI)x+=2*Math.PI;d.a=a;o.off+=x*o.n/(2*Math.PI);o.tgt+=x*o.n/(2*Math.PI);kick()},true);const u=()=>{d=null};kn.addEventListener('pointerup',u,true);kn.addEventListener('pointercancel',u,true)}}
+    kn.addEventListener('pointerdown',e=>{d=null},true);kn.addEventListener('pointermove',e=>{if(!d)return;const a=ang(e);let x=a-d.a;if(x>Math.PI)x-=2*Math.PI;if(x<-Math.PI)x+=2*Math.PI;d.a=a;o.off+=x*o.n/(2*Math.PI);o.tgt+=x*o.n/(2*Math.PI);kick()},true);const u=()=>{d=null};kn.addEventListener('pointerup',u,true);kn.addEventListener('pointercancel',u,true)}}
 
   /* --- the film: better words, dates as tiles, reveals that stay put on the way back up --- */
   const tile=(d)=>{const p=d.replace(' 2026','').split(' to ');const a=p[0].split(' '),b=p[1]?p[1].split(' '):null;return `<span class="dt"><small>${a[0]}</small><b>${a[1]}${b?'<i>/</i>'+b[1]:''}</b><small>${(b?b[2]:a[2])||''}</small></span>`};
@@ -761,3 +761,16 @@ window.__CCDA={kohra:['kohra','New Delhi','a-kohra'],sheral:['sheral','New Delhi
     window.__ccdPlay(n,t=>{if(cur===n)note.textContent=t},note,()=>{if(cur!==n)return;cur=null;li.classList.remove('on');b.textContent='Play'})});
   setTimeout(()=>window.__ccdVis&&window.__ccdVis(),300);
 })();
+
+/* ===== round 23 (13 Nov, Param): fewer scrolls. Shots are one screen each; things happen as a shot slides in on the way down,
+   and on the way up it is plain scrolling. The School dial only turns with a sideways drag, so a vertical swipe always scrolls. ===== */
+(()=>{if(!window.__ph)return;const f=document.getElementById('film');if(!f)return;
+  const shots=[...f.querySelectorAll('.shot')];let tops=[],lastY=scrollY;const q=new WeakMap();
+  const measure=()=>{tops=shots.map(s=>{let t=0,e=s;while(e){t+=e.offsetTop;e=e.offsetParent}return [t,s.offsetHeight]})};
+  const run=()=>{const y=scrollY,vh=innerHeight,down=y>=lastY;lastY=y;
+    shots.forEach((s,i)=>{const [t,h]=tops[i]||[0,1];if(y+vh<t-40||y>t+h+40)return;const e=Math.max(0,Math.min(1,(y+vh-t)/vh)),pass=Math.max(0,Math.min(1,(y+vh-t)/(h+vh)));
+      const m=down?Math.max(q.get(s)||0,e):(q.get(s)||0);q.set(s,m);s.style.setProperty('--q',m.toFixed(3));s.style.setProperty('--t',pass.toFixed(3))})};
+  let tk=false;addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(()=>{tk=false;run()})}},{passive:true});
+  addEventListener('resize',()=>{measure();run()});setTimeout(()=>{measure();run()},400);addEventListener('load',()=>{measure();run()});measure();run();
+})();
+(()=>{if(!window.__ph)return;const p=document.querySelector('#film .s-school .fs');if(p)p.textContent='Drag across the dial, left for slower and right for faster. That’s the tempo of what’s playing. School has lessons, a studio and two decks, free in your browser.'})();
