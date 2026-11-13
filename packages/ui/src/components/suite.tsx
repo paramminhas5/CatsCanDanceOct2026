@@ -22,16 +22,20 @@ export function SuiteNav({ current, account, cta, sub }: { current: ProductId; a
       <div className="k-wrap k-nav__row">
         <a href={productUrl("ccd")} className="k-nav__brand"><CcdMark />Cats Can Dance</a>
         <details className="k-switch-m">
-          <summary style={{ ["--c" as string]: here.colour, ["--on" as string]: on(current) }} aria-label={`${here.verb}. Switch app`}>
-            {here.verb}<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+          <summary style={{ ["--c" as string]: here.colour, ["--on" as string]: on(current) }} aria-label={`You're in ${here.navLabel}. Switch app`}>
+            {/* The app you're in, not an action (Param, 13 Nov 2026: "why does Book artists have two submenus?").
+                The pages of this app are the row underneath; this pill only switches app. */}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5" rx="2" /><rect x="13.5" y="3" width="7.5" height="7.5" rx="2" /><rect x="3" y="13.5" width="7.5" height="7.5" rx="2" /><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2" /></svg>
+            {here.navLabel}<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
           </summary>
           <div className="k-switch-m__sheet">
+            <b className="k-switch-m__h">Switch app</b>
             {PRODUCT_ORDER.map((id) => {
               const p = PRODUCTS[id];
               const is = id === current;
               return (
                 <a key={id} href={is ? "/" : productUrl(id)} aria-current={is ? "page" : undefined} style={{ ["--c" as string]: p.colour, ["--on" as string]: on(id) }}>
-                  <i aria-hidden="true" />{p.verb}<span>{p.navLabel}</span>
+                  <i aria-hidden="true" />{p.navLabel}<span>{p.verb}</span>
                 </a>
               );
             })}

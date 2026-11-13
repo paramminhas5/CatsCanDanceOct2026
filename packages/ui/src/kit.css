@@ -229,6 +229,7 @@ textarea.k-field { padding: 14px 18px; border-radius: 18px; min-height: 120px; r
 .k-switch-m[open] summary svg { transform: rotate(180deg); }
 .k-switch-m__sheet { position: absolute; left: 0; top: calc(100% + 10px); z-index: 60; width: min(300px, 86vw); padding: 8px; border-radius: 22px; background: #18181c; box-shadow: 0 24px 60px rgba(0,0,0,.6); display: grid; gap: 4px; }
 .k-switch-m__sheet a { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 14px; border-radius: 16px; color: var(--k-tx); font-weight: 600; text-decoration: none; }
+.k-switch-m__h { padding: 8px 14px 4px; font: 600 11px var(--k-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--k-t3); }
 .k-switch-m__sheet a span { margin-left: auto; font-size: 12px; color: var(--k-t2); font-weight: 500; }
 .k-switch-m__sheet a[aria-current="page"] { background: var(--c); color: var(--on); }
 .k-switch-m__sheet a[aria-current="page"] i { background: var(--on); }
