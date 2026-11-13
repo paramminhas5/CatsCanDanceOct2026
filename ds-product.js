@@ -31,9 +31,9 @@ const setLook=(card,k,root)=>{const L=LOOKS[k]||LOOKS.chrome;card.style.setPrope
 def('invite',el=>{const f=k=>$(`[name=${k}]`,el),card=$('.inv-card',el),out=$('.inv-out',el),going=$('.inv-going',el),root=el.dataset.root||'';let id=null,unsub=null;
   const vals=()=>({name:f('name').value.trim()||'Your night',date:f('date').value,time:(f('time')||{}).value||'21:00',place:f('place').value.trim()||'Somewhere good',look:($('[name=look]:checked',el)||{}).value||'chrome'});
   const up=()=>{const v=vals();$('.ic-name',card).textContent=v.name;$('.ic-when',card).textContent=whenStr(v.date,v.time);$('.ic-where',card).textContent=v.place;setLook(card,v.look,root)};
-  $$('input,select',el).forEach(i=>i.addEventListener('input',up));up();
+  {const q=new URLSearchParams(location.search).get('name');if(q&&f('name'))f('name').value=q.slice(0,34)}$$('input,select',el).forEach(i=>i.addEventListener('input',up));up();
   const showOut=(link,live)=>{out.hidden=false;out.innerHTML=`<span class="lbl">${live?'Your invite is live':'Your invite is saved on this device'}</span><div class="inv-share"><code class="inv-link">${esc(link)}</code><button class="btn two s" data-copy>${EY2}<span class="lab">Copy link</span></button></div>
-    <div class="inv-acts"><a class="btn one s" href="${root}pages/rsvp.html#i-${id}">${EY1}<span class="lab">Open it as a guest</span></a><a class="btn one s" href="${root}pages/guests.html#i-${id}">${EY1}<span class="lab">Guest list</span></a></div>
+    <div class="inv-acts"><a class="btn one s" href="https://wa.me/?text=${encodeURIComponent('You\'re invited: '+link)}" target="_blank" rel="noopener"><span class="lab">Send on WhatsApp</span></a><a class="btn one s" href="${root}pages/rsvp.html#i-${id}">${EY1}<span class="lab">Open it as a guest</span></a><a class="btn one s" href="${root}pages/guests.html#i-${id}">${EY1}<span class="lab">Guest list</span></a></div>
     <p class="t-small faint">${live?'Anyone you share this page with can open the link and answer. Replies show up here as they come in.':'This copy of the page can\'t save to the shared store, so answers stay on this device. On the published page the link works for anyone you share it with.'}</p><ul class="inv-replies" aria-live="polite"></ul>`;
     const cp=$('[data-copy]',out);cp.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(link);CCD.setLabel(cp,'Copied')}catch(e){const r=document.createRange();r.selectNodeContents($('.inv-link',out));getSelection().removeAllRanges();getSelection().addRange(r);CCD.setLabel(cp,'Selected, copy it')}setTimeout(()=>CCD.setLabel(cp,'Copy link'),2000)});CCD.eyes.collect(out)};
   el.addEventListener('ccd:held',async()=>{const v=vals();id=newId();const s=await CCD.store();const body={...v,host:s&&s.uid||'me',t:Date.now()};let live=false;
@@ -195,7 +195,6 @@ def('cbody',el=>{const steps=$$('.steps button',el),tabs=$$('.pbar .ptabs [data-
   steps.forEach((b,i)=>b.addEventListener('click',()=>{stopTour();show(i)}));
   let tour=null;const stopTour=()=>{clearInterval(tour);tour=null;sm&&CCD.setLabel(sm,'Show me')};
   const sm=$('[data-showme]',el);sm&&sm.addEventListener('click',()=>{if(tour){stopTour();return}let i=0;show(i);CCD.setLabel(sm,'Stop');tour=setInterval(()=>{i++;if(i>=steps.length){stopTour();return}show(i)},1700)});
-  el.addEventListener('ccd:held',e=>{if(e.target.closest('.invite')&&vs.length>1)setTimeout(()=>go(1),1400)});
   if(vs.length)go(0);
   /* a scroll moment: the first time the steps come into view they light up one after another, without moving the page */
   const run=new IntersectionObserver(es=>{if(!es[0].isIntersecting||tour)return;run.disconnect();if(RM)return;let i=0;const t=setInterval(()=>{if(tour){clearInterval(t);return}steps.forEach((x,k)=>{x.classList.toggle('on',k===i);x.classList.toggle('done',k<i)});if(++i>steps.length){clearInterval(t);steps.forEach(x=>x.classList.remove('on','done'))}},520)},{threshold:.45});
@@ -430,11 +429,9 @@ def('artist11',el=>{const root=el.dataset.root||'';const PH=()=>innerWidth<600;i
     /* bio and actions */
     const bio=A.bio||(ERAS.length?ERAS.map(e=>e.label||e.sound.split(',')[0]).join(', then ')+'.':'');Q('.ar-bt').textContent=bio;Q('.ar-bt').hidden=!bio;
     const links=[A.spotify&&['Spotify',A.spotify],A.soundcloud&&['SoundCloud',A.soundcloud],A.instagram&&['Instagram',/^http/.test(A.instagram)?A.instagram:'https://instagram.com/'+A.instagram.replace('@','')],A.website&&['Website',A.website],RELS.find(r=>r.bc)&&['Bandcamp',RELS.find(r=>r.bc).bc]].filter(Boolean);
-    Q('.ar-acts').innerHTML=`<button class="ar-play" data-play aria-label="Play">${'<svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>'}</button>${ERAS.length>1?`<button class="btn two m" data-start>${EY2}<span class="lab">Start here · ${ERAS.length} eras</span></button>`:''}<button class="btn one m" data-follow="${esc(nm)}" aria-pressed="false">${EY1}<span class="lab">Follow</span></button><button class="btn one m" data-remind>${EY1}<span class="lab">Remind me</span></button><a class="btn one m" href="#book">${EY1}<span class="lab">Book ${esc(nm)}</span></a>`;
+    Q('.ar-acts').innerHTML=`<button class="btn two m" data-follow="${esc(nm)}" aria-pressed="false"><span class="lab">Follow</span></button><a class="btn one m" href="#book"><span class="lab">Book ${esc(nm)}</span></a>`;
     Q('.ar-links').innerHTML=links.map(([n,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${n} ↗</a>`).join('');CCD.eyes.collect(Q('.ar-bio'));
-    Q('[data-play]').addEventListener('click',()=>{const r=focus||RELS.find(x=>x.dz)||RELS[0];r?playItem({r}):deck.toggle()});
-    const st=Q('[data-start]');st&&st.addEventListener('click',startHere);
-    Q('[data-remind]').addEventListener('click',e=>{const b=e.currentTarget;CCD.done(b,'We\'ll tell you');b.classList.add('is-done')});
+    drawLatest();
     /* eras: the rail on desktop, cards on phones */
     rail();
     Q('.ar-bk').textContent='Book '+nm;Q('[data-askdate]').addEventListener('click',e=>{const o=Q('.ar-offer');o.hidden=!o.hidden;CCD.setLabel(e.currentTarget,o.hidden?'Ask for a date':'Close')});
@@ -449,7 +446,7 @@ def('artist11',el=>{const root=el.dataset.root||'';const PH=()=>innerWidth<600;i
   function setEra(k,from){era=k;el.style.setProperty('--ec',COL(k));$$('[data-era]',el).forEach(b=>b.setAttribute('aria-pressed',+b.dataset.era===k));
     const e=ERAS[k];const ph=$('.ar-hph img',el);if(ph&&PHOTOS.length>1)ph.src=PHOTOS[Math.max(0,k)%PHOTOS.length];
     const nw=Q('.el-now');if(nw){const n=RELS.filter(r=>r.era===k).length;nw.innerHTML=e?`<b>${esc(e.label||e.sound.split(',')[0])}</b><span>${yrs(e)}${e.sound?' · '+esc(e.sound):''}${n?` · ${n} record${n>1?'s':''}`:''}</span>`:`<b>Every era</b><span>${esc(ERAS.map(x=>x.label||x.sound.split(',')[0]).join(', then '))}. Tap one to hear it.</span>`}
-    drawRels();drawWatch();drawShows();drawPress();drawConn();drawFans();drawUp();
+    drawRels();drawWatch();drawShows();drawPress();drawConn();drawFans();drawUp();drawMoments();
     if(from!=='focus'){const pool=RELS.filter(r=>k<0||r.era===k);const r=pool.find(x=>x.dz)||pool[0];if(r)setFocus(r,'era');else Q('.ar-focus').innerHTML=''}
     if(from==='click')history.replaceState(null,'','#'+slug+(k>=0?'&era-'+(k+1):''))}
   const show=(id,on)=>{const s=Q('#'+id);s.hidden=!on;return $('.ar-sb',s)};
@@ -482,7 +479,8 @@ def('artist11',el=>{const root=el.dataset.root||'';const PH=()=>innerWidth<600;i
     b.innerHTML=`<ol class="ar-shows">${(allShow?past:past.slice(0,8)).map(g=>{const d=new Date(g.d);return `<li><span class="ar-sd"><b><i style="background:${COL(g.era)}"></i>${d.getFullYear()}</b><em>${d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})}</em></span><span class="ar-st"><b>${g.src?`<a href="${esc(g.src)}" target="_blank" rel="noopener">${esc(g.e)}</a>`:esc(g.e)}</b><em>${esc([g.v,g.c].filter(Boolean).join(', '))}${g.src?' · '+esc(host(g.src)):''}</em></span><button class="btn one s" data-c="iwas" data-key="gig-${slug}-${g.d}">${EY1}<span class="lab">I was there</span></button></li>`}).join('')}</ol>`+(past.length>8?`<button class="seeall" data-allshow>${EY1}<span class="lab">${allShow?'Fewer':'All '+past.length+' shows'}</span></button>`:'');CCD.init(b)}
   function drawPress(){const p=PRESS.filter(x=>era<0||x.era===era);const b=show('press',p.length>0);if(!p.length)return;$('.ar-sn',Q('#press')).textContent=`${p.length} stories`;
     b.innerHTML=`<div class="ar-press">${p.slice(0,10).map(x=>`<a href="${esc(x.u)}" target="_blank" rel="noopener"><span class="lbl">${esc(x.p)}${x.d?' · '+String(x.d).slice(0,4):''}</span><b>${esc(x.t)} ↗</b></a>`).join('')}</div>`}
-  function drawConn(){const by=k=>AFF.filter(a=>a.kind===k).map(a=>a.name);const tabs=[['labels','Labels',[...new Set([...(Array.isArray(A.labels)?A.labels:String(A.labels||'').split(/\s*[,;]\s*/)).filter(Boolean),...by('label')])]],['worked','Worked with',by('collaborator')],['crews','Crews and bands',by('collective')],['fests','Festivals',by('festival')]].filter(t=>t[2].length);
+  function drawConn(){const by=k=>AFF.filter(a=>a.kind===k).map(a=>a.name);const LB={};RELS.forEach(r=>{if(!r.lab)return;const o=LB[r.lab]=LB[r.lab]||{n:0,a:9999,b:0};o.n++;if(r.y){o.a=Math.min(o.a,r.y);o.b=Math.max(o.b,r.y)}});const lbl=x=>{const o=LB[x];return o?`${x} · ${o.n} release${o.n>1?'s':''}${o.b?` · ${o.a===o.b?o.a:o.a+' to '+o.b}`:''}`:x};
+    const tabs=[['labels','Labels',[...new Set([...Object.keys(LB).sort((a,b)=>LB[b].n-LB[a].n),...(Array.isArray(A.labels)?A.labels:String(A.labels||'').split(/\s*[,;]\s*/)).filter(Boolean),...by('label')])].map(lbl)],['worked','Worked with',by('collaborator')],['crews','Crews and bands',by('collective')],['fests','Festivals',by('festival')]].filter(t=>t[2].length);
     const b=show('connections',tabs.length>0);if(!tabs.length)return;if(!tabs.find(t=>t[0]===connTab))connTab=tabs[0][0];
     $('.ar-sn',Q('#connections')).innerHTML=`<span class="chips">${tabs.map(t=>`<button class="chip" data-conn="${t[0]}" aria-pressed="${t[0]===connTab}">${t[1]} ${t[2].length}</button>`).join('')}</span>`;
     b.innerHTML=`<div class="ar-conn">${tabs.find(t=>t[0]===connTab)[2].map(x=>{const hit=R.find(r=>CCD.norm(r[1])===CCD.norm(x));return hit?`<a href="#${hit[0]}">${hit[4]?`<img src="${rphoto(hit)}" alt="" onerror="this.remove()">`:''}<b>${esc(pretty(x))}</b><em>On Cats Can Dance ›</em></a>`:`<span><b>${esc(x)}</b></span>`}).join('')}</div>`}
@@ -492,6 +490,16 @@ def('artist11',el=>{const root=el.dataset.root||'';const PH=()=>innerWidth<600;i
     Q('.ar-up').innerHTML=`<b class="ar-bk">Playing next</b>`+(nights.length||up.length?nights.map(n=>`<a class="ar-un" href="${root}pages/night.html#${n.id}"><img src="${root}assets/img/${n.img}.webp" alt=""><span><b>${esc(n.t)}</b><em>${esc(n.d)}, ${esc(n.v)}, ${esc(n.c)}</em></span></a>`).join('')+up.map(g=>`<span class="ar-un"><span><b>${esc(g.e)}</b><em>${g.d}, ${esc([g.v,g.c].filter(Boolean).join(', '))}</em></span></span>`).join('')
       :`<p class="t-small mute">No dates announced. ${esc(name())}'s shows land here as soon as they're confirmed.</p>`)+`<button class="btn one m" data-remind2>${EY1}<span class="lab">Remind me when ${esc(name())} plays</span></button>`;
     const r=Q('[data-remind2]');r.addEventListener('click',()=>{CCD.done(r,'We\'ll tell you');r.classList.add('is-done')});CCD.eyes.collect(Q('.ar-up'))}
+
+  function drawLatest(){const box=Q('.ar-latest');if(!box)return;const r=RELS.find(x=>x.y&&(x.dz||x.bc))||RELS[0];if(!r){box.innerHTML=`<span class="lbl17">Latest release</span><p class="t-small mute">No releases on record yet.</p>`;return}
+    box.innerHTML=`<span class="lbl17">Latest release</span><div class="al17">${tile(r)}<div><b>${esc(r.t)}</b><span>${esc(r.ty)}${r.y?' · '+r.y:''}${r.lab?' · '+esc(r.lab):''}</span>${r.dz||r.bc?`<button class="btn two s" data-lp><span class="lab">${r.dz?'Play':'Play on Bandcamp'}</span></button>`:''}</div></div>`;
+    const b=$('[data-lp]',box);b&&b.addEventListener('click',()=>{setFocus(r,'tile');playItem({r})})}
+  let allMom=false;
+  function drawMoments(){const pool=[...RELS.filter(r=>r.y).map(r=>({y:r.y,d:String(r.y),k:'Release',t:r.t,s:r.ty+(r.lab?' · '+r.lab:''),era:r.era,r})),...GIGS.map(g=>({y:+g.d.slice(0,4),d:g.d,k:'Show',t:g.e,s:[g.v,g.c].filter(Boolean).join(', '),era:g.era,u:g.src})),...PRESS.filter(p=>p.d).map(p=>({y:+String(p.d).slice(0,4),d:String(p.d),k:'Press',t:p.t,s:p.p,era:p.era,u:p.u}))].filter(m=>era<0||m.era===era).sort((a,b)=>b.d.localeCompare(a.d));
+    const b=show('moments',pool.length>2);if(pool.length<3)return;$('.ar-sn',Q('#moments')).textContent=`${pool.length} moments${era>=0?' in this era':''}`;
+    const fm=d=>d.length>4?new Date(d).toLocaleDateString('en-GB',{month:'short',year:'numeric'}):d;
+    b.innerHTML=`<ol class="mo17">${(allMom?pool:pool.slice(0,8)).map(m=>`<li class="k-${m.k.toLowerCase()}" style="--ec:${COL(m.era)}"><span class="mo-d">${fm(m.d)}</span><i></i><span class="mo-t"><em>${m.k}</em>${m.u?`<a href="${esc(m.u)}" target="_blank" rel="noopener">${esc(m.t)}</a>`:m.r?`<button data-mr="${esc(m.t)}">${esc(m.t)}</button>`:`<b>${esc(m.t)}</b>`}<span>${esc(m.s||'')}</span></span></li>`).join('')}</ol>`+(pool.length>8?`<button class="more17" data-allmom>${allMom?'Fewer':'All '+pool.length+' moments'}${'<span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>'}</button>`:'');
+    $$('[data-mr]',b).forEach(x=>x.addEventListener('click',()=>{const r=RELS.find(q=>q.t===x.dataset.mr);if(r){setFocus(r,'tile');(r.dz||r.bc)&&playItem({r})}}));const am=$('[data-allmom]',b);am&&am.addEventListener('click',()=>{allMom=!allMom;drawMoments()})}
   /* the player along the bottom */
   const pl=Q('.ar-player'),rec=$('.ap-rec',pl),cv=$('.ap-cov',pl),pt=$('.ap-pt',pl),pp=$('.ap-pp',pl),src=$('.ap-src',pl),nx=$('.ap-next-era',pl),prog=$('.ap-prog i',pl);
   const deck=CCD.deck(pl,rec,{load:()=>loadNow(),onPlay:on=>{pp.setAttribute('aria-pressed',on);pp.setAttribute('aria-label',on?'Pause':'Play');el.classList.toggle('is-playing',on);pl.classList.add('on')}});
@@ -535,3 +543,22 @@ CCD.def('minibeat',el=>{const cells=[...el.querySelectorAll('.mb13-g button')],p
     const s=w.querySelector('select'),html=bs.map((b,i)=>`<option value="${i}"${b.getAttribute('aria-pressed')==='true'||b.getAttribute('aria-selected')==='true'?' selected':''}>${CCD.esc(label(b))}</option>`).join('');if(s._h!==html){s.innerHTML=html;s._h=html}};
   let tm=null;const scan=()=>{if(!PH())return;document.querySelectorAll('main .chips, main .pk-tabs').forEach(fold)};
   document.addEventListener('DOMContentLoaded',()=>{scan();new MutationObserver(()=>{clearTimeout(tm);tm=setTimeout(scan,60)}).observe(document.querySelector('main')||document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['aria-pressed','aria-selected']})})})();
+
+/* ===== round 17 ===== */
+(()=>{const {$,$$}=CCD;
+
+/* every page opens at the top, including artist-to-artist links that reload */
+try{history.scrollRestoration='manual'}catch(e){}
+addEventListener('pageshow',()=>{const h=decodeURIComponent(location.hash.slice(1));if(!h||!document.getElementById(h))scrollTo(0,0)});
+/* one tap makes the invite */
+document.addEventListener('click',e=>{const b=e.target.closest('[data-make]');if(!b)return;b.dispatchEvent(new CustomEvent('ccd:held',{bubbles:true}));CCD.done&&CCD.done(b,'Invite made')});
+/* nights by day: tonight and tomorrow by name, past days hidden, city and day filters */
+CCD.def('nights17',el=>{const lim=+el.dataset.limit||0;const today=new Date();today.setHours(0,0,0,0);const dd=s=>{const d=new Date(s+'T00:00:00');return Math.round((d-today)/864e5)};
+  $$('.nd17',el).forEach(g=>{const n=dd(g.dataset.date);g.dataset.past=n<0?1:0;const b=$('.nd17-h b',g);if(n===0)b.textContent='Tonight · '+b.textContent;else if(n===1)b.textContent='Tomorrow · '+b.textContent});
+  let city='all',day='all';const draw=()=>{let shown=0;$$('.nd17',el).forEach(g=>{let k=0;$$('.nr',g).forEach(r=>{const ok=g.dataset.past!=='1'&&(city==='all'||r.dataset.city===city)&&(day==='all'||/fri|sat|sun/.test(r.dataset.day))&&(!lim||shown<lim);r.hidden=!ok;if(ok){k++;shown++}});g.hidden=!k;const s=$('.nd17-h span',g);if(s)s.textContent=k+' night'+(k>1?'s':'')});$('.n17-e',el).hidden=shown>0};
+  el.addEventListener('click',e=>{const c=e.target.closest('.c17 .chip');if(!c)return;const grp=c.parentElement;$$('.chip',grp).forEach(x=>x.setAttribute('aria-pressed',x===c));if(grp.classList.contains('nf-city'))city=c.dataset.v;else day=c.dataset.v;draw()});draw()});
+/* artists on the home page: filter by sound, a short grid */
+CCD.def('faces17',el=>{const n=()=>innerWidth<600?6:8;let s='all';const draw=()=>{let k=0;$$('.fa17',el).forEach(f=>{const ok=(s==='all'||f.dataset.g.includes(s))&&k<n();f.hidden=!ok;if(ok)k++})};
+  el.addEventListener('click',e=>{const c=e.target.closest('.c17 .chip');if(!c)return;$$('.c17 .chip',el).forEach(x=>x.setAttribute('aria-pressed',x===c));s=c.dataset.v;draw()});draw()});
+
+})();
