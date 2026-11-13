@@ -34,7 +34,7 @@ export default function BookingsList({ signedIn }: { signedIn: boolean }) {
         <div className="k-surface grid justify-items-start gap-3 rounded-[22px] p-6">
           <b className="text-[18px]">{tab === "artist" ? "No asks yet" : "Nothing sent yet"}</b>
           <p className="k-b m-0">{signedIn ? "When you ask an artist, the thread lands here." : "Sign in to see every ask on any device. Asks sent from this device show here already."}</p>
-          <a href={tab === "artist" ? "/me" : "/artists?mode=book"} className="k-btn k-btn--key">{tab === "artist" ? "Open your page" : "Book for a date"}</a>
+          <a href={tab === "artist" ? "/me" : "/artists?mode=book"} className="k-btn k-btn--key">{tab === "artist" ? "Open your page" : "Book an artist"}</a>
         </div>
       ) : (
         <ul className="m-0 list-none p-0">

@@ -59,8 +59,8 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
   ];
   const nOn = (["act", "sound", "city"] as const).filter((k) => brief[k]).length;
   const lead = book
-    ? brief.date ? (free ? `${free} free on ${dayShort(brief.date)}${brief.city ? ` in ${brief.city}` : ""}${brief.budget ? ", inside your budget" : ""}. Add the ones you want to one ask.` : `Nobody has marked ${dayShort(brief.date)} free yet. Anyone not greyed out has nothing listed that night.`) : "Pick your night to see who is free. Add up to three to one ask."
-    : `${artists.length} DJs, live acts, VJs and photographers. Follow the ones you like, or book one for your night.`;
+    ? brief.date ? (free ? `${free} free on ${dayShort(brief.date)}${brief.city ? ` in ${brief.city}` : ""}${brief.budget ? ", inside your budget" : ""}. Add the ones you want to one ask.` : `Nobody has marked ${dayShort(brief.date)} free yet. Anyone not greyed out has nothing listed that night.`) : "Pick a date to see who is free, then ask up to three at once."
+    : `${artists.length} DJs, live acts, VJs and photographers. Follow the ones you like, or book one.`;
 
   return (
     <main className="k-root">
@@ -72,7 +72,7 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
           </div>
           <div className="aa-seg" role="tablist" aria-label="Mode">
             <Link href={qs({ mode: "" })} className={!book ? "on" : ""} aria-current={!book ? "page" : undefined}>Discover</Link>
-            <Link href={qs({ mode: "book" })} className={book ? "on" : ""} aria-current={book ? "page" : undefined}>Book for a date</Link>
+            <Link href={qs({ mode: "book" })} className={book ? "on" : ""} aria-current={book ? "page" : undefined}>Book</Link>
           </div>
         </div>
         <form method="get" action="/artists" className="aa-sform mt-5 flex gap-3 md:mt-7">
@@ -93,7 +93,7 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
             <input type="hidden" name="mode" value="book" />
             {brief.act && <input type="hidden" name="act" value={brief.act} />}
             {brief.sound && <input type="hidden" name="sound" value={brief.sound} />}
-            <span className="k-m">Your night</span>
+            <span className="k-m">Date and city</span>
             <div className="aa-night-row">
               <input type="date" name="date" min={today} defaultValue={brief.date} className="k-field" aria-label="Date" />
               <select name="city" defaultValue={brief.city} className="k-field" aria-label="City"><option value="">Any city</option>{DESK_CITIES.map((c) => <option key={c}>{c}</option>)}</select>
@@ -140,7 +140,7 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
               <input type="hidden" name="mode" value="book" />
               {brief.act && <input type="hidden" name="act" value={brief.act} />}
               {brief.sound && <input type="hidden" name="sound" value={brief.sound} />}
-              <span className="k-m">Your night</span>
+              <span className="k-m">Date and city</span>
               <input type="date" name="date" min={today} defaultValue={brief.date} className="k-field mt-2" aria-label="Date" />
               <select name="city" defaultValue={brief.city} className="k-field mt-2" aria-label="City"><option value="">Any city</option>{DESK_CITIES.map((c) => <option key={c}>{c}</option>)}</select>
               <span className="k-m mt-4 block">Budget</span>

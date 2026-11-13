@@ -12,7 +12,7 @@ import { BUDGETS, rateFrom, inrShort, isIsoDay, dayShort } from "@/lib/desk";
 import { displayName } from "@/lib/artist-v2";
 import { todayIST } from "@/lib/db";
 
-export const metadata: Metadata = { title: "Book for a night", robots: { index: false } };
+export const metadata: Metadata = { title: "Book an artist", robots: { index: false } };
 
 type SP = { a?: string | string[]; date?: string; city?: string; budget?: string };
 

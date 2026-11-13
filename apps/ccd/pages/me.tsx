@@ -274,7 +274,7 @@ function BookingsBlock() {
       {rows === null ? <div className="h-20 border-4 border-ink/20 bg-ink/5" aria-busy="true" />
         : rows.length === 0 ? (
           <div className="border-4 border-ink bg-cream p-5 grid gap-3">
-            <p>Booking an artist for your night? Send one brief to up to three artists. Their replies, fee and the confirmation land here.</p>
+            <p>Booking an artist? Send one brief to up to three artists. Their replies, fee and the confirmation land here.</p>
             <div><a href={productLink("artists", LINKS.artists.index)} className={`${btn} bg-acid-yellow inline-block`}>Book an artist</a></div>
           </div>
         ) : (

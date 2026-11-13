@@ -48,7 +48,7 @@ export default async function Front({ searchParams }: { searchParams: Promise<{ 
     `<div class="af-row">${items.map(([h, l]) => `<a href="${h}">${l}</a>`).join("")}<span style="flex: 1"></span><a class="af-cta" href="${cta[0]}">${cta[1]}</a></div>`;
   const subnav =
     `<nav class="af-sub" aria-label="Artists">` +
-    `<div class="mode mode-fan">${row([["/artists", "All artists"], ["/artists?mode=book", "Book for a date"], ["/tour", "On tour"], ["/following", "Following"], ["#music", "New music"]], ["/artists?mode=book", "Book for a night"])}</div>` +
+    `<div class="mode mode-fan">${row([["/artists", "All artists"], ["/artists?mode=book", "Book an artist"], ["/tour", "On tour"], ["/following", "Following"], ["#music", "New music"]], ["/artists?mode=book", "Book an artist"])}</div>` +
     `<div class="mode mode-art">${row([["/claim", "Claim your page"], ["/me", "Your page"], ["/bookings", "Bookings"], ["/me/tour", "Post a tour"], ["/me/fans", "Your fans"]], ["/claim", "Claim your page"])}</div>` +
     `</nav>`;
   const before = (
