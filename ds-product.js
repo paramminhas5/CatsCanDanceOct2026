@@ -527,3 +527,11 @@ CCD.def('minibeat',el=>{const cells=[...el.querySelectorAll('.mb13-g button')],p
   play.addEventListener('click',()=>{if(tm)return stop();const a=CCD.audio.ctx();if(!a)return;const g=a.createGain();g.gain.value=.6;g.connect(a.destination);j=0;play.setAttribute('aria-pressed','true');play.querySelector('.lab').textContent='Stop';
     tm=setInterval(()=>{cells.forEach(c=>c.classList.toggle('now',+c.dataset.j===j));cells.filter(c=>+c.dataset.j===j&&c.getAttribute('aria-pressed')==='true').forEach(c=>CCD.audio.voice(a,g,names[+c.dataset.r],a.currentTime));j=(j+1)%8},60000/122/2)});
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&tm)stop()})});
+/* ===== round 16: on a phone, any row of four or more filter chips folds into one dropdown ===== */
+(()=>{const PH=()=>innerWidth<600;const label=b=>{const c=b.querySelector('.cnt');let t=[...b.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim().replace(/\s+/g,' ');if(!t)t=b.textContent.trim().replace(/\s+/g,' ');return c?t.replace(c.textContent,'').trim()+' · '+c.textContent:t};
+  const fold=g=>{const bs=[...g.querySelectorAll(':scope > button, :scope > .chip')];if(bs.length<4)return;let w=g._csel;
+    if(!w||!w.isConnected){w=document.createElement('label');w.className='csel';const nm=g.getAttribute('aria-label')||'Filter';w.innerHTML=`<span class="vh">${CCD.esc(nm)}</span><select></select>`;g.before(w);g._csel=w;g.classList.add('csel-on');
+      w.querySelector('select').addEventListener('change',e=>{const b=g.querySelectorAll(':scope > button, :scope > .chip')[+e.target.value];b&&b.click()})}
+    const s=w.querySelector('select'),html=bs.map((b,i)=>`<option value="${i}"${b.getAttribute('aria-pressed')==='true'||b.getAttribute('aria-selected')==='true'?' selected':''}>${CCD.esc(label(b))}</option>`).join('');if(s._h!==html){s.innerHTML=html;s._h=html}};
+  let tm=null;const scan=()=>{if(!PH())return;document.querySelectorAll('main .chips, main .pk-tabs').forEach(fold)};
+  document.addEventListener('DOMContentLoaded',()=>{scan();new MutationObserver(()=>{clearTimeout(tm);tm=setTimeout(scan,60)}).observe(document.querySelector('main')||document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['aria-pressed','aria-selected']})})})();
