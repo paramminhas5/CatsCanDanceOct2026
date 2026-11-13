@@ -57,27 +57,28 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
     { title: "Sound", key: "sound", items: SOUNDS.map((s) => ({ v: s.toLowerCase(), label: s, n: count((x) => x.genres.some((g) => g.toLowerCase().includes(s.toLowerCase().replace("-", "")) || g.toLowerCase().includes(s.toLowerCase()))) })).filter((x) => x.n > 0) },
     { title: "City", key: "city", items: DESK_CITIES.map((c) => ({ v: c, label: c, n: count((x) => normCity(x.city) === c) })).filter((x) => x.n > 0).slice(0, 8) },
   ];
+  const nOn = (["act", "sound", "city"] as const).filter((k) => brief[k]).length;
   const lead = book
-    ? brief.date ? (free ? `${free} free on ${dayShort(brief.date)}${brief.city ? ` in ${brief.city}` : ""}${brief.budget ? ", inside your budget" : ""}. Add the ones you want to one ask.` : `Nobody has marked ${dayShort(brief.date)} free yet. Anyone not greyed out has nothing listed that night.`) : "Pick your night on the left to see who is free. Add up to three to one ask."
-    : `${artists.length} DJs, live acts, VJs and photographers. Follow them, or switch to booking to see who is free on your date.`;
+    ? brief.date ? (free ? `${free} free on ${dayShort(brief.date)}${brief.city ? ` in ${brief.city}` : ""}${brief.budget ? ", inside your budget" : ""}. Add the ones you want to one ask.` : `Nobody has marked ${dayShort(brief.date)} free yet. Anyone not greyed out has nothing listed that night.`) : "Pick your night to see who is free. Add up to three to one ask."
+    : `${artists.length} DJs, live acts, VJs and photographers. Follow the ones you like, or book one for your night.`;
 
   return (
     <main className="k-root">
       <section className="k-wrap pt-10 md:pt-12">
         <div className="flex flex-wrap items-end gap-6">
-          <div className="min-w-[280px] flex-1">
-            <h1 className="k-d text-[52px] md:text-[72px]">All artists</h1>
-            <p className="k-b mt-3 text-[17px]">{lead}</p>
+          <div className="min-w-0 flex-1 basis-full md:basis-auto md:min-w-[280px]">
+            <h1 className="k-d text-[38px] md:text-[72px]">All artists</h1>
+            <p className="k-b mt-2 text-[15px] md:mt-3 md:text-[17px]">{lead}</p>
           </div>
           <div className="aa-seg" role="tablist" aria-label="Mode">
             <Link href={qs({ mode: "" })} className={!book ? "on" : ""} aria-current={!book ? "page" : undefined}>Discover</Link>
             <Link href={qs({ mode: "book" })} className={book ? "on" : ""} aria-current={book ? "page" : undefined}>Book for a date</Link>
           </div>
         </div>
-        <form method="get" action="/artists" className="mt-7 flex gap-3">
+        <form method="get" action="/artists" className="aa-sform mt-5 flex gap-3 md:mt-7">
           {Object.entries(keep).filter(([k, v]) => v && k !== "q" && k !== "sort").map(([k, v]) => <input key={k} type="hidden" name={k} value={v} />)}
           <label className="aa-search flex-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="M20 20l-4-4" /></svg><input name="q" defaultValue={brief.q} placeholder="Search an artist, a sound or a venue" aria-label="Search" /></label>
-          <select name="sort" defaultValue={sort === "name" ? "name" : ""} className="k-field !w-auto" aria-label="Sort">
+          <select name="sort" defaultValue={sort === "name" ? "name" : ""} className="k-field !w-auto aa-desk" aria-label="Sort">
             <option value="">{book ? "Free first" : "Playing soon first"}</option>
             <option value="name">A to Z</option>
           </select>
@@ -85,8 +86,55 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
         </form>
       </section>
 
-      <section className="k-wrap grid gap-10 pt-8 md:grid-cols-[230px_1fr]">
-        <aside className="aa-rail" aria-label="Filters">
+      {/* Phone: filters fold into one button, so the artists come first (Param, 13 Nov 2026: "the all artists page is still fucked"). */}
+      <section className="k-wrap aa-phone pt-4">
+        {book && (
+          <form method="get" action="/artists" className="aa-night aa-night-ph">
+            <input type="hidden" name="mode" value="book" />
+            {brief.act && <input type="hidden" name="act" value={brief.act} />}
+            {brief.sound && <input type="hidden" name="sound" value={brief.sound} />}
+            <span className="k-m">Your night</span>
+            <div className="aa-night-row">
+              <input type="date" name="date" min={today} defaultValue={brief.date} className="k-field" aria-label="Date" />
+              <select name="city" defaultValue={brief.city} className="k-field" aria-label="City"><option value="">Any city</option>{DESK_CITIES.map((c) => <option key={c}>{c}</option>)}</select>
+            </div>
+            <select name="budget" defaultValue={brief.budget} className="k-field" aria-label="Budget">{BUDGETS.map((b) => <option key={b.key} value={b.key}>{b.label}</option>)}</select>
+            <button className="k-btn k-btn--key aa-big" type="submit">Show who is free</button>
+          </form>
+        )}
+        <details className="aa-fd">
+          <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4" /></svg>Filter{nOn ? ` · ${nOn} on` : ": what, sound, city"}<span className="aa-fd-n">{ranked.length} artists</span></summary>
+          <div className="aa-fd-in">
+            {groups.map((g) => g.items.length > 0 && (
+              <div key={g.title} className="aa-fd-g">
+                <span className="k-m">{g.title}</span>
+                <div className="aa-pills">
+                  {g.items.map((it) => {
+                    const on = (brief[g.key] ?? "").toLowerCase() === it.v.toLowerCase();
+                    return <Link key={it.v} href={qs({ [g.key]: on ? "" : it.v })} className={on ? "on" : ""} scroll={false}>{it.label}<span>{it.n}</span></Link>;
+                  })}
+                </div>
+              </div>
+            ))}
+            <div className="aa-fd-g">
+              <span className="k-m">Order</span>
+              <div className="aa-pills">
+                <Link href={qs({ sort: "" })} className={sort !== "name" ? "on" : ""} scroll={false}>{book ? "Free first" : "Playing soon"}</Link>
+                <Link href={qs({ sort: "name" })} className={sort === "name" ? "on" : ""} scroll={false}>A to Z</Link>
+              </div>
+            </div>
+          </div>
+        </details>
+        {nOn > 0 && (
+          <div className="aa-on">
+            {(["act", "sound", "city"] as const).filter((k) => brief[k]).map((k) => <Link key={k} href={qs({ [k]: "" })} scroll={false}>{groups.find((g) => g.key === k)?.items.find((i) => i.v.toLowerCase() === brief[k].toLowerCase())?.label ?? brief[k]} ✕</Link>)}
+            <Link href={book ? "/artists?mode=book" : "/artists"} className="aa-clear">Clear all</Link>
+          </div>
+        )}
+      </section>
+
+      <section className="k-wrap grid gap-10 pt-5 md:pt-8 md:grid-cols-[230px_1fr]">
+        <aside className="aa-rail aa-desk" aria-label="Filters">
           {book && (
             <form method="get" action="/artists" className="aa-night">
               <input type="hidden" name="mode" value="book" />
@@ -114,7 +162,7 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
           ))}
         </aside>
 
-        <div>
+        <div className="min-w-0">
           {shown.length === 0 ? (
             <Empty title="No one matches that yet" line="Try another city, a wider budget or a different date." action={<ButtonLink href={book ? "/artists?mode=book" : "/artists"}>Clear the filters</ButtonLink>} />
           ) : book ? (
@@ -122,11 +170,11 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
               {brief.date && <input type="hidden" name="date" value={brief.date} />}
               {brief.city && <input type="hidden" name="city" value={brief.city} />}
               {brief.budget && <input type="hidden" name="budget" value={brief.budget} />}
-              <ul className="grid list-none grid-cols-2 gap-x-5 gap-y-9 p-0 lg:grid-cols-4">{shown.map((r) => <BookCard key={r.a.slug} r={r} dated={!!brief.date} />)}</ul>
+              <ul className="grid list-none grid-cols-2 gap-x-3 gap-y-7 p-0 md:gap-x-5 md:gap-y-9 lg:grid-cols-4">{shown.map((r) => <BookCard key={r.a.slug} r={r} dated={!!brief.date} />)}</ul>
               <AskBar formId="ask-form" date={brief.date ? dayShort(brief.date) : ""} />
             </form>
           ) : (
-            <ul className="grid list-none grid-cols-2 gap-x-5 gap-y-9 p-0 lg:grid-cols-4">
+            <ul className="grid list-none grid-cols-2 gap-x-3 gap-y-7 p-0 md:gap-x-5 md:gap-y-9 lg:grid-cols-4">
               {shown.map((r) => {
                 const a = r.a;
                 const name = displayName(a.name);
@@ -138,7 +186,7 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
                     </Link>
                     <Link href={`/${a.slug}`} className="mt-3 block truncate text-[17px] font-semibold no-underline">{name}</Link>
                     <span className="k-b block truncate text-[13px]">{[a.acts[0] ? actLine(a.acts.slice(0, 1)) : null, soundLine(a.genres, 1).toLowerCase(), a.city].filter(Boolean).join(", ")}</span>
-                    <span className="mt-2 flex items-center gap-2">
+                    <span className="aa-cardrow mt-2 flex items-center gap-2">
                       <span className="min-w-0 flex-1 truncate text-[13px] font-semibold" style={{ color: a.next_label ? "var(--k-pc)" : "var(--k-t3)" }}>{a.next_label ?? (brief.city ? `No ${brief.city} date yet` : "No date listed")}</span>
                       <FollowButton slug={a.slug} name={name} size="s" />
                     </span>
