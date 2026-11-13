@@ -455,7 +455,7 @@ try{if(STAGES['episodes-b'])STAGES['episodes-b'].m=[.5,-.45,.2]}catch(e){}
   </div></section>
 
   <section class="shot s-next" style="--c:#FF6A3D;--h:150"><div class="stg">
-    ${obj('ball',40)}
+    ${obj('record',20)}
     <div class="ftx"><p class="fk">Next up · Episode 5</p><h2 class="fh">Wed 25 Nov</h2>
     <p class="fs">The Humming Tree, Bengaluru. Our own night. House, breaks, UKG and bass.</p>
     <div class="fcd" id="fCd"></div>
@@ -729,4 +729,35 @@ window.__CCDA={kohra:['kohra','New Delhi','a-kohra'],sheral:['sheral','New Delhi
     const gs=$q('#gSum');if(gs&&/^[1-9]/.test(gs.textContent.trim()))done.host[3]=1;const dc=$q('#dCount');if(dc&&/^[1-9]/.test(dc.textContent.trim()))done.host[4]=1;
     $a('.ahd').forEach(h=>{const d=done[h.dataset.pg];if(!d)return;const first=d.indexOf(0);h.querySelectorAll('.trak li').forEach((li,i)=>{li.classList.toggle('done',!!d[i]);li.classList.toggle('now',i===first)})})},500);
   const go=()=>{const p=document.body.dataset.page;if(APPS[p])build(p)};addEventListener('hashchange',()=>setTimeout(go,60));go();
+})();
+
+/* ===== round 22 (13 Nov, Param): no object used twice, the light sits behind the chrome as a rim, and a new Episodes page ===== */
+(()=>{if(!window.__ph)return;const $q=s=>document.querySelector(s);
+  (window.__ccdObjs||[]).forEach(o=>{o.host.dataset.form=o.form});
+  const mk0=window.__ccdMkObj;window.__ccdMkObj=(h,f,b)=>{h.dataset.form=f;return mk0(h,f,b)};
+  /* Episodes, rebuilt for a phone */
+  const EP=typeof EPS!=='undefined'?EPS:[],nx=EP.find(e=>e.next),past=EP.filter(e=>!e.next).slice().reverse();
+  const L=window.__ccdArtistLink||(()=>null);
+  const person=n=>{const l=L(n),ini=n.replace(/[^A-Za-z]/g,'').slice(0,1).toUpperCase();
+    return `<li class="epa" data-n="${n}"><span class="epa-f">${l&&l.img?`<img src="img/${l.img}.webp" alt="">`:`<i>${ini}</i>`}</span><span class="epa-t"><b>${n}</b><small>${l?l.city:'Guest'}</small></span>
+      <button type="button" class="epa-p" aria-label="Play ${n}">Play</button>${l?`<a class="epa-l" href="https://catscandance.com/artists/${l.slug}" target="_blank" rel="noopener" aria-label="${n}'s page">Page ↗</a>`:''}<p class="epa-n" aria-live="polite"></p></li>`};
+  const card=e=>`<article class="epc2">${e.img?`<img class="epc2-i" src="img/${e.img}.webp" alt="Episode ${e.n} poster" loading="lazy">`:`<div class="epc2-i ph"><b>EP0${e.n}</b></div>`}
+    <div class="epc2-h"><span class="ep-no">Episode ${e.n}</span><span class="ep-at">${e.d.replace(' 2026','')} · ${e.v}</span></div>
+    ${e.l.length?`<ul class="epl">${e.l.filter(x=>!/open decks/i.test(x)).map(person).join('')}${e.l.some(x=>/open decks/i.test(x))?'<li class="epa ow"><span class="epa-f"><i>+</i></span><span class="epa-t"><b>Open decks</b><small>Anyone could play</small></span></li>':''}</ul>`:`<p class="ep-none">Line-up not on file yet.</p>`}</article>`;
+  const pg=document.createElement('div');pg.className='epm';pg.dataset.pg='episodes';pg.style.setProperty('--c','#FF6A3D');
+  pg.innerHTML=`<div class="ahd" style="--c:#FF6A3D"><div class="ahd-t"><div><p class="fk">Ours · the Episodes</p><h2 class="fh">Our own <em>nights.</em></h2></div><div class="fob small"><i class="glow"></i></div></div>
+    <p class="fs">We throw them in Bengaluru. House, breaks, UKG and bass. Residents DJazz, Hedz, Merman and Sartdawg, plus guests.</p></div>
+    ${nx?`<section class="epnx"><p class="mlb2">Next up</p><h3>Episode ${nx.n}</h3><div class="fwhen">${window.__ccdTile?window.__ccdTile(nx.d):''}<p><b>${nx.v}</b>Bengaluru · 9 pm till late<br>Line-up soon</p></div>
+      <div class="cd2" id="epCd"></div><a class="fb solid big" href="https://catscandance.com/nights" target="_blank" rel="noopener">Get tickets ↗</a></section>`:''}
+    <section class="eppast"><p class="mlb2">Every Episode so far</p>${past.map(card).join('')}</section>
+    <div class="amore" style="--c:#FF6A3D"><p class="fk">What else you can do</p><a href="#nights"><b>Other nights</b><span>What’s on across India this week.</span><i>→</i></a><a href="#host"><b>Throw your own</b><span>Invite, guest list and door, from your phone.</span><i>→</i></a><a href="#points"><b>Points</b><span>Check in at an Episode and they add up to a free ticket.</span><i>→</i></a></div>`;
+  const ch=document.getElementById('ch-episodes');if(ch)ch.before(pg);
+  window.__ccdMkObj(pg.querySelector('.fob'),'record',10);
+  const T=new Date('2026-11-25T21:00:00+05:30'),cd=document.getElementById('epCd');const tc=()=>{if(!cd)return;let s=Math.max(0,Math.floor((T-Date.now())/1000));const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);s%=60;cd.innerHTML=[[d,'days'],[h,'hours'],[m,'min'],[s,'sec']].map(([v,l])=>`<span><b>${String(v).padStart(2,'0')}</b><small>${l}</small></span>`).join('')};tc();setInterval(tc,1000);
+  /* play anyone on a line-up; one at a time */
+  let cur=null;pg.addEventListener('click',e=>{const b=e.target.closest('.epa-p');if(!b)return;const li=b.closest('.epa'),n=li.dataset.n,note=li.querySelector('.epa-n');
+    pg.querySelectorAll('.epa.on').forEach(x=>{x.classList.remove('on');x.querySelector('.epa-p').textContent='Play';x.querySelector('.epa-n').textContent=''});
+    if(cur===n){cur=null;window.__ccdStop&&window.__ccdStop();return}cur=n;li.classList.add('on');b.textContent='Stop';
+    window.__ccdPlay(n,t=>{if(cur===n)note.textContent=t},note,()=>{if(cur!==n)return;cur=null;li.classList.remove('on');b.textContent='Play'})});
+  setTimeout(()=>window.__ccdVis&&window.__ccdVis(),300);
 })();
