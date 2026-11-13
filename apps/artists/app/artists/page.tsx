@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ButtonLink } from "@ccd/ui";
 import { Empty } from "@/components/bits";
-import FollowButton from "@/components/FollowButton";
+import { CardHeart, CardPlay } from "@/components/CardControls";
 import AskBar from "@/components/AskBar";
 import { getDeskArtists } from "@/lib/booking-desk-server";
 import { ACT_FILTERS, BUDGETS, DESK_CITIES, rankArtists, inrShort, dayShort, isIsoDay, actLine, soundLine, normCity, type Ranked } from "@/lib/desk";
@@ -180,16 +180,17 @@ export default async function AllArtists({ searchParams }: { searchParams: Promi
                 const name = displayName(a.name);
                 return (
                   <li key={a.slug} className="aa-card">
-                    <Link href={`/${a.slug}`} className="aa-ph">
-                      {a.photo_url ? <img src={a.photo_url} alt="" loading="lazy" /> : <img src="/cats/lime.webp" alt="" className="aa-cat" />}
-                      {a.acts[0] && <span className="aa-chip">{actLine(a.acts.slice(0, 1))}</span>}
-                    </Link>
+                    <div className="aa-phwrap">
+                      <Link href={`/${a.slug}`} className="aa-ph" aria-label={name}>
+                        {a.photo_url ? <img src={a.photo_url} alt="" loading="lazy" /> : <img src="/cats/lime.webp" alt="" className="aa-cat" />}
+                        {a.acts[0] && <span className="aa-chip">{actLine(a.acts.slice(0, 1))}</span>}
+                      </Link>
+                      <CardHeart slug={a.slug} name={name} />
+                      {a.track && <CardPlay track={a.track} name={name} />}
+                    </div>
                     <Link href={`/${a.slug}`} className="mt-3 block truncate text-[17px] font-semibold no-underline">{name}</Link>
-                    <span className="k-b block truncate text-[13px]">{[a.acts[0] ? actLine(a.acts.slice(0, 1)) : null, soundLine(a.genres, 1).toLowerCase(), a.city].filter(Boolean).join(", ")}</span>
-                    <span className="aa-cardrow mt-2 flex items-center gap-2">
-                      <span className="min-w-0 flex-1 truncate text-[13px] font-semibold" style={{ color: a.next_label ? "var(--k-pc)" : "var(--k-t3)" }}>{a.next_label ?? (brief.city ? `No ${brief.city} date yet` : "No date listed")}</span>
-                      <FollowButton slug={a.slug} name={name} size="s" />
-                    </span>
+                    <span className="k-b block truncate text-[13px]">{[soundLine(a.genres, 1).toLowerCase(), a.city].filter(Boolean).join(", ")}</span>
+                    {a.next_label && a.next_date && <span className="mt-1 block truncate text-[13px] font-semibold" style={{ color: "var(--k-pc)" }}>Playing {a.next_label}, {dayShort(a.next_date)}</span>}
                   </li>
                 );
               })}

@@ -104,8 +104,9 @@ export function SuiteFooter({ current, links, email = "hello@catscandance.com" }
           const base = id === current ? "" : productUrl(id);
           return (
             <nav key={id} aria-label={p.navLabel}>
-              <div className="k-footer__head"><i aria-hidden="true" style={{ background: p.colour }} />{p.navLabel}</div>
-              <div className="k-m">{new URL(p.url).host}</div>
+              {/* The heading opens the app (Param, 13 Nov 2026: "clicking on headings in the footer should lead to the product"). */}
+              <a href={id === current ? "/" : productUrl(id)} className="k-footer__head k-footer__go"><i aria-hidden="true" style={{ background: p.colour }} />{p.navLabel}<span aria-hidden="true">→</span></a>
+              <div className="k-m">{p.verb}</div>
               <ul>
                 {(links[id] ?? []).map(([label, path]) => <li key={label}><a href={`${base}${path}`}>{label}</a></li>)}
               </ul>
@@ -122,8 +123,8 @@ export const WORK_WITH_US: [string, string][] = [["For artists", "/for-artists"]
 
 /** Footer links per product. Only routes that exist. */
 export const SUITE_LINKS: Record<ProductId, [string, string][]> = {
-  ccd: [["This week", "/nights"], ["What's on", "/whats-on"], ["Your tickets", "/me"]],
-  artists: [["All artists", "/artists"], ["On tour", "/tour"], ["Book for a date", "/artists?mode=book"], ["Claim your page", "/claim"]],
+  ccd: [["What's on", "/whats-on"], ["Our Episodes", "/nights"], ["Your tickets", "/me"]],
+  artists: [["All artists", "/artists"], ["On tour", "/tour"], ["Book an artist", "/artists?mode=book"], ["Claim your page", "/claim"]],
   gate: [["Make a party", "/make"], ["Your parties", "/parties"], ["Run the door", "/door"], ["Gear", "/gear"]],
   school: [["Lesson 1", "/learn"], ["Production", "/learn"], ["DJing", "/learn"]],
 };

@@ -56,6 +56,8 @@ export type DeskArtist = {
   rank: number | null;
   next_date: string | null;  // next known gig or tour date, for the card
   next_label: string | null;
+  /** A Deezer track to preview on the card (their latest release that has one). */
+  track?: string | null;
   /** The lowest fee on the artist row (artists.fee_min_inr), used when they have not set per-format rates. */
   fee_min?: number | null;
 };

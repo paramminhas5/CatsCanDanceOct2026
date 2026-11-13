@@ -19,7 +19,7 @@ export type DeskData = { artists: DeskArtist[]; live: boolean; updated: string }
 export async function getDeskArtists(): Promise<DeskData> {
   const today = todayIST();
   const until = addDays(today, 365);
-  const [rows, windows, gigs, scene, settings, avail, stats] = await Promise.all([
+  const [rows, windows, gigs, scene, settings, avail, stats, tracks] = await Promise.all([
     select<Row>("artists?status=eq.approved&select=slug,name,based_city,from_city,bio,genres,photo_url,open_to_bookings,played_ccd,owner_member,claimed_at,mix_url,members,rank,lane,instagram,soundcloud,spotify,website,updated_at,fee_min_inr&order=rank.asc.nullslast,name.asc", REVALIDATE, ["artists"]),
     select<{ artist_slug: string; city: string; from_date: string; to_date: string }>(`artist_dates?status=eq.approved&to_date=gte.${today}&select=artist_slug,city,from_date,to_date`, REVALIDATE, ["tour"]),
     select<{ artist_slug: string; event_date: string; city: string | null; event_name: string | null }>(`artist_gigs?verified=is.true&event_date=gte.${today}&select=artist_slug,event_date,city,event_name`, REVALIDATE, ["artists"]),
@@ -27,7 +27,10 @@ export async function getDeskArtists(): Promise<DeskData> {
     safeRpc<(PublicSettings & { artist_slug: string })[]>("booking_settings_public", {}, REVALIDATE),
     safeRpc<{ artist_slug: string; day: string; state: string; city: string | null }[]>("artist_availability_public", { p_from: today, p_to: until }, REVALIDATE),
     safeRpc<{ artist_slug: string; median_reply_hours: number | null }[]>("artist_booking_stats", {}, REVALIDATE),
+    select<{ artist_slug: string; deezer_track_id: string }>("artist_discography?deezer_track_id=not.is.null&select=artist_slug,deezer_track_id&order=year.desc.nullslast,release_date.desc.nullslast&limit=3000", REVALIDATE, ["artists"]).catch(() => []),
   ]);
+  const track = new Map<string, string>();
+  for (const t of tracks) if (!track.has(t.artist_slug)) track.set(t.artist_slug, String(t.deezer_track_id));
 
   const busy = new Map<string, { day: string; what: string }[]>();
   const addBusy = (slug: string, day: string | null, what: string) => {
@@ -70,6 +73,7 @@ export async function getDeskArtists(): Promise<DeskData> {
         from: from && from !== city ? from : null,
         genres,
         photo_url: r.photo_url,
+        track: track.get(r.slug) ?? null,
         bio: r.bio ? r.bio.slice(0, 180) : null,
         members: r.members,
         played_ccd: !!r.played_ccd,
