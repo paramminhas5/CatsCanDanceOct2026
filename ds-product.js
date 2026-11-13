@@ -33,7 +33,7 @@ def('invite',el=>{const f=k=>$(`[name=${k}]`,el),card=$('.inv-card',el),out=$('.
   const up=()=>{const v=vals();$('.ic-name',card).textContent=v.name;$('.ic-when',card).textContent=whenStr(v.date,v.time);$('.ic-where',card).textContent=v.place;setLook(card,v.look,root)};
   {const q=new URLSearchParams(location.search).get('name');if(q&&f('name'))f('name').value=q.slice(0,34)}$$('input,select',el).forEach(i=>i.addEventListener('input',up));up();
   const showOut=(link,live)=>{out.hidden=false;out.innerHTML=`<span class="lbl">${live?'Your invite is live':'Your invite is saved on this device'}</span><div class="inv-share"><code class="inv-link">${esc(link)}</code><button class="btn two s" data-copy>${EY2}<span class="lab">Copy link</span></button></div>
-    <div class="inv-acts"><a class="btn one s" href="https://wa.me/?text=${encodeURIComponent('You\'re invited: '+link)}" target="_blank" rel="noopener"><span class="lab">Send on WhatsApp</span></a><a class="btn one s" href="${root}pages/rsvp.html#i-${id}">${EY1}<span class="lab">Open it as a guest</span></a><a class="btn one s" href="${root}pages/guests.html#i-${id}">${EY1}<span class="lab">Guest list</span></a></div>
+    <div class="inv-acts"><button class="btn two s" data-nshare><span class="lab">Share</span></button><a class="btn one s" href="https://wa.me/?text=${encodeURIComponent('You\'re invited: '+link)}" target="_blank" rel="noopener"><span class="lab">Send on WhatsApp</span></a><a class="btn one s" href="${root}pages/rsvp.html#i-${id}">${EY1}<span class="lab">Open it as a guest</span></a><a class="btn one s" href="${root}pages/guests.html#i-${id}">${EY1}<span class="lab">Guest list</span></a></div>
     <p class="t-small faint">${live?'Anyone you share this page with can open the link and answer. Replies show up here as they come in.':'This copy of the page can\'t save to the shared store, so answers stay on this device. On the published page the link works for anyone you share it with.'}</p><ul class="inv-replies" aria-live="polite"></ul>`;
     const cp=$('[data-copy]',out);cp.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(link);CCD.setLabel(cp,'Copied')}catch(e){const r=document.createRange();r.selectNodeContents($('.inv-link',out));getSelection().removeAllRanges();getSelection().addRange(r);CCD.setLabel(cp,'Selected, copy it')}setTimeout(()=>CCD.setLabel(cp,'Copy link'),2000)});CCD.eyes.collect(out)};
   el.addEventListener('ccd:held',async()=>{const v=vals();id=newId();const s=await CCD.store();const body={...v,host:s&&s.uid||'me',t:Date.now()};let live=false;
@@ -562,3 +562,25 @@ CCD.def('faces17',el=>{const n=()=>innerWidth<600?6:8;let s='all';const draw=()=
   el.addEventListener('click',e=>{const c=e.target.closest('.c17 .chip');if(!c)return;$$('.c17 .chip',el).forEach(x=>x.setAttribute('aria-pressed',x===c));s=c.dataset.v;draw()});draw()});
 
 })();
+
+/* ===== round 18 ===== */
+(()=>{const {$,$$}=CCD;
+  const LS={get:k=>{try{return localStorage.getItem('ccd:'+k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem('ccd:'+k,v)}catch(e){}}};
+  /* the header height, for anything that sticks under it */
+  const hh=()=>{const h=document.querySelector('.top18');h&&document.documentElement.style.setProperty('--hh',h.offsetHeight+'px')};addEventListener('resize',hh);document.addEventListener('DOMContentLoaded',hh);
+  /* first visit to an app: one quiet tip. "See how" and the ? open the steps */
+  const openHow=()=>{const d=$('#how');if(!d)return;d.open=true;d.scrollIntoView({behavior:CCD.RM?'auto':'smooth',block:'start'})};
+  document.addEventListener('DOMContentLoaded',()=>{const t=$('.tip18');if(t&&!LS.get('tip:'+t.dataset.tip))t.hidden=false;
+    t&&t.addEventListener('click',e=>{if(e.target.closest('button')){t.hidden=true;LS.set('tip:'+t.dataset.tip,1)}if(e.target.closest('a')){e.preventDefault();t.hidden=true;LS.set('tip:'+t.dataset.tip,1);openHow()}});
+    if(location.hash==='#how')setTimeout(openHow,300)});
+  document.addEventListener('click',e=>{const a=e.target.closest('a[href$="#how"]');if(!a||a.closest('.tip18'))return;const u=new URL(a.href,location.href);if(u.pathname===location.pathname){e.preventDefault();openHow()}});
+  /* share the invite with the phone's own share sheet */
+  document.addEventListener('click',async e=>{const b=e.target.closest('[data-nshare]');if(!b)return;const out=b.closest('.inv-out'),link=out&&$('.inv-link',out)?$('.inv-link',out).textContent:location.href;
+    try{if(navigator.share){await navigator.share({title:"You're invited",url:link});return}await navigator.clipboard.writeText(link);CCD.setLabel(b,'Link copied')}catch(err){}});
+  /* the invite name grows with what you type */
+  document.addEventListener('input',e=>{const n=e.target.closest('.inv18-n');if(n){n.style.height='auto';n.style.height=n.scrollHeight+'px'}});
+  /* add to home screen, and the ticket opens offline */
+  if('serviceWorker' in navigator&&/^https?:/.test(location.protocol)&&!/claude|claudeusercontent/.test(location.host)){addEventListener('load',()=>{navigator.serviceWorker.register(new URL('../sw.js',document.currentScript?document.currentScript.src:location.href).href.replace(/pages\/\.\.\//,'')).catch(()=>{})})}
+})();
+/* tapping anywhere on a date or time pill opens the phone's picker */
+document.addEventListener('click',e=>{const p=e.target.closest('.pl18');if(!p)return;const i=p.querySelector('input');if(i&&e.target!==i){i.focus();try{i.showPicker&&i.showPicker()}catch(err){}}});
